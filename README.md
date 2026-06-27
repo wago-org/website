@@ -1,7 +1,7 @@
 # wago.sh
 
-The landing page for [**wago**](https://github.com/wago-org/wago) — a pure-Go
-WebAssembly JIT. Served at <https://wago.sh>.
+The landing page for [**wago**](https://github.com/wago-org/wago) - a pure-Go
+WebAssembly Runtime. Served at <https://wago.sh>.
 
 A small static site: plain HTML + CSS, with the interactive bits written in
 **TypeScript** and compiled to ES modules by `tsc` (no bundler, no framework).
@@ -11,7 +11,7 @@ A small static site: plain HTML + CSS, with the interactive bits written in
 ```
 index.html              # the page, structured by section (nav → hero → … → footer)
 src/                    # TypeScript source
-  main.ts               #   entry point — wires everything up on load
+  main.ts               #   entry point - wires everything up on load
   terminal.ts           #   hero terminal typewriter
   reveal.ts             #   scroll-triggered count-up numbers + progress bars
   copy.ts               #   copy-to-clipboard buttons
@@ -45,8 +45,8 @@ directly) is required so the ES-module imports resolve.
 
 Other scripts:
 
-- `npm run typecheck` — type-check without emitting.
-- `npm run build` — compile, then assemble a clean `dist/` (the exact tree that
+- `npm run typecheck` - type-check without emitting.
+- `npm run build` - compile, then assemble a clean `dist/` (the exact tree that
   gets deployed).
 
 ## Theming
@@ -57,7 +57,7 @@ Light and dark themes are driven entirely by CSS custom properties in
 `data-theme` before first paint (from the saved choice in `localStorage`, else
 the system `prefers-color-scheme`), so there's no flash. The nav toggle
 (`src/theme.ts`) flips and persists the choice. To adjust a color, edit the
-token in both palettes — nothing else hardcodes colors.
+token in both palettes - nothing else hardcodes colors.
 
 ## Editing content
 
@@ -72,5 +72,5 @@ token in both palettes — nothing else hardcodes colors.
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`: it runs `npm ci`,
 `npm run build`, and publishes `dist/` to GitHub Pages. The `CNAME` file points
-the deployment at `wago.sh` — set the matching custom domain in the repository's
+the deployment at `wago.sh` - set the matching custom domain in the repository's
 Pages settings and the DNS records at the registrar.

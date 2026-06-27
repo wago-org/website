@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>wago — a pure-Go WebAssembly JIT</title>
-  <meta name="description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 JIT — decode, validate, compile and run wasm, with tracked spec conformance.">
+  <title>wago - a pure-Go WebAssembly Runtime</title>
+  <meta name="description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 Runtime - decode, validate, compile and run wasm, with tracked spec conformance.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="wago — a pure-Go WebAssembly JIT">
-  <meta property="og:description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 JIT — decode, validate, compile and run wasm.">
+  <meta property="og:title" content="wago - a pure-Go WebAssembly Runtime">
+  <meta property="og:description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 Runtime - decode, validate, compile and run wasm.">
   <meta property="og:url" content="https://wago.sh">
   <meta name="theme-color" content="#0d0f12">
 
@@ -72,8 +72,8 @@
 ╚╩╝ ╩ ╩ ╚═╝ ╚═╝</pre>
     <div class="hero__eyebrow">WASM + GO</div>
 
-    <h1 class="hero__title">A pure-Go WebAssembly JIT,<br><span class="hero__title-accent">no cgo required.</span></h1>
-    <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 backend — native machine code from Go, with <span class="hero__sub-em">zero cgo</span>, no C toolchain, no heavyweight runtime.</p>
+    <h1 class="hero__title">A pure-Go WebAssembly Runtime,<br><span class="hero__title-accent">no cgo required.</span></h1>
+    <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 backend - native machine code from Go, with <span class="hero__sub-em">zero cgo</span>, no C toolchain, no heavyweight runtime.</p>
 
     <!-- terminal -->
     <div class="terminal terminal--hero">
@@ -81,7 +81,7 @@
         <span class="terminal__dot"></span>
         <span class="terminal__dot"></span>
         <span class="terminal__dot"></span>
-        <span class="terminal__title">bash — wago</span>
+        <span class="terminal__title">bash - wago</span>
       </div>
       <pre id="hero-term" class="terminal__body"></pre>
     </div>
@@ -98,7 +98,7 @@
 
   <!-- ░░░ GET STARTED ░░░ -->
   <section id="start" class="section section--pad-lg">
-    <h2 class="section__title" style="margin-bottom:28px">Install and run.</h2>
+    <h2 class="section__title" style="margin-bottom:28px">Installation</h2>
 
     <div class="grid-2">
       <div class="codecard">
@@ -122,7 +122,7 @@
 
   <!-- ░░░ CONFORMANCE ░░░ -->
   <section id="conformance" class="section section--pad">
-    <h2 class="section__title section__title--tight">We show our work.</h2>
+    <h2 class="section__title section__title--tight">Work in progress</h2>
     <p class="section__lead">Tracked against the official <code class="code-lilac">WebAssembly/testsuite</code> (pinned MVP-era). The number climbs as we close gaps.</p>
 
     <div class="conformance">
@@ -162,7 +162,7 @@
     <div class="feature-group__head">
       <div>
         <span class="feature-group__title">WebAssembly 1.0</span>
-        <span class="feature-group__note">the MVP — core spec, the priority</span>
+        <span class="feature-group__note">the MVP - core spec, the priority</span>
       </div>
       <span class="feature-group__count">11 / 17 done</span>
     </div>
@@ -209,7 +209,7 @@
       <div class="feature-row"><span class="feature-row__name">multi-memory</span><span class="pill pill--none">✕ not planned</span></div>
       <div class="feature-row"><span class="feature-row__name">exception handling</span><span class="pill pill--none">✕ not planned</span></div>
       <div class="feature-row"><span class="feature-row__name">garbage collection · wasm GC</span><span class="pill pill--none">✕ not planned</span></div>
-      <div class="feature-row"><span class="feature-row__name">interpreter tier<span class="feature-row__sub">JIT-only by design</span></span><span class="pill pill--none">✕ not planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">interpreter tier<span class="feature-row__sub">Runtime-only by design</span></span><span class="pill pill--none">✕ not planned</span></div>
     </div>
   </section>
 
@@ -221,7 +221,7 @@
     <!-- Today -->
     <div class="stage-head">
       <span class="stage-head__name">Today</span>
-      <span class="stage-head__status stage-head__status--done">● single-pass JIT — shipping</span>
+      <span class="stage-head__status stage-head__status--done">● single-pass Runtime - shipping</span>
     </div>
     <div class="pipeline">
       <div class="pipeline__row">
@@ -257,7 +257,7 @@
         </div>
       </div>
 
-      <div class="pipeline__foot">↳ host-boundary shape &amp; runtime ABI derived from <span class="em-dim">WARP</span> — a stable wrapper ABI is generated for every export.</div>
+      <div class="pipeline__foot">↳ host-boundary shape &amp; runtime ABI derived from <span class="em-dim">WARP</span> - a stable wrapper ABI is generated for every export.</div>
     </div>
 
     <!-- Planned -->
@@ -284,24 +284,24 @@
       </div>
 
       <div class="pipeline__arrow-down pipeline__arrow-down--amber">↓</div>
-      <div class="pipeline__caption">one IR — many backends</div>
+      <div class="pipeline__caption">one IR - many backends</div>
 
       <div class="pipeline__targets">
         <div class="pipeline__target pipeline__target--ship">
           <div class="pipeline__target-title pipeline__target-title--green">single-pass x86-64</div>
-          <div class="pipeline__target-sub">● shipping — becomes one backend</div>
+          <div class="pipeline__target-sub">● shipping - becomes one backend</div>
         </div>
         <div class="pipeline__target">
           <div class="pipeline__target-title">optimizing x86-64</div>
-          <div class="pipeline__target-sub">○ planned — fed by the IR</div>
+          <div class="pipeline__target-sub">○ planned - fed by the IR</div>
         </div>
         <div class="pipeline__target">
           <div class="pipeline__target-title">arm64 · macOS · Windows</div>
-          <div class="pipeline__target-sub">○ planned — new target backends</div>
+          <div class="pipeline__target-sub">○ planned - new target backends</div>
         </div>
       </div>
 
-      <div class="pipeline__foot pipeline__foot--amber">↳ An IR decouples the front end from codegen: today's single-pass x86-64 becomes one backend among several, with optimization passes and new targets slotting in behind the same typed IR. <span class="em-dim">Directional — not yet built.</span></div>
+      <div class="pipeline__foot pipeline__foot--amber">↳ An IR decouples the front end from codegen: today's single-pass x86-64 becomes one backend among several, with optimization passes and new targets slotting in behind the same typed IR. <span class="em-dim">Directional - not yet built.</span></div>
     </div>
   </section>
 
@@ -312,7 +312,7 @@
         <pre class="footer__logo" aria-label="wago">╦ ╦ ╔═╗ ╔═╗ ╔═╗
 ║║║ ╠═╣ ║ ╦ ║ ║
 ╚╩╝ ╩ ╩ ╚═╝ ╚═╝</pre>
-        <p class="footer__tagline">A pure-Go WebAssembly JIT.<br>linux/amd64 · early-stage.<br>Built on the shoulders of <span class="em-dim">WARP</span>.</p>
+        <p class="footer__tagline">A pure-Go WebAssembly Runtime.<br>linux/amd64 · early-stage.<br>Built on the shoulders of <span class="em-dim">WARP</span>.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col">

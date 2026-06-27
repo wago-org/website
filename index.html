@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wago — a pure-Go WebAssembly JIT</title>
+  <meta name="description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 JIT — decode, validate, compile and run wasm, with tracked spec conformance.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="wago — a pure-Go WebAssembly JIT">
+  <meta property="og:description" content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 JIT — decode, validate, compile and run wasm.">
+  <meta property="og:url" content="https://wago.sh">
+  <meta name="theme-color" content="#0d0f12">
+
+  <!-- Resolve theme before first paint to avoid a flash of the wrong theme. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("wago-theme");
+        if (t !== "light" && t !== "dark") {
+          t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "light" ? "#f7f8fa" : "#0d0f12");
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/sections.css">
+
+  <script type="module" src="/assets/js/main.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <!-- ░░░ NAV ░░░ -->
+  <nav class="nav">
+    <div class="nav__brand">
+      <span class="nav__brand-mark">▌</span><span>wago</span>
+    </div>
+    <div class="nav__links">
+      <a class="nav__link nav__link--hide-sm" href="#start">install</a>
+      <a class="nav__link nav__link--hide-sm" href="#conformance">status</a>
+      <a class="nav__link nav__link--hide-sm" href="#features">implemented</a>
+      <a class="nav__link nav__link--hide-sm" href="#how">architecture</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="nav__cta" href="https://github.com/wago-org/wago" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="section section--hero">
+    <pre class="hero__logo" aria-label="wago">╦ ╦ ╔═╗ ╔═╗ ╔═╗
+║║║ ╠═╣ ║ ╦ ║ ║
+╚╩╝ ╩ ╩ ╚═╝ ╚═╝</pre>
+    <div class="hero__eyebrow">WASM + GO</div>
+
+    <h1 class="hero__title">A pure-Go WebAssembly JIT,<br><span class="hero__title-accent">no cgo required.</span></h1>
+    <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 backend — native machine code from Go, with <span class="hero__sub-em">zero cgo</span>, no C toolchain, no heavyweight runtime.</p>
+
+    <!-- terminal -->
+    <div class="terminal terminal--hero">
+      <div class="terminal__bar">
+        <span class="terminal__dot"></span>
+        <span class="terminal__dot"></span>
+        <span class="terminal__dot"></span>
+        <span class="terminal__title">bash — wago</span>
+      </div>
+      <pre id="hero-term" class="terminal__body"></pre>
+    </div>
+
+    <div class="hero__actions">
+      <button class="btn btn--primary" type="button" data-copy="go get github.com/wago-org/wago">
+        <span data-copy-label>$ go get github.com/wago-org/wago</span>
+        <span class="btn__icon">⧉</span>
+      </button>
+      <a class="btn btn--ghost" href="https://github.com/wago-org/wago" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+    <p class="hero__meta">linux/amd64 · early-stage · Apache 2.0</p>
+  </section>
+
+  <!-- ░░░ GET STARTED ░░░ -->
+  <section id="start" class="section section--pad-lg">
+    <h2 class="section__title" style="margin-bottom:28px">Install and run.</h2>
+
+    <div class="grid-2">
+      <div class="codecard">
+        <div class="codecard__label">install</div>
+        <pre class="codecard__body"><span class="codecard__prompt">$</span> go get github.com/wago-org/wago</pre>
+      </div>
+      <div class="codecard">
+        <div class="codecard__label">cli</div>
+        <pre class="codecard__body"><span class="codecard__prompt">$</span> wago run      fib.wasm 30
+<span class="codecard__prompt">$</span> wago compile  fib.wasm -o fib.wago
+<span class="codecard__prompt">$</span> wago validate fib.wasm</pre>
+      </div>
+    </div>
+
+    <div class="row-wrap row-wrap--mt">
+      <a class="linkpill" href="https://github.com/wago-org/wago#readme" target="_blank" rel="noopener">README →</a>
+      <a class="linkpill" href="https://github.com/wago-org/wago/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING →</a>
+      <a class="linkpill" href="https://github.com/wago-org/wago/blob/main/ROADMAP.md" target="_blank" rel="noopener">ROADMAP →</a>
+    </div>
+  </section>
+
+  <!-- ░░░ CONFORMANCE ░░░ -->
+  <section id="conformance" class="section section--pad">
+    <h2 class="section__title section__title--tight">We show our work.</h2>
+    <p class="section__lead">Tracked against the official <code class="code-lilac">WebAssembly/testsuite</code> (pinned MVP-era). The number climbs as we close gaps.</p>
+
+    <div class="conformance">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+          <span class="conformance__big"><span data-count data-target="24">24</span><span class="conformance__big-total">/58</span></span>
+        </div>
+        <div class="conformance__label">applicable MVP files fully passing</div>
+        <div class="conformance__bar-track"><div class="conformance__bar-fill" data-bar data-width="41"></div></div>
+        <div class="conformance__foot">wasm 1.0 / MVP · updated 2026-06</div>
+      </div>
+      <div class="conformance__aside">
+        <div class="conformance__num"><span data-count data-target="7450" data-suffix="">~7,450</span></div>
+        <div class="conformance__num-label">assertions passing</div>
+        <div class="conformance__tags">
+          <span class="tag tag--pass">PASS</span>
+          <span class="tag tag--partial">PARTIAL</span>
+          <span class="tag tag--blocked">BLOCKED</span>
+          <span class="tag tag--fail">FAIL</span>
+        </div>
+        <a class="conformance__link" href="https://github.com/wago-org/wago/blob/main/SPECTEST.md" target="_blank" rel="noopener">→ read the full SPECTEST.md</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FEATURE MAP ░░░ -->
+  <section id="features" class="section section--pad">
+    <h2 class="section__title">Implementation status</h2>
+    <div class="legend">
+      <span class="legend__item legend__item--done"><span>●</span>done</span>
+      <span class="legend__item legend__item--partial"><span>◐</span>partial</span>
+      <span class="legend__item legend__item--planned"><span>○</span>planned</span>
+      <span class="legend__item legend__item--none"><span>✕</span>not planned</span>
+    </div>
+
+    <!-- WebAssembly 1.0 -->
+    <div class="feature-group__head">
+      <div>
+        <span class="feature-group__title">WebAssembly 1.0</span>
+        <span class="feature-group__note">the MVP — core spec, the priority</span>
+      </div>
+      <span class="feature-group__count">11 / 17 done</span>
+    </div>
+    <div class="feature-list">
+      <div class="feature-row"><span class="feature-row__name">i32 / i64 integer ops</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">f32 / f64 arithmetic &amp; compare</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">f32 / f64 ceil · floor · trunc · nearest · copysign</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">conversions + reinterpret</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">float→int trunc NaN / overflow traps<span class="feature-row__sub">computes, doesn’t trap yet</span></span><span class="pill pill--partial">◐ partial</span></div>
+      <div class="feature-row"><span class="feature-row__name">control flow · block / loop / if / br / br_table</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">call · call_indirect</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">select · drop · nop · unreachable</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">locals · get / set / tee</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">globals · get / set, mutable<span class="feature-row__sub">numeric; ref/vec rejected</span></span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">linear memory load / store<span class="feature-row__sub">i64 sub-width loads pending</span></span><span class="pill pill--partial">◐ partial</span></div>
+      <div class="feature-row"><span class="feature-row__name">memory.size · memory.grow</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">active data segments</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">tables + active element segments</span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">function imports / exports<span class="feature-row__sub">host imports: void, batched</span></span><span class="pill pill--done">● done</span></div>
+      <div class="feature-row"><span class="feature-row__name">memory / table / global imports &amp; exports<span class="feature-row__sub">globals done; mem/table gaps</span></span><span class="pill pill--partial">◐ partial</span></div>
+      <div class="feature-row"><span class="feature-row__name">start function</span><span class="pill pill--planned">○ planned</span></div>
+    </div>
+
+    <!-- Post-1.0 -->
+    <div class="feature-group__head">
+      <div>
+        <span class="feature-group__title">Post-1.0 &amp; platform</span>
+        <span class="feature-group__note">later proposals + engine/platform reach</span>
+      </div>
+      <span class="feature-group__count">0 / 15 done</span>
+    </div>
+    <div class="feature-list">
+      <div class="feature-row"><span class="feature-row__name">sign-extension ops</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">non-trapping float→int · trunc_sat</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">multi-value results</span><span class="pill pill--partial">◐ partial</span></div>
+      <div class="feature-row"><span class="feature-row__name">reference types · funcref / externref<span class="feature-row__sub">select t done</span></span><span class="pill pill--partial">◐ partial</span></div>
+      <div class="feature-row"><span class="feature-row__name">bulk memory · copy / fill / init</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">tail calls · return_call</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">SIMD · v128</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">threads &amp; atomics</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">synchronous host-import results</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">WASI preview 1</span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">targets beyond linux/amd64<span class="feature-row__sub">arm64 · macOS · Windows</span></span><span class="pill pill--planned">○ planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">multi-memory</span><span class="pill pill--none">✕ not planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">exception handling</span><span class="pill pill--none">✕ not planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">garbage collection · wasm GC</span><span class="pill pill--none">✕ not planned</span></div>
+      <div class="feature-row"><span class="feature-row__name">interpreter tier<span class="feature-row__sub">JIT-only by design</span></span><span class="pill pill--none">✕ not planned</span></div>
+    </div>
+  </section>
+
+  <!-- ░░░ HOW IT WORKS ░░░ -->
+  <section id="how" class="section section--pad">
+    <h2 class="section__title">From bytes to native.</h2>
+    <p class="section__lead">wago runs native code on an off-heap foreign stack with mmap-backed linear memory exposed directly as a Go <code class="code-lilac" style="font-size:14px">[]byte</code>. It borrows its host-boundary shape and runtime ABI from <span class="em-text">WARP</span>, then keeps the Go side intentionally small and dependency-free.</p>
+
+    <!-- Today -->
+    <div class="stage-head">
+      <span class="stage-head__name">Today</span>
+      <span class="stage-head__status stage-head__status--done">● single-pass JIT — shipping</span>
+    </div>
+    <div class="pipeline">
+      <div class="pipeline__row">
+        <div class="pipeline__node">
+          <div class="pipeline__node-title">decode</div>
+          <div class="pipeline__node-sub">.wasm bytes</div>
+        </div>
+        <div class="pipeline__arrow">→</div>
+        <div class="pipeline__node">
+          <div class="pipeline__node-title">validate</div>
+          <div class="pipeline__node-sub">type-check</div>
+        </div>
+        <div class="pipeline__arrow">→</div>
+        <div class="pipeline__node pipeline__node--hl">
+          <div class="pipeline__node-title pipeline__node-title--green">single-pass</div>
+          <div class="pipeline__node-sub">x86-64 codegen</div>
+        </div>
+      </div>
+
+      <div class="pipeline__arrow-down">↓</div>
+
+      <div class="pipeline__split">
+        <div class="pipeline__panel pipeline__panel--wide">
+          <div class="pipeline__panel-title">mmap'd JobMemory</div>
+          <div class="pipeline__mem">
+            <div class="pipeline__mem-cell">basedata</div>
+            <div class="pipeline__mem-cell pipeline__mem-cell--lin">linear memory → Go []byte</div>
+          </div>
+        </div>
+        <div class="pipeline__panel pipeline__panel--narrow">
+          <div class="pipeline__panel-title" style="margin-bottom:6px">foreign-stack exec</div>
+          <div class="pipeline__panel-note">native code, off-heap stack, <span class="em-green">no cgo</span></div>
+        </div>
+      </div>
+
+      <div class="pipeline__foot">↳ host-boundary shape &amp; runtime ABI derived from <span class="em-dim">WARP</span> — a stable wrapper ABI is generated for every export.</div>
+    </div>
+
+    <!-- Planned -->
+    <div class="stage-head stage-head--mt">
+      <span class="stage-head__name">Planned</span>
+      <span class="stage-head__status stage-head__status--planned">○ an IR, with room for more codegen stages</span>
+    </div>
+    <div class="pipeline pipeline--planned">
+      <div class="pipeline__row">
+        <div class="pipeline__node" style="flex:1.3;min-width:150px">
+          <div class="pipeline__node-title">decode · validate</div>
+          <div class="pipeline__node-sub">shared front end</div>
+        </div>
+        <div class="pipeline__arrow pipeline__arrow--amber">→</div>
+        <div class="pipeline__node pipeline__node--dashed-purple" style="min-width:130px">
+          <div class="pipeline__node-title pipeline__node-title--lilac">lower to IR</div>
+          <div class="pipeline__node-sub">typed, target-agnostic</div>
+        </div>
+        <div class="pipeline__arrow pipeline__arrow--amber">→</div>
+        <div class="pipeline__node pipeline__node--dashed" style="min-width:130px">
+          <div class="pipeline__node-title pipeline__node-title--muted">opt passes</div>
+          <div class="pipeline__node-sub">dce · fold · regalloc</div>
+        </div>
+      </div>
+
+      <div class="pipeline__arrow-down pipeline__arrow-down--amber">↓</div>
+      <div class="pipeline__caption">one IR — many backends</div>
+
+      <div class="pipeline__targets">
+        <div class="pipeline__target pipeline__target--ship">
+          <div class="pipeline__target-title pipeline__target-title--green">single-pass x86-64</div>
+          <div class="pipeline__target-sub">● shipping — becomes one backend</div>
+        </div>
+        <div class="pipeline__target">
+          <div class="pipeline__target-title">optimizing x86-64</div>
+          <div class="pipeline__target-sub">○ planned — fed by the IR</div>
+        </div>
+        <div class="pipeline__target">
+          <div class="pipeline__target-title">arm64 · macOS · Windows</div>
+          <div class="pipeline__target-sub">○ planned — new target backends</div>
+        </div>
+      </div>
+
+      <div class="pipeline__foot pipeline__foot--amber">↳ An IR decouples the front end from codegen: today's single-pass x86-64 becomes one backend among several, with optimization passes and new targets slotting in behind the same typed IR. <span class="em-dim">Directional — not yet built.</span></div>
+    </div>
+  </section>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <pre class="footer__logo" aria-label="wago">╦ ╦ ╔═╗ ╔═╗ ╔═╗
+║║║ ╠═╣ ║ ╦ ║ ║
+╚╩╝ ╩ ╩ ╚═╝ ╚═╝</pre>
+        <p class="footer__tagline">A pure-Go WebAssembly JIT.<br>linux/amd64 · early-stage.<br>Built on the shoulders of <span class="em-dim">WARP</span>.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <span class="footer__col-head">PROJECT</span>
+          <a class="footer__link" href="https://github.com/wago-org/wago" target="_blank" rel="noopener">GitHub</a>
+          <a class="footer__link" href="https://github.com/wago-org/wago/blob/main/SPECTEST.md" target="_blank" rel="noopener">Conformance</a>
+          <a class="footer__link" href="https://github.com/wago-org/wago/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap</a>
+        </div>
+        <div class="footer__col">
+          <span class="footer__col-head">LEGAL</span>
+          <a class="footer__link" href="https://github.com/wago-org/wago/blob/main/LICENSE" target="_blank" rel="noopener">License · Apache 2.0</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy">© 2026 wago · wasm + Go</div>
+  </footer>
+
+</div>
+</body>
+</html>

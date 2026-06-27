@@ -1,0 +1,16 @@
+{
+  "name": "wago-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing page for wago — a pure-Go WebAssembly JIT (wago.sh)",
+  "scripts": {
+    "build": "tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets CNAME dist/",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "typecheck": "tsc --noEmit",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

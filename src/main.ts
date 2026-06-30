@@ -1,12 +1,11 @@
 // Entry point - wires up the interactive pieces of the landing page.
-import { initThemeToggle } from "./theme.js";
-import { initHeroTerminal } from "./terminal.js";
+import { initStats } from "./stats.js";
 import { initReveal } from "./reveal.js";
 import { initCopyButtons } from "./copy.js";
 
-function init(): void {
-    initThemeToggle();
-    initHeroTerminal();
+async function init(): Promise<void> {
+    // Refresh numbers/statuses from data/stats.json first, then animate them.
+    await initStats();
     initReveal();
     initCopyButtons();
 }
@@ -14,5 +13,5 @@ function init(): void {
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
 } else {
-    init();
+    void init();
 }

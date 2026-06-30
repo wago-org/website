@@ -5,9 +5,11 @@
     "type": "module",
     "description": "Landing page for wago - a pure-Go WebAssembly Runtime (wago.sh)",
     "scripts": {
-        "build": "tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets CNAME dist/",
+        "build": "tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets data CNAME dist/",
         "dev": "tsc --watch --preserveWatchOutput",
         "typecheck": "tsc --noEmit",
+        "sync": "node scripts/sync-stats.mjs",
+        "sync:check": "node scripts/sync-stats.mjs --check",
         "serve": "python3 -m http.server 8000"
     },
     "devDependencies": {

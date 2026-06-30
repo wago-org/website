@@ -1,0 +1,74 @@
+{
+  "generated": "2026-06-30",
+  "source": "wago-org/wago @ main",
+  "mvp": {
+    "filesPass": 43,
+    "filesTotal": 58,
+    "percent": 74,
+    "assertionsPass": 15229,
+    "assertionsFail": 460
+  },
+  "coverage": 77,
+  "featuresDone": 15,
+  "featuresTotal": 17,
+  "cgoLines": 0,
+  "platforms": 1,
+  "stats": [
+    {
+      "key": "files",
+      "value": 43,
+      "total": 58,
+      "label": "MVP files pass"
+    },
+    {
+      "key": "assertions",
+      "value": 15229,
+      "label": "assertions pass"
+    },
+    {
+      "key": "cgo",
+      "value": 0,
+      "label": "lines of cgo"
+    },
+    {
+      "key": "coverage",
+      "value": 77,
+      "suffix": "%",
+      "label": "test coverage"
+    }
+  ],
+  "summary": [
+    {
+      "label": "Integer & float numeric ops",
+      "status": "pass"
+    },
+    {
+      "label": "Control flow · call · select",
+      "status": "pass"
+    },
+    {
+      "label": "Memory · tables · globals",
+      "status": "pass"
+    },
+    {
+      "label": "Reference types · bulk memory · multi-value",
+      "status": "partial"
+    },
+    {
+      "label": "Imports / exports",
+      "status": "partial"
+    },
+    {
+      "label": "SIMD · threads · tail calls · WASI",
+      "status": "planned"
+    },
+    {
+      "label": "arm64 · macOS · Windows targets",
+      "status": "planned"
+    },
+    {
+      "label": "start function",
+      "status": "planned"
+    }
+  ]
+}

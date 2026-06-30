@@ -12,7 +12,7 @@
 /* ---- Hero ---- */
 .hero {
     text-align: center;
-    padding: 60px 0 52px;
+    padding: 104px 0 52px;
 }
 .hero__title {
     font-weight: 900;
@@ -228,6 +228,6 @@
         grid-template-columns: 1fr;
     }
     .hero {
-        padding: 36px 0 40px;
+        padding: 60px 0 40px;
     }
 }

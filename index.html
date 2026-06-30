@@ -57,7 +57,7 @@
   <!-- ░░░ HERO ░░░ -->
   <header class="hero">
     <h1 class="hero__title">A WebAssembly engine,<br>written in <span class="hero__title-accent">pure Go.</span></h1>
-    <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 runtime — <strong>no cgo, no C toolchain</strong>.</p>
+    <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 runtime. <strong>No cgo, no C toolchain.</strong></p>
     <div class="hero__actions">
       <button class="btn btn--primary" type="button" data-copy="go get github.com/wago-org/wago">
         <span data-copy-label>$ go get …/wago</span><span>⧉</span>
@@ -75,7 +75,7 @@
         <span class="dot dot--c"></span>
         <span class="codecard__name">main.go</span>
       </div>
-      <pre class="codecard__body"><span class="tok-c">// compile, instantiate &amp; run wasm — no cgo</span>
+      <pre class="codecard__body"><span class="tok-c">// compile, instantiate &amp; run wasm, no cgo</span>
 mod, _  := wago.<span class="tok-f">Compile</span>(wasmBytes)
 inst, _ := wago.<span class="tok-f">Instantiate</span>(mod, <span class="tok-n">nil</span>)
 <span class="tok-n">defer</span> inst.<span class="tok-f">Close</span>()
@@ -113,7 +113,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
       <div class="fcard">
         <div class="fcard__icon fcard__icon--lilac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/></svg></div>
         <h3 class="fcard__title">Zero cgo</h3>
-        <p class="fcard__body">Every layer — decoder, validator, codegen — is pure Go. No C toolchain, clean cross-compilation, one static binary.</p>
+        <p class="fcard__body">Every layer, from decoder to validator to codegen, is pure Go. No C toolchain, clean cross-compilation, one static binary.</p>
       </div>
       <div class="fcard">
         <div class="fcard__icon fcard__icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M10 3v3M14 3v3M10 18v3M14 18v3M3 10h3M3 14h3M18 10h3M18 14h3"/></svg></div>
@@ -123,17 +123,17 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
       <div class="fcard">
         <div class="fcard__icon fcard__icon--pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.4 12.3l2.4 2.4 4.8-5.4"/></svg></div>
         <h3 class="fcard__title">Tracked conformance</h3>
-        <p class="fcard__body">Run file-by-file against the official testsuite — <span data-count data-target="43" data-stat="files">43</span><span data-stat-total>/58</span> MVP files pass today, and the frontier is published in SPECTEST.md, not hidden.</p>
+        <p class="fcard__body">Every applicable testsuite file runs on its own. The passing frontier is published in SPECTEST.md, not hidden.</p>
       </div>
       <div class="fcard">
         <div class="fcard__icon fcard__icon--lilac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="9" rx="1.5"/><path d="M6 15v3M12 15v3M18 15v3M7 10.5h10"/></svg></div>
         <h3 class="fcard__title">Direct memory</h3>
-        <p class="fcard__body">mmap-backed linear memory is exposed straight to your code as a Go <code class="code-inline">[]byte</code> — no copies at the host boundary.</p>
+        <p class="fcard__body">mmap-backed linear memory is exposed straight to your code as a Go <code class="code-inline">[]byte</code>, with no copies at the host boundary.</p>
       </div>
       <div class="fcard">
         <div class="fcard__icon fcard__icon--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
-        <h3 class="fcard__title">Built on WARP</h3>
-        <p class="fcard__body">The host-boundary shape and runtime ABI are derived from WARP, with a stable wrapper ABI generated for every export.</p>
+        <h3 class="fcard__title">Stable host ABI</h3>
+        <p class="fcard__body">A stable wrapper ABI is generated for every export, keeping host ↔ wasm calls typed and low-latency across the boundary.</p>
       </div>
       <div class="fcard">
         <div class="fcard__icon fcard__icon--pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 8l-4.5 4 4.5 4"/><path d="M15.5 8l4.5 4-4.5 4"/></svg></div>
@@ -151,7 +151,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
         <h2 class="split__title">Up and running in one command</h2>
         <p class="split__body">Add wago to your module and embed it, or drive the engine straight from the CLI to run, compile, or validate any <code class="code-inline">.wasm</code>.</p>
         <ul class="checklist">
-          <li><span class="checklist__mark">✦</span> Pure Go — installs with <code class="code-inline" style="background:none;padding:0">go get</code></li>
+          <li><span class="checklist__mark">✦</span> Pure Go, installs with <code class="code-inline" style="background:none;padding:0">go get</code></li>
           <li><span class="checklist__mark">✦</span> Linear memory is just a Go <code class="code-inline" style="background:none;padding:0">[]byte</code></li>
           <li><span class="checklist__mark">✦</span> Precompile to <code class="code-inline" style="background:none;padding:0">.wago</code> for fast reloads</li>
         </ul>
@@ -180,7 +180,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
       <div>
         <div class="eyebrow">Conformance</div>
         <h2 class="split__title">We show our work</h2>
-        <p class="split__body">wago tracks the official <code class="code-inline" style="background:var(--panel-2)">WebAssembly/testsuite</code> file by file. The numbers below come straight from the engine's own test run — the passing frontier is published, not hidden.</p>
+        <p class="split__body">wago tracks the official <code class="code-inline" style="background:var(--panel-2)">WebAssembly/testsuite</code> file by file. The numbers here come straight from the engine's own test run.</p>
         <div class="bignum">
           <span class="bignum__val"><span data-count data-target="74" data-stat="conf">74</span><span class="bignum__pct">%</span></span>
           <span class="bignum__note">applicable MVP files pass</span>
@@ -224,22 +224,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
       <div class="arch-tier">
         <span class="arch-status arch-status--planned">Planned</span>
         <div class="arch-tier__title">lower → typed IR · optimizing tier</div>
-        <div class="arch-tier__body">A target-agnostic IR feeds an optimizing second tier — dce, constant folding, register allocation.</div>
+        <div class="arch-tier__body">A target-agnostic IR feeds an optimizing second tier: dce, constant folding, register allocation.</div>
       </div>
       <div class="arch-tier">
         <span class="arch-status arch-status--planned">Planned</span>
         <div class="arch-tier__title">arm64 · macOS · Windows</div>
-        <div class="arch-tier__body">New target backends behind the same IR — no platform-specific cgo shims.</div>
+        <div class="arch-tier__body">New target backends behind the same IR, with no platform-specific cgo shims.</div>
       </div>
     </div>
-    <p class="arch-note">An IR decouples the front end from codegen: today's single-pass x86-64 becomes one backend among several. Directional — not yet built.</p>
+    <p class="arch-note">An IR decouples the front end from codegen: today's single-pass x86-64 becomes one backend among several. Directional, not yet built.</p>
   </section>
 
   <!-- ░░░ CTA ░░░ -->
   <section class="section">
     <div class="cta">
       <h2 class="cta__title">Embed wasm in your Go app</h2>
-      <p class="cta__body">Apache-licensed and built in the open. Add it to your module in one command and call straight into native wasm — no cgo.</p>
+      <p class="cta__body">Apache-licensed and built in the open. Add it to your module in one command and call straight into native wasm, no cgo.</p>
       <div class="cta__actions">
         <button class="btn btn--dark" type="button" data-copy="go get github.com/wago-org/wago">
           <span data-copy-label>$ go get github.com/wago-org/wago</span><span>⧉</span>
@@ -255,7 +255,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI32</span>(out
       <img class="brand__logo brand__logo--sm" src="/assets/wago-logo.png" alt="" width="36" height="36">
       <div>
         <div class="footer__name">wago</div>
-        <div class="footer__tag">A pure-Go WebAssembly runtime · built on WARP · Apache 2.0</div>
+        <div class="footer__tag">A pure-Go WebAssembly runtime · Apache 2.0</div>
       </div>
     </div>
     <div class="footer__links">

@@ -59,8 +59,8 @@
     <h1 class="hero__title">A WebAssembly engine,<br>written in <span class="hero__title-accent">pure Go.</span></h1>
     <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 runtime. <strong>No cgo, no C toolchain.</strong></p>
     <div class="hero__actions">
-      <button class="btn btn--primary" type="button" data-copy="go get github.com/wago-org/wago">
-        <span data-copy-label>$ go get …/wago</span><span>⧉</span>
+      <button class="btn btn--primary" type="button" data-copy="curl -fsSL https://wago.sh/install.sh | sh">
+        <span data-copy-label>$ curl -fsSL wago.sh/install.sh | sh</span><span>⧉</span>
       </button>
       <a class="btn btn--ghost" href="https://github.com/wago-org/wago/blob/main/ROADMAP.md" target="_blank" rel="noopener">Read the roadmap →</a>
     </div>
@@ -269,15 +269,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
         <h2 class="split__title">Up and running in one command</h2>
         <p class="split__body">Add wago to your module and embed it, or drive the engine straight from the CLI to run, compile, or validate any <code class="code-inline">.wasm</code>.</p>
         <ul class="checklist">
-          <li><span class="checklist__mark">✦</span> Pure Go, installs with <code class="code-inline" style="background:none;padding:0">go get</code></li>
+          <li><span class="checklist__mark">✦</span> One-line install &mdash; prebuilt binary, no toolchain</li>
+          <li><span class="checklist__mark">✦</span> Or add it as a pure-Go module with <code class="code-inline" style="background:none;padding:0">go get</code></li>
           <li><span class="checklist__mark">✦</span> Linear memory is just a Go <code class="code-inline" style="background:none;padding:0">[]byte</code></li>
-          <li><span class="checklist__mark">✦</span> Precompile to <code class="code-inline" style="background:none;padding:0">.wago</code> for fast reloads</li>
         </ul>
       </div>
       <div class="panes">
         <div class="pane">
           <div class="pane__head">
             <span>install</span>
+            <button class="copybtn" type="button" data-copy="curl -fsSL https://wago.sh/install.sh | sh"><span data-copy-label>copy ⧉</span></button>
+          </div>
+          <pre class="pane__body"><span class="pane__prompt">$</span> curl -fsSL https://wago.sh/install.sh | sh</pre>
+        </div>
+        <div class="pane">
+          <div class="pane__head">
+            <span>go module</span>
             <button class="copybtn" type="button" data-copy="go get github.com/wago-org/wago"><span data-copy-label>copy ⧉</span></button>
           </div>
           <pre class="pane__body"><span class="pane__prompt">$</span> go get github.com/wago-org/wago</pre>

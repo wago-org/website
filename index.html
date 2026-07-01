@@ -59,9 +59,19 @@
     <h1 class="hero__title">A WebAssembly engine,<br>written in <span class="hero__title-accent">pure Go.</span></h1>
     <p class="hero__sub">Decode, validate, compile and run wasm through a single-pass x86-64 runtime. <strong>No cgo, no C toolchain.</strong></p>
     <div class="hero__actions">
-      <button class="btn btn--primary" type="button" data-copy="curl -fsSL https://wago.sh/install.sh | sh">
-        <span data-copy-label>$ curl -fsSL wago.sh/install.sh | sh</span><span>⧉</span>
-      </button>
+      <div class="install-split" data-install-split>
+        <button class="btn btn--primary install-split__trigger" type="button" aria-expanded="false" aria-controls="install-options">
+          <span>Install wago</span><span class="install-split__chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="install-split__options" id="install-options" role="group" aria-label="Choose an install method">
+          <button class="btn btn--primary install-split__opt" type="button" data-copy="curl -fsSL https://wago.sh/install.sh | sh">
+            <span class="install-split__tag">curl</span><span data-copy-label>wago.sh/install.sh</span><span aria-hidden="true">⧉</span>
+          </button>
+          <button class="btn btn--ghost install-split__opt" type="button" data-copy="go get github.com/wago-org/wago">
+            <span class="install-split__tag">go</span><span data-copy-label>go get …/wago</span><span aria-hidden="true">⧉</span>
+          </button>
+        </div>
+      </div>
       <a class="btn btn--ghost" href="https://github.com/wago-org/wago/blob/main/ROADMAP.md" target="_blank" rel="noopener">Read the roadmap →</a>
     </div>
   </header>

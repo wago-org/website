@@ -139,6 +139,77 @@
     background: rgba(42, 32, 88, 0.2);
 }
 
+/* ---- Install split-button ----
+   One "Install wago" button that splits into a curl and a go get option.
+   Each option carries its own [data-copy], so clicking copies that command. */
+.install-split {
+    display: inline-flex;
+}
+.install-split__chevron {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+.install-split.is-open .install-split__chevron {
+    transform: rotate(180deg);
+}
+.install-split__options {
+    display: none;
+    gap: 10px;
+}
+.install-split.is-open .install-split__trigger {
+    display: none;
+}
+.install-split.is-open .install-split__options {
+    display: inline-flex;
+}
+/* The two options fan out from where the trigger was: the left one arrives from
+   the right, the right one from the left, so they appear to split apart. */
+.install-split.is-open .install-split__opt:first-child {
+    animation: split-in-left 0.26s ease both;
+}
+.install-split.is-open .install-split__opt:last-child {
+    animation: split-in-right 0.26s ease both;
+}
+.install-split__opt {
+    font-size: 14px;
+}
+.install-split__tag {
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 7px;
+    font-size: 12px;
+    background: rgba(26, 21, 71, 0.16);
+}
+.install-split__opt.btn--ghost .install-split__tag {
+    background: var(--panel-2);
+    color: var(--lilac);
+}
+@keyframes split-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes split-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .install-split.is-open .install-split__opt {
+        animation: none;
+    }
+}
+
 /* ---- Code card (terminal-style) ---- */
 /* ---- Editor: a compilation-pipeline IDE (fib.ts → fib.wat → x86-64) ---- */
 .editor {

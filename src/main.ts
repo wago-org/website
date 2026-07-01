@@ -2,6 +2,7 @@
 import { initStats } from "./stats.js";
 import { initReveal } from "./reveal.js";
 import { initCopyButtons } from "./copy.js";
+import { initInstallSplit } from "./install-split.js";
 import { initSparkles } from "./sparkles.js";
 import { initScrollSpy } from "./scrollspy.js";
 import { initEditor } from "./editor.js";
@@ -13,6 +14,7 @@ async function init(): Promise<void> {
     await initStats();
     initReveal();
     initCopyButtons();
+    initInstallSplit();
     initScrollSpy();
 }
 

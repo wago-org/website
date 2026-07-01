@@ -9,20 +9,47 @@ export function initInstallSplit(): void {
     const trigger = split.querySelector<HTMLButtonElement>(".install-split__trigger");
     if (!trigger) return;
 
-    const open = (): void => {
-        split.classList.add("is-open");
-        trigger.setAttribute("aria-expanded", "true");
-        // Move focus onto the first revealed option for keyboard users.
-        split.querySelector<HTMLButtonElement>(".install-split__opt")?.focus();
+    // Auto-collapse back to the trigger after this much idle time. Any pointer
+    // movement or key press over the component resets the countdown, so it only
+    // fires once the user has stopped interacting. Overridable for tests.
+    const collapseMs = Number(split.getAttribute("data-collapse-ms")) || 5000;
+    let timer: number | undefined;
+
+    const clearTimer = (): void => {
+        if (timer !== undefined) {
+            clearTimeout(timer);
+            timer = undefined;
+        }
     };
 
     const close = (): void => {
+        clearTimer();
         if (!split.classList.contains("is-open")) return;
         split.classList.remove("is-open");
         trigger.setAttribute("aria-expanded", "false");
     };
 
+    const armCollapse = (): void => {
+        clearTimer();
+        if (split.classList.contains("is-open")) {
+            timer = setTimeout(close, collapseMs);
+        }
+    };
+
+    const open = (): void => {
+        split.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        // Move focus onto the first revealed option for keyboard users.
+        split.querySelector<HTMLButtonElement>(".install-split__opt")?.focus();
+        armCollapse();
+    };
+
     trigger.addEventListener("click", open);
+
+    // Reset the idle countdown while the user is actively using the component.
+    split.addEventListener("pointermove", armCollapse);
+    split.addEventListener("pointerdown", armCollapse);
+    split.addEventListener("keydown", armCollapse);
 
     // Dismiss on outside click or Escape, but keep it open while interacting
     // with the options (so the "✓ copied" flash stays visible).

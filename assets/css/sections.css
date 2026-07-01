@@ -103,6 +103,11 @@
 .split--conformance {
     grid-template-columns: 0.9fr 1.1fr;
 }
+/* Let columns shrink below their content's intrinsic width so the code panes
+   scroll internally instead of pushing the page wider than the viewport. */
+.split > * {
+    min-width: 0;
+}
 .eyebrow {
     font-size: 13px;
     font-weight: 700;
@@ -229,5 +234,24 @@
     }
     .hero {
         padding: 60px 0 40px;
+    }
+    /* Keep the big stat number from overflowing its tile on narrow screens. */
+    .stat {
+        padding: 20px 10px;
+    }
+    .stat__num {
+        font-size: clamp(19px, 6.2vw, 34px);
+    }
+    /* Trim generous card paddings so content keeps room on phones. */
+    .split--install {
+        padding: 30px 22px;
+    }
+    .cta {
+        padding: 42px 24px;
+    }
+}
+@media (max-width: 380px) {
+    .stats {
+        gap: 10px;
     }
 }

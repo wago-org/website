@@ -10,10 +10,22 @@
     z-index: 0;
     overflow: hidden;
 }
+.sparkle-layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+}
 .sparkle {
     position: absolute;
     color: var(--lilac);
     animation: twinkle 3.6s ease-in-out infinite;
+}
+.shooting-star {
+    position: absolute;
+    color: var(--lilac);
+    font-size: 15px;
+    text-shadow: 0 0 8px currentColor;
+    animation: shoot 1.15s ease-in forwards;
 }
 
 /* ---- Nav ---- */
@@ -57,6 +69,9 @@
 }
 .nav__link:hover {
     background: var(--panel-2);
+    color: var(--lilac);
+}
+.nav__link--active {
     color: var(--lilac);
 }
 .nav__cta {
@@ -395,7 +410,8 @@
     height: 100%;
     width: 0;
     border-radius: 100px;
-    background: var(--lilac);
+    background: linear-gradient(90deg, var(--violet), var(--lilac) 70%, var(--pink));
+    box-shadow: 0 0 12px -1px var(--lilac);
     transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .link-accent {

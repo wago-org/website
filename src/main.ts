@@ -2,12 +2,16 @@
 import { initStats } from "./stats.js";
 import { initReveal } from "./reveal.js";
 import { initCopyButtons } from "./copy.js";
+import { initSparkles } from "./sparkles.js";
+import { initScrollSpy } from "./scrollspy.js";
 
 async function init(): Promise<void> {
+    initSparkles();
     // Refresh numbers/statuses from data/stats.json first, then animate them.
     await initStats();
     initReveal();
     initCopyButtons();
+    initScrollSpy();
 }
 
 if (document.readyState === "loading") {

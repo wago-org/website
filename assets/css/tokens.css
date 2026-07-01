@@ -68,12 +68,27 @@ code {
 @keyframes twinkle {
     0%,
     100% {
-        opacity: 0.3;
+        opacity: calc(var(--peak, 1) * 0.28);
         transform: scale(0.8);
     }
     50% {
+        opacity: var(--peak, 1);
+        transform: scale(1.12);
+    }
+}
+
+/* A shooting star: fades in, streaks along --sx/--sy, fades out. */
+@keyframes shoot {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.6);
+    }
+    15% {
         opacity: 1;
-        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--sx, 30px), var(--sy, 140px)) scale(1.15);
     }
 }
 

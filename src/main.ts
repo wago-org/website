@@ -4,9 +4,11 @@ import { initReveal } from "./reveal.js";
 import { initCopyButtons } from "./copy.js";
 import { initSparkles } from "./sparkles.js";
 import { initScrollSpy } from "./scrollspy.js";
+import { initEditor } from "./editor.js";
 
 async function init(): Promise<void> {
     initSparkles();
+    initEditor();
     // Refresh numbers/statuses from data/stats.json first, then animate them.
     await initStats();
     initReveal();

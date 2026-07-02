@@ -684,15 +684,20 @@
     gap: 7px;
 }
 .vs__dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 3px;
+    width: 18px;
+    height: 9px;
+    border-radius: 100px;
 }
 .vs__dot--wago {
     background: linear-gradient(90deg, var(--violet), var(--lilac));
 }
 .vs__dot--wazero {
-    background: var(--panel-2);
+    background-color: #6c5fb0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.16) 0 4px,
+        transparent 4px 9px
+    );
 }
 .vs__legend-note {
     margin-left: auto;

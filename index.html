@@ -323,18 +323,59 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
         <div class="bar"><div class="bar__fill" data-bar data-width="74" data-stat-bar></div></div>
         <a class="link-accent" style="margin-top:22px" href="https://github.com/wago-org/wago/blob/main/SPECTEST.md" target="_blank" rel="noopener">→ Read the full SPECTEST.md</a>
       </div>
-      <div class="summary">
-        <div class="summary__head"><span>Feature area</span><span>Status</span></div>
-        <div data-summary>
-          <div class="summary__row"><span class="summary__label">Integer &amp; float numeric ops</span><span class="tag tag--pass">pass</span></div>
-          <div class="summary__row"><span class="summary__label">Control flow · call · select</span><span class="tag tag--pass">pass</span></div>
-          <div class="summary__row"><span class="summary__label">Memory · tables · globals</span><span class="tag tag--pass">pass</span></div>
-          <div class="summary__row"><span class="summary__label">Imports / exports</span><span class="tag tag--partial">partial</span></div>
-          <div class="summary__row"><span class="summary__label">Reference types · bulk memory · multi-value</span><span class="tag tag--partial">partial</span></div>
-          <div class="summary__row"><span class="summary__label">start function</span><span class="tag tag--planned">planned</span></div>
-          <div class="summary__row"><span class="summary__label">SIMD · threads · tail calls · WASI</span><span class="tag tag--planned">planned</span></div>
-          <div class="summary__row"><span class="summary__label">arm64 · macOS · Windows targets</span><span class="tag tag--planned">planned</span></div>
-        </div>
+      <div class="vtracker" data-versions>
+        <details class="vgroup" open>
+          <summary class="vgroup__head"><span class="vgroup__chevron" aria-hidden="true"></span><span class="vgroup__title">WebAssembly 1.0</span><span class="vgroup__sub">MVP core</span><span class="vgroup__count">16/17</span><span class="tag tag--partial">partial</span></summary>
+          <div class="vgroup__body">
+            <div class="vgroup__row"><span class="vgroup__feat">i32 / i64 integer ops</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">f32 / f64 ops</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">f32 / f64 ceil / floor / trunc / nearest / copysign</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Conversions + reinterpret</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Float→int trunc NaN/overflow traps</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Control flow: block / loop / if / else / br / br_if / br_table / return</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">call / call_indirect</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">select, drop, nop, unreachable</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Locals</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Globals</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Linear memory load/store</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">memory.size / memory.grow</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Active data segments</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Tables + active element segments</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Function imports / exports</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Memory / table / global imports &amp; exports</span><span class="tag tag--partial">partial</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">start function</span><span class="tag tag--pass">pass</span></div>
+          </div>
+        </details>
+        <details class="vgroup" open>
+          <summary class="vgroup__head"><span class="vgroup__chevron" aria-hidden="true"></span><span class="vgroup__title">WebAssembly 2.0</span><span class="vgroup__sub">finished proposals</span><span class="vgroup__count">2/6</span><span class="tag tag--partial">partial</span></summary>
+          <div class="vgroup__body">
+            <div class="vgroup__row"><span class="vgroup__feat">Sign-extension ops</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Non-trapping float→int</span><span class="tag tag--pass">pass</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Multi-value</span><span class="tag tag--partial">partial</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Reference types</span><span class="tag tag--partial">partial</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Bulk memory</span><span class="tag tag--partial">partial</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">SIMD</span><span class="tag tag--planned">planned</span></div>
+          </div>
+        </details>
+        <details class="vgroup">
+          <summary class="vgroup__head"><span class="vgroup__chevron" aria-hidden="true"></span><span class="vgroup__title">WebAssembly 3.0</span><span class="vgroup__sub">latest proposals</span><span class="vgroup__count">0/5</span><span class="tag tag--planned">planned</span></summary>
+          <div class="vgroup__body">
+            <div class="vgroup__row"><span class="vgroup__feat">Tail calls</span><span class="tag tag--planned">planned</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Threads &amp; atomics</span><span class="tag tag--planned">planned</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Multi-memory</span><span class="tag tag--none">n/a</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Exception handling proposal</span><span class="tag tag--none">n/a</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Garbage collection proposal</span><span class="tag tag--none">n/a</span></div>
+          </div>
+        </details>
+        <details class="vgroup">
+          <summary class="vgroup__head"><span class="vgroup__chevron" aria-hidden="true"></span><span class="vgroup__title">Engine &amp; platform</span><span class="vgroup__sub">host ABI · targets · WASI</span><span class="vgroup__count">0/4</span><span class="tag tag--planned">planned</span></summary>
+          <div class="vgroup__body">
+            <div class="vgroup__row"><span class="vgroup__feat">Synchronous host-import results</span><span class="tag tag--planned">planned</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">WASI preview 1</span><span class="tag tag--planned">planned</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Architectures beyond linux/amd64</span><span class="tag tag--planned">planned</span></div>
+            <div class="vgroup__row"><span class="vgroup__feat">Interpreter tier</span><span class="tag tag--none">n/a</span></div>
+          </div>
+        </details>
       </div>
     </div>
   </section>

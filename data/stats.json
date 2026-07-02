@@ -37,38 +37,174 @@
       "label": "test coverage"
     }
   ],
-  "summary": [
+  "versions": [
     {
-      "label": "Integer & float numeric ops",
-      "status": "pass"
+      "version": "1.0",
+      "label": "WebAssembly 1.0",
+      "sub": "MVP core",
+      "status": "partial",
+      "done": 16,
+      "total": 17,
+      "features": [
+        {
+          "label": "i32 / i64 integer ops",
+          "status": "pass"
+        },
+        {
+          "label": "f32 / f64 ops",
+          "status": "pass"
+        },
+        {
+          "label": "f32 / f64 ceil / floor / trunc / nearest / copysign",
+          "status": "pass"
+        },
+        {
+          "label": "Conversions + reinterpret",
+          "status": "pass"
+        },
+        {
+          "label": "Float→int trunc NaN/overflow traps",
+          "status": "pass"
+        },
+        {
+          "label": "Control flow: block / loop / if / else / br / br_if / br_table / return",
+          "status": "pass"
+        },
+        {
+          "label": "call / call_indirect",
+          "status": "pass"
+        },
+        {
+          "label": "select, drop, nop, unreachable",
+          "status": "pass"
+        },
+        {
+          "label": "Locals",
+          "status": "pass"
+        },
+        {
+          "label": "Globals",
+          "status": "pass"
+        },
+        {
+          "label": "Linear memory load/store",
+          "status": "pass"
+        },
+        {
+          "label": "memory.size / memory.grow",
+          "status": "pass"
+        },
+        {
+          "label": "Active data segments",
+          "status": "pass"
+        },
+        {
+          "label": "Tables + active element segments",
+          "status": "pass"
+        },
+        {
+          "label": "Function imports / exports",
+          "status": "pass"
+        },
+        {
+          "label": "Memory / table / global imports & exports",
+          "status": "partial"
+        },
+        {
+          "label": "start function",
+          "status": "pass"
+        }
+      ]
     },
     {
-      "label": "Control flow · call · select",
-      "status": "pass"
+      "version": "2.0",
+      "label": "WebAssembly 2.0",
+      "sub": "finished proposals",
+      "status": "partial",
+      "done": 2,
+      "total": 6,
+      "features": [
+        {
+          "label": "Sign-extension ops",
+          "status": "pass"
+        },
+        {
+          "label": "Non-trapping float→int",
+          "status": "pass"
+        },
+        {
+          "label": "Multi-value",
+          "status": "partial"
+        },
+        {
+          "label": "Reference types",
+          "status": "partial"
+        },
+        {
+          "label": "Bulk memory",
+          "status": "partial"
+        },
+        {
+          "label": "SIMD",
+          "status": "planned"
+        }
+      ]
     },
     {
-      "label": "Memory · tables · globals",
-      "status": "pass"
+      "version": "3.0",
+      "label": "WebAssembly 3.0",
+      "sub": "latest proposals",
+      "status": "planned",
+      "done": 0,
+      "total": 5,
+      "features": [
+        {
+          "label": "Tail calls",
+          "status": "planned"
+        },
+        {
+          "label": "Threads & atomics",
+          "status": "planned"
+        },
+        {
+          "label": "Multi-memory",
+          "status": "none"
+        },
+        {
+          "label": "Exception handling proposal",
+          "status": "none"
+        },
+        {
+          "label": "Garbage collection proposal",
+          "status": "none"
+        }
+      ]
     },
     {
-      "label": "start function",
-      "status": "pass"
-    },
-    {
-      "label": "Reference types · bulk memory · multi-value",
-      "status": "partial"
-    },
-    {
-      "label": "SIMD · threads · tail calls · WASI",
-      "status": "partial"
-    },
-    {
-      "label": "Imports / exports",
-      "status": "partial"
-    },
-    {
-      "label": "arm64 · macOS · Windows targets",
-      "status": "planned"
+      "version": "engine",
+      "label": "Engine & platform",
+      "sub": "host ABI · targets · WASI",
+      "status": "planned",
+      "done": 0,
+      "total": 4,
+      "features": [
+        {
+          "label": "Synchronous host-import results",
+          "status": "planned"
+        },
+        {
+          "label": "WASI preview 1",
+          "status": "planned"
+        },
+        {
+          "label": "Architectures beyond linux/amd64",
+          "status": "planned"
+        },
+        {
+          "label": "Interpreter tier",
+          "status": "none"
+        }
+      ]
     }
   ]
 }

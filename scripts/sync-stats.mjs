@@ -140,40 +140,74 @@ function parseFeatures(text) {
   return rows;
 }
 
-// Curated summary groups for the conformance table. Each group claims the
-// FEATURES rows whose text contains one of its matchers (first group wins, so
-// order is significant - specific planned features are matched before the broad
-// numeric/control buckets that would otherwise swallow them).
-const GROUPS = [
-  { label: "Reference types · bulk memory · multi-value", match: ["multi-value", "reference types", "bulk memory"] },
-  { label: "SIMD · threads · tail calls · WASI", match: ["trunc_sat", "tail call", "simd", "threads", "synchronous host", "wasi"] },
-  { label: "arm64 · macOS · Windows targets", match: ["architectures beyond", "beyond linux", "arm64"] },
-  { label: "Integer & float numeric ops", match: ["i32 / i64", "f32 / f64", "ceil", "conversions", "nan/overflow", "sign-extension"] },
-  { label: "Control flow · call · select", match: ["control flow", "`call`", "`select`", "locals"] },
-  { label: "Memory · tables · globals", match: ["globals", "linear memory", "memory.size", "data segments", "tables"] },
-  { label: "Imports / exports", match: ["function imports", "global imports"] },
-  { label: "start function", match: ["`start` function", "start` function"] },
+// The tracker groups every FEATURES row under a major WebAssembly version (a
+// collapsible dropdown on the site). MVP rows are 1.0; post-1.0 rows are placed
+// by matching their text against a version's keywords (first match wins, so
+// order matters). Anything host/target-specific with no wasm version lands in
+// the "engine" bucket. Keep the keyword lists aligned with FEATURES.md wording.
+const VERSION_MATCH = [
+  { version: "2.0", match: ["sign-extension", "trunc_sat", "non-trapping", "multi-value", "reference types", "bulk memory", "simd"] },
+  { version: "3.0", match: ["tail call", "threads", "atomics", "multi-memory", "exception handling", "garbage collection", "wasm gc"] },
+  { version: "engine", match: ["synchronous host", "wasi", "architectures beyond", "beyond linux", "arm64", "interpreter tier"] },
 ];
 
-// done < partial < planned/none - the weakest member sets the group's status.
+const VERSION_META = {
+  "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
+  "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
+  "3.0": { label: "WebAssembly 3.0", sub: "latest proposals" },
+  engine: { label: "Engine & platform", sub: "host ABI · targets · WASI" },
+};
+const VERSION_ORDER = ["1.0", "2.0", "3.0", "engine"];
+
+// FEATURES.md emoji status -> the site's status-pill vocabulary.
+const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", none: "none" };
+
+// Trim a verbose FEATURES cell to a compact tracker label: drop bold/backticks
+// and the trailing parenthetical / em-dash gloss ("SIMD (`v128`)" -> "SIMD").
+function shortLabel(feature) {
+  return feature.replace(/\*\*/g, "").replace(/`/g, "").split(" (")[0].split(" — ")[0].trim();
+}
+
+function classifyVersion(row) {
+  if (row.mvp) return "1.0";
+  const lc = row.feature.toLowerCase();
+  for (const b of VERSION_MATCH) {
+    if (b.match.some((m) => lc.includes(m))) return b.version;
+  }
+  return "engine";
+}
+
+// pass < partial < planned - the weakest applicable member sets the group's
+// status. "none" (not-planned) features are excluded from the roll-up.
 function aggregate(statuses) {
-  if (statuses.length === 0) return null;
-  if (statuses.every((s) => s === "done")) return "pass";
-  if (statuses.some((s) => s === "done" || s === "partial")) return "partial";
+  if (statuses.length === 0) return "planned";
+  if (statuses.every((s) => s === "pass")) return "pass";
+  if (statuses.some((s) => s === "pass" || s === "partial")) return "partial";
   return "planned";
 }
 
-function buildSummary(rows) {
-  const lower = rows.map((r) => ({ ...r, lc: r.feature.toLowerCase() }));
-  const out = [];
-  for (const g of GROUPS) {
-    const hits = lower.filter((r) => g.match.some((m) => r.lc.includes(m.toLowerCase())));
-    const status = aggregate(hits.map((r) => r.status));
-    if (status) out.push({ label: g.label, status });
+function buildVersions(rows) {
+  const byVer = {};
+  for (const r of rows) {
+    const v = classifyVersion(r);
+    (byVer[v] ??= []).push({ label: shortLabel(r.feature), status: STATUS_TAG[r.status] || "planned" });
   }
-  // Display order: pass, then partial, then planned (the brief's layout).
-  const rank = { pass: 0, partial: 1, planned: 2 };
-  return out.sort((a, b) => rank[a.status] - rank[b.status]);
+  const out = [];
+  for (const v of VERSION_ORDER) {
+    const features = byVer[v];
+    if (!features || features.length === 0) continue;
+    const active = features.filter((f) => f.status !== "none");
+    out.push({
+      version: v,
+      label: VERSION_META[v].label,
+      sub: VERSION_META[v].sub,
+      status: aggregate(active.map((f) => f.status)),
+      done: features.filter((f) => f.status === "pass").length,
+      total: features.length,
+      features,
+    });
+  }
+  return out;
 }
 
 async function main() {
@@ -200,7 +234,7 @@ async function main() {
 
   const mvpRows = features.filter((r) => r.mvp);
   const featuresDone = mvpRows.filter((r) => r.status === "done").length;
-  const summary = buildSummary(features);
+  const versions = buildVersions(features);
 
   const stats = [
     { key: "files", value: mvp.filesPass, total: mvp.filesTotal, label: "MVP files pass" },
@@ -223,7 +257,7 @@ async function main() {
     cgoLines: 0,
     platforms: 1,
     stats,
-    summary,
+    versions,
   };
 
   const json = JSON.stringify(data, null, 2) + "\n";

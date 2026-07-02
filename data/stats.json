@@ -3,10 +3,10 @@
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 54,
-    "filesTotal": 58,
-    "percent": 93,
-    "assertionsPass": 16500,
-    "assertionsFail": 13
+    "filesTotal": 54,
+    "percent": 100,
+    "assertionsPass": 16476,
+    "assertionsFail": 0
   },
   "coverage": 77,
   "featuresDone": 16,
@@ -17,12 +17,12 @@
     {
       "key": "files",
       "value": 54,
-      "total": 58,
+      "total": 54,
       "label": "MVP files pass"
     },
     {
       "key": "assertions",
-      "value": 16500,
+      "value": 16476,
       "label": "assertions pass"
     },
     {

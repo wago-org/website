@@ -8,7 +8,7 @@
     "assertionsPass": 16500,
     "assertionsFail": 13
   },
-  "coverage": 77,
+  "coverage": 79,
   "featuresDone": 16,
   "featuresTotal": 17,
   "cgoLines": 0,
@@ -32,7 +32,7 @@
     },
     {
       "key": "coverage",
-      "value": 77,
+      "value": 79,
       "suffix": "%",
       "label": "test coverage"
     }

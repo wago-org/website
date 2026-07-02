@@ -707,8 +707,8 @@
     display: grid;
     grid-template-columns: 150px 1fr 92px;
     align-items: center;
-    gap: 20px;
-    padding: 15px 22px;
+    gap: 16px;
+    padding: 12px 18px;
     border-bottom: 1px solid var(--bg);
 }
 .vs__row:last-child {
@@ -716,6 +716,10 @@
 }
 .vs__more {
     border-bottom: 1px solid var(--bg);
+}
+.vs__more[open] {
+    display: flex;
+    flex-direction: column;
 }
 .vs__more:last-child {
     border-bottom: none;
@@ -725,10 +729,35 @@
     display: grid;
     grid-template-columns: 150px 1fr 92px;
     align-items: center;
-    gap: 20px;
-    padding: 15px 22px;
+    gap: 16px;
+    padding: 12px 18px;
     cursor: pointer;
     user-select: none;
+}
+.vs__more[open] > .vs__more-head {
+    order: 2;
+}
+.vs__more-head {
+    position: relative;
+    overflow: hidden;
+}
+.vs__more-head::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.02) 0,
+        rgba(255, 255, 255, 0.02) 12px,
+        rgba(255, 255, 255, 0.045) 12px,
+        rgba(255, 255, 255, 0.045) 24px
+    );
+    opacity: 0.8;
+    pointer-events: none;
+}
+.vs__more-head > * {
+    position: relative;
+    z-index: 1;
 }
 .vs__more-head::-webkit-details-marker {
     display: none;
@@ -757,6 +786,7 @@
 }
 .vs__more-body {
     border-top: 1px solid var(--bg);
+    order: 1;
 }
 .vs__meta {
     display: flex;
@@ -853,17 +883,20 @@
 @media (max-width: 620px) {
     .vs__row {
         grid-template-columns: 108px 1fr;
-        gap: 14px;
+        gap: 12px;
     }
     .vs__more-head {
         grid-template-columns: 108px 1fr;
-        gap: 14px;
+        gap: 12px;
     }
     .vs__delta {
         display: none;
     }
     .vs__more-chevron {
         display: none;
+    }
+    .vs__more[open] > .vs__more-head {
+        order: 2;
     }
 }
 

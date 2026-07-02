@@ -229,7 +229,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
       <div class="stat__label">lines of cgo</div>
     </div>
     <div class="stat">
-      <div class="stat__num stat__num--lilac"><span data-count data-target="77" data-suffix="%" data-stat="coverage">77%</span></div>
+      <div class="stat__num stat__num--lilac"><span data-count data-target="79" data-suffix="%" data-stat="coverage">79%</span></div>
       <div class="stat__label">test coverage</div>
     </div>
   </section>
@@ -435,10 +435,18 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
       <div class="vs__row">
         <div class="vs__meta"><span class="vs__label">Compile memory</span><span class="vs__sub">allocated bytes</span></div>
         <div class="vs__bars">
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="5"></span></span><span class="vs__val vs__val--wago">14 KB</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="5"></span></span><span class="vs__val vs__val--wago">15 KB</span></div>
           <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">299 KB</span></div>
         </div>
         <span class="vs__delta vs__delta--win">21× leaner</span>
+      </div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">Exec memory</span><span class="vs__sub">memory.sum, allocated bytes</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="0"></span></span><span class="vs__val vs__val--wago">0 B</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">8 B</span></div>
+        </div>
+        <span class="vs__delta vs__delta--win">0 allocs</span>
       </div>
       <div class="vs__row">
         <div class="vs__meta"><span class="vs__label">Call overhead</span><span class="vs__sub">host → wasm</span></div>

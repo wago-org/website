@@ -145,37 +145,185 @@
           "status": "partial"
         },
         {
-          "label": "SIMD",
+          "label": "Fixed-width SIMD",
           "status": "planned"
         }
       ]
     },
     {
-      "version": "3.0",
-      "label": "WebAssembly 3.0",
-      "sub": "latest proposals",
+      "version": "next",
+      "label": "WebAssembly 3.0+",
+      "sub": "3.0 & in-progress proposals",
       "status": "planned",
       "done": 0,
-      "total": 5,
+      "total": 42,
       "features": [
         {
           "label": "Tail calls",
           "status": "planned"
         },
         {
+          "label": "Extended const expressions",
+          "status": "planned"
+        },
+        {
+          "label": "Typed function references",
+          "status": "planned"
+        },
+        {
+          "label": "Memory64",
+          "status": "planned"
+        },
+        {
+          "label": "Multiple memories",
+          "status": "none"
+        },
+        {
+          "label": "Garbage collection",
+          "status": "none"
+        },
+        {
+          "label": "Exception handling",
+          "status": "none"
+        },
+        {
+          "label": "Relaxed SIMD",
+          "status": "planned"
+        },
+        {
+          "label": "Branch hinting",
+          "status": "planned"
+        },
+        {
+          "label": "Custom annotations (text)",
+          "status": "none"
+        },
+        {
+          "label": "JS string builtins",
+          "status": "none"
+        },
+        {
           "label": "Threads & atomics",
           "status": "planned"
         },
         {
-          "label": "Multi-memory",
+          "label": "JS Promise integration",
           "status": "none"
         },
         {
-          "label": "Exception handling proposal",
+          "label": "Web Content Security Policy",
           "status": "none"
         },
         {
-          "label": "Garbage collection proposal",
+          "label": "ESM integration",
+          "status": "none"
+        },
+        {
+          "label": "Wide arithmetic",
+          "status": "planned"
+        },
+        {
+          "label": "Stack switching",
+          "status": "planned"
+        },
+        {
+          "label": "Compact import section",
+          "status": "planned"
+        },
+        {
+          "label": "Custom page sizes",
+          "status": "planned"
+        },
+        {
+          "label": "Custom descriptors & JS interop",
+          "status": "none"
+        },
+        {
+          "label": "Relaxed dead-code validation",
+          "status": "planned"
+        },
+        {
+          "label": "Numeric values in WAT data",
+          "status": "none"
+        },
+        {
+          "label": "Extended name section",
+          "status": "planned"
+        },
+        {
+          "label": "Rounding variants",
+          "status": "planned"
+        },
+        {
+          "label": "Compilation hints",
+          "status": "planned"
+        },
+        {
+          "label": "JS primitive builtins",
+          "status": "none"
+        },
+        {
+          "label": "Relaxed atomics",
+          "status": "planned"
+        },
+        {
+          "label": "Type imports",
+          "status": "planned"
+        },
+        {
+          "label": "Component model",
+          "status": "none"
+        },
+        {
+          "label": "C / C++ embedding API",
+          "status": "none"
+        },
+        {
+          "label": "Flexible vectors",
+          "status": "planned"
+        },
+        {
+          "label": "Memory control",
+          "status": "planned"
+        },
+        {
+          "label": "Reference-typed strings",
+          "status": "planned"
+        },
+        {
+          "label": "Profiles",
+          "status": "planned"
+        },
+        {
+          "label": "Shared-everything threads",
+          "status": "planned"
+        },
+        {
+          "label": "Frozen values",
+          "status": "planned"
+        },
+        {
+          "label": "Half precision (FP16)",
+          "status": "planned"
+        },
+        {
+          "label": "More array constructors",
+          "status": "planned"
+        },
+        {
+          "label": "JIT interface",
+          "status": "none"
+        },
+        {
+          "label": "Multibyte array access",
+          "status": "planned"
+        },
+        {
+          "label": "Type reflection (JS API)",
+          "status": "none"
+        },
+        {
+          "label": "JS text-encoding builtins",
           "status": "none"
         }
       ]

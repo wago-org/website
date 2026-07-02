@@ -546,19 +546,19 @@
 .vtracker {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 .vgroup {
     background: var(--panel);
     border: 2px solid var(--line);
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
 }
 .vgroup__head {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 15px 20px;
+    gap: 10px;
+    padding: 10px 16px;
     cursor: pointer;
     list-style: none;
     user-select: none;
@@ -572,9 +572,9 @@
 }
 .vgroup__chevron {
     flex-shrink: 0;
-    width: 8px;
-    height: 8px;
-    margin: 0 4px 2px 2px;
+    width: 7px;
+    height: 7px;
+    margin: 0 3px 2px 1px;
     border-right: 2px solid var(--text-soft);
     border-bottom: 2px solid var(--text-soft);
     transform: rotate(-45deg);
@@ -585,29 +585,44 @@
 }
 .vgroup__title {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     color: #fff;
 }
 .vgroup__sub {
     flex: 1;
     min-width: 0;
     font-family: var(--mono);
-    font-size: 12.5px;
+    font-size: 11.5px;
     color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .vgroup__count {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--text-soft);
 }
+/* Expanded body scrolls internally past ~7 rows instead of growing the page. */
 .vgroup__body {
     border-top: 2px solid var(--line);
+    max-height: 264px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-2) transparent;
+}
+.vgroup__body::-webkit-scrollbar {
+    width: 8px;
+}
+.vgroup__body::-webkit-scrollbar-thumb {
+    background: var(--line-2);
+    border-radius: 100px;
 }
 .vgroup__row {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 11px 20px 11px 42px;
+    gap: 12px;
+    padding: 7px 16px 7px 32px;
     border-bottom: 1px solid var(--bg);
 }
 .vgroup__row:last-child {
@@ -616,7 +631,7 @@
 .vgroup__feat {
     flex: 1;
     min-width: 0;
-    font-size: 14px;
+    font-size: 13px;
     color: #e7e0ff;
 }
 

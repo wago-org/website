@@ -140,25 +140,6 @@ function parseFeatures(text) {
   return rows;
 }
 
-// The tracker groups every FEATURES row under a major WebAssembly version (a
-// collapsible dropdown on the site). MVP rows are 1.0; post-1.0 rows are placed
-// by matching their text against a version's keywords (first match wins, so
-// order matters). Anything host/target-specific with no wasm version lands in
-// the "engine" bucket. Keep the keyword lists aligned with FEATURES.md wording.
-const VERSION_MATCH = [
-  { version: "2.0", match: ["sign-extension", "trunc_sat", "non-trapping", "multi-value", "reference types", "bulk memory", "simd"] },
-  { version: "3.0", match: ["tail call", "threads", "atomics", "multi-memory", "exception handling", "garbage collection", "wasm gc"] },
-  { version: "engine", match: ["synchronous host", "wasi", "architectures beyond", "beyond linux", "arm64", "interpreter tier"] },
-];
-
-const VERSION_META = {
-  "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
-  "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
-  "3.0": { label: "WebAssembly 3.0", sub: "latest proposals" },
-  engine: { label: "Engine & platform", sub: "host ABI · targets · WASI" },
-};
-const VERSION_ORDER = ["1.0", "2.0", "3.0", "engine"];
-
 // FEATURES.md emoji status -> the site's status-pill vocabulary.
 const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", none: "none" };
 
@@ -168,17 +149,96 @@ function shortLabel(feature) {
   return feature.replace(/\*\*/g, "").replace(/`/g, "").split(" (")[0].split(" — ")[0].trim();
 }
 
-function classifyVersion(row) {
-  if (row.mvp) return "1.0";
-  const lc = row.feature.toLowerCase();
-  for (const b of VERSION_MATCH) {
-    if (b.match.some((m) => lc.includes(m))) return b.version;
-  }
-  return "engine";
-}
+// The tracker is a set of collapsible per-version dropdowns. "1.0" is built live
+// from FEATURES.md's MVP rows (wago-authored, detailed). The remaining groups
+// come from a catalog of the *entire* WebAssembly proposal landscape (finished
+// phase-5 proposals + every in-progress phase 1-4 proposal, from
+// github.com/WebAssembly/proposals) so the site tracks the full picture, not just
+// what wago has started. Each catalog entry's status is resolved from FEATURES.md
+// when a `match` keyword hits a row there (so what wago actually ships stays
+// sourced from wago); otherwise it falls back to the entry's `status`
+// ("planned" = a real future target, "none" = not applicable to a Go core engine,
+// e.g. JS-API / text-format / embedding proposals).
+const VERSION_META = {
+  "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
+  "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
+  next: { label: "WebAssembly 3.0+", sub: "3.0 & in-progress proposals" },
+  engine: { label: "Engine & platform", sub: "host ABI · targets · WASI" },
+};
+const CATALOG_ORDER = ["2.0", "next", "engine"];
+
+const CATALOG = {
+  // WebAssembly 2.0 — the six finished proposals bundled into the 2.0 release.
+  "2.0": [
+    { label: "Sign-extension ops", match: ["sign-extension"] },
+    { label: "Non-trapping float→int", match: ["non-trapping", "trunc_sat"] },
+    { label: "Multi-value", match: ["multi-value"] },
+    { label: "Reference types", match: ["reference types"] },
+    { label: "Bulk memory", match: ["bulk memory"] },
+    { label: "Fixed-width SIMD", match: ["simd"] },
+  ],
+  // WebAssembly 3.0 (finished) + every in-progress proposal, ordered by how close
+  // it is to standard (3.0 first, then phase 4 -> 1).
+  next: [
+    // --- Finished, shipped in WebAssembly 3.0 ---
+    { label: "Tail calls", match: ["tail call"], status: "planned" },
+    { label: "Extended const expressions", status: "planned" },
+    { label: "Typed function references", status: "planned" },
+    { label: "Memory64", status: "planned" },
+    { label: "Multiple memories", match: ["multi-memory"], status: "none" },
+    { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "none" },
+    { label: "Exception handling", match: ["exception handling"], status: "none" },
+    { label: "Relaxed SIMD", status: "planned" },
+    { label: "Branch hinting", status: "planned" },
+    { label: "Custom annotations (text)", status: "none" },
+    { label: "JS string builtins", status: "none" },
+    // --- Phase 4 ---
+    { label: "Threads & atomics", match: ["threads", "atomics"], status: "planned" },
+    { label: "JS Promise integration", status: "none" },
+    { label: "Web Content Security Policy", status: "none" },
+    // --- Phase 3 ---
+    { label: "ESM integration", status: "none" },
+    { label: "Wide arithmetic", status: "planned" },
+    { label: "Stack switching", status: "planned" },
+    { label: "Compact import section", status: "planned" },
+    { label: "Custom page sizes", status: "planned" },
+    { label: "Custom descriptors & JS interop", status: "none" },
+    // --- Phase 2 ---
+    { label: "Relaxed dead-code validation", status: "planned" },
+    { label: "Numeric values in WAT data", status: "none" },
+    { label: "Extended name section", status: "planned" },
+    { label: "Rounding variants", status: "planned" },
+    { label: "Compilation hints", status: "planned" },
+    { label: "JS primitive builtins", status: "none" },
+    { label: "Relaxed atomics", status: "planned" },
+    // --- Phase 1 ---
+    { label: "Type imports", status: "planned" },
+    { label: "Component model", status: "none" },
+    { label: "C / C++ embedding API", status: "none" },
+    { label: "Flexible vectors", status: "planned" },
+    { label: "Memory control", status: "planned" },
+    { label: "Reference-typed strings", status: "planned" },
+    { label: "Profiles", status: "planned" },
+    { label: "Shared-everything threads", status: "planned" },
+    { label: "Frozen values", status: "planned" },
+    { label: "Half precision (FP16)", status: "planned" },
+    { label: "More array constructors", status: "planned" },
+    { label: "JIT interface", status: "none" },
+    { label: "Multibyte array access", status: "planned" },
+    { label: "Type reflection (JS API)", status: "none" },
+    { label: "JS text-encoding builtins", status: "none" },
+  ],
+  // wago engine / platform capabilities that are not tied to a wasm version.
+  engine: [
+    { label: "Synchronous host-import results", match: ["synchronous host"] },
+    { label: "WASI preview 1", match: ["wasi"] },
+    { label: "Architectures beyond linux/amd64", match: ["architectures beyond", "beyond linux"] },
+    { label: "Interpreter tier", match: ["interpreter tier"], status: "none" },
+  ],
+};
 
 // pass < partial < planned - the weakest applicable member sets the group's
-// status. "none" (not-planned) features are excluded from the roll-up.
+// status. "none" (not-applicable) features are excluded from the roll-up.
 function aggregate(statuses) {
   if (statuses.length === 0) return "planned";
   if (statuses.every((s) => s === "pass")) return "pass";
@@ -186,26 +246,43 @@ function aggregate(statuses) {
   return "planned";
 }
 
-function buildVersions(rows) {
-  const byVer = {};
-  for (const r of rows) {
-    const v = classifyVersion(r);
-    (byVer[v] ??= []).push({ label: shortLabel(r.feature), status: STATUS_TAG[r.status] || "planned" });
+// Resolve a catalog entry's status: prefer a matching FEATURES.md row (so wago's
+// real support wins), else the entry's declared fallback.
+function resolveStatus(entry, featIndex) {
+  if (entry.match) {
+    for (const m of entry.match) {
+      const row = featIndex.find((r) => r.lc.includes(m));
+      if (row) return STATUS_TAG[row.status] || "planned";
+    }
   }
+  return entry.status || "planned";
+}
+
+function makeGroup(key, features) {
+  const active = features.filter((f) => f.status !== "none");
+  return {
+    version: key,
+    label: VERSION_META[key].label,
+    sub: VERSION_META[key].sub,
+    status: aggregate(active.map((f) => f.status)),
+    done: features.filter((f) => f.status === "pass").length,
+    total: features.length,
+    features,
+  };
+}
+
+function buildVersions(rows) {
+  const featIndex = rows.map((r) => ({ status: r.status, lc: r.feature.toLowerCase() }));
   const out = [];
-  for (const v of VERSION_ORDER) {
-    const features = byVer[v];
-    if (!features || features.length === 0) continue;
-    const active = features.filter((f) => f.status !== "none");
-    out.push({
-      version: v,
-      label: VERSION_META[v].label,
-      sub: VERSION_META[v].sub,
-      status: aggregate(active.map((f) => f.status)),
-      done: features.filter((f) => f.status === "pass").length,
-      total: features.length,
-      features,
-    });
+  // 1.0 straight from FEATURES.md's MVP section.
+  const mvp = rows
+    .filter((r) => r.mvp)
+    .map((r) => ({ label: shortLabel(r.feature), status: STATUS_TAG[r.status] || "planned" }));
+  out.push(makeGroup("1.0", mvp));
+  // 2.0 / 3.0+ / engine from the full proposal catalog.
+  for (const key of CATALOG_ORDER) {
+    const features = CATALOG[key].map((e) => ({ label: e.label, status: resolveStatus(e, featIndex) }));
+    out.push(makeGroup(key, features));
   }
   return out;
 }

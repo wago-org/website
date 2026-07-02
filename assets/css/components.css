@@ -656,57 +656,118 @@
     color: #e7e0ff;
 }
 
-/* ---- Performance comparison card (wago vs wazero) ---- */
-.perf {
+/* ---- Performance: paired wago-vs-wazero bars (one row per metric) ---- */
+.eyebrow--center {
+    text-align: center;
+}
+.vs {
+    max-width: 780px;
+    margin: 0 auto;
     background: var(--panel);
     border: 2px solid var(--line);
     border-radius: 18px;
     overflow: hidden;
 }
-.perf__head,
-.perf__row {
-    display: grid;
-    grid-template-columns: 1fr auto auto minmax(64px, auto);
+.vs__legend {
+    display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 20px;
-}
-.perf__head {
+    gap: 18px;
+    padding: 12px 22px;
     border-bottom: 2px solid var(--line);
+    font-family: var(--mono);
     font-size: 12px;
-    font-weight: 600;
     color: var(--text-soft);
 }
-.perf__row {
+.vs__key {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.vs__dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+}
+.vs__dot--wago {
+    background: linear-gradient(90deg, var(--violet), var(--lilac));
+}
+.vs__dot--wazero {
+    background: var(--panel-2);
+}
+.vs__legend-note {
+    margin-left: auto;
+    color: var(--text-dim);
+}
+.vs__row {
+    display: grid;
+    grid-template-columns: 150px 1fr 92px;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 22px;
     border-bottom: 1px solid var(--bg);
 }
-.perf__row:last-child {
+.vs__row:last-child {
     border-bottom: none;
 }
-.perf__col--num {
-    text-align: right;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-dim);
-    min-width: 56px;
-}
-.perf__label {
+.vs__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     min-width: 0;
+}
+.vs__label {
     font-size: 14px;
     color: #e7e0ff;
 }
-.perf__label em {
-    font-style: normal;
-    color: var(--text-soft);
+.vs__sub {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-dim);
+}
+.vs__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+.vs__line {
+    display: grid;
+    grid-template-columns: 1fr 52px;
+    align-items: center;
+    gap: 10px;
+}
+.vs__track {
+    height: 10px;
+    border-radius: 100px;
+    background: var(--bg);
+    overflow: hidden;
+}
+.vs__fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 100px;
+    transition: width 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.vs__fill--wago {
+    background: linear-gradient(90deg, var(--violet), var(--lilac));
+}
+.vs__fill--wazero {
+    background: var(--line-2);
+}
+.vs__val {
     font-family: var(--mono);
     font-size: 12px;
+    color: var(--text-soft);
+    text-align: right;
+    white-space: nowrap;
 }
-.perf__wago {
+.vs__val--wago {
     color: #fff;
     font-weight: 600;
 }
-/* Ratio pill: green when wago wins, muted when wazero leads (honest). */
-.perf__ratio {
+/* Delta pill: green when wago wins, outlined/muted when wazero leads (honest). */
+.vs__delta {
     justify-self: end;
     font-family: var(--mono);
     font-size: 11px;
@@ -715,20 +776,34 @@
     border-radius: 100px;
     white-space: nowrap;
 }
-.perf__ratio--win {
+.vs__delta--win {
     background: var(--green);
     color: var(--ink);
 }
-.perf__ratio--behind {
+.vs__delta--behind {
     background: transparent;
     border: 1px solid var(--line-2);
     color: var(--text-dim);
 }
-.perf__note {
-    margin-top: 14px;
-    font-size: 13.5px;
+.vs__foot {
+    max-width: 780px;
+    margin: 18px auto 0;
+    text-align: center;
+    font-size: 13px;
     color: var(--text-soft);
-    line-height: 1.5;
+    line-height: 1.55;
+}
+.vs__foot a {
+    color: var(--lilac);
+}
+@media (max-width: 620px) {
+    .vs__row {
+        grid-template-columns: 108px 1fr;
+        gap: 14px;
+    }
+    .vs__delta {
+        display: none;
+    }
 }
 
 /* ---- Status pills ---- */

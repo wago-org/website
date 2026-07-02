@@ -325,7 +325,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
         <a class="link-accent" style="margin-top:22px" href="https://github.com/wago-org/wago/blob/main/SPECTEST.md" target="_blank" rel="noopener">→ Read the full SPECTEST.md</a>
       </div>
       <div class="vtracker" data-versions>
-        <details class="vgroup" name="wasm-versions" open>
+        <details class="vgroup" name="wasm-versions">
           <summary class="vgroup__head"><span class="vgroup__headrow"><span class="vgroup__chevron" aria-hidden="true"></span><span class="vgroup__title">WebAssembly 1.0</span><span class="vgroup__sub">MVP core</span><span class="vgroup__count">16/17</span><span class="tag tag--partial">partial</span></span><span class="vgroup__prog"><span class="vgroup__prog-fill" data-bar data-width="97"></span></span></summary>
           <div class="vgroup__body">
             <div class="vgroup__row"><span class="vgroup__feat">i32 / i64 integer ops</span><span class="tag tag--pass">pass</span></div>
@@ -416,29 +416,57 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
 
   <!-- ░░░ PERFORMANCE ░░░ -->
   <section id="performance" class="section">
-    <div class="split split--perf">
-      <div>
-        <div class="eyebrow">Performance</div>
-        <h2 class="split__title">Compiles in microseconds</h2>
-        <p class="split__body">The single-pass x86-64 backend turns wasm into native code in one linear walk — no SSA graph, no optimizer passes. Cold starts are almost free: modules compile ~10× faster than wazero with a fraction of the allocations, and call- and control-heavy code runs faster too. On tight numeric loops, wazero's optimizing backend still leads — that gap is the active work.</p>
-        <div class="bignum">
-          <span class="bignum__val"><span data-count data-target="10">10</span><span class="bignum__pct">×</span></span>
-          <span class="bignum__note">faster to compile than wazero</span>
-        </div>
-        <a class="link-accent" style="margin-top:22px" href="https://github.com/wago-org/wago/tree/main/bench" target="_blank" rel="noopener">→ Benchmark methodology &amp; corpus</a>
+    <div class="eyebrow eyebrow--center">Performance</div>
+    <h2 class="section__title">Cold starts in <span class="section__title-accent">microseconds.</span></h2>
+    <p class="section__lead">A single linear pass to native x86-64 — no SSA graph, no optimizer. Compiles land ~10× faster than wazero with a fraction of the allocations, and call- and control-heavy code runs faster too. On tight numeric loops, wazero's optimizing backend still leads.</p>
+    <div class="vs">
+      <div class="vs__legend">
+        <span class="vs__key"><i class="vs__dot vs__dot--wago"></i>wago</span>
+        <span class="vs__key"><i class="vs__dot vs__dot--wazero"></i>wazero</span>
+        <span class="vs__legend-note">shorter is faster</span>
       </div>
-      <div>
-        <div class="perf">
-          <div class="perf__head"><span>Metric</span><span class="perf__col--num">wago</span><span class="perf__col--num">wazero</span><span style="text-align:right">vs</span></div>
-          <div class="perf__row"><span class="perf__label">Compile <em>fib_iter</em></span><span class="perf__col--num perf__wago">6.9µs</span><span class="perf__col--num">69µs</span><span class="perf__ratio perf__ratio--win">10×</span></div>
-          <div class="perf__row"><span class="perf__label">Compile memory <em>bytes</em></span><span class="perf__col--num perf__wago">14 KB</span><span class="perf__col--num">299 KB</span><span class="perf__ratio perf__ratio--win">21×</span></div>
-          <div class="perf__row"><span class="perf__label">Call overhead</span><span class="perf__col--num perf__wago">9.5ns</span><span class="perf__col--num">32ns</span><span class="perf__ratio perf__ratio--win">3.4×</span></div>
-          <div class="perf__row"><span class="perf__label">Fib loop <em>i64</em></span><span class="perf__col--num perf__wago">19ns</span><span class="perf__col--num">44ns</span><span class="perf__ratio perf__ratio--win">2.4×</span></div>
-          <div class="perf__row"><span class="perf__label">JSON serialize <em>SWAR</em></span><span class="perf__col--num perf__wago">265ns</span><span class="perf__col--num">154ns</span><span class="perf__ratio perf__ratio--behind">0.6×</span></div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">Compile a module</span><span class="vs__sub">fib_iter</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="10"></span></span><span class="vs__val vs__val--wago">6.9µs</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">69µs</span></div>
         </div>
-        <p class="perf__note"><strong>vs</strong> = wago's edge over wazero (faster, or leaner for allocations); below 1× means wazero leads. Measured on linux/amd64 with the single-pass backend. Numbers shift as the engine evolves.</p>
+        <span class="vs__delta vs__delta--win">10× faster</span>
+      </div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">Compile memory</span><span class="vs__sub">allocated bytes</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="5"></span></span><span class="vs__val vs__val--wago">14 KB</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">299 KB</span></div>
+        </div>
+        <span class="vs__delta vs__delta--win">21× leaner</span>
+      </div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">Call overhead</span><span class="vs__sub">host → wasm</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="30"></span></span><span class="vs__val vs__val--wago">9.5ns</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">32ns</span></div>
+        </div>
+        <span class="vs__delta vs__delta--win">3.4× faster</span>
+      </div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">Recursive fib</span><span class="vs__sub">i64 call loop</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="43"></span></span><span class="vs__val vs__val--wago">19ns</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">44ns</span></div>
+        </div>
+        <span class="vs__delta vs__delta--win">2.4× faster</span>
+      </div>
+      <div class="vs__row">
+        <div class="vs__meta"><span class="vs__label">JSON serialize</span><span class="vs__sub">json-as, SWAR</span></div>
+        <div class="vs__bars">
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="100"></span></span><span class="vs__val vs__val--wago">265ns</span></div>
+          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="58"></span></span><span class="vs__val">154ns</span></div>
+        </div>
+        <span class="vs__delta vs__delta--behind">1.7× slower</span>
       </div>
     </div>
+    <p class="vs__foot">Measured on linux/amd64 with the single-pass backend; wago vs wazero over the same corpus. Numbers shift as the engine evolves — see the <a href="https://github.com/wago-org/wago/tree/main/bench" target="_blank" rel="noopener">benchmark corpus &amp; methodology</a>.</p>
   </section>
 
   <!-- ░░░ ARCHITECTURE ░░░ -->

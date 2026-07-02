@@ -52,15 +52,15 @@ function escapeHtml(s: string): string {
 
 // Render one <details> dropdown per major wasm version, each listing its
 // sub-features with a status pill. A shared name= makes them an exclusive
-// accordion (opening one collapses the others, no JS needed); only the first
-// group starts open. Long lists scroll inside the body rather than expanding the
-// page (see .vgroup__body in CSS).
+// accordion (opening one collapses the others, no JS needed); all start
+// collapsed. Long lists scroll inside the body rather than expanding the page
+// (see .vgroup__body in CSS).
 function renderVersions(versions: Version[]): void {
   const host = document.querySelector<HTMLElement>("[data-versions]");
   if (!host || !Array.isArray(versions) || versions.length === 0) return;
   host.innerHTML = versions
     .filter((v) => v && Array.isArray(v.features) && TAG_CLASS[v.status])
-    .map((v, i) => {
+    .map((v) => {
       const rows = v.features
         .filter((f) => f && TAG_CLASS[f.status])
         .map(
@@ -70,9 +70,8 @@ function renderVersions(versions: Version[]): void {
             )}</span><span class="tag ${TAG_CLASS[f.status]}">${TAG_TEXT[f.status]}</span></div>`,
         )
         .join("");
-      const open = i === 0 ? " open" : "";
       const pct = Math.max(0, Math.min(100, v.pct ?? 0));
-      return `<details class="vgroup" name="wasm-versions"${open}>\
+      return `<details class="vgroup" name="wasm-versions">\
 <summary class="vgroup__head">\
 <span class="vgroup__headrow"><span class="vgroup__chevron" aria-hidden="true"></span>\
 <span class="vgroup__title">${escapeHtml(v.label)}</span>\

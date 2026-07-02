@@ -440,38 +440,55 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
         </div>
         <span class="vs__delta vs__delta--win">21× leaner</span>
       </div>
-      <div class="vs__row">
-        <div class="vs__meta"><span class="vs__label">Exec memory</span><span class="vs__sub">memory.sum, allocated bytes</span></div>
-        <div class="vs__bars">
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="0"></span></span><span class="vs__val vs__val--wago">0 B</span></div>
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">8 B</span></div>
+      <details class="vs__more">
+        <summary class="vs__more-head">
+          <span class="vs__more-title">More benchmarks</span>
+          <span class="vs__more-sub">instantiate · call overhead · fib · json</span>
+          <span class="vs__more-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="vs__more-body">
+          <div class="vs__row">
+            <div class="vs__meta"><span class="vs__label">Instantiate module</span><span class="vs__sub">startup + mapping</span></div>
+            <div class="vs__bars">
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="100"></span></span><span class="vs__val vs__val--wago">15.2µs</span></div>
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="52"></span></span><span class="vs__val">8.0µs</span></div>
+            </div>
+            <span class="vs__delta vs__delta--behind">1.9× slower</span>
+          </div>
+          <div class="vs__row">
+            <div class="vs__meta"><span class="vs__label">Call overhead</span><span class="vs__sub">host → wasm</span></div>
+            <div class="vs__bars">
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="30"></span></span><span class="vs__val vs__val--wago">9.3ns</span></div>
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">31.0ns</span></div>
+            </div>
+            <span class="vs__delta vs__delta--win">3.3× faster</span>
+          </div>
+          <div class="vs__row">
+            <div class="vs__meta"><span class="vs__label">Recursive fib</span><span class="vs__sub">i64 call loop</span></div>
+            <div class="vs__bars">
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="70"></span></span><span class="vs__val vs__val--wago">350µs</span></div>
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">503µs</span></div>
+            </div>
+            <span class="vs__delta vs__delta--win">1.4× faster</span>
+          </div>
+          <div class="vs__row">
+            <div class="vs__meta"><span class="vs__label">JSON serialize</span><span class="vs__sub">json-as, SWAR</span></div>
+            <div class="vs__bars">
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="100"></span></span><span class="vs__val vs__val--wago">207ns</span></div>
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="75"></span></span><span class="vs__val">155ns</span></div>
+            </div>
+            <span class="vs__delta vs__delta--behind">1.3× slower</span>
+          </div>
+          <div class="vs__row">
+            <div class="vs__meta"><span class="vs__label">JSON deserialize</span><span class="vs__sub">json-as, SWAR</span></div>
+            <div class="vs__bars">
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="100"></span></span><span class="vs__val vs__val--wago">217ns</span></div>
+              <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="69"></span></span><span class="vs__val">313ns</span></div>
+            </div>
+            <span class="vs__delta vs__delta--win">1.4× faster</span>
+          </div>
         </div>
-        <span class="vs__delta vs__delta--win">0 allocs</span>
-      </div>
-      <div class="vs__row">
-        <div class="vs__meta"><span class="vs__label">Call overhead</span><span class="vs__sub">host → wasm</span></div>
-        <div class="vs__bars">
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="30"></span></span><span class="vs__val vs__val--wago">9.5ns</span></div>
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">32ns</span></div>
-        </div>
-        <span class="vs__delta vs__delta--win">3.4× faster</span>
-      </div>
-      <div class="vs__row">
-        <div class="vs__meta"><span class="vs__label">Recursive fib</span><span class="vs__sub">i64 call loop</span></div>
-        <div class="vs__bars">
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="43"></span></span><span class="vs__val vs__val--wago">19ns</span></div>
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span><span class="vs__val">44ns</span></div>
-        </div>
-        <span class="vs__delta vs__delta--win">2.4× faster</span>
-      </div>
-      <div class="vs__row">
-        <div class="vs__meta"><span class="vs__label">JSON serialize</span><span class="vs__sub">json-as, SWAR</span></div>
-        <div class="vs__bars">
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="100"></span></span><span class="vs__val vs__val--wago">265ns</span></div>
-          <div class="vs__line"><span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="58"></span></span><span class="vs__val">154ns</span></div>
-        </div>
-        <span class="vs__delta vs__delta--behind">1.7× slower</span>
-      </div>
+      </details>
     </div>
     <p class="vs__foot">Measured on linux/amd64 with the single-pass backend; wago vs wazero over the same corpus. Numbers shift as the engine evolves — see the <a href="https://github.com/wago-org/wago/tree/main/bench" target="_blank" rel="noopener">benchmark corpus &amp; methodology</a>.</p>
   </section>

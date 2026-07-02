@@ -418,7 +418,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
   <section id="performance" class="section">
     <div class="eyebrow eyebrow--center">Performance</div>
     <h2 class="section__title">Cold starts in <span class="section__title-accent">microseconds.</span></h2>
-    <p class="section__lead">A single linear pass to native x86-64 — no SSA graph, no optimizer. Compiles land ~10× faster than wazero with a fraction of the allocations, and call- and control-heavy code runs faster too. On tight numeric loops, wazero's optimizing backend still leads.</p>
+    <p class="section__lead">One linear pass to native x86-64 — no SSA, no optimizer. The result: microsecond compiles.</p>
     <div class="vs">
       <div class="vs__legend">
         <span class="vs__key"><i class="vs__dot vs__dot--wago"></i>wago</span>

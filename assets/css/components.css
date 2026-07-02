@@ -753,7 +753,12 @@
     background: linear-gradient(90deg, var(--violet), var(--lilac));
 }
 .vs__fill--wazero {
-    background: var(--line-2);
+    background-color: #6c5fb0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.16) 0 4px,
+        transparent 4px 9px
+    );
 }
 .vs__val {
     font-family: var(--mono);

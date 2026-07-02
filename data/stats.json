@@ -2,11 +2,11 @@
   "generated": "2026-07-02",
   "source": "wago-org/wago @ main",
   "mvp": {
-    "filesPass": 44,
+    "filesPass": 54,
     "filesTotal": 58,
-    "percent": 76,
-    "assertionsPass": 15413,
-    "assertionsFail": 477
+    "percent": 93,
+    "assertionsPass": 16500,
+    "assertionsFail": 13
   },
   "coverage": 77,
   "featuresDone": 16,
@@ -16,13 +16,13 @@
   "stats": [
     {
       "key": "files",
-      "value": 44,
+      "value": 54,
       "total": 58,
       "label": "MVP files pass"
     },
     {
       "key": "assertions",
-      "value": 15413,
+      "value": 16500,
       "label": "assertions pass"
     },
     {

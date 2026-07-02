@@ -100,7 +100,8 @@
     border-radius: 22px;
     padding: 44px 40px;
 }
-.split--conformance {
+.split--conformance,
+.split--perf {
     grid-template-columns: 0.9fr 1.1fr;
 }
 /* Let columns shrink below their content's intrinsic width so the code panes
@@ -218,7 +219,8 @@
         grid-template-columns: 1fr 1fr;
     }
     .split--install,
-    .split--conformance {
+    .split--conformance,
+    .split--perf {
         grid-template-columns: 1fr;
     }
     .arch-tiers {

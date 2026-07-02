@@ -13,6 +13,7 @@ interface Version {
   status: Status;
   done: number;
   total: number;
+  pct: number;
   features: { label: string; status: Status }[];
 }
 
@@ -70,12 +71,16 @@ function renderVersions(versions: Version[]): void {
         )
         .join("");
       const open = i === 0 ? " open" : "";
+      const pct = Math.max(0, Math.min(100, v.pct ?? 0));
       return `<details class="vgroup" name="wasm-versions"${open}>\
-<summary class="vgroup__head"><span class="vgroup__chevron" aria-hidden="true"></span>\
+<summary class="vgroup__head">\
+<span class="vgroup__headrow"><span class="vgroup__chevron" aria-hidden="true"></span>\
 <span class="vgroup__title">${escapeHtml(v.label)}</span>\
 <span class="vgroup__sub">${escapeHtml(v.sub)}</span>\
 <span class="vgroup__count">${v.done}/${v.total}</span>\
-<span class="tag ${TAG_CLASS[v.status]}">${TAG_TEXT[v.status]}</span></summary>\
+<span class="tag ${TAG_CLASS[v.status]}">${TAG_TEXT[v.status]}</span></span>\
+<span class="vgroup__prog"><span class="vgroup__prog-fill" data-bar data-width="${pct}"></span></span>\
+</summary>\
 <div class="vgroup__body">${rows}</div></details>`;
     })
     .join("");

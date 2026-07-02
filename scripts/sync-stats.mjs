@@ -260,13 +260,19 @@ function resolveStatus(entry, featIndex) {
 
 function makeGroup(key, features) {
   const active = features.filter((f) => f.status !== "none");
+  const pass = features.filter((f) => f.status === "pass").length;
+  const partial = features.filter((f) => f.status === "partial").length;
+  // Completion bar: a partial feature counts as half. "none" (n/a) features are
+  // excluded from the denominator so they don't dilute the score.
+  const pct = active.length ? Math.round(((pass + 0.5 * partial) / active.length) * 100) : 0;
   return {
     version: key,
     label: VERSION_META[key].label,
     sub: VERSION_META[key].sub,
     status: aggregate(active.map((f) => f.status)),
-    done: features.filter((f) => f.status === "pass").length,
+    done: pass,
     total: features.length,
+    pct,
     features,
   };
 }

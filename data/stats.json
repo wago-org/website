@@ -45,6 +45,7 @@
       "status": "partial",
       "done": 16,
       "total": 17,
+      "pct": 97,
       "features": [
         {
           "label": "i32 / i64 integer ops",
@@ -123,6 +124,7 @@
       "status": "partial",
       "done": 2,
       "total": 6,
+      "pct": 58,
       "features": [
         {
           "label": "Sign-extension ops",
@@ -157,6 +159,7 @@
       "status": "planned",
       "done": 0,
       "total": 42,
+      "pct": 0,
       "features": [
         {
           "label": "Tail calls",
@@ -335,6 +338,7 @@
       "status": "planned",
       "done": 0,
       "total": 4,
+      "pct": 0,
       "features": [
         {
           "label": "Synchronous host-import results",

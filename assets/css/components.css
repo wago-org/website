@@ -556,8 +556,8 @@
 }
 .vgroup__head {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 9px;
     padding: 10px 16px;
     cursor: pointer;
     list-style: none;
@@ -569,6 +569,27 @@
 }
 .vgroup__head:hover {
     background: var(--panel-2);
+}
+.vgroup__headrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Per-version completion bar (partial features count as half; see sync-stats). */
+.vgroup__prog {
+    display: block;
+    height: 4px;
+    border-radius: 100px;
+    background: var(--panel-2);
+    overflow: hidden;
+}
+.vgroup__prog-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--violet), var(--lilac) 70%, var(--pink));
+    transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .vgroup__chevron {
     flex-shrink: 0;
@@ -633,6 +654,81 @@
     min-width: 0;
     font-size: 13px;
     color: #e7e0ff;
+}
+
+/* ---- Performance comparison card (wago vs wazero) ---- */
+.perf {
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+}
+.perf__head,
+.perf__row {
+    display: grid;
+    grid-template-columns: 1fr auto auto minmax(64px, auto);
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+}
+.perf__head {
+    border-bottom: 2px solid var(--line);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-soft);
+}
+.perf__row {
+    border-bottom: 1px solid var(--bg);
+}
+.perf__row:last-child {
+    border-bottom: none;
+}
+.perf__col--num {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    min-width: 56px;
+}
+.perf__label {
+    min-width: 0;
+    font-size: 14px;
+    color: #e7e0ff;
+}
+.perf__label em {
+    font-style: normal;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    font-size: 12px;
+}
+.perf__wago {
+    color: #fff;
+    font-weight: 600;
+}
+/* Ratio pill: green when wago wins, muted when wazero leads (honest). */
+.perf__ratio {
+    justify-self: end;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+.perf__ratio--win {
+    background: var(--green);
+    color: var(--ink);
+}
+.perf__ratio--behind {
+    background: transparent;
+    border: 1px solid var(--line-2);
+    color: var(--text-dim);
+}
+.perf__note {
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: var(--text-soft);
+    line-height: 1.5;
 }
 
 /* ---- Status pills ---- */

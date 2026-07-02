@@ -140,8 +140,11 @@ function parseFeatures(text) {
   return rows;
 }
 
-// FEATURES.md emoji status -> the site's status-pill vocabulary.
-const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", none: "none" };
+// FEATURES.md emoji status -> the site's status-pill vocabulary. Note ❌ ("not
+// planned") maps to `planned`, not `none`: every item the tracker lists is a real
+// WebAssembly proposal (phase 1+), and we only ever mark a proposal `none` (n/a)
+// if it hasn't reached phase 1 yet — not because wago hasn't committed to it.
+const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", none: "planned" };
 
 // Trim a verbose FEATURES cell to a compact tracker label: drop bold/backticks
 // and the trailing parenthetical / em-dash gloss ("SIMD (`v128`)" -> "SIMD").
@@ -156,9 +159,9 @@ function shortLabel(feature) {
 // github.com/WebAssembly/proposals) so the site tracks the full picture, not just
 // what wago has started. Each catalog entry's status is resolved from FEATURES.md
 // when a `match` keyword hits a row there (so what wago actually ships stays
-// sourced from wago); otherwise it falls back to the entry's `status`
-// ("planned" = a real future target, "none" = not applicable to a Go core engine,
-// e.g. JS-API / text-format / embedding proposals).
+// sourced from wago); otherwise it falls back to the entry's `status`. Since
+// every listed proposal has reached at least phase 1, none are marked `none`
+// (n/a) — reserve that for pre-phase-1 proposals only. Unimplemented is `planned`.
 const VERSION_META = {
   "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
   "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
@@ -185,36 +188,36 @@ const CATALOG = {
     { label: "Extended const expressions", status: "planned" },
     { label: "Typed function references", status: "planned" },
     { label: "Memory64", status: "planned" },
-    { label: "Multiple memories", match: ["multi-memory"], status: "none" },
-    { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "none" },
-    { label: "Exception handling", match: ["exception handling"], status: "none" },
+    { label: "Multiple memories", match: ["multi-memory"], status: "planned" },
+    { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "planned" },
+    { label: "Exception handling", match: ["exception handling"], status: "planned" },
     { label: "Relaxed SIMD", status: "planned" },
     { label: "Branch hinting", status: "planned" },
-    { label: "Custom annotations (text)", status: "none" },
-    { label: "JS string builtins", status: "none" },
+    { label: "Custom annotations (text)", status: "planned" },
+    { label: "JS string builtins", status: "planned" },
     // --- Phase 4 ---
     { label: "Threads & atomics", match: ["threads", "atomics"], status: "planned" },
-    { label: "JS Promise integration", status: "none" },
-    { label: "Web Content Security Policy", status: "none" },
+    { label: "JS Promise integration", status: "planned" },
+    { label: "Web Content Security Policy", status: "planned" },
     // --- Phase 3 ---
-    { label: "ESM integration", status: "none" },
+    { label: "ESM integration", status: "planned" },
     { label: "Wide arithmetic", status: "planned" },
     { label: "Stack switching", status: "planned" },
     { label: "Compact import section", status: "planned" },
     { label: "Custom page sizes", status: "planned" },
-    { label: "Custom descriptors & JS interop", status: "none" },
+    { label: "Custom descriptors & JS interop", status: "planned" },
     // --- Phase 2 ---
     { label: "Relaxed dead-code validation", status: "planned" },
-    { label: "Numeric values in WAT data", status: "none" },
+    { label: "Numeric values in WAT data", status: "planned" },
     { label: "Extended name section", status: "planned" },
     { label: "Rounding variants", status: "planned" },
     { label: "Compilation hints", status: "planned" },
-    { label: "JS primitive builtins", status: "none" },
+    { label: "JS primitive builtins", status: "planned" },
     { label: "Relaxed atomics", status: "planned" },
     // --- Phase 1 ---
     { label: "Type imports", status: "planned" },
-    { label: "Component model", status: "none" },
-    { label: "C / C++ embedding API", status: "none" },
+    { label: "Component model", status: "planned" },
+    { label: "C / C++ embedding API", status: "planned" },
     { label: "Flexible vectors", status: "planned" },
     { label: "Memory control", status: "planned" },
     { label: "Reference-typed strings", status: "planned" },
@@ -223,17 +226,16 @@ const CATALOG = {
     { label: "Frozen values", status: "planned" },
     { label: "Half precision (FP16)", status: "planned" },
     { label: "More array constructors", status: "planned" },
-    { label: "JIT interface", status: "none" },
+    { label: "JIT interface", status: "planned" },
     { label: "Multibyte array access", status: "planned" },
-    { label: "Type reflection (JS API)", status: "none" },
-    { label: "JS text-encoding builtins", status: "none" },
+    { label: "Type reflection (JS API)", status: "planned" },
+    { label: "JS text-encoding builtins", status: "planned" },
   ],
   // wago engine / platform capabilities that are not tied to a wasm version.
   engine: [
     { label: "Synchronous host-import results", match: ["synchronous host"] },
     { label: "WASI preview 1", match: ["wasi"] },
     { label: "Architectures beyond linux/amd64", match: ["architectures beyond", "beyond linux"] },
-    { label: "Interpreter tier", match: ["interpreter tier"], status: "none" },
   ],
 };
 

@@ -1,28 +1,28 @@
 {
-  "generated": "2026-06-30",
+  "generated": "2026-07-02",
   "source": "wago-org/wago @ main",
   "mvp": {
-    "filesPass": 43,
+    "filesPass": 44,
     "filesTotal": 58,
-    "percent": 74,
-    "assertionsPass": 15229,
-    "assertionsFail": 460
+    "percent": 76,
+    "assertionsPass": 15413,
+    "assertionsFail": 477
   },
   "coverage": 77,
-  "featuresDone": 15,
+  "featuresDone": 16,
   "featuresTotal": 17,
   "cgoLines": 0,
   "platforms": 1,
   "stats": [
     {
       "key": "files",
-      "value": 43,
+      "value": 44,
       "total": 58,
       "label": "MVP files pass"
     },
     {
       "key": "assertions",
-      "value": 15229,
+      "value": 15413,
       "label": "assertions pass"
     },
     {
@@ -51,7 +51,15 @@
       "status": "pass"
     },
     {
+      "label": "start function",
+      "status": "pass"
+    },
+    {
       "label": "Reference types · bulk memory · multi-value",
+      "status": "partial"
+    },
+    {
+      "label": "SIMD · threads · tail calls · WASI",
       "status": "partial"
     },
     {
@@ -59,15 +67,7 @@
       "status": "partial"
     },
     {
-      "label": "SIMD · threads · tail calls · WASI",
-      "status": "planned"
-    },
-    {
       "label": "arm64 · macOS · Windows targets",
-      "status": "planned"
-    },
-    {
-      "label": "start function",
       "status": "planned"
     }
   ]

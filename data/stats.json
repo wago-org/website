@@ -2,27 +2,27 @@
   "generated": "2026-07-03",
   "source": "wago-org/wago @ main",
   "mvp": {
-    "filesPass": 54,
-    "filesTotal": 58,
-    "percent": 93,
-    "assertionsPass": 16500,
-    "assertionsFail": 13
+    "filesPass": 57,
+    "filesTotal": 57,
+    "percent": 100,
+    "assertionsPass": 16592,
+    "assertionsFail": 0
   },
   "coverage": 79,
-  "featuresDone": 16,
+  "featuresDone": 17,
   "featuresTotal": 17,
   "cgoLines": 0,
   "platforms": 1,
   "stats": [
     {
       "key": "files",
-      "value": 54,
-      "total": 58,
+      "value": 57,
+      "total": 57,
       "label": "MVP files pass"
     },
     {
       "key": "assertions",
-      "value": 16500,
+      "value": 16592,
       "label": "assertions pass"
     },
     {
@@ -42,10 +42,10 @@
       "version": "1.0",
       "label": "WebAssembly 1.0",
       "sub": "MVP core",
-      "status": "partial",
-      "done": 16,
+      "status": "pass",
+      "done": 17,
       "total": 17,
-      "pct": 97,
+      "pct": 100,
       "features": [
         {
           "label": "i32 / i64 integer ops",
@@ -109,7 +109,7 @@
         },
         {
           "label": "Memory / table / global imports & exports",
-          "status": "partial"
+          "status": "pass"
         },
         {
           "label": "start function",

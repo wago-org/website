@@ -118,6 +118,7 @@
                     <a class="nav__link" href="#install">Install</a>
                     <a class="nav__link" href="#conformance">Conformance</a>
                     <a class="nav__link" href="#performance">Performance</a>
+                    <a class="nav__link" href="#architecture">Compilers</a>
                     <a
                         class="nav__cta"
                         href="https://github.com/wago-org/wago"
@@ -341,7 +342,7 @@
                                 role="tabpanel"
                                 data-panel="asm"
                                 hidden
-                            ><span class="tok-c">; objdump -M intel · wago single-pass backend · 385 bytes</span>
+                            ><span class="tok-c">; objdump -M intel · wago railshot backend · 385 bytes</span>
 <span class="tok-c">  0:</span>  <span class="tok-f">push</span>   rbp                       <span class="tok-c">; prologue</span>
 <span class="tok-c">  1:</span>  <span class="tok-f">mov</span>    rbp,rsp
 <span class="tok-c">  4:</span>  <span class="tok-f">sub</span>    rsp,<span class="tok-n">0x50</span>
@@ -531,11 +532,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 />
                             </svg>
                         </div>
-                        <h3 class="fcard__title">Single-pass runtime</h3>
+                        <h3 class="fcard__title">Railshot backend</h3>
                         <p class="fcard__body">
-                            A single-pass x86-64 backend emits native code with
-                            microsecond compiles. A typed IR and an optimizing
-                            tier are on the roadmap.
+                            The single-pass x86-64 backend emits native code in
+                            microsecond compiles. Dragline, an optimizing tier
+                            over a typed IR, is on the roadmap.
                         </p>
                     </div>
                     <div class="fcard">
@@ -1294,10 +1295,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <span class="section__title-accent">microseconds</span>
                 </h2>
                 <p class="section__lead">
-                    One-shot compilation to native using the novel Valent-Block
-                    architecture, avoiding complex SSA, IR, and optimization
-                    passes while maintaining extraordinarily competitive
-                    performance.
+                    Railshot compiles straight to native in one shot. Its
+                    Valent-Block architecture skips the SSA, IR, and
+                    optimization passes a classic compiler pays for — and stays
+                    extraordinarily competitive anyway.
                 </p>
                 <div class="vs">
                     <div class="vs__legend">
@@ -1697,7 +1698,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     </details>
                 </div>
                 <p class="vs__foot">
-                    Measured on linux/amd64 with the single-pass backend; wago
+                    Measured on linux/amd64 with the Railshot backend; wago
                     vs wazero over the same corpus. Numbers shift as the engine
                     evolves — see the
                     <a
@@ -1709,12 +1710,14 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                 </p>
             </section>
             <!-- ░░░ ARCHITECTURE ░░░ -->
-            <section class="section">
+            <section id="architecture" class="section">
+                <div class="eyebrow eyebrow--center">The compilers</div>
                 <h2 class="section__title">From bytes to native code</h2>
                 <p class="section__lead">
-                    A shared front end decodes and validates wasm; a single-pass
-                    backend turns it into x86-64 machine code today, with a
-                    typed IR and more backends planned.
+                    A shared front end decodes and validates wasm. Then
+                    <strong>Railshot</strong> turns it into x86-64 in a single
+                    pass today — with <strong>Dragline</strong>, an optimizing
+                    tier over a typed IR, and more targets planned.
                 </p>
                 <div class="arch-row">
                     <div class="arch-node">
@@ -1728,7 +1731,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     </div>
                     <span class="arch-arrow">→</span>
                     <div class="arch-node arch-node--hl">
-                        <div class="arch-node__title">single-pass</div>
+                        <div class="arch-node__title">railshot</div>
                         <div class="arch-node__sub">x86-64 codegen</div>
                     </div>
                 </div>
@@ -1737,10 +1740,13 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         <span class="arch-status arch-status--ship"
                             >Shipping</span
                         >
-                        <div class="arch-tier__title">single-pass x86-64</div>
+                        <div class="arch-tier__title">
+                            Railshot · single-pass x86-64
+                        </div>
                         <div class="arch-tier__body">
                             Microsecond compiles, instant startup, native code
-                            on an off-heap foreign stack.
+                            on an off-heap foreign stack — codegen and register
+                            allocation fused into one forward pass.
                         </div>
                     </div>
                     <div class="arch-tier">
@@ -1748,11 +1754,12 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             >Planned</span
                         >
                         <div class="arch-tier__title">
-                            lower → typed IR · optimizing tier
+                            Dragline · optimizing tier
                         </div>
                         <div class="arch-tier__body">
-                            A target-agnostic IR feeds an optimizing second
+                            A target-agnostic typed IR feeds a heavier second
                             tier: dce, constant folding, register allocation.
+                            Opt in when you want it; Railshot never pays for it.
                         </div>
                     </div>
                     <div class="arch-tier">
@@ -1769,10 +1776,68 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     </div>
                 </div>
                 <p class="arch-note">
-                    An IR decouples the front end from codegen: today's
-                    single-pass x86-64 becomes one backend among several.
-                    Directional, not yet built.
+                    The IR decouples the front end from codegen: Railshot's
+                    x86-64 becomes one backend among several, and Dragline
+                    reoptimizes the hot ones. Directional, not yet built.
                 </p>
+            </section>
+
+            <!-- ░░░ VALENT BLOCKS ░░░ -->
+            <section id="valent" class="section">
+                <div class="eyebrow eyebrow--center">The technique</div>
+                <h2 class="section__title">
+                    Inside a
+                    <span class="section__title-accent">Valent&#8209;Block</span>
+                </h2>
+                <p class="section__lead">
+                    Railshot's speed comes down to one idea: don't emit code for
+                    every operand. Keep a compile-time symbolic stack and let
+                    values live in registers until something actually needs them.
+                </p>
+                <div class="valent">
+                    <div class="valent__flow">
+                        <div class="valent__step">
+                            <div class="valent__step-k">symbolic stack</div>
+                            <div class="valent__step-b">
+                                Each wasm operand becomes a deferred
+                                <code>ventry</code> — a constant, a local's frame
+                                slot, or a live register — never an eager
+                                push/pop.
+                            </div>
+                        </div>
+                        <div class="valent__step">
+                            <div class="valent__step-k">register-resident</div>
+                            <div class="valent__step-b">
+                                Pure, stack-neutral ops are recorded symbolically
+                                and stay in registers, so straight-line code
+                                emits essentially zero stack traffic.
+                            </div>
+                        </div>
+                        <div class="valent__step">
+                            <div class="valent__step-k">condense on use</div>
+                            <div class="valent__step-b">
+                                Only a real consumer or a side effect — a call,
+                                <code>local.set</code>, <code>br_if</code> —
+                                materializes operands into registers, just in
+                                time.
+                            </div>
+                        </div>
+                        <div class="valent__step">
+                            <div class="valent__step-k">flush at joins</div>
+                            <div class="valent__step-b">
+                                At control-flow joins the machine state flushes
+                                to fixed frame slots, so every incoming edge
+                                agrees on register and stack layout.
+                            </div>
+                        </div>
+                    </div>
+                    <p class="valent__foot">
+                        Codegen and register allocation fuse into one forward
+                        pass — no SSA, no IR, no optimization pipeline on the hot
+                        path. The Valent-Block technique is adapted from BMW's
+                        WARP engine (Scheidl, IEEE 2020).
+                    </p>
+                </div>
             </section>
 
             <!-- ░░░ CTA ░░░ -->

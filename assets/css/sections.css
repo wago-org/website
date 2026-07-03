@@ -181,6 +181,60 @@
     max-width: 640px;
 }
 
+/* ---- Valent blocks ---- */
+.valent {
+    max-width: 920px;
+    margin: 0 auto;
+}
+.valent__flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    counter-reset: valent;
+}
+.valent__step {
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 18px;
+    counter-increment: valent;
+}
+.valent__step::before {
+    content: counter(valent, decimal-leading-zero);
+    display: block;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--lilac);
+    margin-bottom: 12px;
+}
+.valent__step-k {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 7px;
+}
+.valent__step-b {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-soft);
+}
+.valent__step-b code {
+    color: var(--lilac);
+    font-size: 12px;
+}
+.valent__foot {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 24px auto 0;
+    max-width: 640px;
+}
+.valent__foot a {
+    color: var(--lilac);
+}
+
 /* ---- CTA ---- */
 .cta {
     background: var(--lilac);
@@ -224,8 +278,14 @@
     .arch-tiers {
         grid-template-columns: 1fr;
     }
+    .valent__flow {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 @media (max-width: 560px) {
+    .valent__flow {
+        grid-template-columns: 1fr;
+    }
     .nav__links .nav__link {
         display: none;
     }

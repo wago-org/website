@@ -7,6 +7,7 @@ import { initInstallSplit } from "./install-split.js";
 import { initSparkles } from "./sparkles.js";
 import { initScrollSpy } from "./scrollspy.js";
 import { initEditor } from "./editor.js";
+import { initBeta } from "./beta.js";
 
 async function init(): Promise<void> {
     initSparkles();
@@ -18,6 +19,7 @@ async function init(): Promise<void> {
     initCopyButtons();
     initInstallSplit();
     initScrollSpy();
+    initBeta();
 }
 
 if (document.readyState === "loading") {

@@ -1,0 +1,5 @@
+# wago.sh - allow everything, point crawlers at the sitemap.
+User-agent: *
+Allow: /
+
+Sitemap: https://wago.sh/sitemap.xml

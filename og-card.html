@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+  Social share card source. Not deployed — it's the template we rasterize into
+  assets/og-card.png (1200x630). Regenerate with headless Chromium:
+
+    chromium --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+      --window-size=1200,630 --screenshot=assets/og-card.png \
+      "file://$PWD/og-card.html"
+
+  (Run from the repo root so ./assets/wago-logo.png resolves.)
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=JetBrains+Mono:wght@500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                width: 1200px;
+                height: 630px;
+                overflow: hidden;
+            }
+            .card {
+                width: 1200px;
+                height: 630px;
+                background: radial-gradient(
+                        1100px 700px at 80% -10%,
+                        #2c2566 0%,
+                        rgba(44, 37, 102, 0) 60%
+                    ),
+                    linear-gradient(150deg, #1a1547 0%, #161043 100%);
+                color: #f3effd;
+                font-family: "Outfit", system-ui, sans-serif;
+                padding: 84px 90px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 22px;
+            }
+            .brand img {
+                width: 92px;
+                height: 92px;
+            }
+            .brand__name {
+                font-size: 58px;
+                font-weight: 900;
+                letter-spacing: -2px;
+            }
+            .headline {
+                font-size: 72px;
+                font-weight: 800;
+                line-height: 1.04;
+                letter-spacing: -2.6px;
+                max-width: 940px;
+            }
+            .headline .accent {
+                color: #c3a8ff;
+            }
+            .foot {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                font-family: "JetBrains Mono", monospace;
+                font-size: 26px;
+                color: #b9add9;
+            }
+            .foot .dot {
+                color: #74e0ad;
+            }
+            .foot .url {
+                margin-left: auto;
+                color: #c3a8ff;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="brand">
+                <img src="./assets/wago-logo.png" alt="" />
+                <span class="brand__name">wago</span>
+            </div>
+            <h1 class="headline">
+                A WebAssembly engine,<br />written in
+                <span class="accent">pure Go.</span>
+            </h1>
+            <div class="foot">
+                <span>no&nbsp;cgo</span>
+                <span class="dot">·</span>
+                <span>single-pass&nbsp;x86-64</span>
+                <span class="dot">·</span>
+                <span>tracked&nbsp;spec&nbsp;conformance</span>
+                <span class="url">wago.sh</span>
+            </div>
+        </div>
+    </body>
+</html>

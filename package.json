@@ -5,7 +5,7 @@
     "type": "module",
     "description": "Landing page for wago - a pure-Go WebAssembly Runtime (wago.sh)",
     "scripts": {
-        "build": "tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets data CNAME install.sh dist/",
+        "build": "tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets data CNAME install.sh robots.txt sitemap.xml site.webmanifest dist/",
         "dev": "tsc --watch --preserveWatchOutput",
         "typecheck": "tsc --noEmit",
         "sync": "node scripts/sync-stats.mjs",

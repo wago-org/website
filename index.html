@@ -1,16 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="phase-pre">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Launch-phase gate. Defaults to "pre" (beta signup) and flips to
+             "post" (install) automatically on the launch date. Runs
+             synchronously so the correct content is chosen before first paint;
+             with JS off the page stays "pre". Override for previewing with
+             ?phase=pre | ?phase=post (sticky via localStorage). -->
+        <script>
+            (function () {
+                var LAUNCH = Date.UTC(2026, 7, 1); // 2026-08-01T00:00:00Z
+                var phase;
+                try {
+                    var q = new URLSearchParams(location.search).get("phase");
+                    if (q === "pre" || q === "post") {
+                        localStorage.setItem("wagoPhase", q);
+                    }
+                    phase = localStorage.getItem("wagoPhase");
+                } catch (e) {}
+                if (phase !== "pre" && phase !== "post") {
+                    phase = Date.now() >= LAUNCH ? "post" : "pre";
+                }
+                var el = document.documentElement;
+                el.classList.remove("phase-pre", "phase-post");
+                el.classList.add("phase-" + phase);
+            })();
+        </script>
         <title>wago - Embed WebAssembly in Go, no cgo</title>
         <meta
             name="description"
             content="wago is a WebAssembly engine written in pure Go. Decode, validate, compile and run wasm through a single-pass x86-64 runtime - no cgo, no C toolchain, tracked spec conformance."
         />
+        <link rel="canonical" href="https://wago.sh/" />
+        <meta name="author" content="Jairus Tanaka" />
+        <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1"
+        />
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="wago" />
+        <meta property="og:locale" content="en_US" />
         <meta
             property="og:title"
             content="wago - a pure-Go WebAssembly engine"
@@ -19,11 +52,38 @@
             property="og:description"
             content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 runtime - decode, validate, compile and run wasm."
         />
-        <meta property="og:url" content="https://wago.sh" />
+        <meta property="og:url" content="https://wago.sh/" />
         <meta
             property="og:image"
-            content="https://wago.sh/assets/wago-logo.png"
+            content="https://wago.sh/assets/og-card.png"
         />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="wago - a WebAssembly engine, written in pure Go"
+        />
+
+        <!-- Twitter / X Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="wago - a pure-Go WebAssembly engine"
+        />
+        <meta
+            name="twitter:description"
+            content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 runtime - decode, validate, compile and run wasm."
+        />
+        <meta
+            name="twitter:image"
+            content="https://wago.sh/assets/og-card.png"
+        />
+        <meta
+            name="twitter:image:alt"
+            content="wago - a WebAssembly engine, written in pure Go"
+        />
+
         <meta name="theme-color" content="#1a1547" />
 
         <link
@@ -33,6 +93,54 @@
             sizes="any"
         />
         <link rel="apple-touch-icon" href="/assets/wago-logo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- Structured data: helps Google rich results and AI answer engines
+             (Google AI Overviews, ChatGPT browsing) extract facts about wago. -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://wago.sh/#website",
+                        "url": "https://wago.sh/",
+                        "name": "wago",
+                        "description": "A WebAssembly engine written in pure Go - no cgo.",
+                        "inLanguage": "en",
+                        "publisher": { "@id": "https://wago.sh/#org" }
+                    },
+                    {
+                        "@type": "Organization",
+                        "@id": "https://wago.sh/#org",
+                        "name": "wago",
+                        "url": "https://wago.sh/",
+                        "logo": "https://wago.sh/assets/wago-logo.png",
+                        "sameAs": ["https://github.com/wago-org/wago"]
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "@id": "https://wago.sh/#app",
+                        "name": "wago",
+                        "applicationCategory": "DeveloperApplication",
+                        "operatingSystem": "Linux, macOS, Windows",
+                        "description": "wago is a WebAssembly engine written in pure Go. Decode, validate, compile and run wasm through a single-pass x86-64 runtime - no cgo, no C toolchain.",
+                        "url": "https://wago.sh/",
+                        "downloadUrl": "https://github.com/wago-org/wago",
+                        "codeRepository": "https://github.com/wago-org/wago",
+                        "programmingLanguage": "Go",
+                        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+                        "isAccessibleForFree": true,
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": { "@id": "https://wago.sh/#org" }
+                    }
+                ]
+            }
+        </script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,6 +156,22 @@
         <link rel="stylesheet" href="/assets/css/sections.css" />
 
         <script type="module" src="/assets/js/main.js"></script>
+
+        <!-- Analytics: GoatCounter (cookie-free, no consent banner). Loaded only
+             on the live domain so localhost / hub:4000 dev traffic isn't counted.
+             TODO: register the site code at goatcounter.com and confirm "wago". -->
+        <script>
+            if (location.hostname === "wago.sh") {
+                var gc = document.createElement("script");
+                gc.async = true;
+                gc.src = "//gc.zgo.at/count.js";
+                gc.setAttribute(
+                    "data-goatcounter",
+                    "https://wago.goatcounter.com/count"
+                );
+                document.head.appendChild(gc);
+            }
+        </script>
     </head>
     <body>
         <!-- ░░░ decorative sparkles ░░░ -->
@@ -117,8 +241,9 @@
                     <a class="nav__link" href="#features">Features</a>
                     <a class="nav__link" href="#conformance">Conformance</a>
                     <a class="nav__link" href="#install">Install</a>
-                    <a class="nav__link" href="#startup">Startup</a>
+                    <a class="nav__link" href="#latency">Latency</a>
                     <a class="nav__link" href="#performance">Performance</a>
+                    <a class="nav__link" href="#beta" data-phase="pre">Beta</a>
                     <a
                         class="nav__cta"
                         href="https://github.com/wago-org/wago"
@@ -140,7 +265,17 @@
                     x86-64 runtime. <strong>No cgo, no C toolchain.</strong>
                 </p>
                 <div class="hero__actions">
-                    <div class="install-split" data-install-split>
+                    <a
+                        class="btn btn--primary"
+                        href="#beta"
+                        data-phase="pre"
+                        >Join the beta →</a
+                    >
+                    <div
+                        class="install-split"
+                        data-install-split
+                        data-phase="post"
+                    >
                         <button
                             class="btn btn--primary install-split__trigger"
                             type="button"
@@ -1260,7 +1395,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </ul>
                     </div>
                     <div class="panes">
-                        <div class="pane">
+                        <div class="pane" data-phase="post">
                             <div class="pane__head">
                                 <span>install</span>
                                 <button
@@ -1275,32 +1410,41 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 class="pane__body"
                             ><span class="pane__prompt">$</span> curl -fsSL https://wago.sh/install.sh | sh</pre>
                         </div>
+                        <div class="pane-cta" data-phase="pre">
+                            <a class="btn btn--primary" href="#beta"
+                                >Join the waitlist →</a
+                            >
+                        </div>
                         <div class="pane">
                             <div class="pane__head"><span>cli</span></div>
                             <pre
                                 class="pane__body"
-                            ><span class="pane__prompt">$</span> wago run      fib.wasm 30
-<span class="pane__prompt">$</span> wago compile  fib.wasm -o fib.wago
-<span class="pane__prompt">$</span> wago validate fib.wasm</pre>
+                            ><span class="pane__prompt">$</span> wago add.wasm 2 3
+<span class="pane__prompt">$</span> wago run --invoke=fib fib.wasm 30
+<span class="pane__prompt">$</span> wago run --wasi hello.wasm
+<span class="pane__prompt">$</span> wago run --bounds=all fib.wasm 30
+<span class="pane__prompt">$</span> wago validate module.wasm
+<span class="pane__prompt">$</span> wago version</pre>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- ░░░ STARTUP LATENCY ░░░ -->
-            <section id="startup" class="section">
+            <section id="latency" class="section">
                 <div class="split split--startup">
                     <div>
-                        <div class="split__eyebrow">Startup latency</div>
+                        <div class="split__eyebrow">End-to-end latency</div>
                         <h2 class="split__title">
-                            Cold start in
-                            <span class="section__title-accent">microseconds</span>
+                            Spawn to exit in
+                            <span class="section__title-accent">milliseconds</span>
                         </h2>
                         <p class="split__body">
-                            The whole process, from spawn to exit, timed
-                            end-to-end across six real workloads. wago lands
-                            top-two on every one: it starts in milliseconds
-                            <em>and</em> runs native.
+                            Each bar is the whole process — spawn, compile, run
+                            the workload, exit — timed end-to-end, not just
+                            startup. wago lands top-two on all six: single-pass
+                            compile <em>and</em> native execution, so there's no
+                            interpreter tax and no JIT warmup.
                         </p>
                     </div>
                     <div class="chartcard">
@@ -2989,74 +3133,147 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                 </p>
             </section>
             <!-- ░░░ ARCHITECTURE ░░░ -->
-            <section class="section">
+            <section id="architecture" class="section">
+                <div class="eyebrow eyebrow--center">Architecture</div>
                 <h2 class="section__title">From bytes to native code</h2>
                 <p class="section__lead">
-                    A shared front end decodes and validates wasm; a single-pass
-                    backend turns it into x86-64 machine code today, with a
-                    typed IR and more backends planned.
+                    One front end decodes and type-checks every module. Today a
+                    single-pass backend emits x86-64 in one go; a planned typed
+                    IR adds an optimizing tier and more targets.
                 </p>
-                <div class="arch-row">
-                    <div class="arch-node">
-                        <div class="arch-node__title">decode</div>
-                        <div class="arch-node__sub">.wasm bytes</div>
+
+                <div class="pipe">
+                    <!-- Shared front end: watch one i32.add change shape. -->
+                    <div class="pipe__lane">
+                        <span class="pipe__tag">shared front end</span>
+                        <div class="pipe__flow">
+                            <figure class="pipe__cell">
+                                <figcaption class="pipe__step">.wasm</figcaption>
+                                <pre class="pipe__code">20 00 20 01 6a</pre>
+                                <span class="pipe__note">module bytes</span>
+                            </figure>
+                            <span class="pipe__arrow" aria-hidden="true">→</span>
+                            <figure class="pipe__cell">
+                                <figcaption class="pipe__step">decode</figcaption>
+                                <pre class="pipe__code">local.get 0
+local.get 1
+i32.add</pre>
+                                <span class="pipe__note">structure</span>
+                            </figure>
+                            <span class="pipe__arrow" aria-hidden="true">→</span>
+                            <figure class="pipe__cell">
+                                <figcaption class="pipe__step">validate</figcaption>
+                                <pre class="pipe__code">[i32 i32]
+  → [i32] ✓</pre>
+                                <span class="pipe__note">type-checked</span>
+                            </figure>
+                        </div>
                     </div>
-                    <span class="arch-arrow">→</span>
-                    <div class="arch-node">
-                        <div class="arch-node__title">validate</div>
-                        <div class="arch-node__sub">type-check</div>
+
+                    <!-- Fork: the front end branches into today's backend and
+                         tomorrow's IR tier. -->
+                    <div class="pipe__join" aria-hidden="true">
+                        <span class="pipe__arrow pipe__arrow--down">↓</span>
+                        <span class="pipe__tag pipe__tag--flush">backend</span>
                     </div>
-                    <span class="arch-arrow">→</span>
-                    <div class="arch-node arch-node--hl">
-                        <div class="arch-node__title">single-pass</div>
-                        <div class="arch-node__sub">x86-64 codegen</div>
+
+                    <div class="pipe__fork">
+                        <article class="pipe__branch pipe__branch--ship">
+                            <header class="pipe__branch-head">
+                                <span class="pipe__status pipe__status--ship"
+                                    >Shipping</span
+                                >
+                                <h3 class="pipe__branch-title">
+                                    single-pass x86-64
+                                </h3>
+                            </header>
+                            <pre
+                                class="pipe__code pipe__code--emit"
+                            >add eax, ecx   ; 01 c8</pre>
+                            <p class="pipe__branch-body">
+                                Straight to machine code in one pass —
+                                microsecond compiles, instant startup, native
+                                execution on an off-heap foreign stack.
+                            </p>
+                        </article>
+
+                        <article class="pipe__branch pipe__branch--planned">
+                            <header class="pipe__branch-head">
+                                <span class="pipe__status pipe__status--planned"
+                                    >Planned</span
+                                >
+                                <h3 class="pipe__branch-title">
+                                    typed IR → optimizing tier
+                                </h3>
+                            </header>
+                            <pre
+                                class="pipe__code pipe__code--ir"
+                            >%2 = add.i32 %0, %1</pre>
+                            <p class="pipe__branch-body">
+                                A target-agnostic IR feeds a second tier —
+                                dead-code elimination, constant folding,
+                                register allocation — and new backends for
+                                arm64, macOS and Windows, still no cgo.
+                            </p>
+                        </article>
                     </div>
                 </div>
-                <div class="arch-tiers">
-                    <div class="arch-tier arch-tier--ship">
-                        <span class="arch-status arch-status--ship"
-                            >Shipping</span
+            </section>
+
+            <!-- ░░░ BETA SIGNUP ░░░ -->
+            <section id="beta" class="section" data-phase="pre">
+                <div class="beta">
+                    <div class="eyebrow eyebrow--center">Beta · August 1</div>
+                    <h2 class="beta__title">Be there on day one</h2>
+                    <p class="beta__body">
+                        wago's public beta lands August 1. Drop your email and
+                        we'll send one message the moment it's live — no spam,
+                        unsubscribe anytime.
+                    </p>
+                    <!-- Progressive enhancement: this is a real Buttondown embed
+                         form, so it still works as a plain POST without JS.
+                         src/beta.ts intercepts it to submit inline and keep the
+                         visitor on the page.
+                         NOTE: "wago" below is the Buttondown username — create the
+                         account at buttondown.com with that handle (or swap it here
+                         AND in src/beta.ts) before this goes live. -->
+                    <form
+                        class="beta__form"
+                        data-beta-form
+                        action="https://buttondown.com/api/emails/embed-subscribe/wago"
+                        method="post"
+                        target="_blank"
+                    >
+                        <label class="sr-only" for="beta-email"
+                            >Email address</label
                         >
-                        <div class="arch-tier__title">single-pass x86-64</div>
-                        <div class="arch-tier__body">
-                            Microsecond compiles, instant startup, native code
-                            on an off-heap foreign stack.
-                        </div>
-                    </div>
-                    <div class="arch-tier">
-                        <span class="arch-status arch-status--planned"
-                            >Planned</span
+                        <input
+                            class="beta__input"
+                            id="beta-email"
+                            type="email"
+                            name="email"
+                            required
+                            autocomplete="email"
+                            placeholder="you@example.com"
+                        />
+                        <button
+                            class="btn btn--primary beta__submit"
+                            type="submit"
                         >
-                        <div class="arch-tier__title">
-                            lower → typed IR · optimizing tier
-                        </div>
-                        <div class="arch-tier__body">
-                            A target-agnostic IR feeds an optimizing second
-                            tier: dce, constant folding, register allocation.
-                        </div>
-                    </div>
-                    <div class="arch-tier">
-                        <span class="arch-status arch-status--planned"
-                            >Planned</span
-                        >
-                        <div class="arch-tier__title">
-                            arm64 · macOS · Windows
-                        </div>
-                        <div class="arch-tier__body">
-                            New target backends behind the same IR, with no
-                            platform-specific cgo shims.
-                        </div>
-                    </div>
+                            Notify me
+                        </button>
+                    </form>
+                    <p
+                        class="beta__status"
+                        data-beta-status
+                        role="status"
+                        aria-live="polite"
+                    ></p>
                 </div>
-                <p class="arch-note">
-                    An IR decouples the front end from codegen: today's
-                    single-pass x86-64 becomes one backend among several.
-                    Directional, not yet built.
-                </p>
             </section>
 
             <!-- ░░░ CTA ░░░ -->
-            <section class="section">
+            <section class="section" data-phase="post">
                 <div class="cta">
                     <h2 class="cta__title">Embed wasm in your Go app</h2>
                     <p class="cta__body">

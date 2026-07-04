@@ -1035,54 +1035,108 @@
     text-decoration: underline;
 }
 
-/* ---- Architecture diagram ---- */
-.arch-node {
-    flex: 1;
-    min-width: 130px;
-    max-width: 190px;
-    background: var(--panel);
-    border: 2px solid var(--line);
-    border-radius: 14px;
-    padding: 18px;
-    text-align: center;
-}
-.arch-node--hl {
-    background: var(--lilac);
-    border-color: var(--lilac);
-    flex: 1.1;
-    max-width: 200px;
-}
-.arch-node__title {
+/* ---- Compile pipeline (architecture) ----
+   The section's signature: one i32.add turns from wasm bytes into x86-64. A
+   shared front end (the tape) forks into a shipping backend and a planned IR
+   tier; solid vs dashed encodes shipped vs planned. Layout lives in
+   sections.css; this file owns the look of each piece. */
+.pipe__tag {
+    display: inline-block;
     font-family: var(--mono);
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-.arch-node--hl .arch-node__title {
-    color: var(--ink);
-}
-.arch-node__sub {
-    font-family: var(--mono);
-    font-size: 11.5px;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
     color: var(--muted);
+    margin-bottom: 13px;
 }
-.arch-node--hl .arch-node__sub {
-    color: #574089;
+.pipe__tag--flush {
+    margin: 0;
 }
-.arch-arrow {
+.pipe__lane {
+    background: var(--panel);
+    border: 1px solid var(--line-2);
+    border-radius: 16px;
+    padding: 22px 24px;
+}
+.pipe__cell {
+    margin: 0;
+    flex: 1 1 0;
+    min-width: 148px;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 13px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+.pipe__step {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--lilac);
+}
+.pipe__code {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #e7e0ff;
+    white-space: pre;
+}
+.pipe__note {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.3px;
+    color: var(--muted);
+    margin-top: auto;
+}
+.pipe__arrow {
+    align-self: center;
     color: var(--lilac);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 17px;
+    flex: 0 0 auto;
 }
-.arch-tier {
-    border-radius: 14px;
-    padding: 20px;
-    border: 2px solid var(--line);
+.pipe__arrow--down {
+    font-size: 21px;
+    line-height: 1;
+    color: var(--line-2);
+}
+.pipe__branch {
+    border-radius: 16px;
+    padding: 20px 22px;
     background: var(--panel);
+    border: 1px solid var(--line);
+    border-left-width: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
 }
-.arch-tier--ship {
-    border-color: var(--lilac);
+.pipe__branch--ship {
+    border-left-color: var(--lilac);
 }
-.arch-status {
+.pipe__branch--planned {
+    /* Ghosted: an outline of something not built yet. */
+    border: 1px dashed var(--line-2);
+    border-left: 3px dashed var(--line-2);
+    background: transparent;
+}
+.pipe__branch-head {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+.pipe__branch-title {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--text);
+}
+.pipe__status {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -1091,37 +1145,46 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--muted);
-    margin-bottom: 13px;
 }
-.arch-status::before {
+.pipe__status::before {
     content: "";
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background: currentColor;
 }
-.arch-status--ship {
+.pipe__status--ship {
     color: var(--green);
 }
-.arch-status--planned {
+.pipe__status--planned {
     color: var(--muted);
 }
-.arch-status--planned::before {
+.pipe__status--planned::before {
     background: none;
     border: 1.5px solid currentColor;
     width: 6px;
     height: 6px;
 }
-.arch-tier__title {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
+.pipe__code--emit {
+    align-self: flex-start;
+    background: var(--lilac);
+    color: var(--ink);
+    padding: 8px 13px;
+    border-radius: 9px;
+    font-weight: 500;
 }
-.arch-tier__body {
-    font-size: 13px;
+.pipe__code--ir {
+    align-self: flex-start;
+    background: var(--bg-deep);
+    border: 1px dashed var(--line-2);
+    color: var(--text-soft);
+    padding: 8px 13px;
+    border-radius: 9px;
+}
+.pipe__branch-body {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--text-soft);
 }
 
@@ -1162,7 +1225,7 @@
 }
 
 
-/* ══ Startup section (#startup) ═════════════════════════════════════ */
+/* ══ Latency section (#latency) ═════════════════════════════════════ */
 .split--startup {
     grid-template-columns: 1.18fr 0.82fr;
 }

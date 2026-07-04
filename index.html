@@ -1705,14 +1705,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             aria-selected="false"
                             tabindex="-1"
                         >Exec</button>
-                        <button
-                            class="vs__tab"
-                            role="tab"
-                            id="perf-tab-scale"
-                            aria-controls="perf-panel-scale"
-                            aria-selected="false"
-                            tabindex="-1"
-                        >Scale</button>
                         </div>
                         <div class="vs__legend">
                             <span class="vs__key"
@@ -3689,115 +3681,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <span class="vs__delta vs__delta--win"
                                 >1.5× faster</span
                             >
-                        </div>
-                    </div>
-                    <div
-                        class="vs__panel"
-                        role="tabpanel"
-                        id="perf-panel-scale"
-                        aria-labelledby="perf-tab-scale"
-                        hidden
-                    >
-                        <div class="vs__group">Front-end at scale — decode + validate real-world binaries</div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">wasm3</span
-                                ><span class="vs__sub">interpreter · 180 KB</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="4"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >6.27ms</span
-                                    >
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">28 MB/s</span>
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">Lua 5.4</span
-                                ><span class="vs__sub">interpreter · 270 KB</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="4"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >11.2ms</span
-                                    >
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">23 MB/s</span>
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">SQLite 3.46</span
-                                ><span class="vs__sub">database engine · 920 KB</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="6"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >41.8ms</span
-                                    >
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">21 MB/s</span>
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">esbuild</span
-                                ><span class="vs__sub">Go bundler · 11 MB</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="72"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >420.6ms</span
-                                    >
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">26 MB/s</span>
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">Ruby 3.3</span
-                                ><span class="vs__sub">interpreter · 16 MB, 17k funcs</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >713.5ms</span
-                                    >
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">22 MB/s</span>
                         </div>
                     </div>
                 </div>

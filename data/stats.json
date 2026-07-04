@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-03",
+  "generated": "2026-07-04",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -335,18 +335,18 @@
       "version": "engine",
       "label": "Engine & platform",
       "sub": "host ABI · targets · WASI",
-      "status": "planned",
-      "done": 0,
+      "status": "partial",
+      "done": 1,
       "total": 3,
-      "pct": 0,
+      "pct": 50,
       "features": [
         {
           "label": "Synchronous host-import results",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "WASI preview 1",
-          "status": "planned"
+          "status": "partial"
         },
         {
           "label": "Architectures beyond linux/amd64",

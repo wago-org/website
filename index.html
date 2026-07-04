@@ -1431,113 +1431,92 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
             </section>
 
             <!-- ░░░ STARTUP LATENCY ░░░ -->
-            <section id="latency" class="section">
+            <section id="startup" class="section">
                 <div class="split split--startup">
                     <div>
-                        <div class="split__eyebrow">End-to-end latency</div>
+                        <div class="split__eyebrow">Startup latency</div>
                         <h2 class="split__title">
-                            Spawn to exit in
-                            <span class="section__title-accent">milliseconds</span>
+                            Cold start in
+                            <span class="section__title-accent">microseconds</span>
                         </h2>
                         <p class="split__body">
-                            Each bar is the whole process — spawn, compile, run
-                            the workload, exit — timed end-to-end, not just
-                            startup. wago lands top-two on all six: single-pass
-                            compile <em>and</em> native execution, so there's no
-                            interpreter tax and no JIT warmup.
+                            The whole process, from spawn to exit, timed
+                            end-to-end across six real workloads. wago lands
+                            top-two on every one: it starts in milliseconds
+                            <em>and</em> runs native.
                         </p>
                     </div>
                     <div class="chartcard">
                         <div class="chart__tabs" role="tablist" aria-label="Workload" data-tabs>
                             <button class="chart__tab" role="tab" id="su-tab-json-as" aria-controls="su-panel-json-as" aria-selected="true" tabindex="0">json-as</button>
-                            <button class="chart__tab" role="tab" id="su-tab-fib" aria-controls="su-panel-fib" aria-selected="false" tabindex="-1">fib · loop</button>
+                            <button class="chart__tab" role="tab" id="su-tab-nbody" aria-controls="su-panel-nbody" aria-selected="false" tabindex="-1">nbody</button>
                             <button class="chart__tab" role="tab" id="su-tab-spectralnorm" aria-controls="su-panel-spectralnorm" aria-selected="false" tabindex="-1">spectralnorm</button>
                             <button class="chart__tab" role="tab" id="su-tab-quicksort" aria-controls="su-panel-quicksort" aria-selected="false" tabindex="-1">quicksort</button>
                             <button class="chart__tab" role="tab" id="su-tab-raytrace" aria-controls="su-panel-raytrace" aria-selected="false" tabindex="-1">raytrace</button>
                             <button class="chart__tab" role="tab" id="su-tab-sha256" aria-controls="su-panel-sha256" aria-selected="false" tabindex="-1">sha256</button>
                         </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-json-as" aria-labelledby="su-tab-json-as">
-                                <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="42"></span></span>
-                                    <span class="rank__val">5.3 ms</span>
-                                </div>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__tag">native</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="48"></span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="50"></span></span>
                                     <span class="rank__val">6.1 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="60"></span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="62"></span></span>
                                     <span class="rank__val">7.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="81"></span></span>
-                                    <span class="rank__val">10.2 ms</span>
-                                </div>
-                                <div class="rank__row">
                                     <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="86"></span></span>
-                                    <span class="rank__val">10.8 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="90"></span></span>
+                                    <span class="rank__val">10.9 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="89"></span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="93"></span></span>
                                     <span class="rank__val">11.3 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">12.6 ms</span>
+                                    <span class="rank__val">12.2 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">290 ms</span>
+                                    <span class="rank__val">288 ms</span>
                                 </div>
                             </div>
-                            <div class="chart__panel rank" role="tabpanel" id="su-panel-fib" aria-labelledby="su-tab-fib" hidden>
+                            <div class="chart__panel rank" role="tabpanel" id="su-panel-nbody" aria-labelledby="su-tab-nbody" hidden>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="5"></span></span>
-                                    <span class="rank__val">6.2 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="9"></span></span>
+                                    <span class="rank__val">33.3 ms</span>
                                 </div>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__tag">native</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="6"></span></span>
-                                    <span class="rank__val">8.1 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="11"></span></span>
+                                    <span class="rank__val">37.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="7"></span></span>
-                                    <span class="rank__val">9.1 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="11"></span></span>
+                                    <span class="rank__val">39.4 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="11"></span></span>
-                                    <span class="rank__val">15.3 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="15"></span></span>
+                                    <span class="rank__val">54.2 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="14"></span></span>
-                                    <span class="rank__val">19.3 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="46"></span></span>
-                                    <span class="rank__val">62.1 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="57"></span></span>
-                                    <span class="rank__val">76.8 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="43"></span></span>
+                                    <span class="rank__val">149 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">134 ms</span>
+                                    <span class="rank__val">351 ms</span>
                                 </div>
                             </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-spectralnorm" aria-labelledby="su-tab-spectralnorm" hidden>
@@ -1549,7 +1528,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="13"></span></span>
-                                    <span class="rank__val">5.2 ms</span>
+                                    <span class="rank__val">5.0 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
@@ -1557,29 +1536,19 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="rank__val">7.6 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="45"></span></span>
-                                    <span class="rank__val">17.8 ms</span>
-                                </div>
-                                <div class="rank__row">
                                     <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="55"></span></span>
-                                    <span class="rank__val">21.7 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="69"></span></span>
-                                    <span class="rank__val">27.1 ms</span>
+                                    <span class="rank__val">21.8 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">39.4 ms</span>
+                                    <span class="rank__val">39.7 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">56.3 ms</span>
+                                    <span class="rank__val">56.0 ms</span>
                                 </div>
                             </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-quicksort" aria-labelledby="su-tab-quicksort" hidden>
@@ -1589,13 +1558,13 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="rank__val">9.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="26"></span></span>
-                                    <span class="rank__val">12.6 ms</span>
-                                </div>
-                                <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="26"></span></span>
+                                    <span class="rank__val">12.7 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="27"></span></span>
                                     <span class="rank__val">12.9 ms</span>
                                 </div>
                                 <div class="rank__row">
@@ -1604,35 +1573,25 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="rank__val">20.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="70"></span></span>
-                                    <span class="rank__val">34.0 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="84"></span></span>
-                                    <span class="rank__val">41.2 ms</span>
-                                </div>
-                                <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">49.0 ms</span>
+                                    <span class="rank__val">48.8 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">145 ms</span>
+                                    <span class="rank__val">144 ms</span>
                                 </div>
                             </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-raytrace" aria-labelledby="su-tab-raytrace" hidden>
+                                <div class="rank__row">
+                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="17"></span></span>
+                                    <span class="rank__val">9.2 ms</span>
+                                </div>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__tag">native</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="17"></span></span>
-                                    <span class="rank__val">9.5 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="18"></span></span>
                                     <span class="rank__val">9.5 ms</span>
                                 </div>
                                 <div class="rank__row">
@@ -1643,69 +1602,49 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 <div class="rank__row">
                                     <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="56"></span></span>
-                                    <span class="rank__val">30.6 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="67"></span></span>
-                                    <span class="rank__val">36.5 ms</span>
+                                    <span class="rank__val">30.7 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="84"></span></span>
-                                    <span class="rank__val">45.4 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="92"></span></span>
-                                    <span class="rank__val">49.9 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="82"></span></span>
+                                    <span class="rank__val">45.1 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">54.3 ms</span>
+                                    <span class="rank__val">54.9 ms</span>
                                 </div>
                             </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-sha256" aria-labelledby="su-tab-sha256" hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__tag">native</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="17"></span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="19"></span></span>
                                     <span class="rank__val">1.9 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="28"></span></span>
-                                    <span class="rank__val">3.3 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="29"></span></span>
+                                    <span class="rank__val">3.1 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="53"></span></span>
-                                    <span class="rank__val">6.0 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="58"></span></span>
-                                    <span class="rank__val">6.7 ms</span>
+                                    <span class="rank__val">6.1 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="77"></span></span>
-                                    <span class="rank__val">8.8 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="86"></span></span>
+                                    <span class="rank__val">9.0 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="91"></span></span>
-                                    <span class="rank__val">10.4 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">11.5 ms</span>
+                                    <span class="rank__val">10.4 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
-                                    <span class="rank__val">37.6 ms</span>
+                                    <span class="rank__val">37.8 ms</span>
                                 </div>
                             </div>
                     </div>
@@ -1803,10 +1742,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="5"
+                                            data-width="10"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >6.7µs</span
+                                        >5.6µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1816,11 +1755,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">134µs</span>
+                                    ><span class="vs__val">54.3µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >19.8× faster</span
+                                >9.6× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -1834,7 +1773,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="17"
+                                            data-width="18"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
                                         >1.5µs</span
@@ -1847,11 +1786,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">8.9µs</span>
+                                    ><span class="vs__val">8.5µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >5.8× faster</span
+                                >5.6× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -1868,7 +1807,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="29"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >9.6ns</span
+                                        >9.5ns</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1878,11 +1817,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">33.3ns</span>
+                                    ><span class="vs__val">32.3ns</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >3.5× faster</span
+                                >3.4× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -1899,7 +1838,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="69"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >355µs</span
+                                        >354µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1909,7 +1848,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">516µs</span>
+                                    ><span class="vs__val">515µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -1918,8 +1857,8 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                         <div class="vs__row">
                             <div class="vs__meta">
-                                <span class="vs__label">Recursive tree</span
-                                ><span class="vs__sub">memory_tree, loads + calls</span>
+                                <span class="vs__label">N-body</span
+                                ><span class="vs__sub">leapfrog solar-system integrator</span>
                             </div>
                             <div class="vs__bars">
                                 <div class="vs__line">
@@ -1927,10 +1866,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="45"
+                                            data-width="99"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >9.7µs</span
+                                        >352µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1940,17 +1879,17 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">21.5µs</span>
+                                    ><span class="vs__val">356µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win"
-                                >2.2× faster</span
+                            <span class="vs__delta vs__delta--tie"
+                                >same speed</span
                             >
                         </div>
                         <div class="vs__row">
                             <div class="vs__meta">
-                                <span class="vs__label">Matrix multiply</span
-                                ><span class="vs__sub">64×64 f64 multiply-add</span>
+                                <span class="vs__label">Ray tracer</span
+                                ><span class="vs__sub">recursive Whitted, depth-4 mirrors</span>
                             </div>
                             <div class="vs__bars">
                                 <div class="vs__line">
@@ -1958,10 +1897,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="36"
+                                            data-width="100"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >115µs</span
+                                        >456µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1969,13 +1908,13 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wazero"
                                             data-bar
-                                            data-width="100"
+                                            data-width="79"
                                         ></span></span
-                                    ><span class="vs__val">315µs</span>
+                                    ><span class="vs__val">362µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win"
-                                >2.8× faster</span
+                            <span class="vs__delta vs__delta--behind"
+                                >1.3× slower</span
                             >
                         </div>
                         <div class="vs__row">
@@ -1992,7 +1931,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="71"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >38µs</span
+                                        >37.8µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2002,7 +1941,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">53.2µs</span>
+                                    ><span class="vs__val">53.7µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2020,10 +1959,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="61"
+                                            data-width="60"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >38.2µs</span
+                                        >38µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2033,11 +1972,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">62.7µs</span>
+                                    ><span class="vs__val">63.2µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >1.6× faster</span
+                                >1.7× faster</span
                             >
                         </div>
                     </div>
@@ -2060,10 +1999,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="4"
+                                            data-width="6"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >4.9µs</span
+                                        >3.3µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2073,11 +2012,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">125µs</span>
+                                    ><span class="vs__val">55µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >25.4× faster</span
+                                >16.5× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2091,10 +2030,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="5"
+                                            data-width="10"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >6.7µs</span
+                                        >5.6µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2104,11 +2043,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">134µs</span>
+                                    ><span class="vs__val">54.3µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >19.8× faster</span
+                                >9.6× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2122,10 +2061,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="13"
+                                            data-width="16"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >16.9µs</span
+                                        >11.8µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2135,167 +2074,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">130µs</span>
+                                    ><span class="vs__val">75.4µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >7.7× faster</span
-                            >
-                        </div>
-                        <div class="vs__group">Compute kernels</div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">memory_tree</span
-                                ><span class="vs__sub">loads + calls</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="14"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >22.8µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">163µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >7.1× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">mandelbrot</span
-                                ><span class="vs__sub">f64 escape-time</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="14"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >21.4µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">155µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >7.2× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">sieve</span
-                                ><span class="vs__sub">Eratosthenes</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="9"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >14.8µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">162µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >10.9× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">raytrace</span
-                                ><span class="vs__sub">recursive ray tracer</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="34"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >567µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">1.66ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >2.9× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">sha256</span
-                                ><span class="vs__sub">SHA-256 hash</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="24"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >156µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">651µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >4.2× faster</span
+                                >6.4× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2309,42 +2092,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="70"
+                                            data-width="49"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >825µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">1.17ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >1.4× faster</span
-                            >
-                        </div>
-                        <div class="vs__group">Real-world (AssemblyScript)</div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">utf-as</span
-                                ><span class="vs__sub">UTF SWAR transcode</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="25"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >269µs</span
+                                        >529µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2358,9 +2109,385 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >4.0× faster</span
+                                >2.0× faster</span
                             >
                         </div>
+                        <div class="vs__group">Compute kernels</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">linked_list</span
+                                ><span class="vs__sub">dependent-load chase</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="13"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >10.7µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">80.9µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >7.6× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">memory_tree</span
+                                ><span class="vs__sub">loads + calls</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="21"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >19.4µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">94.5µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.9× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">sieve</span
+                                ><span class="vs__sub">Eratosthenes</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="14"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >12.9µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">90.5µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >7.0× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">mandelbrot</span
+                                ><span class="vs__sub">f64 escape-time</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="22"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >18.8µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">86.8µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.6× faster</span
+                            >
+                        </div>
+                        <div class="vs__group">Benchmarks Game (Rust)</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">nbody</span
+                                ><span class="vs__sub">leapfrog integrator</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="36"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >145µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">400µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.8× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">spectralnorm</span
+                                ><span class="vs__sub">AᵀA power iteration</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="27"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >108µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">401µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.7× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">fannkuch</span
+                                ><span class="vs__sub">permutation pancake-flips</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="24"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >166µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">688µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.1× faster</span
+                            >
+                        </div>
+                        <div class="vs__group">Crypto &amp; graphics (Rust)</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">matmul</span
+                                ><span class="vs__sub">64³ f64 multiply-add</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="23"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >81.8µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">357µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.4× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">quicksort</span
+                                ><span class="vs__sub">recursive int sort</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="24"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >81µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">334µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.1× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">crc32</span
+                                ><span class="vs__sub">table-driven checksum</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="21"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >44.7µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">214µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.8× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">sha256</span
+                                ><span class="vs__sub">SHA-256 hash</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="30"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >132µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">445µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.4× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">raytrace</span
+                                ><span class="vs__sub">recursive ray tracer</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="38"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >466µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">1.23ms</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.6× faster</span
+                            >
+                        </div>
+                        <div class="vs__group">Real-world (AssemblyScript)</div>
                         <div class="vs__row">
                             <div class="vs__meta">
                                 <span class="vs__label">json-as</span
@@ -2372,10 +2499,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="37"
+                                            data-width="36"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >2.51ms</span
+                                        >2.05ms</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2385,11 +2512,73 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">6.72ms</span>
+                                    ><span class="vs__val">5.68ms</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >2.7× faster</span
+                                >2.8× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">blake-as</span
+                                ><span class="vs__sub">BLAKE3 SWAR</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="65"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >577µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">887µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.5× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">utf-as</span
+                                ><span class="vs__sub">UTF SWAR transcode</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="31"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >222µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">725µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.3× faster</span
                             >
                         </div>
                     </div>
@@ -2411,7 +2600,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="17"
+                                            data-width="18"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
                                         >1.5µs</span
@@ -2424,11 +2613,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">8.9µs</span>
+                                    ><span class="vs__val">8.5µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >5.8× faster</span
+                                >5.6× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2445,7 +2634,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="6"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >408 B</span
+                                        >472 B</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2459,7 +2648,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >18.1× leaner</span
+                                >15.6× leaner</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2516,7 +2705,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="29"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >9.6ns</span
+                                        >9.5ns</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2526,11 +2715,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">33.3ns</span>
+                                    ><span class="vs__val">32.3ns</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >3.5× faster</span
+                                >3.4× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2547,7 +2736,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="36"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >16.1ns</span
+                                        >15.9ns</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2557,7 +2746,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">44.7ns</span>
+                                    ><span class="vs__val">44.5ns</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2578,7 +2767,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="69"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >355µs</span
+                                        >354µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2588,7 +2777,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">516µs</span>
+                                    ><span class="vs__val">515µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2606,10 +2795,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="70"
+                                            data-width="80"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >23.1ns</span
+                                        >23ns</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2619,11 +2808,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">33ns</span>
+                                    ><span class="vs__val">28.9ns</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >1.4× faster</span
+                                >1.3× faster</span
                             >
                         </div>
                         <div class="vs__group">Compute kernels</div>
@@ -2651,7 +2840,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">10.7µs</span>
+                                    ><span class="vs__val">10.8µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2672,7 +2861,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="45"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >9.7µs</span
+                                        >9.6µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2682,7 +2871,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">21.5µs</span>
+                                    ><span class="vs__val">21.4µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2700,7 +2889,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="69"
+                                            data-width="68"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
                                         >85.1µs</span
@@ -2713,7 +2902,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">124µs</span>
+                                    ><span class="vs__val">125µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2734,7 +2923,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="100"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >298µs</span
+                                        >297µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2744,7 +2933,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="88"
                                         ></span></span
-                                    ><span class="vs__val">262µs</span>
+                                    ><span class="vs__val">263µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--behind"
@@ -2763,7 +2952,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="100"
+                                            data-width="99"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
                                         >352µs</span
@@ -2776,7 +2965,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">354µs</span>
+                                    ><span class="vs__val">356µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--tie"
@@ -2794,10 +2983,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="67"
+                                            data-width="66"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >645µs</span
+                                        >642µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2807,7 +2996,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">962µs</span>
+                                    ><span class="vs__val">976µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2825,10 +3014,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="76"
+                                            data-width="75"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >1.08ms</span
+                                        >1.07ms</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2838,7 +3027,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">1.42ms</span>
+                                    ><span class="vs__val">1.43ms</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2870,11 +3059,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">315µs</span>
+                                    ><span class="vs__val">316µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >2.8× faster</span
+                                >2.7× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2891,7 +3080,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="36"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >64.2µs</span
+                                        >64.6µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2901,11 +3090,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">176µs</span>
+                                    ><span class="vs__val">178µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >2.7× faster</span
+                                >2.8× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -2919,10 +3108,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="89"
+                                            data-width="88"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >19.4µs</span
+                                        >19.5µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2932,7 +3121,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">21.9µs</span>
+                                    ><span class="vs__val">22.1µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2953,7 +3142,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="71"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >38µs</span
+                                        >37.8µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2963,7 +3152,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">53.2µs</span>
+                                    ><span class="vs__val">53.7µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -2984,7 +3173,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="100"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >457µs</span
+                                        >456µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -2994,7 +3183,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="79"
                                         ></span></span
-                                    ><span class="vs__val">361µs</span>
+                                    ><span class="vs__val">362µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--behind"
@@ -3013,7 +3202,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="68"
+                                            data-width="67"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
                                         >21µs</span
@@ -3026,7 +3215,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">31µs</span>
+                                    ><span class="vs__val">31.6µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -3044,10 +3233,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="61"
+                                            data-width="60"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >38.2µs</span
+                                        >38µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -3057,11 +3246,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">62.7µs</span>
+                                    ><span class="vs__val">63.2µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >1.6× faster</span
+                                >1.7× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -3078,7 +3267,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="100"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >722µs</span
+                                        >719µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -3086,9 +3275,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wazero"
                                             data-bar
-                                            data-width="63"
+                                            data-width="64"
                                         ></span></span
-                                    ><span class="vs__val">456µs</span>
+                                    ><span class="vs__val">459µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--behind"
@@ -3109,7 +3298,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="88"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >179µs</span
+                                        >180µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -3119,7 +3308,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">203µs</span>
+                                    ><span class="vs__val">205µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
@@ -3149,11 +3338,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="4"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >6.07ms</span
+                                        >6.34ms</span
                                     >
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">29 MB/s</span>
+                            <span class="vs__delta vs__delta--win">28 MB/s</span>
                         </div>
                         <div class="vs__row">
                             <div class="vs__meta">
@@ -3169,7 +3358,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="4"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >11.4ms</span
+                                        >11.3ms</span
                                     >
                                 </div>
                             </div>
@@ -3189,7 +3378,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="6"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >41.9ms</span
+                                        >42.3ms</span
                                     >
                                 </div>
                             </div>
@@ -3209,7 +3398,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="72"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >406.5ms</span
+                                        >405.2ms</span
                                     >
                                 </div>
                             </div>
@@ -3229,7 +3418,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-width="100"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >715.3ms</span
+                                        >713.3ms</span
                                     >
                                 </div>
                             </div>

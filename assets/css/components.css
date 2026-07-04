@@ -670,6 +670,9 @@
 }
 .vs__head {
     display: flex;
+    align-items: stretch;
+    background: linear-gradient(var(--panel), var(--panel-2));
+    border-bottom: 1px solid var(--line);
 }
 .vs__legend {
     display: flex;
@@ -677,7 +680,6 @@
     flex-shrink: 0;
     gap: 18px;
     padding: 0 22px;
-    border-bottom: 2px solid var(--line);
     font-family: var(--mono);
     font-size: 12px;
     color: var(--text-soft);
@@ -707,9 +709,9 @@
 .vs__tabs {
     display: flex;
     flex: 1;
+    align-items: center;
     gap: 2px;
     padding: 0 12px;
-    border-bottom: 2px solid var(--line);
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -721,17 +723,16 @@
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    padding: 11px 14px;
+    padding: 10px 14px;
     font-family: var(--mono);
     font-size: 12.5px;
-    color: var(--text-dim);
+    color: var(--muted);
     cursor: pointer;
     white-space: nowrap;
     transition: color 0.18s ease, border-color 0.18s ease;
 }
 .vs__tab:hover {
-    color: var(--text-soft);
+    color: var(--text-dim);
 }
 .vs__tab[aria-selected="true"] {
     color: #fff;
@@ -1158,4 +1159,137 @@
 }
 .footer__links a:hover {
     text-decoration: underline;
+}
+
+
+/* ══ Startup section (#startup) ═════════════════════════════════════ */
+.split--startup {
+    grid-template-columns: 1.18fr 0.82fr;
+}
+/* Chart on the left, heading/text on the right. */
+.split--startup > :first-child {
+    order: 2;
+}
+.split__eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: var(--lilac);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+/* ── chart: flat on the page, no card background ─────────────────────── */
+.chartcard {
+    padding: 0;
+}
+/* Underline tabs (editor style) with a divider, flat on the page. */
+.chart__tabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0 0 22px;
+    padding: 0;
+    border-bottom: 1px solid var(--line-2);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+/* The empty bar rail needs contrast against the page (not the panel) here. */
+.chartcard .vs__track {
+    background: var(--panel-2);
+}
+.chart__tabs::-webkit-scrollbar {
+    display: none;
+}
+.chart__tab {
+    flex: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 7px 11px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.2px;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+.chart__tab:hover {
+    color: var(--text-dim);
+}
+.chart__tab[aria-selected="true"] {
+    color: var(--text);
+    border-bottom-color: var(--lilac);
+}
+.chart__tab:focus-visible {
+    outline: 2px solid var(--lilac);
+    outline-offset: -3px;
+    border-radius: 8px;
+}
+.chart__panel[hidden] {
+    display: none;
+}
+
+/* ── ranking bars ───────────────────────────────────────────────────── */
+.rank {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+.rank__row {
+    display: grid;
+    grid-template-columns: 128px 1fr 62px;
+    align-items: center;
+    gap: 13px;
+}
+.rank__name {
+    font-size: 14px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    min-width: 0;
+}
+.rank__tag {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.03em;
+    color: var(--faint);
+    text-transform: uppercase;
+}
+.rank__row--wago .rank__name {
+    color: var(--lilac);
+    font-weight: 600;
+}
+.rank__val {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-soft);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.rank__row--wago .rank__val {
+    color: #fff;
+    font-weight: 600;
+}
+
+@media (max-width: 860px) {
+    .split--startup {
+        grid-template-columns: 1fr;
+    }
+    .split--startup > :first-child {
+        order: 0;
+    }
+}
+@media (max-width: 560px) {
+    .rank__row {
+        grid-template-columns: 100px 1fr 56px;
+        gap: 10px;
+    }
+    .rank__tag {
+        display: none;
+    }
 }

@@ -1190,15 +1190,15 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         >Engine &amp; platform</span
                                     ><span class="vgroup__sub"
                                         >host ABI · targets · WASI</span
-                                    ><span class="vgroup__count">0/3</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
+                                    ><span class="vgroup__count">1/3</span
+                                    ><span class="tag tag--partial"
+                                        >partial</span
                                     ></span
                                 ><span class="vgroup__prog"
                                     ><span
                                         class="vgroup__prog-fill"
                                         data-bar
-                                        data-width="0"
+                                        data-width="50"
                                     ></span
                                 ></span>
                             </summary>
@@ -1206,15 +1206,15 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat"
                                         >Synchronous host-import results</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
+                                    ><span class="tag tag--pass"
+                                        >pass</span
                                     >
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat"
                                         >WASI preview 1</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
+                                    ><span class="tag tag--partial"
+                                        >partial</span
                                     >
                                 </div>
                                 <div class="vgroup__row">
@@ -1298,7 +1298,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </h2>
                         <p class="split__body">
                             The whole process, from spawn to exit, timed
-                            end-to-end across five real workloads. wago lands
+                            end-to-end across six real workloads. wago lands
                             top-two on every one: it starts in milliseconds
                             <em>and</em> runs native.
                         </p>
@@ -1310,6 +1310,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <button class="chart__tab" role="tab" id="su-tab-spectral" aria-controls="su-panel-spectral" aria-selected="false" tabindex="-1">spectralnorm</button>
                             <button class="chart__tab" role="tab" id="su-tab-quicksort" aria-controls="su-panel-quicksort" aria-selected="false" tabindex="-1">quicksort</button>
                             <button class="chart__tab" role="tab" id="su-tab-raytrace" aria-controls="su-panel-raytrace" aria-selected="false" tabindex="-1">raytrace</button>
+                            <button class="chart__tab" role="tab" id="su-tab-sha256" aria-controls="su-panel-sha256" aria-selected="false" tabindex="-1">sha256</button>
                         </div>
                             <div class="chart__panel rank" role="tabpanel" id="su-panel-json-as" aria-labelledby="su-tab-json-as">
                                 <div class="rank__row">
@@ -1519,6 +1520,48 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
                                     <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
                                     <span class="rank__val">54.3 ms</span>
+                                </div>
+                            </div>
+                            <div class="chart__panel rank" role="tabpanel" id="su-panel-sha256" aria-labelledby="su-tab-sha256" hidden>
+                                <div class="rank__row rank__row--wago">
+                                    <span class="rank__name">wago<span class="rank__tag">native</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wago" data-bar data-width="17"></span></span>
+                                    <span class="rank__val">1.9 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="29"></span></span>
+                                    <span class="rank__val">3.3 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="54"></span></span>
+                                    <span class="rank__val">6.1 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasm3<span class="rank__tag">interp</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="59"></span></span>
+                                    <span class="rank__val">6.7 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmer<span class="rank__tag">JIT</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="79"></span></span>
+                                    <span class="rank__val">9.0 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interp</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="93"></span></span>
+                                    <span class="rank__val">10.5 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">iwasm<span class="rank__tag">interp</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
+                                    <span class="rank__val">11.4 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-width="100"></span></span>
+                                    <span class="rank__val">38.3 ms</span>
                                 </div>
                             </div>
                     </div>

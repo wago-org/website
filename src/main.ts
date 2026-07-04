@@ -1,6 +1,7 @@
 // Entry point - wires up the interactive pieces of the landing page.
 import { initStats } from "./stats.js";
 import { initReveal } from "./reveal.js";
+import { initTabs } from "./tabs.js";
 import { initCopyButtons } from "./copy.js";
 import { initInstallSplit } from "./install-split.js";
 import { initSparkles } from "./sparkles.js";
@@ -12,6 +13,7 @@ async function init(): Promise<void> {
     initEditor();
     // Refresh numbers/statuses from data/stats.json first, then animate them.
     await initStats();
+    initTabs();
     initReveal();
     initCopyButtons();
     initInstallSplit();

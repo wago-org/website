@@ -338,7 +338,7 @@
       "status": "partial",
       "done": 1,
       "total": 3,
-      "pct": 50,
+      "pct": 33,
       "features": [
         {
           "label": "Synchronous host-import results",
@@ -346,7 +346,7 @@
         },
         {
           "label": "WASI preview 1",
-          "status": "partial"
+          "status": "planned"
         },
         {
           "label": "Architectures beyond linux/amd64",

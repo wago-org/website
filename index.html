@@ -1480,6 +1480,68 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                         <div class="vs__row">
                             <div class="vs__meta">
+                                <span class="vs__label">Recursive tree</span
+                                ><span class="vs__sub">memory_tree, loads + calls</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="44"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >9.2µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">20.9µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.3× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">JSON serialize</span
+                                ><span class="vs__sub">json-as, SWAR</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="67"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >20.1µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">30.1µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.5× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
                                 <span class="vs__label">JSON deserialize</span
                                 ><span class="vs__sub">json-as, SWAR</span>
                             </div>
@@ -1507,37 +1569,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             </div>
                             <span class="vs__delta vs__delta--win"
                                 >1.7× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">Zero-alloc exec</span
-                                ><span class="vs__sub">json-as deserialize</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="4"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >0 B</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">8 B</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >0 vs 1 alloc</span
                             >
                         </div>
                     </div>

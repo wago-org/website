@@ -668,11 +668,15 @@
     border-radius: 18px;
     overflow: hidden;
 }
+.vs__head {
+    display: flex;
+}
 .vs__legend {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     gap: 18px;
-    padding: 12px 22px;
+    padding: 0 22px;
     border-bottom: 2px solid var(--line);
     font-family: var(--mono);
     font-size: 12px;
@@ -699,13 +703,10 @@
         transparent 4px 9px
     );
 }
-.vs__legend-note {
-    margin-left: auto;
-    color: var(--text-dim);
-}
 /* Category tabs: General / Compile / Instantiate / Exec (driven by tabs.ts). */
 .vs__tabs {
     display: flex;
+    flex: 1;
     gap: 2px;
     padding: 0 12px;
     border-bottom: 2px solid var(--line);

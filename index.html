@@ -1300,21 +1300,13 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     performance.
                 </p>
                 <div class="vs">
-                    <div class="vs__legend">
-                        <span class="vs__key"
-                            ><i class="vs__dot vs__dot--wago"></i>wago</span
+                    <div class="vs__head">
+                        <div
+                            class="vs__tabs"
+                            role="tablist"
+                            aria-label="Benchmark categories"
+                            data-tabs
                         >
-                        <span class="vs__key"
-                            ><i class="vs__dot vs__dot--wazero"></i>wazero</span
-                        >
-                        <span class="vs__legend-note">shorter is faster</span>
-                    </div>
-                    <div
-                        class="vs__tabs"
-                        role="tablist"
-                        aria-label="Benchmark categories"
-                        data-tabs
-                    >
                         <button
                             class="vs__tab"
                             role="tab"
@@ -1347,6 +1339,17 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             aria-selected="false"
                             tabindex="-1"
                         >Exec</button>
+                        </div>
+                        <div class="vs__legend">
+                            <span class="vs__key"
+                                ><i class="vs__dot vs__dot--wago"></i>wago</span
+                            >
+                            <span class="vs__key"
+                                ><i
+                                    class="vs__dot vs__dot--wazero"
+                                ></i>wazero</span
+                            >
+                        </div>
                     </div>
                     <div
                         class="vs__panel"
@@ -1511,8 +1514,8 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                         <div class="vs__row">
                             <div class="vs__meta">
-                                <span class="vs__label">JSON serialize</span
-                                ><span class="vs__sub">json-as, SWAR</span>
+                                <span class="vs__label">Linked list</span
+                                ><span class="vs__sub">dependent-load chase</span>
                             </div>
                             <div class="vs__bars">
                                 <div class="vs__line">
@@ -1520,10 +1523,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ><span
                                             class="vs__fill vs__fill--wago"
                                             data-bar
-                                            data-width="67"
+                                            data-width="74"
                                         ></span></span
                                     ><span class="vs__val vs__val--wago"
-                                        >20.1µs</span
+                                        >7.8µs</span
                                     >
                                 </div>
                                 <div class="vs__line">
@@ -1533,11 +1536,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                             data-bar
                                             data-width="100"
                                         ></span></span
-                                    ><span class="vs__val">30.1µs</span>
+                                    ><span class="vs__val">10.6µs</span>
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win"
-                                >1.5× faster</span
+                                >1.4× faster</span
                             >
                         </div>
                         <div class="vs__row">

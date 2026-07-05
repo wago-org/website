@@ -896,6 +896,16 @@
         transparent 4px 9px
     );
 }
+/* wasm3 — the interpreter engine (end-to-end run comparison). Green sets it
+   apart from the two purple JIT bars; the dotted texture reads as "interpreted". */
+.vs__fill--wasm3 {
+    background-color: #3f9d78;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.22) 0 2px,
+        transparent 2px 7px
+    );
+}
 .vs__val {
     font-family: var(--mono);
     font-size: 12px;

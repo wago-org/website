@@ -243,6 +243,7 @@
                     <a class="nav__link" href="#install">Install</a>
                     <a class="nav__link" href="#latency">Latency</a>
                     <a class="nav__link" href="#performance">Performance</a>
+                    <a class="nav__link" href="#packages">Packages</a>
                     <a class="nav__link" href="#beta" data-phase="pre">Beta</a>
                     <a
                         class="nav__cta"
@@ -321,6 +322,13 @@
                         target="_blank"
                         rel="noopener"
                         >Read the roadmap →</a
+                    >
+                    <a
+                        class="btn btn--ghost"
+                        href="https://pkg.wago.sh/"
+                        target="_blank"
+                        rel="noopener"
+                        >Browse packages ↗</a
                     >
                 </div>
             </header>
@@ -4122,6 +4130,113 @@ i32.add</pre>
                 </div>
             </section>
 
+            <!-- ░░░ PACKAGES ░░░ -->
+            <section id="packages" class="section">
+                <div class="eyebrow eyebrow--center">Packages</div>
+                <h2 class="section__title">
+                    Extend the runtime,
+                    <span class="section__title-accent"
+                        >one import away.</span
+                    >
+                </h2>
+                <p class="section__lead">
+                    Codegen backends, WASI shims, host-import bundles, debuggers
+                    and format loaders — drop-in Go modules that plug straight
+                    into wago. Browse and publish them on the registry.
+                </p>
+
+                <div class="pkgs">
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">wasi</span>
+                            <span class="pkgcard__badge pkgcard__badge--official"
+                                >Official</span
+                            >
+                            <span class="pkgcard__badge">wasi</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            WASI host-import extensions — preview-1 stdio,
+                            args/env, clock, random and exit surfaces.
+                        </p>
+                        <div class="pkgcard__meta">618k installs · v1.0.0</div>
+                    </article>
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">dragline-x64</span>
+                            <span class="pkgcard__badge">codegen</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            Optimizing x86-64 codegen backend — SSA, DCE and
+                            graph-coloring register allocation.
+                        </p>
+                        <div class="pkgcard__meta">406k installs · v0.9.4</div>
+                    </article>
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">wago-trace</span>
+                            <span class="pkgcard__badge">debugging</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            Step debugger &amp; instruction tracer with a live
+                            stack and memory inspector.
+                        </p>
+                        <div class="pkgcard__meta">293k installs · v1.4.2</div>
+                    </article>
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">host-http</span>
+                            <span class="pkgcard__badge">host-imports</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            Expose a Go <code class="code-inline">net/http</code>
+                            client to guest modules as batched host imports.
+                        </p>
+                        <div class="pkgcard__meta">234k installs · v1.0.1</div>
+                    </article>
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">memfmt</span>
+                            <span class="pkgcard__badge">memory</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            Zero-copy struct (de)serialization helpers over
+                            linear memory
+                            <code class="code-inline">[]byte</code>.
+                        </p>
+                        <div class="pkgcard__meta">200k installs · v0.7.0</div>
+                    </article>
+                    <article class="pkgcard">
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name">wat-loader</span>
+                            <span class="pkgcard__badge">formats</span>
+                        </div>
+                        <p class="pkgcard__body">
+                            Parse &amp; assemble
+                            <code class="code-inline">.wat</code> text format
+                            straight into wago modules.
+                        </p>
+                        <div class="pkgcard__meta">155k installs · v1.2.0</div>
+                    </article>
+                </div>
+
+                <div class="pkgs-cta">
+                    <a
+                        class="btn btn--primary"
+                        href="https://pkg.wago.sh/"
+                        target="_blank"
+                        rel="noopener"
+                        >Browse the registry ↗</a
+                    >
+                    <a
+                        class="btn btn--ghost"
+                        href="https://pkg.wago.sh/"
+                        target="_blank"
+                        rel="noopener"
+                        >Publish a package ↗</a
+                    >
+                </div>
+            </section>
+
             <!-- ░░░ BETA SIGNUP ░░░ -->
             <section id="beta" class="section" data-phase="pre">
                 <div class="beta">
@@ -4222,6 +4337,12 @@ i32.add</pre>
                     </div>
                 </div>
                 <div class="footer__links">
+                    <a
+                        href="https://pkg.wago.sh/"
+                        target="_blank"
+                        rel="noopener"
+                        >Packages</a
+                    >
                     <a
                         href="https://github.com/wago-org/wago"
                         target="_blank"

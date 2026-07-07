@@ -87,6 +87,20 @@
     gap: 16px;
 }
 
+/* ---- Packages grid ---- */
+.pkgs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+.pkgs-cta {
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 /* ---- Two-column blocks (install, conformance) ---- */
 .split {
     display: grid;
@@ -244,7 +258,8 @@
     .stats {
         grid-template-columns: repeat(2, 1fr);
     }
-    .features {
+    .features,
+    .pkgs {
         grid-template-columns: 1fr 1fr;
     }
     .split--install,
@@ -256,7 +271,8 @@
     .nav__links .nav__link {
         display: none;
     }
-    .features {
+    .features,
+    .pkgs {
         grid-template-columns: 1fr;
     }
     .hero {

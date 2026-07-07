@@ -2665,37 +2665,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         <div class="vs__group">Real-world programs — full compile: decode + validate + codegen</div>
                         <div class="vs__row">
                             <div class="vs__meta">
-                                <span class="vs__label">wasm3</span
-                                ><span class="vs__sub">interpreter · 180 KB</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="16"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >8.99ms</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">55.1ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >6.1× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
                                 <span class="vs__label">Lua 5.4</span
                                 ><span class="vs__sub">interpreter · 270 KB</span>
                             </div>
@@ -3833,7 +3802,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 >2.1× faster</span
                             >
                         </div>
-                        <div class="vs__group">Real programs run end-to-end — compile + instantiate + execute (wago · wazero · wasm3)</div>
+                        <div class="vs__group">Real programs run end-to-end — compile + instantiate + execute (wago · wazero)</div>
                         <div class="vs__row">
                             <div class="vs__meta">
                                 <span class="vs__label">markdown</span
@@ -3860,18 +3829,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">96.3ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="24"
-                                        ></span></span
-                                    ><span class="vs__val">23.5ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >1.5× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.7× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -3900,18 +3860,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">26.4ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="30"
-                                        ></span></span
-                                    ><span class="vs__val">7.81ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >1.4× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.5× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -3940,18 +3891,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">14.3ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="22"
-                                        ></span></span
-                                    ><span class="vs__val">3.15ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >1.9× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.5× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -3980,18 +3922,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">16.4ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="16"
-                                        ></span></span
-                                    ><span class="vs__val">2.58ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >2.5× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.5× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -4020,18 +3953,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">13.3ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="18"
-                                        ></span></span
-                                    ><span class="vs__val">2.37ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >2.2× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.6× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -4060,18 +3984,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">575.2ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="19"
-                                        ></span></span
-                                    ><span class="vs__val">110.9ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >2.5× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >2.1× faster</span
                             >
                         </div>
                         <div class="vs__row">
@@ -4100,18 +4015,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         ></span></span
                                     ><span class="vs__val">343.1ms</span>
                                 </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wasm3"
-                                            data-bar
-                                            data-width="7"
-                                        ></span></span
-                                    ><span class="vs__val">23ms</span>
-                                </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind"
-                                >4.5× slower</span
+                            <span class="vs__delta vs__delta--win"
+                                >3.3× faster</span
                             >
                         </div>
                     </div>

@@ -1732,6 +1732,35 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     wazero.
                 </p>
                 <div class="vs">
+                    <div
+                        class="vs__arch-tabs"
+                        role="tablist"
+                        aria-label="Benchmark architecture"
+                        data-tabs
+                    >
+                        <button
+                            class="vs__tab"
+                            role="tab"
+                            id="bench-arch-amd64"
+                            aria-controls="bench-arch-panel-amd64"
+                            aria-selected="true"
+                            tabindex="0"
+                        >linux/amd64</button>
+                        <button
+                            class="vs__tab"
+                            role="tab"
+                            id="bench-arch-arm64"
+                            aria-controls="bench-arch-panel-arm64"
+                            aria-selected="false"
+                            tabindex="-1"
+                        >darwin/arm64</button>
+                    </div>
+                    <div
+                        class="vs__panel"
+                        role="tabpanel"
+                        id="bench-arch-panel-amd64"
+                        aria-labelledby="bench-arch-amd64"
+                    >
                     <div class="vs__head">
                         <div
                             class="vs__tabs"
@@ -4030,10 +4059,27 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                     </div>
                 </div>
+                    </div>
+                    <div
+                        class="vs__panel vs__arch-empty"
+                        role="tabpanel"
+                        id="bench-arch-panel-arm64"
+                        aria-labelledby="bench-arch-arm64"
+                        hidden
+                    >
+                        <strong>ARM64 benchmark snapshots are being collected.</strong>
+                        <span>
+                            Native ARM64 correctness is verified separately; this
+                            panel will show the same wago-versus-wazero workload
+                            rows once repeatable darwin/arm64 measurements are
+                            published. Do not compare raw timing numbers across
+                            different machines.
+                        </span>
+                    </div>
                 <p class="vs__foot">
-                    Measured on linux/amd64 with the single-pass backend; wago
-                    vs wazero over the same corpus. Numbers shift as the engine
-                    evolves — see the
+                    AMD64 values are measured on linux/amd64 with the single-pass
+                    backend; each architecture will use its own measured snapshot.
+                    Numbers shift as the engine evolves — see the
                     <a
                         href="https://github.com/wago-org/wago/tree/main/bench"
                         target="_blank"

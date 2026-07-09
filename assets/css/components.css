@@ -727,6 +727,16 @@
     background: linear-gradient(var(--panel), var(--panel-2));
     border-bottom: 1px solid var(--line);
 }
+.vs__arch-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 6px 12px 0;
+    background: linear-gradient(var(--panel-2), var(--panel));
+    border-bottom: 1px solid var(--line);
+}
+.vs__arch-tabs .vs__tab {
+    font-weight: 700;
+}
 .vs__legend {
     display: flex;
     align-items: center;
@@ -798,6 +808,18 @@
 }
 .vs__panel[hidden] {
     display: none;
+}
+.vs__arch-empty {
+    display: grid;
+    gap: 10px;
+    padding: 34px 42px;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+.vs__arch-empty strong {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 13px;
 }
 .vs__group {
     padding: 13px 18px 5px;

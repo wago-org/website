@@ -19,6 +19,7 @@ interface Version {
 
 interface Stats {
   mvp: { filesPass: number; filesTotal: number; percent: number; assertionsPass: number };
+  suiteAssertions?: { mvp: number; simd: number; total: number };
   coverage: number | null;
   versions: Version[];
 }
@@ -97,7 +98,7 @@ export async function initStats(): Promise<void> {
   if (!data?.mvp) return;
 
   setTargets("files", data.mvp.filesPass);
-  setTargets("assertions", data.mvp.assertionsPass);
+  setTargets("assertions", data.suiteAssertions?.total ?? data.mvp.assertionsPass);
   setTargets("conf", data.mvp.percent);
   if (typeof data.coverage === "number") setTargets("coverage", data.coverage);
 

@@ -101,6 +101,15 @@ function parseSpectest(text) {
   };
 }
 
+// FEATURES.md records the independently-run official SIMD proposal corpus.
+// Release 2 already contains SIMD files, so use this count only with the MVP
+// corpus above; that keeps the headline total useful without double-counting.
+function parseSIMDAssertions(text) {
+  const m = text.match(/official SIMD proposal corpus passes[^\n]*\(([\d,]+) assertions/i);
+  if (!m) throw new Error("FEATURES.md: could not find the official SIMD assertion count");
+  return Number(m[1].replace(/,/g, ""));
+}
+
 // "Coverage: 77.3%"
 function parseCoverage(text) {
   const m = text.match(/Coverage:\s*([\d.]+)\s*%/i);
@@ -313,6 +322,8 @@ async function main() {
 
   const mvp = parseSpectest(srcs["SPECTEST.md"].text);
   const features = parseFeatures(srcs["FEATURES.md"].text);
+  const simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
+  const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
   const coverage = srcs["coverage-report.md"]
     ? parseCoverage(srcs["coverage-report.md"].text)
     : null;
@@ -323,24 +334,30 @@ async function main() {
 
   const stats = [
     { key: "files", value: mvp.filesPass, total: mvp.filesTotal, label: "MVP files pass" },
-    { key: "assertions", value: mvp.assertionsPass, label: "assertions pass" },
+    { key: "assertions", value: suiteAssertionsPass, label: "assertions passed" },
     { key: "cgo", value: 0, label: "lines of cgo" },
   ];
   if (coverage != null) {
     stats.push({ key: "coverage", value: coverage, suffix: "%", label: "test coverage" });
   } else {
-    stats.push({ key: "platforms", value: 1, label: "platform · linux/amd64" });
+    stats.push({ key: "platforms", value: 3, label: "native runtime targets" });
   }
 
   const data = {
     generated: new Date().toISOString().slice(0, 10),
     source: "wago-org/wago @ main",
     mvp,
+    suiteAssertions: {
+      mvp: mvp.assertionsPass,
+      simd: simdAssertionsPass,
+      total: suiteAssertionsPass,
+    },
     coverage,
     featuresDone,
     featuresTotal: mvpRows.length,
     cgoLines: 0,
-    platforms: 1,
+    // Native execution is covered on Linux/amd64, Linux/arm64, and Darwin/arm64.
+    platforms: 3,
     stats,
     versions,
   };
@@ -360,7 +377,7 @@ async function main() {
   console.log(
     `wrote data/stats.json from ${srcs["SPECTEST.md"].from}\n` +
       `  MVP ${mvp.filesPass}/${mvp.filesTotal} files (${mvp.percent}%) · ` +
-      `${mvp.assertionsPass} assertions pass · coverage ${coverage ?? "n/a"}% · ` +
+      `${suiteAssertionsPass} assertions passed · coverage ${coverage ?? "n/a"}% · ` +
       `${featuresDone}/${mvpRows.length} MVP features done` +
       (changed ? "" : " (no change)"),
   );

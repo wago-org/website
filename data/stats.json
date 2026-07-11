@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-08",
+  "generated": "2026-07-11",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -8,11 +8,16 @@
     "assertionsPass": 16592,
     "assertionsFail": 0
   },
-  "coverage": 79,
+  "suiteAssertions": {
+    "mvp": 16592,
+    "simd": 24325,
+    "total": 40917
+  },
+  "coverage": 72,
   "featuresDone": 17,
   "featuresTotal": 17,
   "cgoLines": 0,
-  "platforms": 1,
+  "platforms": 3,
   "stats": [
     {
       "key": "files",
@@ -22,8 +27,8 @@
     },
     {
       "key": "assertions",
-      "value": 16592,
-      "label": "assertions pass"
+      "value": 40917,
+      "label": "assertions passed"
     },
     {
       "key": "cgo",
@@ -32,7 +37,7 @@
     },
     {
       "key": "coverage",
-      "value": 79,
+      "value": 72,
       "suffix": "%",
       "label": "test coverage"
     }
@@ -121,10 +126,10 @@
       "version": "2.0",
       "label": "WebAssembly 2.0",
       "sub": "finished proposals",
-      "status": "partial",
-      "done": 3,
+      "status": "pass",
+      "done": 6,
       "total": 6,
-      "pct": 75,
+      "pct": 100,
       "features": [
         {
           "label": "Sign-extension ops",
@@ -136,15 +141,15 @@
         },
         {
           "label": "Multi-value",
-          "status": "partial"
+          "status": "pass"
         },
         {
           "label": "Reference types",
-          "status": "partial"
+          "status": "pass"
         },
         {
           "label": "Bulk memory",
-          "status": "partial"
+          "status": "pass"
         },
         {
           "label": "Fixed-width SIMD",
@@ -338,7 +343,7 @@
       "status": "partial",
       "done": 1,
       "total": 3,
-      "pct": 50,
+      "pct": 67,
       "features": [
         {
           "label": "Synchronous host-import results",
@@ -350,7 +355,7 @@
         },
         {
           "label": "Architectures beyond linux/amd64",
-          "status": "planned"
+          "status": "partial"
         }
       ]
     }

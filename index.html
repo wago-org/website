@@ -591,12 +591,12 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div class="stat__num stat__num--green">
                         <span
                             data-count
-                            data-target="16500"
+                            data-target="40917"
                             data-stat="assertions"
-                            >~16,500</span
+                            >40,917</span
                         >
                     </div>
-                    <div class="stat__label">assertions pass</div>
+                    <div class="stat__label">assertions passed</div>
                 </div>
                 <div class="stat">
                     <div class="stat__num stat__num--pink">0</div>
@@ -606,10 +606,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div class="stat__num stat__num--lilac">
                         <span
                             data-count
-                            data-target="79"
+                            data-target="72"
                             data-suffix="%"
                             data-stat="coverage"
-                            >79%</span
+                            >72%</span
                         >
                     </div>
                     <div class="stat__label">test coverage</div>
@@ -638,7 +638,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         <h3 class="fcard__title">Native x86-64 &amp; ARM64</h3>
                         <p class="fcard__body">
                             Compiles straight to native code for both chips — in
-                            milliseconds, with no warmup.
+                            milliseconds, with no warmup. ARM64 passes the full
+                            WebAssembly 2.0 core suite: 1,600 modules and
+                            48,248 assertions with zero gaps.
                         </p>
                     </div>
                     <div class="fcard">
@@ -882,15 +884,15 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                         >WebAssembly 2.0</span
                                     ><span class="vgroup__sub"
                                         >finished proposals</span
-                                    ><span class="vgroup__count">3/6</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
+                                    ><span class="vgroup__count">6/6</span
+                                    ><span class="tag tag--pass"
+                                        >pass</span
                                     ></span
                                 ><span class="vgroup__prog"
                                     ><span
                                         class="vgroup__prog-fill"
                                         data-bar
-                                        data-width="75"
+                                        data-width="100"
                                     ></span
                                 ></span>
                             </summary>
@@ -907,21 +909,21 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Multi-value</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
+                                    ><span class="tag tag--pass"
+                                        >pass</span
                                     >
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat"
                                         >Reference types</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
+                                    ><span class="tag tag--pass"
+                                        >pass</span
                                     >
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Bulk memory</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
+                                    ><span class="tag tag--pass"
+                                        >pass</span
                                     >
                                 </div>
                                 <div class="vgroup__row">
@@ -1288,8 +1290,8 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat"
                                         >Architectures beyond linux/amd64</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
+                                    ><span class="tag tag--partial"
+                                        >partial</span
                                     >
                                 </div>
                             </div>
@@ -6827,7 +6829,12 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                 <p class="vs__foot">
                     Measured separately on each listed architecture; compare
                     values within an architecture, not across machines. Numbers
-                    shift as the engine evolves — see the
+                    shift as the engine evolves. On Apple M4 Max, ARM64 meets
+                    the entry-cost budget in five-sample guard-page runs
+                    (`tiny.add` 18.61ns, `dispatch.apply` 20.83ns,
+                    `branches.classify` 18.08ns) and runs `memory_tree` in
+                    8.01µs, versus wazero's 10.88µs. Core SIMD also passes 470
+                    modules and 24,325 assertions with zero gaps — see the
                     <a
                         href="https://github.com/wago-org/wago/tree/main/bench"
                         target="_blank"

@@ -14,8 +14,10 @@ status files** so the site never drifts from what the engine actually does.
 index.html              # the page, structured by section (nav → hero → … → footer)
 data/
   stats.json            # site numbers + conformance statuses (generated; committed)
+schema.json             # hosted manifest schema, mirrored from wago Go module
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
+  sync-schema.mjs       # mirrors schema.json from the wago Go module
 src/                    # TypeScript source
   main.ts               #   entry point - wires everything up on load
   stats.ts              #   fetches data/stats.json and hydrates the page
@@ -55,11 +57,13 @@ resolve.
 Other scripts:
 
 - `npm run typecheck` - type-check without emitting.
-- `npm run sync` - regenerate `data/stats.json` from wago (see below).
+- `npm run sync` - regenerate stats and mirror the manifest schema from wago.
+- `npm run sync:schema` - update only `schema.json`.
+- `npm run sync:check` - fail when either generated file is stale.
 - `npm run build` - compile, then assemble a clean `dist/` (the exact tree that
   gets deployed).
 
-## Stats sync (the single source of truth)
+## Wago data sync (the single source of truth)
 
 Every number and feature status on the page comes from
 [`data/stats.json`](data/stats.json), which is **generated** by
@@ -69,10 +73,14 @@ Every number and feature status on the page comes from
 - `FEATURES.md` → per-area `pass / partial / planned` statuses
 - `coverage-report.md` → test-coverage %
 
+The Wago Go module's `schema.json` is also canonical. The sync process
+mirrors it to `schema.json`, deployed at <https://wago.sh/schema.json> for JSON
+editors and project manifests.
+
 ```bash
-npm run sync                       # auto-detect source, rewrite data/stats.json
+npm run sync                       # rewrite stats.json and schema.json
 WAGO_DIR=/path/to/wago npm run sync # read from a specific local checkout
-npm run sync:check                  # exit 1 if stats.json is stale (no write)
+npm run sync:check                  # exit 1 if either generated file is stale
 ```
 
 The script reads from a local wago checkout when one is present (`$WAGO_DIR`,
@@ -88,11 +96,10 @@ or if the fetch fails.
 
 ### Keeping it in sync automatically
 
-`.github/workflows/sync.yml` runs `sync-stats.mjs` on a daily schedule (and on
-demand). It checks wago out read-only and regenerates `data/stats.json`; if it
-changed, it commits the update and calls the deploy workflow, so a passing-test
-or feature change in wago shows up on the site without anyone touching this
-repo. wago's CI can also trigger it immediately by sending a
+`.github/workflows/sync.yml` runs the sync scripts on a daily schedule (and on
+demand). It checks wago out read-only and regenerates `data/stats.json` plus
+`schema.json`; if either changed, it commits the update and calls the deploy
+workflow. Wago's CI can also trigger it immediately by sending a
 `repository_dispatch` event of type `wago-updated`.
 
 **Required secret:** because wago is private, add a repository secret

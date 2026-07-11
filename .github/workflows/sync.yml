@@ -57,23 +57,23 @@ jobs:
         with:
           node-version: 20
 
-      - name: Regenerate data/stats.json from wago
+      - name: Regenerate site data from wago
         env:
           WAGO_DIR: ${{ github.workspace }}/wago-src
-        run: node scripts/sync-stats.mjs
+        run: npm run sync
 
       - name: Commit if changed
         id: commit
         run: |
-          if git diff --quiet -- data/stats.json; then
+          if git diff --quiet -- data/stats.json schema.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "stats.json is unchanged - nothing to deploy."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/stats.json
-          git commit -m "chore: sync stats from wago"
+          git add data/stats.json schema.json
+          git commit -m "chore: sync site data from wago"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

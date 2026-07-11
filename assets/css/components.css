@@ -714,7 +714,7 @@
     text-align: center;
 }
 .vs {
-    max-width: 780px;
+    max-width: 880px;
     margin: 0 auto;
     background: var(--panel);
     border: 2px solid var(--line);
@@ -723,9 +723,126 @@
 }
 .vs__head {
     display: flex;
-    align-items: stretch;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 9px 18px;
     background: linear-gradient(var(--panel), var(--panel-2));
     border-bottom: 1px solid var(--line);
+}
+/* Platform selector: a vertical toggle on the left of the panel (replaces the
+   old stacked arch tab-row). Driven by the same tabs.ts tablist logic. */
+.vs__body {
+    display: flex;
+    align-items: stretch;
+}
+/* Left rail blends into the panel body (no divider, no fill); the two arch
+   labels are set vertically and stacked, the active one bold + underlined. */
+/* Left rail stays a fixed frame beside the internally-scrolling rows; the toggle
+   is centred so it never scrolls out of view. */
+.vs__side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 20px 6px;
+    background: transparent;
+}
+.vs__archbtn {
+    appearance: none;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 10px 7px;
+    background: transparent;
+    border: none;
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.18s ease;
+}
+.vs__archbtn:hover {
+    color: var(--text-dim);
+}
+.vs__archbtn[aria-selected="true"] {
+    color: #fff;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: var(--lilac);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+.vs__archbtn:focus-visible {
+    outline: 2px solid var(--lilac);
+    outline-offset: -2px;
+    border-radius: 6px;
+}
+.vs__stage {
+    flex: 1;
+    min-width: 0;
+}
+.vs__archpanel {
+    display: flex;
+    align-items: stretch;
+}
+.vs__main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+/* Cap a category's row list to a fixed height and scroll the rows inside it, so a
+   huge benchmark set never runs the panel (and its toggle/spec frame) off-screen.
+   The tab row above and the rail/spec beside it stay put — the frame edges are the
+   "bumpers"; only the rows move. */
+.vs__main > .vs__panel:not([hidden]) {
+    max-height: 56vh;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+}
+.vs__main > .vs__panel::-webkit-scrollbar {
+    width: 14px;
+}
+.vs__main > .vs__panel::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-left: 1px solid var(--line);
+}
+.vs__main > .vs__panel::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 10px;
+    border: 3px solid var(--bg);
+}
+.vs__main > .vs__panel::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
+}
+/* Top row of the panel: category tabs on the left, legend on the right. */
+.vs__toprow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 16px;
+    border-bottom: 1px solid var(--line);
+}
+/* Machine spec: vertical text floating on the right edge, no box. */
+.vs__specs {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 16px 10px;
+    background: transparent;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+    user-select: none;
 }
 .vs__arch-tabs {
     display: flex;
@@ -919,6 +1036,10 @@
 .vs__more-body {
     border-top: 1px solid var(--bg);
     order: 1;
+    /* Cap tall expansions and let the overflow scroll inside the dropdown. */
+    max-height: 340px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 .vs__meta {
     display: flex;
@@ -1039,6 +1160,32 @@
     }
     .vs__more[open] > .vs__more-head {
         order: 2;
+    }
+    /* Stack the platform toggle on top and flip both labels horizontal. */
+    .vs__body {
+        flex-direction: column;
+    }
+    .vs__side {
+        position: static;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 4px;
+        padding: 4px 10px 0;
+        border-bottom: 1px solid var(--line);
+    }
+    .vs__archbtn {
+        writing-mode: horizontal-tb;
+        padding: 10px 16px;
+    }
+    .vs__archpanel {
+        flex-direction: column;
+    }
+    .vs__specs {
+        position: static;
+        writing-mode: horizontal-tb;
+        justify-content: flex-start;
+        padding: 9px 16px;
+        border-top: 1px solid var(--line);
     }
 }
 

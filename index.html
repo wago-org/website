@@ -2563,100 +2563,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 >1.6× faster</span
                             >
                         </div>
-                        <div class="vs__group">WASI preview 1</div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI compile</span
-                                ><span class="vs__sub">pulldown-cmark module</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="13"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >9.59ms</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">76.4ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >8.0× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI instantiate</span
-                                ><span class="vs__sub">compiled module + WASI imports</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="4"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >44.4µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">5.27ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >118.8× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI run</span
-                                ><span class="vs__sub">pulldown-cmark _start command</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="52"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >2.92ms</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">5.63ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >1.9× faster</span
-                            >
-                        </div>
                     </div>
                     <div
                         class="vs__panel"
@@ -4149,6 +4055,131 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 >1.1× faster</span
                             >
                         </div>
+                        <div class="vs__group">AssemblyScript SIMD</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">JSON serialize</span
+                                ><span class="vs__sub">json-as SIMD</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="74"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >29.3µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">39.4µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.3× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">JSON deserialize</span
+                                ><span class="vs__sub">json-as SIMD</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="71"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >55.9µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">78.3µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.4× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">BLAKE3 hash</span
+                                ><span class="vs__sub">blake-as SIMD, 4 KiB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >1.14ms</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="45"
+                                        ></span></span
+                                    ><span class="vs__val">507µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >2.2× slower</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">UTF transcode</span
+                                ><span class="vs__sub">utf-as SIMD, mixed text</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >106µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="56"
+                                        ></span></span
+                                    ><span class="vs__val">59.5µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >1.8× slower</span
+                            >
+                        </div>
                         <div class="vs__group">Real-world engine (C / SQLite)</div>
                         <div class="vs__row">
                             <div class="vs__meta">
@@ -4514,100 +4545,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             </div>
                             <span class="vs__delta vs__delta--win"
                                 >1.2× faster</span
-                            >
-                        </div>
-                        <div class="vs__group">WASI preview 1</div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI compile</span
-                                ><span class="vs__sub">pulldown-cmark module</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="62"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >33.9ms</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">55ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >1.6× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI instantiate</span
-                                ><span class="vs__sub">compiled module + WASI imports</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="4"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >14.8µs</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">2.05ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >138.4× faster</span
-                            >
-                        </div>
-                        <div class="vs__row">
-                            <div class="vs__meta">
-                                <span class="vs__label">WASI run</span
-                                ><span class="vs__sub">pulldown-cmark _start command</span>
-                            </div>
-                            <div class="vs__bars">
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wago"
-                                            data-bar
-                                            data-width="87"
-                                        ></span></span
-                                    ><span class="vs__val vs__val--wago"
-                                        >1.85ms</span
-                                    >
-                                </div>
-                                <div class="vs__line">
-                                    <span class="vs__track"
-                                        ><span
-                                            class="vs__fill vs__fill--wazero"
-                                            data-bar
-                                            data-width="100"
-                                        ></span></span
-                                    ><span class="vs__val">2.12ms</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win"
-                                >1.1× faster</span
                             >
                         </div>
                     </div>
@@ -6100,6 +6037,131 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             </div>
                             <span class="vs__delta vs__delta--win"
                                 >1.1× faster</span
+                            >
+                        </div>
+                        <div class="vs__group">AssemblyScript SIMD</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">JSON serialize</span
+                                ><span class="vs__sub">json-as SIMD</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="89"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >23.2µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">26µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.1× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">JSON deserialize</span
+                                ><span class="vs__sub">json-as SIMD</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="89"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >47.8µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">53.9µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.1× faster</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">BLAKE3 hash</span
+                                ><span class="vs__sub">blake-as SIMD, 4 KiB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >586µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="69"
+                                        ></span></span
+                                    ><span class="vs__val">404µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >1.5× slower</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">UTF transcode</span
+                                ><span class="vs__sub">utf-as SIMD, mixed text</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >137µs</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="71"
+                                        ></span></span
+                                    ><span class="vs__val">97.1µs</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >1.4× slower</span
                             >
                         </div>
                     </div>

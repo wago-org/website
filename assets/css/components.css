@@ -787,6 +787,9 @@
     display: flex;
     align-items: stretch;
 }
+.vs__archpanel[hidden] {
+    display: none;
+}
 .vs__main {
     flex: 1;
     min-width: 0;

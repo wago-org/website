@@ -2267,6 +2267,14 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         <button
                             class="vs__tab"
                             role="tab"
+                            id="perf-amd64-tab-memory"
+                            aria-controls="perf-amd64-panel-memory"
+                            aria-selected="false"
+                            tabindex="-1"
+                        >Memory</button>
+                        <button
+                            class="vs__tab"
+                            role="tab"
                             id="perf-amd64-tab-exec"
                             aria-controls="perf-amd64-panel-exec"
                             aria-selected="false"
@@ -3395,6 +3403,451 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div
                         class="vs__panel"
                         role="tabpanel"
+                        id="perf-amd64-panel-memory"
+                        aria-labelledby="perf-amd64-tab-memory"
+                        hidden
+                    >
+                        <div class="vs__group">Instantiation</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">fib_rec instance</span
+                                ><span class="vs__sub">bytes allocated per fresh instance</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="16"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >1.2 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">7.2 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >6.1× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">fib_rec instance</span
+                                ><span class="vs__sub">allocation objects per fresh instance</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="30"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >7</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">23</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.3× leaner</span
+                            >
+                        </div>
+                        <div class="vs__group">Full compile — allocation bytes</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">tiny</span
+                                ><span class="vs__sub">smallest module</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="11"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >28.8 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">268 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >9.3× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">memory tree</span
+                                ><span class="vs__sub">calls + linear-memory access</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="11"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >33.8 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">310 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >9.2× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">json-as</span
+                                ><span class="vs__sub">AssemblyScript JSON</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="28"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >690 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">2.4 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.6× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">blake-as</span
+                                ><span class="vs__sub">AssemblyScript BLAKE3</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="24"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >267 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">1.1 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >4.2× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">esbuild</span
+                                ><span class="vs__sub">Go bundler · 12 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="67"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >171.8 MB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">256.2 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.5× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">Ruby 3.3</span
+                                ><span class="vs__sub">interpreter · 16 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="5"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >19.8 MB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">408.2 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >20.7× leaner</span
+                            >
+                        </div>
+                        <div class="vs__group">Full compile — allocation objects</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">tiny</span
+                                ><span class="vs__sub">smallest module</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="42"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >80</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">189</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.4× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">memory tree</span
+                                ><span class="vs__sub">calls + linear-memory access</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="39"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >133</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">342</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.6× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">json-as</span
+                                ><span class="vs__sub">AssemblyScript JSON</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="59"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >3786</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">6432</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.7× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">blake-as</span
+                                ><span class="vs__sub">AssemblyScript BLAKE3</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="35"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >358</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">1028</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.9× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">esbuild</span
+                                ><span class="vs__sub">Go bundler · 12 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >1103930</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="44"
+                                        ></span></span
+                                    ><span class="vs__val">481786</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >2.3× slower</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">Ruby 3.3</span
+                                ><span class="vs__sub">interpreter · 16 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="30"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >139252</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">462225</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.3× leaner</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="vs__panel"
+                        role="tabpanel"
                         id="perf-amd64-panel-exec"
                         aria-labelledby="perf-amd64-tab-exec"
                         hidden
@@ -4218,6 +4671,14 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             aria-selected="false"
                             tabindex="-1"
                         >Instantiate</button>
+                        <button
+                            class="vs__tab"
+                            role="tab"
+                            id="perf-arm64-tab-memory"
+                            aria-controls="perf-arm64-panel-memory"
+                            aria-selected="false"
+                            tabindex="-1"
+                        >Memory</button>
                         <button
                             class="vs__tab"
                             role="tab"
@@ -5343,6 +5804,451 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             </div>
                             <span class="vs__delta vs__delta--win"
                                 >3.8× leaner</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="vs__panel"
+                        role="tabpanel"
+                        id="perf-arm64-panel-memory"
+                        aria-labelledby="perf-arm64-tab-memory"
+                        hidden
+                    >
+                        <div class="vs__group">Instantiation</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">fib_rec instance</span
+                                ><span class="vs__sub">bytes allocated per fresh instance</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="15"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >1.1 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">7.2 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >6.7× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">fib_rec instance</span
+                                ><span class="vs__sub">allocation objects per fresh instance</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="26"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >6</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">23</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.8× leaner</span
+                            >
+                        </div>
+                        <div class="vs__group">Full compile — allocation bytes</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">tiny</span
+                                ><span class="vs__sub">smallest module</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="11"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >29 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">274 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >9.4× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">memory tree</span
+                                ><span class="vs__sub">calls + linear-memory access</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="11"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >32.5 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">307 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >9.4× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">json-as</span
+                                ><span class="vs__sub">AssemblyScript JSON</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="27"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >682 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">2.5 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.7× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">blake-as</span
+                                ><span class="vs__sub">AssemblyScript BLAKE3</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="31"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >266 KB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">869 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.3× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">esbuild</span
+                                ><span class="vs__sub">Go bundler · 12 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="64"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >168.7 MB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">262.7 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >1.6× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">Ruby 3.3</span
+                                ><span class="vs__sub">interpreter · 16 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="42"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >182.6 MB</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">430.3 MB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.4× leaner</span
+                            >
+                        </div>
+                        <div class="vs__group">Full compile — allocation objects</div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">tiny</span
+                                ><span class="vs__sub">smallest module</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="47"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >86</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">183</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.1× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">memory tree</span
+                                ><span class="vs__sub">calls + linear-memory access</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="35"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >118</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">336</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.8× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">json-as</span
+                                ><span class="vs__sub">AssemblyScript JSON</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="40"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >2561</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">6353</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >2.5× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">blake-as</span
+                                ><span class="vs__sub">AssemblyScript BLAKE3</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="28"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >278</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val">997</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win"
+                                >3.6× leaner</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">esbuild</span
+                                ><span class="vs__sub">Go bundler · 12 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >710445</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="66"
+                                        ></span></span
+                                    ><span class="vs__val">468358</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >1.5× slower</span
+                            >
+                        </div>
+                        <div class="vs__row">
+                            <div class="vs__meta">
+                                <span class="vs__label">Ruby 3.3</span
+                                ><span class="vs__sub">interpreter · 16 MB</span>
+                            </div>
+                            <div class="vs__bars">
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wago"
+                                            data-bar
+                                            data-width="100"
+                                        ></span></span
+                                    ><span class="vs__val vs__val--wago"
+                                        >882763</span
+                                    >
+                                </div>
+                                <div class="vs__line">
+                                    <span class="vs__track"
+                                        ><span
+                                            class="vs__fill vs__fill--wazero"
+                                            data-bar
+                                            data-width="47"
+                                        ></span></span
+                                    ><span class="vs__val">414250</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--behind"
+                                >2.1× slower</span
                             >
                         </div>
                     </div>

@@ -549,10 +549,15 @@
     border: 2px solid var(--line);
     border-radius: 16px;
     padding: 22px;
+    text-decoration: none;
     transition: border-color 0.15s ease;
 }
 .pkgcard:hover {
     border-color: var(--lilac);
+}
+.pkgcard:focus-visible {
+    outline: 3px solid var(--lilac);
+    outline-offset: 3px;
 }
 .pkgcard__head {
     display: flex;

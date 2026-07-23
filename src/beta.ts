@@ -45,7 +45,7 @@ export function initBeta(): void {
     fetch(ENDPOINT, { method: "POST", mode: "no-cors", body })
       .then(() => {
         form.closest(".beta")?.classList.add("beta--done");
-        say("You're on the list — watch for a note on August 1. 🎉", "ok");
+        say("You're on the list — we'll let you know when it's live. 🎉", "ok");
         // Count the conversion in GoatCounter (present only on the live domain).
         window.goatcounter?.count?.({
           path: "waitlist-signup",

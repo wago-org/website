@@ -243,7 +243,7 @@
                     <a class="nav__link" href="#install">Install</a>
                     <a class="nav__link" href="#latency">Latency</a>
                     <a class="nav__link" href="#performance">Performance</a>
-                    <a class="nav__link" href="#packages">Packages</a>
+                    <a class="nav__link" href="#packages">Plugins</a>
                     <a class="nav__link" href="#beta" data-phase="pre">Beta</a>
                     <a
                         class="nav__cta"
@@ -326,7 +326,7 @@
                         href="https://plugins.wago.sh/"
                         target="_blank"
                         rel="noopener"
-                        >Browse packages ↗</a
+                        >Browse plugins ↗</a
                     >
                 </div>
             </header>
@@ -7150,93 +7150,144 @@ add eax, ecx   ; 01 c8</pre>
                 </div>
             </section>
 
-            <!-- ░░░ PACKAGES ░░░ -->
+            <!-- ░░░ PLUGINS ░░░ -->
             <section id="packages" class="section">
-                <div class="eyebrow eyebrow--center">Packages</div>
+                <div class="eyebrow eyebrow--center">Plugins</div>
                 <h2 class="section__title">
                     Extend the runtime,
                     <span class="section__title-accent">one import away.</span>
                 </h2>
                 <p class="section__lead">
-                    Codegen backends, WASI shims, host-import bundles, debuggers
-                    and format loaders — drop-in Go modules that plug straight
-                    into wago. Browse and publish them on the registry.
+                    Official and community Go modules add host interfaces,
+                    compiler features, and managed runtime services without
+                    expanding wago core. Follow each plugin's source for
+                    compatibility and stability details.
                 </p>
 
                 <div class="pkgs">
-                    <article class="pkgcard">
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/wago-org/wasi"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wasi</span>
+                            <span class="pkgcard__name">wago-org/wasi</span>
                             <span
                                 class="pkgcard__badge pkgcard__badge--official"
                                 >Official</span
                             >
-                            <span class="pkgcard__badge">wasi</span>
+                            <span class="pkgcard__badge">Stable P1</span>
                         </div>
                         <p class="pkgcard__body">
-                            WASI host-import extensions — preview-1 stdio,
-                            args/env, clock, random and exit surfaces.
+                            WASI Preview 1 host functions for stdio, args and
+                            environment, clocks, random data, and process exit.
                         </p>
-                        <div class="pkgcard__meta">618k installs · v1.0.0</div>
-                    </article>
-                    <article class="pkgcard">
+                        <div class="pkgcard__meta">
+                            github.com/wago-org/wasi ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/wago-org/workers"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">dragline-x64</span>
-                            <span class="pkgcard__badge">codegen</span>
+                            <span class="pkgcard__name">wago-org/workers</span>
+                            <span
+                                class="pkgcard__badge pkgcard__badge--official"
+                                >Official</span
+                            >
+                            <span class="pkgcard__badge">Experimental</span>
                         </div>
                         <p class="pkgcard__body">
-                            Optimizing x86-64 codegen backend — SSA, DCE and
-                            graph-coloring register allocation.
+                            Bounded, host-supervised WebAssembly workers with
+                            fixed-size mailboxes and lifecycle-safe teardown.
                         </p>
-                        <div class="pkgcard__meta">406k installs · v0.9.4</div>
-                    </article>
-                    <article class="pkgcard">
+                        <div class="pkgcard__meta">
+                            github.com/wago-org/workers ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/JairusSW/wide"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wago-trace</span>
-                            <span class="pkgcard__badge">debugging</span>
+                            <span class="pkgcard__name">JairusSW/wide</span>
+                            <span class="pkgcard__badge">Community</span>
+                            <span class="pkgcard__badge">Experimental</span>
                         </div>
                         <p class="pkgcard__body">
-                            Step debugger &amp; instruction tracer with a live
-                            stack and memory inspector.
+                            Portable v256 and v512 SIMD instructions with native
+                            AVX-512, AVX2, and NEON lowering.
                         </p>
-                        <div class="pkgcard__meta">293k installs · v1.4.2</div>
-                    </article>
-                    <article class="pkgcard">
+                        <div class="pkgcard__meta">
+                            github.com/JairusSW/wide ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/JairusSW/pool"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">host-http</span>
-                            <span class="pkgcard__badge">host-imports</span>
+                            <span class="pkgcard__name">JairusSW/pool</span>
+                            <span class="pkgcard__badge">Community</span>
+                            <span class="pkgcard__badge">Experimental</span>
                         </div>
                         <p class="pkgcard__body">
-                            Expose a Go
-                            <code class="code-inline">net/http</code>
-                            client to guest modules as batched host imports.
+                            Elastic, load-balanced, self-healing pools that
+                            distribute work across fleets of Wago workers.
                         </p>
-                        <div class="pkgcard__meta">234k installs · v1.0.1</div>
-                    </article>
-                    <article class="pkgcard">
+                        <div class="pkgcard__meta">
+                            github.com/JairusSW/pool ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/JairusSW/lease"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">memfmt</span>
-                            <span class="pkgcard__badge">memory</span>
+                            <span class="pkgcard__name">JairusSW/lease</span>
+                            <span class="pkgcard__badge">Community</span>
+                            <span class="pkgcard__badge">Experimental</span>
                         </div>
                         <p class="pkgcard__body">
-                            Zero-copy struct (de)serialization helpers over
-                            linear memory
-                            <code class="code-inline">[]byte</code>.
+                            Warm pools of clean WebAssembly instances for
+                            isolated, bounded, one-shot execution.
                         </p>
-                        <div class="pkgcard__meta">200k installs · v0.7.0</div>
-                    </article>
-                    <article class="pkgcard">
+                        <div class="pkgcard__meta">
+                            github.com/JairusSW/lease ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://github.com/wago-org/net"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wat-loader</span>
-                            <span class="pkgcard__badge">formats</span>
+                            <span class="pkgcard__name">wago-org/net</span>
+                            <span
+                                class="pkgcard__badge pkgcard__badge--official"
+                                >Official</span
+                            >
+                            <span class="pkgcard__badge">Private preview</span>
                         </div>
                         <p class="pkgcard__body">
-                            Parse &amp; assemble
-                            <code class="code-inline">.wat</code> text format
-                            straight into wago modules.
+                            Capability-gated TCP, UDP, DNS, TLS, and related
+                            networking modules backed by bounded host policy.
                         </p>
-                        <div class="pkgcard__meta">155k installs · v1.2.0</div>
-                    </article>
+                        <div class="pkgcard__meta">
+                            github.com/wago-org/net ↗
+                        </div>
+                    </a>
                 </div>
 
                 <div class="pkgs-cta">
@@ -7245,14 +7296,14 @@ add eax, ecx   ; 01 c8</pre>
                         href="https://plugins.wago.sh/"
                         target="_blank"
                         rel="noopener"
-                        >Browse the registry ↗</a
+                        >Browse the plugin registry ↗</a
                     >
                     <a
                         class="btn btn--ghost"
-                        href="https://plugins.wago.sh/"
+                        href="https://github.com/wago-org/wago/blob/main/docs/plugin-api-v2.md"
                         target="_blank"
                         rel="noopener"
-                        >Publish a package ↗</a
+                        >Build a plugin ↗</a
                     >
                 </div>
             </section>
@@ -7361,7 +7412,7 @@ add eax, ecx   ; 01 c8</pre>
                         href="https://plugins.wago.sh/"
                         target="_blank"
                         rel="noopener"
-                        >Packages</a
+                        >Plugins</a
                     >
                     <a
                         href="https://github.com/wago-org/wago"

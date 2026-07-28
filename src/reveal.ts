@@ -14,7 +14,9 @@ function countUp(node: HTMLElement): void {
   const fmt = (v: number): string => {
     const n = comma
       ? "~" + Math.round(v).toLocaleString("en-US")
-      : String(Math.round(v));
+      : Number.isInteger(target)
+        ? String(Math.round(v))
+        : v.toFixed(1);
     return n + suffix;
   };
 

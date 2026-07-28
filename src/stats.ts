@@ -1,8 +1,8 @@
 // Hydrate the page from data/stats.json - the file the "sync" CI job
-// regenerates from wago's own SPECTEST.md / FEATURES.md. The HTML ships with
-// sensible static defaults (so the page is correct with JS disabled and as a
-// fallback if the fetch fails); when the JSON loads we refresh the numbers and
-// rebuild the conformance table before reveal.ts animates them.
+// regenerates from wago's own verification and conformance reports. The HTML
+// ships with sensible static defaults (so the page is correct with JS disabled
+// and as a fallback if the fetch fails); when the JSON loads we refresh the
+// numbers and rebuild the conformance table before reveal.ts animates them.
 
 type Status = "pass" | "partial" | "planned" | "none";
 
@@ -20,6 +20,12 @@ interface Version {
 interface Stats {
   mvp: { filesPass: number; filesTotal: number; percent: number; assertionsPass: number };
   suiteAssertions?: { mvp: number; simd: number; total: number };
+  verification?: {
+    checksPass: number;
+    checksFail: number;
+    checksSkip: number;
+    coverage?: number | null;
+  };
   coverage: number | null;
   versions: Version[];
 }
@@ -98,7 +104,10 @@ export async function initStats(): Promise<void> {
   if (!data?.mvp) return;
 
   setTargets("files", data.mvp.filesPass);
-  setTargets("assertions", data.suiteAssertions?.total ?? data.mvp.assertionsPass);
+  setTargets(
+    "assertions",
+    data.verification?.checksPass ?? data.suiteAssertions?.total ?? data.mvp.assertionsPass,
+  );
   setTargets("conf", data.mvp.percent);
   if (typeof data.coverage === "number") setTargets("coverage", data.coverage);
 

@@ -2,10 +2,10 @@
 // Regenerate data/stats.json from the wago repository's own status files.
 //
 // This is what the "sync" CI job runs: it pulls the live numbers and feature
-// statuses out of wago's SPECTEST.md, FEATURES.md and coverage-report.md, so
-// the site never drifts from what the engine actually does. The same files are
-// the project's own source of truth, so the website inherits whatever wago
-// publishes.
+// statuses out of wago's SPECTEST.md, FEATURES.md, VERIFICATION.md and
+// coverage-report.md, so the site never drifts from what the engine actually
+// does. The same files are the project's own source of truth, so the website
+// inherits whatever wago publishes.
 //
 // Sources, in order of preference:
 //   1. $WAGO_DIR/<file>            (explicit local checkout - the CI default,
@@ -37,7 +37,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${REF}`;
 const API = `https://api.github.com/repos/${REPO}/contents`;
 
-const FILES = ["SPECTEST.md", "FEATURES.md", "coverage-report.md"];
+const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "coverage-report.md"];
 
 async function exists(p) {
   try {
@@ -113,7 +113,15 @@ function parseSIMDAssertions(text) {
 // "Coverage: 77.3%"
 function parseCoverage(text) {
   const m = text.match(/Coverage:\s*([\d.]+)\s*%/i);
-  return m ? Math.round(+m[1]) : null;
+  return m ? +m[1] : null;
+}
+
+// "**Verification: checks pass=96972 fail=0 skip=22**"
+function parseVerification(text) {
+  const m = text.match(/Verification:\s*checks\s+pass=(\d+)\s+fail=(\d+)\s+skip=(\d+)/i);
+  if (!m) throw new Error("VERIFICATION.md: could not find the verification summary line");
+  const coverage = parseCoverage(text);
+  return { checksPass: +m[1], checksFail: +m[2], checksSkip: +m[3], coverage };
 }
 
 const STATUS_BY_EMOJI = [
@@ -324,9 +332,10 @@ async function main() {
   const features = parseFeatures(srcs["FEATURES.md"].text);
   const simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
   const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
+  const verification = parseVerification(srcs["VERIFICATION.md"].text);
   const coverage = srcs["coverage-report.md"]
     ? parseCoverage(srcs["coverage-report.md"].text)
-    : null;
+    : verification.coverage;
 
   const mvpRows = features.filter((r) => r.mvp);
   const featuresDone = mvpRows.filter((r) => r.status === "done").length;
@@ -334,7 +343,7 @@ async function main() {
 
   const stats = [
     { key: "files", value: mvp.filesPass, total: mvp.filesTotal, label: "MVP files pass" },
-    { key: "assertions", value: suiteAssertionsPass, label: "assertions passed" },
+    { key: "assertions", value: verification.checksPass, label: "checks passed" },
     { key: "cgo", value: 0, label: "lines of cgo" },
   ];
   if (coverage != null) {
@@ -352,6 +361,7 @@ async function main() {
       simd: simdAssertionsPass,
       total: suiteAssertionsPass,
     },
+    verification,
     coverage,
     featuresDone,
     featuresTotal: mvpRows.length,
@@ -377,7 +387,7 @@ async function main() {
   console.log(
     `wrote data/stats.json from ${srcs["SPECTEST.md"].from}\n` +
       `  MVP ${mvp.filesPass}/${mvp.filesTotal} files (${mvp.percent}%) · ` +
-      `${suiteAssertionsPass} assertions passed · coverage ${coverage ?? "n/a"}% · ` +
+      `${verification.checksPass} checks passed · coverage ${coverage ?? "n/a"}% · ` +
       `${featuresDone}/${mvpRows.length} MVP features done` +
       (changed ? "" : " (no change)"),
   );

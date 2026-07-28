@@ -807,7 +807,7 @@
    The tab row above and the rail/spec beside it stay put — the frame edges are the
    "bumpers"; only the rows move. */
 .vs__main > .vs__panel:not([hidden]) {
-    max-height: 56vh;
+    height: 56vh;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
 }

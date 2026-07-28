@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27",
+  "generated": "2026-07-28",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -13,7 +13,7 @@
     "simd": 24325,
     "total": 40917
   },
-  "coverage": 79,
+  "coverage": 86,
   "featuresDone": 17,
   "featuresTotal": 17,
   "cgoLines": 0,
@@ -37,7 +37,7 @@
     },
     {
       "key": "coverage",
-      "value": 79,
+      "value": 86,
       "suffix": "%",
       "label": "test coverage"
     }

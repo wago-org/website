@@ -1,5 +1,7 @@
 # wago.sh - allow everything, point crawlers at the sitemap.
 # LLM-readable project brief: https://wago.sh/llms.txt
+# Canonical product facts: https://wago.sh/facts/
+# Canonical product facts JSON: https://wago.sh/data/facts.json
 # Complete structured project data: https://wago.sh/data/project.json
 User-agent: *
 Allow: /

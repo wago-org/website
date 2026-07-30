@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security and isolation status · wago</title>
+  <meta name="description" content="What Wago currently bounds, how runaway guest execution is interrupted, and which security assurances are not yet published." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/security/" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>Security and isolation status</h1>
+    <p class="docs-lead">What Wago currently bounds, how runaway guest execution is interrupted, and which security assurances are not yet published.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="controls">
+      <h2>Published controls</h2>
+      <ul>
+        <li>Declared linear-memory maxima can be limited at instantiation; the table policy currently checks initial/minimum entries only.</li>
+        <li>Explicit bounds checks are the default; signal-backed guard pages are an opt-in build/runtime path with native CI coverage.</li>
+        <li>Context cancellation and deadlines interrupt amd64/arm64 native guest code at function-entry and loop-header safepoints.</li>
+        <li>Capability policy can allow or deny plugin-provided host access.</li>
+        <li>The repository contains Go fuzz targets and 71 pinned wazero fuzz-regression fixtures with ordinary test oracles.</li>
+      </ul>
+      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/api.go" rel="external">public API source</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a></p>
+    </section>
+    <section id="not-published">
+      <h2>Not currently published</h2>
+      <ul>
+        <li>No dedicated <code>SECURITY.md</code> or public vulnerability-reporting address was found at this source commit.</li>
+        <li>No third-party security audit is claimed.</li>
+        <li>No runtime-wide aggregate memory budget across all live instances is documented.</li>
+        <li>No deterministic instruction-fuel accounting is documented; deadlines are cooperative safepoint interruption, and <code>Policy.MaxInvokeDuration</code> is reserved rather than enforced.</li>
+        <li>No stable compiled-artifact compatibility guarantee across releases is documented.</li>
+      </ul>
+      <p>For hostile multi-tenant workloads, these gaps should be part of the deployment threat model. Process or container isolation remains an additional defense boundary, not something the engine can make unnecessary.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

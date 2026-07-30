@@ -1,7 +1,6 @@
 // Parser-blocking head bootstrap. This stays separate from the deferred main
 // module because the launch phase must be selected before the page paints.
 (() => {
-    const launch = Date.UTC(2026, 7, 1); // 2026-08-01T00:00:00Z
     let phase: string | null = null;
 
     try {
@@ -14,9 +13,10 @@
         // Storage may be unavailable; the date-based default still works.
     }
 
-    if (phase !== "pre" && phase !== "post") {
-        phase = Date.now() >= launch ? "post" : "pre";
-    }
+    // Do not infer a release from the calendar. The canonical Wago source still
+    // describes a pre-v0.1 private preview; `?phase=post` remains available for
+    // explicitly previewing the eventual public-release layout.
+    if (phase !== "pre" && phase !== "post") phase = "pre";
 
     document.documentElement.classList.remove("phase-pre", "phase-post");
     document.documentElement.classList.add(`phase-${phase}`);

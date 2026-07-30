@@ -1,17 +1,19 @@
 {
-  "generated": "2026-07-28",
+  "generated": "2026-07-30",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
     "filesTotal": 57,
     "percent": 100,
     "assertionsPass": 16592,
-    "assertionsFail": 0
+    "assertionsFail": 0,
+    "assertionsSkip": 1591
   },
   "suiteAssertions": {
     "mvp": 16592,
     "simd": 24325,
-    "total": 40917
+    "total": 40917,
+    "accountingNote": "Legacy SPECTEST.md MVP passes plus SIMD passes; do not substitute this sum for the mixed-unit public verification total."
   },
   "verification": {
     "checksPass": 96972,
@@ -167,10 +169,10 @@
       "version": "next",
       "label": "WebAssembly 3.0+",
       "sub": "3.0 & in-progress proposals",
-      "status": "planned",
-      "done": 0,
+      "status": "partial",
+      "done": 2,
       "total": 42,
-      "pct": 0,
+      "pct": 5,
       "features": [
         {
           "label": "Tail calls",
@@ -178,7 +180,7 @@
         },
         {
           "label": "Extended const expressions",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Typed function references",
@@ -206,7 +208,7 @@
         },
         {
           "label": "Branch hinting",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Custom annotations (text)",

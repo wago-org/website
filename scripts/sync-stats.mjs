@@ -87,7 +87,7 @@ async function load(name) {
 // "**MVP execution: 43/58 applicable files fully passing | assertions pass=15229 fail=460 skip=2244**"
 function parseSpectest(text) {
   const m = text.match(
-    /(\d+)\s*\/\s*(\d+)\s+applicable files fully passing[^|]*\|\s*assertions\s+pass=(\d+)\s+fail=(\d+)/i,
+    /(\d+)\s*\/\s*(\d+)\s+applicable files fully passing[^|]*\|\s*assertions\s+pass=(\d+)\s+fail=(\d+)\s+skip=(\d+)/i,
   );
   if (!m) throw new Error("SPECTEST.md: could not find the MVP execution summary line");
   const filesPass = +m[1];
@@ -98,6 +98,7 @@ function parseSpectest(text) {
     percent: Math.round((filesPass / filesTotal) * 100),
     assertionsPass: +m[3],
     assertionsFail: +m[4],
+    assertionsSkip: +m[5],
   };
 }
 
@@ -202,14 +203,14 @@ const CATALOG = {
   next: [
     // --- Finished, shipped in WebAssembly 3.0 ---
     { label: "Tail calls", match: ["tail call"], status: "planned" },
-    { label: "Extended const expressions", status: "planned" },
+    { label: "Extended const expressions", match: ["extended constant"], status: "planned" },
     { label: "Typed function references", status: "planned" },
     { label: "Memory64", status: "planned" },
     { label: "Multiple memories", match: ["multi-memory"], status: "planned" },
     { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "planned" },
     { label: "Exception handling", match: ["exception handling"], status: "planned" },
     { label: "Relaxed SIMD", status: "planned" },
-    { label: "Branch hinting", status: "planned" },
+    { label: "Branch hinting", match: ["branch hint"], status: "planned" },
     { label: "Custom annotations (text)", status: "planned" },
     { label: "JS string builtins", status: "planned" },
     // --- Phase 4 ---
@@ -360,6 +361,8 @@ async function main() {
       mvp: mvp.assertionsPass,
       simd: simdAssertionsPass,
       total: suiteAssertionsPass,
+      accountingNote:
+        "Legacy SPECTEST.md MVP passes plus SIMD passes; do not substitute this sum for the mixed-unit public verification total.",
     },
     verification,
     coverage,

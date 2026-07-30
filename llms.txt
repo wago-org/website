@@ -5,11 +5,16 @@
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-07-28
+Data updated: 2026-07-30
 
 ## Current verified facts
 
-- MVP conformance: 57/57 applicable files pass (100%).
+- Release state: Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.
+- Native runtime targets: linux/amd64, linux/arm64, darwin/arm64.
+- Execution: single-pass native compiler; pure Go; cgo=false.
+- Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
+- Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
+- Legacy SPECTEST.md MVP report: 57/57 applicable files pass (100%); see /compatibility/ for the current public-verification boundary.
 - Verification: 96972 checks pass, 0 fail, 22 skip.
 - Test coverage: 86.1%.
 - Native benchmark architectures published: amd64, arm64.
@@ -18,6 +23,11 @@ Data updated: 2026-07-28
 
 ## Read next
 
+- [Canonical facts and primary evidence](https://wago.sh/facts/)
+- [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
+- [Security and isolation status](https://wago.sh/security/)
+- [Benchmark index and measurement caveats](https://wago.sh/benchmarks/)
+- [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)

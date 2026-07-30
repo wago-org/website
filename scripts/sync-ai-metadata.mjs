@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX = join(ROOT, "index.html");
 const STATS = join(ROOT, "data", "stats.json");
+const FACTS = join(ROOT, "data", "facts.json");
 const PROJECT = join(ROOT, "data", "project.json");
 const LLMS = join(ROOT, "llms.txt");
 const LLMS_FULL = join(ROOT, "llms-full.txt");
@@ -37,6 +38,56 @@ function decodeHtml(value) {
 
 function text(value) {
   return decodeHtml(value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim());
+}
+
+function normalizeHomepageClaims(index) {
+  const modes = {
+    wago: "single-pass",
+    wazero: "compiler",
+    wasmtime: "Cranelift",
+    wasmer: "compiler",
+    v8: "optimizing",
+    wamr: "compiler",
+    wasmi: "interpreter",
+    wasm3: "interpreter",
+  };
+  let updated = index.replace(
+    /(<span\b[^>]*class="rank__name"[^>]*>)([\s\S]*?)(<span\b[^>]*class="rank__tag"[^>]*>)([\s\S]*?)(<\/span><\/span>)/g,
+    (whole, open, runtimeHtml, tagOpen, _tag, close) => {
+      const runtime = text(runtimeHtml).toLowerCase();
+      return modes[runtime]
+        ? `${open}${runtimeHtml}${tagOpen}${modes[runtime]}${close}`
+        : whole;
+    },
+  );
+  updated = updated
+    .replaceAll(
+      "Go heap Go heap bytes allocated per fresh instance",
+      "Go heap bytes allocated per fresh instance",
+    )
+    .replaceAll(
+      "Go Go allocation objects per fresh instance",
+      "Go allocation objects per fresh instance",
+    )
+    .replaceAll(">Memory</button>", ">Go allocs</button>")
+    .replaceAll(
+      '<div class="vs__group">Instantiation</div>',
+      '<div class="vs__group">Instantiation — Go heap</div>',
+    )
+    .replaceAll(
+      ">bytes allocated per fresh instance<",
+      ">Go heap bytes allocated per fresh instance<",
+    )
+    .replaceAll(
+      ">allocation objects per fresh instance<",
+      ">Go allocation objects per fresh instance<",
+    )
+    .replaceAll("Full compile — allocation bytes", "Full compile — Go heap bytes")
+    .replaceAll(
+      "Full compile — allocation objects",
+      "Full compile — Go allocation objects",
+    );
+  return updated;
 }
 
 function escapeHtml(value) {
@@ -140,12 +191,12 @@ function parseComparisonRows(panel) {
       ...(group ? { group } : {}),
       label: capture(
         row,
-        /<span\b[^>]*class="vs__label"[^>]*>([\s\S]*?)<\/span>/,
+        /<span\b[^>]*class="vs__label"[^>]*>([\s\S]*?)<\/span\s*>/,
         "performance label",
       ),
       workload: capture(
         row,
-        /<span\b[^>]*class="vs__sub"[^>]*>([\s\S]*?)<\/span>/,
+        /<span\b[^>]*class="vs__sub"[^>]*>([\s\S]*?)<\/span\s*>/,
         "performance workload",
       ),
       wago: values[0],
@@ -338,7 +389,7 @@ function comparisonTable(entries) {
   ].join("\n");
 }
 
-function makeProject(stats, startup, performance) {
+function makeProject(stats, canonicalFacts, startup, performance) {
   return {
     schemaVersion: 1,
     generated: stats.generated,
@@ -352,6 +403,7 @@ function makeProject(stats, startup, performance) {
     license: "Apache-2.0",
     programmingLanguage: "Go",
     sourceData: stats.source,
+    canonicalFacts,
     facts: {
       nativeArchitectures: ["amd64", "arm64"],
       cgoLines: stats.cgoLines,
@@ -360,6 +412,8 @@ function makeProject(stats, startup, performance) {
       verification: stats.verification,
       coveragePercent: stats.coverage,
       featureGroups: stats.versions,
+      accountingNote:
+        "SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries; do not combine or substitute their counts.",
     },
     benchmarks: {
       caveat:
@@ -373,6 +427,7 @@ function makeProject(stats, startup, performance) {
     },
     machineReadable: {
       project: "https://wago.sh/data/project.json",
+      facts: "https://wago.sh/data/facts.json",
       conformance: "https://wago.sh/data/stats.json",
       llmSummary: "https://wago.sh/llms.txt",
       llmFull: "https://wago.sh/llms-full.txt",
@@ -383,6 +438,7 @@ function makeProject(stats, startup, performance) {
 
 function makeLlms(project) {
   const stats = project.facts;
+  const canonical = project.canonicalFacts;
   const architectures = Object.keys(project.benchmarks.wagoVsWazero.architectures);
   return `# wago
 
@@ -395,7 +451,12 @@ Data updated: ${project.generated}
 
 ## Current verified facts
 
-- MVP conformance: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%).
+- Release state: ${canonical.release.status}
+- Native runtime targets: ${canonical.platforms.filter((platform) => platform.status === "supported").map((platform) => platform.target).join(", ")}.
+- Execution: ${canonical.identity.execution}; pure Go; cgo=${canonical.identity.cgo}.
+- Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
+- Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
+- Legacy SPECTEST.md MVP report: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%); see /compatibility/ for the current public-verification boundary.
 - Verification: ${stats.verification.checksPass} checks pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
 - Test coverage: ${stats.coveragePercent}%.
 - Native benchmark architectures published: ${architectures.join(", ")}.
@@ -404,6 +465,11 @@ Data updated: ${project.generated}
 
 ## Read next
 
+- [Canonical facts and primary evidence](https://wago.sh/facts/)
+- [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
+- [Security and isolation status](https://wago.sh/security/)
+- [Benchmark index and measurement caveats](https://wago.sh/benchmarks/)
+- [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
@@ -416,7 +482,7 @@ When describing performance, name the architecture and workload, preserve the pu
 }
 
 function makeLlmsFull(project) {
-  const { facts, benchmarks } = project;
+  const { facts, canonicalFacts, benchmarks } = project;
   const out = [`# wago: complete machine-readable project brief
 
 Source: ${project.canonicalUrl}
@@ -428,18 +494,27 @@ Data updated: ${project.generated}
 
 ${project.summary}
 
-The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings, WASI support, and a plugin API.
+The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
+
+Release state: ${canonicalFacts.release.status}
+
+Native runtime targets: ${canonicalFacts.platforms.filter((platform) => platform.status === "supported").map((platform) => platform.target).join(", ")}.
+
+Concurrency: public calls on one Instance must be serialized. Separate instances isolate state, but Wago currently permits one process-wide native activation at a time. Context deadlines and cancellation interrupt amd64/arm64 guest code at cooperative safepoints; deterministic fuel accounting is not implemented.
+
+WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a complete Preview 1, Preview 2, or function-by-function WASI surface.
 
 ## Verification and conformance
 
 - Applicable MVP files passing: ${facts.conformance.filesPass}/${facts.conformance.filesTotal} (${facts.conformance.percent}%)
-- Verification checks: ${facts.verification.checksPass} pass; ${facts.verification.checksFail} fail; ${facts.verification.checksSkip} skip
-- Official MVP assertions: ${facts.suiteAssertions.mvp}
-- Official SIMD assertions: ${facts.suiteAssertions.simd}
+- Public verification (mixed units): ${facts.verification.checksPass} pass; ${facts.verification.checksFail} fail; ${facts.verification.checksSkip} Go-test/subtest skips
+- Current public-verification Spec 1.0 gate: ${canonicalFacts.compatibility.verification.gates.find((gate) => gate.name === "Spec 1.0").pass} execution assertions pass
+- Legacy SPECTEST.md MVP page: ${facts.conformance.filesPass}/${facts.conformance.filesTotal} applicable files; ${facts.conformance.assertionsPass} passing, ${facts.conformance.assertionsFail} failing, ${facts.conformance.assertionsSkip} skipped assertions
+- SIMD gate: ${facts.suiteAssertions.simd} execution assertions pass
 - Test coverage: ${facts.coveragePercent}%
 - cgo lines: ${facts.cgoLines}
 
-The detailed per-feature status is available at https://wago.sh/data/stats.json.
+SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility/.
 
 ## Benchmark interpretation
 
@@ -463,6 +538,9 @@ Definition: ${benchmarks.startup.definition}
   }
   out.push(`## Canonical machine-readable sources
 
+- Canonical product facts: https://wago.sh/data/facts.json
+- Static fact and evidence page: https://wago.sh/facts/
+- Exact compatibility scope: https://wago.sh/compatibility/
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
 - Wago manifest JSON Schema: https://wago.sh/schema.json
@@ -499,7 +577,7 @@ function makeJsonLd(project) {
         "@id": "https://wago.sh/#app",
         name: "wago",
         applicationCategory: "DeveloperApplication",
-        operatingSystem: "Linux, macOS, Windows",
+        operatingSystem: "Linux amd64, Linux arm64, macOS arm64",
         description: project.summary,
         url: "https://wago.sh/",
         downloadUrl: project.repository,
@@ -511,7 +589,7 @@ function makeJsonLd(project) {
           "Pure Go with no cgo",
           "Single-pass native amd64 and arm64 backends",
           "WebAssembly validation and tracked conformance",
-          "WASI and plugin support",
+          "Capability-based plugin support",
         ],
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         author: { "@id": "https://wago.sh/#org" },
@@ -537,6 +615,11 @@ function makeJsonLd(project) {
           {
             "@type": "DataDownload",
             encodingFormat: "application/json",
+            contentUrl: "https://wago.sh/data/facts.json",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/json",
             contentUrl: "https://wago.sh/data/project.json",
           },
           {
@@ -550,6 +633,7 @@ function makeJsonLd(project) {
   };
   return `${AI_START}
         <link rel="alternate" type="text/plain" href="/llms.txt" title="wago summary for language models" />
+        <link rel="alternate" type="application/json" href="/data/facts.json" title="canonical wago product facts" />
         <link rel="alternate" type="application/json" href="/data/project.json" title="wago project and benchmark data" />
         <script type="application/ld+json">
 ${JSON.stringify(data, null, 12)}
@@ -589,11 +673,12 @@ async function syncFile(path, content, stale) {
   await writeFile(path, content);
 }
 
-const index = await readFile(INDEX, "utf8");
+const index = normalizeHomepageClaims(await readFile(INDEX, "utf8"));
 const stats = JSON.parse(await readFile(STATS, "utf8"));
+const canonicalFacts = JSON.parse(await readFile(FACTS, "utf8"));
 const startup = parseStartup(index);
 const performance = parsePerformance(index);
-const project = makeProject(stats, startup, performance);
+const project = makeProject(stats, canonicalFacts, startup, performance);
 const nextIndex = replaceGeneratedBlock(syncStaticStats(index, stats), makeJsonLd(project));
 const sitemap = await readFile(SITEMAP, "utf8");
 const stale = [];

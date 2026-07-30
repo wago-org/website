@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wago compared with Wasmtime · wago</title>
+  <meta name="description" content="A scoped, source-linked comparison of Wago and Wasmtime, including when to choose either runtime and what has not been benchmarked." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/compare/wasmtime/" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>Wago compared with Wasmtime</h1>
+    <p class="docs-lead">A scoped, source-linked comparison of Wago and Wasmtime, including when to choose either runtime and what has not been benchmarked.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="summary">
+      <h2>Short answer</h2>
+      <p><strong>Choose Wago when</strong> a pure-Go, no-cgo embedding path and low single-pass compile overhead are primary constraints.</p>
+      <p><strong>Choose Wasmtime when</strong> you need the Component Model ecosystem, fuel accounting, epoch interruption, broad WASI support, or Wasmtime’s security and release processes.</p>
+    </section>
+    <section id="differences">
+      <h2>Operational differences</h2>
+      <table><thead><tr><th>Area</th><th>Wago</th><th>Wasmtime</th></tr></thead>
+      <tbody><tr><th scope="row">Implementation</th><td>Go; no cgo</td><td><a href="https://github.com/bytecodealliance/wasmtime">See the project’s current implementation and bindings</a></td></tr>
+<tr><th scope="row">Execution terminology</th><td>Single-pass native compiler</td><td>Cranelift optimizing compiler, available at runtime and ahead of time</td></tr>
+<tr><th scope="row">Wago release maturity</th><td>Pre-v1 development/nightly channels; no stable v1 API promise</td><td>See the other project’s release and support policy</td></tr>
+<tr><th scope="row">Known Wago gap</th><td>Wago has no published Component Model support, deterministic fuel system, third-party security audit, or Wasmtime-scale WASI surface.</td><td>Not applicable</td></tr></tbody></table>
+    </section>
+    <section id="benchmarks">
+      <h2>Benchmark scope</h2>
+      <p>Wago publishes whole-process startup rows that include Wasmtime, but does not publish the same detailed stage-by-stage comparison used for wazero.</p>
+      <p>No result on this page should be treated as universal. Use identical versions, hardware, Wasm modules, warmup, and measurement boundaries.</p>
+      <p>Raw Wago data: <a href="/data/project.json">project.json</a>. Other-runtime primary source: <a href="https://github.com/bytecodealliance/wasmtime">https://github.com/bytecodealliance/wasmtime</a>.</p>
+    </section>
+    <section id="verified">
+      <h2>Verification date</h2>
+      <p>Wago facts: 2026-07-30, pinned to <code>7d8c58aa454a</code>. Competitor descriptions last reviewed against the linked primary project source on 2026-07-29.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

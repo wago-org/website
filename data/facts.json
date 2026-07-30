@@ -1,0 +1,894 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-07-30",
+  "canonicalUrl": "https://wago.sh/facts/",
+  "source": {
+    "repository": "https://github.com/wago-org/wago",
+    "ref": "main",
+    "commit": "7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de",
+    "commitUrl": "https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"
+  },
+  "identity": {
+    "name": "wago",
+    "implementation": "Go",
+    "pureGo": true,
+    "cgo": false,
+    "execution": "single-pass native compiler",
+    "interpreter": false
+  },
+  "release": {
+    "status": "Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.",
+    "stableVersion": null,
+    "apiStability": "pre-v1; no stable-v1 compatibility promise"
+  },
+  "platforms": [
+    {
+      "target": "linux/amd64",
+      "status": "supported",
+      "detail": "native runtime CI",
+      "evidence": [
+        {
+          "label": "native CI matrix",
+          "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml"
+        }
+      ]
+    },
+    {
+      "target": "linux/arm64",
+      "status": "supported",
+      "detail": "native runtime CI",
+      "evidence": [
+        {
+          "label": "native CI matrix",
+          "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml"
+        }
+      ]
+    },
+    {
+      "target": "darwin/arm64",
+      "status": "supported",
+      "detail": "native runtime CI",
+      "evidence": [
+        {
+          "label": "native CI matrix",
+          "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml"
+        }
+      ]
+    },
+    {
+      "target": "darwin/amd64",
+      "status": "compiler-only",
+      "detail": "portable compiler/encoder checks; native JIT ABI is not claimed",
+      "evidence": [
+        {
+          "label": "native CI matrix",
+          "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml"
+        }
+      ]
+    },
+    {
+      "target": "windows/*",
+      "status": "planned",
+      "detail": "no native runtime target claimed",
+      "evidence": [
+        {
+          "label": "feature matrix",
+          "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+        }
+      ]
+    }
+  ],
+  "concurrency": {
+    "runtime": "concurrent compile/instantiate/execute on distinct objects is race-tested",
+    "compiledModule": "compile once and instantiate many; blanket method-level goroutine-safety is not yet documented",
+    "instance": "one active caller at a time; serialize calls",
+    "separateInstances": "concurrent callers are accepted, but native Wasm activations are serialized process-wide",
+    "nativeExecutionParallelism": "one process-wide native activation at a time",
+    "resultLifetime": "instance-owned result buffer remains valid only until the next call"
+  },
+  "limits": {
+    "declaredMemory": true,
+    "declaredTables": "partial: initial/minimum size checked; growth maximum is not enforced by Policy.MaxTableEntries",
+    "deadlineInterruption": {
+      "amd64": true,
+      "arm64": true,
+      "mechanism": "cooperative native safepoints"
+    },
+    "policyMaxInvokeDuration": "accepted-but-not-enforced",
+    "deterministicFuel": false,
+    "aggregateMemoryAccounting": false
+  },
+  "wasi": {
+    "delivery": "outside core; external plugin integration exists but its function-level support was not audited here",
+    "preview1": "function-level support matrix not published",
+    "preview2": "not claimed"
+  },
+  "webAssembly": {
+    "mvpLegacyReport": {
+      "filesPass": 57,
+      "filesTotal": 57,
+      "percent": 100,
+      "assertionsPass": 16592,
+      "assertionsFail": 0,
+      "assertionsSkip": 1591
+    },
+    "verification": {
+      "checksPass": 96972,
+      "checksFail": 0,
+      "checksSkip": 22,
+      "coverage": 86.1
+    },
+    "proposals": [
+      {
+        "name": "i32 / i64 integer ops",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "f32 / f64 ops",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "f32 / f64 ceil / floor / trunc / nearest / copysign",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Conversions + reinterpret",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Float→int trunc NaN/overflow traps",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Control flow: block / loop / if / else / br / br_if / br_table / return",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "call / call_indirect",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "select, drop, nop, unreachable",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Locals",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Globals",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Linear memory load/store",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "memory.size / memory.grow",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Active data segments",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Tables + active element segments",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Function imports / exports",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Memory / table / global imports & exports",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "start function",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Sign-extension ops",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Non-trapping float→int",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Multi-value",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Reference types",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Bulk memory",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Fixed-width SIMD",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Tail calls",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Extended const expressions",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Typed function references",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Memory64",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Multiple memories",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Garbage collection",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Exception handling",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Relaxed SIMD",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Branch hinting",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Custom annotations (text)",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "JS string builtins",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Threads & atomics",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "JS Promise integration",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Web Content Security Policy",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "ESM integration",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Wide arithmetic",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Stack switching",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Compact import section",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Custom page sizes",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Custom descriptors & JS interop",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Relaxed dead-code validation",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Numeric values in WAT data",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Extended name section",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Rounding variants",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Compilation hints",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "JS primitive builtins",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Relaxed atomics",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Type imports",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Component model",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "C / C++ embedding API",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Flexible vectors",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Memory control",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Reference-typed strings",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Profiles",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Shared-everything threads",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Frozen values",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Half precision (FP16)",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "More array constructors",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "JIT interface",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Multibyte array access",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "Type reflection (JS API)",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      },
+      {
+        "name": "JS text-encoding builtins",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+          }
+        ]
+      }
+    ]
+  },
+  "compatibility": {
+    "verification": {
+      "host": "darwin/arm64",
+      "pass": 96972,
+      "fail": 0,
+      "skip": 22,
+      "gates": [
+        {
+          "name": "Normal",
+          "pass": 4333,
+          "fail": 0,
+          "skip": 17,
+          "unit": "Go tests and subtests"
+        },
+        {
+          "name": "Guard pages",
+          "pass": 1077,
+          "fail": 0,
+          "skip": 5,
+          "unit": "Go tests and subtests"
+        },
+        {
+          "name": "Spec 1.0",
+          "pass": 16026,
+          "fail": 0,
+          "skip": 0,
+          "unit": "execution assertions"
+        },
+        {
+          "name": "Spec 2.0",
+          "pass": 51211,
+          "fail": 0,
+          "skip": 0,
+          "unit": "2880 validation + 48331 execution assertions"
+        },
+        {
+          "name": "SIMD",
+          "pass": 24325,
+          "fail": 0,
+          "skip": 0,
+          "unit": "execution assertions"
+        }
+      ]
+    },
+    "wazero": {
+      "commit": "236c2458ed22010150de76c5397eca2c89af3b4f",
+      "filesAudited": 234,
+      "method": "ported/adapted coverage with an applicability ledger"
+    },
+    "wasmtime": {
+      "suiteImported": false,
+      "claim": "No full Wasmtime suite claim is published."
+    }
+  },
+  "security": {
+    "dedicatedPolicyPublished": false,
+    "thirdPartyAuditClaimed": false,
+    "fuzzTestsPresent": true,
+    "recommendedAdditionalBoundary": "process or container isolation for hostile multi-tenant guests"
+  },
+  "benchmarks": {
+    "allocationMeaning": "Go heap allocation traffic measured during the named operation",
+    "allocationExcludes": [
+      "guest linear memory",
+      "native code mappings",
+      "native virtual-memory reservations",
+      "process RSS/PSS"
+    ],
+    "manyInstance": {
+      "status": "protocol-published-results-not-measured",
+      "instanceCounts": [
+        1,
+        8,
+        80,
+        120
+      ]
+    }
+  },
+  "evidence": {
+    "readme": {
+      "label": "README",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md"
+    },
+    "features": {
+      "label": "feature matrix",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md"
+    },
+    "verification": {
+      "label": "public verification",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md"
+    },
+    "ci": {
+      "label": "native CI matrix",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml"
+    },
+    "api": {
+      "label": "public API source",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/api.go"
+    },
+    "concurrency": {
+      "label": "race-tested concurrency port",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/wazero_concurrency_port_test.go"
+    },
+    "nativeExecution": {
+      "label": "native execution serialization",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/instance_native_context.go"
+    },
+    "memory": {
+      "label": "borrowed memory-view contract",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/memory.go"
+    },
+    "policy": {
+      "label": "resource policy enforcement",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/policy.go"
+    },
+    "wazeroLedger": {
+      "label": "wazero applicability ledger",
+      "url": "https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/docs/wazero-test-applicability.md"
+    }
+  }
+}

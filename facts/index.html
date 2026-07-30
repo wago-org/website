@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wago facts · wago</title>
+  <meta name="description" content="A static, citable answer sheet for Wago’s release state, native targets, execution model, concurrency, limits, WASI, and WebAssembly support." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/facts/" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>Wago facts</h1>
+    <p class="docs-lead">A static, citable answer sheet for Wago’s release state, native targets, execution model, concurrency, limits, WASI, and WebAssembly support.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="what-is-wago">
+      <h2>What is Wago?</h2>
+      <p>Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself; it is not a Go wrapper around a C or C++ runtime.</p>
+      <dl>
+        <div><dt>Implementation</dt><dd>Pure Go; no cgo in the engine.</dd></div>
+        <div><dt>Execution model</dt><dd>Single-pass native compiler for amd64 and arm64. Wago does not ship an interpreter tier.</dd></div>
+        <div><dt>Release state</dt><dd>Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed. There is no stable v1 API promise.</dd></div>
+      </dl>
+      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></p>
+    </section>
+    <section id="platforms">
+      <h2>Native runtime targets</h2>
+      <table><thead><tr><th>Target</th><th>Status</th><th>Primary evidence</th></tr></thead>
+      <tbody><tr><th scope="row"><code>linux/amd64</code></th><td><span class="fact-status fact-status--supported">supported</span> native runtime CI</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a></td></tr>
+<tr><th scope="row"><code>linux/arm64</code></th><td><span class="fact-status fact-status--supported">supported</span> native runtime CI</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a></td></tr>
+<tr><th scope="row"><code>darwin/arm64</code></th><td><span class="fact-status fact-status--supported">supported</span> native runtime CI</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a></td></tr>
+<tr><th scope="row"><code>darwin/amd64</code></th><td><span class="fact-status fact-status--compiler-only">compiler-only</span> portable compiler/encoder checks; native JIT ABI is not claimed</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a></td></tr>
+<tr><th scope="row"><code>windows/*</code></th><td><span class="fact-status fact-status--planned">planned</span> no native runtime target claimed</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr></tbody></table>
+      <p>“Supported” here means the native runtime, API tests, guard-page path, and corpus correctness run in CI. It does not mean every Go target is a native Wago runtime.</p>
+    </section>
+    <section id="concurrency">
+      <h2>Concurrency contract</h2>
+      <table><thead><tr><th>Object or operation</th><th>Contract</th><th>Evidence</th></tr></thead>
+      <tbody><tr><th scope="row">Runtime</th><td>Concurrent compile, instantiate, and execute on distinct modules/instances is race-tested.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/wazero_concurrency_port_test.go" rel="external">race-tested concurrency port</a></td></tr>
+<tr><th scope="row">Compiled module</th><td>Compile once and instantiate many. The public docs do not yet make a blanket goroutine-safety promise for every method.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a></td></tr>
+<tr><th scope="row">Instance</th><td>Do not make concurrent calls on one instance. Call and result buffers are instance-owned.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/api.go" rel="external">public API source</a></td></tr>
+<tr><th scope="row">Separate instances</th><td>Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized by one process-wide lock.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/instance_native_context.go" rel="external">native execution serialization</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/wazero_concurrency_port_test.go" rel="external">race-tested concurrency port</a></td></tr>
+<tr><th scope="row">Memory view</th><td>Memory.Bytes() is a borrowed zero-copy view valid only while the memory and owner remain open. Callers must synchronize it against close and guest mutation.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/memory.go" rel="external">borrowed memory-view contract</a></td></tr>
+<tr><th scope="row">Host imports</th><td>Nested same-instance Wasm reentry is tested, but a complete public reentrancy contract is not yet documented.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a></td></tr></tbody></table>
+    </section>
+    <section id="limits">
+      <h2>Resource limits and interruption</h2>
+      <table><thead><tr><th>Control</th><th>Status</th><th>Evidence</th></tr></thead>
+      <tbody><tr><th scope="row">Declared linear memory</th><td><span class="fact-status fact-status--supported">supported</span> Runtime and policy limits cap declared memory.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a></td></tr>
+<tr><th scope="row">Declared table entries</th><td><span class="fact-status fact-status--partial">partial</span> Policy limits check each table’s initial/minimum size, not a complete growth ceiling.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/policy.go" rel="external">resource policy enforcement</a></td></tr>
+<tr><th scope="row">Execution deadline</th><td><span class="fact-status fact-status--supported">supported</span> Context cancellation and deadlines interrupt amd64/arm64 native execution at safepoints.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/api.go" rel="external">public API source</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Policy MaxInvokeDuration</th><td><span class="fact-status fact-status--not-published">not-published</span> The field is reserved and not enforced; callers must use a context deadline.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/policy.go" rel="external">resource policy enforcement</a></td></tr>
+<tr><th scope="row">Aggregate live-instance memory</th><td><span class="fact-status fact-status--not-published">not-published</span> No runtime-wide accounting contract is documented at this source commit.</td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a></td></tr></tbody></table>
+    </section>
+    <section id="wasi">
+      <h2>WASI</h2>
+      <p>WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a function-by-function plugin support matrix, so this page does not claim complete Preview 1 or Preview 2 coverage.</p>
+      <p class="evidence">See the <a href="https://plugins.wago.sh/wago-org/wasi">WASI plugin listing</a> and <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a>.</p>
+    </section>
+    <section id="webassembly">
+      <h2>WebAssembly proposals</h2>
+      <p>Wago’s Release 2 validation and execution gates are green. Proposal status below comes from the generated feature tracker; “planned” is not partial support.</p>
+      <table><thead><tr><th>Proposal</th><th>Status</th><th>Evidence</th></tr></thead>
+      <tbody><tr><th scope="row">i32 / i64 integer ops</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">f32 / f64 ops</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">f32 / f64 ceil / floor / trunc / nearest / copysign</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Conversions + reinterpret</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Float→int trunc NaN/overflow traps</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Control flow: block / loop / if / else / br / br_if / br_table / return</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">call / call_indirect</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">select, drop, nop, unreachable</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Locals</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Globals</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Linear memory load/store</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">memory.size / memory.grow</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Active data segments</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Tables + active element segments</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Function imports / exports</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Memory / table / global imports &amp; exports</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">start function</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Sign-extension ops</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Non-trapping float→int</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Multi-value</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Reference types</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Bulk memory</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Fixed-width SIMD</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Tail calls</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Extended const expressions</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Typed function references</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Memory64</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Multiple memories</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Garbage collection</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Exception handling</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Relaxed SIMD</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Branch hinting</th><td><span class="fact-status fact-status--pass">pass</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Custom annotations (text)</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">JS string builtins</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Threads &amp; atomics</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">JS Promise integration</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Web Content Security Policy</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">ESM integration</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Wide arithmetic</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Stack switching</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Compact import section</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Custom page sizes</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Custom descriptors &amp; JS interop</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Relaxed dead-code validation</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Numeric values in WAT data</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Extended name section</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Rounding variants</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Compilation hints</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">JS primitive builtins</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Relaxed atomics</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Type imports</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Component model</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">C / C++ embedding API</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Flexible vectors</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Memory control</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Reference-typed strings</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Profiles</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Shared-everything threads</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Frozen values</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Half precision (FP16)</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">More array constructors</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">JIT interface</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Multibyte array access</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">Type reflection (JS API)</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr>
+<tr><th scope="row">JS text-encoding builtins</th><td><span class="fact-status fact-status--planned">planned</span></td><td><a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></td></tr></tbody></table>
+    </section>
+    <section id="artifacts">
+      <h2>Precompiled artifacts</h2>
+      <p>Wago can serialize and load <code>.wago</code> compiled modules. The codec is versioned, but a stable cross-release artifact compatibility policy and cache-keyed CLI product are not yet published.</p>
+      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/README.md" rel="external">README</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/src/wago/api.go" rel="external">public API source</a></p>
+    </section>
+    <section id="machine-readable">
+      <h2>Machine-readable source</h2>
+      <p><a href="/data/facts.json">facts.json</a> is the canonical structured form of this page. Benchmark rows live in <a href="/data/project.json">project.json</a>; verification and proposal rollups live in <a href="/data/stats.json">stats.json</a>.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

@@ -3,24 +3,33 @@
 Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-07-28
+Data updated: 2026-07-30
 
 ## What wago is
 
 A WebAssembly engine written in pure Go with single-pass native amd64 and arm64 backends, no cgo, tracked conformance, and a plugin system.
 
-The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings, WASI support, and a plugin API.
+The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
+
+Release state: Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.
+
+Native runtime targets: linux/amd64, linux/arm64, darwin/arm64.
+
+Concurrency: public calls on one Instance must be serialized. Separate instances isolate state, but Wago currently permits one process-wide native activation at a time. Context deadlines and cancellation interrupt amd64/arm64 guest code at cooperative safepoints; deterministic fuel accounting is not implemented.
+
+WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a complete Preview 1, Preview 2, or function-by-function WASI surface.
 
 ## Verification and conformance
 
 - Applicable MVP files passing: 57/57 (100%)
-- Verification checks: 96972 pass; 0 fail; 22 skip
-- Official MVP assertions: 16592
-- Official SIMD assertions: 24325
+- Public verification (mixed units): 96972 pass; 0 fail; 22 Go-test/subtest skips
+- Current public-verification Spec 1.0 gate: 16026 execution assertions pass
+- Legacy SPECTEST.md MVP page: 57/57 applicable files; 16592 passing, 0 failing, 1591 skipped assertions
+- SIMD gate: 24325 execution assertions pass
 - Test coverage: 86.1%
 - cgo lines: 0
 
-The detailed per-feature status is available at https://wago.sh/data/stats.json.
+SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility/.
 
 ## Benchmark interpretation
 
@@ -37,72 +46,72 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | native | 5.1 ms |
-| wasmi | interp | 7.4 ms |
-| wasmtime | JIT | 8.1 ms |
-| wasmer | JIT | 8.4 ms |
-| wazero | JIT | 11.0 ms |
-| v8 | JIT | 12.3 ms |
+| wago | single-pass | 5.1 ms |
+| wasmi | interpreter | 7.4 ms |
+| wasmtime | Cranelift | 8.1 ms |
+| wasmer | compiler | 8.4 ms |
+| wazero | compiler | 11.0 ms |
+| v8 | optimizing | 12.3 ms |
 | wavm | LLVM | 266 ms |
 
 #### nbody
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wasmtime | JIT | 30.1 ms |
-| wago | native | 30.9 ms |
-| wazero | JIT | 39.2 ms |
-| v8 | JIT | 43.8 ms |
+| wasmtime | Cranelift | 30.1 ms |
+| wago | single-pass | 30.9 ms |
+| wazero | compiler | 39.2 ms |
+| v8 | optimizing | 43.8 ms |
 | wavm | LLVM | 49.9 ms |
-| wasmer | JIT | 145 ms |
-| wasmi | interp | 367 ms |
+| wasmer | compiler | 145 ms |
+| wasmi | interpreter | 367 ms |
 
 #### spectralnorm
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | native | 3.7 ms |
-| wazero | JIT | 4.8 ms |
-| wasmtime | JIT | 6.1 ms |
-| v8 | JIT | 15.0 ms |
-| wasmer | JIT | 18.8 ms |
-| wasmi | interp | 40.5 ms |
+| wago | single-pass | 3.7 ms |
+| wazero | compiler | 4.8 ms |
+| wasmtime | Cranelift | 6.1 ms |
+| v8 | optimizing | 15.0 ms |
+| wasmer | compiler | 18.8 ms |
+| wasmi | interpreter | 40.5 ms |
 | wavm | LLVM | 50.8 ms |
 
 #### quicksort
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | native | 9.4 ms |
-| wasmtime | JIT | 10.8 ms |
-| wazero | JIT | 12.1 ms |
-| v8 | JIT | 17.0 ms |
-| wasmer | JIT | 17.1 ms |
-| wasmi | interp | 49.4 ms |
+| wago | single-pass | 9.4 ms |
+| wasmtime | Cranelift | 10.8 ms |
+| wazero | compiler | 12.1 ms |
+| v8 | optimizing | 17.0 ms |
+| wasmer | compiler | 17.1 ms |
+| wasmi | interpreter | 49.4 ms |
 | wavm | LLVM | 137 ms |
 
 #### raytrace
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wazero | JIT | 8.8 ms |
-| wago | native | 9.0 ms |
-| wasmtime | JIT | 10.6 ms |
-| v8 | JIT | 15.8 ms |
-| wasmer | JIT | 26.6 ms |
+| wazero | compiler | 8.8 ms |
+| wago | single-pass | 9.0 ms |
+| wasmtime | Cranelift | 10.6 ms |
+| v8 | optimizing | 15.8 ms |
+| wasmer | compiler | 26.6 ms |
 | wavm | LLVM | 40.4 ms |
-| wasmi | interp | 55.4 ms |
+| wasmi | interpreter | 55.4 ms |
 
 #### sha256
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | native | 2.4 ms |
-| wazero | JIT | 2.9 ms |
-| wasmtime | JIT | 4.9 ms |
-| wasmer | JIT | 7.1 ms |
-| wasmi | interp | 10.5 ms |
-| v8 | JIT | 12.8 ms |
+| wago | single-pass | 2.4 ms |
+| wazero | compiler | 2.9 ms |
+| wasmtime | Cranelift | 4.9 ms |
+| wasmer | compiler | 7.1 ms |
+| wasmi | interpreter | 10.5 ms |
+| v8 | optimizing | 12.8 ms |
 | wavm | LLVM | 33.1 ms |
 
 ## wago versus wazero
@@ -113,100 +122,100 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-|  | Compile latency fib_rec module | fib_rec module | 4µs | 44.9µs |  | wago ahead |
-|  | Instantiate latency fib_rec startup + mapping | fib_rec startup + mapping | 2.1µs | 8.7µs |  | wago ahead |
-|  | Call overhead host → wasm | host → wasm | 10.4ns | 33.1ns |  | wago ahead |
-|  | Host roundtrip wasm → host → wasm | wasm → host → wasm | 148.5ns | 440.4ns |  | wago ahead |
-|  | Exec latency fib_rec recursion | fib_rec recursion | 370µs | 538µs |  | wago ahead |
-|  | N-body leapfrog solar-system integrator | leapfrog solar-system integrator | 283µs | 364µs |  | wago ahead |
-|  | Ray tracer recursive Whitted, depth-4 mirrors | recursive Whitted, depth-4 mirrors | 401µs | 367µs |  | wago behind |
-|  | SHA-256 hash 8 KiB | hash 8 KiB | 38.6µs | 55.3µs |  | wago ahead |
-|  | JSON deserialize json-as, SWAR | json-as, SWAR | 40µs | 63.6µs |  | wago ahead |
+|  | Compile latency | fib_rec module | 4µs | 44.9µs |  | wago ahead |
+|  | Instantiate latency | fib_rec startup + mapping | 2.1µs | 8.7µs |  | wago ahead |
+|  | Call overhead | host → wasm | 10.4ns | 33.1ns |  | wago ahead |
+|  | Host roundtrip | wasm → host → wasm | 148.5ns | 440.4ns |  | wago ahead |
+|  | Exec latency | fib_rec recursion | 370µs | 538µs |  | wago ahead |
+|  | N-body | leapfrog solar-system integrator | 283µs | 364µs |  | wago ahead |
+|  | Ray tracer | recursive Whitted, depth-4 mirrors | 401µs | 367µs |  | wago behind |
+|  | SHA-256 | hash 8 KiB | 38.6µs | 55.3µs |  | wago ahead |
+|  | JSON deserialize | json-as, SWAR | 40µs | 63.6µs |  | wago ahead |
 
 #### Compile
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Micro modules | tiny smallest valid module | smallest valid module | 3.5µs | 45.7µs |  | wago ahead |
-| Micro modules | fib_rec recursive fib | recursive fib | 4µs | 44.9µs |  | wago ahead |
-| Micro modules | dispatch call_indirect table | call_indirect table | 7.6µs | 65.7µs |  | wago ahead |
-| Micro modules | many_funcs thousands of functions | thousands of functions | 291µs | 1.09ms |  | wago ahead |
-| Compute kernels | linked_list dependent-load chase | dependent-load chase | 8.2µs | 67.8µs |  | wago ahead |
-| Compute kernels | memory_tree loads + calls | loads + calls | 9.9µs | 80.7µs |  | wago ahead |
-| Compute kernels | sieve Eratosthenes | Eratosthenes | 10.2µs | 78.3µs |  | wago ahead |
-| Compute kernels | mandelbrot f64 escape-time | f64 escape-time | 11.2µs | 74.7µs |  | wago ahead |
-| Benchmarks Game (Rust) | nbody leapfrog integrator | leapfrog integrator | 87.4µs | 355µs |  | wago ahead |
-| Benchmarks Game (Rust) | spectralnorm AᵀA power iteration | AᵀA power iteration | 51.9µs | 364µs |  | wago ahead |
-| Benchmarks Game (Rust) | fannkuch permutation pancake-flips | permutation pancake-flips | 111µs | 623µs |  | wago ahead |
-| Crypto & graphics (Rust) | matmul 64³ f64 multiply-add | 64³ f64 multiply-add | 40.1µs | 321µs |  | wago ahead |
-| Crypto & graphics (Rust) | quicksort recursive int sort | recursive int sort | 36.5µs | 306µs |  | wago ahead |
-| Crypto & graphics (Rust) | crc32 table-driven checksum | table-driven checksum | 21µs | 182µs |  | wago ahead |
-| Crypto & graphics (Rust) | sha256 SHA-256 hash | SHA-256 hash | 60.6µs | 393µs |  | wago ahead |
-| Crypto & graphics (Rust) | raytrace recursive ray tracer | recursive ray tracer | 145µs | 1.15ms |  | wago ahead |
-| Real-world (AssemblyScript) | json-as JSON SWAR | JSON SWAR | 881µs | 5.66ms |  | wago ahead |
-| Real-world (AssemblyScript) | blake-as BLAKE3 SWAR | BLAKE3 SWAR | 189µs | 822µs |  | wago ahead |
-| Real-world (AssemblyScript) | utf-as UTF SWAR transcode | UTF SWAR transcode | 117µs | 666µs |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | Lua 5.4 interpreter · 270 KB | interpreter · 270 KB | 30ms | 83.6ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | SQLite 3.46 database engine · 920 KB | database engine · 920 KB | 104.3ms | 343.5ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 806.7ms | 3118ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | Ruby 3.3 interpreter · 16 MB, 17k funcs | interpreter · 16 MB, 17k funcs | 1253.9ms | 5485.8ms |  | wago ahead |
+| Micro modules | tiny | smallest valid module | 3.5µs | 45.7µs |  | wago ahead |
+| Micro modules | fib_rec | recursive fib | 4µs | 44.9µs |  | wago ahead |
+| Micro modules | dispatch | call_indirect table | 7.6µs | 65.7µs |  | wago ahead |
+| Micro modules | many_funcs | thousands of functions | 291µs | 1.09ms |  | wago ahead |
+| Compute kernels | linked_list | dependent-load chase | 8.2µs | 67.8µs |  | wago ahead |
+| Compute kernels | memory_tree | loads + calls | 9.9µs | 80.7µs |  | wago ahead |
+| Compute kernels | sieve | Eratosthenes | 10.2µs | 78.3µs |  | wago ahead |
+| Compute kernels | mandelbrot | f64 escape-time | 11.2µs | 74.7µs |  | wago ahead |
+| Benchmarks Game (Rust) | nbody | leapfrog integrator | 87.4µs | 355µs |  | wago ahead |
+| Benchmarks Game (Rust) | spectralnorm | AᵀA power iteration | 51.9µs | 364µs |  | wago ahead |
+| Benchmarks Game (Rust) | fannkuch | permutation pancake-flips | 111µs | 623µs |  | wago ahead |
+| Crypto & graphics (Rust) | matmul | 64³ f64 multiply-add | 40.1µs | 321µs |  | wago ahead |
+| Crypto & graphics (Rust) | quicksort | recursive int sort | 36.5µs | 306µs |  | wago ahead |
+| Crypto & graphics (Rust) | crc32 | table-driven checksum | 21µs | 182µs |  | wago ahead |
+| Crypto & graphics (Rust) | sha256 | SHA-256 hash | 60.6µs | 393µs |  | wago ahead |
+| Crypto & graphics (Rust) | raytrace | recursive ray tracer | 145µs | 1.15ms |  | wago ahead |
+| Real-world (AssemblyScript) | json-as | JSON SWAR | 881µs | 5.66ms |  | wago ahead |
+| Real-world (AssemblyScript) | blake-as | BLAKE3 SWAR | 189µs | 822µs |  | wago ahead |
+| Real-world (AssemblyScript) | utf-as | UTF SWAR transcode | 117µs | 666µs |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | Lua 5.4 | interpreter · 270 KB | 30ms | 83.6ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | SQLite 3.46 | database engine · 920 KB | 104.3ms | 343.5ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | esbuild | Go bundler · 12 MB | 806.7ms | 3118ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | Ruby 3.3 | interpreter · 16 MB, 17k funcs | 1253.9ms | 5485.8ms |  | wago ahead |
 
 #### Instantiate
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-|  | Cold start fib_rec startup + mapping | fib_rec startup + mapping | 2.1µs | 8.7µs |  | wago ahead |
-|  | Heap footprint bytes allocated | bytes allocated | 1.2 KB | 7.2 KB |  | wago ahead |
-|  | Allocations objects allocated | objects allocated | 7 | 23 |  | wago ahead |
+|  | Cold start | fib_rec startup + mapping | 2.1µs | 8.7µs |  | wago ahead |
+|  | Heap footprint | bytes allocated | 1.2 KB | 7.2 KB |  | wago ahead |
+|  | Allocations | objects allocated | 7 | 23 |  | wago ahead |
 
-#### Memory
+#### Go allocs
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Instantiation | fib_rec instance bytes allocated per fresh instance | bytes allocated per fresh instance | 1.2 KB | 7.2 KB |  | wago ahead |
-| Instantiation | fib_rec instance allocation objects per fresh instance | allocation objects per fresh instance | 7 | 23 |  | wago ahead |
-| Full compile — allocation bytes | tiny smallest module | smallest module | 37.1 KB | 268 KB |  | wago ahead |
-| Full compile — allocation bytes | memory tree calls + linear-memory access | calls + linear-memory access | 40.4 KB | 310 KB |  | wago ahead |
-| Full compile — allocation bytes | json-as AssemblyScript JSON | AssemblyScript JSON | 442 KB | 2.4 MB |  | wago ahead |
-| Full compile — allocation bytes | blake-as AssemblyScript BLAKE3 | AssemblyScript BLAKE3 | 260 KB | 1.1 MB |  | wago ahead |
-| Full compile — allocation bytes | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 74.2 MB | 256.2 MB |  | wago ahead |
-| Full compile — allocation bytes | Ruby 3.3 interpreter · 16 MB | interpreter · 16 MB | 104 MB | 408.2 MB |  | wago ahead |
-| Full compile — allocation objects | tiny smallest module | smallest module | 39 | 189 |  | wago ahead |
-| Full compile — allocation objects | memory tree calls + linear-memory access | calls + linear-memory access | 70 | 342 |  | wago ahead |
-| Full compile — allocation objects | json-as AssemblyScript JSON | AssemblyScript JSON | 1446 | 6432 |  | wago ahead |
-| Full compile — allocation objects | blake-as AssemblyScript BLAKE3 | AssemblyScript BLAKE3 | 189 | 1028 |  | wago ahead |
-| Full compile — allocation objects | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 144086 | 481994 |  | wago ahead |
-| Full compile — allocation objects | Ruby 3.3 interpreter · 16 MB | interpreter · 16 MB | 359738 | 462120 |  | wago ahead |
+| Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.2 KB | 7.2 KB |  | wago ahead |
+| Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 7 | 23 |  | wago ahead |
+| Full compile — Go heap bytes | tiny | smallest module | 37.1 KB | 268 KB |  | wago ahead |
+| Full compile — Go heap bytes | memory tree | calls + linear-memory access | 40.4 KB | 310 KB |  | wago ahead |
+| Full compile — Go heap bytes | json-as | AssemblyScript JSON | 442 KB | 2.4 MB |  | wago ahead |
+| Full compile — Go heap bytes | blake-as | AssemblyScript BLAKE3 | 260 KB | 1.1 MB |  | wago ahead |
+| Full compile — Go heap bytes | esbuild | Go bundler · 12 MB | 74.2 MB | 256.2 MB |  | wago ahead |
+| Full compile — Go heap bytes | Ruby 3.3 | interpreter · 16 MB | 104 MB | 408.2 MB |  | wago ahead |
+| Full compile — Go allocation objects | tiny | smallest module | 39 | 189 |  | wago ahead |
+| Full compile — Go allocation objects | memory tree | calls + linear-memory access | 70 | 342 |  | wago ahead |
+| Full compile — Go allocation objects | json-as | AssemblyScript JSON | 1446 | 6432 |  | wago ahead |
+| Full compile — Go allocation objects | blake-as | AssemblyScript BLAKE3 | 189 | 1028 |  | wago ahead |
+| Full compile — Go allocation objects | esbuild | Go bundler · 12 MB | 144086 | 481994 |  | wago ahead |
+| Full compile — Go allocation objects | Ruby 3.3 | interpreter · 16 MB | 359738 | 462120 |  | wago ahead |
 
 #### Exec
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Micro ops | Call overhead host → wasm | host → wasm | 10.4ns | 33.1ns |  | wago ahead |
-| Micro ops | Host roundtrip wasm → host → wasm (sync host import) | wasm → host → wasm (sync host import) | 148.5ns | 440.4ns |  | wago ahead |
-| Micro ops | Iterative fib fib_iter loop | fib_iter loop | 17ns | 45.8ns |  | wago ahead |
-| Micro ops | Recursive fib fib_rec | fib_rec | 370µs | 538µs |  | wago ahead |
-| Micro ops | Dispatch call_indirect apply | call_indirect apply | 38.1ns | 29.8ns |  | wago behind |
-| Compute kernels | Linked list dependent-load chase | dependent-load chase | 8.2µs | 11.1µs |  | wago ahead |
-| Compute kernels | Recursive tree memory_tree, loads + calls | memory_tree, loads + calls | 10.2µs | 22.1µs |  | wago ahead |
-| Compute kernels | Sieve Eratosthenes | Eratosthenes | 86µs | 143µs |  | wago ahead |
-| Compute kernels | Mandelbrot f64 escape-time | f64 escape-time | 247µs | 269µs |  | wago ahead |
-| Benchmarks Game (Rust) | N-body leapfrog solar-system integrator | leapfrog solar-system integrator | 283µs | 364µs |  | wago ahead |
-| Benchmarks Game (Rust) | Spectral norm AᵀA power iteration + div | AᵀA power iteration + div | 654µs | 991µs |  | wago ahead |
-| Benchmarks Game (Rust) | Fannkuch-redux permutation pancake-flips | permutation pancake-flips | 1.06ms | 1.47ms |  | wago ahead |
-| Crypto & graphics (Rust) | Matrix multiply 64³ f64 multiply-add | 64³ f64 multiply-add | 103µs | 323µs |  | wago ahead |
-| Crypto & graphics (Rust) | Quicksort recursive int sort | recursive int sort | 67.6µs | 182µs |  | wago ahead |
-| Crypto & graphics (Rust) | CRC-32 table-driven checksum | table-driven checksum | 19.9µs | 22.7µs |  | wago ahead |
-| Crypto & graphics (Rust) | SHA-256 64-round hash, 8 KiB | 64-round hash, 8 KiB | 38.6µs | 55.3µs |  | wago ahead |
-| Crypto & graphics (Rust) | Ray tracer recursive Whitted, depth-4 mirrors | recursive Whitted, depth-4 mirrors | 401µs | 367µs |  | wago behind |
-| Real-world (AssemblyScript) | JSON serialize json-as, SWAR | json-as, SWAR | 22.1µs | 31.5µs |  | wago ahead |
-| Real-world (AssemblyScript) | JSON deserialize json-as, SWAR | json-as, SWAR | 40µs | 63.6µs |  | wago ahead |
-| Real-world (AssemblyScript) | BLAKE3 hash blake-as, SWAR | blake-as, SWAR | 851µs | 467µs |  | wago behind |
-| Real-world (AssemblyScript) | UTF transcode utf-as, SWAR | utf-as, SWAR | 170µs | 207µs |  | wago ahead |
-| AssemblyScript SIMD | JSON serialize json-as SIMD | json-as SIMD | 29.3µs | 40.3µs |  | wago ahead |
-| AssemblyScript SIMD | JSON deserialize json-as SIMD | json-as SIMD | 55.3µs | 80.1µs |  | wago ahead |
-| AssemblyScript SIMD | BLAKE3 hash blake-as SIMD, 4 KiB | blake-as SIMD, 4 KiB | 884µs | 523µs |  | wago behind |
-| AssemblyScript SIMD | UTF transcode utf-as SIMD, mixed text | utf-as SIMD, mixed text | 58.6µs | 61.1µs |  | wago ahead |
+| Micro ops | Call overhead | host → wasm | 10.4ns | 33.1ns |  | wago ahead |
+| Micro ops | Host roundtrip | wasm → host → wasm (sync host import) | 148.5ns | 440.4ns |  | wago ahead |
+| Micro ops | Iterative fib | fib_iter loop | 17ns | 45.8ns |  | wago ahead |
+| Micro ops | Recursive fib | fib_rec | 370µs | 538µs |  | wago ahead |
+| Micro ops | Dispatch | call_indirect apply | 38.1ns | 29.8ns |  | wago behind |
+| Compute kernels | Linked list | dependent-load chase | 8.2µs | 11.1µs |  | wago ahead |
+| Compute kernels | Recursive tree | memory_tree, loads + calls | 10.2µs | 22.1µs |  | wago ahead |
+| Compute kernels | Sieve | Eratosthenes | 86µs | 143µs |  | wago ahead |
+| Compute kernels | Mandelbrot | f64 escape-time | 247µs | 269µs |  | wago ahead |
+| Benchmarks Game (Rust) | N-body | leapfrog solar-system integrator | 283µs | 364µs |  | wago ahead |
+| Benchmarks Game (Rust) | Spectral norm | AᵀA power iteration + div | 654µs | 991µs |  | wago ahead |
+| Benchmarks Game (Rust) | Fannkuch-redux | permutation pancake-flips | 1.06ms | 1.47ms |  | wago ahead |
+| Crypto & graphics (Rust) | Matrix multiply | 64³ f64 multiply-add | 103µs | 323µs |  | wago ahead |
+| Crypto & graphics (Rust) | Quicksort | recursive int sort | 67.6µs | 182µs |  | wago ahead |
+| Crypto & graphics (Rust) | CRC-32 | table-driven checksum | 19.9µs | 22.7µs |  | wago ahead |
+| Crypto & graphics (Rust) | SHA-256 | 64-round hash, 8 KiB | 38.6µs | 55.3µs |  | wago ahead |
+| Crypto & graphics (Rust) | Ray tracer | recursive Whitted, depth-4 mirrors | 401µs | 367µs |  | wago behind |
+| Real-world (AssemblyScript) | JSON serialize | json-as, SWAR | 22.1µs | 31.5µs |  | wago ahead |
+| Real-world (AssemblyScript) | JSON deserialize | json-as, SWAR | 40µs | 63.6µs |  | wago ahead |
+| Real-world (AssemblyScript) | BLAKE3 hash | blake-as, SWAR | 851µs | 467µs |  | wago behind |
+| Real-world (AssemblyScript) | UTF transcode | utf-as, SWAR | 170µs | 207µs |  | wago ahead |
+| AssemblyScript SIMD | JSON serialize | json-as SIMD | 29.3µs | 40.3µs |  | wago ahead |
+| AssemblyScript SIMD | JSON deserialize | json-as SIMD | 55.3µs | 80.1µs |  | wago ahead |
+| AssemblyScript SIMD | BLAKE3 hash | blake-as SIMD, 4 KiB | 884µs | 523µs |  | wago behind |
+| AssemblyScript SIMD | UTF transcode | utf-as SIMD, mixed text | 58.6µs | 61.1µs |  | wago ahead |
 
 ### arm64
 
@@ -214,103 +223,106 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-|  | Compile latency fib_rec module | fib_rec module | 3.3µs | 25.6µs |  | wago ahead |
-|  | Instantiate latency fib_rec startup + mapping | fib_rec startup + mapping | 550.4ns | 8.9µs |  | wago ahead |
-|  | Call overhead host → wasm | host → wasm | 18.7ns | 23.9ns |  | wago ahead |
-|  | Host roundtrip wasm → host → wasm | wasm → host → wasm | 119.9ns | 315.5ns |  | wago ahead |
-|  | Exec latency fib_rec recursion | fib_rec recursion | 260µs | 387µs |  | wago ahead |
-|  | N-body leapfrog solar-system integrator | leapfrog solar-system integrator | 156µs | 153µs |  | tie |
-|  | Ray tracer recursive Whitted, depth-4 mirrors | recursive Whitted, depth-4 mirrors | 275µs | 255µs |  | wago behind |
-|  | SHA-256 hash 8 KiB | hash 8 KiB | 25.6µs | 46.2µs |  | wago ahead |
-|  | JSON deserialize json-as, SWAR | json-as, SWAR | 40.4µs | 44µs |  | wago ahead |
+|  | Compile latency | fib_rec module | 3.3µs | 25.6µs |  | wago ahead |
+|  | Instantiate latency | fib_rec startup + mapping | 550.4ns | 8.9µs |  | wago ahead |
+|  | Call overhead | host → wasm | 18.7ns | 23.9ns |  | wago ahead |
+|  | Host roundtrip | wasm → host → wasm | 119.9ns | 315.5ns |  | wago ahead |
+|  | Exec latency | fib_rec recursion | 260µs | 387µs |  | wago ahead |
+|  | N-body | leapfrog solar-system integrator | 156µs | 153µs |  | tie |
+|  | Ray tracer | recursive Whitted, depth-4 mirrors | 275µs | 255µs |  | wago behind |
+|  | SHA-256 | hash 8 KiB | 25.6µs | 46.2µs |  | wago ahead |
+|  | JSON deserialize | json-as, SWAR | 40.4µs | 44µs |  | wago ahead |
 
 #### Compile
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Micro modules | tiny smallest valid module | smallest valid module | 2.9µs | 27.2µs |  | wago ahead |
-| Micro modules | fib_rec recursive fib | recursive fib | 3.3µs | 25.6µs |  | wago ahead |
-| Micro modules | dispatch call_indirect table | call_indirect table | 8.2µs | 39.7µs |  | wago ahead |
-| Micro modules | many_funcs thousands of functions | thousands of functions | 272µs | 650µs |  | wago ahead |
-| Compute kernels | linked_list dependent-load chase | dependent-load chase | 6.4µs | 41.6µs |  | wago ahead |
-| Compute kernels | memory_tree loads + calls | loads + calls | 8.5µs | 50.9µs |  | wago ahead |
-| Compute kernels | sieve Eratosthenes | Eratosthenes | 8.2µs | 49.9µs |  | wago ahead |
-| Compute kernels | mandelbrot f64 escape-time | f64 escape-time | 8.7µs | 44.8µs |  | wago ahead |
-| Benchmarks Game (Rust) | nbody leapfrog integrator | leapfrog integrator | 73µs | 221µs |  | wago ahead |
-| Benchmarks Game (Rust) | spectralnorm AᵀA power iteration | AᵀA power iteration | 43.9µs | 215µs |  | wago ahead |
-| Benchmarks Game (Rust) | fannkuch permutation pancake-flips | permutation pancake-flips | 101µs | 402µs |  | wago ahead |
-| Crypto & graphics (Rust) | matmul 64³ f64 multiply-add | 64³ f64 multiply-add | 36.1µs | 183µs |  | wago ahead |
-| Crypto & graphics (Rust) | quicksort recursive int sort | recursive int sort | 33.9µs | 185µs |  | wago ahead |
-| Crypto & graphics (Rust) | crc32 table-driven checksum | table-driven checksum | 19.5µs | 119µs |  | wago ahead |
-| Crypto & graphics (Rust) | sha256 SHA-256 hash | SHA-256 hash | 55.1µs | 260µs |  | wago ahead |
-| Crypto & graphics (Rust) | raytrace recursive ray tracer | recursive ray tracer | 129µs | 656µs |  | wago ahead |
-| Real-world (AssemblyScript) | json-as JSON SWAR | JSON SWAR | 704µs | 4.25ms |  | wago ahead |
-| Real-world (AssemblyScript) | blake-as BLAKE3 SWAR | BLAKE3 SWAR | 182µs | 478µs |  | wago ahead |
-| Real-world (AssemblyScript) | utf-as UTF SWAR transcode | UTF SWAR transcode | 102µs | 432µs |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | Lua 5.4 interpreter · 270 KB | interpreter · 270 KB | 25.5ms | 65.2ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | SQLite 3.46 database engine · 920 KB | database engine · 920 KB | 91ms | 272.3ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 679.2ms | 2513.9ms |  | wago ahead |
-| Real-world programs — full compile: decode + validate + codegen | Ruby 3.3 interpreter · 16 MB, 17k funcs | interpreter · 16 MB, 17k funcs | 1069.4ms | 4326.5ms |  | wago ahead |
+| Micro modules | tiny | smallest valid module | 2.9µs | 27.2µs |  | wago ahead |
+| Micro modules | fib_rec | recursive fib | 3.3µs | 25.6µs |  | wago ahead |
+| Micro modules | dispatch | call_indirect table | 8.2µs | 39.7µs |  | wago ahead |
+| Micro modules | many_funcs | thousands of functions | 272µs | 650µs |  | wago ahead |
+| Compute kernels | linked_list | dependent-load chase | 6.4µs | 41.6µs |  | wago ahead |
+| Compute kernels | memory_tree | loads + calls | 8.5µs | 50.9µs |  | wago ahead |
+| Compute kernels | sieve | Eratosthenes | 8.2µs | 49.9µs |  | wago ahead |
+| Compute kernels | mandelbrot | f64 escape-time | 8.7µs | 44.8µs |  | wago ahead |
+| Benchmarks Game (Rust) | nbody | leapfrog integrator | 73µs | 221µs |  | wago ahead |
+| Benchmarks Game (Rust) | spectralnorm | AᵀA power iteration | 43.9µs | 215µs |  | wago ahead |
+| Benchmarks Game (Rust) | fannkuch | permutation pancake-flips | 101µs | 402µs |  | wago ahead |
+| Crypto & graphics (Rust) | matmul | 64³ f64 multiply-add | 36.1µs | 183µs |  | wago ahead |
+| Crypto & graphics (Rust) | quicksort | recursive int sort | 33.9µs | 185µs |  | wago ahead |
+| Crypto & graphics (Rust) | crc32 | table-driven checksum | 19.5µs | 119µs |  | wago ahead |
+| Crypto & graphics (Rust) | sha256 | SHA-256 hash | 55.1µs | 260µs |  | wago ahead |
+| Crypto & graphics (Rust) | raytrace | recursive ray tracer | 129µs | 656µs |  | wago ahead |
+| Real-world (AssemblyScript) | json-as | JSON SWAR | 704µs | 4.25ms |  | wago ahead |
+| Real-world (AssemblyScript) | blake-as | BLAKE3 SWAR | 182µs | 478µs |  | wago ahead |
+| Real-world (AssemblyScript) | utf-as | UTF SWAR transcode | 102µs | 432µs |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | Lua 5.4 | interpreter · 270 KB | 25.5ms | 65.2ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | SQLite 3.46 | database engine · 920 KB | 91ms | 272.3ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | esbuild | Go bundler · 12 MB | 679.2ms | 2513.9ms |  | wago ahead |
+| Real-world programs — full compile: decode + validate + codegen | Ruby 3.3 | interpreter · 16 MB, 17k funcs | 1069.4ms | 4326.5ms |  | wago ahead |
 
 #### Instantiate
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-|  | Cold start fib_rec startup + mapping | fib_rec startup + mapping | 550.4ns | 8.9µs |  | wago ahead |
-|  | Heap footprint bytes allocated | bytes allocated | 1.1 KB | 7.2 KB |  | wago ahead |
-|  | Allocations objects allocated | objects allocated | 9 | 23 |  | wago ahead |
+|  | Cold start | fib_rec startup + mapping | 550.4ns | 8.9µs |  | wago ahead |
+|  | Heap footprint | bytes allocated | 1.1 KB | 7.2 KB |  | wago ahead |
+|  | Allocations | objects allocated | 9 | 23 |  | wago ahead |
 
-#### Memory
+#### Go allocs
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Instantiation | fib_rec instance bytes allocated per fresh instance | bytes allocated per fresh instance | 1.1 KB | 7.2 KB |  | wago ahead |
-| Instantiation | fib_rec instance allocation objects per fresh instance | allocation objects per fresh instance | 9 | 23 |  | wago ahead |
-| Full compile — allocation bytes | tiny smallest module | smallest module | 44.1 KB | 274 KB |  | wago ahead |
-| Full compile — allocation bytes | memory tree calls + linear-memory access | calls + linear-memory access | 49.8 KB | 307 KB |  | wago ahead |
-| Full compile — allocation bytes | json-as AssemblyScript JSON | AssemblyScript JSON | 606 KB | 2.5 MB |  | wago ahead |
-| Full compile — allocation bytes | blake-as AssemblyScript BLAKE3 | AssemblyScript BLAKE3 | 283 KB | 869 KB |  | wago ahead |
-| Full compile — allocation bytes | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 82.2 MB | 262.7 MB |  | wago ahead |
-| Full compile — allocation bytes | Ruby 3.3 interpreter · 16 MB | interpreter · 16 MB | 98.3 MB | 430.3 MB |  | wago ahead |
-| Full compile — allocation objects | tiny smallest module | smallest module | 94 | 183 |  | wago ahead |
-| Full compile — allocation objects | memory tree calls + linear-memory access | calls + linear-memory access | 122 | 336 |  | wago ahead |
-| Full compile — allocation objects | json-as AssemblyScript JSON | AssemblyScript JSON | 1638 | 6353 |  | wago ahead |
-| Full compile — allocation objects | blake-as AssemblyScript BLAKE3 | AssemblyScript BLAKE3 | 293 | 997 |  | wago ahead |
-| Full compile — allocation objects | esbuild Go bundler · 12 MB | Go bundler · 12 MB | 139197 | 468358 |  | wago ahead |
-| Full compile — allocation objects | Ruby 3.3 interpreter · 16 MB | interpreter · 16 MB | 427120 | 414243 |  | wago behind |
+| Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.1 KB | 7.2 KB |  | wago ahead |
+| Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 9 | 23 |  | wago ahead |
+| Full compile — Go heap bytes | tiny | smallest module | 44.1 KB | 274 KB |  | wago ahead |
+| Full compile — Go heap bytes | memory tree | calls + linear-memory access | 49.8 KB | 307 KB |  | wago ahead |
+| Full compile — Go heap bytes | json-as | AssemblyScript JSON | 606 KB | 2.5 MB |  | wago ahead |
+| Full compile — Go heap bytes | blake-as | AssemblyScript BLAKE3 | 283 KB | 869 KB |  | wago ahead |
+| Full compile — Go heap bytes | esbuild | Go bundler · 12 MB | 82.2 MB | 262.7 MB |  | wago ahead |
+| Full compile — Go heap bytes | Ruby 3.3 | interpreter · 16 MB | 98.3 MB | 430.3 MB |  | wago ahead |
+| Full compile — Go allocation objects | tiny | smallest module | 94 | 183 |  | wago ahead |
+| Full compile — Go allocation objects | memory tree | calls + linear-memory access | 122 | 336 |  | wago ahead |
+| Full compile — Go allocation objects | json-as | AssemblyScript JSON | 1638 | 6353 |  | wago ahead |
+| Full compile — Go allocation objects | blake-as | AssemblyScript BLAKE3 | 293 | 997 |  | wago ahead |
+| Full compile — Go allocation objects | esbuild | Go bundler · 12 MB | 139197 | 468358 |  | wago ahead |
+| Full compile — Go allocation objects | Ruby 3.3 | interpreter · 16 MB | 427120 | 414243 |  | wago behind |
 
 #### Exec
 
 | Group | Benchmark | Workload | wago | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| Micro ops | Call overhead host → wasm | host → wasm | 18.7ns | 23.9ns |  | wago ahead |
-| Micro ops | Host roundtrip wasm → host → wasm (sync host import) | wasm → host → wasm (sync host import) | 119.9ns | 315.5ns |  | wago ahead |
-| Micro ops | Iterative fib fib_iter loop | fib_iter loop | 27.1ns | 45.1ns |  | wago ahead |
-| Micro ops | Recursive fib fib_rec | fib_rec | 260µs | 387µs |  | wago ahead |
-| Micro ops | Dispatch call_indirect apply | call_indirect apply | 57.1ns | 21.6ns |  | wago behind |
-| Compute kernels | Linked list dependent-load chase | dependent-load chase | 8.6µs | 7.6µs |  | wago behind |
-| Compute kernels | Recursive tree memory_tree, loads + calls | memory_tree, loads + calls | 8.9µs | 12.2µs |  | wago ahead |
-| Compute kernels | Sieve Eratosthenes | Eratosthenes | 56.7µs | 102µs |  | wago ahead |
-| Compute kernels | Mandelbrot f64 escape-time | f64 escape-time | 249µs | 298µs |  | wago ahead |
-| Benchmarks Game (Rust) | N-body leapfrog solar-system integrator | leapfrog solar-system integrator | 156µs | 153µs |  | tie |
-| Benchmarks Game (Rust) | Spectral norm AᵀA power iteration + div | AᵀA power iteration + div | 375µs | 712µs |  | wago ahead |
-| Benchmarks Game (Rust) | Fannkuch-redux permutation pancake-flips | permutation pancake-flips | 1.16ms | 1.11ms |  | wago behind |
-| Crypto & graphics (Rust) | Matrix multiply 64³ f64 multiply-add | 64³ f64 multiply-add | 96µs | 235µs |  | wago ahead |
-| Crypto & graphics (Rust) | Quicksort recursive int sort | recursive int sort | 70.1µs | 126µs |  | wago ahead |
-| Crypto & graphics (Rust) | CRC-32 table-driven checksum | table-driven checksum | 25.6µs | 26.4µs |  | wago ahead |
-| Crypto & graphics (Rust) | SHA-256 64-round hash, 8 KiB | 64-round hash, 8 KiB | 25.6µs | 46.2µs |  | wago ahead |
-| Crypto & graphics (Rust) | Ray tracer recursive Whitted, depth-4 mirrors | recursive Whitted, depth-4 mirrors | 275µs | 255µs |  | wago behind |
-| Real-world (AssemblyScript) | JSON serialize json-as, SWAR | json-as, SWAR | 19.3µs | 22.1µs |  | wago ahead |
-| Real-world (AssemblyScript) | JSON deserialize json-as, SWAR | json-as, SWAR | 40.4µs | 44µs |  | wago ahead |
-| Real-world (AssemblyScript) | BLAKE3 hash blake-as, SWAR | blake-as, SWAR | 443µs | 409µs |  | wago behind |
-| Real-world (AssemblyScript) | UTF transcode utf-as, SWAR | utf-as, SWAR | 103µs | 107µs |  | wago ahead |
-| AssemblyScript SIMD | JSON serialize json-as SIMD | json-as SIMD | 24.4µs | 27.7µs |  | wago ahead |
-| AssemblyScript SIMD | JSON deserialize json-as SIMD | json-as SIMD | 51.3µs | 57.6µs |  | wago ahead |
-| AssemblyScript SIMD | BLAKE3 hash blake-as SIMD, 4 KiB | blake-as SIMD, 4 KiB | 633µs | 450µs |  | wago behind |
-| AssemblyScript SIMD | UTF transcode utf-as SIMD, mixed text | utf-as SIMD, mixed text | 140µs | 101µs |  | wago behind |
+| Micro ops | Call overhead | host → wasm | 18.7ns | 23.9ns |  | wago ahead |
+| Micro ops | Host roundtrip | wasm → host → wasm (sync host import) | 119.9ns | 315.5ns |  | wago ahead |
+| Micro ops | Iterative fib | fib_iter loop | 27.1ns | 45.1ns |  | wago ahead |
+| Micro ops | Recursive fib | fib_rec | 260µs | 387µs |  | wago ahead |
+| Micro ops | Dispatch | call_indirect apply | 57.1ns | 21.6ns |  | wago behind |
+| Compute kernels | Linked list | dependent-load chase | 8.6µs | 7.6µs |  | wago behind |
+| Compute kernels | Recursive tree | memory_tree, loads + calls | 8.9µs | 12.2µs |  | wago ahead |
+| Compute kernels | Sieve | Eratosthenes | 56.7µs | 102µs |  | wago ahead |
+| Compute kernels | Mandelbrot | f64 escape-time | 249µs | 298µs |  | wago ahead |
+| Benchmarks Game (Rust) | N-body | leapfrog solar-system integrator | 156µs | 153µs |  | tie |
+| Benchmarks Game (Rust) | Spectral norm | AᵀA power iteration + div | 375µs | 712µs |  | wago ahead |
+| Benchmarks Game (Rust) | Fannkuch-redux | permutation pancake-flips | 1.16ms | 1.11ms |  | wago behind |
+| Crypto & graphics (Rust) | Matrix multiply | 64³ f64 multiply-add | 96µs | 235µs |  | wago ahead |
+| Crypto & graphics (Rust) | Quicksort | recursive int sort | 70.1µs | 126µs |  | wago ahead |
+| Crypto & graphics (Rust) | CRC-32 | table-driven checksum | 25.6µs | 26.4µs |  | wago ahead |
+| Crypto & graphics (Rust) | SHA-256 | 64-round hash, 8 KiB | 25.6µs | 46.2µs |  | wago ahead |
+| Crypto & graphics (Rust) | Ray tracer | recursive Whitted, depth-4 mirrors | 275µs | 255µs |  | wago behind |
+| Real-world (AssemblyScript) | JSON serialize | json-as, SWAR | 19.3µs | 22.1µs |  | wago ahead |
+| Real-world (AssemblyScript) | JSON deserialize | json-as, SWAR | 40.4µs | 44µs |  | wago ahead |
+| Real-world (AssemblyScript) | BLAKE3 hash | blake-as, SWAR | 443µs | 409µs |  | wago behind |
+| Real-world (AssemblyScript) | UTF transcode | utf-as, SWAR | 103µs | 107µs |  | wago ahead |
+| AssemblyScript SIMD | JSON serialize | json-as SIMD | 24.4µs | 27.7µs |  | wago ahead |
+| AssemblyScript SIMD | JSON deserialize | json-as SIMD | 51.3µs | 57.6µs |  | wago ahead |
+| AssemblyScript SIMD | BLAKE3 hash | blake-as SIMD, 4 KiB | 633µs | 450µs |  | wago behind |
+| AssemblyScript SIMD | UTF transcode | utf-as SIMD, mixed text | 140µs | 101µs |  | wago behind |
 
 ## Canonical machine-readable sources
 
+- Canonical product facts: https://wago.sh/data/facts.json
+- Static fact and evidence page: https://wago.sh/facts/
+- Exact compatibility scope: https://wago.sh/compatibility/
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
 - Wago manifest JSON Schema: https://wago.sh/schema.json

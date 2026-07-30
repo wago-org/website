@@ -14,12 +14,20 @@ status files** so the site never drifts from what the engine actually does.
 index.html              # the page, structured by section (nav → hero → … → footer)
 data/
   stats.json            # site numbers + conformance statuses (generated; committed)
+  facts.json            # canonical product/support facts + evidence (generated)
   project.json          # complete project + benchmark data for machines (generated)
+facts/                  # canonical static fact sheet (generated)
+compatibility/          # exact suite/accounting scope (generated)
+security/               # current controls and explicit assurance gaps (generated)
+benchmarks/             # crawlable benchmark index and ARM64 protocol (generated)
+compare/                # factual runtime comparison pages (generated)
+guides/                 # operational evaluation guides (generated)
 llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
 schema.json             # hosted manifest schema, mirrored from wago Go module
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
+  sync-facts.mjs        # verifies source evidence and generates canonical pages
   sync-schema.mjs       # mirrors schema.json from the wago Go module
   sync-ai-metadata.mjs  # derives JSON-LD, llms files, and project.json
 src/                    # TypeScript source
@@ -107,6 +115,12 @@ The site publishes several no-JavaScript discovery surfaces for link readers,
 crawlers, and answer engines:
 
 - `/llms.txt` is the concise project brief and discovery index.
+- `/facts/` and `/data/facts.json` are the canonical human- and
+  machine-readable product/support contract, pinned to a Wago commit.
+- `/compatibility/` defines exact suite provenance, accounting units, ports,
+  exclusions, and unsupported claims.
+- `/security/`, `/benchmarks/`, `/compare/*`, and `/guides/*` are static HTML,
+  so direct-link readers do not depend on client-side rendering.
 - `/llms-full.txt` contains all current startup and wago-vs-wazero comparison
   tables in compact Markdown.
 - `/data/project.json` contains the same project facts and benchmark rows as
@@ -114,7 +128,11 @@ crawlers, and answer engines:
 - the page `<head>` embeds generated Schema.org `SoftwareApplication` and
   `Dataset` JSON-LD.
 
-`scripts/sync-ai-metadata.mjs` derives these artifacts from `data/stats.json`
+`scripts/sync-facts.mjs` first validates expected evidence in the Wago checkout
+and generates the canonical fact layer and documentation routes. It deliberately
+fails when a source contract disappears instead of silently retaining stale
+copy. `scripts/sync-ai-metadata.mjs` then derives its artifacts from
+`data/facts.json`, `data/stats.json`,
 and the static fallback benchmark markup in `index.html`. It also rewrites the
 homepage's no-JavaScript headline stats and full conformance tracker. The
 benchmark publishers in the sibling wago repository already run `npm run sync`

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARM64 benchmarks and many-instance plan · wago</title>
+  <meta name="description" content="How to interpret the published ARM64 data and the reproducible protocol for the not-yet-published 1, 8, 80, and 120 instance benchmark." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/benchmarks/arm64/" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>ARM64 benchmarks and many-instance plan</h1>
+    <p class="docs-lead">How to interpret the published ARM64 data and the reproducible protocol for the not-yet-published 1, 8, 80, and 120 instance benchmark.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="current">
+      <h2>Current ARM64 data</h2>
+      <p>The homepage publishes ARM64 Wago-versus-wazero rows measured on one ARM64 machine. The structured copy is in <a href="/data/project.json">project.json</a>. Published instantiation values describe <strong>Go heap bytes or allocation objects created during instantiation</strong>; they are not total per-instance memory.</p>
+      <p class="docs-warning">Instantiation allocation figures exclude guest linear memory, native code mappings, and native virtual-memory reservations.</p>
+    </section>
+    <section id="many-instances">
+      <h2>Many-instance benchmark status</h2>
+      <p class="docs-callout"><strong>Status: protocol published; results not measured.</strong> Wago does not currently claim “80 instances under X MiB RSS.” Results will appear here only after the raw samples and reproduction command are committed.</p>
+      <h3>Instance counts</h3>
+      <p><code>N = 1, 8, 80, 120</code>, with compile-once and fresh-process runs separated.</p>
+      <h3>Workloads</h3>
+      <ul>
+        <li>No-memory scalar module</li>
+        <li>128 KiB initial linear memory</li>
+        <li>1 MiB initialized data</li>
+        <li>16 MiB active working set</li>
+        <li>Host-call-heavy and compute-heavy loops</li>
+        <li>Create/close churn and long-lived warm instances</li>
+      </ul>
+      <h3>Required outputs</h3>
+      <ul>
+        <li>Total throughput, per-instance fairness, and p50/p95/p99 latency</li>
+        <li>RSS, PSS, and virtual memory reported separately</li>
+        <li>Minor/major page faults, Go heap, GC CPU/time, and compile-once cost</li>
+        <li>Incremental memory per live instance and memory returned after close</li>
+        <li>A run under an explicit cgroup memory limit</li>
+      </ul>
+      <p>Until those fields are present, this page deliberately contains no synthetic headline.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluating Wago for edge runtimes · wago</title>
+  <meta name="description" content="A deployment-oriented checklist for startup, isolation, concurrency, resource limits, plugins, and current Wago gaps." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/guides/edge-runtime/" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>Evaluating Wago for edge runtimes</h1>
+    <p class="docs-lead">A deployment-oriented checklist for startup, isolation, concurrency, resource limits, plugins, and current Wago gaps.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="fit"><h2>Potential fit</h2>
+      <p>Wago is designed for Go hosts that value no-cgo deployment, single-pass native compilation, compile-once/instantiate-many reuse, and low host/guest boundary overhead.</p>
+    </section>
+    <section id="checklist"><h2>Production checklist</h2>
+      <ul>
+        <li>Choose one of the three native CI targets.</li>
+        <li>Set memory/table policies and invocation deadlines.</li>
+        <li>Use separate instances for state isolation; current native guest execution is serialized process-wide.</li>
+        <li>Grant plugin capabilities explicitly; audit each plugin separately.</li>
+        <li>Measure RSS/PSS under the intended instance count and guest memory shape.</li>
+        <li>Add process/container isolation when the threat model requires a second boundary.</li>
+      </ul>
+    </section>
+    <section id="gaps"><h2>Current gaps to evaluate</h2>
+      <p>Pre-v1 API/release maturity, no published aggregate memory governor, no function-level WASI matrix, no published security policy or third-party audit, and no completed many-instance benchmark.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

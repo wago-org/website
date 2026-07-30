@@ -1,0 +1,2008 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-07-28",
+  "canonicalUrl": "https://wago.sh/",
+  "name": "wago",
+  "summary": "A WebAssembly engine written in pure Go with single-pass native amd64 and arm64 backends, no cgo, tracked conformance, and a plugin system.",
+  "repository": "https://github.com/wago-org/wago",
+  "documentation": "https://github.com/wago-org/wago#readme",
+  "roadmap": "https://github.com/wago-org/wago/blob/main/ROADMAP.md",
+  "license": "Apache-2.0",
+  "programmingLanguage": "Go",
+  "sourceData": "wago-org/wago @ main",
+  "facts": {
+    "nativeArchitectures": [
+      "amd64",
+      "arm64"
+    ],
+    "cgoLines": 0,
+    "conformance": {
+      "filesPass": 57,
+      "filesTotal": 57,
+      "percent": 100,
+      "assertionsPass": 16592,
+      "assertionsFail": 0
+    },
+    "suiteAssertions": {
+      "mvp": 16592,
+      "simd": 24325,
+      "total": 40917
+    },
+    "verification": {
+      "checksPass": 96972,
+      "checksFail": 0,
+      "checksSkip": 22,
+      "coverage": 86.1
+    },
+    "coveragePercent": 86.1,
+    "featureGroups": [
+      {
+        "version": "1.0",
+        "label": "WebAssembly 1.0",
+        "sub": "MVP core",
+        "status": "pass",
+        "done": 17,
+        "total": 17,
+        "pct": 100,
+        "features": [
+          {
+            "label": "i32 / i64 integer ops",
+            "status": "pass"
+          },
+          {
+            "label": "f32 / f64 ops",
+            "status": "pass"
+          },
+          {
+            "label": "f32 / f64 ceil / floor / trunc / nearest / copysign",
+            "status": "pass"
+          },
+          {
+            "label": "Conversions + reinterpret",
+            "status": "pass"
+          },
+          {
+            "label": "Float→int trunc NaN/overflow traps",
+            "status": "pass"
+          },
+          {
+            "label": "Control flow: block / loop / if / else / br / br_if / br_table / return",
+            "status": "pass"
+          },
+          {
+            "label": "call / call_indirect",
+            "status": "pass"
+          },
+          {
+            "label": "select, drop, nop, unreachable",
+            "status": "pass"
+          },
+          {
+            "label": "Locals",
+            "status": "pass"
+          },
+          {
+            "label": "Globals",
+            "status": "pass"
+          },
+          {
+            "label": "Linear memory load/store",
+            "status": "pass"
+          },
+          {
+            "label": "memory.size / memory.grow",
+            "status": "pass"
+          },
+          {
+            "label": "Active data segments",
+            "status": "pass"
+          },
+          {
+            "label": "Tables + active element segments",
+            "status": "pass"
+          },
+          {
+            "label": "Function imports / exports",
+            "status": "pass"
+          },
+          {
+            "label": "Memory / table / global imports & exports",
+            "status": "pass"
+          },
+          {
+            "label": "start function",
+            "status": "pass"
+          }
+        ]
+      },
+      {
+        "version": "2.0",
+        "label": "WebAssembly 2.0",
+        "sub": "finished proposals",
+        "status": "pass",
+        "done": 6,
+        "total": 6,
+        "pct": 100,
+        "features": [
+          {
+            "label": "Sign-extension ops",
+            "status": "pass"
+          },
+          {
+            "label": "Non-trapping float→int",
+            "status": "pass"
+          },
+          {
+            "label": "Multi-value",
+            "status": "pass"
+          },
+          {
+            "label": "Reference types",
+            "status": "pass"
+          },
+          {
+            "label": "Bulk memory",
+            "status": "pass"
+          },
+          {
+            "label": "Fixed-width SIMD",
+            "status": "pass"
+          }
+        ]
+      },
+      {
+        "version": "next",
+        "label": "WebAssembly 3.0+",
+        "sub": "3.0 & in-progress proposals",
+        "status": "planned",
+        "done": 0,
+        "total": 42,
+        "pct": 0,
+        "features": [
+          {
+            "label": "Tail calls",
+            "status": "planned"
+          },
+          {
+            "label": "Extended const expressions",
+            "status": "planned"
+          },
+          {
+            "label": "Typed function references",
+            "status": "planned"
+          },
+          {
+            "label": "Memory64",
+            "status": "planned"
+          },
+          {
+            "label": "Multiple memories",
+            "status": "planned"
+          },
+          {
+            "label": "Garbage collection",
+            "status": "planned"
+          },
+          {
+            "label": "Exception handling",
+            "status": "planned"
+          },
+          {
+            "label": "Relaxed SIMD",
+            "status": "planned"
+          },
+          {
+            "label": "Branch hinting",
+            "status": "planned"
+          },
+          {
+            "label": "Custom annotations (text)",
+            "status": "planned"
+          },
+          {
+            "label": "JS string builtins",
+            "status": "planned"
+          },
+          {
+            "label": "Threads & atomics",
+            "status": "planned"
+          },
+          {
+            "label": "JS Promise integration",
+            "status": "planned"
+          },
+          {
+            "label": "Web Content Security Policy",
+            "status": "planned"
+          },
+          {
+            "label": "ESM integration",
+            "status": "planned"
+          },
+          {
+            "label": "Wide arithmetic",
+            "status": "planned"
+          },
+          {
+            "label": "Stack switching",
+            "status": "planned"
+          },
+          {
+            "label": "Compact import section",
+            "status": "planned"
+          },
+          {
+            "label": "Custom page sizes",
+            "status": "planned"
+          },
+          {
+            "label": "Custom descriptors & JS interop",
+            "status": "planned"
+          },
+          {
+            "label": "Relaxed dead-code validation",
+            "status": "planned"
+          },
+          {
+            "label": "Numeric values in WAT data",
+            "status": "planned"
+          },
+          {
+            "label": "Extended name section",
+            "status": "planned"
+          },
+          {
+            "label": "Rounding variants",
+            "status": "planned"
+          },
+          {
+            "label": "Compilation hints",
+            "status": "planned"
+          },
+          {
+            "label": "JS primitive builtins",
+            "status": "planned"
+          },
+          {
+            "label": "Relaxed atomics",
+            "status": "planned"
+          },
+          {
+            "label": "Type imports",
+            "status": "planned"
+          },
+          {
+            "label": "Component model",
+            "status": "planned"
+          },
+          {
+            "label": "C / C++ embedding API",
+            "status": "planned"
+          },
+          {
+            "label": "Flexible vectors",
+            "status": "planned"
+          },
+          {
+            "label": "Memory control",
+            "status": "planned"
+          },
+          {
+            "label": "Reference-typed strings",
+            "status": "planned"
+          },
+          {
+            "label": "Profiles",
+            "status": "planned"
+          },
+          {
+            "label": "Shared-everything threads",
+            "status": "planned"
+          },
+          {
+            "label": "Frozen values",
+            "status": "planned"
+          },
+          {
+            "label": "Half precision (FP16)",
+            "status": "planned"
+          },
+          {
+            "label": "More array constructors",
+            "status": "planned"
+          },
+          {
+            "label": "JIT interface",
+            "status": "planned"
+          },
+          {
+            "label": "Multibyte array access",
+            "status": "planned"
+          },
+          {
+            "label": "Type reflection (JS API)",
+            "status": "planned"
+          },
+          {
+            "label": "JS text-encoding builtins",
+            "status": "planned"
+          }
+        ]
+      },
+      {
+        "version": "engine",
+        "label": "Engine & platform",
+        "sub": "host ABI · targets · WASI",
+        "status": "partial",
+        "done": 1,
+        "total": 3,
+        "pct": 50,
+        "features": [
+          {
+            "label": "Synchronous host-import results",
+            "status": "pass"
+          },
+          {
+            "label": "WASI preview 1",
+            "status": "planned"
+          },
+          {
+            "label": "Architectures beyond linux/amd64",
+            "status": "partial"
+          }
+        ]
+      }
+    ]
+  },
+  "benchmarks": {
+    "caveat": "Compare wago with other runtimes only within the same workload and architecture. Architectures are measured on different machines.",
+    "methodology": "https://github.com/wago-org/wago/tree/main/bench",
+    "startup": {
+      "definition": "Whole-process spawn-to-exit wall-clock latency.",
+      "workloads": [
+        {
+          "id": "json-as",
+          "label": "json-as",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "5.1 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "7.4 ms"
+            },
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "8.1 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "8.4 ms"
+            },
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "11.0 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "12.3 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "266 ms"
+            }
+          ]
+        },
+        {
+          "id": "nbody",
+          "label": "nbody",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "30.1 ms"
+            },
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "30.9 ms"
+            },
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "39.2 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "43.8 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "49.9 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "145 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "367 ms"
+            }
+          ]
+        },
+        {
+          "id": "spectralnorm",
+          "label": "spectralnorm",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "3.7 ms"
+            },
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "4.8 ms"
+            },
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "6.1 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "15.0 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "18.8 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "40.5 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "50.8 ms"
+            }
+          ]
+        },
+        {
+          "id": "quicksort",
+          "label": "quicksort",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "9.4 ms"
+            },
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "10.8 ms"
+            },
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "12.1 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "17.0 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "17.1 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "49.4 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "137 ms"
+            }
+          ]
+        },
+        {
+          "id": "raytrace",
+          "label": "raytrace",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "8.8 ms"
+            },
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "9.0 ms"
+            },
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "10.6 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "15.8 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "26.6 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "40.4 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "55.4 ms"
+            }
+          ]
+        },
+        {
+          "id": "sha256",
+          "label": "sha256",
+          "unit": "wall-clock process latency",
+          "results": [
+            {
+              "runtime": "wago",
+              "executionMode": "native",
+              "value": "2.4 ms"
+            },
+            {
+              "runtime": "wazero",
+              "executionMode": "JIT",
+              "value": "2.9 ms"
+            },
+            {
+              "runtime": "wasmtime",
+              "executionMode": "JIT",
+              "value": "4.9 ms"
+            },
+            {
+              "runtime": "wasmer",
+              "executionMode": "JIT",
+              "value": "7.1 ms"
+            },
+            {
+              "runtime": "wasmi",
+              "executionMode": "interp",
+              "value": "10.5 ms"
+            },
+            {
+              "runtime": "v8",
+              "executionMode": "JIT",
+              "value": "12.8 ms"
+            },
+            {
+              "runtime": "wavm",
+              "executionMode": "LLVM",
+              "value": "33.1 ms"
+            }
+          ]
+        }
+      ]
+    },
+    "wagoVsWazero": {
+      "architectures": {
+        "amd64": {
+          "architecture": "amd64",
+          "categories": [
+            {
+              "id": "general",
+              "label": "General",
+              "entries": [
+                {
+                  "label": "Compile latency fib_rec module",
+                  "workload": "fib_rec module",
+                  "wago": "4µs",
+                  "wazero": "44.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Instantiate latency fib_rec startup + mapping",
+                  "workload": "fib_rec startup + mapping",
+                  "wago": "2.1µs",
+                  "wazero": "8.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Call overhead host → wasm",
+                  "workload": "host → wasm",
+                  "wago": "10.4ns",
+                  "wazero": "33.1ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Host roundtrip wasm → host → wasm",
+                  "workload": "wasm → host → wasm",
+                  "wago": "148.5ns",
+                  "wazero": "440.4ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Exec latency fib_rec recursion",
+                  "workload": "fib_rec recursion",
+                  "wago": "370µs",
+                  "wazero": "538µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "N-body leapfrog solar-system integrator",
+                  "workload": "leapfrog solar-system integrator",
+                  "wago": "283µs",
+                  "wazero": "364µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Ray tracer recursive Whitted, depth-4 mirrors",
+                  "workload": "recursive Whitted, depth-4 mirrors",
+                  "wago": "401µs",
+                  "wazero": "367µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "label": "SHA-256 hash 8 KiB",
+                  "workload": "hash 8 KiB",
+                  "wago": "38.6µs",
+                  "wazero": "55.3µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "JSON deserialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "40µs",
+                  "wazero": "63.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "compile",
+              "label": "Compile",
+              "entries": [
+                {
+                  "group": "Micro modules",
+                  "label": "tiny smallest valid module",
+                  "workload": "smallest valid module",
+                  "wago": "3.5µs",
+                  "wazero": "45.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "fib_rec recursive fib",
+                  "workload": "recursive fib",
+                  "wago": "4µs",
+                  "wazero": "44.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "dispatch call_indirect table",
+                  "workload": "call_indirect table",
+                  "wago": "7.6µs",
+                  "wazero": "65.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "many_funcs thousands of functions",
+                  "workload": "thousands of functions",
+                  "wago": "291µs",
+                  "wazero": "1.09ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "linked_list dependent-load chase",
+                  "workload": "dependent-load chase",
+                  "wago": "8.2µs",
+                  "wazero": "67.8µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "memory_tree loads + calls",
+                  "workload": "loads + calls",
+                  "wago": "9.9µs",
+                  "wazero": "80.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "sieve Eratosthenes",
+                  "workload": "Eratosthenes",
+                  "wago": "10.2µs",
+                  "wazero": "78.3µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "mandelbrot f64 escape-time",
+                  "workload": "f64 escape-time",
+                  "wago": "11.2µs",
+                  "wazero": "74.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "nbody leapfrog integrator",
+                  "workload": "leapfrog integrator",
+                  "wago": "87.4µs",
+                  "wazero": "355µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "spectralnorm AᵀA power iteration",
+                  "workload": "AᵀA power iteration",
+                  "wago": "51.9µs",
+                  "wazero": "364µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "fannkuch permutation pancake-flips",
+                  "workload": "permutation pancake-flips",
+                  "wago": "111µs",
+                  "wazero": "623µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "matmul 64³ f64 multiply-add",
+                  "workload": "64³ f64 multiply-add",
+                  "wago": "40.1µs",
+                  "wazero": "321µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "quicksort recursive int sort",
+                  "workload": "recursive int sort",
+                  "wago": "36.5µs",
+                  "wazero": "306µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "crc32 table-driven checksum",
+                  "workload": "table-driven checksum",
+                  "wago": "21µs",
+                  "wazero": "182µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "sha256 SHA-256 hash",
+                  "workload": "SHA-256 hash",
+                  "wago": "60.6µs",
+                  "wazero": "393µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "raytrace recursive ray tracer",
+                  "workload": "recursive ray tracer",
+                  "wago": "145µs",
+                  "wazero": "1.15ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "json-as JSON SWAR",
+                  "workload": "JSON SWAR",
+                  "wago": "881µs",
+                  "wazero": "5.66ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "blake-as BLAKE3 SWAR",
+                  "workload": "BLAKE3 SWAR",
+                  "wago": "189µs",
+                  "wazero": "822µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "utf-as UTF SWAR transcode",
+                  "workload": "UTF SWAR transcode",
+                  "wago": "117µs",
+                  "wazero": "666µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "Lua 5.4 interpreter · 270 KB",
+                  "workload": "interpreter · 270 KB",
+                  "wago": "30ms",
+                  "wazero": "83.6ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "SQLite 3.46 database engine · 920 KB",
+                  "workload": "database engine · 920 KB",
+                  "wago": "104.3ms",
+                  "wazero": "343.5ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "806.7ms",
+                  "wazero": "3118ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "Ruby 3.3 interpreter · 16 MB, 17k funcs",
+                  "workload": "interpreter · 16 MB, 17k funcs",
+                  "wago": "1253.9ms",
+                  "wazero": "5485.8ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "instantiate",
+              "label": "Instantiate",
+              "entries": [
+                {
+                  "label": "Cold start fib_rec startup + mapping",
+                  "workload": "fib_rec startup + mapping",
+                  "wago": "2.1µs",
+                  "wazero": "8.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Heap footprint bytes allocated",
+                  "workload": "bytes allocated",
+                  "wago": "1.2 KB",
+                  "wazero": "7.2 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Allocations objects allocated",
+                  "workload": "objects allocated",
+                  "wago": "7",
+                  "wazero": "23",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "memory",
+              "label": "Memory",
+              "entries": [
+                {
+                  "group": "Instantiation",
+                  "label": "fib_rec instance bytes allocated per fresh instance",
+                  "workload": "bytes allocated per fresh instance",
+                  "wago": "1.2 KB",
+                  "wazero": "7.2 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Instantiation",
+                  "label": "fib_rec instance allocation objects per fresh instance",
+                  "workload": "allocation objects per fresh instance",
+                  "wago": "7",
+                  "wazero": "23",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "tiny smallest module",
+                  "workload": "smallest module",
+                  "wago": "37.1 KB",
+                  "wazero": "268 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "memory tree calls + linear-memory access",
+                  "workload": "calls + linear-memory access",
+                  "wago": "40.4 KB",
+                  "wazero": "310 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "json-as AssemblyScript JSON",
+                  "workload": "AssemblyScript JSON",
+                  "wago": "442 KB",
+                  "wazero": "2.4 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "blake-as AssemblyScript BLAKE3",
+                  "workload": "AssemblyScript BLAKE3",
+                  "wago": "260 KB",
+                  "wazero": "1.1 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "74.2 MB",
+                  "wazero": "256.2 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "Ruby 3.3 interpreter · 16 MB",
+                  "workload": "interpreter · 16 MB",
+                  "wago": "104 MB",
+                  "wazero": "408.2 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "tiny smallest module",
+                  "workload": "smallest module",
+                  "wago": "39",
+                  "wazero": "189",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "memory tree calls + linear-memory access",
+                  "workload": "calls + linear-memory access",
+                  "wago": "70",
+                  "wazero": "342",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "json-as AssemblyScript JSON",
+                  "workload": "AssemblyScript JSON",
+                  "wago": "1446",
+                  "wazero": "6432",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "blake-as AssemblyScript BLAKE3",
+                  "workload": "AssemblyScript BLAKE3",
+                  "wago": "189",
+                  "wazero": "1028",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "144086",
+                  "wazero": "481994",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "Ruby 3.3 interpreter · 16 MB",
+                  "workload": "interpreter · 16 MB",
+                  "wago": "359738",
+                  "wazero": "462120",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "exec",
+              "label": "Exec",
+              "entries": [
+                {
+                  "group": "Micro ops",
+                  "label": "Call overhead host → wasm",
+                  "workload": "host → wasm",
+                  "wago": "10.4ns",
+                  "wazero": "33.1ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Host roundtrip wasm → host → wasm (sync host import)",
+                  "workload": "wasm → host → wasm (sync host import)",
+                  "wago": "148.5ns",
+                  "wazero": "440.4ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Iterative fib fib_iter loop",
+                  "workload": "fib_iter loop",
+                  "wago": "17ns",
+                  "wazero": "45.8ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Recursive fib fib_rec",
+                  "workload": "fib_rec",
+                  "wago": "370µs",
+                  "wazero": "538µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Dispatch call_indirect apply",
+                  "workload": "call_indirect apply",
+                  "wago": "38.1ns",
+                  "wazero": "29.8ns",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Linked list dependent-load chase",
+                  "workload": "dependent-load chase",
+                  "wago": "8.2µs",
+                  "wazero": "11.1µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Recursive tree memory_tree, loads + calls",
+                  "workload": "memory_tree, loads + calls",
+                  "wago": "10.2µs",
+                  "wazero": "22.1µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Sieve Eratosthenes",
+                  "workload": "Eratosthenes",
+                  "wago": "86µs",
+                  "wazero": "143µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Mandelbrot f64 escape-time",
+                  "workload": "f64 escape-time",
+                  "wago": "247µs",
+                  "wazero": "269µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "N-body leapfrog solar-system integrator",
+                  "workload": "leapfrog solar-system integrator",
+                  "wago": "283µs",
+                  "wazero": "364µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "Spectral norm AᵀA power iteration + div",
+                  "workload": "AᵀA power iteration + div",
+                  "wago": "654µs",
+                  "wazero": "991µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "Fannkuch-redux permutation pancake-flips",
+                  "workload": "permutation pancake-flips",
+                  "wago": "1.06ms",
+                  "wazero": "1.47ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Matrix multiply 64³ f64 multiply-add",
+                  "workload": "64³ f64 multiply-add",
+                  "wago": "103µs",
+                  "wazero": "323µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Quicksort recursive int sort",
+                  "workload": "recursive int sort",
+                  "wago": "67.6µs",
+                  "wazero": "182µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "CRC-32 table-driven checksum",
+                  "workload": "table-driven checksum",
+                  "wago": "19.9µs",
+                  "wazero": "22.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "SHA-256 64-round hash, 8 KiB",
+                  "workload": "64-round hash, 8 KiB",
+                  "wago": "38.6µs",
+                  "wazero": "55.3µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Ray tracer recursive Whitted, depth-4 mirrors",
+                  "workload": "recursive Whitted, depth-4 mirrors",
+                  "wago": "401µs",
+                  "wazero": "367µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "JSON serialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "22.1µs",
+                  "wazero": "31.5µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "JSON deserialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "40µs",
+                  "wazero": "63.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "BLAKE3 hash blake-as, SWAR",
+                  "workload": "blake-as, SWAR",
+                  "wago": "851µs",
+                  "wazero": "467µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "UTF transcode utf-as, SWAR",
+                  "workload": "utf-as, SWAR",
+                  "wago": "170µs",
+                  "wazero": "207µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "JSON serialize json-as SIMD",
+                  "workload": "json-as SIMD",
+                  "wago": "29.3µs",
+                  "wazero": "40.3µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "JSON deserialize json-as SIMD",
+                  "workload": "json-as SIMD",
+                  "wago": "55.3µs",
+                  "wazero": "80.1µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "BLAKE3 hash blake-as SIMD, 4 KiB",
+                  "workload": "blake-as SIMD, 4 KiB",
+                  "wago": "884µs",
+                  "wazero": "523µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "UTF transcode utf-as SIMD, mixed text",
+                  "workload": "utf-as SIMD, mixed text",
+                  "wago": "58.6µs",
+                  "wazero": "61.1µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            }
+          ]
+        },
+        "arm64": {
+          "architecture": "arm64",
+          "categories": [
+            {
+              "id": "general",
+              "label": "General",
+              "entries": [
+                {
+                  "label": "Compile latency fib_rec module",
+                  "workload": "fib_rec module",
+                  "wago": "3.3µs",
+                  "wazero": "25.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Instantiate latency fib_rec startup + mapping",
+                  "workload": "fib_rec startup + mapping",
+                  "wago": "550.4ns",
+                  "wazero": "8.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Call overhead host → wasm",
+                  "workload": "host → wasm",
+                  "wago": "18.7ns",
+                  "wazero": "23.9ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Host roundtrip wasm → host → wasm",
+                  "workload": "wasm → host → wasm",
+                  "wago": "119.9ns",
+                  "wazero": "315.5ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Exec latency fib_rec recursion",
+                  "workload": "fib_rec recursion",
+                  "wago": "260µs",
+                  "wazero": "387µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "N-body leapfrog solar-system integrator",
+                  "workload": "leapfrog solar-system integrator",
+                  "wago": "156µs",
+                  "wazero": "153µs",
+                  "comparison": "",
+                  "result": "tie"
+                },
+                {
+                  "label": "Ray tracer recursive Whitted, depth-4 mirrors",
+                  "workload": "recursive Whitted, depth-4 mirrors",
+                  "wago": "275µs",
+                  "wazero": "255µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "label": "SHA-256 hash 8 KiB",
+                  "workload": "hash 8 KiB",
+                  "wago": "25.6µs",
+                  "wazero": "46.2µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "JSON deserialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "40.4µs",
+                  "wazero": "44µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "compile",
+              "label": "Compile",
+              "entries": [
+                {
+                  "group": "Micro modules",
+                  "label": "tiny smallest valid module",
+                  "workload": "smallest valid module",
+                  "wago": "2.9µs",
+                  "wazero": "27.2µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "fib_rec recursive fib",
+                  "workload": "recursive fib",
+                  "wago": "3.3µs",
+                  "wazero": "25.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "dispatch call_indirect table",
+                  "workload": "call_indirect table",
+                  "wago": "8.2µs",
+                  "wazero": "39.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro modules",
+                  "label": "many_funcs thousands of functions",
+                  "workload": "thousands of functions",
+                  "wago": "272µs",
+                  "wazero": "650µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "linked_list dependent-load chase",
+                  "workload": "dependent-load chase",
+                  "wago": "6.4µs",
+                  "wazero": "41.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "memory_tree loads + calls",
+                  "workload": "loads + calls",
+                  "wago": "8.5µs",
+                  "wazero": "50.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "sieve Eratosthenes",
+                  "workload": "Eratosthenes",
+                  "wago": "8.2µs",
+                  "wazero": "49.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "mandelbrot f64 escape-time",
+                  "workload": "f64 escape-time",
+                  "wago": "8.7µs",
+                  "wazero": "44.8µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "nbody leapfrog integrator",
+                  "workload": "leapfrog integrator",
+                  "wago": "73µs",
+                  "wazero": "221µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "spectralnorm AᵀA power iteration",
+                  "workload": "AᵀA power iteration",
+                  "wago": "43.9µs",
+                  "wazero": "215µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "fannkuch permutation pancake-flips",
+                  "workload": "permutation pancake-flips",
+                  "wago": "101µs",
+                  "wazero": "402µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "matmul 64³ f64 multiply-add",
+                  "workload": "64³ f64 multiply-add",
+                  "wago": "36.1µs",
+                  "wazero": "183µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "quicksort recursive int sort",
+                  "workload": "recursive int sort",
+                  "wago": "33.9µs",
+                  "wazero": "185µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "crc32 table-driven checksum",
+                  "workload": "table-driven checksum",
+                  "wago": "19.5µs",
+                  "wazero": "119µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "sha256 SHA-256 hash",
+                  "workload": "SHA-256 hash",
+                  "wago": "55.1µs",
+                  "wazero": "260µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "raytrace recursive ray tracer",
+                  "workload": "recursive ray tracer",
+                  "wago": "129µs",
+                  "wazero": "656µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "json-as JSON SWAR",
+                  "workload": "JSON SWAR",
+                  "wago": "704µs",
+                  "wazero": "4.25ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "blake-as BLAKE3 SWAR",
+                  "workload": "BLAKE3 SWAR",
+                  "wago": "182µs",
+                  "wazero": "478µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "utf-as UTF SWAR transcode",
+                  "workload": "UTF SWAR transcode",
+                  "wago": "102µs",
+                  "wazero": "432µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "Lua 5.4 interpreter · 270 KB",
+                  "workload": "interpreter · 270 KB",
+                  "wago": "25.5ms",
+                  "wazero": "65.2ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "SQLite 3.46 database engine · 920 KB",
+                  "workload": "database engine · 920 KB",
+                  "wago": "91ms",
+                  "wazero": "272.3ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "679.2ms",
+                  "wazero": "2513.9ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world programs — full compile: decode + validate + codegen",
+                  "label": "Ruby 3.3 interpreter · 16 MB, 17k funcs",
+                  "workload": "interpreter · 16 MB, 17k funcs",
+                  "wago": "1069.4ms",
+                  "wazero": "4326.5ms",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "instantiate",
+              "label": "Instantiate",
+              "entries": [
+                {
+                  "label": "Cold start fib_rec startup + mapping",
+                  "workload": "fib_rec startup + mapping",
+                  "wago": "550.4ns",
+                  "wazero": "8.9µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Heap footprint bytes allocated",
+                  "workload": "bytes allocated",
+                  "wago": "1.1 KB",
+                  "wazero": "7.2 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "label": "Allocations objects allocated",
+                  "workload": "objects allocated",
+                  "wago": "9",
+                  "wazero": "23",
+                  "comparison": "",
+                  "result": "wago ahead"
+                }
+              ]
+            },
+            {
+              "id": "memory",
+              "label": "Memory",
+              "entries": [
+                {
+                  "group": "Instantiation",
+                  "label": "fib_rec instance bytes allocated per fresh instance",
+                  "workload": "bytes allocated per fresh instance",
+                  "wago": "1.1 KB",
+                  "wazero": "7.2 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Instantiation",
+                  "label": "fib_rec instance allocation objects per fresh instance",
+                  "workload": "allocation objects per fresh instance",
+                  "wago": "9",
+                  "wazero": "23",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "tiny smallest module",
+                  "workload": "smallest module",
+                  "wago": "44.1 KB",
+                  "wazero": "274 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "memory tree calls + linear-memory access",
+                  "workload": "calls + linear-memory access",
+                  "wago": "49.8 KB",
+                  "wazero": "307 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "json-as AssemblyScript JSON",
+                  "workload": "AssemblyScript JSON",
+                  "wago": "606 KB",
+                  "wazero": "2.5 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "blake-as AssemblyScript BLAKE3",
+                  "workload": "AssemblyScript BLAKE3",
+                  "wago": "283 KB",
+                  "wazero": "869 KB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "82.2 MB",
+                  "wazero": "262.7 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation bytes",
+                  "label": "Ruby 3.3 interpreter · 16 MB",
+                  "workload": "interpreter · 16 MB",
+                  "wago": "98.3 MB",
+                  "wazero": "430.3 MB",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "tiny smallest module",
+                  "workload": "smallest module",
+                  "wago": "94",
+                  "wazero": "183",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "memory tree calls + linear-memory access",
+                  "workload": "calls + linear-memory access",
+                  "wago": "122",
+                  "wazero": "336",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "json-as AssemblyScript JSON",
+                  "workload": "AssemblyScript JSON",
+                  "wago": "1638",
+                  "wazero": "6353",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "blake-as AssemblyScript BLAKE3",
+                  "workload": "AssemblyScript BLAKE3",
+                  "wago": "293",
+                  "wazero": "997",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "esbuild Go bundler · 12 MB",
+                  "workload": "Go bundler · 12 MB",
+                  "wago": "139197",
+                  "wazero": "468358",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Full compile — allocation objects",
+                  "label": "Ruby 3.3 interpreter · 16 MB",
+                  "workload": "interpreter · 16 MB",
+                  "wago": "427120",
+                  "wazero": "414243",
+                  "comparison": "",
+                  "result": "wago behind"
+                }
+              ]
+            },
+            {
+              "id": "exec",
+              "label": "Exec",
+              "entries": [
+                {
+                  "group": "Micro ops",
+                  "label": "Call overhead host → wasm",
+                  "workload": "host → wasm",
+                  "wago": "18.7ns",
+                  "wazero": "23.9ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Host roundtrip wasm → host → wasm (sync host import)",
+                  "workload": "wasm → host → wasm (sync host import)",
+                  "wago": "119.9ns",
+                  "wazero": "315.5ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Iterative fib fib_iter loop",
+                  "workload": "fib_iter loop",
+                  "wago": "27.1ns",
+                  "wazero": "45.1ns",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Recursive fib fib_rec",
+                  "workload": "fib_rec",
+                  "wago": "260µs",
+                  "wazero": "387µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Micro ops",
+                  "label": "Dispatch call_indirect apply",
+                  "workload": "call_indirect apply",
+                  "wago": "57.1ns",
+                  "wazero": "21.6ns",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Linked list dependent-load chase",
+                  "workload": "dependent-load chase",
+                  "wago": "8.6µs",
+                  "wazero": "7.6µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Recursive tree memory_tree, loads + calls",
+                  "workload": "memory_tree, loads + calls",
+                  "wago": "8.9µs",
+                  "wazero": "12.2µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Sieve Eratosthenes",
+                  "workload": "Eratosthenes",
+                  "wago": "56.7µs",
+                  "wazero": "102µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Compute kernels",
+                  "label": "Mandelbrot f64 escape-time",
+                  "workload": "f64 escape-time",
+                  "wago": "249µs",
+                  "wazero": "298µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "N-body leapfrog solar-system integrator",
+                  "workload": "leapfrog solar-system integrator",
+                  "wago": "156µs",
+                  "wazero": "153µs",
+                  "comparison": "",
+                  "result": "tie"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "Spectral norm AᵀA power iteration + div",
+                  "workload": "AᵀA power iteration + div",
+                  "wago": "375µs",
+                  "wazero": "712µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Benchmarks Game (Rust)",
+                  "label": "Fannkuch-redux permutation pancake-flips",
+                  "workload": "permutation pancake-flips",
+                  "wago": "1.16ms",
+                  "wazero": "1.11ms",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Matrix multiply 64³ f64 multiply-add",
+                  "workload": "64³ f64 multiply-add",
+                  "wago": "96µs",
+                  "wazero": "235µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Quicksort recursive int sort",
+                  "workload": "recursive int sort",
+                  "wago": "70.1µs",
+                  "wazero": "126µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "CRC-32 table-driven checksum",
+                  "workload": "table-driven checksum",
+                  "wago": "25.6µs",
+                  "wazero": "26.4µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "SHA-256 64-round hash, 8 KiB",
+                  "workload": "64-round hash, 8 KiB",
+                  "wago": "25.6µs",
+                  "wazero": "46.2µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Crypto & graphics (Rust)",
+                  "label": "Ray tracer recursive Whitted, depth-4 mirrors",
+                  "workload": "recursive Whitted, depth-4 mirrors",
+                  "wago": "275µs",
+                  "wazero": "255µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "JSON serialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "19.3µs",
+                  "wazero": "22.1µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "JSON deserialize json-as, SWAR",
+                  "workload": "json-as, SWAR",
+                  "wago": "40.4µs",
+                  "wazero": "44µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "BLAKE3 hash blake-as, SWAR",
+                  "workload": "blake-as, SWAR",
+                  "wago": "443µs",
+                  "wazero": "409µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "Real-world (AssemblyScript)",
+                  "label": "UTF transcode utf-as, SWAR",
+                  "workload": "utf-as, SWAR",
+                  "wago": "103µs",
+                  "wazero": "107µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "JSON serialize json-as SIMD",
+                  "workload": "json-as SIMD",
+                  "wago": "24.4µs",
+                  "wazero": "27.7µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "JSON deserialize json-as SIMD",
+                  "workload": "json-as SIMD",
+                  "wago": "51.3µs",
+                  "wazero": "57.6µs",
+                  "comparison": "",
+                  "result": "wago ahead"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "BLAKE3 hash blake-as SIMD, 4 KiB",
+                  "workload": "blake-as SIMD, 4 KiB",
+                  "wago": "633µs",
+                  "wazero": "450µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                },
+                {
+                  "group": "AssemblyScript SIMD",
+                  "label": "UTF transcode utf-as SIMD, mixed text",
+                  "workload": "utf-as SIMD, mixed text",
+                  "wago": "140µs",
+                  "wazero": "101µs",
+                  "comparison": "",
+                  "result": "wago behind"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "comparisonCount": 148
+    }
+  },
+  "machineReadable": {
+    "project": "https://wago.sh/data/project.json",
+    "conformance": "https://wago.sh/data/stats.json",
+    "llmSummary": "https://wago.sh/llms.txt",
+    "llmFull": "https://wago.sh/llms-full.txt",
+    "manifestSchema": "https://wago.sh/schema.json"
+  }
+}

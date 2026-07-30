@@ -14,11 +14,16 @@ status files** so the site never drifts from what the engine actually does.
 index.html              # the page, structured by section (nav → hero → … → footer)
 data/
   stats.json            # site numbers + conformance statuses (generated; committed)
+  project.json          # complete project + benchmark data for machines (generated)
+llms.txt                # concise crawler/LLM discovery document (generated)
+llms-full.txt           # complete readable stats and comparison tables (generated)
 schema.json             # hosted manifest schema, mirrored from wago Go module
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
   sync-schema.mjs       # mirrors schema.json from the wago Go module
+  sync-ai-metadata.mjs  # derives JSON-LD, llms files, and project.json
 src/                    # TypeScript source
+  head.ts               #   parser-blocking phase gate + analytics bootstrap
   main.ts               #   entry point - wires everything up on load
   stats.ts              #   fetches data/stats.json and hydrates the page
   reveal.ts             #   scroll-triggered count-up numbers + progress bars
@@ -58,6 +63,8 @@ Other scripts:
 
 - `npm run typecheck` - type-check without emitting.
 - `npm run sync` - regenerate stats and mirror the manifest schema from wago.
+- `npm run sync:ai` - regenerate the crawler/LLM metadata from the committed
+  stats and static benchmark markup (normally included in `npm run sync`).
 - `npm run sync:schema` - update only `schema.json`.
 - `npm run sync:check` - fail when either generated file is stale.
 - `npm run build` - compile, then assemble a clean `dist/` (the exact tree that
@@ -93,6 +100,26 @@ At runtime `src/stats.ts` fetches `data/stats.json` and refreshes the numbers
 and the conformance table before `reveal.ts` animates them. The HTML ships with
 matching static defaults, so the page is still correct with JavaScript disabled
 or if the fetch fails.
+
+### Machine-readable and LLM-readable data
+
+The site publishes several no-JavaScript discovery surfaces for link readers,
+crawlers, and answer engines:
+
+- `/llms.txt` is the concise project brief and discovery index.
+- `/llms-full.txt` contains all current startup and wago-vs-wazero comparison
+  tables in compact Markdown.
+- `/data/project.json` contains the same project facts and benchmark rows as
+  structured JSON.
+- the page `<head>` embeds generated Schema.org `SoftwareApplication` and
+  `Dataset` JSON-LD.
+
+`scripts/sync-ai-metadata.mjs` derives these artifacts from `data/stats.json`
+and the static fallback benchmark markup in `index.html`. It also rewrites the
+homepage's no-JavaScript headline stats and full conformance tracker. The
+benchmark publishers in the sibling wago repository already run `npm run sync`
+after rewriting that markup, so machine-readable comparisons update with the
+visible ones. `npm run build` fails if these generated artifacts are stale.
 
 ### Keeping it in sync automatically
 

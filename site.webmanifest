@@ -1,7 +1,7 @@
 {
     "name": "wago - a pure-Go WebAssembly engine",
     "short_name": "wago",
-    "description": "Embed WebAssembly in Go with no cgo. A single-pass x86-64 runtime - decode, validate, compile and run wasm.",
+    "description": "Embed WebAssembly in Go with no cgo. Single-pass native amd64 and arm64 backends decode, validate, compile, and run wasm.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#1a1547",

@@ -4,34 +4,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Launch-phase gate. Defaults to "pre" (beta signup) and flips to
-             "post" (install) automatically on the launch date. Runs
-             synchronously so the correct content is chosen before first paint;
-             with JS off the page stays "pre". Override for previewing with
-             ?phase=pre | ?phase=post (sticky via localStorage). -->
-        <script>
-            (function () {
-                var LAUNCH = Date.UTC(2026, 7, 1); // 2026-08-01T00:00:00Z
-                var phase;
-                try {
-                    var q = new URLSearchParams(location.search).get("phase");
-                    if (q === "pre" || q === "post") {
-                        localStorage.setItem("wagoPhase", q);
-                    }
-                    phase = localStorage.getItem("wagoPhase");
-                } catch (e) {}
-                if (phase !== "pre" && phase !== "post") {
-                    phase = Date.now() >= LAUNCH ? "post" : "pre";
-                }
-                var el = document.documentElement;
-                el.classList.remove("phase-pre", "phase-post");
-                el.classList.add("phase-" + phase);
-            })();
-        </script>
+        <!-- Parser-blocking by design: choose the launch phase before paint. -->
+        <script src="/assets/js/head.js"></script>
         <title>Home | Wago</title>
         <meta
             name="description"
-            content="wago is a WebAssembly engine written in pure Go. Decode, validate, compile and run wasm through a single-pass x86-64 runtime - no cgo, no C toolchain, tracked spec conformance."
+            content="wago is a WebAssembly engine written in pure Go. Decode, validate, compile, and run wasm with single-pass native amd64 and arm64 backends, no cgo, and tracked conformance."
         />
         <link rel="canonical" href="https://wago.sh/" />
         <meta name="author" content="Jairus Tanaka" />
@@ -50,7 +28,7 @@
         />
         <meta
             property="og:description"
-            content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 runtime - decode, validate, compile and run wasm."
+            content="Embed WebAssembly in Go with no cgo. Single-pass native amd64 and arm64 backends decode, validate, compile, and run wasm."
         />
         <meta property="og:url" content="https://wago.sh/" />
         <meta
@@ -73,7 +51,7 @@
         />
         <meta
             name="twitter:description"
-            content="Embed WebAssembly in Go with no cgo. A single-pass x86-64 runtime - decode, validate, compile and run wasm."
+            content="Embed WebAssembly in Go with no cgo. Single-pass native amd64 and arm64 backends decode, validate, compile, and run wasm."
         />
         <meta
             name="twitter:image"
@@ -95,52 +73,98 @@
         <link rel="apple-touch-icon" href="/assets/wago-logo.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- Structured data: helps Google rich results and AI answer engines
-             (Google AI Overviews, ChatGPT browsing) extract facts about wago. -->
+        <!-- AI-METADATA:START -->
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="wago summary for language models" />
+        <link rel="alternate" type="application/json" href="/data/project.json" title="wago project and benchmark data" />
         <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
+{
+          "@context": "https://schema.org",
+          "@graph": [
                     {
-                        "@type": "WebSite",
-                        "@id": "https://wago.sh/#website",
-                        "url": "https://wago.sh/",
-                        "name": "wago",
-                        "description": "The fastest and lightest Go-based WebAssembly runtime.",
-                        "inLanguage": "en",
-                        "publisher": { "@id": "https://wago.sh/#org" }
+                              "@type": "WebSite",
+                              "@id": "https://wago.sh/#website",
+                              "url": "https://wago.sh/",
+                              "name": "wago",
+                              "description": "A WebAssembly engine written in pure Go with single-pass native amd64 and arm64 backends, no cgo, tracked conformance, and a plugin system.",
+                              "inLanguage": "en",
+                              "dateModified": "2026-07-28",
+                              "publisher": {
+                                        "@id": "https://wago.sh/#org"
+                              }
                     },
                     {
-                        "@type": "Organization",
-                        "@id": "https://wago.sh/#org",
-                        "name": "wago",
-                        "url": "https://wago.sh/",
-                        "logo": "https://wago.sh/assets/wago-logo.png",
-                        "sameAs": ["https://github.com/wago-org/wago"]
+                              "@type": "Organization",
+                              "@id": "https://wago.sh/#org",
+                              "name": "wago",
+                              "url": "https://wago.sh/",
+                              "logo": "https://wago.sh/assets/wago-logo.png",
+                              "sameAs": [
+                                        "https://github.com/wago-org/wago"
+                              ]
                     },
                     {
-                        "@type": "SoftwareApplication",
-                        "@id": "https://wago.sh/#app",
-                        "name": "wago",
-                        "applicationCategory": "DeveloperApplication",
-                        "operatingSystem": "Linux, macOS, Windows",
-                        "description": "wago is a WebAssembly engine written in pure Go. Decode, validate, compile and run wasm through a single-pass x86-64 runtime - no cgo, no C toolchain.",
-                        "url": "https://wago.sh/",
-                        "downloadUrl": "https://github.com/wago-org/wago",
-                        "codeRepository": "https://github.com/wago-org/wago",
-                        "programmingLanguage": "Go",
-                        "license": "https://www.apache.org/licenses/LICENSE-2.0",
-                        "isAccessibleForFree": true,
-                        "offers": {
-                            "@type": "Offer",
-                            "price": "0",
-                            "priceCurrency": "USD"
-                        },
-                        "author": { "@id": "https://wago.sh/#org" }
+                              "@type": "SoftwareApplication",
+                              "@id": "https://wago.sh/#app",
+                              "name": "wago",
+                              "applicationCategory": "DeveloperApplication",
+                              "operatingSystem": "Linux, macOS, Windows",
+                              "description": "A WebAssembly engine written in pure Go with single-pass native amd64 and arm64 backends, no cgo, tracked conformance, and a plugin system.",
+                              "url": "https://wago.sh/",
+                              "downloadUrl": "https://github.com/wago-org/wago",
+                              "codeRepository": "https://github.com/wago-org/wago",
+                              "programmingLanguage": "Go",
+                              "license": "https://www.apache.org/licenses/LICENSE-2.0",
+                              "isAccessibleForFree": true,
+                              "featureList": [
+                                        "Pure Go with no cgo",
+                                        "Single-pass native amd64 and arm64 backends",
+                                        "WebAssembly validation and tracked conformance",
+                                        "WASI and plugin support"
+                              ],
+                              "offers": {
+                                        "@type": "Offer",
+                                        "price": "0",
+                                        "priceCurrency": "USD"
+                              },
+                              "author": {
+                                        "@id": "https://wago.sh/#org"
+                              }
+                    },
+                    {
+                              "@type": "Dataset",
+                              "@id": "https://wago.sh/#verification-dataset",
+                              "name": "wago verification, conformance, and benchmark data",
+                              "description": "Auto-generated conformance facts, verification totals, startup rankings, and architecture-specific wago-versus-wazero comparisons.",
+                              "url": "https://wago.sh/data/project.json",
+                              "dateModified": "2026-07-28",
+                              "license": "https://www.apache.org/licenses/LICENSE-2.0",
+                              "creator": {
+                                        "@id": "https://wago.sh/#org"
+                              },
+                              "measurementTechnique": "https://github.com/wago-org/wago/tree/main/bench",
+                              "variableMeasured": [
+                                        "MVP files passing: 57/57",
+                                        "Verification checks passing: 96972",
+                                        "Test coverage: 86.1%",
+                                        "Published performance comparisons: 148"
+                              ],
+                              "distribution": [
+                                        {
+                                                  "@type": "DataDownload",
+                                                  "encodingFormat": "application/json",
+                                                  "contentUrl": "https://wago.sh/data/project.json"
+                                        },
+                                        {
+                                                  "@type": "DataDownload",
+                                                  "encodingFormat": "text/plain",
+                                                  "contentUrl": "https://wago.sh/llms-full.txt"
+                                        }
+                              ]
                     }
-                ]
-            }
+          ]
+}
         </script>
+        <!-- AI-METADATA:END -->
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -157,21 +181,6 @@
 
         <script type="module" src="/assets/js/main.js"></script>
 
-        <!-- Analytics: GoatCounter (cookie-free, no consent banner). Loaded only
-             on the live domain so localhost / hub:4000 dev traffic isn't counted.
-             TODO: register the site code at goatcounter.com and confirm "wago". -->
-        <script>
-            if (location.hostname === "wago.sh") {
-                var gc = document.createElement("script");
-                gc.async = true;
-                gc.src = "//gc.zgo.at/count.js";
-                gc.setAttribute(
-                    "data-goatcounter",
-                    "https://wago.goatcounter.com/count",
-                );
-                document.head.appendChild(gc);
-            }
-        </script>
     </head>
     <body>
         <!-- ░░░ decorative sparkles ░░░ -->
@@ -730,9 +739,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <span class="bignum__val"
                                 ><span
                                     data-count
-                                    data-target="93"
+                                    data-target="100"
                                     data-stat="conf"
-                                    >93</span
+                                    >100</span
                                 ><span class="bignum__pct">%</span></span
                             >
                             <span class="bignum__note"
@@ -743,7 +752,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <div
                                 class="bar__fill"
                                 data-bar
-                                data-width="93"
+                                data-width="100"
                                 data-stat-bar
                             ></div>
                         </div>
@@ -759,538 +768,337 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div class="vtracker" data-versions>
                         <details class="vgroup" name="wasm-versions">
                             <summary class="vgroup__head">
-                                <span class="vgroup__headrow"
-                                    ><span
-                                        class="vgroup__chevron"
-                                        aria-hidden="true"
-                                    ></span
-                                    ><span class="vgroup__title"
-                                        >WebAssembly 1.0</span
-                                    ><span class="vgroup__sub">MVP core</span
-                                    ><span class="vgroup__count">16/17</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
-                                    ></span
-                                ><span class="vgroup__prog"
-                                    ><span
-                                        class="vgroup__prog-fill"
-                                        data-bar
-                                        data-width="97"
-                                    ></span
-                                ></span>
+                                <span class="vgroup__headrow">
+                                    <span class="vgroup__chevron" aria-hidden="true"></span>
+                                    <span class="vgroup__title">WebAssembly 1.0</span>
+                                    <span class="vgroup__sub">MVP core</span>
+                                    <span class="vgroup__count">17/17</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </span>
+                                <span class="vgroup__prog">
+                                    <span class="vgroup__prog-fill" data-bar data-width="100"></span>
+                                </span>
                             </summary>
                             <div class="vgroup__body">
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >i32 / i64 integer ops</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">i32 / i64 integer ops</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >f32 / f64 ops</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">f32 / f64 ops</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >f32 / f64 ceil / floor / trunc /
-                                        nearest / copysign</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">f32 / f64 ceil / floor / trunc / nearest / copysign</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Conversions + reinterpret</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Conversions + reinterpret</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Float→int trunc NaN/overflow
-                                        traps</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Float→int trunc NaN/overflow traps</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Control flow: block / loop / if / else
-                                        / br / br_if / br_table / return</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Control flow: block / loop / if / else / br / br_if / br_table / return</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >call / call_indirect</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">call / call_indirect</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >select, drop, nop, unreachable</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">select, drop, nop, unreachable</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Locals</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Locals</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Globals</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Globals</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Linear memory load/store</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Linear memory load/store</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >memory.size / memory.grow</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">memory.size / memory.grow</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Active data segments</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Active data segments</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Tables + active element segments</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Tables + active element segments</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Function imports / exports</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Function imports / exports</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Memory / table / global imports &amp;
-                                        exports</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
-                                    >
+                                    <span class="vgroup__feat">Memory / table / global imports &amp; exports</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >start function</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">start function</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                             </div>
                         </details>
                         <details class="vgroup" name="wasm-versions">
                             <summary class="vgroup__head">
-                                <span class="vgroup__headrow"
-                                    ><span
-                                        class="vgroup__chevron"
-                                        aria-hidden="true"
-                                    ></span
-                                    ><span class="vgroup__title"
-                                        >WebAssembly 2.0</span
-                                    ><span class="vgroup__sub"
-                                        >finished proposals</span
-                                    ><span class="vgroup__count">6/6</span
-                                    ><span class="tag tag--pass"
-                                        >pass</span
-                                    ></span
-                                ><span class="vgroup__prog"
-                                    ><span
-                                        class="vgroup__prog-fill"
-                                        data-bar
-                                        data-width="100"
-                                    ></span
-                                ></span>
+                                <span class="vgroup__headrow">
+                                    <span class="vgroup__chevron" aria-hidden="true"></span>
+                                    <span class="vgroup__title">WebAssembly 2.0</span>
+                                    <span class="vgroup__sub">finished proposals</span>
+                                    <span class="vgroup__count">6/6</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </span>
+                                <span class="vgroup__prog">
+                                    <span class="vgroup__prog-fill" data-bar data-width="100"></span>
+                                </span>
                             </summary>
                             <div class="vgroup__body">
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Sign-extension ops</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Sign-extension ops</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Non-trapping float→int</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Non-trapping float→int</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Multi-value</span
-                                    ><span class="tag tag--pass"
-                                        >pass</span
-                                    >
+                                    <span class="vgroup__feat">Multi-value</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Reference types</span
-                                    ><span class="tag tag--pass"
-                                        >pass</span
-                                    >
+                                    <span class="vgroup__feat">Reference types</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Bulk memory</span
-                                    ><span class="tag tag--pass"
-                                        >pass</span
-                                    >
+                                    <span class="vgroup__feat">Bulk memory</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Fixed-width SIMD</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Fixed-width SIMD</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                             </div>
                         </details>
                         <details class="vgroup" name="wasm-versions">
                             <summary class="vgroup__head">
-                                <span class="vgroup__headrow"
-                                    ><span
-                                        class="vgroup__chevron"
-                                        aria-hidden="true"
-                                    ></span
-                                    ><span class="vgroup__title"
-                                        >WebAssembly 3.0+</span
-                                    ><span class="vgroup__sub"
-                                        >3.0 &amp; in-progress proposals</span
-                                    ><span class="vgroup__count">0/42</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    ></span
-                                ><span class="vgroup__prog"
-                                    ><span
-                                        class="vgroup__prog-fill"
-                                        data-bar
-                                        data-width="0"
-                                    ></span
-                                ></span>
+                                <span class="vgroup__headrow">
+                                    <span class="vgroup__chevron" aria-hidden="true"></span>
+                                    <span class="vgroup__title">WebAssembly 3.0+</span>
+                                    <span class="vgroup__sub">3.0 &amp; in-progress proposals</span>
+                                    <span class="vgroup__count">0/42</span>
+                                    <span class="tag tag--planned">planned</span>
+                                </span>
+                                <span class="vgroup__prog">
+                                    <span class="vgroup__prog-fill" data-bar data-width="0"></span>
+                                </span>
                             </summary>
                             <div class="vgroup__body">
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Tail calls</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Tail calls</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Extended const expressions</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Extended const expressions</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Typed function references</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Typed function references</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Memory64</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Memory64</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Multiple memories</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Multiple memories</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Garbage collection</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Garbage collection</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Exception handling</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Exception handling</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Relaxed SIMD</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Relaxed SIMD</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Branch hinting</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Branch hinting</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Custom annotations (text)</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Custom annotations (text)</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >JS string builtins</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">JS string builtins</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Threads &amp; atomics</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Threads &amp; atomics</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >JS Promise integration</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">JS Promise integration</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Web Content Security Policy</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Web Content Security Policy</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >ESM integration</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">ESM integration</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Wide arithmetic</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Wide arithmetic</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Stack switching</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Stack switching</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Compact import section</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Compact import section</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Custom page sizes</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Custom page sizes</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Custom descriptors &amp; JS
-                                        interop</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Custom descriptors &amp; JS interop</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Relaxed dead-code validation</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Relaxed dead-code validation</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Numeric values in WAT data</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Numeric values in WAT data</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Extended name section</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Extended name section</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Rounding variants</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Rounding variants</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Compilation hints</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Compilation hints</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >JS primitive builtins</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">JS primitive builtins</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Relaxed atomics</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Relaxed atomics</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Type imports</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Type imports</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Component model</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Component model</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >C / C++ embedding API</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">C / C++ embedding API</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Flexible vectors</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Flexible vectors</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Memory control</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Memory control</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Reference-typed strings</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Reference-typed strings</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat">Profiles</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Profiles</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Shared-everything threads</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Shared-everything threads</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Frozen values</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Frozen values</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Half precision (FP16)</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Half precision (FP16)</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >More array constructors</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">More array constructors</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >JIT interface</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">JIT interface</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Multibyte array access</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Multibyte array access</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Type reflection (JS API)</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">Type reflection (JS API)</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >JS text-encoding builtins</span
-                                    ><span class="tag tag--planned"
-                                        >planned</span
-                                    >
+                                    <span class="vgroup__feat">JS text-encoding builtins</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                             </div>
                         </details>
                         <details class="vgroup" name="wasm-versions">
                             <summary class="vgroup__head">
-                                <span class="vgroup__headrow"
-                                    ><span
-                                        class="vgroup__chevron"
-                                        aria-hidden="true"
-                                    ></span
-                                    ><span class="vgroup__title"
-                                        >Engine &amp; platform</span
-                                    ><span class="vgroup__sub"
-                                        >host ABI · targets · WASI</span
-                                    ><span class="vgroup__count">1/3</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
-                                    ></span
-                                ><span class="vgroup__prog"
-                                    ><span
-                                        class="vgroup__prog-fill"
-                                        data-bar
-                                        data-width="50"
-                                    ></span
-                                ></span>
+                                <span class="vgroup__headrow">
+                                    <span class="vgroup__chevron" aria-hidden="true"></span>
+                                    <span class="vgroup__title">Engine &amp; platform</span>
+                                    <span class="vgroup__sub">host ABI · targets · WASI</span>
+                                    <span class="vgroup__count">1/3</span>
+                                    <span class="tag tag--partial">partial</span>
+                                </span>
+                                <span class="vgroup__prog">
+                                    <span class="vgroup__prog-fill" data-bar data-width="50"></span>
+                                </span>
                             </summary>
                             <div class="vgroup__body">
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Synchronous host-import results</span
-                                    ><span class="tag tag--pass">pass</span>
+                                    <span class="vgroup__feat">Synchronous host-import results</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >WASI preview 1</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
-                                    >
+                                    <span class="vgroup__feat">WASI preview 1</span>
+                                    <span class="tag tag--planned">planned</span>
                                 </div>
                                 <div class="vgroup__row">
-                                    <span class="vgroup__feat"
-                                        >Architectures beyond linux/amd64</span
-                                    ><span class="tag tag--partial"
-                                        >partial</span
-                                    >
+                                    <span class="vgroup__feat">Architectures beyond linux/amd64</span>
+                                    <span class="tag tag--partial">partial</span>
                                 </div>
                             </div>
                         </details>

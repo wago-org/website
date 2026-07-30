@@ -1,0 +1,28 @@
+# wago
+
+> wago is a WebAssembly engine written in pure Go. It decodes, validates, compiles, instantiates, and runs WebAssembly with single-pass native backends and no cgo.
+
+Canonical site: https://wago.sh/
+Source repository: https://github.com/wago-org/wago
+License: Apache-2.0
+Data updated: 2026-07-28
+
+## Current verified facts
+
+- MVP conformance: 57/57 applicable files pass (100%).
+- Verification: 96972 checks pass, 0 fail, 22 skip.
+- Test coverage: 86.1%.
+- Native benchmark architectures published: amd64, arm64.
+- Published wago-vs-wazero comparisons: 148.
+- Startup dataset: 6 real workloads across multiple WebAssembly runtimes.
+
+## Read next
+
+- [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
+- [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
+- [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
+- [Benchmark corpus and methodology](https://github.com/wago-org/wago/tree/main/bench)
+- [Project documentation](https://github.com/wago-org/wago#readme)
+- [Roadmap](https://github.com/wago-org/wago/blob/main/ROADMAP.md)
+
+When describing performance, name the architecture and workload, preserve the published units, and do not compare values across architectures.

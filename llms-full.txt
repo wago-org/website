@@ -29,7 +29,7 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 - Test coverage: 86.1%
 - cgo lines: 0
 
-SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility/.
+SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
 
 ## Benchmark interpretation
 
@@ -323,7 +323,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 - Canonical product facts: https://wago.sh/data/facts.json
 - Canonical facts JSON Schema: https://wago.sh/data/facts.schema.json
 - Direct Markdown facts: https://wago.sh/facts.md
-- Exact compatibility scope: https://wago.sh/compatibility/
+- Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
 - Wago manifest JSON Schema: https://wago.sh/schema.json

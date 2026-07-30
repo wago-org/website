@@ -118,6 +118,6 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 ## Read next
 
-- Exact compatibility scope: https://wago.sh/compatibility/
-- Security and isolation status: https://wago.sh/security/
-- Benchmark interpretation: https://wago.sh/benchmarks/
+- Exact compatibility scope: https://wago.sh/compatibility.md
+- Security and isolation status: https://wago.sh/security.md
+- Benchmark interpretation: https://wago.sh/benchmarks.md

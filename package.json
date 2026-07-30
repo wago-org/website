@@ -5,7 +5,7 @@
     "type": "module",
     "description": "Landing page for wago - a pure-Go WebAssembly Runtime (wago.sh)",
     "scripts": {
-        "build": "npm run sync:check && tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets data compatibility security benchmarks compare guides facts.md compatibility.md security.md benchmarks.md CNAME install.sh robots.txt sitemap.xml site.webmanifest schema.json llms.txt llms-full.txt dist/",
+        "build": "npm run sync:check && tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets data facts.md compatibility.md security.md benchmarks.md CNAME install.sh robots.txt sitemap.xml site.webmanifest schema.json llms.txt llms-full.txt dist/",
         "dev": "tsc --watch --preserveWatchOutput",
         "typecheck": "tsc --noEmit",
         "sync": "node scripts/sync-stats.mjs && node scripts/sync-schema.mjs && node scripts/sync-facts.mjs && node scripts/sync-ai-metadata.mjs",

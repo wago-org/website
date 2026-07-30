@@ -457,7 +457,7 @@ Data updated: ${project.generated}
 - Execution: ${canonical.identity.execution}; pure Go; cgo=${canonical.identity.cgo}.
 - Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
 - Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
-- Legacy SPECTEST.md MVP report: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%); see /compatibility/ for the current public-verification boundary.
+- Legacy SPECTEST.md MVP report: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%); see /compatibility.md for the current public-verification boundary.
 - Verification: ${stats.verification.checksPass} checks pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
 - Test coverage: ${stats.coveragePercent}%.
 - Native benchmark architectures published: ${architectures.join(", ")}.
@@ -467,9 +467,9 @@ Data updated: ${project.generated}
 ## Read next
 
 - [Direct Markdown fact sheet](https://wago.sh/facts.md)
-- [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
-- [Security and isolation status](https://wago.sh/security/)
-- [Benchmark index and measurement caveats](https://wago.sh/benchmarks/)
+- [Exact compatibility and imported-suite scope](https://wago.sh/compatibility.md)
+- [Security and isolation status](https://wago.sh/security.md)
+- [Benchmark interpretation and measurement caveats](https://wago.sh/benchmarks.md)
 - [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
 - [Canonical facts JSON Schema](https://wago.sh/data/facts.schema.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
@@ -516,7 +516,7 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 - Test coverage: ${facts.coveragePercent}%
 - cgo lines: ${facts.cgoLines}
 
-SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility/.
+SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
 
 ## Benchmark interpretation
 
@@ -543,7 +543,7 @@ Definition: ${benchmarks.startup.definition}
 - Canonical product facts: https://wago.sh/data/facts.json
 - Canonical facts JSON Schema: https://wago.sh/data/facts.schema.json
 - Direct Markdown facts: https://wago.sh/facts.md
-- Exact compatibility scope: https://wago.sh/compatibility/
+- Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
 - Wago manifest JSON Schema: https://wago.sh/schema.json

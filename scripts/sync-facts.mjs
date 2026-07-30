@@ -570,9 +570,9 @@ ${proposals}
 
 ## Read next
 
-- Exact compatibility scope: https://wago.sh/compatibility/
-- Security and isolation status: https://wago.sh/security/
-- Benchmark interpretation: https://wago.sh/benchmarks/
+- Exact compatibility scope: https://wago.sh/compatibility.md
+- Security and isolation status: https://wago.sh/security.md
+- Benchmark interpretation: https://wago.sh/benchmarks.md
 `;
 }
 
@@ -1146,21 +1146,9 @@ const generated = new Map([
   [OUT, `${JSON.stringify(facts, null, 2)}\n`],
   [OUT_SCHEMA, `${JSON.stringify(factsSchema(), null, 2)}\n`],
   [join(ROOT, "facts.md"), factsMarkdown(facts)],
-  [join(ROOT, "compatibility", "index.html"), compatibilityPage(facts)],
   [join(ROOT, "compatibility.md"), compatibilityMarkdown(facts)],
-  [join(ROOT, "security", "index.html"), securityPage(facts)],
   [join(ROOT, "security.md"), securityMarkdown(facts)],
-  [join(ROOT, "benchmarks", "index.html"), benchmarksIndex(facts)],
   [join(ROOT, "benchmarks.md"), benchmarksMarkdown(facts)],
-  [join(ROOT, "benchmarks", "arm64", "index.html"), arm64Page(facts)],
-  ...Object.keys(competitorFacts).map((key) => [
-    join(ROOT, "compare", key, "index.html"),
-    comparePage(facts, key),
-  ]),
-  ...["many-instances", "no-cgo", "edge-runtime"].map((key) => [
-    join(ROOT, "guides", key, "index.html"),
-    guidePage(facts, key),
-  ]),
 ]);
 
 const stale = [];

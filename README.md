@@ -17,11 +17,6 @@ data/
   facts.json            # canonical product/support facts + evidence (generated)
   facts.schema.json     # JSON Schema for facts.json (generated)
   project.json          # complete project + benchmark data for machines (generated)
-compatibility/          # exact suite/accounting scope (generated)
-security/               # current controls and explicit assurance gaps (generated)
-benchmarks/             # crawlable benchmark index and ARM64 protocol (generated)
-compare/                # factual runtime comparison pages (generated)
-guides/                 # operational evaluation guides (generated)
 llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
 facts.md, ...           # direct Markdown mirrors of canonical pages (generated)
@@ -120,10 +115,8 @@ crawlers, and answer engines:
   contract, pinned to a Wago commit and indexed through `/llms.txt`.
 - `/data/facts.schema.json` validates that contract, while `/facts.md` and the
   other top-level Markdown mirrors avoid HTML extraction entirely.
-- `/compatibility/` defines exact suite provenance, accounting units, ports,
-  exclusions, and unsupported claims.
-- `/security/`, `/benchmarks/`, `/compare/*`, and `/guides/*` are static HTML,
-  so direct-link readers do not depend on client-side rendering.
+- `/compatibility.md`, `/security.md`, and `/benchmarks.md` provide direct
+  Markdown context for automated readers without creating public docs pages.
 - `/llms-full.txt` contains all current startup and wago-vs-wazero comparison
   tables in compact Markdown.
 - `/data/project.json` contains the same project facts and benchmark rows as

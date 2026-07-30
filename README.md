@@ -17,7 +17,6 @@ data/
   facts.json            # canonical product/support facts + evidence (generated)
   facts.schema.json     # JSON Schema for facts.json (generated)
   project.json          # complete project + benchmark data for machines (generated)
-facts/                  # canonical static fact sheet (generated)
 compatibility/          # exact suite/accounting scope (generated)
 security/               # current controls and explicit assurance gaps (generated)
 benchmarks/             # crawlable benchmark index and ARM64 protocol (generated)
@@ -117,8 +116,8 @@ The site publishes several no-JavaScript discovery surfaces for link readers,
 crawlers, and answer engines:
 
 - `/llms.txt` is the concise project brief and discovery index.
-- `/facts/` and `/data/facts.json` are the canonical human- and
-  machine-readable product/support contract, pinned to a Wago commit.
+- `/data/facts.json` is the canonical machine-readable product/support
+  contract, pinned to a Wago commit and indexed through `/llms.txt`.
 - `/data/facts.schema.json` validates that contract, while `/facts.md` and the
   other top-level Markdown mirrors avoid HTML extraction entirely.
 - `/compatibility/` defines exact suite provenance, accounting units, ports,

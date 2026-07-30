@@ -14,7 +14,7 @@
     "$schema": "https://wago.sh/data/facts.schema.json",
     "schemaVersion": 1,
     "generated": "2026-07-30",
-    "canonicalUrl": "https://wago.sh/facts/",
+    "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
       "ref": "main",

@@ -466,7 +466,6 @@ Data updated: ${project.generated}
 
 ## Read next
 
-- [Canonical facts and primary evidence](https://wago.sh/facts/)
 - [Direct Markdown fact sheet](https://wago.sh/facts.md)
 - [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
 - [Security and isolation status](https://wago.sh/security/)
@@ -543,7 +542,6 @@ Definition: ${benchmarks.startup.definition}
 
 - Canonical product facts: https://wago.sh/data/facts.json
 - Canonical facts JSON Schema: https://wago.sh/data/facts.schema.json
-- Static fact and evidence page: https://wago.sh/facts/
 - Direct Markdown facts: https://wago.sh/facts.md
 - Exact compatibility scope: https://wago.sh/compatibility/
 - Complete structured project data: https://wago.sh/data/project.json

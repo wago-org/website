@@ -168,10 +168,6 @@ function evidenceLinks(items) {
     .join(" · ");
 }
 
-function status(value) {
-  return `<span class="fact-status fact-status--${esc(value)}">${esc(value)}</span>`;
-}
-
 function rows(entries) {
   return entries
     .map(
@@ -199,7 +195,6 @@ ${markdown ? `  <link rel="alternate" type="text/markdown" href="/${esc(markdown
   <header class="docs-nav">
     <a class="docs-brand" href="/">✦ wago</a>
     <nav aria-label="Documentation">
-      <a href="/facts/">Facts</a>
       <a href="/compatibility/">Compatibility</a>
       <a href="/benchmarks/">Benchmarks</a>
       <a href="/security/">Security</a>
@@ -223,89 +218,6 @@ ${body}
 </body>
 </html>
 `;
-}
-
-function factsPage(facts) {
-  const e = facts.evidence;
-  const platformRows = facts.platforms.map((platform) => [
-    `<code>${esc(platform.target)}</code>`,
-    `${status(platform.status)} ${esc(platform.detail)}`,
-    evidenceLinks(platform.evidence),
-  ]);
-  const proposalRows = facts.webAssembly.proposals.map((proposal) => [
-    esc(proposal.name),
-    status(proposal.status),
-    evidenceLinks(proposal.evidence),
-  ]);
-  return page({
-    path: "facts",
-    title: "Wago facts",
-    description:
-      "A static, citable answer sheet for Wago’s release state, native targets, execution model, concurrency, limits, WASI, and WebAssembly support.",
-    updated: facts.generated,
-    sourceCommit: facts.source.commit,
-    markdown: "facts.md",
-    body: `
-    <section id="what-is-wago">
-      <h2>What is Wago?</h2>
-      <p>Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself; it is not a Go wrapper around a C or C++ runtime.</p>
-      <dl>
-        <div><dt>Implementation</dt><dd>Pure Go; no cgo in the engine.</dd></div>
-        <div><dt>Execution model</dt><dd>Single-pass native compiler for amd64 and arm64. Wago does not ship an interpreter tier.</dd></div>
-        <div><dt>Release state</dt><dd>${esc(facts.release.status)} There is no stable v1 API promise.</dd></div>
-      </dl>
-      <p class="evidence">Evidence: ${evidenceLinks([e.readme, e.features])}</p>
-    </section>
-    <section id="platforms">
-      <h2>Native runtime targets</h2>
-      <table><thead><tr><th>Target</th><th>Status</th><th>Primary evidence</th></tr></thead>
-      <tbody>${rows(platformRows)}</tbody></table>
-      <p>“Supported” here means the native runtime, API tests, guard-page path, and corpus correctness run in CI. It does not mean every Go target is a native Wago runtime.</p>
-    </section>
-    <section id="concurrency">
-      <h2>Concurrency contract</h2>
-      <table><thead><tr><th>Object or operation</th><th>Contract</th><th>Evidence</th></tr></thead>
-      <tbody>${rows([
-        ["Runtime", "Concurrent compile, instantiate, and execute on distinct modules/instances is race-tested.", evidenceLinks([e.concurrency])],
-        ["Compiled module", "Compile once and instantiate many. The public docs do not yet make a blanket goroutine-safety promise for every method.", evidenceLinks([e.readme])],
-        ["Instance", "Do not make concurrent calls on one instance. Call and result buffers are instance-owned.", evidenceLinks([e.api])],
-        ["Separate instances", "Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized by one process-wide lock.", evidenceLinks([e.nativeExecution, e.concurrency])],
-        ["Memory view", "Memory.Bytes() is a borrowed zero-copy view valid only while the memory and owner remain open. Callers must synchronize it against close and guest mutation.", evidenceLinks([e.memory])],
-        ["Host imports", "Nested same-instance Wasm reentry is tested, but a complete public reentrancy contract is not yet documented.", evidenceLinks([e.readme])],
-      ])}</tbody></table>
-    </section>
-    <section id="limits">
-      <h2>Resource limits and interruption</h2>
-      <table><thead><tr><th>Control</th><th>Status</th><th>Evidence</th></tr></thead>
-      <tbody>${rows([
-        ["Declared linear memory", `${status("supported")} Runtime and policy limits cap declared memory.`, evidenceLinks([e.readme])],
-        ["Declared table entries", `${status("partial")} Policy limits check each table’s initial/minimum size, not a complete growth ceiling.`, evidenceLinks([e.policy])],
-        ["Execution deadline", `${status("supported")} Context cancellation and deadlines interrupt amd64/arm64 native execution at safepoints.`, evidenceLinks([e.api, e.features])],
-        ["Policy MaxInvokeDuration", `${status("not-published")} The field is reserved and not enforced; callers must use a context deadline.`, evidenceLinks([e.policy])],
-        ["Aggregate live-instance memory", `${status("not-published")} No runtime-wide accounting contract is documented at this source commit.`, evidenceLinks([e.readme])],
-      ])}</tbody></table>
-    </section>
-    <section id="wasi">
-      <h2>WASI</h2>
-      <p>WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a function-by-function plugin support matrix, so this page does not claim complete Preview 1 or Preview 2 coverage.</p>
-      <p class="evidence">See the <a href="https://plugins.wago.sh/wago-org/wasi">WASI plugin listing</a> and ${evidenceLinks([e.readme])}.</p>
-    </section>
-    <section id="webassembly">
-      <h2>WebAssembly proposals</h2>
-      <p>Wago’s Release 2 validation and execution gates are green. Proposal status below comes from the generated feature tracker; “planned” is not partial support.</p>
-      <table><thead><tr><th>Proposal</th><th>Status</th><th>Evidence</th></tr></thead>
-      <tbody>${rows(proposalRows)}</tbody></table>
-    </section>
-    <section id="artifacts">
-      <h2>Precompiled artifacts</h2>
-      <p>Wago can serialize and load <code>.wago</code> compiled modules. The codec is versioned, but a stable cross-release artifact compatibility policy and cache-keyed CLI product are not yet published.</p>
-      <p class="evidence">Evidence: ${evidenceLinks([e.readme, e.api])}</p>
-    </section>
-    <section id="machine-readable">
-      <h2>Machine-readable source</h2>
-      <p><a href="/data/facts.json">facts.json</a> is the canonical structured form of this page and declares <a href="/data/facts.schema.json">its JSON Schema</a>. A direct <a href="/facts.md">Markdown mirror</a> is also available. Benchmark rows live in <a href="/data/project.json">project.json</a>; verification and proposal rollups live in <a href="/data/stats.json">stats.json</a>.</p>
-    </section>`,
-  });
 }
 
 function compatibilityPage(facts) {
@@ -559,7 +471,7 @@ function guidePage(facts, key) {
         <li>It does not remove executable-memory policy, code-signing, or operating-system constraints.</li>
         <li>It does not imply every plugin is dependency-free; evaluate plugin manifests separately.</li>
       </ul>
-      <p>Canonical target matrix: <a href="/facts/#platforms">Wago facts</a>.</p>
+      <p>Native target evidence: ${evidenceLinks([facts.evidence.ci])}.</p>
     </section>`,
     },
     "edge-runtime": {
@@ -1113,7 +1025,7 @@ const facts = {
   $schema: "https://wago.sh/data/facts.schema.json",
   schemaVersion: 1,
   generated: stats.generated,
-  canonicalUrl: "https://wago.sh/facts/",
+  canonicalUrl: "https://wago.sh/data/facts.json",
   source: {
     repository: `https://github.com/${REPO}`,
     ref: REF,
@@ -1233,7 +1145,6 @@ validateFacts(facts);
 const generated = new Map([
   [OUT, `${JSON.stringify(facts, null, 2)}\n`],
   [OUT_SCHEMA, `${JSON.stringify(factsSchema(), null, 2)}\n`],
-  [join(ROOT, "facts", "index.html"), factsPage(facts)],
   [join(ROOT, "facts.md"), factsMarkdown(facts)],
   [join(ROOT, "compatibility", "index.html"), compatibilityPage(facts)],
   [join(ROOT, "compatibility.md"), compatibilityMarkdown(facts)],

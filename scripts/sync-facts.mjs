@@ -16,6 +16,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const LOCAL = process.env.WAGO_DIR || resolve(ROOT, "..", "wago");
 const STATS = join(ROOT, "data", "stats.json");
 const OUT = join(ROOT, "data", "facts.json");
+const OUT_SCHEMA = join(ROOT, "data", "facts.schema.json");
 
 const INPUTS = [
   "README.md",
@@ -23,6 +24,7 @@ const INPUTS = [
   "VERIFICATION.md",
   "docs/ci.md",
   "docs/wazero-test-applicability.md",
+  "testdata/wazero/README.md",
   ".github/workflows/ci.yml",
   "src/wago/api.go",
   "src/wago/instance_native_context.go",
@@ -93,6 +95,45 @@ async function remoteCommit() {
   return (await response.json()).sha;
 }
 
+async function resolveGitlink(path, envName) {
+  const configured = process.env[envName];
+  if (configured) {
+    if (!/^[0-9a-f]{40}$/i.test(configured)) {
+      throw new Error(`${envName} must be a 40-character commit`);
+    }
+    return configured;
+  }
+  try {
+    const line = execFileSync("git", ["-C", LOCAL, "ls-tree", "HEAD", "--", path], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    const found = line.match(/^160000 commit ([0-9a-f]{40})\t/);
+    if (found) return found[1];
+  } catch {
+    // Fall through to the GitHub contents API.
+  }
+
+  const url = `https://api.github.com/repos/${REPO}/contents/${path}?ref=${encodeURIComponent(REF)}`;
+  const response = await fetch(url, {
+    headers: {
+      ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
+      Accept: "application/vnd.github+json",
+      "User-Agent": "wago-website-facts-sync",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(
+      `could not resolve gitlink ${path}: ${response.status}; set ${envName} when using an exported source tree`,
+    );
+  }
+  const data = await response.json();
+  if (!/^[0-9a-f]{40}$/i.test(data.sha || "")) {
+    throw new Error(`GitHub did not return a gitlink commit for ${path}`);
+  }
+  return data.sha;
+}
+
 function requireText(source, needle, file) {
   if (!source.includes(needle)) {
     throw new Error(`${file}: expected evidence disappeared: ${needle}`);
@@ -139,7 +180,7 @@ function rows(entries) {
     .join("\n");
 }
 
-function page({ path, title, description, updated, sourceCommit, body }) {
+function page({ path, title, description, updated, sourceCommit, body, extraHead = "", markdown = "" }) {
   const canonical = `https://wago.sh/${path ? `${path}/` : ""}`;
   return `<!doctype html>
 <html lang="en">
@@ -150,9 +191,9 @@ function page({ path, title, description, updated, sourceCommit, body }) {
   <meta name="description" content="${esc(description)}" />
   <meta name="robots" content="index, follow, max-snippet:-1" />
   <link rel="canonical" href="${canonical}" />
-  <link rel="stylesheet" href="/assets/css/tokens.css" />
+${markdown ? `  <link rel="alternate" type="text/markdown" href="/${esc(markdown)}" />\n` : ""}  <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/docs.css" />
-</head>
+${extraHead ? `  ${extraHead}\n` : ""}</head>
 <body>
   <header class="docs-nav">
     <a class="docs-brand" href="/">✦ wago</a>
@@ -161,6 +202,7 @@ function page({ path, title, description, updated, sourceCommit, body }) {
       <a href="/compatibility/">Compatibility</a>
       <a href="/benchmarks/">Benchmarks</a>
       <a href="/security/">Security</a>
+      <a href="/faq/">FAQ</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
   </header>
@@ -202,6 +244,7 @@ function factsPage(facts) {
       "A static, citable answer sheet for Wago’s release state, native targets, execution model, concurrency, limits, WASI, and WebAssembly support.",
     updated: facts.generated,
     sourceCommit: facts.source.commit,
+    markdown: "facts.md",
     body: `
     <section id="what-is-wago">
       <h2>What is Wago?</h2>
@@ -260,7 +303,7 @@ function factsPage(facts) {
     </section>
     <section id="machine-readable">
       <h2>Machine-readable source</h2>
-      <p><a href="/data/facts.json">facts.json</a> is the canonical structured form of this page. Benchmark rows live in <a href="/data/project.json">project.json</a>; verification and proposal rollups live in <a href="/data/stats.json">stats.json</a>.</p>
+      <p><a href="/data/facts.json">facts.json</a> is the canonical structured form of this page and declares <a href="/data/facts.schema.json">its JSON Schema</a>. A direct <a href="/facts.md">Markdown mirror</a> is also available. Benchmark rows live in <a href="/data/project.json">project.json</a>; verification and proposal rollups live in <a href="/data/stats.json">stats.json</a>.</p>
     </section>`,
   });
 }
@@ -275,6 +318,7 @@ function compatibilityPage(facts) {
       "Exact scope for Wago’s published verification totals, official WebAssembly corpora, and imported wazero tests.",
     updated: facts.generated,
     sourceCommit: facts.source.commit,
+    markdown: "compatibility.md",
     body: `
     <section id="result">
       <h2>Verified result</h2>
@@ -286,14 +330,17 @@ function compatibilityPage(facts) {
     <section id="official-suites">
       <h2>Official WebAssembly suites</h2>
       <p>Wago pins the WebAssembly MVP and Core 2.0 repositories as git submodules. The public gate reports 16,026 Release 1 execution assertions, 2,880 Release 2 validation assertions, 48,331 Release 2 execution assertions, and 24,325 SIMD execution assertions.</p>
+      <table><thead><tr><th>Corpus</th><th>Pinned commit</th><th>Repository</th></tr></thead>
+      <tbody>${c.verification.corpora.map((corpus) => `<tr><th scope="row">${esc(corpus.name)}</th><td><code>${esc(corpus.commit)}</code></td><td><a href="${esc(corpus.repository)}">${esc(corpus.repository)}</a></td></tr>`).join("\n")}</tbody></table>
       <p>These are assertion counts, not interchangeable “test case” counts. The separate legacy MVP page reports 57/57 applicable files and 16,592 passing assertions under its own older corpus/accounting boundary.</p>
       <p class="evidence">Evidence: ${evidenceLinks([e.verification, e.features])}</p>
     </section>
     <section id="wazero">
       <h2>Imported wazero coverage</h2>
       <p>The claim is not “Wago runs the entire wazero repository unchanged.” Wago audits all <strong>${c.wazero.filesAudited}</strong> upstream Go test files at wazero commit <code>${esc(c.wazero.commit.slice(0, 12))}</code>, then records each as ported/covered, not applicable, benchmark/example-only, or reviewed without a direct port. Named Wago suites contain copied or adapted semantic cases and pinned fixtures.</p>
-      <p>The ledger separately accounts for 39 upstream engine cases, 147 Core v2 WAST files, 63 extended-constant artifacts, 782 fail-closed proposal artifacts, 71 fuzz fixtures, and 23 engine fixtures.</p>
-      <p class="evidence">Scope and disposition ledger: ${evidenceLinks([e.wazeroLedger])}</p>
+      <p>The ledger separately accounts for 39 upstream engine cases, 147 Core v2 WAST files, ${c.wazero.fixtures.extendedConstantArtifacts} extended-constant artifacts, ${c.wazero.fixtures.failClosedProposalArtifacts} fail-closed proposal artifacts, ${c.wazero.fixtures.fuzzBinaries} fuzz fixtures, and ${c.wazero.fixtures.engineBinaries} engine fixtures.</p>
+      <p>The ${c.wazero.fixtures.totalArtifacts} copied upstream artifacts are pinned by SHA-256 digest <code>${esc(c.wazero.fixtures.sha256)}</code>.</p>
+      <p class="evidence">Scope and disposition ledger: ${evidenceLinks([e.wazeroLedger, e.wazeroFixtures])}</p>
     </section>
     <section id="wasmtime">
       <h2>Wasmtime suite claim</h2>
@@ -316,6 +363,7 @@ function securityPage(facts) {
       "What Wago currently bounds, how runaway guest execution is interrupted, and which security assurances are not yet published.",
     updated: facts.generated,
     sourceCommit: facts.source.commit,
+    markdown: "security.md",
     body: `
     <section id="controls">
       <h2>Published controls</h2>
@@ -350,6 +398,7 @@ function benchmarksIndex(facts) {
       "Crawlable Wago benchmark definitions, caveats, raw structured data, and planned many-instance measurements.",
     updated: facts.generated,
     sourceCommit: facts.source.commit,
+    markdown: "benchmarks.md",
     body: `
     <section id="published">
       <h2>Published measurements</h2>
@@ -546,6 +595,565 @@ function guidePage(facts, key) {
   });
 }
 
+function faqEntries(facts) {
+  const targets = facts.platforms
+    .filter((platform) => platform.status === "supported")
+    .map((platform) => platform.target)
+    .join(", ");
+  return [
+    {
+      id: "what-is-wago",
+      question: "What is Wago?",
+      answer:
+        "Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself rather than wrapping a C or C++ runtime.",
+    },
+    {
+      id: "pure-go",
+      question: "Is Wago pure Go, and does it use cgo?",
+      answer: "The Wago engine is pure Go and does not use cgo.",
+    },
+    {
+      id: "platforms",
+      question: "Which native runtime targets does Wago support?",
+      answer: `Required native runtime CI currently covers ${targets}. Darwin/amd64 receives portable compiler checks but is not a supported native runtime target; Windows native execution is not currently claimed.`,
+    },
+    {
+      id: "jit-or-aot",
+      question: "Is Wago a JIT or an AOT compiler?",
+      answer:
+        "The least ambiguous description is single-pass native compiler. Wago compiles Wasm to native code during Compile and has no interpreter tier. Its Go interface can also serialize versioned .wago compiled blobs, but stable portable artifact compatibility is not promised.",
+    },
+    {
+      id: "release",
+      question: "What is Wago’s current release status?",
+      answer: facts.release.status,
+    },
+    {
+      id: "concurrency",
+      question: "Can Wago instances execute concurrently?",
+      answer:
+        "Calls on one instance must be serialized. Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized process-wide, so independent instances are not fully parallel.",
+    },
+    {
+      id: "deadlines",
+      question: "Can Wago interrupt an infinite or CPU-bound guest?",
+      answer:
+        "Yes on amd64 and arm64 when the caller uses Call or InvokeContext with a canceled context or deadline. Interruption occurs at cooperative native safepoints. Wago does not currently expose deterministic fuel accounting, and Policy.MaxInvokeDuration is reserved rather than enforced.",
+    },
+    {
+      id: "limits",
+      question: "How does Wago bound memory and tables?",
+      answer:
+        "Wago can cap a module’s declared maximum linear memory. Policy.MaxTableEntries currently checks each table’s initial or minimum size, not its complete growth ceiling. No runtime-wide aggregate memory budget is published.",
+    },
+    {
+      id: "wasi",
+      question: "Which WASI version does Wago support?",
+      answer:
+        "WASI is outside Wago core. External plugin integration exists, but this audit did not establish a function-by-function Preview 1 or Preview 2 support matrix, so complete WASI coverage is not claimed.",
+    },
+    {
+      id: "compatibility",
+      question: "Does Wago pass the full wazero and Wasmtime test suites?",
+      answer:
+        "No such blanket claim is made. Wago maintains a pinned applicability ledger for all 234 wazero Go test files and ports or adapts relevant contracts and fixtures. No comparable Wasmtime suite import is published.",
+    },
+    {
+      id: "memory-benchmarks",
+      question: "Do Wago’s allocation benchmarks measure total instance memory?",
+      answer:
+        "No. The published allocation rows measure Go heap allocation traffic during the named operation. They exclude guest linear memory, native code mappings, virtual-memory reservations, RSS, and PSS.",
+    },
+    {
+      id: "many-instances",
+      question: "Has Wago published an 80-instance memory benchmark?",
+      answer:
+        "Not yet. A reproducible protocol for 1, 8, 80, and 120 instances is published, but no synthetic results or memory headline are claimed.",
+    },
+  ];
+}
+
+function faqPage(facts) {
+  const entries = faqEntries(facts);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    dateModified: facts.generated,
+    mainEntity: entries.map((entry) => ({
+      "@type": "Question",
+      name: entry.question,
+      acceptedAnswer: { "@type": "Answer", text: entry.answer },
+    })),
+  };
+  return page({
+    path: "faq",
+    title: "Wago FAQ",
+    description:
+      "Short, citable answers to common questions about Wago’s implementation, platforms, concurrency, limits, compatibility, WASI, and benchmarks.",
+    updated: facts.generated,
+    sourceCommit: facts.source.commit,
+    markdown: "faq.md",
+    extraHead: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+    body: entries
+      .map(
+        (entry) => `
+    <section id="${esc(entry.id)}">
+      <h2>${esc(entry.question)}</h2>
+      <p>${esc(entry.answer)}</p>
+    </section>`,
+      )
+      .join(""),
+  });
+}
+
+function markdownHeader(title, facts) {
+  return `# ${title}
+
+Last synchronized: ${facts.generated}
+Wago source commit: ${facts.source.commit}
+Canonical JSON: https://wago.sh/data/facts.json
+`;
+}
+
+function factsMarkdown(facts) {
+  const platformRows = facts.platforms
+    .map((platform) => `| \`${platform.target}\` | ${platform.status} | ${platform.detail} |`)
+    .join("\n");
+  const proposals = facts.webAssembly.proposals
+    .map((proposal) => `- ${proposal.name}: ${proposal.status}`)
+    .join("\n");
+  return `${markdownHeader("Wago facts", facts)}
+## Identity and release
+
+- Implementation: Go
+- Pure Go: yes
+- cgo: no
+- Execution: ${facts.identity.execution}
+- Interpreter tier: no
+- Stable version: none published
+- Release state: ${facts.release.status}
+
+## Native runtime targets
+
+| Target | Status | Scope |
+| --- | --- | --- |
+${platformRows}
+
+## Concurrency
+
+- Runtime: ${facts.concurrency.runtime}
+- Compiled module: ${facts.concurrency.compiledModule}
+- Instance: ${facts.concurrency.instance}
+- Separate instances: ${facts.concurrency.separateInstances}
+- Native execution parallelism: ${facts.concurrency.nativeExecutionParallelism}
+- Result lifetime: ${facts.concurrency.resultLifetime}
+
+## Limits and interruption
+
+- Declared memory limit: supported
+- Table limit: ${facts.limits.declaredTables}
+- Context cancellation/deadline: supported on amd64 and arm64 at cooperative native safepoints
+- Policy.MaxInvokeDuration: ${facts.limits.policyMaxInvokeDuration}
+- Deterministic fuel: not implemented
+- Aggregate memory accounting: not published
+
+## WASI
+
+- Delivery: ${facts.wasi.delivery}
+- Preview 1: ${facts.wasi.preview1}
+- Preview 2: ${facts.wasi.preview2}
+
+## WebAssembly proposal tracker
+
+${proposals}
+
+## Read next
+
+- Exact compatibility scope: https://wago.sh/compatibility/
+- Security and isolation status: https://wago.sh/security/
+- Benchmark interpretation: https://wago.sh/benchmarks/
+`;
+}
+
+function compatibilityMarkdown(facts) {
+  const c = facts.compatibility;
+  const gates = c.verification.gates
+    .map(
+      (gate) =>
+        `| ${gate.name} | ${gate.pass} | ${gate.fail} | ${gate.skip} | ${gate.unit} |`,
+    )
+    .join("\n");
+  const corpora = c.verification.corpora
+    .map((corpus) => `| ${corpus.name} | \`${corpus.commit}\` | ${corpus.repository} |`)
+    .join("\n");
+  return `${markdownHeader("Wago compatibility and verification", facts)}
+## Public verification
+
+Host: \`${c.verification.host}\`
+Result: ${c.verification.pass} passed, ${c.verification.fail} failed, ${c.verification.skip} skipped checks.
+
+| Gate | Passed | Failed | Skipped | Accounting unit |
+| --- | ---: | ---: | ---: | --- |
+${gates}
+
+The headline mixes Go tests/subtests and conformance assertions. Preserve the per-row accounting unit.
+
+## Pinned official corpora
+
+| Corpus | Commit | Repository |
+| --- | --- | --- |
+${corpora}
+
+## Wazero scope
+
+- Upstream commit: \`${c.wazero.commit}\`
+- Go test files audited: ${c.wazero.filesAudited}
+- Method: ${c.wazero.method}
+- Copied upstream artifacts: ${c.wazero.fixtures.totalArtifacts}
+- Artifact SHA-256: \`${c.wazero.fixtures.sha256}\`
+- Fuzz binaries: ${c.wazero.fixtures.fuzzBinaries}
+- Engine binaries: ${c.wazero.fixtures.engineBinaries}
+- Extended-constant artifacts: ${c.wazero.fixtures.extendedConstantArtifacts}
+- Fail-closed proposal artifacts: ${c.wazero.fixtures.failClosedProposalArtifacts}
+
+Wago does not run the complete wazero repository unchanged. Applicable contracts and fixtures are ported or adapted, and exclusions are recorded in the applicability ledger.
+
+## Wasmtime scope
+
+No Wasmtime suite pin, fixture import, or applicability ledger is published. Wago does not claim to pass the full Wasmtime suite.
+`;
+}
+
+function securityMarkdown(facts) {
+  return `${markdownHeader("Wago security and isolation status", facts)}
+## Published controls
+
+- Declared linear-memory maxima can be limited at instantiation.
+- Table policy checks initial/minimum entries; it is not a complete growth ceiling.
+- Context cancellation and deadlines interrupt amd64/arm64 guest code at native safepoints.
+- Explicit bounds checks are the default; signal-backed guard pages are opt-in and CI-tested.
+- Capability policy can allow or deny plugin-provided host access.
+- The repository contains Go fuzz targets and pinned fuzz-regression fixtures.
+
+## Not currently published
+
+- Dedicated SECURITY.md or first-party vulnerability-reporting process
+- Third-party security audit
+- Continuous time-budgeted fuzzing claim
+- Deterministic instruction fuel
+- Runtime-wide aggregate memory budget
+- Stable cross-release compiled-artifact compatibility guarantee
+
+For hostile multi-tenant workloads, process or container isolation remains an additional defense boundary.
+`;
+}
+
+function benchmarksMarkdown(facts) {
+  return `${markdownHeader("Wago benchmark interpretation", facts)}
+## Published data
+
+- Whole-process startup latency: https://wago.sh/#latency
+- Wago versus wazero by architecture: https://wago.sh/#performance
+- Structured rows: https://wago.sh/data/project.json
+- Full Markdown tables: https://wago.sh/llms-full.txt
+
+## Interpretation rules
+
+- Compare runtimes only within the same architecture and workload.
+- Do not compare absolute values across machines.
+- Allocation rows measure ${facts.benchmarks.allocationMeaning}.
+- Allocation rows exclude ${facts.benchmarks.allocationExcludes.join(", ")}.
+
+## Many-instance benchmark
+
+Status: ${facts.benchmarks.manyInstance.status}
+Planned instance counts: ${facts.benchmarks.manyInstance.instanceCounts.join(", ")}
+
+No 80-instance memory or throughput result is claimed until raw samples and reproduction commands are committed.
+`;
+}
+
+function faqMarkdown(facts) {
+  return `${markdownHeader("Wago FAQ", facts)}
+${faqEntries(facts)
+  .map((entry) => `## ${entry.question}\n\n${entry.answer}`)
+  .join("\n\n")}
+`;
+}
+
+function factsSchema() {
+  const evidence = {
+    type: "object",
+    required: ["label", "url"],
+    additionalProperties: false,
+    properties: {
+      label: { type: "string" },
+      url: { type: "string", format: "uri" },
+    },
+  };
+  return {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "https://wago.sh/data/facts.schema.json",
+    title: "Wago canonical facts",
+    description:
+      "Schema for the generated, source-pinned product and compatibility facts at wago.sh/data/facts.json.",
+    type: "object",
+    required: [
+      "$schema",
+      "schemaVersion",
+      "generated",
+      "canonicalUrl",
+      "source",
+      "identity",
+      "release",
+      "platforms",
+      "concurrency",
+      "limits",
+      "wasi",
+      "webAssembly",
+      "compatibility",
+      "security",
+      "benchmarks",
+      "evidence",
+    ],
+    additionalProperties: false,
+    properties: {
+      $schema: { const: "https://wago.sh/data/facts.schema.json" },
+      schemaVersion: { const: 1 },
+      generated: { type: "string", format: "date" },
+      canonicalUrl: { type: "string", format: "uri" },
+      source: {
+        type: "object",
+        required: ["repository", "ref", "commit", "commitUrl"],
+        additionalProperties: false,
+        properties: {
+          repository: { type: "string", format: "uri" },
+          ref: { type: "string" },
+          commit: { type: "string", pattern: "^[0-9a-f]{40}$" },
+          commitUrl: { type: "string", format: "uri" },
+        },
+      },
+      identity: {
+        type: "object",
+        required: ["name", "implementation", "pureGo", "cgo", "execution", "interpreter"],
+        additionalProperties: false,
+        properties: {
+          name: { const: "wago" },
+          implementation: { const: "Go" },
+          pureGo: { const: true },
+          cgo: { const: false },
+          execution: { type: "string" },
+          interpreter: { const: false },
+        },
+      },
+      release: {
+        type: "object",
+        required: ["status", "stableVersion", "apiStability"],
+        additionalProperties: false,
+        properties: {
+          status: { type: "string" },
+          stableVersion: { type: ["string", "null"] },
+          apiStability: { type: "string" },
+        },
+      },
+      platforms: {
+        type: "array",
+        minItems: 1,
+        items: {
+          type: "object",
+          required: ["target", "status", "detail", "evidence"],
+          additionalProperties: false,
+          properties: {
+            target: { type: "string" },
+            status: {
+              enum: ["supported", "compiler-only", "planned", "unsupported-native-runtime"],
+            },
+            detail: { type: "string" },
+            evidence: { type: "array", items: { $ref: "#/$defs/evidence" } },
+          },
+        },
+      },
+      concurrency: {
+        type: "object",
+        required: [
+          "runtime",
+          "compiledModule",
+          "instance",
+          "separateInstances",
+          "nativeExecutionParallelism",
+          "resultLifetime",
+        ],
+        additionalProperties: false,
+        properties: {
+          runtime: { type: "string" },
+          compiledModule: { type: "string" },
+          instance: { type: "string" },
+          separateInstances: { type: "string" },
+          nativeExecutionParallelism: { type: "string" },
+          resultLifetime: { type: "string" },
+        },
+      },
+      limits: {
+        type: "object",
+        required: [
+          "declaredMemory",
+          "declaredTables",
+          "deadlineInterruption",
+          "policyMaxInvokeDuration",
+          "deterministicFuel",
+          "aggregateMemoryAccounting",
+        ],
+        additionalProperties: false,
+        properties: {
+          declaredMemory: { type: "boolean" },
+          declaredTables: { type: "string" },
+          deadlineInterruption: {
+            type: "object",
+            required: ["amd64", "arm64", "mechanism"],
+            additionalProperties: false,
+            properties: {
+              amd64: { type: "boolean" },
+              arm64: { type: "boolean" },
+              mechanism: { type: "string" },
+            },
+          },
+          policyMaxInvokeDuration: { type: "string" },
+          deterministicFuel: { type: "boolean" },
+          aggregateMemoryAccounting: { type: "boolean" },
+        },
+      },
+      wasi: {
+        type: "object",
+        required: ["delivery", "preview1", "preview2"],
+        additionalProperties: false,
+        properties: {
+          delivery: { type: "string" },
+          preview1: { type: "string" },
+          preview2: { type: "string" },
+        },
+      },
+      webAssembly: {
+        type: "object",
+        required: ["mvpLegacyReport", "verification", "proposals"],
+        additionalProperties: false,
+        properties: {
+          mvpLegacyReport: { type: "object" },
+          verification: { type: "object" },
+          proposals: {
+            type: "array",
+            items: {
+              type: "object",
+              required: ["name", "status", "evidence"],
+              additionalProperties: false,
+              properties: {
+                name: { type: "string" },
+                status: { enum: ["pass", "partial", "planned", "none"] },
+                evidence: { type: "array", items: { $ref: "#/$defs/evidence" } },
+              },
+            },
+          },
+        },
+      },
+      compatibility: {
+        type: "object",
+        required: ["verification", "wazero", "wasmtime"],
+        additionalProperties: false,
+        properties: {
+          verification: {
+            type: "object",
+            required: ["wagoCommit", "host", "pass", "fail", "skip", "gates", "corpora"],
+          },
+          wazero: {
+            type: "object",
+            required: ["repository", "commit", "filesAudited", "method", "fixtures"],
+          },
+          wasmtime: {
+            type: "object",
+            required: ["suiteImported", "claim"],
+          },
+        },
+      },
+      security: {
+        type: "object",
+        required: [
+          "dedicatedPolicyPublished",
+          "thirdPartyAuditClaimed",
+          "fuzzTestsPresent",
+          "recommendedAdditionalBoundary",
+        ],
+        additionalProperties: false,
+        properties: {
+          dedicatedPolicyPublished: { type: "boolean" },
+          thirdPartyAuditClaimed: { type: "boolean" },
+          fuzzTestsPresent: { type: "boolean" },
+          recommendedAdditionalBoundary: { type: "string" },
+        },
+      },
+      benchmarks: {
+        type: "object",
+        required: ["allocationMeaning", "allocationExcludes", "manyInstance"],
+        additionalProperties: false,
+        properties: {
+          allocationMeaning: { type: "string" },
+          allocationExcludes: { type: "array", items: { type: "string" } },
+          manyInstance: {
+            type: "object",
+            required: ["status", "instanceCounts"],
+            additionalProperties: false,
+            properties: {
+              status: { type: "string" },
+              instanceCounts: { type: "array", items: { type: "integer", minimum: 1 } },
+            },
+          },
+        },
+      },
+      evidence: {
+        type: "object",
+        additionalProperties: { $ref: "#/$defs/evidence" },
+      },
+    },
+    $defs: { evidence },
+  };
+}
+
+function validateFacts(facts) {
+  const gates = facts.compatibility.verification.gates;
+  for (const field of ["pass", "fail", "skip"]) {
+    const sum = gates.reduce((total, gate) => total + gate[field], 0);
+    if (sum !== facts.compatibility.verification[field]) {
+      throw new Error(
+        `verification ${field} total ${facts.compatibility.verification[field]} does not equal gate sum ${sum}`,
+      );
+    }
+  }
+
+  const fixtures = facts.compatibility.wazero.fixtures;
+  const fixtureSum =
+    fixtures.fuzzBinaries +
+    fixtures.engineBinaries +
+    fixtures.extendedConstantArtifacts +
+    fixtures.failClosedProposalArtifacts;
+  if (fixtureSum !== fixtures.totalArtifacts) {
+    throw new Error(
+      `wazero fixture total ${fixtures.totalArtifacts} does not equal manifest sum ${fixtureSum}`,
+    );
+  }
+
+  const proposalNames = facts.webAssembly.proposals.map((proposal) => proposal.name);
+  if (new Set(proposalNames).size !== proposalNames.length) {
+    throw new Error("WebAssembly proposal names must be unique");
+  }
+
+  for (const [name, item] of Object.entries(facts.evidence)) {
+    if (
+      item.url.startsWith(`https://github.com/${REPO}/blob/`) &&
+      !item.url.includes(`/blob/${facts.source.commit}/`)
+    ) {
+      throw new Error(`evidence ${name} is not pinned to ${facts.source.commit}`);
+    }
+  }
+}
+
 async function syncFile(path, content, stale) {
   const current = (await exists(path)) ? await readFile(path, "utf8") : "";
   if (current === content) return;
@@ -594,22 +1202,34 @@ const wazero = match(
   "docs/wazero-test-applicability.md",
   "wazero revision and file count",
 );
+const wazeroFixtures = match(
+  loaded["testdata/wazero/README.md"],
+  /includes (\d+) fuzz binaries, (\d+) engine binaries, all (\d+) generated[\s\S]*?all (\d+) generated artifacts[\s\S]*?The (\d+) upstream artifacts[\s\S]*?SHA-256 digest\s+`([0-9a-f]{64})`/,
+  "testdata/wazero/README.md",
+  "wazero fixture counts and digest",
+);
+const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
+  resolveGitlink("tests/spec", "WAGO_SPEC1_COMMIT"),
+  resolveGitlink("tests/spec-v2", "WAGO_SPEC2_COMMIT"),
+]);
 
 const evidenceMap = {
-  readme: evidence(commit, "README.md", "README"),
-  features: evidence(commit, "FEATURES.md", "feature matrix"),
-  verification: evidence(commit, "VERIFICATION.md", "public verification"),
-  ci: evidence(commit, ".github/workflows/ci.yml", "native CI matrix"),
-  api: evidence(commit, "src/wago/api.go", "public API source"),
-  concurrency: evidence(commit, "src/wago/wazero_concurrency_port_test.go", "race-tested concurrency port"),
-  nativeExecution: evidence(commit, "src/wago/instance_native_context.go", "native execution serialization"),
-  memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract"),
-  policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement"),
-  wazeroLedger: evidence(commit, "docs/wazero-test-applicability.md", "wazero applicability ledger"),
+  readme: evidence(commit, "README.md", "README", "#L48-L97"),
+  features: evidence(commit, "FEATURES.md", "feature matrix", "#L45-L63"),
+  verification: evidence(commit, "VERIFICATION.md", "public verification", "#L1-L15"),
+  ci: evidence(commit, ".github/workflows/ci.yml", "native CI matrix", "#L92-L214"),
+  api: evidence(commit, "src/wago/api.go", "public API source", "#L1675-L1715"),
+  concurrency: evidence(commit, "src/wago/wazero_concurrency_port_test.go", "race-tested concurrency port", "#L13-L86"),
+  nativeExecution: evidence(commit, "src/wago/instance_native_context.go", "native execution serialization", "#L10-L67"),
+  memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract", "#L84-L113"),
+  policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement", "#L10-L67"),
+  wazeroLedger: evidence(commit, "docs/wazero-test-applicability.md", "wazero applicability ledger", "#L1-L66"),
+  wazeroFixtures: evidence(commit, "testdata/wazero/README.md", "wazero fixture manifest", "#L1-L23"),
 };
 
 const webAssemblyGroups = stats.versions.filter((group) => group.version !== "engine");
 const facts = {
+  $schema: "https://wago.sh/data/facts.schema.json",
   schemaVersion: 1,
   generated: stats.generated,
   canonicalUrl: "https://wago.sh/facts/",
@@ -673,6 +1293,7 @@ const facts = {
   },
   compatibility: {
     verification: {
+      wagoCommit: commit,
       host: verify[1],
       pass: Number(verify[2]),
       fail: Number(verify[3]),
@@ -684,8 +1305,33 @@ const facts = {
         skip: Number(gate[4]),
         unit: gate[5].trim(),
       })),
+      corpora: [
+        {
+          name: "WebAssembly MVP testsuite",
+          repository: "https://github.com/WebAssembly/testsuite",
+          commit: mvpCorpusCommit,
+        },
+        {
+          name: "WebAssembly Core 2.0 specification tests",
+          repository: "https://github.com/WebAssembly/spec",
+          commit: coreV2CorpusCommit,
+        },
+      ],
     },
-    wazero: { commit: wazero[1], filesAudited: Number(wazero[2]), method: "ported/adapted coverage with an applicability ledger" },
+    wazero: {
+      repository: "https://github.com/tetratelabs/wazero",
+      commit: wazero[1],
+      filesAudited: Number(wazero[2]),
+      method: "ported/adapted coverage with an applicability ledger",
+      fixtures: {
+        fuzzBinaries: Number(wazeroFixtures[1]),
+        engineBinaries: Number(wazeroFixtures[2]),
+        extendedConstantArtifacts: Number(wazeroFixtures[3]),
+        failClosedProposalArtifacts: Number(wazeroFixtures[4]),
+        totalArtifacts: Number(wazeroFixtures[5]),
+        sha256: wazeroFixtures[6],
+      },
+    },
     wasmtime: { suiteImported: false, claim: "No full Wasmtime suite claim is published." },
   },
   security: {
@@ -701,14 +1347,22 @@ const facts = {
   },
   evidence: evidenceMap,
 };
+validateFacts(facts);
 
 const generated = new Map([
   [OUT, `${JSON.stringify(facts, null, 2)}\n`],
+  [OUT_SCHEMA, `${JSON.stringify(factsSchema(), null, 2)}\n`],
   [join(ROOT, "facts", "index.html"), factsPage(facts)],
+  [join(ROOT, "facts.md"), factsMarkdown(facts)],
   [join(ROOT, "compatibility", "index.html"), compatibilityPage(facts)],
+  [join(ROOT, "compatibility.md"), compatibilityMarkdown(facts)],
   [join(ROOT, "security", "index.html"), securityPage(facts)],
+  [join(ROOT, "security.md"), securityMarkdown(facts)],
   [join(ROOT, "benchmarks", "index.html"), benchmarksIndex(facts)],
+  [join(ROOT, "benchmarks.md"), benchmarksMarkdown(facts)],
   [join(ROOT, "benchmarks", "arm64", "index.html"), arm64Page(facts)],
+  [join(ROOT, "faq", "index.html"), faqPage(facts)],
+  [join(ROOT, "faq.md"), faqMarkdown(facts)],
   ...Object.keys(competitorFacts).map((key) => [
     join(ROOT, "compare", key, "index.html"),
     comparePage(facts, key),

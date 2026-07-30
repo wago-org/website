@@ -428,6 +428,7 @@ function makeProject(stats, canonicalFacts, startup, performance) {
     machineReadable: {
       project: "https://wago.sh/data/project.json",
       facts: "https://wago.sh/data/facts.json",
+      factsSchema: "https://wago.sh/data/facts.schema.json",
       conformance: "https://wago.sh/data/stats.json",
       llmSummary: "https://wago.sh/llms.txt",
       llmFull: "https://wago.sh/llms-full.txt",
@@ -466,10 +467,13 @@ Data updated: ${project.generated}
 ## Read next
 
 - [Canonical facts and primary evidence](https://wago.sh/facts/)
+- [Frequently asked questions](https://wago.sh/faq/)
+- [Direct Markdown fact sheet](https://wago.sh/facts.md)
 - [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
 - [Security and isolation status](https://wago.sh/security/)
 - [Benchmark index and measurement caveats](https://wago.sh/benchmarks/)
 - [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
+- [Canonical facts JSON Schema](https://wago.sh/data/facts.schema.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
@@ -539,7 +543,10 @@ Definition: ${benchmarks.startup.definition}
   out.push(`## Canonical machine-readable sources
 
 - Canonical product facts: https://wago.sh/data/facts.json
+- Canonical facts JSON Schema: https://wago.sh/data/facts.schema.json
 - Static fact and evidence page: https://wago.sh/facts/
+- Static FAQ: https://wago.sh/faq/
+- Direct Markdown facts: https://wago.sh/facts.md
 - Exact compatibility scope: https://wago.sh/compatibility/
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
@@ -616,6 +623,11 @@ function makeJsonLd(project) {
             "@type": "DataDownload",
             encodingFormat: "application/json",
             contentUrl: "https://wago.sh/data/facts.json",
+          },
+          {
+            "@type": "DataDownload",
+            encodingFormat: "application/schema+json",
+            contentUrl: "https://wago.sh/data/facts.schema.json",
           },
           {
             "@type": "DataDownload",

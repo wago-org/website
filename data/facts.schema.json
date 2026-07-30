@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wago.sh/data/facts.schema.json",
+  "title": "Wago canonical facts",
+  "description": "Schema for the generated, source-pinned product and compatibility facts at wago.sh/data/facts.json.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "generated",
+    "canonicalUrl",
+    "source",
+    "identity",
+    "release",
+    "platforms",
+    "concurrency",
+    "limits",
+    "wasi",
+    "webAssembly",
+    "compatibility",
+    "security",
+    "benchmarks",
+    "evidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "https://wago.sh/data/facts.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "generated": {
+      "type": "string",
+      "format": "date"
+    },
+    "canonicalUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "repository",
+        "ref",
+        "commit",
+        "commitUrl"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "commitUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "name",
+        "implementation",
+        "pureGo",
+        "cgo",
+        "execution",
+        "interpreter"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "const": "wago"
+        },
+        "implementation": {
+          "const": "Go"
+        },
+        "pureGo": {
+          "const": true
+        },
+        "cgo": {
+          "const": false
+        },
+        "execution": {
+          "type": "string"
+        },
+        "interpreter": {
+          "const": false
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": [
+        "status",
+        "stableVersion",
+        "apiStability"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "stableVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "apiStability": {
+          "type": "string"
+        }
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "target",
+          "status",
+          "detail",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "compiler-only",
+              "planned",
+              "unsupported-native-runtime"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidence"
+            }
+          }
+        }
+      }
+    },
+    "concurrency": {
+      "type": "object",
+      "required": [
+        "runtime",
+        "compiledModule",
+        "instance",
+        "separateInstances",
+        "nativeExecutionParallelism",
+        "resultLifetime"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "runtime": {
+          "type": "string"
+        },
+        "compiledModule": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        },
+        "separateInstances": {
+          "type": "string"
+        },
+        "nativeExecutionParallelism": {
+          "type": "string"
+        },
+        "resultLifetime": {
+          "type": "string"
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "required": [
+        "declaredMemory",
+        "declaredTables",
+        "deadlineInterruption",
+        "policyMaxInvokeDuration",
+        "deterministicFuel",
+        "aggregateMemoryAccounting"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "declaredMemory": {
+          "type": "boolean"
+        },
+        "declaredTables": {
+          "type": "string"
+        },
+        "deadlineInterruption": {
+          "type": "object",
+          "required": [
+            "amd64",
+            "arm64",
+            "mechanism"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "amd64": {
+              "type": "boolean"
+            },
+            "arm64": {
+              "type": "boolean"
+            },
+            "mechanism": {
+              "type": "string"
+            }
+          }
+        },
+        "policyMaxInvokeDuration": {
+          "type": "string"
+        },
+        "deterministicFuel": {
+          "type": "boolean"
+        },
+        "aggregateMemoryAccounting": {
+          "type": "boolean"
+        }
+      }
+    },
+    "wasi": {
+      "type": "object",
+      "required": [
+        "delivery",
+        "preview1",
+        "preview2"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "delivery": {
+          "type": "string"
+        },
+        "preview1": {
+          "type": "string"
+        },
+        "preview2": {
+          "type": "string"
+        }
+      }
+    },
+    "webAssembly": {
+      "type": "object",
+      "required": [
+        "mvpLegacyReport",
+        "verification",
+        "proposals"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mvpLegacyReport": {
+          "type": "object"
+        },
+        "verification": {
+          "type": "object"
+        },
+        "proposals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "status",
+              "evidence"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "partial",
+                  "planned",
+                  "none"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "verification",
+        "wazero",
+        "wasmtime"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "verification": {
+          "type": "object",
+          "required": [
+            "wagoCommit",
+            "host",
+            "pass",
+            "fail",
+            "skip",
+            "gates",
+            "corpora"
+          ]
+        },
+        "wazero": {
+          "type": "object",
+          "required": [
+            "repository",
+            "commit",
+            "filesAudited",
+            "method",
+            "fixtures"
+          ]
+        },
+        "wasmtime": {
+          "type": "object",
+          "required": [
+            "suiteImported",
+            "claim"
+          ]
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "required": [
+        "dedicatedPolicyPublished",
+        "thirdPartyAuditClaimed",
+        "fuzzTestsPresent",
+        "recommendedAdditionalBoundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dedicatedPolicyPublished": {
+          "type": "boolean"
+        },
+        "thirdPartyAuditClaimed": {
+          "type": "boolean"
+        },
+        "fuzzTestsPresent": {
+          "type": "boolean"
+        },
+        "recommendedAdditionalBoundary": {
+          "type": "string"
+        }
+      }
+    },
+    "benchmarks": {
+      "type": "object",
+      "required": [
+        "allocationMeaning",
+        "allocationExcludes",
+        "manyInstance"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "allocationMeaning": {
+          "type": "string"
+        },
+        "allocationExcludes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "manyInstance": {
+          "type": "object",
+          "required": [
+            "status",
+            "instanceCounts"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "instanceCounts": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/evidence"
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": [
+        "label",
+        "url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}

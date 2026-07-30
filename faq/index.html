@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wago FAQ · wago</title>
+  <meta name="description" content="Short, citable answers to common questions about Wago’s implementation, platforms, concurrency, limits, compatibility, WASI, and benchmarks." />
+  <meta name="robots" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://wago.sh/faq/" />
+  <link rel="alternate" type="text/markdown" href="/faq.md" />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/docs.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","dateModified":"2026-07-30","mainEntity":[{"@type":"Question","name":"What is Wago?","acceptedAnswer":{"@type":"Answer","text":"Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself rather than wrapping a C or C++ runtime."}},{"@type":"Question","name":"Is Wago pure Go, and does it use cgo?","acceptedAnswer":{"@type":"Answer","text":"The Wago engine is pure Go and does not use cgo."}},{"@type":"Question","name":"Which native runtime targets does Wago support?","acceptedAnswer":{"@type":"Answer","text":"Required native runtime CI currently covers linux/amd64, linux/arm64, darwin/arm64. Darwin/amd64 receives portable compiler checks but is not a supported native runtime target; Windows native execution is not currently claimed."}},{"@type":"Question","name":"Is Wago a JIT or an AOT compiler?","acceptedAnswer":{"@type":"Answer","text":"The least ambiguous description is single-pass native compiler. Wago compiles Wasm to native code during Compile and has no interpreter tier. Its Go interface can also serialize versioned .wago compiled blobs, but stable portable artifact compatibility is not promised."}},{"@type":"Question","name":"What is Wago’s current release status?","acceptedAnswer":{"@type":"Answer","text":"Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed."}},{"@type":"Question","name":"Can Wago instances execute concurrently?","acceptedAnswer":{"@type":"Answer","text":"Calls on one instance must be serialized. Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized process-wide, so independent instances are not fully parallel."}},{"@type":"Question","name":"Can Wago interrupt an infinite or CPU-bound guest?","acceptedAnswer":{"@type":"Answer","text":"Yes on amd64 and arm64 when the caller uses Call or InvokeContext with a canceled context or deadline. Interruption occurs at cooperative native safepoints. Wago does not currently expose deterministic fuel accounting, and Policy.MaxInvokeDuration is reserved rather than enforced."}},{"@type":"Question","name":"How does Wago bound memory and tables?","acceptedAnswer":{"@type":"Answer","text":"Wago can cap a module’s declared maximum linear memory. Policy.MaxTableEntries currently checks each table’s initial or minimum size, not its complete growth ceiling. No runtime-wide aggregate memory budget is published."}},{"@type":"Question","name":"Which WASI version does Wago support?","acceptedAnswer":{"@type":"Answer","text":"WASI is outside Wago core. External plugin integration exists, but this audit did not establish a function-by-function Preview 1 or Preview 2 support matrix, so complete WASI coverage is not claimed."}},{"@type":"Question","name":"Does Wago pass the full wazero and Wasmtime test suites?","acceptedAnswer":{"@type":"Answer","text":"No such blanket claim is made. Wago maintains a pinned applicability ledger for all 234 wazero Go test files and ports or adapts relevant contracts and fixtures. No comparable Wasmtime suite import is published."}},{"@type":"Question","name":"Do Wago’s allocation benchmarks measure total instance memory?","acceptedAnswer":{"@type":"Answer","text":"No. The published allocation rows measure Go heap allocation traffic during the named operation. They exclude guest linear memory, native code mappings, virtual-memory reservations, RSS, and PSS."}},{"@type":"Question","name":"Has Wago published an 80-instance memory benchmark?","acceptedAnswer":{"@type":"Answer","text":"Not yet. A reproducible protocol for 1, 8, 80, and 120 instances is published, but no synthetic results or memory headline are claimed."}}]}</script>
+</head>
+<body>
+  <header class="docs-nav">
+    <a class="docs-brand" href="/">✦ wago</a>
+    <nav aria-label="Documentation">
+      <a href="/facts/">Facts</a>
+      <a href="/compatibility/">Compatibility</a>
+      <a href="/benchmarks/">Benchmarks</a>
+      <a href="/security/">Security</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
+  </header>
+  <main>
+    <p class="docs-kicker">Canonical Wago documentation</p>
+    <h1>Wago FAQ</h1>
+    <p class="docs-lead">Short, citable answers to common questions about Wago’s implementation, platforms, concurrency, limits, compatibility, WASI, and benchmarks.</p>
+    <div class="docs-meta">
+      <span>Last synchronized: <time datetime="2026-07-30">2026-07-30</time></span>
+      <span>Wago source: <a href="https://github.com/wago-org/wago/commit/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de"><code>7d8c58aa454a</code></a></span>
+    </div>
+
+    <section id="what-is-wago">
+      <h2>What is Wago?</h2>
+      <p>Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself rather than wrapping a C or C++ runtime.</p>
+    </section>
+    <section id="pure-go">
+      <h2>Is Wago pure Go, and does it use cgo?</h2>
+      <p>The Wago engine is pure Go and does not use cgo.</p>
+    </section>
+    <section id="platforms">
+      <h2>Which native runtime targets does Wago support?</h2>
+      <p>Required native runtime CI currently covers linux/amd64, linux/arm64, darwin/arm64. Darwin/amd64 receives portable compiler checks but is not a supported native runtime target; Windows native execution is not currently claimed.</p>
+    </section>
+    <section id="jit-or-aot">
+      <h2>Is Wago a JIT or an AOT compiler?</h2>
+      <p>The least ambiguous description is single-pass native compiler. Wago compiles Wasm to native code during Compile and has no interpreter tier. Its Go interface can also serialize versioned .wago compiled blobs, but stable portable artifact compatibility is not promised.</p>
+    </section>
+    <section id="release">
+      <h2>What is Wago’s current release status?</h2>
+      <p>Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.</p>
+    </section>
+    <section id="concurrency">
+      <h2>Can Wago instances execute concurrently?</h2>
+      <p>Calls on one instance must be serialized. Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized process-wide, so independent instances are not fully parallel.</p>
+    </section>
+    <section id="deadlines">
+      <h2>Can Wago interrupt an infinite or CPU-bound guest?</h2>
+      <p>Yes on amd64 and arm64 when the caller uses Call or InvokeContext with a canceled context or deadline. Interruption occurs at cooperative native safepoints. Wago does not currently expose deterministic fuel accounting, and Policy.MaxInvokeDuration is reserved rather than enforced.</p>
+    </section>
+    <section id="limits">
+      <h2>How does Wago bound memory and tables?</h2>
+      <p>Wago can cap a module’s declared maximum linear memory. Policy.MaxTableEntries currently checks each table’s initial or minimum size, not its complete growth ceiling. No runtime-wide aggregate memory budget is published.</p>
+    </section>
+    <section id="wasi">
+      <h2>Which WASI version does Wago support?</h2>
+      <p>WASI is outside Wago core. External plugin integration exists, but this audit did not establish a function-by-function Preview 1 or Preview 2 support matrix, so complete WASI coverage is not claimed.</p>
+    </section>
+    <section id="compatibility">
+      <h2>Does Wago pass the full wazero and Wasmtime test suites?</h2>
+      <p>No such blanket claim is made. Wago maintains a pinned applicability ledger for all 234 wazero Go test files and ports or adapts relevant contracts and fixtures. No comparable Wasmtime suite import is published.</p>
+    </section>
+    <section id="memory-benchmarks">
+      <h2>Do Wago’s allocation benchmarks measure total instance memory?</h2>
+      <p>No. The published allocation rows measure Go heap allocation traffic during the named operation. They exclude guest linear memory, native code mappings, virtual-memory reservations, RSS, and PSS.</p>
+    </section>
+    <section id="many-instances">
+      <h2>Has Wago published an 80-instance memory benchmark?</h2>
+      <p>Not yet. A reproducible protocol for 1, 8, 80, and 120 instances is published, but no synthetic results or memory headline are claimed.</p>
+    </section>
+  </main>
+  <footer>
+    Generated from <a href="https://wago.sh/data/facts.json">facts.json</a>.
+    Claims are scoped to the linked source commit.
+  </footer>
+</body>
+</html>

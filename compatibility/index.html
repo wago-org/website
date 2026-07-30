@@ -7,6 +7,7 @@
   <meta name="description" content="Exact scope for Wago’s published verification totals, official WebAssembly corpora, and imported wazero tests." />
   <meta name="robots" content="index, follow, max-snippet:-1" />
   <link rel="canonical" href="https://wago.sh/compatibility/" />
+  <link rel="alternate" type="text/markdown" href="/compatibility.md" />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/docs.css" />
 </head>
@@ -18,6 +19,7 @@
       <a href="/compatibility/">Compatibility</a>
       <a href="/benchmarks/">Benchmarks</a>
       <a href="/security/">Security</a>
+      <a href="/faq/">FAQ</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
   </header>
@@ -39,19 +41,23 @@
 <tr><th scope="row">Spec 1.0</th><td>16,026</td><td>0</td><td>0</td><td>execution assertions</td></tr>
 <tr><th scope="row">Spec 2.0</th><td>51,211</td><td>0</td><td>0</td><td>2880 validation + 48331 execution assertions</td></tr>
 <tr><th scope="row">SIMD</th><td>24,325</td><td>0</td><td>0</td><td>execution assertions</td></tr></tbody></table>
-      <p class="evidence">Primary result: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md" rel="external">public verification</a></p>
+      <p class="evidence">Primary result: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md#L1-L15" rel="external">public verification</a></p>
     </section>
     <section id="official-suites">
       <h2>Official WebAssembly suites</h2>
       <p>Wago pins the WebAssembly MVP and Core 2.0 repositories as git submodules. The public gate reports 16,026 Release 1 execution assertions, 2,880 Release 2 validation assertions, 48,331 Release 2 execution assertions, and 24,325 SIMD execution assertions.</p>
+      <table><thead><tr><th>Corpus</th><th>Pinned commit</th><th>Repository</th></tr></thead>
+      <tbody><tr><th scope="row">WebAssembly MVP testsuite</th><td><code>a8bcbafe6d2fb191ce0188de0e18fdc107fa2598</code></td><td><a href="https://github.com/WebAssembly/testsuite">https://github.com/WebAssembly/testsuite</a></td></tr>
+<tr><th scope="row">WebAssembly Core 2.0 specification tests</th><td><code>05ca4182176763112561ae20153975c12bd689e4</code></td><td><a href="https://github.com/WebAssembly/spec">https://github.com/WebAssembly/spec</a></td></tr></tbody></table>
       <p>These are assertion counts, not interchangeable “test case” counts. The separate legacy MVP page reports 57/57 applicable files and 16,592 passing assertions under its own older corpus/accounting boundary.</p>
-      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md" rel="external">public verification</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md" rel="external">feature matrix</a></p>
+      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md#L1-L15" rel="external">public verification</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/FEATURES.md#L45-L63" rel="external">feature matrix</a></p>
     </section>
     <section id="wazero">
       <h2>Imported wazero coverage</h2>
       <p>The claim is not “Wago runs the entire wazero repository unchanged.” Wago audits all <strong>234</strong> upstream Go test files at wazero commit <code>236c2458ed22</code>, then records each as ported/covered, not applicable, benchmark/example-only, or reviewed without a direct port. Named Wago suites contain copied or adapted semantic cases and pinned fixtures.</p>
       <p>The ledger separately accounts for 39 upstream engine cases, 147 Core v2 WAST files, 63 extended-constant artifacts, 782 fail-closed proposal artifacts, 71 fuzz fixtures, and 23 engine fixtures.</p>
-      <p class="evidence">Scope and disposition ledger: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/docs/wazero-test-applicability.md" rel="external">wazero applicability ledger</a></p>
+      <p>The 939 copied upstream artifacts are pinned by SHA-256 digest <code>910700035d51ffc50d380261168120f8d97ef4f0fb42e9c6dfe0824a79b8037a</code>.</p>
+      <p class="evidence">Scope and disposition ledger: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/docs/wazero-test-applicability.md#L1-L66" rel="external">wazero applicability ledger</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/testdata/wazero/README.md#L1-L23" rel="external">wazero fixture manifest</a></p>
     </section>
     <section id="wasmtime">
       <h2>Wasmtime suite claim</h2>
@@ -60,7 +66,7 @@
     <section id="platform-scope">
       <h2>Architecture scope</h2>
       <p>Linux/amd64, Linux/arm64, and Darwin/arm64 run the native runtime/API, guard-page, and corpus matrix. Core v2 runs on Linux/amd64 and Linux/arm64. The checked-in aggregate verification report itself was generated on Darwin/arm64.</p>
-      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml" rel="external">native CI matrix</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md" rel="external">public verification</a></p>
+      <p class="evidence">Evidence: <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/.github/workflows/ci.yml#L92-L214" rel="external">native CI matrix</a> · <a href="https://github.com/wago-org/wago/blob/7d8c58aa454adbdc1a1c80a5b8b2b7f1cfbad8de/VERIFICATION.md#L1-L15" rel="external">public verification</a></p>
     </section>
   </main>
   <footer>

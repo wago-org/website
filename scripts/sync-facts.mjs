@@ -12,6 +12,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CHECK = process.argv.includes("--check");
 const REPO = process.env.WAGO_REPO || "wago-org/wago";
 const REF = process.env.WAGO_REF || "main";
+const FACTS_REF = process.env.WAGO_FACTS_REF || REF;
 const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const LOCAL = process.env.WAGO_DIR || resolve(ROOT, "..", "wago");
 const STATS = join(ROOT, "data", "stats.json");
@@ -49,7 +50,7 @@ async function load(name) {
 
   const path = encodeURIComponent(name).replaceAll("%2F", "/");
   if (TOKEN) {
-    const url = `https://api.github.com/repos/${REPO}/contents/${path}?ref=${encodeURIComponent(REF)}`;
+    const url = `https://api.github.com/repos/${REPO}/contents/${path}?ref=${encodeURIComponent(FACTS_REF)}`;
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
@@ -61,7 +62,7 @@ async function load(name) {
     return response.text();
   }
 
-  const url = `https://raw.githubusercontent.com/${REPO}/${REF}/${path}`;
+  const url = `https://raw.githubusercontent.com/${REPO}/${FACTS_REF}/${path}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(
@@ -84,14 +85,14 @@ function localCommit() {
 }
 
 async function remoteCommit() {
-  const response = await fetch(`https://api.github.com/repos/${REPO}/commits/${encodeURIComponent(REF)}`, {
+  const response = await fetch(`https://api.github.com/repos/${REPO}/commits/${encodeURIComponent(FACTS_REF)}`, {
     headers: {
       ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
       Accept: "application/vnd.github+json",
       "User-Agent": "wago-website-facts-sync",
     },
   });
-  if (!response.ok) throw new Error(`could not resolve ${REPO}@${REF}: ${response.status}`);
+  if (!response.ok) throw new Error(`could not resolve ${REPO}@${FACTS_REF}: ${response.status}`);
   return (await response.json()).sha;
 }
 
@@ -114,7 +115,7 @@ async function resolveGitlink(path, envName) {
     // Fall through to the GitHub contents API.
   }
 
-  const url = `https://api.github.com/repos/${REPO}/contents/${path}?ref=${encodeURIComponent(REF)}`;
+  const url = `https://api.github.com/repos/${REPO}/contents/${path}?ref=${encodeURIComponent(FACTS_REF)}`;
   const response = await fetch(url, {
     headers: {
       ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),

@@ -36,6 +36,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Pin generated Wago source
+        run: |
+          wago_source_ref=$(node -p "require('./data/facts.json').source.commit")
+          echo "WAGO_FACTS_REF=$wago_source_ref" >> "$GITHUB_ENV"
+
       - name: Build site
         run: npm run build
 

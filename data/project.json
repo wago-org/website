@@ -2929,6 +2929,6 @@
     "conformance": "https://wago.sh/data/stats.json",
     "llmSummary": "https://wago.sh/llms.txt",
     "llmFull": "https://wago.sh/llms-full.txt",
-    "manifestSchema": "https://wago.sh/schema.json"
+    "manifestSchema": "https://wago.sh/v0/schema.json"
   }
 }

@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// Mirror schema.json from the wago Go module into the website root.
+// Mirror schema.json from the wago Go module into the versioned website route.
 // The Go module remains the source of truth; wago.sh provides the stable HTTPS
 // URL JSON-aware editors need for a manifest's "$schema" field.
 
-import { access, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { constants } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = join(ROOT, "schema.json");
+const OUT = join(ROOT, "v0", "schema.json");
 const REPO = process.env.WAGO_REPO || "wago-org/wago";
 const REF = process.env.WAGO_REF || "main";
 const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
@@ -62,6 +62,7 @@ if (current === normalized) {
   console.error(`schema.json is stale (source: ${from})`);
   process.exitCode = 1;
 } else {
+  await mkdir(dirname(OUT), { recursive: true });
   await writeFile(OUT, normalized);
-  console.log(`updated schema.json from ${from}`);
+  console.log(`updated v0/schema.json from ${from}`);
 }

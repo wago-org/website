@@ -180,7 +180,7 @@ function rows(entries) {
     .join("\n");
 }
 
-function page({ path, title, description, updated, sourceCommit, body, extraHead = "", markdown = "" }) {
+function page({ path, title, description, updated, sourceCommit, body, markdown = "" }) {
   const canonical = `https://wago.sh/${path ? `${path}/` : ""}`;
   return `<!doctype html>
 <html lang="en">
@@ -193,7 +193,7 @@ function page({ path, title, description, updated, sourceCommit, body, extraHead
   <link rel="canonical" href="${canonical}" />
 ${markdown ? `  <link rel="alternate" type="text/markdown" href="/${esc(markdown)}" />\n` : ""}  <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/docs.css" />
-${extraHead ? `  ${extraHead}\n` : ""}</head>
+</head>
 <body>
   <header class="docs-nav">
     <a class="docs-brand" href="/">✦ wago</a>
@@ -202,7 +202,6 @@ ${extraHead ? `  ${extraHead}\n` : ""}</head>
       <a href="/compatibility/">Compatibility</a>
       <a href="/benchmarks/">Benchmarks</a>
       <a href="/security/">Security</a>
-      <a href="/faq/">FAQ</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
   </header>
@@ -595,117 +594,6 @@ function guidePage(facts, key) {
   });
 }
 
-function faqEntries(facts) {
-  const targets = facts.platforms
-    .filter((platform) => platform.status === "supported")
-    .map((platform) => platform.target)
-    .join(", ");
-  return [
-    {
-      id: "what-is-wago",
-      question: "What is Wago?",
-      answer:
-        "Wago is a WebAssembly engine implemented in Go. It decodes, validates, compiles, instantiates, and executes modules itself rather than wrapping a C or C++ runtime.",
-    },
-    {
-      id: "pure-go",
-      question: "Is Wago pure Go, and does it use cgo?",
-      answer: "The Wago engine is pure Go and does not use cgo.",
-    },
-    {
-      id: "platforms",
-      question: "Which native runtime targets does Wago support?",
-      answer: `Required native runtime CI currently covers ${targets}. Darwin/amd64 receives portable compiler checks but is not a supported native runtime target; Windows native execution is not currently claimed.`,
-    },
-    {
-      id: "jit-or-aot",
-      question: "Is Wago a JIT or an AOT compiler?",
-      answer:
-        "The least ambiguous description is single-pass native compiler. Wago compiles Wasm to native code during Compile and has no interpreter tier. Its Go interface can also serialize versioned .wago compiled blobs, but stable portable artifact compatibility is not promised.",
-    },
-    {
-      id: "release",
-      question: "What is Wago’s current release status?",
-      answer: facts.release.status,
-    },
-    {
-      id: "concurrency",
-      question: "Can Wago instances execute concurrently?",
-      answer:
-        "Calls on one instance must be serialized. Concurrent goroutines may call separate instances, but native Wasm activations are currently serialized process-wide, so independent instances are not fully parallel.",
-    },
-    {
-      id: "deadlines",
-      question: "Can Wago interrupt an infinite or CPU-bound guest?",
-      answer:
-        "Yes on amd64 and arm64 when the caller uses Call or InvokeContext with a canceled context or deadline. Interruption occurs at cooperative native safepoints. Wago does not currently expose deterministic fuel accounting, and Policy.MaxInvokeDuration is reserved rather than enforced.",
-    },
-    {
-      id: "limits",
-      question: "How does Wago bound memory and tables?",
-      answer:
-        "Wago can cap a module’s declared maximum linear memory. Policy.MaxTableEntries currently checks each table’s initial or minimum size, not its complete growth ceiling. No runtime-wide aggregate memory budget is published.",
-    },
-    {
-      id: "wasi",
-      question: "Which WASI version does Wago support?",
-      answer:
-        "WASI is outside Wago core. External plugin integration exists, but this audit did not establish a function-by-function Preview 1 or Preview 2 support matrix, so complete WASI coverage is not claimed.",
-    },
-    {
-      id: "compatibility",
-      question: "Does Wago pass the full wazero and Wasmtime test suites?",
-      answer:
-        "No such blanket claim is made. Wago maintains a pinned applicability ledger for all 234 wazero Go test files and ports or adapts relevant contracts and fixtures. No comparable Wasmtime suite import is published.",
-    },
-    {
-      id: "memory-benchmarks",
-      question: "Do Wago’s allocation benchmarks measure total instance memory?",
-      answer:
-        "No. The published allocation rows measure Go heap allocation traffic during the named operation. They exclude guest linear memory, native code mappings, virtual-memory reservations, RSS, and PSS.",
-    },
-    {
-      id: "many-instances",
-      question: "Has Wago published an 80-instance memory benchmark?",
-      answer:
-        "Not yet. A reproducible protocol for 1, 8, 80, and 120 instances is published, but no synthetic results or memory headline are claimed.",
-    },
-  ];
-}
-
-function faqPage(facts) {
-  const entries = faqEntries(facts);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    dateModified: facts.generated,
-    mainEntity: entries.map((entry) => ({
-      "@type": "Question",
-      name: entry.question,
-      acceptedAnswer: { "@type": "Answer", text: entry.answer },
-    })),
-  };
-  return page({
-    path: "faq",
-    title: "Wago FAQ",
-    description:
-      "Short, citable answers to common questions about Wago’s implementation, platforms, concurrency, limits, compatibility, WASI, and benchmarks.",
-    updated: facts.generated,
-    sourceCommit: facts.source.commit,
-    markdown: "faq.md",
-    extraHead: `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
-    body: entries
-      .map(
-        (entry) => `
-    <section id="${esc(entry.id)}">
-      <h2>${esc(entry.question)}</h2>
-      <p>${esc(entry.answer)}</p>
-    </section>`,
-      )
-      .join(""),
-  });
-}
-
 function markdownHeader(title, facts) {
   return `# ${title}
 
@@ -870,14 +758,6 @@ Status: ${facts.benchmarks.manyInstance.status}
 Planned instance counts: ${facts.benchmarks.manyInstance.instanceCounts.join(", ")}
 
 No 80-instance memory or throughput result is claimed until raw samples and reproduction commands are committed.
-`;
-}
-
-function faqMarkdown(facts) {
-  return `${markdownHeader("Wago FAQ", facts)}
-${faqEntries(facts)
-  .map((entry) => `## ${entry.question}\n\n${entry.answer}`)
-  .join("\n\n")}
 `;
 }
 
@@ -1361,8 +1241,6 @@ const generated = new Map([
   [join(ROOT, "benchmarks", "index.html"), benchmarksIndex(facts)],
   [join(ROOT, "benchmarks.md"), benchmarksMarkdown(facts)],
   [join(ROOT, "benchmarks", "arm64", "index.html"), arm64Page(facts)],
-  [join(ROOT, "faq", "index.html"), faqPage(facts)],
-  [join(ROOT, "faq.md"), faqMarkdown(facts)],
   ...Object.keys(competitorFacts).map((key) => [
     join(ROOT, "compare", key, "index.html"),
     comparePage(facts, key),

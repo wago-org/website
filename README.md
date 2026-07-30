@@ -18,7 +18,6 @@ data/
   facts.schema.json     # JSON Schema for facts.json (generated)
   project.json          # complete project + benchmark data for machines (generated)
 facts/                  # canonical static fact sheet (generated)
-faq/                    # concise FAQ + FAQPage structured data (generated)
 compatibility/          # exact suite/accounting scope (generated)
 security/               # current controls and explicit assurance gaps (generated)
 benchmarks/             # crawlable benchmark index and ARM64 protocol (generated)
@@ -26,7 +25,7 @@ compare/                # factual runtime comparison pages (generated)
 guides/                 # operational evaluation guides (generated)
 llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
-facts.md, faq.md, ...   # direct Markdown mirrors of canonical pages (generated)
+facts.md, ...           # direct Markdown mirrors of canonical pages (generated)
 schema.json             # hosted manifest schema, mirrored from wago Go module
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
@@ -122,7 +121,6 @@ crawlers, and answer engines:
   machine-readable product/support contract, pinned to a Wago commit.
 - `/data/facts.schema.json` validates that contract, while `/facts.md` and the
   other top-level Markdown mirrors avoid HTML extraction entirely.
-- `/faq/` publishes short answers with Schema.org `FAQPage` structured data.
 - `/compatibility/` defines exact suite provenance, accounting units, ports,
   exclusions, and unsupported claims.
 - `/security/`, `/benchmarks/`, `/compare/*`, and `/guides/*` are static HTML,

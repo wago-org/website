@@ -24,7 +24,6 @@ Data updated: 2026-07-30
 ## Read next
 
 - [Canonical facts and primary evidence](https://wago.sh/facts/)
-- [Frequently asked questions](https://wago.sh/faq/)
 - [Direct Markdown fact sheet](https://wago.sh/facts.md)
 - [Exact compatibility and imported-suite scope](https://wago.sh/compatibility/)
 - [Security and isolation status](https://wago.sh/security/)

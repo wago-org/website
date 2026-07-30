@@ -3,7 +3,6 @@
 # Canonical product facts: https://wago.sh/facts/
 # Canonical product facts JSON: https://wago.sh/data/facts.json
 # Canonical facts schema: https://wago.sh/data/facts.schema.json
-# Static FAQ: https://wago.sh/faq/
 # Complete structured project data: https://wago.sh/data/project.json
 User-agent: *
 Allow: /

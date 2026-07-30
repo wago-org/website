@@ -326,5 +326,5 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 - Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
-- Wago manifest JSON Schema: https://wago.sh/schema.json
+- Wago manifest JSON Schema: https://wago.sh/v0/schema.json
 - Human-facing page: https://wago.sh/

@@ -432,7 +432,7 @@ function makeProject(stats, canonicalFacts, startup, performance) {
       conformance: "https://wago.sh/data/stats.json",
       llmSummary: "https://wago.sh/llms.txt",
       llmFull: "https://wago.sh/llms-full.txt",
-      manifestSchema: "https://wago.sh/schema.json",
+      manifestSchema: "https://wago.sh/v0/schema.json",
     },
   };
 }
@@ -546,7 +546,7 @@ Definition: ${benchmarks.startup.definition}
 - Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
-- Wago manifest JSON Schema: https://wago.sh/schema.json
+- Wago manifest JSON Schema: https://wago.sh/v0/schema.json
 - Human-facing page: https://wago.sh/
 `);
   return `${out.join("\n\n").trim()}\n`;

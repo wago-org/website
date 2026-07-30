@@ -20,11 +20,11 @@ data/
 llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
 facts.md, ...           # direct Markdown mirrors of canonical pages (generated)
-schema.json             # hosted manifest schema, mirrored from wago Go module
+v0/schema.json          # hosted prerelease manifest schema, mirrored from wago
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
   sync-facts.mjs        # verifies source evidence and generates canonical pages
-  sync-schema.mjs       # mirrors schema.json from the wago Go module
+  sync-schema.mjs       # mirrors schema.json from wago to /v0/schema.json
   sync-ai-metadata.mjs  # derives JSON-LD, llms files, and project.json
 src/                    # TypeScript source
   head.ts               #   parser-blocking phase gate + analytics bootstrap
@@ -69,7 +69,7 @@ Other scripts:
 - `npm run sync` - regenerate stats and mirror the manifest schema from wago.
 - `npm run sync:ai` - regenerate the crawler/LLM metadata from the committed
   stats and static benchmark markup (normally included in `npm run sync`).
-- `npm run sync:schema` - update only `schema.json`.
+- `npm run sync:schema` - update only `v0/schema.json`.
 - `npm run sync:check` - fail when either generated file is stale.
 - `npm run build` - compile, then assemble a clean `dist/` (the exact tree that
   gets deployed).
@@ -85,11 +85,11 @@ Every number and feature status on the page comes from
 - `coverage-report.md` → test-coverage %
 
 The Wago Go module's `schema.json` is also canonical. The sync process
-mirrors it to `schema.json`, deployed at <https://wago.sh/schema.json> for JSON
-editors and project manifests.
+mirrors it to `v0/schema.json`, deployed at <https://wago.sh/v0/schema.json> for
+JSON editors and project manifests.
 
 ```bash
-npm run sync                       # rewrite stats.json and schema.json
+npm run sync                       # rewrite stats.json and v0/schema.json
 WAGO_DIR=/path/to/wago npm run sync # read from a specific local checkout
 npm run sync:check                  # exit 1 if either generated file is stale
 ```
@@ -139,7 +139,7 @@ visible ones. `npm run build` fails if these generated artifacts are stale.
 
 `.github/workflows/sync.yml` runs the sync scripts on a daily schedule (and on
 demand). It checks wago out read-only and regenerates `data/stats.json` plus
-`schema.json`; if either changed, it commits the update and calls the deploy
+`v0/schema.json`; if either changed, it commits the update and calls the deploy
 workflow. Wago's CI can also trigger it immediately by sending a
 `repository_dispatch` event of type `wago-updated`.
 

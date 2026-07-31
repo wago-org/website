@@ -268,7 +268,7 @@
     }
 }
 @media (max-width: 560px) {
-    .nav__links .nav__link {
+    .nav__links .nav__link:not(.nav__link--docs) {
         display: none;
     }
     .features,

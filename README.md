@@ -25,6 +25,7 @@ scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
   sync-facts.mjs        # verifies source evidence and generates canonical pages
   sync-schema.mjs       # mirrors schema.json from wago to /v0/schema.json
+  sync-install.mjs      # mirrors wago/install.sh to https://wago.sh/install.sh
   sync-ai-metadata.mjs  # derives JSON-LD, llms files, and project.json
 src/                    # TypeScript source
   head.ts               #   parser-blocking phase gate + analytics bootstrap
@@ -66,7 +67,7 @@ resolve.
 Other scripts:
 
 - `npm run typecheck` - type-check without emitting.
-- `npm run sync` - regenerate stats and mirror the manifest schema from wago.
+- `npm run sync` - regenerate stats and mirror the manifest schema and installer from wago.
 - `npm run sync:ai` - regenerate the crawler/LLM metadata from the committed
   stats and static benchmark markup (normally included in `npm run sync`).
 - `npm run sync:schema` - update only `v0/schema.json`.
@@ -88,10 +89,15 @@ The Wago Go module's `schema.json` is also canonical. The sync process
 mirrors it to `v0/schema.json`, deployed at <https://wago.sh/v0/schema.json> for
 JSON editors and project manifests.
 
+Wago's root `install.sh` is canonical as well. The same sync process mirrors it
+byte-for-byte to this repository's `install.sh`, served at
+<https://wago.sh/install.sh>. Do not edit the website copy directly.
+
 ```bash
-npm run sync                       # rewrite stats.json and v0/schema.json
+npm run sync                       # regenerate all mirrored site artifacts
 WAGO_DIR=/path/to/wago npm run sync # read from a specific local checkout
-npm run sync:check                  # exit 1 if either generated file is stale
+npm run sync:check                  # exit 1 if any generated artifact is stale
+npm run sync:install                # update only the mirrored installer
 ```
 
 The script reads from a local wago checkout when one is present (`$WAGO_DIR`,
@@ -137,10 +143,11 @@ visible ones. `npm run build` fails if these generated artifacts are stale.
 
 ### Keeping it in sync automatically
 
-`.github/workflows/sync.yml` runs the sync scripts on a daily schedule (and on
-demand). It checks wago out read-only and regenerates `data/stats.json` plus
-`v0/schema.json`; if either changed, it commits the update and calls the deploy
-workflow. Wago's CI can also trigger it immediately by sending a
+`.github/workflows/sync.yml` runs the full sync on a daily schedule (and on
+demand). `.github/workflows/sync-install.yml` mirrors `install.sh` independently,
+so an unrelated metadata-generation failure cannot block installer updates.
+Both workflows check wago out read-only, commit changed artifacts, and call the
+deploy workflow. Wago's CI can also trigger them immediately by sending a
 `repository_dispatch` event of type `wago-updated`.
 
 **Required secret:** because wago is private, add a repository secret

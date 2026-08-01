@@ -1,9 +1,9 @@
-name: Sync stats from wago
+name: Sync website from wago
 
-# Keeps the site's numbers honest. Pulls the live conformance/coverage/feature
-# data out of wago's own status files (SPECTEST.md, FEATURES.md,
-# VERIFICATION.md, and coverage-report.md) via scripts/sync-stats.mjs, and if
-# data/stats.json changed, commits it and redeploys the site.
+# Keeps generated site artifacts aligned with Wago. This includes live
+# conformance/coverage/feature data, the project schema, canonical facts, and
+# Wago's root install.sh served from https://wago.sh/install.sh. If any mirrored
+# artifact changes, the workflow commits it and redeploys the site.
 #
 # wago-org/wago is a PRIVATE repo, so this needs read access to it. Provide a
 # secret named WAGO_RO_TOKEN - a fine-grained PAT (or classic PAT) with
@@ -31,7 +31,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sync-stats
+  group: sync-site
   cancel-in-progress: false
 
 jobs:
@@ -57,7 +57,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Regenerate site data from wago
+      - name: Regenerate site artifacts from wago
         env:
           WAGO_DIR: ${{ github.workspace }}/wago-src
         run: npm run sync
@@ -65,15 +65,15 @@ jobs:
       - name: Commit if changed
         id: commit
         run: |
-          if git diff --quiet -- data facts.md compatibility.md security.md benchmarks.md v0/schema.json index.html llms.txt llms-full.txt sitemap.xml; then
+          if git diff --quiet -- data facts.md compatibility.md security.md benchmarks.md v0/schema.json install.sh index.html llms.txt llms-full.txt sitemap.xml; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Generated site data is unchanged - nothing to deploy."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data facts.md compatibility.md security.md benchmarks.md v0/schema.json index.html llms.txt llms-full.txt sitemap.xml
-          git commit -m "chore: sync site data from wago"
+          git add data facts.md compatibility.md security.md benchmarks.md v0/schema.json install.sh index.html llms.txt llms-full.txt sitemap.xml
+          git commit -m "chore: sync website from wago"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

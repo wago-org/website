@@ -1,0 +1,73 @@
+name: Sync installer from wago
+
+# Mirrors wago-org/wago's canonical install.sh to https://wago.sh/install.sh.
+# This is intentionally separate from the broader generated-site sync so an
+# unrelated facts or benchmark generation failure cannot block the installer.
+
+on:
+  schedule:
+    - cron: "47 7 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [wago-updated]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: sync-site
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Checkout wago (private, read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: wago-org/wago
+          ref: main
+          token: ${{ secrets.WAGO_RO_TOKEN }}
+          path: wago-src
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Mirror canonical installer
+        env:
+          WAGO_DIR: ${{ github.workspace }}/wago-src
+        run: npm run sync:install
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          if git diff --quiet -- install.sh; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "install.sh is unchanged - nothing to deploy."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add install.sh
+          git commit -m "chore: sync install.sh from wago"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

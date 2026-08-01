@@ -8,8 +8,10 @@ import { initSparkles } from "./sparkles.js";
 import { initScrollSpy } from "./scrollspy.js";
 import { initEditor } from "./editor.js";
 import { initBeta } from "./beta.js";
+import { initTheme } from "./theme.js";
 
 async function init(): Promise<void> {
+    initTheme();
     initSparkles();
     initEditor();
     // Refresh numbers/statuses from data/stats.json first, then animate them.

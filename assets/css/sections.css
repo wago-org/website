@@ -242,7 +242,7 @@
 .cta__body {
     font-size: 18px;
     line-height: 1.55;
-    color: #5a3f8f;
+    color: var(--cta-text);
     margin: 0 auto 28px;
     max-width: 520px;
 }
@@ -268,6 +268,9 @@
     }
 }
 @media (max-width: 560px) {
+    .nav__links .nav__link--docs {
+        display: none;
+    }
     .nav__links .nav__link:not(.nav__link--docs) {
         display: none;
     }

@@ -85,7 +85,54 @@
     transition: background 0.15s ease;
 }
 .nav__cta:hover {
-    background: #fff;
+    background: var(--accent-hover);
+    color: var(--accent-hover-ink);
+}
+.theme-toggle {
+    appearance: none;
+    display: inline-grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    color: var(--text-dim);
+    background: var(--panel);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.theme-toggle:hover {
+    color: var(--lilac);
+    border-color: var(--lilac);
+    background: var(--panel-2);
+}
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--lilac);
+    outline-offset: 2px;
+}
+.theme-toggle__icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.theme-toggle__icon--moon {
+    fill: currentColor;
+    stroke: none;
+}
+.theme-toggle__icon--sun {
+    display: none;
+}
+:root[data-theme="light"] .theme-toggle__icon--moon {
+    display: none;
+}
+:root[data-theme="light"] .theme-toggle__icon--sun {
+    display: block;
 }
 
 /* ---- Buttons ---- */
@@ -108,7 +155,8 @@
     color: var(--ink);
 }
 .btn--primary:hover {
-    background: #fff;
+    background: var(--accent-hover);
+    color: var(--accent-hover-ink);
 }
 .btn--ghost {
     font-family: var(--sans);
@@ -122,11 +170,11 @@
     border-color: var(--lilac);
 }
 .btn--dark {
-    background: var(--bg);
-    color: #fff;
+    background: var(--button-strong);
+    color: var(--button-strong-text);
 }
 .btn--dark:hover {
-    background: var(--panel);
+    background: var(--button-strong-hover);
 }
 .btn--ink {
     font-family: var(--sans);
@@ -217,7 +265,7 @@
     border-radius: 14px;
     overflow: hidden;
     background: var(--panel);
-    box-shadow: 0 44px 90px -46px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 44px 90px -46px var(--editor-shadow);
 }
 .editor__bar {
     display: flex;
@@ -338,7 +386,7 @@
     font-family: var(--mono);
     font-size: 13.5px;
     line-height: 1.9;
-    color: #e7e0ff;
+    color: var(--code-text);
     white-space: pre;
 }
 .epanel[hidden] {
@@ -351,7 +399,7 @@
     font-family: var(--mono);
     font-size: 12.5px;
     line-height: 1.8;
-    color: #e7e0ff;
+    color: var(--code-text);
     overflow-x: auto;
 }
 .editor__console[hidden] {
@@ -403,7 +451,7 @@
     }
 }
 .tok-c {
-    color: #6f64a8;
+    color: var(--faint);
 } /* comment */
 .tok-f {
     color: var(--lilac);
@@ -440,7 +488,7 @@
     font-family: var(--mono);
     font-size: 13.5px;
     line-height: 1.7;
-    color: #e7e0ff;
+    color: var(--code-text);
     overflow-x: auto;
 }
 .pane__prompt {
@@ -665,7 +713,7 @@
 .vgroup__title {
     font-weight: 700;
     font-size: 14px;
-    color: #fff;
+    color: var(--text);
 }
 .vgroup__sub {
     flex: 1;
@@ -711,7 +759,7 @@
     flex: 1;
     min-width: 0;
     font-size: 13px;
-    color: #e7e0ff;
+    color: var(--code-text);
 }
 
 /* ---- Performance: paired wago-vs-wazero bars (one row per metric) ---- */
@@ -772,7 +820,7 @@
     color: var(--text-dim);
 }
 .vs__archbtn[aria-selected="true"] {
-    color: #fff;
+    color: var(--text);
     font-weight: 800;
     text-decoration: underline;
     text-decoration-color: var(--lilac);
@@ -923,7 +971,7 @@
     color: var(--text-dim);
 }
 .vs__tab[aria-selected="true"] {
-    color: #fff;
+    color: var(--text);
     border-bottom-color: var(--lilac);
 }
 .vs__tab:focus-visible {
@@ -1021,7 +1069,7 @@
 }
 .vs__more-title {
     font-size: 14px;
-    color: #e7e0ff;
+    color: var(--code-text);
 }
 .vs__more-sub {
     font-family: var(--mono);
@@ -1057,7 +1105,7 @@
 }
 .vs__label {
     font-size: 14px;
-    color: #e7e0ff;
+    color: var(--code-text);
 }
 .vs__sub {
     font-family: var(--mono);
@@ -1118,7 +1166,7 @@
     white-space: nowrap;
 }
 .vs__val--wago {
-    color: #fff;
+    color: var(--text);
     font-weight: 600;
 }
 /* Delta pill: green when wago wins, outlined/muted when wazero leads (honest). */
@@ -1239,7 +1287,7 @@
     font-size: 72px;
     line-height: 0.8;
     letter-spacing: -2px;
-    color: #fff;
+    color: var(--text);
 }
 .bignum__pct {
     color: var(--lilac);
@@ -1321,7 +1369,7 @@
     font-family: var(--mono);
     font-size: 12.5px;
     line-height: 1.65;
-    color: #e7e0ff;
+    color: var(--code-text);
     white-space: pre;
 }
 .pipe__note {
@@ -1575,7 +1623,7 @@
     white-space: nowrap;
 }
 .rank__row--wago .rank__val {
-    color: #fff;
+    color: var(--text);
     font-weight: 600;
 }
 

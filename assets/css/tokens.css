@@ -1,5 +1,5 @@
 /* Design tokens - the "sparkle" palette.
-   Single source of truth for colors and type. Dark-only by design. */
+   Single source of truth for colors, themes, and type. */
 
 :root {
     color-scheme: dark;
@@ -27,6 +27,14 @@
     --pink: #ff9ec4;
     --violet: #5a3ff0;
     --ink: #1a1547; /* text on an accent fill */
+    --accent-hover: #ffffff;
+    --accent-hover-ink: #1a1547;
+    --code-text: #e7e0ff;
+    --button-strong: #1a1547;
+    --button-strong-hover: #221c52;
+    --button-strong-text: #ffffff;
+    --cta-text: #5a3f8f;
+    --editor-shadow: rgba(0, 0, 0, 0.75);
 
     /* Type */
     --sans: "Outfit", system-ui, -apple-system, sans-serif;
@@ -34,6 +42,35 @@
 
     /* Layout */
     --maxw: 1080px;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --bg: #f7f4ff;
+    --bg-deep: #eee8fb;
+    --panel: #ffffff;
+    --panel-2: #ebe4fa;
+    --line: #e2d8f3;
+    --line-2: #c7b6e3;
+    --text: #211a3d;
+    --text-dim: #514767;
+    --text-soft: #665b7d;
+    --muted: #746787;
+    --faint: #69577f;
+    --lilac: #6f45c6;
+    --green: #147550;
+    --pink: #b52b64;
+    --violet: #5932c4;
+    --ink: #ffffff;
+    --accent-hover: #56329f;
+    --accent-hover-ink: #ffffff;
+    --code-text: #30264e;
+    --button-strong: #211a3d;
+    --button-strong-hover: #382d58;
+    --button-strong-text: #ffffff;
+    --cta-text: #f0eaff;
+    --editor-shadow: rgba(64, 43, 100, 0.24);
 }
 
 * {

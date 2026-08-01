@@ -1,5 +1,40 @@
 // Parser-blocking head bootstrap. This stays separate from the deferred main
-// module because the launch phase must be selected before the page paints.
+// module because theme and launch phase must be selected before the page paints.
+(() => {
+    const key = "wagoTheme";
+    const systemTheme: "light" | "dark" = matchMedia(
+        "(prefers-color-scheme: light)",
+    ).matches
+        ? "light"
+        : "dark";
+    let theme = systemTheme;
+
+    try {
+        const stored = localStorage.getItem(key);
+        if (stored !== null) {
+            const preference = JSON.parse(stored) as {
+                theme?: unknown;
+                system?: unknown;
+            };
+            if (
+                (preference.theme === "light" || preference.theme === "dark") &&
+                preference.system === systemTheme
+            ) {
+                theme = preference.theme;
+            } else {
+                localStorage.removeItem(key);
+            }
+        }
+    } catch {
+        // Storage may be unavailable; fall back to the operating-system theme.
+    }
+
+    document.documentElement.dataset.theme = theme;
+    document
+        .querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "light" ? "#f7f4ff" : "#1a1547");
+})();
+
 (() => {
     let phase: string | null = null;
 

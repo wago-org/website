@@ -1,7 +1,8 @@
 # wago.sh
 
-The landing page for [**wago**](https://github.com/wago-org/wago) - a pure-Go
-WebAssembly engine. Served at <https://wago.sh>.
+The landing page for [**wago**](https://github.com/wago-org/wago): A wonderfully
+quick, compact, and extensible WebAssembly runtime for Go. Served at
+<https://wago.sh>.
 
 A small static site: plain HTML + CSS, with the interactive bits written in
 **TypeScript** and compiled to ES modules by `tsc` (no bundler, no framework).

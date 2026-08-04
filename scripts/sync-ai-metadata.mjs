@@ -395,8 +395,7 @@ function makeProject(stats, canonicalFacts, startup, performance) {
     generated: stats.generated,
     canonicalUrl: "https://wago.sh/",
     name: "wago",
-    summary:
-      "A WebAssembly engine written in pure Go with single-pass native amd64 and arm64 backends, no cgo, tracked conformance, and a plugin system.",
+    summary: "A wonderfully quick, compact, and extensible WebAssembly runtime for Go",
     repository: "https://github.com/wago-org/wago",
     documentation: "https://github.com/wago-org/wago#readme",
     roadmap: "https://github.com/wago-org/wago/blob/main/ROADMAP.md",
@@ -443,7 +442,7 @@ function makeLlms(project) {
   const architectures = Object.keys(project.benchmarks.wagoVsWazero.architectures);
   return `# wago
 
-> wago is a WebAssembly engine written in pure Go. It decodes, validates, compiles, instantiates, and runs WebAssembly with single-pass native backends and no cgo.
+> ${project.summary}
 
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago

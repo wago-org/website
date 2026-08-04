@@ -1,6 +1,6 @@
 # wago
 
-> wago is a WebAssembly engine written in pure Go. It decodes, validates, compiles, instantiates, and runs WebAssembly with single-pass native backends and no cgo.
+> A wonderfully quick, compact, and extensible WebAssembly runtime for Go
 
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago

@@ -1,141 +1,141 @@
 #!/bin/sh
-# wago installer.
-#
-# NOTE: canonical source lives in wago-org/wago (install.sh); this copy is
-# served at https://wago.sh/install.sh. Update it there, not here.
+# Wago installer bootstrap.
 #
 #   curl -fsSL https://wago.sh/install.sh | sh
 #
-# wago is private during development, so this builds from source over SSH: you
-# need read access to git@github.com:wago-org/wago and Go 1.22+. Everyone else
-# should wait for the public v0.1.0 release — the same command will then install
-# a prebuilt binary with no access required.
-#
-# Environment:
-#   WAGO_VERSION   git ref to build: branch, tag, or commit (default: main)
-#   WAGO_BIN_DIR   install directory (default: $HOME/.local/bin)
-#   WAGO_DRY_RUN   set to 1 to print what would happen and exit
-#   NO_COLOR       set to disable colored output
+# This script only downloads, verifies, and launches the native Wago installer.
 set -eu
 
-repo_ssh="git@github.com:wago-org/wago"
+release_repo="${WAGO_RELEASE_REPO:-wago-org/wago}"
+release_api="${WAGO_RELEASES_API_URL:-https://api.github.com/repos/$release_repo/releases}"
+release_download_base="${WAGO_RELEASE_DOWNLOAD_BASE:-https://github.com/$release_repo/releases}"
 version="${WAGO_VERSION:-main}"
-bin_dir="${WAGO_BIN_DIR:-$HOME/.local/bin}"
-# The wago source is kept here so `wago pkg add` can build plugins while wago is
-# unpublished — the CLI looks for it at ~/.wago/src (see wagoModuleDir).
-src_dir="${WAGO_SRC_DIR:-$HOME/.wago/src}"
-dry_run="${WAGO_DRY_RUN:-0}"
+tmp=""
 
-# Accept GitHub's host key non-interactively; ssh still prompts for a key
-# passphrase on /dev/tty if the agent doesn't hold it.
-export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-ssh -o StrictHostKeyChecking=accept-new}"
-
-# --- pretty output (the wago.sh "sparkle" palette) -------------------------
-if [ -z "${NO_COLOR:-}" ] && [ -t 1 ] && [ "${TERM:-dumb}" != "dumb" ]; then
-	e=$(printf '\033')
-	lilac="${e}[38;2;195;168;255m"
-	green="${e}[38;2;116;224;173m"
-	pink="${e}[38;2;255;158;196m"
-	dim="${e}[38;2;125;114;176m"
-	bold="${e}[1m"
-	reset="${e}[0m"
-else
-	lilac="" green="" pink="" dim="" bold="" reset=""
-fi
-
-banner() {
-	printf '%s' "$lilac"
-	printf '  ╦ ╦ ╔═╗ ╔═╗ ╔═╗\n'
-	printf '  ║║║ ╠═╣ ║ ╦ ║ ║\n'
-	printf '  ╚╩╝ ╩ ╩ ╚═╝ ╚═╝%s\n' "$reset"
-	printf '  %sa pure-Go WebAssembly JIT%s\n\n' "$dim" "$reset"
-}
-
-step() { printf '%s▸%s %s\n' "$lilac" "$reset" "$*"; }
-ok() { printf '  %s✓%s %s\n' "$green" "$reset" "$*"; }
-info() { printf '  %s%s%s\n' "$dim" "$*" "$reset"; }
 die() {
-	printf '%s✗ wago:%s %s\n' "$pink" "$reset" "$*" >&2
+	printf 'wago: %s\n' "$*" >&2
 	exit 1
 }
 
-have() { command -v "$1" >/dev/null 2>&1; }
+cleanup() {
+	[ -z "$tmp" ] || rm -rf "$tmp"
+}
+trap cleanup EXIT HUP INT TERM
 
-go_version_ok() {
-	v=$(go env GOVERSION 2>/dev/null || go version | awk '{print $3}')
-	v=${v#go}
-	major=${v%%.*}
-	rest=${v#*.}
-	minor=${rest%%[!0-9]*}
-	case "$major:$minor" in
-		*[!0-9:]*|:|*:|"") return 1 ;;
+download() {
+	url=$1
+	target=$2
+	if command -v curl >/dev/null 2>&1; then
+		curl -fsSL --retry 2 --connect-timeout 10 "$url" -o "$target"
+	elif command -v wget >/dev/null 2>&1; then
+		wget -q "$url" -O "$target"
+	else
+		return 1
+	fi
+}
+
+release_tag_from_json() {
+	prefix=$1
+	awk -v prefix="$prefix-" '
+		/"tag_name"[[:space:]]*:/ {
+			line = $0
+			sub(/^.*"tag_name"[[:space:]]*:[[:space:]]*"/, "", line)
+			sub(/".*$/, "", line)
+			tag = line
+		}
+		/"published_at"[[:space:]]*:/ {
+			line = $0
+			sub(/^.*"published_at"[[:space:]]*:[[:space:]]*"/, "", line)
+			sub(/".*$/, "", line)
+			if (index(tag, prefix) == 1 && (best == "" || line > best)) {
+				best = line
+				best_tag = tag
+			}
+			tag = ""
+		}
+		END { if (best_tag != "") print best_tag }
+	' "$2"
+}
+
+resolve_release() {
+	case "$version" in
+		latest)
+			download "$release_api/latest" "$tmp/release.json" || return 1
+			tag=$(sed -n 's/^[[:space:]]*"tag_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$tmp/release.json" | head -1)
+			;;
+		v*|canary-*|nightly-*) tag=$version ;;
+		*)
+			case "$version" in nightly) channel=nightly ;; *) channel=canary ;; esac
+			download "$release_api?per_page=100" "$tmp/releases.json" || return 1
+			tag=$(release_tag_from_json "$channel" "$tmp/releases.json")
+			;;
 	esac
-	[ "$major" -gt 1 ] || { [ "$major" -eq 1 ] && [ "$minor" -ge 22 ]; }
+	[ -n "${tag:-}" ] || return 1
 }
 
-# Print the "you don't have access yet" notice and exit non-zero.
-no_access() {
-	printf '\n%s✗ wago is private during development, and your SSH key has no read access.%s\n\n' "$pink" "$reset"
-	info "If you should have access:"
-	info "  • add your SSH key to GitHub — https://github.com/settings/keys"
-	info "  • confirm you're a member of the wago-org/wago repo"
-	printf '\n  %sOtherwise, hang tight — wago goes public with %s%sv0.1.0%s%s.%s\n' "$dim" "$reset" "$lilac" "$reset" "$dim" "$reset"
-	printf '  %sThe same command will then install a prebuilt binary, no access needed.%s\n\n' "$dim" "$reset"
-	exit 1
+target_name() {
+	case "$(uname -s)" in
+		Darwin) os=darwin ;;
+		Linux) os=linux ;;
+		*) return 1 ;;
+	esac
+	case "$(uname -m)" in
+		x86_64|amd64) arch=amd64 ;;
+		arm64|aarch64) arch=arm64 ;;
+		*) return 1 ;;
+	esac
+	printf 'wago-installer-%s-%s' "$os" "$arch"
 }
 
-banner
+verify_checksum() {
+	payload=$1
+	checksum=$2
+	expected=$(awk 'NR == 1 { print $1 }' "$checksum" | tr 'A-F' 'a-f')
+	case "$expected" in ""|*[!0-9a-f]*) return 1 ;; esac
+	[ "${#expected}" -eq 64 ] || return 1
+	if command -v sha256sum >/dev/null 2>&1; then
+		actual=$(sha256sum "$payload" | awk '{ print $1 }')
+	elif command -v shasum >/dev/null 2>&1; then
+		actual=$(shasum -a 256 "$payload" | awk '{ print $1 }')
+	elif command -v openssl >/dev/null 2>&1; then
+		actual=$(openssl dgst -sha256 "$payload" | awk '{ print $NF }')
+	else
+		return 1
+	fi
+	[ "$(printf '%s' "$actual" | tr 'A-F' 'a-f')" = "$expected" ]
+}
 
-have git || die "git is required to install wago"
+run_installer() {
+	installer=$1
+	shift
+	if "$installer" install "$@"; then
+		return 0
+	else
+		status=$?
+	fi
+	if [ "$status" -eq 2 ]; then
+		die "this installer release predates the native install flow; wait for the channel to update and try again"
+	fi
+	return "$status"
+}
 
-# Gate on read access to the private repo.
-step "checking your access to wago ${dim}(private)${reset}"
-git ls-remote "$repo_ssh" >/dev/null 2>&1 || no_access
-ok "access confirmed"
-
-# Source build needs the Go toolchain.
-have go || die "Go 1.22+ is required to build wago from source"
-go_version_ok || die "Go 1.22 or newer is required"
-
-if [ "$dry_run" = "1" ]; then
-	info "dry run: clone $repo_ssh@$version, go build ./cli/wago -> $bin_dir/wago,"
-	info "         and keep the source at $src_dir for plugin builds"
-	exit 0
+if [ -n "${WAGO_INSTALLER:-}" ]; then
+	[ -x "$WAGO_INSTALLER" ] || die "WAGO_INSTALLER is not executable: $WAGO_INSTALLER"
+	run_installer "$WAGO_INSTALLER" "$@"
+	exit $?
 fi
 
-tmp=$(mktemp -d 2>/dev/null || mktemp -d -t wago)
-trap 'rm -rf "$tmp"' EXIT
-
-# Shallow-clone the requested ref. --branch handles branches and tags; a raw
-# commit sha falls back to a full clone + checkout.
-step "cloning wago ${bold}$version${reset}"
-if ! git clone --depth 1 --branch "$version" "$repo_ssh" "$tmp/src" 2>/dev/null; then
-	git clone "$repo_ssh" "$tmp/src" >/dev/null 2>&1 || die "could not clone $repo_ssh"
-	git -C "$tmp/src" checkout -q "$version" 2>/dev/null || die "no such version: $version"
+tmp=$(mktemp -d 2>/dev/null || mktemp -d -t wago) || die "could not create a temporary directory"
+asset=$(target_name) || die "this operating system or architecture is not supported"
+if ! resolve_release; then
+	die "the installer is unavailable; check your internet connection and try again"
 fi
-
-# No plugins are bundled: wago builds plugin-free (stdlib-only, so this builds
-# offline with no module downloads).
-stamp=$(git -C "$tmp/src" describe --tags --always 2>/dev/null || echo "$version")
-step "building wago ${dim}($stamp)${reset}"
-( cd "$tmp/src" && go build -trimpath -ldflags "-X main.version=$stamp" -o "$tmp/wago" ./cli/wago ) \
-	|| die "build failed"
-
-mkdir -p "$bin_dir"
-mv "$tmp/wago" "$bin_dir/wago"
-ok "installed $bin_dir/wago"
-
-# Keep the source so `wago pkg add <module> && wago pkg build` can compile a
-# custom binary with plugins (wago is unpublished, so builds need it; the CLI
-# finds it at ~/.wago/src). Swapped in only after a successful build.
-rm -rf "$src_dir"
-mkdir -p "$(dirname "$src_dir")"
-if mv "$tmp/src" "$src_dir" 2>/dev/null; then
-	ok "kept wago source at $src_dir ${dim}(for plugin builds)${reset}"
+url="$release_download_base/download/$tag/$asset"
+if ! download "$url" "$tmp/installer" || ! download "$url.sha256" "$tmp/installer.sha256"; then
+	die "the installer is unavailable; check your internet connection and try again"
 fi
-
-"$bin_dir/wago" --version || true
-case ":$PATH:" in
-	*":$bin_dir:"*) ;;
-	*) info "add $bin_dir to your PATH to run: wago" ;;
-esac
+if ! verify_checksum "$tmp/installer" "$tmp/installer.sha256"; then
+	die "the downloaded installer could not be verified; try again when the release service is available"
+fi
+chmod +x "$tmp/installer"
+run_installer "$tmp/installer" "$@"

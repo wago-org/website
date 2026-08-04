@@ -26,6 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Reusable sync callers push during their run. Resolve main again so
+          # this build includes that commit rather than the caller's old SHA.
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4

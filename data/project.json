@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-07-30",
+  "generated": "2026-08-04",
   "canonicalUrl": "https://wago.sh/",
   "name": "wago",
   "summary": "A wonderfully quick, compact, and extensible WebAssembly runtime for Go",
@@ -13,7 +13,7 @@
   "canonicalFacts": {
     "$schema": "https://wago.sh/data/facts.schema.json",
     "schemaVersion": 1,
-    "generated": "2026-07-30",
+    "generated": "2026-08-04",
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
@@ -364,7 +364,7 @@
         },
         {
           "name": "Tail calls",
-          "status": "planned",
+          "status": "pass",
           "evidence": [
             {
               "label": "feature matrix",
@@ -404,7 +404,7 @@
         },
         {
           "name": "Multiple memories",
-          "status": "planned",
+          "status": "pass",
           "evidence": [
             {
               "label": "feature matrix",
@@ -414,7 +414,7 @@
         },
         {
           "name": "Garbage collection",
-          "status": "planned",
+          "status": "pass",
           "evidence": [
             {
               "label": "feature matrix",
@@ -424,7 +424,7 @@
         },
         {
           "name": "Exception handling",
-          "status": "planned",
+          "status": "pass",
           "evidence": [
             {
               "label": "feature matrix",
@@ -1078,13 +1078,13 @@
         "label": "WebAssembly 3.0+",
         "sub": "3.0 & in-progress proposals",
         "status": "partial",
-        "done": 2,
+        "done": 6,
         "total": 42,
-        "pct": 5,
+        "pct": 14,
         "features": [
           {
             "label": "Tail calls",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Extended const expressions",
@@ -1100,15 +1100,15 @@
           },
           {
             "label": "Multiple memories",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Garbage collection",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Exception handling",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Relaxed SIMD",
@@ -1259,7 +1259,7 @@
         "status": "partial",
         "done": 1,
         "total": 3,
-        "pct": 50,
+        "pct": 33,
         "features": [
           {
             "label": "Synchronous host-import results",
@@ -1271,7 +1271,7 @@
           },
           {
             "label": "Architectures beyond linux/amd64",
-            "status": "partial"
+            "status": "planned"
           }
         ]
       }

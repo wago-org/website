@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30",
+  "generated": "2026-08-04",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -170,13 +170,13 @@
       "label": "WebAssembly 3.0+",
       "sub": "3.0 & in-progress proposals",
       "status": "partial",
-      "done": 2,
+      "done": 6,
       "total": 42,
-      "pct": 5,
+      "pct": 14,
       "features": [
         {
           "label": "Tail calls",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Extended const expressions",
@@ -192,15 +192,15 @@
         },
         {
           "label": "Multiple memories",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Garbage collection",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Exception handling",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Relaxed SIMD",
@@ -351,7 +351,7 @@
       "status": "partial",
       "done": 1,
       "total": 3,
-      "pct": 50,
+      "pct": 33,
       "features": [
         {
           "label": "Synchronous host-import results",
@@ -363,7 +363,7 @@
         },
         {
           "label": "Architectures beyond linux/amd64",
-          "status": "partial"
+          "status": "planned"
         }
       ]
     }

@@ -1,7 +1,7 @@
 # wago.sh
 
-The landing page for [**wago**](https://github.com/wago-org/wago): A wonderfully
-quick, compact, and extensible WebAssembly runtime for Go. Served at
+The landing page for [**wago**](https://github.com/wago-org/wago): WebAssembly,
+made for Go. Served at
 <https://wago.sh>.
 
 A small static site: plain HTML + CSS, with the interactive bits written in

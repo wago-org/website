@@ -1,6 +1,6 @@
 # wago
 
-> A wonderfully quick, compact, and extensible WebAssembly runtime for Go
+> WebAssembly, made for Go.
 
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago

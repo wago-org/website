@@ -7,7 +7,7 @@ Data updated: 2026-08-04
 
 ## What wago is
 
-A wonderfully quick, compact, and extensible WebAssembly runtime for Go
+WebAssembly, made for Go.
 
 The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
 

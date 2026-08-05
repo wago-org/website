@@ -395,7 +395,7 @@ function makeProject(stats, canonicalFacts, startup, performance) {
     generated: stats.generated,
     canonicalUrl: "https://wago.sh/",
     name: "wago",
-    summary: "A wonderfully quick, compact, and extensible WebAssembly runtime for Go",
+    summary: "WebAssembly, made for Go.",
     repository: "https://github.com/wago-org/wago",
     documentation: "https://github.com/wago-org/wago#readme",
     roadmap: "https://github.com/wago-org/wago/blob/main/ROADMAP.md",

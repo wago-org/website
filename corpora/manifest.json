@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "file": "fib.wasm",
+      "source": "fib.wat",
+      "description": "A self-contained iterative Fibonacci function.",
+      "exports": ["fib", "memory"],
+      "imports": []
+    },
+    {
+      "file": "wasi-hello.wasm",
+      "source": "wasi-hello.wat",
+      "description": "A WASI Preview 1 command that writes a greeting to stdout.",
+      "exports": ["_start", "memory"],
+      "imports": ["wasi_snapshot_preview1.fd_write"]
+    },
+    {
+      "file": "wasi-args.wasm",
+      "source": "wasi-args.wat",
+      "description": "A WASI Preview 1 command that prints its first argument.",
+      "exports": ["_start", "memory"],
+      "imports": [
+        "wasi_snapshot_preview1.args_sizes_get",
+        "wasi_snapshot_preview1.args_get",
+        "wasi_snapshot_preview1.fd_write"
+      ]
+    }
+  ]
+}

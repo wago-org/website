@@ -259,7 +259,7 @@
 }
 
 /* ---- Code card (terminal-style) ---- */
-/* ---- Editor: a compilation-pipeline IDE (fib.ts → fib.wat → x86-64) ---- */
+/* ---- Quickstart: an install-to-WASI terminal walkthrough ---- */
 .editor {
     border: 1px solid var(--line-2);
     border-radius: 14px;

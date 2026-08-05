@@ -22,6 +22,7 @@ llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
 facts.md, ...           # direct Markdown mirrors of canonical pages (generated)
 v0/schema.json          # hosted prerelease manifest schema, mirrored from wago
+corpora/                # small documented Wasm binaries used by docs and demos
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
   sync-facts.mjs        # verifies source evidence and generates canonical pages
@@ -67,6 +68,7 @@ resolve.
 Other scripts:
 
 - `npm run typecheck` - type-check without emitting.
+- `npm run verify:corpora` - validate the example-module manifest and Wasm headers.
 - `npm run sync` - regenerate stats and mirror the manifest schema from wago.
 - `npm run sync:ai` - regenerate the crawler/LLM metadata from the committed
   stats and static benchmark markup (normally included in `npm run sync`).

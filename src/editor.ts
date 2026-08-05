@@ -1,41 +1,37 @@
-// The editor is a small tabbed code viewer. Filename tabs switch between the Go
-// host, the AssemblyScript source, its WAT, and the emitted x86-64. Run reveals
-// a console with the (mocked) program output; Expand grows the editor in place.
-// No-ops if the editor isn't present.
+// The quickstart is a tabbed terminal walkthrough. Replay advances through the
+// install, Fibonacci, plugin, and WASI steps; Expand grows it in place.
+// No-ops if the demo isn't present.
 
 const REDUCED =
     typeof matchMedia === "function" &&
     matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Mocked run — swap this for real execution once an interpreter exists.
-const PROMPT = '<span class="term-dim">$</span> wago run -e fib fib.wasm 30';
-const RESULT = 'fib(30) = <span class="tok-n">832040</span>';
-const line = (html: string, cls = ""): string =>
-    '<span class="term-line ' + cls + '">' + html + "</span>";
-const head = '<span class="editor__console-head">output</span>';
+const STEP_DELAY = 760;
 
-function runExample(
+function replayQuickstart(
     btn: HTMLButtonElement,
     label: HTMLElement,
-    con: HTMLElement,
+    tabs: HTMLButtonElement[],
+    select: (index: number, focus: boolean) => void,
 ): void {
-    con.hidden = false;
-    const finish = (): void => {
-        con.innerHTML = head + line(PROMPT) + line(RESULT);
-        btn.disabled = false;
-        label.textContent = "Run";
-    };
     if (REDUCED) {
-        finish();
+        select(tabs.length - 1, false);
         return;
     }
     btn.disabled = true;
-    label.textContent = "Running";
-    con.innerHTML =
-        head +
-        line(PROMPT) +
-        line('compiling &amp; running… <span class="term-cursor"></span>', "term-dim");
-    window.setTimeout(finish, 620);
+    label.textContent = "Playing";
+    let step = 0;
+    const advance = (): void => {
+        select(step, false);
+        step += 1;
+        if (step < tabs.length) {
+            window.setTimeout(advance, STEP_DELAY);
+            return;
+        }
+        btn.disabled = false;
+        label.textContent = "Replay";
+    };
+    advance();
 }
 
 export function initEditor(): void {
@@ -74,10 +70,11 @@ export function initEditor(): void {
         select(Math.max(0, tabs.findIndex((t) => t.classList.contains("is-active"))), false);
 
         const runBtn = root.querySelector<HTMLButtonElement>("[data-run]");
-        const con = root.querySelector<HTMLElement>("[data-console]");
         const runLabel = root.querySelector<HTMLElement>("[data-run-label]");
-        if (runBtn && con && runLabel) {
-            runBtn.addEventListener("click", () => runExample(runBtn, runLabel, con));
+        if (runBtn && runLabel) {
+            runBtn.addEventListener("click", () =>
+                replayQuickstart(runBtn, runLabel, tabs, select),
+            );
         }
 
         const expandBtn = root.querySelector<HTMLButtonElement>("[data-expand]");
@@ -87,7 +84,7 @@ export function initEditor(): void {
                 expandBtn.setAttribute("aria-expanded", String(on));
                 expandBtn.setAttribute(
                     "aria-label",
-                    on ? "Collapse editor" : "Expand editor",
+                    on ? "Collapse quickstart" : "Expand quickstart",
                 );
             });
         }

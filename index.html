@@ -373,50 +373,50 @@
                 </div>
             </header>
 
-            <!-- ░░░ EDITOR ░░░ -->
+            <!-- ░░░ QUICKSTART DEMO ░░░ -->
             <section class="codeblock" data-editor>
                 <div class="editor">
                     <div class="editor__bar">
                         <div
                             class="editor__tabs"
                             role="tablist"
-                            aria-label="Files"
+                            aria-label="Wago quickstart"
                         >
                             <button
                                 class="etab is-active"
                                 type="button"
                                 role="tab"
                                 aria-selected="true"
-                                data-tab="go"
+                                data-tab="install"
                             >
-                                main.go
+                                1 · install
                             </button>
                             <button
                                 class="etab"
                                 type="button"
                                 role="tab"
                                 aria-selected="false"
-                                data-tab="ts"
+                                data-tab="fib"
                             >
-                                fib.ts
+                                2 · fib
                             </button>
                             <button
                                 class="etab"
                                 type="button"
                                 role="tab"
                                 aria-selected="false"
-                                data-tab="wat"
+                                data-tab="wasi"
                             >
-                                fib.wat
+                                3 · add WASI
                             </button>
                             <button
                                 class="etab"
                                 type="button"
                                 role="tab"
                                 aria-selected="false"
-                                data-tab="asm"
+                                data-tab="run"
                             >
-                                x86-64
+                                4 · run WASI
                             </button>
                         </div>
                         <div class="editor__actions">
@@ -424,7 +424,7 @@
                                 class="editor__icon"
                                 type="button"
                                 data-expand
-                                aria-label="Expand editor"
+                                aria-label="Expand quickstart"
                                 aria-expanded="false"
                             >
                                 <svg
@@ -464,7 +464,7 @@
                                 class="editor__run"
                                 type="button"
                                 data-run
-                                aria-label="Run example"
+                                aria-label="Replay quickstart"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -475,7 +475,7 @@
                                 >
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
-                                <span data-run-label>Run</span>
+                                <span data-run-label>Replay</span>
                             </button>
                         </div>
                     </div>
@@ -484,138 +484,44 @@
                             <pre
                                 class="epanel"
                                 role="tabpanel"
-                                data-panel="ts"
-                                hidden
-                            ><span class="tok-n">export function</span> <span class="tok-f">fib</span>(n: <span class="tok-t">i32</span>): <span class="tok-t">i64</span> {
-  <span class="tok-n">if</span> (n &lt; <span class="tok-n">2</span>) <span class="tok-n">return</span> &lt;<span class="tok-t">i64</span>&gt;n
-  <span class="tok-n">return</span> <span class="tok-f">fib</span>(n - <span class="tok-n">1</span>) + <span class="tok-f">fib</span>(n - <span class="tok-n">2</span>)
-}</pre>
-                            <pre
-                                class="epanel"
-                                role="tabpanel"
-                                data-panel="wat"
-                                hidden
-                            ><span class="tok-c">;; fib — recursion across the call/return boundary</span>
-(module
-  (func <span class="tok-t">$fib</span> (export <span class="tok-s">"fib"</span>) (param <span class="tok-t">$n</span> i32) (result i64)
-    <span class="tok-f">local.get</span> <span class="tok-t">$n</span>
-    <span class="tok-f">i32.const</span> <span class="tok-n">2</span>
-    <span class="tok-f">i32.lt_s</span>
-    (if (result i64)
-      (then
-        <span class="tok-f">local.get</span> <span class="tok-t">$n</span>
-        <span class="tok-f">i64.extend_i32_s</span>
-      )
-      (else
-        <span class="tok-f">local.get</span> <span class="tok-t">$n</span>
-        <span class="tok-f">i32.const</span> <span class="tok-n">1</span>
-        <span class="tok-f">i32.sub</span>
-        <span class="tok-f">call</span> <span class="tok-t">$fib</span>
-        <span class="tok-f">local.get</span> <span class="tok-t">$n</span>
-        <span class="tok-f">i32.const</span> <span class="tok-n">2</span>
-        <span class="tok-f">i32.sub</span>
-        <span class="tok-f">call</span> <span class="tok-t">$fib</span>
-        <span class="tok-f">i64.add</span>
-      )
-    )
-  )
-)</pre>
-                            <pre
-                                class="epanel"
-                                role="tabpanel"
-                                data-panel="asm"
-                                hidden
-                            ><span class="tok-c">; objdump -M intel · wago single-pass backend · 385 bytes</span>
-<span class="tok-c">  0:</span>  <span class="tok-f">push</span>   rbp                       <span class="tok-c">; prologue</span>
-<span class="tok-c">  1:</span>  <span class="tok-f">mov</span>    rbp,rsp
-<span class="tok-c">  4:</span>  <span class="tok-f">sub</span>    rsp,<span class="tok-n">0x50</span>
-<span class="tok-c">  b:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x10</span>],rsi
-<span class="tok-c"> 12:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x18</span>],rdx
-<span class="tok-c"> 19:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x20</span>],rcx
-<span class="tok-c"> 20:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rsi-<span class="tok-n">0x48</span>]  <span class="tok-c">; stack-guard check</span>
-<span class="tok-c"> 27:</span>  <span class="tok-f">cmp</span>    rsp,rax
-<span class="tok-c"> 2a:</span>  <span class="tok-f">jae</span>    <span class="tok-n">0x43</span>
-<span class="tok-c"> 30:</span>  <span class="tok-f">mov</span>    rsi,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c"> 37:</span>  <span class="tok-f">mov</span>    DWORD PTR [rsi+<span class="tok-n">0x0</span>],<span class="tok-n">0xd</span>
-<span class="tok-c"> 41:</span>  <span class="tok-f">leave</span>
-<span class="tok-c"> 42:</span>  <span class="tok-f">ret</span>
-<span class="tok-c"> 43:</span>  <span class="tok-f">mov</span>    rbx,QWORD PTR [rdi+<span class="tok-n">0x0</span>]   <span class="tok-c">; load n</span>
-<span class="tok-c"> 4a:</span>  <span class="tok-f">mov</span>    rax,rbx
-<span class="tok-c"> 4d:</span>  <span class="tok-f">cmp</span>    eax,<span class="tok-n">0x2</span>                   <span class="tok-c">; n &lt; 2 ?</span>
-<span class="tok-c"> 50:</span>  <span class="tok-f">jge</span>    <span class="tok-n">0x68</span>
-<span class="tok-c"> 56:</span>  <span class="tok-f">mov</span>    rax,rbx
-<span class="tok-c"> 59:</span>  <span class="tok-f">movsxd</span> rax,eax                   <span class="tok-c">; base case: (i64)n</span>
-<span class="tok-c"> 5c:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x30</span>],rax
-<span class="tok-c"> 63:</span>  <span class="tok-f">jmp</span>    <span class="tok-n">0x159</span>                     <span class="tok-c">; jump to epilogue</span>
-<span class="tok-c"> 68:</span>  <span class="tok-f">mov</span>    rax,rbx
-<span class="tok-c"> 6b:</span>  <span class="tok-f">sub</span>    eax,<span class="tok-n">0x1</span>                   <span class="tok-c">; n - 1</span>
-<span class="tok-c"> 6e:</span>  <span class="tok-f">sub</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c"> 75:</span>  <span class="tok-f">mov</span>    QWORD PTR [rsp+<span class="tok-n">0x0</span>],rax
-<span class="tok-c"> 7d:</span>  <span class="tok-f">mov</span>    rdi,rsp
-<span class="tok-c"> 80:</span>  <span class="tok-f">lea</span>    rcx,[rsp+<span class="tok-n">0x8</span>]
-<span class="tok-c"> 88:</span>  <span class="tok-f">mov</span>    rsi,QWORD PTR [rbp-<span class="tok-n">0x10</span>]
-<span class="tok-c"> 8f:</span>  <span class="tok-f">mov</span>    rdx,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c"> 96:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x28</span>],rbx
-<span class="tok-c"> 9d:</span>  <span class="tok-f">call</span>   <span class="tok-n">0x0</span>                       <span class="tok-c">; call fib(n-1)</span>
-<span class="tok-c"> a2:</span>  <span class="tok-f">mov</span>    rbx,QWORD PTR [rbp-<span class="tok-n">0x28</span>]
-<span class="tok-c"> a9:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c"> b0:</span>  <span class="tok-f">mov</span>    eax,DWORD PTR [rax+<span class="tok-n">0x0</span>]
-<span class="tok-c"> b6:</span>  <span class="tok-f">test</span>   eax,eax
-<span class="tok-c"> b8:</span>  <span class="tok-f">je</span>     <span class="tok-n">0xc7</span>
-<span class="tok-c"> be:</span>  <span class="tok-f">add</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c"> c5:</span>  <span class="tok-f">leave</span>
-<span class="tok-c"> c6:</span>  <span class="tok-f">ret</span>
-<span class="tok-c"> c7:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rsp+<span class="tok-n">0x8</span>]
-<span class="tok-c"> cf:</span>  <span class="tok-f">add</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c"> d6:</span>  <span class="tok-f">mov</span>    rcx,rbx
-<span class="tok-c"> d9:</span>  <span class="tok-f">sub</span>    ecx,<span class="tok-n">0x2</span>                   <span class="tok-c">; n - 2</span>
-<span class="tok-c"> dc:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x30</span>],rax
-<span class="tok-c"> e3:</span>  <span class="tok-f">sub</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c"> ea:</span>  <span class="tok-f">mov</span>    QWORD PTR [rsp+<span class="tok-n">0x0</span>],rcx
-<span class="tok-c"> f2:</span>  <span class="tok-f">mov</span>    rdi,rsp
-<span class="tok-c"> f5:</span>  <span class="tok-f">lea</span>    rcx,[rsp+<span class="tok-n">0x8</span>]
-<span class="tok-c"> fd:</span>  <span class="tok-f">mov</span>    rsi,QWORD PTR [rbp-<span class="tok-n">0x10</span>]
-<span class="tok-c">104:</span>  <span class="tok-f">mov</span>    rdx,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c">10b:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x28</span>],rbx
-<span class="tok-c">112:</span>  <span class="tok-f">call</span>   <span class="tok-n">0x0</span>                       <span class="tok-c">; call fib(n-2)</span>
-<span class="tok-c">117:</span>  <span class="tok-f">mov</span>    rbx,QWORD PTR [rbp-<span class="tok-n">0x28</span>]
-<span class="tok-c">11e:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c">125:</span>  <span class="tok-f">mov</span>    eax,DWORD PTR [rax+<span class="tok-n">0x0</span>]
-<span class="tok-c">12b:</span>  <span class="tok-f">test</span>   eax,eax
-<span class="tok-c">12d:</span>  <span class="tok-f">je</span>     <span class="tok-n">0x13c</span>
-<span class="tok-c">133:</span>  <span class="tok-f">add</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c">13a:</span>  <span class="tok-f">leave</span>
-<span class="tok-c">13b:</span>  <span class="tok-f">ret</span>
-<span class="tok-c">13c:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rsp+<span class="tok-n">0x8</span>]
-<span class="tok-c">144:</span>  <span class="tok-f">add</span>    rsp,<span class="tok-n">0x10</span>
-<span class="tok-c">14b:</span>  <span class="tok-f">add</span>    rax,QWORD PTR [rbp-<span class="tok-n">0x30</span>]  <span class="tok-c">; fib(n-1) + fib(n-2)</span>
-<span class="tok-c">152:</span>  <span class="tok-f">mov</span>    QWORD PTR [rbp-<span class="tok-n">0x30</span>],rax
-<span class="tok-c">159:</span>  <span class="tok-f">mov</span>    rdi,QWORD PTR [rbp-<span class="tok-n">0x20</span>]  <span class="tok-c">; write result</span>
-<span class="tok-c">160:</span>  <span class="tok-f">mov</span>    rax,QWORD PTR [rbp-<span class="tok-n">0x30</span>]
-<span class="tok-c">167:</span>  <span class="tok-f">mov</span>    QWORD PTR [rdi+<span class="tok-n">0x0</span>],rax
-<span class="tok-c">16e:</span>  <span class="tok-f">mov</span>    rsi,QWORD PTR [rbp-<span class="tok-n">0x18</span>]
-<span class="tok-c">175:</span>  <span class="tok-f">mov</span>    DWORD PTR [rsi+<span class="tok-n">0x0</span>],<span class="tok-n">0x0</span>
-<span class="tok-c">17f:</span>  <span class="tok-f">leave</span>
-<span class="tok-c">180:</span>  <span class="tok-f">ret</span>                              <span class="tok-c">; return</span></pre>
-                            <pre
-                                class="epanel"
-                                role="tabpanel"
-                                data-panel="go"
-                            ><span class="tok-c">// compile, instantiate &amp; run wasm, no cgo</span>
-mod, _  := wago.<span class="tok-f">Compile</span>(wasmBytes)
-inst, _ := wago.<span class="tok-f">Instantiate</span>(mod, <span class="tok-n">nil</span>)
-<span class="tok-n">defer</span> inst.<span class="tok-f">Close</span>()
+                                data-panel="install"
+                            ><span class="tok-c"># install the manager, then choose a runtime</span>
+<span class="term-dim">$</span> curl -fsSL https://install.wago.sh/unix | sh
+<span class="term-dim">$</span> wago version install
 
-out, _ := inst.<span class="tok-f">Invoke</span>(<span class="tok-s">"fib"</span>, wago.<span class="tok-f">I32</span>(<span class="tok-n">30</span>))
-fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out[<span class="tok-n">0</span>])) <span class="tok-c">// → 832040</span></pre>
+<span class="tok-s">✓</span> Wago is ready</pre>
+                            <pre
+                                class="epanel"
+                                role="tabpanel"
+                                data-panel="fib"
+                                hidden
+                            ><span class="tok-c"># download and run a self-contained module</span>
+<span class="term-dim">$</span> curl -fsSL https://wago.sh/corpora/fib.wasm -o fib.wasm
+<span class="term-dim">$</span> wago run fib.wasm 30
+
+fib(30) = <span class="tok-n">832040</span></pre>
+                            <pre
+                                class="epanel"
+                                role="tabpanel"
+                                data-panel="wasi"
+                                hidden
+                            ><span class="tok-c"># add WASI to this project</span>
+<span class="term-dim">$</span> wago add wago-org/wasi
+
+<span class="tok-s">✓</span> Added wago-org/wasi
+<span class="term-dim">  wrote wago.json and wago-lock.json</span></pre>
+                            <pre
+                                class="epanel"
+                                role="tabpanel"
+                                data-panel="run"
+                                hidden
+                            ><span class="tok-c"># download a WASI command and run it</span>
+<span class="term-dim">$</span> curl -fsSL https://wago.sh/corpora/wasi-hello.wasm -o wasi-hello.wasm
+<span class="term-dim">$</span> wago run wasi-hello.wasm
+
+hello from wasi</pre>
                         </div>
                     </div>
-                    <div
-                        class="editor__console"
-                        data-console
-                        hidden
-                        aria-live="polite"
-                    ></div>
                 </div>
             </section>
 

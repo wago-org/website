@@ -8,6 +8,7 @@
         "build": "npm run sync:check && npm run verify:corpora && tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets corpora data v0 facts.md compatibility.md security.md benchmarks.md CNAME robots.txt sitemap.xml site.webmanifest llms.txt llms-full.txt dist/",
         "dev": "tsc --watch --preserveWatchOutput",
         "typecheck": "tsc --noEmit",
+        "test:stats": "node --test scripts/stats-parsers.test.mjs",
         "verify:corpora": "node scripts/verify-corpora.mjs",
         "sync": "node scripts/sync-stats.mjs && node scripts/sync-schema.mjs && node scripts/sync-facts.mjs && node scripts/sync-ai-metadata.mjs",
         "sync:check": "node scripts/sync-stats.mjs --check && node scripts/sync-schema.mjs --check && node scripts/sync-facts.mjs --check && node scripts/sync-ai-metadata.mjs --check",

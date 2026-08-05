@@ -28,6 +28,8 @@ import { constants } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 
+import { parseSIMDAssertions } from "./stats-parsers.mjs";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const OUT = join(ROOT, "data", "stats.json");
@@ -100,15 +102,6 @@ function parseSpectest(text) {
     assertionsFail: +m[4],
     assertionsSkip: +m[5],
   };
-}
-
-// FEATURES.md records the independently-run official SIMD proposal corpus.
-// Release 2 already contains SIMD files, so use this count only with the MVP
-// corpus above; that keeps the headline total useful without double-counting.
-function parseSIMDAssertions(text) {
-  const m = text.match(/official SIMD proposal corpus passes[^\n]*\(([\d,]+) assertions/i);
-  if (!m) throw new Error("FEATURES.md: could not find the official SIMD assertion count");
-  return Number(m[1].replace(/,/g, ""));
 }
 
 // "Coverage: 77.3%"

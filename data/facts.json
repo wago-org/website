@@ -1,7 +1,7 @@
 {
   "$schema": "https://wago.sh/data/facts.schema.json",
   "schemaVersion": 1,
-  "generated": "2026-08-04",
+  "generated": "2026-08-05",
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
@@ -462,7 +462,7 @@
       },
       {
         "name": "Threads & atomics",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",

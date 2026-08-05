@@ -1,6 +1,6 @@
 # Wago facts
 
-Last synchronized: 2026-08-04
+Last synchronized: 2026-08-05
 Wago source commit: ff87ac3a5868ebe074f06bf91ec61ac60c600924
 Canonical JSON: https://wago.sh/data/facts.json
 
@@ -84,7 +84,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Branch hinting: pass
 - Custom annotations (text): planned
 - JS string builtins: planned
-- Threads & atomics: planned
+- Threads & atomics: pass
 - JS Promise integration: planned
 - Web Content Security Policy: planned
 - ESM integration: planned

@@ -5,7 +5,7 @@
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-08-04
+Data updated: 2026-08-05
 
 ## Current verified facts
 

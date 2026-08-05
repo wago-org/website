@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-04",
+  "generated": "2026-08-05",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -170,9 +170,9 @@
       "label": "WebAssembly 3.0+",
       "sub": "3.0 & in-progress proposals",
       "status": "partial",
-      "done": 6,
+      "done": 7,
       "total": 42,
-      "pct": 14,
+      "pct": 17,
       "features": [
         {
           "label": "Tail calls",
@@ -220,7 +220,7 @@
         },
         {
           "label": "Threads & atomics",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "JS Promise integration",

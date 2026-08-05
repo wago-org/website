@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-04",
+  "generated": "2026-08-05",
   "canonicalUrl": "https://wago.sh/",
   "name": "wago",
   "summary": "WebAssembly, made for Go.",
@@ -13,7 +13,7 @@
   "canonicalFacts": {
     "$schema": "https://wago.sh/data/facts.schema.json",
     "schemaVersion": 1,
-    "generated": "2026-08-04",
+    "generated": "2026-08-05",
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
@@ -474,7 +474,7 @@
         },
         {
           "name": "Threads & atomics",
-          "status": "planned",
+          "status": "pass",
           "evidence": [
             {
               "label": "feature matrix",
@@ -1078,9 +1078,9 @@
         "label": "WebAssembly 3.0+",
         "sub": "3.0 & in-progress proposals",
         "status": "partial",
-        "done": 6,
+        "done": 7,
         "total": 42,
-        "pct": 14,
+        "pct": 17,
         "features": [
           {
             "label": "Tail calls",
@@ -1128,7 +1128,7 @@
           },
           {
             "label": "Threads & atomics",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "JS Promise integration",

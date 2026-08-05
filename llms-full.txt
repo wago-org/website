@@ -3,7 +3,7 @@
 Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-08-04
+Data updated: 2026-08-05
 
 ## What wago is
 

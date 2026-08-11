@@ -1,6 +1,6 @@
 # Wago facts
 
-Last synchronized: 2026-08-05
+Last synchronized: 2026-08-11
 Wago source commit: ff87ac3a5868ebe074f06bf91ec61ac60c600924
 Canonical JSON: https://wago.sh/data/facts.json
 
@@ -75,12 +75,12 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Fixed-width SIMD: pass
 - Tail calls: pass
 - Extended const expressions: pass
-- Typed function references: planned
-- Memory64: planned
+- Typed function references: pass
+- Memory64: pass
 - Multiple memories: pass
 - Garbage collection: pass
 - Exception handling: pass
-- Relaxed SIMD: planned
+- Relaxed SIMD: pass
 - Branch hinting: pass
 - Custom annotations (text): planned
 - JS string builtins: planned

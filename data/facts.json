@@ -1,7 +1,7 @@
 {
   "$schema": "https://wago.sh/data/facts.schema.json",
   "schemaVersion": 1,
-  "generated": "2026-08-05",
+  "generated": "2026-08-11",
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
@@ -372,7 +372,7 @@
       },
       {
         "name": "Typed function references",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",
@@ -382,7 +382,7 @@
       },
       {
         "name": "Memory64",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",
@@ -422,7 +422,7 @@
       },
       {
         "name": "Relaxed SIMD",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",

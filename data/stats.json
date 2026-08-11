@@ -169,10 +169,10 @@
       "version": "3.0",
       "label": "WebAssembly 3.0",
       "sub": "finished proposals",
-      "status": "partial",
+      "status": "pass",
       "done": 9,
-      "total": 10,
-      "pct": 90,
+      "total": 9,
+      "pct": 100,
       "features": [
         {
           "label": "Tail calls",
@@ -209,10 +209,6 @@
         {
           "label": "Branch hinting",
           "status": "pass"
-        },
-        {
-          "label": "Custom annotations (text)",
-          "status": "planned"
         }
       ]
     },

@@ -167,8 +167,9 @@ function shortLabel(feature) {
 // from FEATURES.md's MVP rows (wago-authored, detailed). The remaining groups
 // come from the released and active WebAssembly proposal catalogs in
 // github.com/WebAssembly/proposals, ordered by release or current phase.
-// JavaScript BigInt-to-i64 integration (2.0) and JS String Builtins (3.0) are
-// intentionally omitted because they do not apply to Wago's Go-native runtime.
+// JavaScript BigInt-to-i64 integration (2.0), JS String Builtins (3.0), and
+// Custom Annotation Syntax (3.0) are intentionally omitted because they do not
+// apply to Wago's Go-native, binary-Wasm runtime.
 // Each catalog entry's status is resolved from FEATURES.md
 // when a `match` keyword hits a row there (so what wago actually ships stays
 // sourced from wago); otherwise it falls back to the entry's `status`. Since
@@ -193,8 +194,8 @@ const CATALOG = {
     { label: "Bulk memory", match: ["bulk memory"] },
     { label: "Fixed-width SIMD", match: ["simd"] },
   ],
-  // WebAssembly 3.0 proposals applicable to Wago's native runtime. JS String
-  // Builtins is intentionally omitted (see above).
+  // WebAssembly 3.0 proposals applicable to Wago's native binary-Wasm runtime.
+  // JS String Builtins and WAT-only custom annotations are omitted (see above).
   "3.0": [
     // --- Finished, shipped in WebAssembly 3.0 ---
     { label: "Tail calls", match: ["tail call"], status: "planned" },
@@ -206,7 +207,6 @@ const CATALOG = {
     { label: "Exception handling", match: ["exception handling"], status: "planned" },
     { label: "Relaxed SIMD", match: ["simd"], status: "planned" },
     { label: "Branch hinting", match: ["branch hint"], status: "planned" },
-    { label: "Custom annotations (text)", status: "planned" },
   ],
   // Active proposals not yet merged into a released specification.
   future: [

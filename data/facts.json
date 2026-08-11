@@ -441,16 +441,6 @@
         ]
       },
       {
-        "name": "Custom annotations (text)",
-        "status": "planned",
-        "evidence": [
-          {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
-          }
-        ]
-      },
-      {
         "name": "JS Promise integration",
         "status": "planned",
         "evidence": [

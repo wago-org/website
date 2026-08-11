@@ -10,7 +10,7 @@ The website includes every proposal applicable to Wago's Go-native runtime under
 
 - **WebAssembly 1.0:** represented as Wago's 17 detailed MVP implementation families rather than two umbrella proposal rows. Mutable globals are covered by the generated `Globals` and import/export rows.
 - **WebAssembly 2.0:** includes all six runtime-applicable proposals. **JavaScript BigInt to WebAssembly i64 integration** is intentionally omitted because it defines JavaScript host-boundary conversion and does not apply to Wago's Go API.
-- **WebAssembly 3.0:** includes all 10 runtime-applicable proposals. **JS String Builtins** is intentionally omitted because it does not apply to Wago's Go-native runtime.
+- **WebAssembly 3.0:** includes all nine runtime-applicable proposals. **JS String Builtins** and **Custom Annotation Syntax in the Text Format** are intentionally omitted because Wago exposes a Go-native binary-Wasm runtime, not JavaScript embedding or WAT parsing.
 - **Future features:** all 31 currently active Phase 1-5 proposals are present and there are no extras. Phase ordering and the **Acquire-Release Atomics** name now match the official tracker snapshot.
 
 The authoritative released-version inventory is the proposal repository's finished table, because it uniquely records both `Spec Version` and `Affected specs`. Its complete rows are [1.0](https://github.com/WebAssembly/proposals/blob/f0db14a5555abf7b931667fd289755124a3bf37e/finished-proposals.md#L7-L8), [2.0](https://github.com/WebAssembly/proposals/blob/f0db14a5555abf7b931667fd289755124a3bf37e/finished-proposals.md#L9-L15), and [3.0](https://github.com/WebAssembly/proposals/blob/f0db14a5555abf7b931667fd289755124a3bf37e/finished-proposals.md#L16-L26).
@@ -52,13 +52,13 @@ The [official Wasm 2.0 announcement](https://webassembly.org/news/2025-03-20-was
 | Garbage collection | core, js-api | Present |
 | Multiple memories | core, js-api | Present |
 | Relaxed SIMD | core | Present |
-| Custom Annotation Syntax in the Text Format | core | Present as `Custom annotations (text)` |
+| Custom Annotation Syntax in the Text Format | core | Intentionally omitted because Wago does not parse WAT |
 | Branch Hinting | core | Present |
 | Exception handling | core, js-api | Present |
 | JS String Builtins | core, js-api | Intentionally omitted as non-applicable to Wago's Go-native runtime |
 | Memory64 | core | Present |
 
-All 10 runtime-applicable 3.0 proposals are present, with JS String Builtins deliberately outside the tracker boundary. The [Wasm 3.0 announcement](https://webassembly.org/news/2025-09-17-wasm-3.0/) is again only a narrative summary: it does not name Extended Constant Expressions or Branch Hinting, and it describes a Deterministic Profile that is not a separate finished-proposal row. The finished-proposals ledger remains the source for version assignment.
+All nine runtime-applicable 3.0 proposals are present, with JS String Builtins and WAT-only custom annotations deliberately outside the tracker boundary. The [Wasm 3.0 announcement](https://webassembly.org/news/2025-09-17-wasm-3.0/) is again only a narrative summary: it does not name Extended Constant Expressions or Branch Hinting, and it describes a Deterministic Profile that is not a separate finished-proposal row. The finished-proposals ledger remains the source for version assignment.
 
 ## Current Future-features inventory
 
@@ -82,7 +82,7 @@ That classification is an audit aid inferred from the official proposal titles a
 
 ## Applied tracker policy
 
-1. Keep JavaScript BigInt-to-i64 integration and JS String Builtins omitted as non-applicable to Wago's Go-native runtime.
+1. Keep JavaScript BigInt-to-i64 integration, JS String Builtins, and WAT-only custom annotations omitted as non-applicable to Wago's Go-native binary-Wasm runtime.
 2. Keep WebAssembly 1.0 as the more detailed implementation-family checklist.
 3. Use the canonical `Acquire-Release Atomics` name.
 4. Order Future entries by the current Phase 5 through Phase 1 tracker.

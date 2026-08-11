@@ -453,16 +453,6 @@
           ]
         },
         {
-          "name": "Custom annotations (text)",
-          "status": "planned",
-          "evidence": [
-            {
-              "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
-            }
-          ]
-        },
-        {
           "name": "JS Promise integration",
           "status": "planned",
           "evidence": [
@@ -1067,10 +1057,10 @@
         "version": "3.0",
         "label": "WebAssembly 3.0",
         "sub": "finished proposals",
-        "status": "partial",
+        "status": "pass",
         "done": 9,
-        "total": 10,
-        "pct": 90,
+        "total": 9,
+        "pct": 100,
         "features": [
           {
             "label": "Tail calls",
@@ -1107,10 +1097,6 @@
           {
             "label": "Branch hinting",
             "status": "pass"
-          },
-          {
-            "label": "Custom annotations (text)",
-            "status": "planned"
           }
         ]
       },

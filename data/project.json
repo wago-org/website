@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-05",
+  "generated": "2026-08-11",
   "canonicalUrl": "https://wago.sh/",
   "name": "wago",
   "summary": "WebAssembly, made for Go.",
@@ -1074,13 +1074,13 @@
         ]
       },
       {
-        "version": "next",
-        "label": "WebAssembly 3.0+",
-        "sub": "3.0 & in-progress proposals",
+        "version": "3.0",
+        "label": "WebAssembly 3.0",
+        "sub": "finished proposals",
         "status": "partial",
-        "done": 7,
-        "total": 42,
-        "pct": 17,
+        "done": 9,
+        "total": 11,
+        "pct": 82,
         "features": [
           {
             "label": "Tail calls",
@@ -1092,11 +1092,11 @@
           },
           {
             "label": "Typed function references",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Memory64",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Multiple memories",
@@ -1112,7 +1112,7 @@
           },
           {
             "label": "Relaxed SIMD",
-            "status": "planned"
+            "status": "pass"
           },
           {
             "label": "Branch hinting",
@@ -1125,7 +1125,18 @@
           {
             "label": "JS string builtins",
             "status": "planned"
-          },
+          }
+        ]
+      },
+      {
+        "version": "future",
+        "label": "Future features",
+        "sub": "proposals in progress",
+        "status": "partial",
+        "done": 1,
+        "total": 31,
+        "pct": 3,
+        "features": [
           {
             "label": "Threads & atomics",
             "status": "pass"
@@ -1248,29 +1259,6 @@
           },
           {
             "label": "JS text-encoding builtins",
-            "status": "planned"
-          }
-        ]
-      },
-      {
-        "version": "engine",
-        "label": "Engine & platform",
-        "sub": "host ABI · targets · WASI",
-        "status": "partial",
-        "done": 1,
-        "total": 3,
-        "pct": 33,
-        "features": [
-          {
-            "label": "Synchronous host-import results",
-            "status": "pass"
-          },
-          {
-            "label": "WASI preview 1",
-            "status": "planned"
-          },
-          {
-            "label": "Architectures beyond linux/amd64",
             "status": "planned"
           }
         ]

@@ -176,10 +176,10 @@ function shortLabel(feature) {
 const VERSION_META = {
   "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
   "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
-  next: { label: "WebAssembly 3.0+", sub: "3.0 & in-progress proposals" },
-  engine: { label: "Engine & platform", sub: "host ABI · targets · WASI" },
+  "3.0": { label: "WebAssembly 3.0", sub: "finished proposals" },
+  future: { label: "Future features", sub: "proposals in progress" },
 };
-const CATALOG_ORDER = ["2.0", "next", "engine"];
+const CATALOG_ORDER = ["2.0", "3.0", "future"];
 
 const CATALOG = {
   // WebAssembly 2.0 — the six finished proposals bundled into the 2.0 release.
@@ -191,21 +191,23 @@ const CATALOG = {
     { label: "Bulk memory", match: ["bulk memory"] },
     { label: "Fixed-width SIMD", match: ["simd"] },
   ],
-  // WebAssembly 3.0 (finished) + every in-progress proposal, ordered by how close
-  // it is to standard (3.0 first, then phase 4 -> 1).
-  next: [
+  // WebAssembly 3.0 is kept separate from proposals that are still in progress.
+  "3.0": [
     // --- Finished, shipped in WebAssembly 3.0 ---
     { label: "Tail calls", match: ["tail call"], status: "planned" },
     { label: "Extended const expressions", match: ["extended constant"], status: "planned" },
-    { label: "Typed function references", status: "planned" },
-    { label: "Memory64", status: "planned" },
+    { label: "Typed function references", match: ["typed function references"], status: "planned" },
+    { label: "Memory64", match: ["memory64"], status: "planned" },
     { label: "Multiple memories", match: ["multi-memory"], status: "planned" },
     { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "planned" },
     { label: "Exception handling", match: ["exception handling"], status: "planned" },
-    { label: "Relaxed SIMD", status: "planned" },
+    { label: "Relaxed SIMD", match: ["simd"], status: "planned" },
     { label: "Branch hinting", match: ["branch hint"], status: "planned" },
     { label: "Custom annotations (text)", status: "planned" },
     { label: "JS string builtins", status: "planned" },
+  ],
+  // Proposals still in progress, kept separate from the released 3.0 standard.
+  future: [
     // --- Phase 4 ---
     { label: "Threads & atomics", match: ["threads", "atomics"], status: "planned" },
     { label: "JS Promise integration", status: "planned" },
@@ -241,12 +243,6 @@ const CATALOG = {
     { label: "Multibyte array access", status: "planned" },
     { label: "Type reflection (JS API)", status: "planned" },
     { label: "JS text-encoding builtins", status: "planned" },
-  ],
-  // wago engine / platform capabilities that are not tied to a wasm version.
-  engine: [
-    { label: "Synchronous host-import results", match: ["synchronous host"] },
-    { label: "WASI preview 1", match: ["wasi"] },
-    { label: "Architectures beyond linux/amd64", match: ["architectures beyond", "beyond linux"] },
   ],
 };
 
@@ -298,7 +294,7 @@ function buildVersions(rows) {
     .filter((r) => r.mvp)
     .map((r) => ({ label: shortLabel(r.feature), status: STATUS_TAG[r.status] || "planned" }));
   out.push(makeGroup("1.0", mvp));
-  // 2.0 / 3.0+ / engine from the full proposal catalog.
+  // 2.0 / 3.0 / future proposals from the full proposal catalog.
   for (const key of CATALOG_ORDER) {
     const features = CATALOG[key].map((e) => ({ label: e.label, status: resolveStatus(e, featIndex) }));
     out.push(makeGroup(key, features));

@@ -88,7 +88,7 @@
                               "name": "wago",
                               "description": "WebAssembly, made for Go.",
                               "inLanguage": "en",
-                              "dateModified": "2026-08-05",
+                              "dateModified": "2026-08-11",
                               "publisher": {
                                         "@id": "https://wago.sh/#org"
                               }
@@ -137,7 +137,7 @@
                               "name": "wago verification, conformance, and benchmark data",
                               "description": "Auto-generated conformance facts, verification totals, startup rankings, and architecture-specific wago-versus-wazero comparisons.",
                               "url": "https://wago.sh/data/project.json",
-                              "dateModified": "2026-08-05",
+                              "dateModified": "2026-08-11",
                               "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
@@ -927,13 +927,13 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <summary class="vgroup__head">
                                 <span class="vgroup__headrow">
                                     <span class="vgroup__chevron" aria-hidden="true"></span>
-                                    <span class="vgroup__title">WebAssembly 3.0+</span>
-                                    <span class="vgroup__sub">3.0 &amp; in-progress proposals</span>
-                                    <span class="vgroup__count">7/42</span>
+                                    <span class="vgroup__title">WebAssembly 3.0</span>
+                                    <span class="vgroup__sub">finished proposals</span>
+                                    <span class="vgroup__count">9/11</span>
                                     <span class="tag tag--partial">partial</span>
                                 </span>
                                 <span class="vgroup__prog">
-                                    <span class="vgroup__prog-fill" data-bar data-width="17"></span>
+                                    <span class="vgroup__prog-fill" data-bar data-width="82"></span>
                                 </span>
                             </summary>
                             <div class="vgroup__body">
@@ -947,11 +947,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Typed function references</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Memory64</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Multiple memories</span>
@@ -967,7 +967,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Relaxed SIMD</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Branch hinting</span>
@@ -981,6 +981,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vgroup__feat">JS string builtins</span>
                                     <span class="tag tag--planned">planned</span>
                                 </div>
+                            </div>
+                        </details>
+                        <details class="vgroup" name="wasm-versions">
+                            <summary class="vgroup__head">
+                                <span class="vgroup__headrow">
+                                    <span class="vgroup__chevron" aria-hidden="true"></span>
+                                    <span class="vgroup__title">Future features</span>
+                                    <span class="vgroup__sub">proposals in progress</span>
+                                    <span class="vgroup__count">1/31</span>
+                                    <span class="tag tag--partial">partial</span>
+                                </span>
+                                <span class="vgroup__prog">
+                                    <span class="vgroup__prog-fill" data-bar data-width="3"></span>
+                                </span>
+                            </summary>
+                            <div class="vgroup__body">
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Threads &amp; atomics</span>
                                     <span class="tag tag--pass">pass</span>
@@ -1103,34 +1119,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">JS text-encoding builtins</span>
-                                    <span class="tag tag--planned">planned</span>
-                                </div>
-                            </div>
-                        </details>
-                        <details class="vgroup" name="wasm-versions">
-                            <summary class="vgroup__head">
-                                <span class="vgroup__headrow">
-                                    <span class="vgroup__chevron" aria-hidden="true"></span>
-                                    <span class="vgroup__title">Engine &amp; platform</span>
-                                    <span class="vgroup__sub">host ABI · targets · WASI</span>
-                                    <span class="vgroup__count">1/3</span>
-                                    <span class="tag tag--partial">partial</span>
-                                </span>
-                                <span class="vgroup__prog">
-                                    <span class="vgroup__prog-fill" data-bar data-width="33"></span>
-                                </span>
-                            </summary>
-                            <div class="vgroup__body">
-                                <div class="vgroup__row">
-                                    <span class="vgroup__feat">Synchronous host-import results</span>
-                                    <span class="tag tag--pass">pass</span>
-                                </div>
-                                <div class="vgroup__row">
-                                    <span class="vgroup__feat">WASI preview 1</span>
-                                    <span class="tag tag--planned">planned</span>
-                                </div>
-                                <div class="vgroup__row">
-                                    <span class="vgroup__feat">Architectures beyond linux/amd64</span>
                                     <span class="tag tag--planned">planned</span>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 # WebAssembly proposal/version audit
 
-Audit date: 2026-08-11  
-Official proposal snapshot: [`WebAssembly/proposals@f0db14a`](https://github.com/WebAssembly/proposals/tree/f0db14a5555abf7b931667fd289755124a3bf37e) (2026-08-10)  
+Audit date: 2026-08-11
+Official proposal snapshot: [`WebAssembly/proposals@f0db14a`](https://github.com/WebAssembly/proposals/tree/f0db14a5555abf7b931667fd289755124a3bf37e) (2026-08-10)
 Website source audited: [`scripts/sync-stats.mjs`](../scripts/sync-stats.mjs)
 
 ## Conclusion

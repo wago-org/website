@@ -223,16 +223,12 @@
     {
       "version": "future",
       "label": "Future features",
-      "sub": "proposals in progress",
+      "sub": "active proposals",
       "status": "partial",
       "done": 1,
       "total": 31,
       "pct": 3,
       "features": [
-        {
-          "label": "Threads & atomics",
-          "status": "pass"
-        },
         {
           "label": "JS Promise integration",
           "status": "planned"
@@ -242,7 +238,11 @@
           "status": "planned"
         },
         {
-          "label": "ESM integration",
+          "label": "Threads & atomics",
+          "status": "pass"
+        },
+        {
+          "label": "Compact import section",
           "status": "planned"
         },
         {
@@ -250,11 +250,11 @@
           "status": "planned"
         },
         {
-          "label": "Stack switching",
+          "label": "ESM integration",
           "status": "planned"
         },
         {
-          "label": "Compact import section",
+          "label": "Stack switching",
           "status": "planned"
         },
         {
@@ -290,7 +290,15 @@
           "status": "planned"
         },
         {
-          "label": "Relaxed atomics",
+          "label": "Acquire-Release Atomics",
+          "status": "planned"
+        },
+        {
+          "label": "Multibyte array access",
+          "status": "planned"
+        },
+        {
+          "label": "Half precision (FP16)",
           "status": "planned"
         },
         {
@@ -330,19 +338,11 @@
           "status": "planned"
         },
         {
-          "label": "Half precision (FP16)",
-          "status": "planned"
-        },
-        {
           "label": "More array constructors",
           "status": "planned"
         },
         {
           "label": "JIT interface",
-          "status": "planned"
-        },
-        {
-          "label": "Multibyte array access",
           "status": "planned"
         },
         {

@@ -84,13 +84,13 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Branch hinting: pass
 - Custom annotations (text): planned
 - JS string builtins: planned
-- Threads & atomics: pass
 - JS Promise integration: planned
 - Web Content Security Policy: planned
-- ESM integration: planned
-- Wide arithmetic: planned
-- Stack switching: planned
+- Threads & atomics: pass
 - Compact import section: planned
+- Wide arithmetic: planned
+- ESM integration: planned
+- Stack switching: planned
 - Custom page sizes: planned
 - Custom descriptors & JS interop: planned
 - Relaxed dead-code validation: planned
@@ -99,7 +99,9 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Rounding variants: planned
 - Compilation hints: planned
 - JS primitive builtins: planned
-- Relaxed atomics: planned
+- Acquire-Release Atomics: planned
+- Multibyte array access: planned
+- Half precision (FP16): planned
 - Type imports: planned
 - Component model: planned
 - C / C++ embedding API: planned
@@ -109,10 +111,8 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Profiles: planned
 - Shared-everything threads: planned
 - Frozen values: planned
-- Half precision (FP16): planned
 - More array constructors: planned
 - JIT interface: planned
-- Multibyte array access: planned
 - Type reflection (JS API): planned
 - JS text-encoding builtins: planned
 

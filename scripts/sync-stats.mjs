@@ -165,10 +165,11 @@ function shortLabel(feature) {
 
 // The tracker is a set of collapsible per-version dropdowns. "1.0" is built live
 // from FEATURES.md's MVP rows (wago-authored, detailed). The remaining groups
-// come from a catalog of the *entire* WebAssembly proposal landscape (finished
-// phase-5 proposals + every in-progress phase 1-4 proposal, from
-// github.com/WebAssembly/proposals) so the site tracks the full picture, not just
-// what wago has started. Each catalog entry's status is resolved from FEATURES.md
+// come from the released and active WebAssembly proposal catalogs in
+// github.com/WebAssembly/proposals, ordered by release or current phase. The
+// JS-only BigInt-to-i64 integration from 2.0 is intentionally omitted: it is a
+// JavaScript embedding boundary and does not apply to Wago's Go-native runtime.
+// Each catalog entry's status is resolved from FEATURES.md
 // when a `match` keyword hits a row there (so what wago actually ships stays
 // sourced from wago); otherwise it falls back to the entry's `status`. Since
 // every listed proposal has reached at least phase 1, none are marked `none`
@@ -177,12 +178,13 @@ const VERSION_META = {
   "1.0": { label: "WebAssembly 1.0", sub: "MVP core" },
   "2.0": { label: "WebAssembly 2.0", sub: "finished proposals" },
   "3.0": { label: "WebAssembly 3.0", sub: "finished proposals" },
-  future: { label: "Future features", sub: "proposals in progress" },
+  future: { label: "Future features", sub: "active proposals" },
 };
 const CATALOG_ORDER = ["2.0", "3.0", "future"];
 
 const CATALOG = {
-  // WebAssembly 2.0 — the six finished proposals bundled into the 2.0 release.
+  // WebAssembly 2.0 — the six proposals applicable to Wago's native runtime.
+  // JavaScript BigInt-to-i64 integration is intentionally omitted (see above).
   "2.0": [
     { label: "Sign-extension ops", match: ["sign-extension"] },
     { label: "Non-trapping float→int", match: ["non-trapping", "trunc_sat"] },
@@ -206,17 +208,18 @@ const CATALOG = {
     { label: "Custom annotations (text)", status: "planned" },
     { label: "JS string builtins", status: "planned" },
   ],
-  // Proposals still in progress, kept separate from the released 3.0 standard.
+  // Active proposals not yet merged into a released specification.
   future: [
-    // --- Phase 4 ---
-    { label: "Threads & atomics", match: ["threads", "atomics"], status: "planned" },
+    // --- Phase 5 ---
     { label: "JS Promise integration", status: "planned" },
     { label: "Web Content Security Policy", status: "planned" },
+    // --- Phase 4 ---
+    { label: "Threads & atomics", match: ["threads", "atomics"], status: "planned" },
+    { label: "Compact import section", status: "planned" },
+    { label: "Wide arithmetic", status: "planned" },
     // --- Phase 3 ---
     { label: "ESM integration", status: "planned" },
-    { label: "Wide arithmetic", status: "planned" },
     { label: "Stack switching", status: "planned" },
-    { label: "Compact import section", status: "planned" },
     { label: "Custom page sizes", status: "planned" },
     { label: "Custom descriptors & JS interop", status: "planned" },
     // --- Phase 2 ---
@@ -226,7 +229,9 @@ const CATALOG = {
     { label: "Rounding variants", status: "planned" },
     { label: "Compilation hints", status: "planned" },
     { label: "JS primitive builtins", status: "planned" },
-    { label: "Relaxed atomics", status: "planned" },
+    { label: "Acquire-Release Atomics", status: "planned" },
+    { label: "Multibyte array access", status: "planned" },
+    { label: "Half precision (FP16)", status: "planned" },
     // --- Phase 1 ---
     { label: "Type imports", status: "planned" },
     { label: "Component model", status: "planned" },
@@ -237,10 +242,8 @@ const CATALOG = {
     { label: "Profiles", status: "planned" },
     { label: "Shared-everything threads", status: "planned" },
     { label: "Frozen values", status: "planned" },
-    { label: "Half precision (FP16)", status: "planned" },
     { label: "More array constructors", status: "planned" },
     { label: "JIT interface", status: "planned" },
-    { label: "Multibyte array access", status: "planned" },
     { label: "Type reflection (JS API)", status: "planned" },
     { label: "JS text-encoding builtins", status: "planned" },
   ],

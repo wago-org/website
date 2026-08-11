@@ -461,16 +461,6 @@
         ]
       },
       {
-        "name": "Threads & atomics",
-        "status": "pass",
-        "evidence": [
-          {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
-          }
-        ]
-      },
-      {
         "name": "JS Promise integration",
         "status": "planned",
         "evidence": [
@@ -491,7 +481,17 @@
         ]
       },
       {
-        "name": "ESM integration",
+        "name": "Threads & atomics",
+        "status": "pass",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
+          }
+        ]
+      },
+      {
+        "name": "Compact import section",
         "status": "planned",
         "evidence": [
           {
@@ -511,7 +511,7 @@
         ]
       },
       {
-        "name": "Stack switching",
+        "name": "ESM integration",
         "status": "planned",
         "evidence": [
           {
@@ -521,7 +521,7 @@
         ]
       },
       {
-        "name": "Compact import section",
+        "name": "Stack switching",
         "status": "planned",
         "evidence": [
           {
@@ -611,7 +611,27 @@
         ]
       },
       {
-        "name": "Relaxed atomics",
+        "name": "Acquire-Release Atomics",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
+          }
+        ]
+      },
+      {
+        "name": "Multibyte array access",
+        "status": "planned",
+        "evidence": [
+          {
+            "label": "feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
+          }
+        ]
+      },
+      {
+        "name": "Half precision (FP16)",
         "status": "planned",
         "evidence": [
           {
@@ -711,16 +731,6 @@
         ]
       },
       {
-        "name": "Half precision (FP16)",
-        "status": "planned",
-        "evidence": [
-          {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
-          }
-        ]
-      },
-      {
         "name": "More array constructors",
         "status": "planned",
         "evidence": [
@@ -732,16 +742,6 @@
       },
       {
         "name": "JIT interface",
-        "status": "planned",
-        "evidence": [
-          {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/ff87ac3a5868ebe074f06bf91ec61ac60c600924/FEATURES.md#L45-L63"
-          }
-        ]
-      },
-      {
-        "name": "Multibyte array access",
         "status": "planned",
         "evidence": [
           {

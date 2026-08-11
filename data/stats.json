@@ -171,8 +171,8 @@
       "sub": "finished proposals",
       "status": "partial",
       "done": 9,
-      "total": 11,
-      "pct": 82,
+      "total": 10,
+      "pct": 90,
       "features": [
         {
           "label": "Tail calls",
@@ -212,10 +212,6 @@
         },
         {
           "label": "Custom annotations (text)",
-          "status": "planned"
-        },
-        {
-          "label": "JS string builtins",
           "status": "planned"
         }
       ]

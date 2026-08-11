@@ -83,7 +83,6 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Relaxed SIMD: pass
 - Branch hinting: pass
 - Custom annotations (text): planned
-- JS string builtins: planned
 - JS Promise integration: planned
 - Web Content Security Policy: planned
 - Threads & atomics: pass

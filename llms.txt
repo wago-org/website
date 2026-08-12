@@ -5,7 +5,7 @@
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-08-11
+Data updated: 2026-08-12
 
 ## Current verified facts
 
@@ -29,6 +29,8 @@ Data updated: 2026-08-11
 - [Benchmark interpretation and measurement caveats](https://wago.sh/benchmarks.md)
 - [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
 - [Canonical facts JSON Schema](https://wago.sh/data/facts.schema.json)
+- [Wago project manifest JSON Schema](https://wago.sh/v1/schema.json)
+- [Wago provider catalog JSON Schema](https://wago.sh/v1/providers.schema.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)

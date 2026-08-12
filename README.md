@@ -21,12 +21,13 @@ data/
 llms.txt                # concise crawler/LLM discovery document (generated)
 llms-full.txt           # complete readable stats and comparison tables (generated)
 facts.md, ...           # direct Markdown mirrors of canonical pages (generated)
-v0/schema.json          # hosted prerelease manifest schema, mirrored from wago
+v1/schema.json          # hosted plugin manifest schema, mirrored from wago
+v1/providers.schema.json # hosted provider-catalog schema, mirrored from wago
 corpora/                # small documented Wasm binaries used by docs and demos
 scripts/
   sync-stats.mjs        # regenerates data/stats.json from wago's status files
   sync-facts.mjs        # verifies source evidence and generates canonical pages
-  sync-schema.mjs       # mirrors schema.json from wago to /v0/schema.json
+  sync-schema.mjs       # byte-identically mirrors both v1 schemas from wago
   sync-ai-metadata.mjs  # derives JSON-LD, llms files, and project.json
 src/                    # TypeScript source
   head.ts               #   parser-blocking phase gate + analytics bootstrap
@@ -72,7 +73,8 @@ Other scripts:
 - `npm run sync` - regenerate stats and mirror the manifest schema from wago.
 - `npm run sync:ai` - regenerate the crawler/LLM metadata from the committed
   stats and static benchmark markup (normally included in `npm run sync`).
-- `npm run sync:schema` - update only `v0/schema.json`.
+- `npm run sync:schema` - update only `v1/schema.json` and
+  `v1/providers.schema.json`.
 - `npm run sync:check` - fail when any generated artifact is stale.
 - `npm run build` - compile, then assemble a clean `dist/` (the exact tree that
   gets deployed).
@@ -87,9 +89,10 @@ Every number and feature status on the page comes from
 - `FEATURES.md` → per-area `pass / partial / planned` statuses
 - `coverage-report.md` → test-coverage %
 
-The Wago Go module's `schema.json` is also canonical. The sync process
-mirrors it to `v0/schema.json`, deployed at <https://wago.sh/v0/schema.json> for
-JSON editors and project manifests.
+The Wago Go module's `schema.json` and `providers.schema.json` are canonical.
+The sync process mirrors them byte-identically to
+<https://wago.sh/v1/schema.json> for project manifests and
+<https://wago.sh/v1/providers.schema.json> for explicit provider catalogs.
 
 Installer bootstraps are published separately at <https://install.wago.sh> by
 [`wago-org/install`](https://github.com/wago-org/install). Wago's root

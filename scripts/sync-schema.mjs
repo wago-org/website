@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Mirror schema.json from the wago Go module into the versioned website route.
+// Mirror Wago's JSON Schemas byte-for-byte into the versioned website routes.
 // The Go module remains the source of truth; wago.sh provides the stable HTTPS
-// URL JSON-aware editors need for a manifest's "$schema" field.
+// URLs JSON-aware tools use for manifest and provider-catalog "$schema" fields.
 
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { constants } from "node:fs";
@@ -9,7 +9,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = join(ROOT, "v0", "schema.json");
+const SCHEMAS = ["schema.json", "providers.schema.json"];
 const REPO = process.env.WAGO_REPO || "wago-org/wago";
 const REF = process.env.WAGO_REF || "main";
 const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
@@ -24,16 +24,16 @@ async function exists(path) {
   }
 }
 
-async function loadSchema() {
+async function loadSchema(name) {
   const candidates = [];
-  if (process.env.WAGO_DIR) candidates.push(join(process.env.WAGO_DIR, "schema.json"));
-  candidates.push(resolve(ROOT, "..", "wago", "schema.json"));
+  if (process.env.WAGO_DIR) candidates.push(join(process.env.WAGO_DIR, name));
+  candidates.push(resolve(ROOT, "..", "wago", name));
   for (const path of candidates) {
     if (await exists(path)) return { text: await readFile(path, "utf8"), from: path };
   }
 
   if (TOKEN) {
-    const url = `https://api.github.com/repos/${REPO}/contents/schema.json?ref=${encodeURIComponent(REF)}`;
+    const url = `https://api.github.com/repos/${REPO}/contents/${name}?ref=${encodeURIComponent(REF)}`;
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
@@ -42,27 +42,29 @@ async function loadSchema() {
       },
     });
     if (!response.ok) throw new Error(`GitHub API ${url}: ${response.status}`);
-    return { text: await response.text(), from: `api:${REPO}/schema.json@${REF}` };
+    return { text: await response.text(), from: `api:${REPO}/${name}@${REF}` };
   }
 
-  const url = `https://raw.githubusercontent.com/${REPO}/${REF}/schema.json`;
+  const url = `https://raw.githubusercontent.com/${REPO}/${REF}/${name}`;
   const response = await fetch(url);
   if (!response.ok) throw new Error(`fetch ${url}: ${response.status}; set WAGO_DIR or WAGO_TOKEN for a private repository`);
   return { text: await response.text(), from: url };
 }
 
-const { text, from } = await loadSchema();
-JSON.parse(text);
-const normalized = `${text.trimEnd()}\n`;
-const current = (await exists(OUT)) ? await readFile(OUT, "utf8") : "";
+for (const name of SCHEMAS) {
+  const out = join(ROOT, "v1", name);
+  const { text, from } = await loadSchema(name);
+  JSON.parse(text);
+  const current = (await exists(out)) ? await readFile(out, "utf8") : "";
 
-if (current === normalized) {
-  console.log(`schema.json is current (${from})`);
-} else if (CHECK) {
-  console.error(`schema.json is stale (source: ${from})`);
-  process.exitCode = 1;
-} else {
-  await mkdir(dirname(OUT), { recursive: true });
-  await writeFile(OUT, normalized);
-  console.log(`updated v0/schema.json from ${from}`);
+  if (current === text) {
+    console.log(`${name} is current (${from})`);
+  } else if (CHECK) {
+    console.error(`${name} is stale (source: ${from})`);
+    process.exitCode = 1;
+  } else {
+    await mkdir(dirname(out), { recursive: true });
+    await writeFile(out, text);
+    console.log(`updated v1/${name} from ${from}`);
+  }
 }

@@ -431,7 +431,8 @@ function makeProject(stats, canonicalFacts, startup, performance) {
       conformance: "https://wago.sh/data/stats.json",
       llmSummary: "https://wago.sh/llms.txt",
       llmFull: "https://wago.sh/llms-full.txt",
-      manifestSchema: "https://wago.sh/v0/schema.json",
+      manifestSchema: "https://wago.sh/v1/schema.json",
+      providerCatalogSchema: "https://wago.sh/v1/providers.schema.json",
     },
   };
 }
@@ -471,6 +472,8 @@ Data updated: ${project.generated}
 - [Benchmark interpretation and measurement caveats](https://wago.sh/benchmarks.md)
 - [Canonical product facts (JSON)](https://wago.sh/data/facts.json)
 - [Canonical facts JSON Schema](https://wago.sh/data/facts.schema.json)
+- [Wago project manifest JSON Schema](https://wago.sh/v1/schema.json)
+- [Wago provider catalog JSON Schema](https://wago.sh/v1/providers.schema.json)
 - [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
@@ -545,7 +548,8 @@ Definition: ${benchmarks.startup.definition}
 - Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
-- Wago manifest JSON Schema: https://wago.sh/v0/schema.json
+- Wago manifest JSON Schema: https://wago.sh/v1/schema.json
+- Wago provider catalog JSON Schema: https://wago.sh/v1/providers.schema.json
 - Human-facing page: https://wago.sh/
 `);
   return `${out.join("\n\n").trim()}\n`;

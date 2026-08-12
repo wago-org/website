@@ -331,7 +331,6 @@
           "required": [
             "repository",
             "commit",
-            "filesAudited",
             "method",
             "fixtures"
           ]

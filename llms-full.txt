@@ -3,7 +3,7 @@
 Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-08-11
+Data updated: 2026-08-12
 
 ## What wago is
 
@@ -326,5 +326,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 - Exact compatibility scope: https://wago.sh/compatibility.md
 - Complete structured project data: https://wago.sh/data/project.json
 - Conformance and verification data: https://wago.sh/data/stats.json
-- Wago manifest JSON Schema: https://wago.sh/v0/schema.json
+- Wago manifest JSON Schema: https://wago.sh/v1/schema.json
+- Wago provider catalog JSON Schema: https://wago.sh/v1/providers.schema.json
 - Human-facing page: https://wago.sh/

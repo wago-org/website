@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wago.sh/v1/schema.json",
+  "title": "Wago project manifest",
+  "description": "Declares project runtime settings and direct plugin requirements. Exact direct and transitive resolution, immutable plugin definitions, reviewed authorities, contract bindings, and plugin configuration live in wago-lock.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "https://wago.sh/v1/schema.json",
+      "description": "Canonical Wago v1 manifest schema."
+    },
+    "plugins": {
+      "type": "object",
+      "description": "Direct plugin requirements keyed by canonical Go module or package path. Transitive plugins belong only in wago-lock.json.",
+      "propertyNames": { "$ref": "#/$defs/pluginID" },
+      "additionalProperties": { "$ref": "#/$defs/versionRange" },
+      "default": {}
+    },
+    "settings": {
+      "$ref": "#/$defs/settings",
+      "description": "Sparse project-local runtime defaults."
+    },
+    "package": {
+      "$ref": "#/$defs/package",
+      "description": "Public package metadata used by wago plugin publish. Linked Plugin Definitions come from the package's explicit register catalog."
+    }
+  },
+  "$defs": {
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "features": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "bulk-memory-operations",
+              "exception-handling",
+              "extended-const-expressions",
+              "extended-constant-expressions",
+              "gc",
+              "memory64",
+              "multi-memory",
+              "multi-value",
+              "mutable-global",
+              "nontrapping-float-to-int-conversion",
+              "reference-types",
+              "sign-extension-ops",
+              "simd",
+              "table64",
+              "tail-call",
+              "threads",
+              "typed-function-references"
+            ]
+          },
+          "additionalProperties": { "type": "boolean" }
+        },
+        "optimizations": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "affine-lea",
+              "assoc-tree",
+              "bmi2-rorx",
+              "bounds-facts",
+              "branch-fold",
+              "call-next-use",
+              "commute-self-update",
+              "compact-i32-frame",
+              "deep-fp-pins",
+              "entry-arg-pins",
+              "ext-fp-pins",
+              "frame-elide",
+              "frame-elide-reghomed",
+              "immutable-poly-fastpath",
+              "immutable-table",
+              "immutable-table-type",
+              "inline",
+              "inline-callfree",
+              "inline-loop-callees",
+              "leaf-scratch-pins",
+              "legacy-fp-pins",
+              "legacy-gp-pins",
+              "loop-precheck",
+              "loop-region-pins",
+              "multi-bounds-cert",
+              "olddest-rhs-sink",
+              "reg-abi",
+              "reg-merge",
+              "small-frame",
+              "st-flags",
+              "stack-fence",
+              "stack-reg",
+              "store-forward",
+              "store-load-fwd",
+              "store8-flags",
+              "tee-sink",
+              "tee-spill-elide",
+              "three-op-sink",
+              "tree-order",
+              "unary-sink",
+              "uxtw-add",
+              "v128-const-cache",
+              "v128-pins",
+              "v128-sink",
+              "vex-float-mem",
+              "x8-pin"
+            ]
+          },
+          "additionalProperties": { "type": "boolean" }
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "parallel": { "type": "string", "pattern": "^(?:auto|[0-9]+)$" },
+            "deferredBoundsChecking": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "pluginID": {
+      "type": "string",
+      "pattern": "^(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._~-]*[A-Za-z0-9])?)+$",
+      "maxLength": 300,
+      "description": "Canonical fully qualified Go module or package path, for example github.com/wago-org/wasi."
+    },
+    "versionRange": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[0-9A-Za-z.*+<>=~^|() _-]+$",
+      "description": "Semantic-version range accepted by Wago, including exact, comparator, caret, tilde, x-range, hyphen, and OR forms."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v?[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "maxLength": 64
+    },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "email": { "type": "string", "format": "email" },
+        "url": { "type": "string", "format": "uri" },
+        "github": { "type": "string", "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$" }
+      }
+    },
+    "engines": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "$ref": "#/$defs/versionRange" },
+      "description": "Compatible host and toolchain version ranges."
+    },
+    "platforms": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+/[a-z0-9]+$" },
+      "uniqueItems": true,
+      "description": "Supported GOOS/GOARCH targets. Empty or absent means platform-independent."
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "name", "description", "license", "repository", "authors"],
+      "properties": {
+        "module": { "$ref": "#/$defs/pluginID" },
+        "version": {
+          "$ref": "#/$defs/version",
+          "description": "Published semantic version. When absent, wago plugin publish uses the newest Git tag."
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "description": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "stability": { "type": "string", "enum": ["experimental", "stable", "deprecated"] },
+        "license": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "repository": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "homepage": { "type": "string", "format": "uri" },
+        "category": { "$ref": "#/$defs/slug" },
+        "tags": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/slug" },
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "authors": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/author" },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "engines": { "$ref": "#/$defs/engines" },
+        "platforms": { "$ref": "#/$defs/platforms" },
+        "subpackages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/subpackage" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "subpackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "name", "description"],
+      "properties": {
+        "module": { "$ref": "#/$defs/pluginID" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "description": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "stability": { "type": "string", "enum": ["experimental", "stable", "deprecated"] },
+        "tags": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/slug" },
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "engines": { "$ref": "#/$defs/engines" },
+        "platforms": { "$ref": "#/$defs/platforms" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "$schema": "https://wago.sh/v1/schema.json",
+      "plugins": {
+        "github.com/wago-org/wasi": "^0.1.0"
+      }
+    },
+    {
+      "$schema": "https://wago.sh/v1/schema.json",
+      "package": {
+        "module": "github.com/acme/wago-observability",
+        "version": "0.1.0",
+        "name": "Wago Observability",
+        "description": "Tracing and metrics for Wago runtimes.",
+        "license": "Apache-2.0",
+        "repository": "https://github.com/acme/wago-observability",
+        "authors": [{ "name": "Example Maintainer", "github": "example" }]
+      }
+    }
+  ]
+}

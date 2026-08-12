@@ -5,7 +5,7 @@
     "type": "module",
     "description": "WebAssembly, made for Go.",
     "scripts": {
-        "build": "npm run sync:check && npm run verify:corpora && tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets corpora data v0 facts.md compatibility.md security.md benchmarks.md CNAME robots.txt sitemap.xml site.webmanifest llms.txt llms-full.txt dist/",
+    "build": "npm run sync:check && npm run verify:corpora && tsc && rm -rf dist && mkdir -p dist && cp -r index.html assets corpora data v1 facts.md compatibility.md security.md benchmarks.md CNAME robots.txt sitemap.xml site.webmanifest llms.txt llms-full.txt dist/",
         "dev": "tsc --watch --preserveWatchOutput",
         "typecheck": "tsc --noEmit",
         "test:stats": "node --test scripts/stats-parsers.test.mjs",

@@ -1,7 +1,7 @@
 # Wago compatibility and verification
 
-Last synchronized: 2026-08-11
-Wago source commit: ff87ac3a5868ebe074f06bf91ec61ac60c600924
+Last synchronized: 2026-08-12
+Wago source commit: 76997498139a297bbc73f1c8b1d4b1b5cfd2d2be
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Public verification
@@ -29,8 +29,7 @@ The headline mixes Go tests/subtests and conformance assertions. Preserve the pe
 ## Wazero scope
 
 - Upstream commit: `236c2458ed22010150de76c5397eca2c89af3b4f`
-- Go test files audited: 234
-- Method: ported/adapted coverage with an applicability ledger
+- Method: pinned upstream regression corpus integrated into the unified package-test surface
 - Copied upstream artifacts: 939
 - Artifact SHA-256: `910700035d51ffc50d380261168120f8d97ef4f0fb42e9c6dfe0824a79b8037a`
 - Fuzz binaries: 71
@@ -38,7 +37,7 @@ The headline mixes Go tests/subtests and conformance assertions. Preserve the pe
 - Extended-constant artifacts: 63
 - Fail-closed proposal artifacts: 782
 
-Wago does not run the complete wazero repository unchanged. Applicable contracts and fixtures are ported or adapted, and exclusions are recorded in the applicability ledger.
+Wago does not run the complete wazero repository unchanged. The pinned corpus runs through Wago's unified package-test surface.
 
 ## Wasmtime scope
 

@@ -24,15 +24,17 @@ const INPUTS = [
   "FEATURES.md",
   "VERIFICATION.md",
   "docs/ci.md",
-  "docs/wazero-test-applicability.md",
-  "testdata/wazero/README.md",
+  "tests/README.md",
+  "tests/regressions/README.md",
   ".github/workflows/ci.yml",
   "src/wago/api.go",
+  "src/wago/doc.go",
+  "src/wago/instance.go",
   "src/wago/instance_native_context.go",
   "src/wago/memory.go",
   "src/wago/managed_instances.go",
   "src/wago/policy.go",
-  "src/wago/wazero_concurrency_port_test.go",
+  "src/wago/runtime_concurrency_test.go",
 ];
 
 async function exists(path) {
@@ -249,10 +251,10 @@ function compatibilityPage(facts) {
     </section>
     <section id="wazero">
       <h2>Imported wazero coverage</h2>
-      <p>The claim is not “Wago runs the entire wazero repository unchanged.” Wago audits all <strong>${c.wazero.filesAudited}</strong> upstream Go test files at wazero commit <code>${esc(c.wazero.commit.slice(0, 12))}</code>, then records each as ported/covered, not applicable, benchmark/example-only, or reviewed without a direct port. Named Wago suites contain copied or adapted semantic cases and pinned fixtures.</p>
-      <p>The ledger separately accounts for 39 upstream engine cases, 147 Core v2 WAST files, ${c.wazero.fixtures.extendedConstantArtifacts} extended-constant artifacts, ${c.wazero.fixtures.failClosedProposalArtifacts} fail-closed proposal artifacts, ${c.wazero.fixtures.fuzzBinaries} fuzz fixtures, and ${c.wazero.fixtures.engineBinaries} engine fixtures.</p>
+      <p>The claim is not “Wago runs the entire wazero repository unchanged.” Wago keeps a pinned regression corpus from wazero commit <code>${esc(c.wazero.commit.slice(0, 12))}</code> inside its ordinary package tests. The corpus preserves upstream provenance, its license, exact fixture counts, and a whole-tree digest.</p>
+      <p>It contains ${c.wazero.fixtures.extendedConstantArtifacts} extended-constant artifacts, ${c.wazero.fixtures.failClosedProposalArtifacts} fail-closed proposal artifacts, ${c.wazero.fixtures.fuzzBinaries} fuzz fixtures, and ${c.wazero.fixtures.engineBinaries} engine fixtures.</p>
       <p>The ${c.wazero.fixtures.totalArtifacts} copied upstream artifacts are pinned by SHA-256 digest <code>${esc(c.wazero.fixtures.sha256)}</code>.</p>
-      <p class="evidence">Scope and disposition ledger: ${evidenceLinks([e.wazeroLedger, e.wazeroFixtures])}</p>
+      <p class="evidence">Corpus scope and provenance: ${evidenceLinks([e.testSurface, e.wazeroFixtures])}</p>
     </section>
     <section id="wasmtime">
       <h2>Wasmtime suite claim</h2>
@@ -286,7 +288,7 @@ function securityPage(facts) {
         <li>Capability policy can allow or deny plugin-provided host access.</li>
         <li>The repository contains Go fuzz targets and 71 pinned wazero fuzz-regression fixtures with ordinary test oracles.</li>
       </ul>
-      <p class="evidence">Evidence: ${evidenceLinks([e.readme, e.api, e.features, e.ci])}</p>
+      <p class="evidence">Evidence: ${evidenceLinks([e.readme, e.engine, e.api, e.features, e.ci])}</p>
     </section>
     <section id="not-published">
       <h2>Not currently published</h2>
@@ -608,7 +610,6 @@ ${corpora}
 ## Wazero scope
 
 - Upstream commit: \`${c.wazero.commit}\`
-- Go test files audited: ${c.wazero.filesAudited}
 - Method: ${c.wazero.method}
 - Copied upstream artifacts: ${c.wazero.fixtures.totalArtifacts}
 - Artifact SHA-256: \`${c.wazero.fixtures.sha256}\`
@@ -617,7 +618,7 @@ ${corpora}
 - Extended-constant artifacts: ${c.wazero.fixtures.extendedConstantArtifacts}
 - Fail-closed proposal artifacts: ${c.wazero.fixtures.failClosedProposalArtifacts}
 
-Wago does not run the complete wazero repository unchanged. Applicable contracts and fixtures are ported or adapted, and exclusions are recorded in the applicability ledger.
+Wago does not run the complete wazero repository unchanged. The pinned corpus runs through Wago's unified package-test surface.
 
 ## Wasmtime scope
 
@@ -858,7 +859,7 @@ function factsSchema() {
           },
           wazero: {
             type: "object",
-            required: ["repository", "commit", "filesAudited", "method", "fixtures"],
+            required: ["repository", "commit", "method", "fixtures"],
           },
           wasmtime: {
             type: "object",
@@ -965,12 +966,12 @@ const stats = JSON.parse(await readFile(STATS, "utf8"));
 const commit = localCommit() || (await remoteCommit());
 if (!/^[0-9a-f]{40}$/i.test(commit)) throw new Error(`invalid Wago commit: ${commit}`);
 
-requireText(loaded["README.md"], "pure-Go, no-cgo WebAssembly JIT", "README.md");
-requireText(loaded["README.md"], "Compile once, instantiate many times", "README.md");
-requireText(loaded["README.md"], "same non-concurrent-call and result", "README.md");
-requireText(loaded["README.md"], "MaxMemoryBytes", "README.md");
-requireText(loaded["README.md"], "MaxTableEntries", "README.md");
-requireText(loaded["FEATURES.md"], "Cooperative invocation cancellation", "FEATURES.md");
+requireText(loaded["README.md"], "A wonderfully quick, compact, and extensible WebAssembly runtime for Go", "README.md");
+requireText(loaded["src/wago/doc.go"], "no-cgo single-pass JIT", "src/wago/doc.go");
+requireText(loaded["src/wago/instance.go"], "reusable Invoke result buffer", "src/wago/instance.go");
+requireText(loaded["src/wago/policy.go"], "MaxMemoryBytes", "src/wago/policy.go");
+requireText(loaded["src/wago/policy.go"], "MaxTableEntries", "src/wago/policy.go");
+requireText(loaded["FEATURES.md"], "Invocation cancellation", "FEATURES.md");
 requireText(loaded[".github/workflows/ci.yml"], "Linux / arm64", ".github/workflows/ci.yml");
 requireText(loaded[".github/workflows/ci.yml"], "Darwin / arm64", ".github/workflows/ci.yml");
 requireText(loaded["src/wago/api.go"], "Native cancellation is available on amd64/arm64", "src/wago/api.go");
@@ -990,15 +991,15 @@ const gateMatches = [
   ),
 ];
 const wazero = match(
-  loaded["docs/wazero-test-applicability.md"],
-  /revision `([0-9a-f]{40})`[\s\S]*?all \*\*(\d+)\*\* upstream Go test files/,
-  "docs/wazero-test-applicability.md",
-  "wazero revision and file count",
+  loaded["tests/regressions/README.md"],
+  /revision: `([0-9a-f]{40})`/,
+  "tests/regressions/README.md",
+  "wazero revision",
 );
 const wazeroFixtures = match(
-  loaded["testdata/wazero/README.md"],
+  loaded["tests/regressions/README.md"],
   /includes (\d+) fuzz binaries, (\d+) engine binaries, all (\d+) generated[\s\S]*?all (\d+) generated artifacts[\s\S]*?The (\d+) upstream artifacts[\s\S]*?SHA-256 digest\s+`([0-9a-f]{64})`/,
-  "testdata/wazero/README.md",
+  "tests/regressions/README.md",
   "wazero fixture counts and digest",
 );
 const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
@@ -1008,16 +1009,17 @@ const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
 
 const evidenceMap = {
   readme: evidence(commit, "README.md", "README", "#L48-L97"),
+  engine: evidence(commit, "src/wago/doc.go", "pure-Go no-cgo JIT package contract", "#L1-L8"),
   features: evidence(commit, "FEATURES.md", "feature matrix", "#L45-L63"),
   verification: evidence(commit, "VERIFICATION.md", "public verification", "#L1-L15"),
   ci: evidence(commit, ".github/workflows/ci.yml", "native CI matrix", "#L92-L214"),
   api: evidence(commit, "src/wago/api.go", "public API source", "#L1675-L1715"),
-  concurrency: evidence(commit, "src/wago/wazero_concurrency_port_test.go", "race-tested concurrency port", "#L13-L86"),
+  concurrency: evidence(commit, "src/wago/runtime_concurrency_test.go", "race-tested concurrent compile, instantiate, and execute coverage", "#L13-L82"),
   nativeExecution: evidence(commit, "src/wago/instance_native_context.go", "native execution serialization", "#L10-L67"),
   memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract", "#L84-L113"),
   policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement", "#L10-L67"),
-  wazeroLedger: evidence(commit, "docs/wazero-test-applicability.md", "wazero applicability ledger", "#L1-L66"),
-  wazeroFixtures: evidence(commit, "testdata/wazero/README.md", "wazero fixture manifest", "#L1-L23"),
+  testSurface: evidence(commit, "tests/README.md", "unified repository test surface", "#L1-L44"),
+  wazeroFixtures: evidence(commit, "tests/regressions/README.md", "wazero fixture manifest", "#L1-L31"),
 };
 
 const webAssemblyGroups = stats.versions.filter((group) => group.version !== "engine");
@@ -1114,8 +1116,7 @@ const facts = {
     wazero: {
       repository: "https://github.com/tetratelabs/wazero",
       commit: wazero[1],
-      filesAudited: Number(wazero[2]),
-      method: "ported/adapted coverage with an applicability ledger",
+      method: "pinned upstream regression corpus integrated into the unified package-test surface",
       fixtures: {
         fuzzBinaries: Number(wazeroFixtures[1]),
         engineBinaries: Number(wazeroFixtures[2]),

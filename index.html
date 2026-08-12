@@ -88,7 +88,7 @@
                               "name": "wago",
                               "description": "WebAssembly, made for Go.",
                               "inLanguage": "en",
-                              "dateModified": "2026-08-11",
+                              "dateModified": "2026-08-12",
                               "publisher": {
                                         "@id": "https://wago.sh/#org"
                               }
@@ -137,7 +137,7 @@
                               "name": "wago verification, conformance, and benchmark data",
                               "description": "Auto-generated conformance facts, verification totals, startup rankings, and architecture-specific wago-versus-wazero comparisons.",
                               "url": "https://wago.sh/data/project.json",
-                              "dateModified": "2026-08-11",
+                              "dateModified": "2026-08-12",
                               "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
@@ -6383,117 +6383,137 @@ arm64  add w0, w0, w1</pre>
             <section id="packages" class="section">
                 <div class="eyebrow eyebrow--center">Plugins</div>
                 <h2 class="section__title">
-                    Extend the runtime,
-                    <span class="section__title-accent">one import away.</span>
+                    Powerful plugins,
+                    <span class="section__title-accent">tight boundaries.</span>
                 </h2>
                 <p class="section__lead">
-                    Official and community Go modules add host interfaces,
-                    compiler features, and managed runtime services without
-                    expanding wago core. Follow each plugin's page for
-                    compatibility and stability details.
+                    Add host interfaces, compiler instructions, and managed
+                    services with one command. Wago resolves the whole
+                    dependency and contract graph before plugin code runs, then
+                    locks the exact versions, authority grants, and cross-plugin
+                    bindings you reviewed.
                 </p>
 
                 <div class="pkgs">
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/wago-org/wasi"
+                        href="https://plugins.wago.sh/github.com/wago-org/wasi"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wago-org/wasi</span>
+                            <span class="pkgcard__name">github.com/wago-org/wasi</span>
                         </div>
                         <p class="pkgcard__body">
                             WASI Preview 1 host functions for stdio, args and
                             environment, clocks, random data, and process exit.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/wago-org/wasi ↗
+                            plugins.wago.sh/github.com/wago-org/wasi ↗
                         </div>
                     </a>
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/wago-org/workers"
+                        href="https://plugins.wago.sh/github.com/wago-org/workers"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wago-org/workers</span>
+                            <span class="pkgcard__name">github.com/wago-org/workers</span>
                         </div>
                         <p class="pkgcard__body">
                             Bounded, host-supervised WebAssembly workers with
                             fixed-size mailboxes and lifecycle-safe teardown.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/wago-org/workers ↗
+                            plugins.wago.sh/github.com/wago-org/workers ↗
                         </div>
                     </a>
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/JairusSW/wide"
+                        href="https://plugins.wago.sh/github.com/JairusSW/wide"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">JairusSW/wide</span>
+                            <span class="pkgcard__name">github.com/JairusSW/wide</span>
                         </div>
                         <p class="pkgcard__body">
                             Portable v256 and v512 SIMD instructions with native
                             AVX-512, AVX2, and NEON lowering.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/JairusSW/wide ↗
+                            plugins.wago.sh/github.com/JairusSW/wide ↗
                         </div>
                     </a>
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/JairusSW/pool"
+                        href="https://plugins.wago.sh/github.com/JairusSW/pool"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">JairusSW/pool</span>
+                            <span class="pkgcard__name">github.com/JairusSW/pool</span>
                         </div>
                         <p class="pkgcard__body">
                             Elastic, load-balanced, self-healing pools that
                             distribute work across fleets of Wago workers.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/JairusSW/pool ↗
+                            plugins.wago.sh/github.com/JairusSW/pool ↗
                         </div>
                     </a>
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/JairusSW/lease"
+                        href="https://plugins.wago.sh/github.com/JairusSW/lease"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">JairusSW/lease</span>
+                            <span class="pkgcard__name">github.com/JairusSW/lease</span>
                         </div>
                         <p class="pkgcard__body">
                             Warm pools of clean WebAssembly instances for
                             isolated, bounded, one-shot execution.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/JairusSW/lease ↗
+                            plugins.wago.sh/github.com/JairusSW/lease ↗
                         </div>
                     </a>
                     <a
                         class="pkgcard"
-                        href="https://plugins.wago.sh/wago-org/net"
+                        href="https://plugins.wago.sh/github.com/wago-org/net"
                         target="_blank"
                         rel="noopener"
                     >
                         <div class="pkgcard__head">
-                            <span class="pkgcard__name">wago-org/net</span>
+                            <span class="pkgcard__name">github.com/wago-org/net</span>
                         </div>
                         <p class="pkgcard__body">
                             Capability-gated TCP, UDP, DNS, TLS, and related
                             networking modules backed by bounded host policy.
                         </p>
                         <div class="pkgcard__meta">
-                            plugins.wago.sh/wago-org/net ↗
+                            plugins.wago.sh/github.com/wago-org/net ↗
+                        </div>
+                    </a>
+                    <a
+                        class="pkgcard"
+                        href="https://plugins.wago.sh/github.com/wago-org/component-model"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="pkgcard__head">
+                            <span class="pkgcard__name"
+                                >github.com/wago-org/component-model</span
+                            >
+                        </div>
+                        <p class="pkgcard__body">
+                            Component Model linking, canonical ABI adapters, and
+                            typed interfaces built on explicit runtime contracts.
+                        </p>
+                        <div class="pkgcard__meta">
+                            plugins.wago.sh/github.com/wago-org/component-model ↗
                         </div>
                     </a>
                 </div>
@@ -6508,7 +6528,7 @@ arm64  add w0, w0, w1</pre>
                     >
                     <a
                         class="btn btn--ghost"
-                        href="https://github.com/wago-org/wago/blob/main/docs/plugin-api-v2.md"
+                        href="https://github.com/wago-org/wago/blob/main/docs/plugin-api.md"
                         target="_blank"
                         rel="noopener"
                         >Build a plugin ↗</a

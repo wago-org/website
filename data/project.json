@@ -126,10 +126,11 @@
         "assertionsSkip": 1591
       },
       "verification": {
-        "checksPass": 96972,
+        "checksPass": 155010,
         "checksFail": 0,
         "checksSkip": 22,
-        "coverage": 86.1
+        "coverage": 86.1,
+        "accountingNote": "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline."
       },
       "proposals": [
         {
@@ -935,10 +936,11 @@
       "accountingNote": "Legacy SPECTEST.md MVP passes plus SIMD passes; do not substitute this sum for the mixed-unit public verification total."
     },
     "verification": {
-      "checksPass": 96972,
+      "checksPass": 155010,
       "checksFail": 0,
       "checksSkip": 22,
-      "coverage": 86.1
+      "coverage": 86.1,
+      "accountingNote": "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline."
     },
     "coveragePercent": 86.1,
     "featureGroups": [

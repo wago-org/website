@@ -22,7 +22,7 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 ## Verification and conformance
 
 - Applicable MVP files passing: 57/57 (100%)
-- Public verification (mixed units): 96972 pass; 0 fail; 22 Go-test/subtest skips
+- Public verification (mixed units): 155010 pass; 0 fail; 22 Go-test/subtest skips
 - Current public-verification Spec 1.0 gate: 16026 execution assertions pass
 - Legacy SPECTEST.md MVP page: 57/57 applicable files; 16592 passing, 0 failing, 1591 skipped assertions
 - SIMD gate: 24325 execution assertions pass

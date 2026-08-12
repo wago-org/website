@@ -39,7 +39,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${REF}`;
 const API = `https://api.github.com/repos/${REPO}/contents`;
 
-const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "coverage-report.md"];
+const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "tests/spec-v3-baseline.json", "coverage-report.md"];
 
 async function exists(p) {
   try {
@@ -116,6 +116,18 @@ function parseVerification(text) {
   if (!m) throw new Error("VERIFICATION.md: could not find the verification summary line");
   const coverage = parseCoverage(text);
   return { checksPass: +m[1], checksFail: +m[2], checksSkip: +m[3], coverage };
+}
+
+// The Core 3 suite is recorded as a checked-in zero-gap baseline rather than
+// folded into VERIFICATION.md's legacy five-gate headline. Include its exact
+// assertion total in the website's public total so the headline covers every
+// published verification suite.
+function parseSpec3Baseline(text) {
+  const totals = JSON.parse(text).totals_excluding_parser_failures?.assertions;
+  if (!totals || !Number.isInteger(totals.passed) || !Number.isInteger(totals.failed) || !Number.isInteger(totals.skipped)) {
+    throw new Error("tests/spec-v3-baseline.json: missing assertion totals");
+  }
+  return totals;
 }
 
 const STATUS_BY_EMOJI = [
@@ -326,6 +338,12 @@ async function main() {
   const simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
   const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
   const verification = parseVerification(srcs["VERIFICATION.md"].text);
+  const spec3 = parseSpec3Baseline(srcs["tests/spec-v3-baseline.json"].text);
+  verification.checksPass += spec3.passed;
+  verification.checksFail += spec3.failed;
+  verification.checksSkip += spec3.skipped;
+  verification.accountingNote =
+    "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline.";
   const coverage = srcs["coverage-report.md"]
     ? parseCoverage(srcs["coverage-report.md"].text)
     : verification.coverage;

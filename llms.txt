@@ -15,7 +15,7 @@ Data updated: 2026-08-12
 - Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
 - Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
 - Legacy SPECTEST.md MVP report: 57/57 applicable files pass (100%); see /compatibility.md for the current public-verification boundary.
-- Verification: 96972 checks pass, 0 fail, 22 skip.
+- Verification: 155010 checks pass, 0 fail, 22 skip.
 - Test coverage: 86.1%.
 - Native benchmark architectures published: amd64, arm64.
 - Published wago-vs-wazero comparisons: 148.

@@ -685,28 +685,27 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     </div>
                     <div class="fcard">
                         <div class="fcard__icon fcard__icon--green">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 2.5l8.5 4.9v9.2L12 21.5l-8.5-4.9V7.4z" />
-                                <path d="M8.5 12.2l2.5 2.5 4.7-5.2" />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 4.5h4l2 2 2-2h4a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H6A1.5 1.5 0 0 1 4.5 18V6A1.5 1.5 0 0 1 6 4.5z" />
+                                <path stroke-width="1.35" d="M12 13c.6 0 .5 3 1.2 3s.7-2.5 1.3-2.5.7 2.5 1.3 2.5.6-3 1.2-3" />
                             </svg>
                         </div>
-                        <h3 class="fcard__title">WebAssembly 2.0</h3>
+                        <h3 class="fcard__title">WebAssembly 3.0</h3>
                         <p class="fcard__body">
-                            Full support for the WebAssembly 2.0 standard, on by
-                            default — SIMD, reference types, and the rest.
+                            Full support for the WebAssembly 1.0, 2.0, and 3.0 standard, on by
+                            default.
                         </p>
                     </div>
                     <div class="fcard">
                         <div class="fcard__icon fcard__icon--pink">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="9" />
-                                <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 7h2.5c2.5 0 2.5 5 5 5M5 12h7.5M5 17h2.5c2.5 0 2.5-5 5-5" />
+                                <path d="M12.5 12H19m-2.5-2.5L19 12l-2.5 2.5" />
                             </svg>
                         </div>
-                        <h3 class="fcard__title">Low overhead</h3>
+                        <h3 class="fcard__title">Singlepass Backend</h3>
                         <p class="fcard__body">
-                            Fast and light: low latency, small memory, high
-                            throughput.
+                            Absurdly fast and light. Low memory, high throughput, and competative performance.
                         </p>
                     </div>
                     <div class="fcard">
@@ -718,35 +717,34 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                         <h3 class="fcard__title">Zero-copy memory</h3>
                         <p class="fcard__body">
-                            Your Go code and the wasm share one block of memory, a
+                            Go code and the wasm share one block of memory, a
                             plain <code class="code-inline">[]byte</code>. No
                             copies.
                         </p>
                     </div>
                     <div class="fcard">
                         <div class="fcard__icon fcard__icon--green">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M12 3l9 5-9 5-9-5z" />
-                                <path d="M3 13l9 5 9-5" />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 5v4M15 5v4" />
+                                <path d="M7 9h10v2a5 5 0 0 1-10 0zM12 16v3" />
                             </svg>
                         </div>
-                        <h3 class="fcard__title">Stable host ABI</h3>
+                        <h3 class="fcard__title">Plugin API</h3>
                         <p class="fcard__body">
-                            Every export gets a typed Go wrapper, so calls stay
-                            type-safe and fast.
+                            Anything is possible. Need HTTP? Install it. Want AVX-512 support? Implement it. We also have a package manager to boot.
                         </p>
                     </div>
                     <div class="fcard">
                         <div class="fcard__icon fcard__icon--pink">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M8.4 12.3l2.4 2.4 4.8-5.4" />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="m5.5 8 1.5 1.5L9.5 7M12 8h6" />
+                                <path d="m5.5 13 1.5 1.5 2.5-2.5M12 13h6" />
+                                <path d="m5.5 18 1.5 1.5L9.5 17M12 18h6" />
                             </svg>
                         </div>
-                        <h3 class="fcard__title">Tracked conformance</h3>
+                        <h3 class="fcard__title">3rd-Party Tests</h3>
                         <p class="fcard__body">
-                            We run the full spec test suite and publish exactly
-                            what passes in SPECTEST.md. Nothing hidden.
+                            We run the Official WebAssembly test suite along with the entire wazero and wasmtime suites. We pass everything.
                         </p>
                     </div>
                 </div>
@@ -1150,37 +1148,76 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </ul>
                     </div>
                     <div class="panes">
-                        <div class="pane" data-phase="post">
-                            <div class="pane__head">
-                                <span>install</span>
-                                <button
-                                    class="copybtn"
-                                    type="button"
-                                    data-copy="curl -fsSL https://install.wago.sh | sh"
-                                >
-                                    <span data-copy-label>copy ⧉</span>
-                                </button>
-                            </div>
-                            <pre
-                                class="pane__body"
-                            ><span class="pane__prompt">$</span> curl -fsSL https://install.wago.sh | sh</pre>
-                        </div>
                         <div class="pane-cta" data-phase="pre">
                             <a class="btn btn--primary" href="#beta"
                                 >Join the waitlist →</a
                             >
                         </div>
                         <div class="pane">
-                            <div class="pane__head"><span>cli</span></div>
-                            <pre
-                                class="pane__body"
-                            ><span class="pane__prompt">$</span> wago add.wasm 2 3
-<span class="pane__prompt">$</span> wago run --invoke=fib fib.wasm 30
-<span class="pane__prompt">$</span> wago run --wasi hello.wasm
-<span class="pane__prompt">$</span> wago run --bounds=all fib.wasm 30
-<span class="pane__prompt">$</span> wago validate module.wasm
-<span class="pane__prompt">$</span> wago version</pre>
+                            <div
+                                class="vs__tabs install-tabs"
+                                role="tablist"
+                                aria-label="Installation platform"
+                                data-tabs
+                            >
+                                <button
+                                    class="vs__tab"
+                                    type="button"
+                                    role="tab"
+                                    id="install-tab-unix"
+                                    aria-controls="install-panel-unix"
+                                    aria-selected="true"
+                                    tabindex="0"
+                                >
+                                    macOS / Linux
+                                </button>
+                                <button
+                                    class="vs__tab"
+                                    type="button"
+                                    role="tab"
+                                    id="install-tab-windows"
+                                    aria-controls="install-panel-windows"
+                                    aria-selected="false"
+                                    tabindex="-1"
+                                >
+                                    Windows
+                                </button>
+                            </div>
+                            <div
+                                class="install-command"
+                                role="tabpanel"
+                                id="install-panel-unix"
+                                aria-labelledby="install-tab-unix"
+                            >
+                                <pre class="pane__body"><span class="pane__prompt">$</span> curl -fsSL https://install.wago.sh/unix | sh</pre>
+                                <button
+                                    class="copybtn install-command__copy"
+                                    type="button"
+                                    data-copy="curl -fsSL https://install.wago.sh/unix | sh"
+                                >
+                                    <span data-copy-label>copy ⧉</span>
+                                </button>
+                            </div>
+                            <div
+                                class="install-command"
+                                role="tabpanel"
+                                id="install-panel-windows"
+                                aria-labelledby="install-tab-windows"
+                                hidden
+                            >
+                                <pre class="pane__body"><span class="pane__prompt">PS&gt;</span> irm https://install.wago.sh/ps | iex</pre>
+                                <button
+                                    class="copybtn install-command__copy"
+                                    type="button"
+                                    data-copy="irm https://install.wago.sh/ps | iex"
+                                >
+                                    <span data-copy-label>copy ⧉</span>
+                                </button>
+                            </div>
                         </div>
+                        <a class="install-guide" href="https://docs.wago.sh/getting-started"
+                            >Read the quick start guide →</a
+                        >
                     </div>
                 </div>
             </section>

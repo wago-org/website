@@ -494,6 +494,24 @@
 .pane__prompt {
     color: var(--faint);
 }
+.install-tabs {
+    border-bottom: 1px solid var(--bg);
+    padding-left: 6px;
+}
+.install-command {
+    position: relative;
+}
+.install-command[hidden] {
+    display: none;
+}
+.install-command .pane__body {
+    padding-right: 92px;
+}
+.install-command__copy {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+}
 .copybtn {
     font-family: var(--mono);
     font-size: 11px;
@@ -508,6 +526,17 @@
 .copybtn:hover {
     border-color: var(--lilac);
     color: var(--lilac);
+}
+.install-guide {
+    align-self: flex-start;
+    color: var(--lilac);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.install-guide:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 /* ---- Stat tiles ---- */

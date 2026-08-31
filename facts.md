@@ -1,7 +1,7 @@
 # Wago facts
 
-Last synchronized: 2026-08-12
-Wago source commit: a0758d220057593dddb4d97af9e606e6a3c8d224
+Last synchronized: 2026-08-31
+Wago source commit: 925eea99c9930f44b9f1b284cb3c4e4dd7113a3a
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Identity and release
@@ -38,7 +38,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Declared memory limit: supported
 - Table limit: partial: initial/minimum size checked; growth maximum is not enforced by Policy.MaxTableEntries
 - Context cancellation/deadline: supported on amd64 and arm64 at cooperative native safepoints
-- Policy.MaxInvokeDuration: accepted-but-not-enforced
+- Policy.MaxInvokeDuration: deprecated-unsupported-use-context-deadline
 - Deterministic fuel: not implemented
 - Aggregate memory accounting: not published
 

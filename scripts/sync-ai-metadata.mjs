@@ -169,7 +169,7 @@ function parseStartup(index) {
   return workloads;
 }
 
-function parseComparisonRows(panel) {
+function parseComparisonRows(panel, backend = "wago") {
   const entries = [];
   const token = /<div\b[^>]*class="vs__(group|row)"[^>]*>/g;
   let group = "";
@@ -205,10 +205,10 @@ function parseComparisonRows(panel) {
       result:
         deltaClass === "win"
           ? values[1]
-            ? "wago ahead"
+            ? `${backend} ahead`
             : "throughput context"
           : deltaClass === "behind"
-            ? "wago behind"
+            ? `${backend} behind`
             : deltaClass === "tie"
               ? "tie"
               : "context",
@@ -226,24 +226,39 @@ function parsePerformance(index) {
   ];
   for (const arch of archIds) {
     const archPanel = extractDivById(section, `arch-panel-${arch}`);
-    const categoryLabels = new Map(
-      [...archPanel.matchAll(
-        new RegExp(
-          `<button\\b[^>]*id="perf-${arch}-tab-([^"]+)"[^>]*>([\\s\\S]*?)<\\/button>`,
-          "g",
-        ),
-      )].map((match) => [match[1], text(match[2])]),
-    );
-    const categories = [];
-    for (const [id, label] of categoryLabels) {
-      const panel = extractDivById(archPanel, `perf-${arch}-panel-${id}`);
-      categories.push({ id, label, entries: parseComparisonRows(panel) });
+    const backends = {};
+    const backendIds = [
+      ...new Set(
+        [...archPanel.matchAll(new RegExp(`id="backend-panel-${arch}-([^"]+)"`, "g"))]
+          .map((match) => match[1]),
+      ),
+    ];
+    for (const backend of backendIds) {
+      const backendPanel = extractDivById(archPanel, `backend-panel-${arch}-${backend}`);
+      const categoryLabels = new Map(
+        [...backendPanel.matchAll(
+          new RegExp(
+            `<button\\b[^>]*id="perf-${arch}-${backend}-tab-([^"]+)"[^>]*>([\\s\\S]*?)<\\/button>`,
+            "g",
+          ),
+        )].map((match) => [match[1], text(match[2])]),
+      );
+      const categories = [];
+      for (const [id, label] of categoryLabels) {
+        const panel = extractDivById(backendPanel, `perf-${arch}-${backend}-panel-${id}`);
+        categories.push({ id, label, entries: parseComparisonRows(panel, backend) });
+      }
+      backends[backend] = { backend, categories };
     }
-    architectures[arch] = { architecture: arch, categories };
+    architectures[arch] = { architecture: arch, backends };
   }
   const comparisonCount = Object.values(architectures).reduce(
     (total, architecture) =>
-      total + architecture.categories.reduce((sum, category) => sum + category.entries.length, 0),
+      total + Object.values(architecture.backends).reduce(
+        (backendTotal, backend) =>
+          backendTotal + backend.categories.reduce((sum, category) => sum + category.entries.length, 0),
+        0,
+      ),
     0,
   );
   if (Object.keys(architectures).length === 0 || comparisonCount === 0) {
@@ -378,9 +393,9 @@ function markdownTable(rows) {
   ].join("\n");
 }
 
-function comparisonTable(entries) {
+function comparisonTable(entries, backend) {
   return [
-    "| Group | Benchmark | Workload | wago | wazero | Comparison | Result |",
+    `| Group | Benchmark | Workload | ${backend} | Cranelift | Comparison | Result |`,
     "| --- | --- | --- | ---: | ---: | --- | --- |",
     ...entries.map(
       (entry) =>
@@ -536,8 +551,11 @@ Definition: ${benchmarks.startup.definition}
   out.push("## wago versus wazero");
   for (const architecture of Object.values(benchmarks.wagoVsWazero.architectures)) {
     out.push(`### ${architecture.architecture}`);
-    for (const category of architecture.categories) {
-      out.push(`#### ${category.label}\n\n${comparisonTable(category.entries)}`);
+    for (const backend of Object.values(architecture.backends)) {
+      out.push(`#### ${backend.backend}`);
+      for (const category of backend.categories) {
+        out.push(`##### ${category.label}\n\n${comparisonTable(category.entries, backend.backend)}`);
+      }
     }
   }
   out.push(`## Canonical machine-readable sources

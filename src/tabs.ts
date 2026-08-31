@@ -93,10 +93,8 @@ function fillBars(panel: HTMLElement, reduce: boolean): void {
   });
 }
 
-// The architecture toggle (linux/amd64 ↔ darwin/arm64). Unlike a plain tablist it
-// carries the active benchmark category across a switch — pick "Instantiate" on
-// amd64, flip to arm64, and you land on arm64's "Instantiate" — and it preserves
-// the scroll position so toggling never jumps the page.
+// The benchmark platform controls carry the active category across architecture
+// and backend switches, while preserving the row-list scroll position.
 export function initArchToggle(): void {
   const rail = document.querySelector<HTMLElement>("[data-arch-toggle]");
   if (!rail) return;
@@ -108,10 +106,12 @@ export function initArchToggle(): void {
     document.getElementById(t.getAttribute("aria-controls") ?? "")
   );
 
+  const activeBackendPanel = (arch: HTMLElement | null): HTMLElement | null =>
+    arch?.querySelector<HTMLElement>(".vs__backendpanel:not([hidden])") ?? null;
   const catTabs = (panel: HTMLElement | null): HTMLButtonElement[] =>
-    panel
+    activeBackendPanel(panel)
       ? Array.from(
-          panel.querySelectorAll<HTMLButtonElement>('.vs__tabs [role="tab"]')
+          activeBackendPanel(panel)!.querySelectorAll<HTMLButtonElement>('.vs__tabs [role="tab"]')
         )
       : [];
   const activeCat = (panel: HTMLElement | null): number =>
@@ -123,6 +123,32 @@ export function initArchToggle(): void {
       0,
       tabs.findIndex((t) => t.getAttribute("aria-selected") === "true")
     );
+  const backendTabs = (arch: HTMLElement | null): HTMLButtonElement[] =>
+    arch
+      ? Array.from(
+          arch.querySelectorAll<HTMLButtonElement>('[data-backend-toggle] > [role="tab"]')
+        )
+      : [];
+  const activeBackend = (arch: HTMLElement | null): number =>
+    Math.max(
+      0,
+      backendTabs(arch).findIndex(
+        (tab) => tab.getAttribute("aria-selected") === "true"
+      )
+    );
+  const selectBackend = (arch: HTMLElement | null, idx: number): void => {
+    backendTabs(arch).forEach((button, i) => {
+      const on = i === idx;
+      button.setAttribute("aria-selected", on ? "true" : "false");
+      button.tabIndex = on ? 0 : -1;
+      const target = document.getElementById(button.getAttribute("aria-controls") ?? "");
+      if (target) target.hidden = !on;
+    });
+  };
+  const catPanel = (arch: HTMLElement | null): HTMLElement | null =>
+    activeBackendPanel(arch)?.querySelector<HTMLElement>(
+      ".vs__main > .vs__panel:not([hidden])"
+    ) ?? null;
 
   const select = (idx: number, focus = false): void => {
     const from = activeArch();
@@ -131,12 +157,9 @@ export function initArchToggle(): void {
       return;
     }
     const cat = activeCat(panels[from]); // category to carry over
+    const backend = activeBackend(panels[from]);
     // Also carry how far down the row list you are, as a fraction, so 30% down on
     // amd64 resumes at 30% down on arm64 (heights can differ between the two).
-    const catPanel = (arch: HTMLElement | null): HTMLElement | null =>
-      arch?.querySelector<HTMLElement>(
-        ".vs__main > .vs__panel:not([hidden])"
-      ) ?? null;
     const src = catPanel(panels[from]);
     const srcRange = src ? src.scrollHeight - src.clientHeight : 0;
     const ratio = src && srcRange > 0 ? src.scrollTop / srcRange : 0;
@@ -151,6 +174,7 @@ export function initArchToggle(): void {
       if (panel) panel.hidden = !on;
     });
 
+    selectBackend(panels[idx], backend);
     // Mirror the category onto the newly shown architecture. Clicking the target
     // tab reuses the tablist logic above (reveals its panel, re-animates bars).
     const target = catTabs(panels[idx]);
@@ -192,6 +216,62 @@ export function initArchToggle(): void {
       }
       e.preventDefault();
       select(next, true);
+    });
+  });
+
+  panels.forEach((arch) => {
+    const buttons = backendTabs(arch);
+    buttons.forEach((button, i) => {
+      const activate = (focus = false): void => {
+        const from = activeBackend(arch);
+        if (i === from) {
+          if (focus) button.focus({ preventScroll: true });
+          return;
+        }
+        const cat = activeCat(arch);
+        const src = catPanel(arch);
+        const srcRange = src ? src.scrollHeight - src.clientHeight : 0;
+        const ratio = src && srcRange > 0 ? src.scrollTop / srcRange : 0;
+        const x = window.scrollX;
+        const y = window.scrollY;
+
+        selectBackend(arch, i);
+        const target = catTabs(arch);
+        if (cat >= 0 && cat < target.length) target[cat]?.click();
+        const dst = catPanel(arch);
+        if (dst) {
+          const dstRange = dst.scrollHeight - dst.clientHeight;
+          dst.scrollTop = dstRange > 0 ? Math.round(ratio * dstRange) : 0;
+        }
+        window.scrollTo(x, y);
+        if (focus) button.focus({ preventScroll: true });
+      };
+
+      button.addEventListener("click", () => activate());
+      button.addEventListener("keydown", (event) => {
+        let next = -1;
+        switch (event.key) {
+          case "ArrowRight":
+          case "ArrowDown":
+            next = i === buttons.length - 1 ? 0 : i + 1;
+            break;
+          case "ArrowLeft":
+          case "ArrowUp":
+            next = i === 0 ? buttons.length - 1 : i - 1;
+            break;
+          case "Home":
+            next = 0;
+            break;
+          case "End":
+            next = buttons.length - 1;
+            break;
+          default:
+            return;
+        }
+        event.preventDefault();
+        buttons[next]?.click();
+        buttons[next]?.focus({ preventScroll: true });
+      });
     });
   });
 }

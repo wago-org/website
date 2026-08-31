@@ -296,7 +296,7 @@ function securityPage(facts) {
         <li>No dedicated <code>SECURITY.md</code> or public vulnerability-reporting address was found at this source commit.</li>
         <li>No third-party security audit is claimed.</li>
         <li>No runtime-wide aggregate memory budget across all live instances is documented.</li>
-        <li>No deterministic instruction-fuel accounting is documented; deadlines are cooperative safepoint interruption, and <code>Policy.MaxInvokeDuration</code> is reserved rather than enforced.</li>
+        <li>No deterministic instruction-fuel accounting is documented; deadlines use cooperative safepoint interruption, and <code>Policy.MaxInvokeDuration</code> is deprecated and rejected in favor of a context deadline.</li>
         <li>No stable compiled-artifact compatibility guarantee across releases is documented.</li>
       </ul>
       <p>For hostile multi-tenant workloads, these gaps should be part of the deployment threat model. Process or container isolation remains an additional defense boundary, not something the engine can make unnecessary.</p>
@@ -977,7 +977,7 @@ requireText(loaded[".github/workflows/ci.yml"], "Darwin / arm64", ".github/workf
 requireText(loaded["src/wago/api.go"], "Native cancellation is available on amd64/arm64", "src/wago/api.go");
 requireText(loaded["src/wago/managed_instances.go"], "Calls on one instance must be serialized", "src/wago/managed_instances.go");
 requireText(loaded["src/wago/instance_native_context.go"], "nativeExecutionMu is the initial correctness execution lease", "src/wago/instance_native_context.go");
-requireText(loaded["src/wago/policy.go"], "Accepted but not yet enforced", "src/wago/policy.go");
+requireText(loaded["src/wago/policy.go"], "maximum invoke duration policy is unsupported", "src/wago/policy.go");
 
 const verify = match(
   loaded["VERIFICATION.md"],
@@ -1066,7 +1066,7 @@ const facts = {
     declaredMemory: true,
     declaredTables: "partial: initial/minimum size checked; growth maximum is not enforced by Policy.MaxTableEntries",
     deadlineInterruption: { amd64: true, arm64: true, mechanism: "cooperative native safepoints" },
-    policyMaxInvokeDuration: "accepted-but-not-enforced",
+    policyMaxInvokeDuration: "deprecated-unsupported-use-context-deadline",
     deterministicFuel: false,
     aggregateMemoryAccounting: false,
   },

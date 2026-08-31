@@ -858,6 +858,23 @@
 .vs__archpanel[hidden] {
     display: none;
 }
+.vs__backendstage {
+    flex: 1;
+    min-width: 0;
+}
+.vs__backendpanel {
+    display: flex;
+    min-width: 0;
+}
+.vs__backendpanel[hidden] {
+    display: none;
+}
+.vs__backendpanel > .vs__main {
+    width: 100%;
+}
+.vs__side--backend {
+    padding-inline: 6px 8px;
+}
 .vs__main {
     flex: 1;
     min-width: 0;
@@ -1250,6 +1267,13 @@
     }
     .vs__archpanel {
         flex-direction: column;
+    }
+    .vs__backendpanel {
+        display: block;
+    }
+    .vs__side--backend {
+        order: -1;
+        border-top: 1px solid var(--line);
     }
     .vs__specs {
         position: static;

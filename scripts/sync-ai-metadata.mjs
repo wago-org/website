@@ -395,7 +395,7 @@ function markdownTable(rows) {
 
 function comparisonTable(entries, backend) {
   return [
-    `| Group | Benchmark | Workload | ${backend} | Cranelift | Comparison | Result |`,
+    `| Group | Benchmark | Workload | ${backend} | wazero | Comparison | Result |`,
     "| --- | --- | --- | ---: | ---: | --- | --- |",
     ...entries.map(
       (entry) =>

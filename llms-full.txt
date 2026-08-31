@@ -122,7 +122,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### General
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 |  | Compile latency | fib_rec module | 20.1µs | 50.4µs |  | railshot ahead |
 |  | Instantiate latency | fib_rec startup + mapping | 4.2µs | 7.7µs |  | railshot ahead |
@@ -135,7 +135,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Compile
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 18.4µs | 49µs |  | railshot ahead |
 | Micro modules | fib_rec | recursive fib | 20.1µs | 50.4µs |  | railshot ahead |
@@ -163,7 +163,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Instantiate
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 4.2µs | 7.7µs |  | railshot ahead |
 | Micro modules | fib_rec | recursive fib | 4.2µs | 7.7µs |  | railshot ahead |
@@ -179,7 +179,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Go allocs
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.5 KB | 7 KB |  | railshot ahead |
 | Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 8 | 21 |  | railshot ahead |
@@ -198,7 +198,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Exec
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro ops | Call overhead | tiny host → wasm call | 72.8ns | 28.2ns |  | railshot behind |
 | Micro ops | Iterative fib | fib_iter loop | 80.6ns | 34ns |  | railshot behind |
@@ -229,7 +229,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### General
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 |  | Compile latency | fib_rec module | 176µs | 50.4µs |  | dragline behind |
 |  | Instantiate latency | fib_rec startup + mapping | 4.2µs | 7.7µs |  | dragline ahead |
@@ -241,7 +241,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Compile
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 153µs | 49µs |  | dragline behind |
 | Micro modules | fib_rec | recursive fib | 176µs | 50.4µs |  | dragline behind |
@@ -268,7 +268,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Instantiate
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 4.2µs | 7.7µs |  | dragline ahead |
 | Micro modules | fib_rec | recursive fib | 4.2µs | 7.7µs |  | dragline ahead |
@@ -284,7 +284,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Go allocs
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.5 KB | 7 KB |  | dragline ahead |
 | Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 8 | 21 |  | dragline ahead |
@@ -303,7 +303,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Exec
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro ops | Call overhead | tiny host → wasm call | 73.3ns | 28.2ns |  | dragline behind |
 | Micro ops | Iterative fib | fib_iter loop | 87.9ns | 34ns |  | dragline behind |
@@ -333,7 +333,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### General
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 |  | Compile latency | fib_rec module | 12.1µs | 25.6µs |  | railshot ahead |
 |  | Instantiate latency | fib_rec startup + mapping | 4µs | 7.7µs |  | railshot ahead |
@@ -346,7 +346,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Compile
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 10.3µs | 26.8µs |  | railshot ahead |
 | Micro modules | fib_rec | recursive fib | 12.1µs | 25.6µs |  | railshot ahead |
@@ -374,7 +374,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Instantiate
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 4.1µs | 7.5µs |  | railshot ahead |
 | Micro modules | fib_rec | recursive fib | 4µs | 7.7µs |  | railshot ahead |
@@ -390,7 +390,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Go allocs
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.5 KB | 7 KB |  | railshot ahead |
 | Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 8 | 21 |  | railshot ahead |
@@ -409,7 +409,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Exec
 
-| Group | Benchmark | Workload | railshot | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | railshot | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro ops | Call overhead | tiny host → wasm call | 73.8ns | 21.1ns |  | railshot behind |
 | Micro ops | Iterative fib | fib_iter loop | 82.8ns | 49ns |  | railshot behind |
@@ -440,7 +440,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### General
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 |  | Compile latency | fib_rec module | 23.6µs | 25.6µs |  | dragline ahead |
 |  | Instantiate latency | fib_rec startup + mapping | 4.1µs | 7.7µs |  | dragline ahead |
@@ -453,7 +453,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Compile
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 17.2µs | 26.8µs |  | dragline ahead |
 | Micro modules | fib_rec | recursive fib | 23.6µs | 25.6µs |  | dragline ahead |
@@ -481,7 +481,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Instantiate
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro modules | tiny | smallest valid module | 4µs | 7.5µs |  | dragline ahead |
 | Micro modules | fib_rec | recursive fib | 4.1µs | 7.7µs |  | dragline ahead |
@@ -497,7 +497,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Go allocs
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Instantiation — Go heap | fib_rec instance | Go heap bytes allocated per fresh instance | 1.5 KB | 7 KB |  | dragline ahead |
 | Instantiation — Go heap | fib_rec instance | Go allocation objects per fresh instance | 8 | 21 |  | dragline ahead |
@@ -516,7 +516,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 ##### Exec
 
-| Group | Benchmark | Workload | dragline | Cranelift | Comparison | Result |
+| Group | Benchmark | Workload | dragline | wazero | Comparison | Result |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | Micro ops | Call overhead | tiny host → wasm call | 71.9ns | 21.1ns |  | dragline behind |
 | Micro ops | Iterative fib | fib_iter loop | 75.3ns | 49ns |  | dragline behind |

@@ -17,7 +17,7 @@
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
-      "ref": "jairus/dragline-mvp",
+      "ref": "4ee7b1989df74034a6844fe6d629c9dc6a9a41a3",
       "commit": "4ee7b1989df74034a6844fe6d629c9dc6a9a41a3",
       "commitUrl": "https://github.com/wago-org/wago/commit/4ee7b1989df74034a6844fe6d629c9dc6a9a41a3"
     },

@@ -43,6 +43,7 @@ jobs:
       - name: Pin generated Wago source
         run: |
           wago_source_ref=$(node -p "require('./data/facts.json').source.commit")
+          echo "WAGO_REF=$wago_source_ref" >> "$GITHUB_ENV"
           echo "WAGO_FACTS_REF=$wago_source_ref" >> "$GITHUB_ENV"
 
       - name: Build site

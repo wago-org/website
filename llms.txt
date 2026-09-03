@@ -5,7 +5,7 @@
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-09-01
+Data updated: 2026-09-03
 
 ## Current verified facts
 
@@ -18,7 +18,7 @@ Data updated: 2026-09-01
 - Verification: 155010 checks pass, 0 fail, 22 skip.
 - Test coverage: 86.1%.
 - Native benchmark architectures published: amd64, arm64.
-- Published wago-vs-wazero comparisons: 319.
+- Published wago-vs-wazero comparisons: 320.
 - Startup dataset: 6 real workloads across multiple WebAssembly runtimes.
 
 ## Read next

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-01",
+  "generated": "2026-09-03",
   "canonicalUrl": "https://wago.sh/",
   "name": "wago",
   "summary": "WebAssembly, made for Go.",
@@ -13,13 +13,13 @@
   "canonicalFacts": {
     "$schema": "https://wago.sh/data/facts.schema.json",
     "schemaVersion": 1,
-    "generated": "2026-09-01",
+    "generated": "2026-09-03",
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
-      "ref": "ce33e44925b0ad046ed1d51f3d91c366efe1558e",
-      "commit": "ce33e44925b0ad046ed1d51f3d91c366efe1558e",
-      "commitUrl": "https://github.com/wago-org/wago/commit/ce33e44925b0ad046ed1d51f3d91c366efe1558e"
+      "ref": "main",
+      "commit": "d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a",
+      "commitUrl": "https://github.com/wago-org/wago/commit/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a"
     },
     "identity": {
       "name": "wago",
@@ -42,7 +42,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -53,7 +53,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -64,7 +64,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -75,7 +75,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -86,7 +86,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
           }
         ]
       }
@@ -139,7 +139,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -149,7 +149,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -159,7 +159,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -169,7 +169,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -179,7 +179,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -189,7 +189,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -199,7 +199,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -219,7 +219,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -239,7 +239,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -249,7 +249,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -259,7 +259,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -269,7 +269,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -279,7 +279,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -289,7 +289,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -299,7 +299,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -309,7 +309,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -319,7 +319,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -329,7 +329,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -339,7 +339,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -349,7 +349,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -359,7 +359,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -369,7 +369,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -379,7 +379,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -389,7 +389,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -399,7 +399,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -409,7 +409,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -419,7 +419,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -429,7 +429,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -439,7 +439,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -449,7 +449,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -459,7 +459,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -469,7 +469,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -479,7 +479,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -489,7 +489,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -499,7 +499,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -509,7 +509,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -519,7 +519,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -529,7 +529,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -539,7 +539,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -549,7 +549,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -559,7 +559,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -569,7 +569,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -579,7 +579,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -589,7 +589,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -599,7 +599,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -609,7 +609,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -619,7 +619,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -629,7 +629,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -639,7 +639,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -649,7 +649,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -659,7 +659,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -669,7 +669,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -679,7 +679,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -689,7 +689,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -699,7 +699,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -709,7 +709,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -719,7 +719,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -729,7 +729,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -739,7 +739,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -749,7 +749,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -759,7 +759,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
             }
           ]
         }
@@ -767,7 +767,7 @@
     },
     "compatibility": {
       "verification": {
-        "wagoCommit": "ce33e44925b0ad046ed1d51f3d91c366efe1558e",
+        "wagoCommit": "d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a",
         "host": "darwin/arm64",
         "pass": 96972,
         "fail": 0,
@@ -867,51 +867,51 @@
     "evidence": {
       "readme": {
         "label": "README",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/README.md#L48-L97"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/README.md#L48-L97"
       },
       "engine": {
         "label": "pure-Go no-cgo JIT package contract",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/doc.go#L1-L8"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/doc.go#L1-L8"
       },
       "features": {
         "label": "feature matrix",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/FEATURES.md#L45-L63"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/FEATURES.md#L45-L63"
       },
       "verification": {
         "label": "public verification",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/VERIFICATION.md#L1-L15"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/VERIFICATION.md#L1-L15"
       },
       "ci": {
         "label": "native CI matrix",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/.github/workflows/ci.yml#L92-L214"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/.github/workflows/ci.yml#L92-L214"
       },
       "api": {
         "label": "public API source",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/api.go#L1675-L1715"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/api.go#L1675-L1715"
       },
       "concurrency": {
         "label": "race-tested concurrent compile, instantiate, and execute coverage",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/runtime_concurrency_test.go#L13-L82"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/runtime_concurrency_test.go#L13-L82"
       },
       "nativeExecution": {
         "label": "native execution serialization",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/instance_native_context.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/instance_native_context.go#L10-L67"
       },
       "memory": {
         "label": "borrowed memory-view contract",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/memory.go#L84-L113"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/memory.go#L84-L113"
       },
       "policy": {
         "label": "resource policy enforcement",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/src/wago/policy.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/src/wago/policy.go#L10-L67"
       },
       "testSurface": {
         "label": "unified repository test surface",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/tests/README.md#L1-L44"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/tests/README.md#L1-L44"
       },
       "wazeroFixtures": {
         "label": "wazero fixture manifest",
-        "url": "https://github.com/wago-org/wago/blob/ce33e44925b0ad046ed1d51f3d91c366efe1558e/tests/regressions/README.md#L1-L31"
+        "url": "https://github.com/wago-org/wago/blob/d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a/tests/regressions/README.md#L1-L31"
       }
     }
   },
@@ -1518,15 +1518,15 @@
                     {
                       "label": "Compile latency",
                       "workload": "fib_rec module",
-                      "wago": "21.4µs",
-                      "wazero": "56.3µs",
+                      "wago": "22.2µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "Instantiate latency",
                       "workload": "fib_rec startup + mapping",
-                      "wago": "4.4µs",
+                      "wago": "4.5µs",
                       "wazero": "8.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -1534,48 +1534,48 @@
                     {
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "74.8ns",
-                      "wazero": "28.3ns",
+                      "wago": "94.5ns",
+                      "wazero": "29.9ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
                     {
                       "label": "Exec latency",
                       "workload": "fib_rec recursion",
-                      "wago": "1.27ms",
-                      "wazero": "2.12ms",
+                      "wago": "1.30ms",
+                      "wazero": "2.22ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "275µs",
-                      "wazero": "354µs",
+                      "wago": "284µs",
+                      "wazero": "372µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "378µs",
-                      "wazero": "362µs",
+                      "wago": "390µs",
+                      "wazero": "377µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
                     {
                       "label": "SHA-256",
                       "workload": "hash 8 KiB",
-                      "wago": "34.8µs",
-                      "wazero": "53.7µs",
+                      "wago": "35.7µs",
+                      "wazero": "55.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "38.4µs",
-                      "wazero": "62.8µs",
+                      "wago": "40.1µs",
+                      "wazero": "66.1µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -1589,8 +1589,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "19.6µs",
-                      "wazero": "56µs",
+                      "wago": "20.2µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1598,8 +1598,8 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "21.4µs",
-                      "wazero": "56.3µs",
+                      "wago": "22.2µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1607,8 +1607,8 @@
                       "group": "Micro modules",
                       "label": "dispatch",
                       "workload": "call_indirect table",
-                      "wago": "31.8µs",
-                      "wazero": "84.6µs",
+                      "wago": "31.9µs",
+                      "wazero": "77.6µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1616,8 +1616,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "524µs",
-                      "wazero": "1.11ms",
+                      "wago": "553µs",
+                      "wazero": "1.13ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1625,8 +1625,8 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "30.8µs",
-                      "wazero": "90.2µs",
+                      "wago": "32.6µs",
+                      "wazero": "82.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1634,8 +1634,8 @@
                       "group": "Compute kernels",
                       "label": "memory_tree",
                       "workload": "loads + calls",
-                      "wago": "40.1µs",
-                      "wazero": "102µs",
+                      "wago": "41.8µs",
+                      "wazero": "95.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1643,8 +1643,8 @@
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "35µs",
-                      "wazero": "102µs",
+                      "wago": "35.9µs",
+                      "wazero": "98.1µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1652,8 +1652,8 @@
                       "group": "Compute kernels",
                       "label": "mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "40.1µs",
-                      "wazero": "98.8µs",
+                      "wago": "40.9µs",
+                      "wazero": "94.5µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1662,7 +1662,7 @@
                       "label": "nbody",
                       "workload": "leapfrog integrator",
                       "wago": "171µs",
-                      "wazero": "385µs",
+                      "wazero": "421µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1670,8 +1670,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "spectralnorm",
                       "workload": "AᵀA power iteration",
-                      "wago": "144µs",
-                      "wazero": "431µs",
+                      "wago": "138µs",
+                      "wazero": "419µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1680,7 +1680,7 @@
                       "label": "fannkuch",
                       "workload": "permutation pancake-flips",
                       "wago": "205µs",
-                      "wazero": "788µs",
+                      "wazero": "680µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1688,8 +1688,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "114µs",
-                      "wazero": "383µs",
+                      "wago": "118µs",
+                      "wazero": "376µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1698,7 +1698,7 @@
                       "label": "quicksort",
                       "workload": "recursive int sort",
                       "wago": "113µs",
-                      "wazero": "389µs",
+                      "wazero": "319µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1706,8 +1706,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "crc32",
                       "workload": "table-driven checksum",
-                      "wago": "68.8µs",
-                      "wazero": "224µs",
+                      "wago": "70.2µs",
+                      "wazero": "237µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1715,8 +1715,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "sha256",
                       "workload": "SHA-256 hash",
-                      "wago": "160µs",
-                      "wazero": "431µs",
+                      "wago": "159µs",
+                      "wazero": "473µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1724,8 +1724,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "424µs",
-                      "wazero": "1.39ms",
+                      "wago": "421µs",
+                      "wazero": "1.28ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1733,8 +1733,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "2.02ms",
-                      "wazero": "5.92ms",
+                      "wago": "2.12ms",
+                      "wazero": "6.21ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1742,8 +1742,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "567µs",
-                      "wazero": "1.01ms",
+                      "wago": "581µs",
+                      "wazero": "946µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1752,7 +1752,7 @@
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
                       "wago": "358µs",
-                      "wazero": "883µs",
+                      "wazero": "764µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1760,8 +1760,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Lua 5.4",
                       "workload": "interpreter · 270 KB",
-                      "wago": "29ms",
-                      "wazero": "85.2ms",
+                      "wago": "29.7ms",
+                      "wazero": "87.8ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1769,8 +1769,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "SQLite 3.46",
                       "workload": "database engine · 920 KB",
-                      "wago": "109.2ms",
-                      "wazero": "336ms",
+                      "wago": "111.6ms",
+                      "wazero": "348.7ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1778,8 +1778,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "795.5ms",
-                      "wazero": "3079.2ms",
+                      "wago": "824.6ms",
+                      "wazero": "3279.1ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1787,8 +1787,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB, 17k funcs",
-                      "wago": "1209.7ms",
-                      "wazero": "5392ms",
+                      "wago": "1240.9ms",
+                      "wazero": "5645.5ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -1802,8 +1802,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "4.4µs",
-                      "wazero": "8.1µs",
+                      "wago": "4.5µs",
+                      "wazero": "8.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1811,7 +1811,7 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "4.4µs",
+                      "wago": "4.5µs",
                       "wazero": "8.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -1821,7 +1821,7 @@
                       "label": "many_funcs",
                       "workload": "thousands of functions",
                       "wago": "4.4µs",
-                      "wazero": "8.1µs",
+                      "wazero": "8.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1830,7 +1830,7 @@
                       "label": "linked_list",
                       "workload": "dependent-load chase",
                       "wago": "4.5µs",
-                      "wazero": "18.7µs",
+                      "wazero": "13.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1839,7 +1839,7 @@
                       "label": "sieve",
                       "workload": "Eratosthenes",
                       "wago": "4.5µs",
-                      "wazero": "28.4µs",
+                      "wazero": "17.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1847,8 +1847,8 @@
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "4.6µs",
-                      "wazero": "47.7µs",
+                      "wago": "4.7µs",
+                      "wazero": "25.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1857,7 +1857,7 @@
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
                       "wago": "4.7µs",
-                      "wazero": "60.8µs",
+                      "wazero": "26µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1865,8 +1865,8 @@
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "5.4µs",
-                      "wazero": "62.6µs",
+                      "wago": "5.5µs",
+                      "wazero": "26.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1874,8 +1874,8 @@
                       "group": "AssemblyScript",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "20.8µs",
-                      "wazero": "14.5µs",
+                      "wago": "20.6µs",
+                      "wazero": "13.8µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -1883,8 +1883,8 @@
                       "group": "AssemblyScript",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "6.9µs",
-                      "wazero": "12µs",
+                      "wago": "7µs",
+                      "wazero": "11µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1892,8 +1892,8 @@
                       "group": "AssemblyScript",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "17.4µs",
-                      "wazero": "16.1µs",
+                      "wago": "17.9µs",
+                      "wazero": "15.1µs",
                       "comparison": "",
                       "result": "railshot behind"
                     }
@@ -1971,7 +1971,7 @@
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
                       "wago": "56.9 MB",
-                      "wazero": "408.2 MB",
+                      "wazero": "408.3 MB",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -1998,7 +1998,7 @@
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
                       "wago": "1629",
-                      "wazero": "6430",
+                      "wazero": "6433",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2015,8 +2015,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "86948",
-                      "wazero": "482211",
+                      "wago": "86912",
+                      "wazero": "482086",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2024,8 +2024,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "315762",
-                      "wazero": "462275",
+                      "wago": "315733",
+                      "wazero": "462812",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -2039,8 +2039,8 @@
                       "group": "Micro ops",
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "74.8ns",
-                      "wazero": "28.3ns",
+                      "wago": "94.5ns",
+                      "wazero": "29.9ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -2048,8 +2048,8 @@
                       "group": "Micro ops",
                       "label": "Iterative fib",
                       "workload": "fib_iter loop",
-                      "wago": "81.5ns",
-                      "wazero": "34.1ns",
+                      "wago": "104ns",
+                      "wazero": "36.6ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -2057,8 +2057,8 @@
                       "group": "Micro ops",
                       "label": "Recursive fib",
                       "workload": "fib_rec",
-                      "wago": "1.27ms",
-                      "wazero": "2.12ms",
+                      "wago": "1.30ms",
+                      "wazero": "2.22ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2066,8 +2066,8 @@
                       "group": "Micro ops",
                       "label": "Dispatch",
                       "workload": "call_indirect apply",
-                      "wago": "76.9ns",
-                      "wazero": "31.2ns",
+                      "wago": "101.4ns",
+                      "wazero": "31.9ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -2075,8 +2075,8 @@
                       "group": "Compute kernels",
                       "label": "Linked list",
                       "workload": "dependent-load chase",
-                      "wago": "8.5µs",
-                      "wazero": "10.8µs",
+                      "wago": "8.8µs",
+                      "wazero": "11.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2084,8 +2084,8 @@
                       "group": "Compute kernels",
                       "label": "Recursive tree",
                       "workload": "memory_tree, loads + calls",
-                      "wago": "9.3µs",
-                      "wazero": "23.5µs",
+                      "wago": "9.5µs",
+                      "wazero": "22.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2093,8 +2093,8 @@
                       "group": "Compute kernels",
                       "label": "Sieve",
                       "workload": "Eratosthenes",
-                      "wago": "63.2µs",
-                      "wazero": "125µs",
+                      "wago": "64.4µs",
+                      "wazero": "129µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2102,8 +2102,8 @@
                       "group": "Compute kernels",
                       "label": "Mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "248µs",
-                      "wazero": "262µs",
+                      "wago": "256µs",
+                      "wazero": "273µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2111,8 +2111,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "275µs",
-                      "wazero": "354µs",
+                      "wago": "284µs",
+                      "wazero": "372µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2120,8 +2120,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Spectral norm",
                       "workload": "AᵀA power iteration + div",
-                      "wago": "648µs",
-                      "wazero": "954µs",
+                      "wago": "669µs",
+                      "wazero": "1.01ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2129,8 +2129,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Fannkuch-redux",
                       "workload": "permutation pancake-flips",
-                      "wago": "1.05ms",
-                      "wazero": "1.42ms",
+                      "wago": "1.08ms",
+                      "wazero": "1.48ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2138,8 +2138,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Matrix multiply",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "105µs",
-                      "wazero": "313µs",
+                      "wago": "109µs",
+                      "wazero": "334µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2147,8 +2147,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Quicksort",
                       "workload": "recursive int sort",
-                      "wago": "67.4µs",
-                      "wazero": "182µs",
+                      "wago": "69.5µs",
+                      "wazero": "189µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2156,8 +2156,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "CRC-32",
                       "workload": "table-driven checksum",
-                      "wago": "16µs",
-                      "wazero": "22.1µs",
+                      "wago": "16.6µs",
+                      "wazero": "22.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2165,8 +2165,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "SHA-256",
                       "workload": "64-round hash, 8 KiB",
-                      "wago": "34.8µs",
-                      "wazero": "53.7µs",
+                      "wago": "35.7µs",
+                      "wazero": "55.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2174,8 +2174,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "378µs",
-                      "wazero": "362µs",
+                      "wago": "390µs",
+                      "wazero": "377µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -2183,8 +2183,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON serialize",
                       "workload": "json-as, SWAR",
-                      "wago": "21.5µs",
-                      "wazero": "31.7µs",
+                      "wago": "22.5µs",
+                      "wazero": "33.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2192,8 +2192,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "38.4µs",
-                      "wazero": "62.8µs",
+                      "wago": "40.1µs",
+                      "wazero": "66.1µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2201,8 +2201,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as, SWAR",
-                      "wago": "691µs",
-                      "wazero": "464µs",
+                      "wago": "708µs",
+                      "wazero": "481µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -2210,8 +2210,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "UTF transcode",
                       "workload": "utf-as, SWAR",
-                      "wago": "137µs",
-                      "wazero": "205µs",
+                      "wago": "141µs",
+                      "wazero": "213µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2219,8 +2219,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON serialize",
                       "workload": "json-as SIMD",
-                      "wago": "26.1µs",
-                      "wazero": "39.8µs",
+                      "wago": "27.3µs",
+                      "wazero": "41.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2228,8 +2228,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON deserialize",
                       "workload": "json-as SIMD",
-                      "wago": "48.4µs",
-                      "wazero": "79.9µs",
+                      "wago": "50.9µs",
+                      "wazero": "83.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -2237,17 +2237,17 @@
                       "group": "AssemblyScript SIMD",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as SIMD, 4 KiB",
-                      "wago": "543µs",
-                      "wazero": "520µs",
+                      "wago": "556µs",
+                      "wazero": "539µs",
                       "comparison": "",
-                      "result": "railshot behind"
+                      "result": "tie"
                     },
                     {
                       "group": "AssemblyScript SIMD",
                       "label": "UTF transcode",
                       "workload": "utf-as SIMD, mixed text",
-                      "wago": "50.7µs",
-                      "wazero": "69µs",
+                      "wago": "52.2µs",
+                      "wazero": "72.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -2265,8 +2265,8 @@
                     {
                       "label": "Compile latency",
                       "workload": "fib_rec module",
-                      "wago": "184µs",
-                      "wazero": "56.3µs",
+                      "wago": "192µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2281,48 +2281,48 @@
                     {
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "7.7ns",
-                      "wazero": "28.3ns",
+                      "wago": "8.1ns",
+                      "wazero": "29.9ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "Exec latency",
                       "workload": "fib_rec recursion",
-                      "wago": "1.61ms",
-                      "wazero": "2.12ms",
+                      "wago": "1.66ms",
+                      "wazero": "2.22ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "656µs",
-                      "wazero": "354µs",
+                      "wago": "684µs",
+                      "wazero": "372µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
                     {
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "816µs",
-                      "wazero": "362µs",
+                      "wago": "930µs",
+                      "wazero": "377µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
                     {
                       "label": "SHA-256",
                       "workload": "hash 8 KiB",
-                      "wago": "51µs",
-                      "wazero": "53.7µs",
+                      "wago": "52.3µs",
+                      "wazero": "55.9µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "77.4µs",
-                      "wazero": "62.8µs",
+                      "wago": "181µs",
+                      "wazero": "66.1µs",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -2336,8 +2336,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "162µs",
-                      "wazero": "56µs",
+                      "wago": "166µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2345,8 +2345,8 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "184µs",
-                      "wazero": "56.3µs",
+                      "wago": "192µs",
+                      "wazero": "53.5µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2354,8 +2354,8 @@
                       "group": "Micro modules",
                       "label": "dispatch",
                       "workload": "call_indirect table",
-                      "wago": "209µs",
-                      "wazero": "84.6µs",
+                      "wago": "216µs",
+                      "wazero": "77.6µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2363,8 +2363,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "2.85ms",
-                      "wazero": "1.11ms",
+                      "wago": "2.99ms",
+                      "wazero": "1.13ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2372,8 +2372,8 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "240µs",
-                      "wazero": "90.2µs",
+                      "wago": "245µs",
+                      "wazero": "82.4µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2381,8 +2381,8 @@
                       "group": "Compute kernels",
                       "label": "memory_tree",
                       "workload": "loads + calls",
-                      "wago": "186µs",
-                      "wazero": "102µs",
+                      "wago": "193µs",
+                      "wazero": "95.8µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2390,8 +2390,8 @@
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "261µs",
-                      "wazero": "102µs",
+                      "wago": "268µs",
+                      "wazero": "98.1µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2399,8 +2399,8 @@
                       "group": "Compute kernels",
                       "label": "mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "391µs",
-                      "wazero": "98.8µs",
+                      "wago": "406µs",
+                      "wazero": "94.5µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2408,8 +2408,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "3.51ms",
-                      "wazero": "385µs",
+                      "wago": "3.69ms",
+                      "wazero": "421µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2417,8 +2417,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "spectralnorm",
                       "workload": "AᵀA power iteration",
-                      "wago": "2.41ms",
-                      "wazero": "431µs",
+                      "wago": "2.48ms",
+                      "wazero": "419µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2426,8 +2426,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "fannkuch",
                       "workload": "permutation pancake-flips",
-                      "wago": "373µs",
-                      "wazero": "788µs",
+                      "wago": "380µs",
+                      "wazero": "680µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2435,8 +2435,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "1.80ms",
-                      "wazero": "383µs",
+                      "wago": "1.88ms",
+                      "wazero": "376µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2444,8 +2444,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "quicksort",
                       "workload": "recursive int sort",
-                      "wago": "1.76ms",
-                      "wazero": "389µs",
+                      "wago": "1.86ms",
+                      "wazero": "319µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2453,8 +2453,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "crc32",
                       "workload": "table-driven checksum",
-                      "wago": "1.07ms",
-                      "wazero": "224µs",
+                      "wago": "1.17ms",
+                      "wazero": "237µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2462,8 +2462,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "sha256",
                       "workload": "SHA-256 hash",
-                      "wago": "3.95ms",
-                      "wazero": "431µs",
+                      "wago": "4.14ms",
+                      "wazero": "473µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2471,8 +2471,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "12.4ms",
-                      "wazero": "1.39ms",
+                      "wago": "12.9ms",
+                      "wazero": "1.28ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2480,17 +2480,17 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "17.2ms",
-                      "wazero": "5.92ms",
+                      "wago": "3.01ms",
+                      "wazero": "6.21ms",
                       "comparison": "",
-                      "result": "dragline behind"
+                      "result": "dragline ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "27.5ms",
-                      "wazero": "1.01ms",
+                      "wago": "26.7ms",
+                      "wazero": "946µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2498,17 +2498,26 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "10.8ms",
-                      "wazero": "883µs",
+                      "wago": "667µs",
+                      "wazero": "764µs",
                       "comparison": "",
-                      "result": "dragline behind"
+                      "result": "dragline ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Lua 5.4",
                       "workload": "interpreter · 270 KB",
-                      "wago": "148.4ms",
-                      "wazero": "85.2ms",
+                      "wago": "157.1ms",
+                      "wazero": "87.8ms",
+                      "comparison": "",
+                      "result": "dragline behind"
+                    },
+                    {
+                      "group": "Real-world programs — full compile: decode + validate + codegen",
+                      "label": "SQLite 3.46",
+                      "workload": "database engine · 920 KB",
+                      "wago": "532.5ms",
+                      "wazero": "348.7ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2516,8 +2525,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "4034.5ms",
-                      "wazero": "3079.2ms",
+                      "wago": "4167.2ms",
+                      "wazero": "3279.1ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2525,8 +2534,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB, 17k funcs",
-                      "wago": "16750.5ms",
-                      "wazero": "5392ms",
+                      "wago": "14892.7ms",
+                      "wazero": "5645.5ms",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -2541,7 +2550,7 @@
                       "label": "tiny",
                       "workload": "smallest valid module",
                       "wago": "4.4µs",
-                      "wazero": "8.1µs",
+                      "wazero": "8.3µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2558,8 +2567,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "4.4µs",
-                      "wazero": "8.1µs",
+                      "wago": "4.5µs",
+                      "wazero": "8.4µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2568,7 +2577,7 @@
                       "label": "linked_list",
                       "workload": "dependent-load chase",
                       "wago": "4.8µs",
-                      "wazero": "18.7µs",
+                      "wazero": "13.9µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2576,8 +2585,8 @@
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "4.9µs",
-                      "wazero": "28.4µs",
+                      "wago": "5µs",
+                      "wazero": "17.3µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2585,8 +2594,8 @@
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "5.4µs",
-                      "wazero": "47.7µs",
+                      "wago": "5.5µs",
+                      "wazero": "25.8µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2594,8 +2603,8 @@
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "5.4µs",
-                      "wazero": "60.8µs",
+                      "wago": "5.5µs",
+                      "wazero": "26µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2603,8 +2612,8 @@
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "5.4µs",
-                      "wazero": "62.6µs",
+                      "wago": "5.5µs",
+                      "wazero": "26.8µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2613,7 +2622,7 @@
                       "label": "json-as",
                       "workload": "JSON SWAR",
                       "wago": "20.8µs",
-                      "wazero": "14.5µs",
+                      "wazero": "13.8µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2621,8 +2630,8 @@
                       "group": "AssemblyScript",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "6.9µs",
-                      "wazero": "12µs",
+                      "wago": "7µs",
+                      "wazero": "11µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2630,8 +2639,8 @@
                       "group": "AssemblyScript",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "17.4µs",
-                      "wazero": "16.1µs",
+                      "wago": "17.8µs",
+                      "wazero": "15.1µs",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -2681,7 +2690,7 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
-                      "wago": "2.2 MB",
+                      "wago": "1.1 MB",
                       "wazero": "2.4 MB",
                       "comparison": "",
                       "result": "dragline ahead"
@@ -2708,8 +2717,8 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "779.8 MB",
-                      "wazero": "408.2 MB",
+                      "wago": "786.4 MB",
+                      "wazero": "408.3 MB",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2735,8 +2744,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
-                      "wago": "2950",
-                      "wazero": "6430",
+                      "wago": "1806",
+                      "wazero": "6433",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2753,8 +2762,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "409699",
-                      "wazero": "482211",
+                      "wago": "409629",
+                      "wazero": "482086",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2762,8 +2771,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "1060376",
-                      "wazero": "462275",
+                      "wago": "1043811",
+                      "wazero": "462812",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -2777,8 +2786,8 @@
                       "group": "Micro ops",
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "7.7ns",
-                      "wazero": "28.3ns",
+                      "wago": "8.1ns",
+                      "wazero": "29.9ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2786,8 +2795,8 @@
                       "group": "Micro ops",
                       "label": "Iterative fib",
                       "workload": "fib_iter loop",
-                      "wago": "87.9ns",
-                      "wazero": "34.1ns",
+                      "wago": "110.2ns",
+                      "wazero": "36.6ns",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2795,8 +2804,8 @@
                       "group": "Micro ops",
                       "label": "Recursive fib",
                       "workload": "fib_rec",
-                      "wago": "1.61ms",
-                      "wazero": "2.12ms",
+                      "wago": "1.66ms",
+                      "wazero": "2.22ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2804,8 +2813,8 @@
                       "group": "Micro ops",
                       "label": "Dispatch",
                       "workload": "call_indirect apply",
-                      "wago": "77.6ns",
-                      "wazero": "31.2ns",
+                      "wago": "101.1ns",
+                      "wazero": "31.9ns",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2813,8 +2822,8 @@
                       "group": "Compute kernels",
                       "label": "Linked list",
                       "workload": "dependent-load chase",
-                      "wago": "12.6µs",
-                      "wazero": "10.8µs",
+                      "wago": "12.1µs",
+                      "wazero": "11.2µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2822,8 +2831,8 @@
                       "group": "Compute kernels",
                       "label": "Recursive tree",
                       "workload": "memory_tree, loads + calls",
-                      "wago": "71.6µs",
-                      "wazero": "23.5µs",
+                      "wago": "73.2µs",
+                      "wazero": "22.4µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2831,17 +2840,17 @@
                       "group": "Compute kernels",
                       "label": "Sieve",
                       "workload": "Eratosthenes",
-                      "wago": "158µs",
-                      "wazero": "125µs",
+                      "wago": "131µs",
+                      "wazero": "129µs",
                       "comparison": "",
-                      "result": "dragline behind"
+                      "result": "tie"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "Mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "442µs",
-                      "wazero": "262µs",
+                      "wago": "324µs",
+                      "wazero": "273µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2849,8 +2858,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "656µs",
-                      "wazero": "354µs",
+                      "wago": "684µs",
+                      "wazero": "372µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2858,8 +2867,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Spectral norm",
                       "workload": "AᵀA power iteration + div",
-                      "wago": "671µs",
-                      "wazero": "954µs",
+                      "wago": "691µs",
+                      "wazero": "1.01ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2867,8 +2876,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Fannkuch-redux",
                       "workload": "permutation pancake-flips",
-                      "wago": "3.41ms",
-                      "wazero": "1.42ms",
+                      "wago": "3.49ms",
+                      "wazero": "1.48ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2876,8 +2885,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Matrix multiply",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "220µs",
-                      "wazero": "313µs",
+                      "wago": "205µs",
+                      "wazero": "334µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2885,8 +2894,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Quicksort",
                       "workload": "recursive int sort",
-                      "wago": "102µs",
-                      "wazero": "182µs",
+                      "wago": "104µs",
+                      "wazero": "189µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2894,8 +2903,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "CRC-32",
                       "workload": "table-driven checksum",
-                      "wago": "24µs",
-                      "wazero": "22.1µs",
+                      "wago": "24.5µs",
+                      "wazero": "22.8µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2903,8 +2912,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "SHA-256",
                       "workload": "64-round hash, 8 KiB",
-                      "wago": "51µs",
-                      "wazero": "53.7µs",
+                      "wago": "52.3µs",
+                      "wazero": "55.9µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -2912,8 +2921,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "816µs",
-                      "wazero": "362µs",
+                      "wago": "930µs",
+                      "wazero": "377µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2921,8 +2930,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON serialize",
                       "workload": "json-as, SWAR",
-                      "wago": "72.7µs",
-                      "wazero": "31.7µs",
+                      "wago": "95µs",
+                      "wazero": "33.4µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2930,8 +2939,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "77.4µs",
-                      "wazero": "62.8µs",
+                      "wago": "181µs",
+                      "wazero": "66.1µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2939,8 +2948,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as, SWAR",
-                      "wago": "666µs",
-                      "wazero": "464µs",
+                      "wago": "683µs",
+                      "wazero": "481µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2948,8 +2957,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "UTF transcode",
                       "workload": "utf-as, SWAR",
-                      "wago": "217µs",
-                      "wazero": "205µs",
+                      "wago": "1.36ms",
+                      "wazero": "213µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2957,8 +2966,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON serialize",
                       "workload": "json-as SIMD",
-                      "wago": "145µs",
-                      "wazero": "39.8µs",
+                      "wago": "111µs",
+                      "wazero": "41.8µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2966,8 +2975,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON deserialize",
                       "workload": "json-as SIMD",
-                      "wago": "212µs",
-                      "wazero": "79.9µs",
+                      "wago": "244µs",
+                      "wazero": "83.8µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2975,8 +2984,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as SIMD, 4 KiB",
-                      "wago": "3.56ms",
-                      "wazero": "520µs",
+                      "wago": "3.70ms",
+                      "wazero": "539µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -2984,8 +2993,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "UTF transcode",
                       "workload": "utf-as SIMD, mixed text",
-                      "wago": "773µs",
-                      "wazero": "69µs",
+                      "wago": "797µs",
+                      "wazero": "72.4µs",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -3008,64 +3017,64 @@
                     {
                       "label": "Compile latency",
                       "workload": "fib_rec module",
-                      "wago": "9.7µs",
-                      "wazero": "21.3µs",
+                      "wago": "12.8µs",
+                      "wazero": "29.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "Instantiate latency",
                       "workload": "fib_rec startup + mapping",
-                      "wago": "770.9ns",
-                      "wazero": "7.4µs",
+                      "wago": "4.2µs",
+                      "wazero": "7.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "20.8ns",
-                      "wazero": "19.6ns",
+                      "wago": "90.4ns",
+                      "wazero": "21.3ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
                     {
                       "label": "Exec latency",
                       "workload": "fib_rec recursion",
-                      "wago": "1.05ms",
-                      "wazero": "1.57ms",
+                      "wago": "1.12ms",
+                      "wazero": "1.60ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "141µs",
-                      "wazero": "145µs",
+                      "wago": "140µs",
+                      "wazero": "151µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "247µs",
-                      "wazero": "234µs",
+                      "wago": "267µs",
+                      "wazero": "244µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
                     {
                       "label": "SHA-256",
                       "workload": "hash 8 KiB",
-                      "wago": "28.2µs",
-                      "wazero": "44.1µs",
+                      "wago": "24.6µs",
+                      "wazero": "45µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
                     {
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "38.3µs",
-                      "wazero": "42µs",
+                      "wago": "38.8µs",
+                      "wazero": "43.6µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -3079,8 +3088,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "8.8µs",
-                      "wazero": "21.5µs",
+                      "wago": "11.6µs",
+                      "wazero": "29.1µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3088,8 +3097,8 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "9.7µs",
-                      "wazero": "21.3µs",
+                      "wago": "12.8µs",
+                      "wazero": "29.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3097,8 +3106,8 @@
                       "group": "Micro modules",
                       "label": "dispatch",
                       "workload": "call_indirect table",
-                      "wago": "17.2µs",
-                      "wazero": "34.2µs",
+                      "wago": "22.4µs",
+                      "wazero": "49.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3106,8 +3115,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "346µs",
-                      "wazero": "612µs",
+                      "wago": "414µs",
+                      "wazero": "730µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3115,8 +3124,8 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "15.4µs",
-                      "wazero": "35.2µs",
+                      "wago": "19.7µs",
+                      "wazero": "51.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3124,8 +3133,8 @@
                       "group": "Compute kernels",
                       "label": "memory_tree",
                       "workload": "loads + calls",
-                      "wago": "19.3µs",
-                      "wazero": "39.2µs",
+                      "wago": "24.8µs",
+                      "wazero": "56.7µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3133,8 +3142,8 @@
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "19.4µs",
-                      "wazero": "43.7µs",
+                      "wago": "23.5µs",
+                      "wazero": "63.7µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3142,8 +3151,8 @@
                       "group": "Compute kernels",
                       "label": "mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "20.5µs",
-                      "wazero": "38µs",
+                      "wago": "26.2µs",
+                      "wazero": "54.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3151,8 +3160,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "108µs",
-                      "wazero": "192µs",
+                      "wago": "115µs",
+                      "wazero": "267µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3160,8 +3169,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "spectralnorm",
                       "workload": "AᵀA power iteration",
-                      "wago": "82.3µs",
-                      "wazero": "187µs",
+                      "wago": "91.1µs",
+                      "wazero": "277µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3169,8 +3178,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "fannkuch",
                       "workload": "permutation pancake-flips",
-                      "wago": "131µs",
-                      "wazero": "346µs",
+                      "wago": "144µs",
+                      "wazero": "521µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3178,8 +3187,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "63.3µs",
-                      "wazero": "161µs",
+                      "wago": "77.5µs",
+                      "wazero": "242µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3187,8 +3196,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "quicksort",
                       "workload": "recursive int sort",
-                      "wago": "65.2µs",
-                      "wazero": "162µs",
+                      "wago": "74.7µs",
+                      "wazero": "236µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3196,8 +3205,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "crc32",
                       "workload": "table-driven checksum",
-                      "wago": "41.5µs",
-                      "wazero": "99.8µs",
+                      "wago": "49.9µs",
+                      "wazero": "148µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3205,8 +3214,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "sha256",
                       "workload": "SHA-256 hash",
-                      "wago": "98.4µs",
-                      "wazero": "227µs",
+                      "wago": "106µs",
+                      "wazero": "326µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3214,8 +3223,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "249µs",
-                      "wazero": "591µs",
+                      "wago": "281µs",
+                      "wazero": "873µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3223,8 +3232,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "1.31ms",
-                      "wazero": "3.84ms",
+                      "wago": "1.37ms",
+                      "wazero": "4.44ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3232,8 +3241,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "340µs",
-                      "wazero": "437µs",
+                      "wago": "373µs",
+                      "wazero": "581µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3241,8 +3250,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "206µs",
-                      "wazero": "385µs",
+                      "wago": "243µs",
+                      "wazero": "547µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3250,8 +3259,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Lua 5.4",
                       "workload": "interpreter · 270 KB",
-                      "wago": "21.9ms",
-                      "wazero": "59.7ms",
+                      "wago": "22.1ms",
+                      "wazero": "67.7ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3259,8 +3268,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "SQLite 3.46",
                       "workload": "database engine · 920 KB",
-                      "wago": "83ms",
-                      "wazero": "249.2ms",
+                      "wago": "82.4ms",
+                      "wazero": "272.1ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3268,8 +3277,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "604.1ms",
-                      "wazero": "2320.2ms",
+                      "wago": "576.3ms",
+                      "wazero": "2411.9ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3277,8 +3286,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB, 17k funcs",
-                      "wago": "933.9ms",
-                      "wazero": "4068.2ms",
+                      "wago": "920.8ms",
+                      "wazero": "4252.6ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -3292,8 +3301,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "775.2ns",
-                      "wazero": "7.5µs",
+                      "wago": "4.2µs",
+                      "wazero": "8.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3301,8 +3310,8 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "770.9ns",
-                      "wazero": "7.4µs",
+                      "wago": "4.2µs",
+                      "wazero": "7.9µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3310,8 +3319,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "774.9ns",
-                      "wazero": "7.3µs",
+                      "wago": "4.2µs",
+                      "wazero": "7.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3319,53 +3328,53 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "1.5µs",
-                      "wazero": "10.1µs",
+                      "wago": "10.9µs",
+                      "wazero": "11µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "tie"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "718.4ns",
-                      "wazero": "12.5µs",
+                      "wago": "19.9µs",
+                      "wazero": "13.3µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "900.9ns",
-                      "wazero": "17.2µs",
+                      "wago": "36.6µs",
+                      "wazero": "19.5µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "908.4ns",
-                      "wazero": "17.4µs",
+                      "wago": "38.4µs",
+                      "wazero": "17.7µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "1µs",
-                      "wazero": "17.5µs",
+                      "wago": "37.5µs",
+                      "wazero": "17.9µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "AssemblyScript",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "5.6µs",
-                      "wazero": "9.9µs",
+                      "wago": "10µs",
+                      "wazero": "11.6µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3373,8 +3382,8 @@
                       "group": "AssemblyScript",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "1.1µs",
-                      "wazero": "8.4µs",
+                      "wago": "4.7µs",
+                      "wazero": "9.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3382,8 +3391,8 @@
                       "group": "AssemblyScript",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "3.1µs",
-                      "wazero": "10.6µs",
+                      "wago": "6.9µs",
+                      "wazero": "12µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -3433,7 +3442,7 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
-                      "wago": "372 KB",
+                      "wago": "368 KB",
                       "wazero": "2.5 MB",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3451,7 +3460,7 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "86.2 MB",
+                      "wago": "85.1 MB",
                       "wazero": "262.7 MB",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3460,8 +3469,8 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "57.8 MB",
-                      "wazero": "430.3 MB",
+                      "wago": "57.5 MB",
+                      "wazero": "430.4 MB",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3478,7 +3487,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "memory tree",
                       "workload": "calls + linear-memory access",
-                      "wago": "115",
+                      "wago": "114",
                       "wazero": "336",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3487,7 +3496,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
-                      "wago": "1260",
+                      "wago": "1257",
                       "wazero": "6353",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3505,7 +3514,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "73352",
+                      "wago": "73343",
                       "wazero": "468358",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3514,8 +3523,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "233207",
-                      "wazero": "414252",
+                      "wago": "233174",
+                      "wazero": "414255",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -3529,8 +3538,8 @@
                       "group": "Micro ops",
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "20.8ns",
-                      "wazero": "19.6ns",
+                      "wago": "90.4ns",
+                      "wazero": "21.3ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -3538,17 +3547,17 @@
                       "group": "Micro ops",
                       "label": "Iterative fib",
                       "workload": "fib_iter loop",
-                      "wago": "29.4ns",
-                      "wazero": "46.6ns",
+                      "wago": "95.5ns",
+                      "wazero": "48ns",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "Micro ops",
                       "label": "Recursive fib",
                       "workload": "fib_rec",
-                      "wago": "1.05ms",
-                      "wazero": "1.57ms",
+                      "wago": "1.12ms",
+                      "wazero": "1.60ms",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3556,8 +3565,8 @@
                       "group": "Micro ops",
                       "label": "Dispatch",
                       "workload": "call_indirect apply",
-                      "wago": "27.8ns",
-                      "wazero": "20.6ns",
+                      "wago": "102.2ns",
+                      "wazero": "22.3ns",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -3565,17 +3574,17 @@
                       "group": "Compute kernels",
                       "label": "Linked list",
                       "workload": "dependent-load chase",
-                      "wago": "5.5µs",
-                      "wazero": "7.2µs",
+                      "wago": "8.9µs",
+                      "wazero": "7.5µs",
                       "comparison": "",
-                      "result": "railshot ahead"
+                      "result": "railshot behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "Recursive tree",
                       "workload": "memory_tree, loads + calls",
                       "wago": "8.7µs",
-                      "wazero": "11.7µs",
+                      "wazero": "11.8µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3583,8 +3592,8 @@
                       "group": "Compute kernels",
                       "label": "Sieve",
                       "workload": "Eratosthenes",
-                      "wago": "97.1µs",
-                      "wazero": "97.1µs",
+                      "wago": "100µs",
+                      "wazero": "98µs",
                       "comparison": "",
                       "result": "tie"
                     },
@@ -3592,8 +3601,8 @@
                       "group": "Compute kernels",
                       "label": "Mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "212µs",
-                      "wazero": "263µs",
+                      "wago": "232µs",
+                      "wazero": "283µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3601,8 +3610,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "141µs",
-                      "wazero": "145µs",
+                      "wago": "140µs",
+                      "wazero": "151µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3610,8 +3619,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Spectral norm",
                       "workload": "AᵀA power iteration + div",
-                      "wago": "382µs",
-                      "wazero": "676µs",
+                      "wago": "361µs",
+                      "wazero": "703µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3619,8 +3628,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Fannkuch-redux",
                       "workload": "permutation pancake-flips",
-                      "wago": "1.21ms",
-                      "wazero": "988µs",
+                      "wago": "1.24ms",
+                      "wazero": "1.02ms",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -3628,8 +3637,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Matrix multiply",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "147µs",
-                      "wazero": "223µs",
+                      "wago": "93.1µs",
+                      "wazero": "228µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3637,8 +3646,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Quicksort",
                       "workload": "recursive int sort",
-                      "wago": "67.1µs",
-                      "wazero": "123µs",
+                      "wago": "68.7µs",
+                      "wazero": "140µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3646,8 +3655,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "CRC-32",
                       "workload": "table-driven checksum",
-                      "wago": "22.6µs",
-                      "wazero": "23.9µs",
+                      "wago": "23.9µs",
+                      "wazero": "25.4µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3655,8 +3664,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "SHA-256",
                       "workload": "64-round hash, 8 KiB",
-                      "wago": "28.2µs",
-                      "wazero": "44.1µs",
+                      "wago": "24.6µs",
+                      "wazero": "45µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3664,8 +3673,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "247µs",
-                      "wazero": "234µs",
+                      "wago": "267µs",
+                      "wazero": "244µs",
                       "comparison": "",
                       "result": "railshot behind"
                     },
@@ -3673,7 +3682,7 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON serialize",
                       "workload": "json-as, SWAR",
-                      "wago": "18.5µs",
+                      "wago": "18.6µs",
                       "wazero": "21.3µs",
                       "comparison": "",
                       "result": "railshot ahead"
@@ -3682,8 +3691,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "38.3µs",
-                      "wazero": "42µs",
+                      "wago": "38.8µs",
+                      "wazero": "43.6µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3691,8 +3700,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as, SWAR",
-                      "wago": "387µs",
-                      "wazero": "388µs",
+                      "wago": "402µs",
+                      "wazero": "397µs",
                       "comparison": "",
                       "result": "tie"
                     },
@@ -3700,17 +3709,17 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "UTF transcode",
                       "workload": "utf-as, SWAR",
-                      "wago": "104µs",
+                      "wago": "80.9µs",
                       "wazero": "103µs",
                       "comparison": "",
-                      "result": "tie"
+                      "result": "railshot ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
                       "label": "JSON serialize",
                       "workload": "json-as SIMD",
-                      "wago": "23.7µs",
-                      "wazero": "26.2µs",
+                      "wago": "22.6µs",
+                      "wazero": "27.1µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3718,8 +3727,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON deserialize",
                       "workload": "json-as SIMD",
-                      "wago": "49.3µs",
-                      "wazero": "53.7µs",
+                      "wago": "49.1µs",
+                      "wazero": "56.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     },
@@ -3727,8 +3736,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as SIMD, 4 KiB",
-                      "wago": "428µs",
-                      "wazero": "418µs",
+                      "wago": "434µs",
+                      "wazero": "440µs",
                       "comparison": "",
                       "result": "tie"
                     },
@@ -3736,8 +3745,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "UTF transcode",
                       "workload": "utf-as SIMD, mixed text",
-                      "wago": "56.5µs",
-                      "wazero": "96.8µs",
+                      "wago": "51.8µs",
+                      "wazero": "98.2µs",
                       "comparison": "",
                       "result": "railshot ahead"
                     }
@@ -3755,64 +3764,64 @@
                     {
                       "label": "Compile latency",
                       "workload": "fib_rec module",
-                      "wago": "21.3µs",
-                      "wazero": "21.3µs",
+                      "wago": "25.7µs",
+                      "wazero": "29.3µs",
                       "comparison": "",
-                      "result": "tie"
+                      "result": "dragline ahead"
                     },
                     {
                       "label": "Instantiate latency",
                       "workload": "fib_rec startup + mapping",
-                      "wago": "770.9ns",
-                      "wazero": "7.4µs",
+                      "wago": "4.4µs",
+                      "wazero": "7.9µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "5.3ns",
-                      "wazero": "19.6ns",
+                      "wago": "7.5ns",
+                      "wazero": "21.3ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "Exec latency",
                       "workload": "fib_rec recursion",
-                      "wago": "1.06ms",
-                      "wazero": "1.57ms",
+                      "wago": "1.07ms",
+                      "wazero": "1.60ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "135µs",
-                      "wazero": "145µs",
+                      "wago": "139µs",
+                      "wazero": "151µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "201µs",
-                      "wazero": "234µs",
+                      "wago": "211µs",
+                      "wazero": "244µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "SHA-256",
                       "workload": "hash 8 KiB",
-                      "wago": "26µs",
-                      "wazero": "44.1µs",
+                      "wago": "26.4µs",
+                      "wazero": "45µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
                     {
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "26.3µs",
-                      "wazero": "42µs",
+                      "wago": "25.9µs",
+                      "wazero": "43.6µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     }
@@ -3826,8 +3835,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "14µs",
-                      "wazero": "21.5µs",
+                      "wago": "18µs",
+                      "wazero": "29.1µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -3835,26 +3844,26 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "21.3µs",
-                      "wazero": "21.3µs",
+                      "wago": "25.7µs",
+                      "wazero": "29.3µs",
                       "comparison": "",
-                      "result": "tie"
+                      "result": "dragline ahead"
                     },
                     {
                       "group": "Micro modules",
                       "label": "dispatch",
                       "workload": "call_indirect table",
-                      "wago": "36µs",
-                      "wazero": "34.2µs",
+                      "wago": "46.1µs",
+                      "wazero": "49.3µs",
                       "comparison": "",
-                      "result": "dragline behind"
+                      "result": "dragline ahead"
                     },
                     {
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "1.40ms",
-                      "wazero": "612µs",
+                      "wago": "1.57ms",
+                      "wazero": "730µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3862,8 +3871,8 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "48.4µs",
-                      "wazero": "35.2µs",
+                      "wago": "55.5µs",
+                      "wazero": "51.2µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3871,8 +3880,8 @@
                       "group": "Compute kernels",
                       "label": "memory_tree",
                       "workload": "loads + calls",
-                      "wago": "67.4µs",
-                      "wazero": "39.2µs",
+                      "wago": "76.7µs",
+                      "wazero": "56.7µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3880,8 +3889,8 @@
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "64µs",
-                      "wazero": "43.7µs",
+                      "wago": "69.1µs",
+                      "wazero": "63.7µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3889,8 +3898,8 @@
                       "group": "Compute kernels",
                       "label": "mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "85.7µs",
-                      "wazero": "38µs",
+                      "wago": "93.7µs",
+                      "wazero": "54.9µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3898,8 +3907,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "1.45ms",
-                      "wazero": "192µs",
+                      "wago": "1.56ms",
+                      "wazero": "267µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3907,8 +3916,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "spectralnorm",
                       "workload": "AᵀA power iteration",
-                      "wago": "658µs",
-                      "wazero": "187µs",
+                      "wago": "701µs",
+                      "wazero": "277µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3916,8 +3925,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "fannkuch",
                       "workload": "permutation pancake-flips",
-                      "wago": "1.90ms",
-                      "wazero": "346µs",
+                      "wago": "1.99ms",
+                      "wazero": "521µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3925,8 +3934,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "584µs",
-                      "wazero": "161µs",
+                      "wago": "627µs",
+                      "wazero": "242µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3934,8 +3943,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "quicksort",
                       "workload": "recursive int sort",
-                      "wago": "414µs",
-                      "wazero": "162µs",
+                      "wago": "448µs",
+                      "wazero": "236µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3943,8 +3952,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "crc32",
                       "workload": "table-driven checksum",
-                      "wago": "223µs",
-                      "wazero": "99.8µs",
+                      "wago": "237µs",
+                      "wazero": "148µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3952,8 +3961,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "sha256",
                       "workload": "SHA-256 hash",
-                      "wago": "1.64ms",
-                      "wazero": "227µs",
+                      "wago": "1.76ms",
+                      "wazero": "326µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3961,8 +3970,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "4.39ms",
-                      "wazero": "591µs",
+                      "wago": "4.62ms",
+                      "wazero": "873µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3970,8 +3979,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "17.7ms",
-                      "wazero": "3.84ms",
+                      "wago": "18.6ms",
+                      "wazero": "4.44ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3979,8 +3988,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "10.1ms",
-                      "wazero": "437µs",
+                      "wago": "10.8ms",
+                      "wazero": "581µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3988,8 +3997,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "3.46ms",
-                      "wazero": "385µs",
+                      "wago": "3.72ms",
+                      "wazero": "547µs",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -3997,8 +4006,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Lua 5.4",
                       "workload": "interpreter · 270 KB",
-                      "wago": "93.1ms",
-                      "wazero": "59.7ms",
+                      "wago": "96.9ms",
+                      "wazero": "67.7ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -4006,8 +4015,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "SQLite 3.46",
                       "workload": "database engine · 920 KB",
-                      "wago": "825.4ms",
-                      "wazero": "249.2ms",
+                      "wago": "850.1ms",
+                      "wazero": "272.1ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -4015,8 +4024,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "3116.4ms",
-                      "wazero": "2320.2ms",
+                      "wago": "3178.4ms",
+                      "wazero": "2411.9ms",
                       "comparison": "",
                       "result": "dragline behind"
                     },
@@ -4024,8 +4033,8 @@
                       "group": "Real-world programs — full compile: decode + validate + codegen",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB, 17k funcs",
-                      "wago": "10344.4ms",
-                      "wazero": "4068.2ms",
+                      "wago": "10743.5ms",
+                      "wazero": "4252.6ms",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -4039,8 +4048,8 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "smallest valid module",
-                      "wago": "772.9ns",
-                      "wazero": "7.5µs",
+                      "wago": "4.3µs",
+                      "wazero": "8.4µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4048,8 +4057,8 @@
                       "group": "Micro modules",
                       "label": "fib_rec",
                       "workload": "recursive fib",
-                      "wago": "770.9ns",
-                      "wazero": "7.4µs",
+                      "wago": "4.4µs",
+                      "wazero": "7.9µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4057,8 +4066,8 @@
                       "group": "Micro modules",
                       "label": "many_funcs",
                       "workload": "thousands of functions",
-                      "wago": "799.9ns",
-                      "wazero": "7.3µs",
+                      "wago": "4.3µs",
+                      "wazero": "7.8µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4066,53 +4075,53 @@
                       "group": "Compute kernels",
                       "label": "linked_list",
                       "workload": "dependent-load chase",
-                      "wago": "1.6µs",
-                      "wazero": "10.1µs",
+                      "wago": "11.2µs",
+                      "wazero": "11µs",
                       "comparison": "",
-                      "result": "dragline ahead"
+                      "result": "tie"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "sieve",
                       "workload": "Eratosthenes",
-                      "wago": "1.7µs",
-                      "wazero": "12.5µs",
+                      "wago": "20µs",
+                      "wazero": "13.3µs",
                       "comparison": "",
-                      "result": "dragline ahead"
+                      "result": "dragline behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "leapfrog integrator",
-                      "wago": "2µs",
-                      "wazero": "17.2µs",
+                      "wago": "36.4µs",
+                      "wazero": "19.5µs",
                       "comparison": "",
-                      "result": "dragline ahead"
+                      "result": "dragline behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "2µs",
-                      "wazero": "17.4µs",
+                      "wago": "36.8µs",
+                      "wazero": "17.7µs",
                       "comparison": "",
-                      "result": "dragline ahead"
+                      "result": "dragline behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive ray tracer",
-                      "wago": "2µs",
-                      "wazero": "17.5µs",
+                      "wago": "37.7µs",
+                      "wazero": "17.9µs",
                       "comparison": "",
-                      "result": "dragline ahead"
+                      "result": "dragline behind"
                     },
                     {
                       "group": "AssemblyScript",
                       "label": "json-as",
                       "workload": "JSON SWAR",
-                      "wago": "5.4µs",
-                      "wazero": "9.9µs",
+                      "wago": "9.8µs",
+                      "wazero": "11.6µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4120,8 +4129,8 @@
                       "group": "AssemblyScript",
                       "label": "blake-as",
                       "workload": "BLAKE3 SWAR",
-                      "wago": "1.1µs",
-                      "wazero": "8.4µs",
+                      "wago": "4.6µs",
+                      "wazero": "9.3µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4129,8 +4138,8 @@
                       "group": "AssemblyScript",
                       "label": "utf-as",
                       "workload": "UTF SWAR transcode",
-                      "wago": "3.1µs",
-                      "wazero": "10.6µs",
+                      "wago": "6.9µs",
+                      "wazero": "12µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     }
@@ -4198,7 +4207,7 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "456.7 MB",
+                      "wago": "338.8 MB",
                       "wazero": "262.7 MB",
                       "comparison": "",
                       "result": "dragline behind"
@@ -4207,10 +4216,10 @@
                       "group": "Full compile — Go heap bytes",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "450 MB",
-                      "wazero": "430.3 MB",
+                      "wago": "373.9 MB",
+                      "wazero": "430.4 MB",
                       "comparison": "",
-                      "result": "dragline behind"
+                      "result": "dragline ahead"
                     },
                     {
                       "group": "Full compile — Go allocation objects",
@@ -4225,7 +4234,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "memory tree",
                       "workload": "calls + linear-memory access",
-                      "wago": "398",
+                      "wago": "397",
                       "wazero": "336",
                       "comparison": "",
                       "result": "dragline behind"
@@ -4234,7 +4243,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "json-as",
                       "workload": "AssemblyScript JSON",
-                      "wago": "3088",
+                      "wago": "2931",
                       "wazero": "6353",
                       "comparison": "",
                       "result": "dragline ahead"
@@ -4243,7 +4252,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "blake-as",
                       "workload": "AssemblyScript BLAKE3",
-                      "wago": "1499",
+                      "wago": "1493",
                       "wazero": "997",
                       "comparison": "",
                       "result": "dragline behind"
@@ -4252,7 +4261,7 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "esbuild",
                       "workload": "Go bundler · 12 MB",
-                      "wago": "699376",
+                      "wago": "679729",
                       "wazero": "468358",
                       "comparison": "",
                       "result": "dragline behind"
@@ -4261,8 +4270,8 @@
                       "group": "Full compile — Go allocation objects",
                       "label": "Ruby 3.3",
                       "workload": "interpreter · 16 MB",
-                      "wago": "980706",
-                      "wazero": "414252",
+                      "wago": "905822",
+                      "wazero": "414255",
                       "comparison": "",
                       "result": "dragline behind"
                     }
@@ -4276,8 +4285,8 @@
                       "group": "Micro ops",
                       "label": "Call overhead",
                       "workload": "tiny host → wasm call",
-                      "wago": "5.3ns",
-                      "wazero": "19.6ns",
+                      "wago": "7.5ns",
+                      "wazero": "21.3ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4285,8 +4294,8 @@
                       "group": "Micro ops",
                       "label": "Iterative fib",
                       "workload": "fib_iter loop",
-                      "wago": "25.1ns",
-                      "wazero": "46.6ns",
+                      "wago": "19.3ns",
+                      "wazero": "48ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4294,8 +4303,8 @@
                       "group": "Micro ops",
                       "label": "Recursive fib",
                       "workload": "fib_rec",
-                      "wago": "1.06ms",
-                      "wazero": "1.57ms",
+                      "wago": "1.07ms",
+                      "wazero": "1.60ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4303,8 +4312,8 @@
                       "group": "Micro ops",
                       "label": "Dispatch",
                       "workload": "call_indirect apply",
-                      "wago": "19.3ns",
-                      "wazero": "20.6ns",
+                      "wago": "4.8ns",
+                      "wazero": "22.3ns",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4312,8 +4321,8 @@
                       "group": "Compute kernels",
                       "label": "Linked list",
                       "workload": "dependent-load chase",
-                      "wago": "3.8µs",
-                      "wazero": "7.2µs",
+                      "wago": "5.5µs",
+                      "wazero": "7.5µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4321,8 +4330,8 @@
                       "group": "Compute kernels",
                       "label": "Recursive tree",
                       "workload": "memory_tree, loads + calls",
-                      "wago": "5.3µs",
-                      "wazero": "11.7µs",
+                      "wago": "4.8µs",
+                      "wazero": "11.8µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4330,8 +4339,8 @@
                       "group": "Compute kernels",
                       "label": "Sieve",
                       "workload": "Eratosthenes",
-                      "wago": "46.4µs",
-                      "wazero": "97.1µs",
+                      "wago": "49.1µs",
+                      "wazero": "98µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4339,8 +4348,8 @@
                       "group": "Compute kernels",
                       "label": "Mandelbrot",
                       "workload": "f64 escape-time",
-                      "wago": "209µs",
-                      "wazero": "263µs",
+                      "wago": "219µs",
+                      "wazero": "283µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4348,8 +4357,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "N-body",
                       "workload": "leapfrog solar-system integrator",
-                      "wago": "135µs",
-                      "wazero": "145µs",
+                      "wago": "139µs",
+                      "wazero": "151µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4358,7 +4367,7 @@
                       "label": "Spectral norm",
                       "workload": "AᵀA power iteration + div",
                       "wago": "344µs",
-                      "wazero": "676µs",
+                      "wazero": "703µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4366,8 +4375,8 @@
                       "group": "Benchmarks Game (Rust)",
                       "label": "Fannkuch-redux",
                       "workload": "permutation pancake-flips",
-                      "wago": "910µs",
-                      "wazero": "988µs",
+                      "wago": "956µs",
+                      "wazero": "1.02ms",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4375,8 +4384,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Matrix multiply",
                       "workload": "64³ f64 multiply-add",
-                      "wago": "94.1µs",
-                      "wazero": "223µs",
+                      "wago": "76.3µs",
+                      "wazero": "228µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4384,8 +4393,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Quicksort",
                       "workload": "recursive int sort",
-                      "wago": "57.6µs",
-                      "wazero": "123µs",
+                      "wago": "66.3µs",
+                      "wazero": "140µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4393,8 +4402,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "CRC-32",
                       "workload": "table-driven checksum",
-                      "wago": "20.7µs",
-                      "wazero": "23.9µs",
+                      "wago": "21.8µs",
+                      "wazero": "25.4µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4402,8 +4411,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "SHA-256",
                       "workload": "64-round hash, 8 KiB",
-                      "wago": "26µs",
-                      "wazero": "44.1µs",
+                      "wago": "26.4µs",
+                      "wazero": "45µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4411,8 +4420,8 @@
                       "group": "Crypto & graphics (Rust)",
                       "label": "Ray tracer",
                       "workload": "recursive Whitted, depth-4 mirrors",
-                      "wago": "201µs",
-                      "wazero": "234µs",
+                      "wago": "211µs",
+                      "wazero": "244µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4420,7 +4429,7 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON serialize",
                       "workload": "json-as, SWAR",
-                      "wago": "13.7µs",
+                      "wago": "14.5µs",
                       "wazero": "21.3µs",
                       "comparison": "",
                       "result": "dragline ahead"
@@ -4429,8 +4438,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "JSON deserialize",
                       "workload": "json-as, SWAR",
-                      "wago": "26.3µs",
-                      "wazero": "42µs",
+                      "wago": "25.9µs",
+                      "wazero": "43.6µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4438,8 +4447,8 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as, SWAR",
-                      "wago": "372µs",
-                      "wazero": "388µs",
+                      "wago": "383µs",
+                      "wazero": "397µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4447,7 +4456,7 @@
                       "group": "Real-world (AssemblyScript)",
                       "label": "UTF transcode",
                       "workload": "utf-as, SWAR",
-                      "wago": "67.8µs",
+                      "wago": "45.9µs",
                       "wazero": "103µs",
                       "comparison": "",
                       "result": "dragline ahead"
@@ -4456,8 +4465,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON serialize",
                       "workload": "json-as SIMD",
-                      "wago": "20.7µs",
-                      "wazero": "26.2µs",
+                      "wago": "21.6µs",
+                      "wazero": "27.1µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4465,8 +4474,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "JSON deserialize",
                       "workload": "json-as SIMD",
-                      "wago": "41.6µs",
-                      "wazero": "53.7µs",
+                      "wago": "39.3µs",
+                      "wazero": "56.2µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     },
@@ -4474,8 +4483,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "BLAKE3 hash",
                       "workload": "blake-as SIMD, 4 KiB",
-                      "wago": "418µs",
-                      "wazero": "418µs",
+                      "wago": "437µs",
+                      "wazero": "440µs",
                       "comparison": "",
                       "result": "tie"
                     },
@@ -4483,8 +4492,8 @@
                       "group": "AssemblyScript SIMD",
                       "label": "UTF transcode",
                       "workload": "utf-as SIMD, mixed text",
-                      "wago": "46µs",
-                      "wazero": "96.8µs",
+                      "wago": "46.8µs",
+                      "wazero": "98.2µs",
                       "comparison": "",
                       "result": "dragline ahead"
                     }
@@ -4495,7 +4504,7 @@
           }
         }
       },
-      "comparisonCount": 319
+      "comparisonCount": 320
     }
   },
   "machineReadable": {

@@ -17,9 +17,9 @@
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
-      "ref": "00a5355d1d20b3e205f5e710178493f33a10ce01",
-      "commit": "00a5355d1d20b3e205f5e710178493f33a10ce01",
-      "commitUrl": "https://github.com/wago-org/wago/commit/00a5355d1d20b3e205f5e710178493f33a10ce01"
+      "ref": "a6f3810b85b31764c55d7e4757be1f8f6314c0d7",
+      "commit": "a6f3810b85b31764c55d7e4757be1f8f6314c0d7",
+      "commitUrl": "https://github.com/wago-org/wago/commit/a6f3810b85b31764c55d7e4757be1f8f6314c0d7"
     },
     "identity": {
       "name": "wago",
@@ -42,7 +42,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -53,7 +53,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -64,7 +64,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -75,7 +75,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -86,7 +86,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
           }
         ]
       }
@@ -139,7 +139,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -149,7 +149,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -159,7 +159,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -169,7 +169,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -179,7 +179,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -189,7 +189,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -199,7 +199,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -219,7 +219,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -239,7 +239,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -249,7 +249,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -259,7 +259,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -269,7 +269,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -279,7 +279,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -289,7 +289,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -299,7 +299,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -309,7 +309,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -319,7 +319,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -329,7 +329,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -339,7 +339,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -349,7 +349,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -359,7 +359,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -369,7 +369,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -379,7 +379,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -389,7 +389,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -399,7 +399,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -409,7 +409,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -419,7 +419,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -429,7 +429,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -439,7 +439,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -449,7 +449,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -459,7 +459,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -469,7 +469,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -479,7 +479,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -489,7 +489,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -499,7 +499,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -509,7 +509,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -519,7 +519,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -529,7 +529,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -539,7 +539,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -549,7 +549,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -559,7 +559,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -569,7 +569,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -579,7 +579,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -589,7 +589,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -599,7 +599,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -609,7 +609,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -619,7 +619,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -629,7 +629,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -639,7 +639,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -649,7 +649,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -659,7 +659,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -669,7 +669,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -679,7 +679,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -689,7 +689,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -699,7 +699,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -709,7 +709,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -719,7 +719,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -729,7 +729,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -739,7 +739,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -749,7 +749,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -759,7 +759,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
             }
           ]
         }
@@ -767,7 +767,7 @@
     },
     "compatibility": {
       "verification": {
-        "wagoCommit": "00a5355d1d20b3e205f5e710178493f33a10ce01",
+        "wagoCommit": "a6f3810b85b31764c55d7e4757be1f8f6314c0d7",
         "host": "darwin/arm64",
         "pass": 96972,
         "fail": 0,
@@ -867,51 +867,51 @@
     "evidence": {
       "readme": {
         "label": "README",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/README.md#L48-L97"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/README.md#L48-L97"
       },
       "engine": {
         "label": "pure-Go no-cgo JIT package contract",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/doc.go#L1-L8"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/doc.go#L1-L8"
       },
       "features": {
         "label": "feature matrix",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/FEATURES.md#L45-L63"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/FEATURES.md#L45-L63"
       },
       "verification": {
         "label": "public verification",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/VERIFICATION.md#L1-L15"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/VERIFICATION.md#L1-L15"
       },
       "ci": {
         "label": "native CI matrix",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/.github/workflows/ci.yml#L92-L214"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/.github/workflows/ci.yml#L92-L214"
       },
       "api": {
         "label": "public API source",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/api.go#L1675-L1715"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/api.go#L1675-L1715"
       },
       "concurrency": {
         "label": "race-tested concurrent compile, instantiate, and execute coverage",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/runtime_concurrency_test.go#L13-L82"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/runtime_concurrency_test.go#L13-L82"
       },
       "nativeExecution": {
         "label": "native execution serialization",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/instance_native_context.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/instance_native_context.go#L10-L67"
       },
       "memory": {
         "label": "borrowed memory-view contract",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/memory.go#L84-L113"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/memory.go#L84-L113"
       },
       "policy": {
         "label": "resource policy enforcement",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/src/wago/policy.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/src/wago/policy.go#L10-L67"
       },
       "testSurface": {
         "label": "unified repository test surface",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/tests/README.md#L1-L44"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/tests/README.md#L1-L44"
       },
       "wazeroFixtures": {
         "label": "wazero fixture manifest",
-        "url": "https://github.com/wago-org/wago/blob/00a5355d1d20b3e205f5e710178493f33a10ce01/tests/regressions/README.md#L1-L31"
+        "url": "https://github.com/wago-org/wago/blob/a6f3810b85b31764c55d7e4757be1f8f6314c0d7/tests/regressions/README.md#L1-L31"
       }
     }
   },
@@ -1523,26 +1523,20 @@
                       "engines": {
                         "railshot": "4.56ms",
                         "dragline": "8.75ms",
-                        "wazero": "5.97ms",
-                        "wasmtime": "10.9ms",
-                        "v8": "11ms",
-                        "wavm": "82.4ms"
+                        "wazero": "5.97ms"
                       },
                       "comparison": "",
                       "result": "context"
                     },
                     {
-                      "label": "Compile memory growth",
-                      "workload": "Mean peak RSS above tiny module · fresh process",
-                      "wago": "8.4 MB",
-                      "wazero": "21.5 MB",
+                      "label": "Compile heap",
+                      "workload": "Go heap bytes allocated per full compile · geometric mean",
+                      "wago": "144.2 KB",
+                      "wazero": "1.1 MB",
                       "engines": {
-                        "railshot": "8.4 MB",
-                        "dragline": "23.6 MB",
-                        "wazero": "21.5 MB",
-                        "wasmtime": "38.1 MB",
-                        "v8": "2.1 MB",
-                        "wavm": "178 MB"
+                        "railshot": "144.2 KB",
+                        "dragline": "772 KB",
+                        "wazero": "1.1 MB"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1555,10 +1549,7 @@
                       "engines": {
                         "railshot": "2.7µs",
                         "dragline": "2.7µs",
-                        "wazero": "13.1µs",
-                        "wasmtime": "3.4µs",
-                        "v8": "11.4µs",
-                        "wavm": "78.2µs"
+                        "wazero": "13.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1571,10 +1562,7 @@
                       "engines": {
                         "railshot": "8.7µs",
                         "dragline": "20.8µs",
-                        "wazero": "13.1µs",
-                        "wasmtime": "8.4µs",
-                        "v8": "7µs",
-                        "wavm": "8µs"
+                        "wazero": "13.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1587,10 +1575,7 @@
                       "engines": {
                         "railshot": "8ns",
                         "dragline": "7.9ns",
-                        "wazero": "27.7ns",
-                        "wasmtime": "16ns",
-                        "v8": "3ns",
-                        "wavm": "41.8ns"
+                        "wazero": "27.7ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1603,10 +1588,7 @@
                       "engines": {
                         "railshot": "4.56ms",
                         "dragline": "8.76ms",
-                        "wazero": "5.98ms",
-                        "wasmtime": "10.9ms",
-                        "v8": "11.1ms",
-                        "wavm": "82.5ms"
+                        "wazero": "5.98ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1626,10 +1608,7 @@
                       "engines": {
                         "railshot": "17.6µs",
                         "dragline": "167µs",
-                        "wazero": "49.9µs",
-                        "wasmtime": "2.82ms",
-                        "v8": "9.15ms",
-                        "wavm": "7.28ms"
+                        "wazero": "49.9µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1643,10 +1622,7 @@
                       "engines": {
                         "railshot": "19.4µs",
                         "dragline": "193µs",
-                        "wazero": "52.3µs",
-                        "wasmtime": "2.82ms",
-                        "v8": "9.12ms",
-                        "wavm": "7.78ms"
+                        "wazero": "52.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1660,10 +1636,7 @@
                       "engines": {
                         "railshot": "28.6µs",
                         "dragline": "214µs",
-                        "wazero": "76.1µs",
-                        "wasmtime": "3.39ms",
-                        "v8": "9.19ms",
-                        "wavm": "9.48ms"
+                        "wazero": "76.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1677,10 +1650,7 @@
                       "engines": {
                         "railshot": "521µs",
                         "dragline": "2.96ms",
-                        "wazero": "1.15ms",
-                        "wasmtime": "9.06ms",
-                        "v8": "9.71ms",
-                        "wavm": "96.8ms"
+                        "wazero": "1.15ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1694,10 +1664,7 @@
                       "engines": {
                         "railshot": "29.9µs",
                         "dragline": "255µs",
-                        "wazero": "81.8µs",
-                        "wasmtime": "2.89ms",
-                        "v8": "10.9ms",
-                        "wavm": "10.5ms"
+                        "wazero": "81.8µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1711,10 +1678,7 @@
                       "engines": {
                         "railshot": "39.3µs",
                         "dragline": "194µs",
-                        "wazero": "95µs",
-                        "wasmtime": "3.00ms",
-                        "v8": "9.01ms",
-                        "wavm": "13.7ms"
+                        "wazero": "95µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1728,10 +1692,7 @@
                       "engines": {
                         "railshot": "34.2µs",
                         "dragline": "273µs",
-                        "wazero": "94.7µs",
-                        "wasmtime": "2.89ms",
-                        "v8": "9.00ms",
-                        "wavm": "13.6ms"
+                        "wazero": "94.7µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1745,10 +1706,7 @@
                       "engines": {
                         "railshot": "38.7µs",
                         "dragline": "400µs",
-                        "wazero": "89.1µs",
-                        "wasmtime": "2.93ms",
-                        "v8": "10ms",
-                        "wavm": "14.4ms"
+                        "wazero": "89.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1762,10 +1720,7 @@
                       "engines": {
                         "railshot": "177µs",
                         "dragline": "3.71ms",
-                        "wazero": "420µs",
-                        "wasmtime": "3.78ms",
-                        "v8": "10.8ms",
-                        "wavm": "22.7ms"
+                        "wazero": "420µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1779,10 +1734,7 @@
                       "engines": {
                         "railshot": "144µs",
                         "dragline": "2.47ms",
-                        "wazero": "414µs",
-                        "wasmtime": "3.68ms",
-                        "v8": "9.32ms",
-                        "wavm": "47.4ms"
+                        "wazero": "414µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1796,10 +1748,7 @@
                       "engines": {
                         "railshot": "216µs",
                         "dragline": "418µs",
-                        "wazero": "664µs",
-                        "wasmtime": "4.12ms",
-                        "v8": "9.26ms",
-                        "wavm": "32.3ms"
+                        "wazero": "664µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1813,10 +1762,7 @@
                       "engines": {
                         "railshot": "124µs",
                         "dragline": "1.84ms",
-                        "wazero": "366µs",
-                        "wasmtime": "3.45ms",
-                        "v8": "9.04ms",
-                        "wavm": "45.4ms"
+                        "wazero": "366µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1830,10 +1776,7 @@
                       "engines": {
                         "railshot": "117µs",
                         "dragline": "1.79ms",
-                        "wazero": "348µs",
-                        "wasmtime": "3.62ms",
-                        "v8": "9.10ms",
-                        "wavm": "31.9ms"
+                        "wazero": "348µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1847,10 +1790,7 @@
                       "engines": {
                         "railshot": "72.1µs",
                         "dragline": "1.15ms",
-                        "wazero": "228µs",
-                        "wasmtime": "3.41ms",
-                        "v8": "9.90ms",
-                        "wavm": "24.5ms"
+                        "wazero": "228µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1864,10 +1804,7 @@
                       "engines": {
                         "railshot": "166µs",
                         "dragline": "4.10ms",
-                        "wazero": "461µs",
-                        "wasmtime": "4.01ms",
-                        "v8": "10.4ms",
-                        "wavm": "30.6ms"
+                        "wazero": "461µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1881,10 +1818,7 @@
                       "engines": {
                         "railshot": "422µs",
                         "dragline": "12.7ms",
-                        "wazero": "1.26ms",
-                        "wasmtime": "5.81ms",
-                        "v8": "10.8ms",
-                        "wavm": "33.9ms"
+                        "wazero": "1.26ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1898,10 +1832,7 @@
                       "engines": {
                         "railshot": "2.15ms",
                         "dragline": "3.10ms",
-                        "wazero": "5.83ms",
-                        "wasmtime": "19ms",
-                        "v8": "10.6ms",
-                        "wavm": "287ms"
+                        "wazero": "5.83ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1915,10 +1846,7 @@
                       "engines": {
                         "railshot": "520µs",
                         "dragline": "26.2ms",
-                        "wazero": "891µs",
-                        "wasmtime": "6.78ms",
-                        "v8": "9.86ms",
-                        "wavm": "66.2ms"
+                        "wazero": "891µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1932,10 +1860,7 @@
                       "engines": {
                         "railshot": "372µs",
                         "dragline": "689µs",
-                        "wazero": "757µs",
-                        "wasmtime": "5.03ms",
-                        "v8": "10.9ms",
-                        "wavm": "41ms"
+                        "wazero": "757µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1949,10 +1874,7 @@
                       "engines": {
                         "railshot": "30.6ms",
                         "dragline": "155.5ms",
-                        "wazero": "85.1ms",
-                        "wasmtime": "238.5ms",
-                        "v8": "10.8ms",
-                        "wavm": "4891.6ms"
+                        "wazero": "85.1ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1966,10 +1888,7 @@
                       "engines": {
                         "railshot": "115.2ms",
                         "dragline": "524ms",
-                        "wazero": "349.5ms",
-                        "wasmtime": "916.9ms",
-                        "v8": "14.3ms",
-                        "wavm": "23755.8ms"
+                        "wazero": "349.5ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -1983,10 +1902,7 @@
                       "engines": {
                         "railshot": "863.4ms",
                         "dragline": "4091ms",
-                        "wazero": "3090.5ms",
-                        "wasmtime": "6727.1ms",
-                        "v8": "47.7ms",
-                        "wavm": "223392ms"
+                        "wazero": "3090.5ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2000,10 +1916,7 @@
                       "engines": {
                         "railshot": "1256.6ms",
                         "dragline": "14659.2ms",
-                        "wazero": "5423.5ms",
-                        "wasmtime": "12557.9ms",
-                        "v8": "62.1ms",
-                        "wavm": "270111.8ms"
+                        "wazero": "5423.5ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2023,10 +1936,7 @@
                       "engines": {
                         "railshot": "1.4µs",
                         "dragline": "1.4µs",
-                        "wazero": "8.4µs",
-                        "wasmtime": "694.7ns",
-                        "v8": "3µs",
-                        "wavm": "44.6µs"
+                        "wazero": "8.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2040,10 +1950,7 @@
                       "engines": {
                         "railshot": "1.5µs",
                         "dragline": "1.5µs",
-                        "wazero": "8.2µs",
-                        "wasmtime": "698.5ns",
-                        "v8": "2.8µs",
-                        "wavm": "45.6µs"
+                        "wazero": "8.2µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2057,10 +1964,7 @@
                       "engines": {
                         "railshot": "1.5µs",
                         "dragline": "1.5µs",
-                        "wazero": "8.4µs",
-                        "wasmtime": "726.6ns",
-                        "v8": "4.3µs",
-                        "wavm": "209µs"
+                        "wazero": "8.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2074,10 +1978,7 @@
                       "engines": {
                         "railshot": "2.9µs",
                         "dragline": "2.9µs",
-                        "wazero": "13.2µs",
-                        "wasmtime": "6µs",
-                        "v8": "22.4µs",
-                        "wavm": "51.3µs"
+                        "wazero": "13.2µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2091,10 +1992,7 @@
                       "engines": {
                         "railshot": "3.8µs",
                         "dragline": "3.8µs",
-                        "wazero": "17.3µs",
-                        "wasmtime": "6.3µs",
-                        "v8": "19.9µs",
-                        "wavm": "52.2µs"
+                        "wazero": "17.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2108,10 +2006,7 @@
                       "engines": {
                         "railshot": "3.8µs",
                         "dragline": "4µs",
-                        "wazero": "25.5µs",
-                        "wasmtime": "6.3µs",
-                        "v8": "21.1µs",
-                        "wavm": "50.3µs"
+                        "wazero": "25.5µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2125,10 +2020,7 @@
                       "engines": {
                         "railshot": "3.8µs",
                         "dragline": "4µs",
-                        "wazero": "25.6µs",
-                        "wasmtime": "6.2µs",
-                        "v8": "20.9µs",
-                        "wavm": "51.6µs"
+                        "wazero": "25.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2142,10 +2034,7 @@
                       "engines": {
                         "railshot": "4µs",
                         "dragline": "4µs",
-                        "wazero": "25.6µs",
-                        "wasmtime": "6.4µs",
-                        "v8": "25.7µs",
-                        "wavm": "56.1µs"
+                        "wazero": "25.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2159,10 +2048,7 @@
                       "engines": {
                         "railshot": "12.5µs",
                         "dragline": "12.5µs",
-                        "wazero": "14µs",
-                        "wasmtime": "9.5µs",
-                        "v8": "29.3µs",
-                        "wavm": "1.97ms"
+                        "wazero": "14µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2176,10 +2062,7 @@
                       "engines": {
                         "railshot": "1.9µs",
                         "dragline": "1.9µs",
-                        "wazero": "11.2µs",
-                        "wasmtime": "9.5µs",
-                        "v8": "22.5µs",
-                        "wavm": "66.2µs"
+                        "wazero": "11.2µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2193,10 +2076,7 @@
                       "engines": {
                         "railshot": "4.9µs",
                         "dragline": "4.8µs",
-                        "wazero": "15.5µs",
-                        "wasmtime": "9.9µs",
-                        "v8": "32.5µs",
-                        "wavm": "73.9µs"
+                        "wazero": "15.5µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2418,10 +2298,7 @@
                       "engines": {
                         "railshot": "8ns",
                         "dragline": "7.9ns",
-                        "wazero": "27.7ns",
-                        "wasmtime": "16ns",
-                        "v8": "3ns",
-                        "wavm": "41.8ns"
+                        "wazero": "27.7ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2435,10 +2312,7 @@
                       "engines": {
                         "railshot": "20.3ns",
                         "dragline": "42.7ns",
-                        "wazero": "34.9ns",
-                        "wasmtime": "21.5ns",
-                        "v8": "14.7ns",
-                        "wavm": "42.9ns"
+                        "wazero": "34.9ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2452,10 +2326,7 @@
                       "engines": {
                         "railshot": "1.28ms",
                         "dragline": "1.62ms",
-                        "wazero": "2.14ms",
-                        "wasmtime": "1.84ms",
-                        "v8": "721µs",
-                        "wavm": "1.27ms"
+                        "wazero": "2.14ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2469,10 +2340,7 @@
                       "engines": {
                         "railshot": "29.2ns",
                         "dragline": "29.1ns",
-                        "wazero": "30.6ns",
-                        "wasmtime": "17.1ns",
-                        "v8": "11.1ns",
-                        "wavm": "42.6ns"
+                        "wazero": "30.6ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2486,10 +2354,7 @@
                       "engines": {
                         "railshot": "8.5µs",
                         "dragline": "15.4µs",
-                        "wazero": "10.9µs",
-                        "wasmtime": "8.1µs",
-                        "v8": "6.3µs",
-                        "wavm": "6.7µs"
+                        "wazero": "10.9µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2503,10 +2368,7 @@
                       "engines": {
                         "railshot": "9.4µs",
                         "dragline": "72.2µs",
-                        "wazero": "21.6µs",
-                        "wasmtime": "8µs",
-                        "v8": "6.6µs",
-                        "wavm": "6.8µs"
+                        "wazero": "21.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2520,10 +2382,7 @@
                       "engines": {
                         "railshot": "81.5µs",
                         "dragline": "191µs",
-                        "wazero": "126µs",
-                        "wasmtime": "70.6µs",
-                        "v8": "52µs",
-                        "wavm": "34.4µs"
+                        "wazero": "126µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2537,10 +2396,7 @@
                       "engines": {
                         "railshot": "250µs",
                         "dragline": "317µs",
-                        "wazero": "264µs",
-                        "wasmtime": "222µs",
-                        "v8": "222µs",
-                        "wavm": "238µs"
+                        "wazero": "264µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2554,10 +2410,7 @@
                       "engines": {
                         "railshot": "280µs",
                         "dragline": "668µs",
-                        "wazero": "355µs",
-                        "wasmtime": "248µs",
-                        "v8": "247µs",
-                        "wavm": "254µs"
+                        "wazero": "355µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2571,10 +2424,7 @@
                       "engines": {
                         "railshot": "653µs",
                         "dragline": "760µs",
-                        "wazero": "959µs",
-                        "wasmtime": "654µs",
-                        "v8": "659µs",
-                        "wavm": "671µs"
+                        "wazero": "959µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2588,10 +2438,7 @@
                       "engines": {
                         "railshot": "1.12ms",
                         "dragline": "3.52ms",
-                        "wazero": "1.43ms",
-                        "wasmtime": "1.12ms",
-                        "v8": "1.14ms",
-                        "wavm": "1.08ms"
+                        "wazero": "1.43ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2605,10 +2452,7 @@
                       "engines": {
                         "railshot": "146µs",
                         "dragline": "371µs",
-                        "wazero": "313µs",
-                        "wasmtime": "101µs",
-                        "v8": "84.6µs",
-                        "wavm": "99.3µs"
+                        "wazero": "313µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2622,10 +2466,7 @@
                       "engines": {
                         "railshot": "58.4µs",
                         "dragline": "197µs",
-                        "wazero": "193µs",
-                        "wasmtime": "48.6µs",
-                        "v8": "49.9µs",
-                        "wavm": "51.2µs"
+                        "wazero": "193µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2639,10 +2480,7 @@
                       "engines": {
                         "railshot": "17µs",
                         "dragline": "25.5µs",
-                        "wazero": "22.1µs",
-                        "wasmtime": "19.5µs",
-                        "v8": "18.1µs",
-                        "wavm": "17.7µs"
+                        "wazero": "22.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2656,10 +2494,7 @@
                       "engines": {
                         "railshot": "40.7µs",
                         "dragline": "58.8µs",
-                        "wazero": "54µs",
-                        "wasmtime": "33.1µs",
-                        "v8": "27.8µs",
-                        "wavm": "27.7µs"
+                        "wazero": "54µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2673,10 +2508,7 @@
                       "engines": {
                         "railshot": "382µs",
                         "dragline": "918µs",
-                        "wazero": "363µs",
-                        "wasmtime": "311µs",
-                        "v8": "299µs",
-                        "wavm": "307µs"
+                        "wazero": "363µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2690,10 +2522,7 @@
                       "engines": {
                         "railshot": "23.7µs",
                         "dragline": "94.7µs",
-                        "wazero": "31.8µs",
-                        "wasmtime": "17.9µs",
-                        "v8": "16.6µs",
-                        "wavm": "13.8µs"
+                        "wazero": "31.8µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2707,10 +2536,7 @@
                       "engines": {
                         "railshot": "42.4µs",
                         "dragline": "177µs",
-                        "wazero": "63.4µs",
-                        "wasmtime": "33.8µs",
-                        "v8": "33.1µs",
-                        "wavm": "27.5µs"
+                        "wazero": "63.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2724,10 +2550,7 @@
                       "engines": {
                         "railshot": "690µs",
                         "dragline": "694µs",
-                        "wazero": "466µs",
-                        "wasmtime": "463µs",
-                        "v8": "471µs",
-                        "wavm": "435µs"
+                        "wazero": "466µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2741,10 +2564,7 @@
                       "engines": {
                         "railshot": "161µs",
                         "dragline": "1.33ms",
-                        "wazero": "206µs",
-                        "wasmtime": "141µs",
-                        "v8": "127µs",
-                        "wavm": "115µs"
+                        "wazero": "206µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2758,10 +2578,7 @@
                       "engines": {
                         "railshot": "28.8µs",
                         "dragline": "110µs",
-                        "wazero": "40µs",
-                        "wasmtime": "25.4µs",
-                        "v8": "26.4µs",
-                        "wavm": "15.8µs"
+                        "wazero": "40µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2775,10 +2592,7 @@
                       "engines": {
                         "railshot": "55.6µs",
                         "dragline": "243µs",
-                        "wazero": "80µs",
-                        "wasmtime": "42.4µs",
-                        "v8": "41.3µs",
-                        "wavm": "35.3µs"
+                        "wazero": "80µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2792,10 +2606,7 @@
                       "engines": {
                         "railshot": "558µs",
                         "dragline": "3.63ms",
-                        "wazero": "523µs",
-                        "wasmtime": "400µs",
-                        "v8": "425µs",
-                        "wavm": "341µs"
+                        "wazero": "523µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2809,10 +2620,7 @@
                       "engines": {
                         "railshot": "54.6µs",
                         "dragline": "783µs",
-                        "wazero": "69.1µs",
-                        "wasmtime": "47µs",
-                        "v8": "59.3µs",
-                        "wavm": "57.3µs"
+                        "wazero": "69.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2841,26 +2649,20 @@
                       "engines": {
                         "railshot": "8.57ms",
                         "dragline": "14.1ms",
-                        "wazero": "10.4ms",
-                        "wasmtime": "9.74ms",
-                        "v8": "13.8ms",
-                        "wavm": "57.5ms"
+                        "wazero": "10.4ms"
                       },
                       "comparison": "",
                       "result": "context"
                     },
                     {
-                      "label": "Compile memory growth",
-                      "workload": "Mean peak RSS above tiny module · fresh process",
-                      "wago": "9.6 MB",
-                      "wazero": "22.3 MB",
+                      "label": "Compile heap",
+                      "workload": "Go heap bytes allocated per full compile · geometric mean",
+                      "wago": "162.1 KB",
+                      "wazero": "1.1 MB",
                       "engines": {
-                        "railshot": "9.6 MB",
-                        "dragline": "13.8 MB",
-                        "wazero": "22.3 MB",
-                        "wasmtime": "42.8 MB",
-                        "v8": "2.1 MB",
-                        "wavm": "391.8 MB"
+                        "railshot": "162.1 KB",
+                        "dragline": "423.3 KB",
+                        "wazero": "1.1 MB"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2873,10 +2675,7 @@
                       "engines": {
                         "railshot": "1.2µs",
                         "dragline": "1.5µs",
-                        "wazero": "11µs",
-                        "wasmtime": "3.1µs",
-                        "v8": "7.7µs",
-                        "wavm": "49.5µs"
+                        "wazero": "11µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2889,10 +2688,7 @@
                       "engines": {
                         "railshot": "7.3µs",
                         "dragline": "5.8µs",
-                        "wazero": "9.9µs",
-                        "wasmtime": "7µs",
-                        "v8": "4.8µs",
-                        "wavm": "6.9µs"
+                        "wazero": "9.9µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2905,10 +2701,7 @@
                       "engines": {
                         "railshot": "7.6ns",
                         "dragline": "6.1ns",
-                        "wazero": "19.5ns",
-                        "wasmtime": "12.4ns",
-                        "v8": "2.3ns",
-                        "wavm": "32.5ns"
+                        "wazero": "19.5ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2921,10 +2714,7 @@
                       "engines": {
                         "railshot": "8.57ms",
                         "dragline": "14.1ms",
-                        "wazero": "10.4ms",
-                        "wasmtime": "9.74ms",
-                        "v8": "13.8ms",
-                        "wavm": "57.6ms"
+                        "wazero": "10.4ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2944,10 +2734,7 @@
                       "engines": {
                         "railshot": "10µs",
                         "dragline": "15.6µs",
-                        "wazero": "25.4µs",
-                        "wasmtime": "5.34ms",
-                        "v8": "14.6ms",
-                        "wavm": "9.34ms"
+                        "wazero": "25.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2961,10 +2748,7 @@
                       "engines": {
                         "railshot": "10.7µs",
                         "dragline": "23.8µs",
-                        "wazero": "23.5µs",
-                        "wasmtime": "4.87ms",
-                        "v8": "12.5ms",
-                        "wavm": "8.35ms"
+                        "wazero": "23.5µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2978,10 +2762,7 @@
                       "engines": {
                         "railshot": "19.1µs",
                         "dragline": "39.7µs",
-                        "wazero": "48.1µs",
-                        "wasmtime": "5.88ms",
-                        "v8": "11.7ms",
-                        "wavm": "10.8ms"
+                        "wazero": "48.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -2995,10 +2776,7 @@
                       "engines": {
                         "railshot": "366µs",
                         "dragline": "1.53ms",
-                        "wazero": "667µs",
-                        "wasmtime": "9.80ms",
-                        "v8": "16.9ms",
-                        "wavm": "42.2ms"
+                        "wazero": "667µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3012,10 +2790,7 @@
                       "engines": {
                         "railshot": "17.4µs",
                         "dragline": "53µs",
-                        "wazero": "41µs",
-                        "wasmtime": "5.69ms",
-                        "v8": "13.8ms",
-                        "wavm": "11ms"
+                        "wazero": "41µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3029,10 +2804,7 @@
                       "engines": {
                         "railshot": "21.3µs",
                         "dragline": "72.3µs",
-                        "wazero": "50.6µs",
-                        "wasmtime": "4.99ms",
-                        "v8": "11.8ms",
-                        "wavm": "10.1ms"
+                        "wazero": "50.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3046,10 +2818,7 @@
                       "engines": {
                         "railshot": "20.8µs",
                         "dragline": "68.4µs",
-                        "wazero": "49.3µs",
-                        "wasmtime": "5.41ms",
-                        "v8": "12ms",
-                        "wavm": "10.9ms"
+                        "wazero": "49.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3063,10 +2832,7 @@
                       "engines": {
                         "railshot": "22.2µs",
                         "dragline": "89.7µs",
-                        "wazero": "44.5µs",
-                        "wasmtime": "5.26ms",
-                        "v8": "12.6ms",
-                        "wavm": "10.4ms"
+                        "wazero": "44.5µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3080,10 +2846,7 @@
                       "engines": {
                         "railshot": "106µs",
                         "dragline": "1.55ms",
-                        "wazero": "215µs",
-                        "wasmtime": "5.60ms",
-                        "v8": "12.1ms",
-                        "wavm": "18.2ms"
+                        "wazero": "215µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3097,10 +2860,7 @@
                       "engines": {
                         "railshot": "80.5µs",
                         "dragline": "685µs",
-                        "wazero": "210µs",
-                        "wasmtime": "5.50ms",
-                        "v8": "11.9ms",
-                        "wavm": "19.8ms"
+                        "wazero": "210µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3114,10 +2874,7 @@
                       "engines": {
                         "railshot": "135µs",
                         "dragline": "2.11ms",
-                        "wazero": "398µs",
-                        "wasmtime": "6.77ms",
-                        "v8": "11.6ms",
-                        "wavm": "23.5ms"
+                        "wazero": "398µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3131,10 +2888,7 @@
                       "engines": {
                         "railshot": "64.7µs",
                         "dragline": "654µs",
-                        "wazero": "183µs",
-                        "wasmtime": "6.18ms",
-                        "v8": "11.7ms",
-                        "wavm": "19.1ms"
+                        "wazero": "183µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3148,10 +2902,7 @@
                       "engines": {
                         "railshot": "67.3µs",
                         "dragline": "434µs",
-                        "wazero": "186µs",
-                        "wasmtime": "5.65ms",
-                        "v8": "11.7ms",
-                        "wavm": "17.2ms"
+                        "wazero": "186µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3165,10 +2916,7 @@
                       "engines": {
                         "railshot": "43µs",
                         "dragline": "232µs",
-                        "wazero": "114µs",
-                        "wasmtime": "5.80ms",
-                        "v8": "14ms",
-                        "wavm": "14.9ms"
+                        "wazero": "114µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3182,10 +2930,7 @@
                       "engines": {
                         "railshot": "97.2µs",
                         "dragline": "1.79ms",
-                        "wazero": "268µs",
-                        "wasmtime": "5.99ms",
-                        "v8": "14.2ms",
-                        "wavm": "18.8ms"
+                        "wazero": "268µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3199,10 +2944,7 @@
                       "engines": {
                         "railshot": "270µs",
                         "dragline": "4.52ms",
-                        "wazero": "701µs",
-                        "wasmtime": "6.21ms",
-                        "v8": "14.4ms",
-                        "wavm": "24.6ms"
+                        "wazero": "701µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3216,10 +2958,7 @@
                       "engines": {
                         "railshot": "1.35ms",
                         "dragline": "19.1ms",
-                        "wazero": "4.12ms",
-                        "wasmtime": "8.18ms",
-                        "v8": "14.2ms",
-                        "wavm": "165.1ms"
+                        "wazero": "4.12ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3233,10 +2972,7 @@
                       "engines": {
                         "railshot": "356µs",
                         "dragline": "10.7ms",
-                        "wazero": "455µs",
-                        "wasmtime": "7.17ms",
-                        "v8": "14.1ms",
-                        "wavm": "42ms"
+                        "wazero": "455µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3250,10 +2986,7 @@
                       "engines": {
                         "railshot": "218µs",
                         "dragline": "3.61ms",
-                        "wazero": "413µs",
-                        "wasmtime": "5.97ms",
-                        "v8": "14.4ms",
-                        "wavm": "27ms"
+                        "wazero": "413µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3267,10 +3000,7 @@
                       "engines": {
                         "railshot": "23.1ms",
                         "dragline": "95.8ms",
-                        "wazero": "64.1ms",
-                        "wasmtime": "29.3ms",
-                        "v8": "15.1ms",
-                        "wavm": "2757.3ms"
+                        "wazero": "64.1ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3284,10 +3014,7 @@
                       "engines": {
                         "railshot": "85.7ms",
                         "dragline": "826.7ms",
-                        "wazero": "264.7ms",
-                        "wasmtime": "76.3ms",
-                        "v8": "15.3ms",
-                        "wavm": "12936.2ms"
+                        "wazero": "264.7ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3301,10 +3028,7 @@
                       "engines": {
                         "railshot": "622.5ms",
                         "dragline": "3205.9ms",
-                        "wazero": "2428.5ms",
-                        "wasmtime": "566.4ms",
-                        "v8": "22.6ms",
-                        "wavm": "128981.5ms"
+                        "wazero": "2428.5ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3318,10 +3042,7 @@
                       "engines": {
                         "railshot": "966.8ms",
                         "dragline": "10840ms",
-                        "wazero": "4163.5ms",
-                        "wasmtime": "1086.6ms",
-                        "v8": "25.1ms",
-                        "wavm": "166923.8ms"
+                        "wazero": "4163.5ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3341,10 +3062,7 @@
                       "engines": {
                         "railshot": "820.6ns",
                         "dragline": "813.9ns",
-                        "wazero": "7.9µs",
-                        "wasmtime": "619.2ns",
-                        "v8": "1.2µs",
-                        "wavm": "25.6µs"
+                        "wazero": "7.9µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3358,10 +3076,7 @@
                       "engines": {
                         "railshot": "815.3ns",
                         "dragline": "834.2ns",
-                        "wazero": "8.1µs",
-                        "wasmtime": "637.9ns",
-                        "v8": "958.5ns",
-                        "wavm": "24.9µs"
+                        "wazero": "8.1µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3375,10 +3090,7 @@
                       "engines": {
                         "railshot": "834.7ns",
                         "dragline": "838.7ns",
-                        "wazero": "7.8µs",
-                        "wasmtime": "632.7ns",
-                        "v8": "1.3µs",
-                        "wavm": "188µs"
+                        "wazero": "7.8µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3392,10 +3104,7 @@
                       "engines": {
                         "railshot": "1.6µs",
                         "dragline": "1.6µs",
-                        "wazero": "10.6µs",
-                        "wasmtime": "5.3µs",
-                        "v8": "20.4µs",
-                        "wavm": "33.4µs"
+                        "wazero": "10.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3409,10 +3118,7 @@
                       "engines": {
                         "railshot": "810.4ns",
                         "dragline": "1.9µs",
-                        "wazero": "12.9µs",
-                        "wasmtime": "5.3µs",
-                        "v8": "18.6µs",
-                        "wavm": "34.5µs"
+                        "wazero": "12.9µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3426,10 +3132,7 @@
                       "engines": {
                         "railshot": "995.5ns",
                         "dragline": "2.4µs",
-                        "wazero": "18.4µs",
-                        "wasmtime": "5.3µs",
-                        "v8": "19.2µs",
-                        "wavm": "34.7µs"
+                        "wazero": "18.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3443,10 +3146,7 @@
                       "engines": {
                         "railshot": "995.2ns",
                         "dragline": "2.4µs",
-                        "wazero": "18.4µs",
-                        "wasmtime": "5.3µs",
-                        "v8": "18.7µs",
-                        "wavm": "34.2µs"
+                        "wazero": "18.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3460,10 +3160,7 @@
                       "engines": {
                         "railshot": "1.2µs",
                         "dragline": "2.3µs",
-                        "wazero": "18.2µs",
-                        "wasmtime": "5.3µs",
-                        "v8": "18.7µs",
-                        "wavm": "35.6µs"
+                        "wazero": "18.2µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3477,10 +3174,7 @@
                       "engines": {
                         "railshot": "6.3µs",
                         "dragline": "5.8µs",
-                        "wazero": "10.6µs",
-                        "wasmtime": "10.2µs",
-                        "v8": "25.1µs",
-                        "wavm": "942µs"
+                        "wazero": "10.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3494,10 +3188,7 @@
                       "engines": {
                         "railshot": "1.2µs",
                         "dragline": "1.2µs",
-                        "wazero": "9.3µs",
-                        "wasmtime": "9.5µs",
-                        "v8": "22.5µs",
-                        "wavm": "43.2µs"
+                        "wazero": "9.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3511,10 +3202,7 @@
                       "engines": {
                         "railshot": "3.2µs",
                         "dragline": "3.2µs",
-                        "wazero": "11.6µs",
-                        "wasmtime": "10µs",
-                        "v8": "25.1µs",
-                        "wavm": "51.1µs"
+                        "wazero": "11.6µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3736,10 +3424,7 @@
                       "engines": {
                         "railshot": "7.6ns",
                         "dragline": "6.1ns",
-                        "wazero": "19.5ns",
-                        "wasmtime": "12.4ns",
-                        "v8": "2.3ns",
-                        "wavm": "32.5ns"
+                        "wazero": "19.5ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3753,10 +3438,7 @@
                       "engines": {
                         "railshot": "16.2ns",
                         "dragline": "15.4ns",
-                        "wazero": "47.5ns",
-                        "wasmtime": "16.5ns",
-                        "v8": "7.7ns",
-                        "wavm": "40.5ns"
+                        "wazero": "47.5ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3770,10 +3452,7 @@
                       "engines": {
                         "railshot": "1.10ms",
                         "dragline": "1.11ms",
-                        "wazero": "1.60ms",
-                        "wasmtime": "1.14ms",
-                        "v8": "597µs",
-                        "wavm": "863µs"
+                        "wazero": "1.60ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3787,10 +3466,7 @@
                       "engines": {
                         "railshot": "10.5ns",
                         "dragline": "5ns",
-                        "wazero": "21.1ns",
-                        "wasmtime": "13.2ns",
-                        "v8": "3ns",
-                        "wavm": "32.2ns"
+                        "wazero": "21.1ns"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3804,10 +3480,7 @@
                       "engines": {
                         "railshot": "5.8µs",
                         "dragline": "5µs",
-                        "wazero": "7.3µs",
-                        "wasmtime": "5.1µs",
-                        "v8": "3.3µs",
-                        "wavm": "6.7µs"
+                        "wazero": "7.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3821,10 +3494,7 @@
                       "engines": {
                         "railshot": "8.8µs",
                         "dragline": "5.2µs",
-                        "wazero": "11.8µs",
-                        "wasmtime": "5.2µs",
-                        "v8": "8.4µs",
-                        "wavm": "9.4µs"
+                        "wazero": "11.8µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3838,10 +3508,7 @@
                       "engines": {
                         "railshot": "101µs",
                         "dragline": "51.5µs",
-                        "wazero": "106µs",
-                        "wasmtime": "50.5µs",
-                        "v8": "51.3µs",
-                        "wavm": "50.9µs"
+                        "wazero": "106µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3855,10 +3522,7 @@
                       "engines": {
                         "railshot": "242µs",
                         "dragline": "235µs",
-                        "wazero": "285µs",
-                        "wasmtime": "208µs",
-                        "v8": "223µs",
-                        "wavm": "212µs"
+                        "wazero": "285µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3872,10 +3536,7 @@
                       "engines": {
                         "railshot": "149µs",
                         "dragline": "144µs",
-                        "wazero": "148µs",
-                        "wasmtime": "137µs",
-                        "v8": "130µs",
-                        "wavm": "130µs"
+                        "wazero": "148µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3889,10 +3550,7 @@
                       "engines": {
                         "railshot": "382µs",
                         "dragline": "346µs",
-                        "wazero": "709µs",
-                        "wasmtime": "379µs",
-                        "v8": "351µs",
-                        "wavm": "342µs"
+                        "wazero": "709µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3906,10 +3564,7 @@
                       "engines": {
                         "railshot": "1.27ms",
                         "dragline": "973µs",
-                        "wazero": "1.04ms",
-                        "wasmtime": "881µs",
-                        "v8": "882µs",
-                        "wavm": "837µs"
+                        "wazero": "1.04ms"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3923,10 +3578,7 @@
                       "engines": {
                         "railshot": "150µs",
                         "dragline": "92.9µs",
-                        "wazero": "228µs",
-                        "wasmtime": "76.2µs",
-                        "v8": "64.6µs",
-                        "wavm": "57.3µs"
+                        "wazero": "228µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3940,10 +3592,7 @@
                       "engines": {
                         "railshot": "71.4µs",
                         "dragline": "62.6µs",
-                        "wazero": "141µs",
-                        "wasmtime": "53.7µs",
-                        "v8": "54.4µs",
-                        "wavm": "72.2µs"
+                        "wazero": "141µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3957,10 +3606,7 @@
                       "engines": {
                         "railshot": "25.4µs",
                         "dragline": "22.7µs",
-                        "wazero": "25.8µs",
-                        "wasmtime": "22.7µs",
-                        "v8": "22.4µs",
-                        "wavm": "20.3µs"
+                        "wazero": "25.8µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3974,10 +3620,7 @@
                       "engines": {
                         "railshot": "29.4µs",
                         "dragline": "26.6µs",
-                        "wazero": "45.3µs",
-                        "wasmtime": "21.9µs",
-                        "v8": "22.9µs",
-                        "wavm": "21.2µs"
+                        "wazero": "45.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -3991,10 +3634,7 @@
                       "engines": {
                         "railshot": "265µs",
                         "dragline": "216µs",
-                        "wazero": "249µs",
-                        "wasmtime": "202µs",
-                        "v8": "202µs",
-                        "wavm": "199µs"
+                        "wazero": "249µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4008,10 +3648,7 @@
                       "engines": {
                         "railshot": "19.2µs",
                         "dragline": "15.2µs",
-                        "wazero": "21.7µs",
-                        "wasmtime": "13.9µs",
-                        "v8": "13.3µs",
-                        "wavm": "11.1µs"
+                        "wazero": "21.7µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4025,10 +3662,7 @@
                       "engines": {
                         "railshot": "38.8µs",
                         "dragline": "26.2µs",
-                        "wazero": "42.3µs",
-                        "wasmtime": "25.6µs",
-                        "v8": "27.4µs",
-                        "wavm": "18.2µs"
+                        "wazero": "42.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4042,10 +3676,7 @@
                       "engines": {
                         "railshot": "405µs",
                         "dragline": "391µs",
-                        "wazero": "397µs",
-                        "wasmtime": "393µs",
-                        "v8": "376µs",
-                        "wavm": "331µs"
+                        "wazero": "397µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4059,10 +3690,7 @@
                       "engines": {
                         "railshot": "105µs",
                         "dragline": "68.8µs",
-                        "wazero": "104µs",
-                        "wasmtime": "71.9µs",
-                        "v8": "67.1µs",
-                        "wavm": "60.4µs"
+                        "wazero": "104µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4076,10 +3704,7 @@
                       "engines": {
                         "railshot": "23.6µs",
                         "dragline": "23.4µs",
-                        "wazero": "27.4µs",
-                        "wasmtime": "20.6µs",
-                        "v8": "18.7µs",
-                        "wavm": "14.8µs"
+                        "wazero": "27.4µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4093,10 +3718,7 @@
                       "engines": {
                         "railshot": "49.6µs",
                         "dragline": "47.7µs",
-                        "wazero": "55.3µs",
-                        "wasmtime": "32.1µs",
-                        "v8": "32.4µs",
-                        "wavm": "28.2µs"
+                        "wazero": "55.3µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4110,10 +3732,7 @@
                       "engines": {
                         "railshot": "441µs",
                         "dragline": "438µs",
-                        "wazero": "437µs",
-                        "wasmtime": "402µs",
-                        "v8": "398µs",
-                        "wavm": "347µs"
+                        "wazero": "437µs"
                       },
                       "comparison": "",
                       "result": "context"
@@ -4127,10 +3746,7 @@
                       "engines": {
                         "railshot": "57.6µs",
                         "dragline": "47.4µs",
-                        "wazero": "99.1µs",
-                        "wasmtime": "102µs",
-                        "v8": "95.6µs",
-                        "wavm": "82.9µs"
+                        "wazero": "99.1µs"
                       },
                       "comparison": "",
                       "result": "context"

@@ -872,9 +872,6 @@
 .vs__backendpanel > .vs__main {
     width: 100%;
 }
-.vs__side--backend {
-    padding-inline: 6px 8px;
-}
 .vs__main {
     flex: 1;
     min-width: 0;
@@ -1004,41 +1001,6 @@
     background-color: #3f9d78;
     background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px);
     background-size: 5px 5px;
-}
-.vs__enginebtn {
-    appearance: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    width: 100%;
-    padding: 5px 7px;
-    border: 1px solid transparent;
-    border-radius: 7px;
-    background: transparent;
-    color: var(--text-soft);
-    font-family: var(--mono);
-    font-size: 9px;
-    cursor: pointer;
-}
-.vs__enginebtn .vs__dot {
-    width: 13px;
-    height: 7px;
-}
-.vs__enginebtn[aria-pressed="false"] {
-    opacity: 0.38;
-    filter: grayscale(1);
-}
-.vs__enginebtn[aria-pressed="true"] {
-    border-color: var(--line-2);
-    color: var(--text);
-}
-.vs__enginebtn:focus-visible {
-    outline: 2px solid var(--lilac);
-    outline-offset: 1px;
-}
-.vs__engines {
-    width: 92px;
-    align-items: stretch;
 }
 /* Category tabs: General / Compile / Instantiate / Exec (driven by tabs.ts). */
 .vs__tabs {
@@ -1366,17 +1328,6 @@
     }
     .vs__backendpanel {
         display: block;
-    }
-    .vs__side--backend {
-        order: -1;
-        border-top: 1px solid var(--line);
-    }
-    .vs__engines {
-        width: auto;
-        flex-wrap: wrap;
-    }
-    .vs__enginebtn {
-        width: auto;
     }
     .vs__row[data-engine-row],
     .vs__row[data-engine-row] .vs__line {

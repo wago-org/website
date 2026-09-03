@@ -14,51 +14,6 @@ export function initTabs(): void {
     .forEach(setupTablist);
 }
 
-// Engine chips are independent toggles: every architecture mirrors the same
-// selection, and each benchmark row rescales to the visible engines.
-export function initEngineToggles(): void {
-  const buttons = Array.from(
-    document.querySelectorAll<HTMLButtonElement>("[data-engine-toggle]")
-  );
-  if (!buttons.length) return;
-
-  const enabled = new Set(
-    buttons.map((button) => button.dataset.engineToggle).filter(Boolean) as string[]
-  );
-  const apply = (): void => {
-    buttons.forEach((button) => {
-      const engine = button.dataset.engineToggle ?? "";
-      button.setAttribute("aria-pressed", enabled.has(engine) ? "true" : "false");
-    });
-    document.querySelectorAll<HTMLElement>("[data-engine]").forEach((line) => {
-      line.hidden = !enabled.has(line.dataset.engine ?? "");
-    });
-    document.querySelectorAll<HTMLElement>("[data-engine-row]").forEach((row) => {
-      const lines = Array.from(row.querySelectorAll<HTMLElement>("[data-engine]:not([hidden])"));
-      const max = Math.max(1, ...lines.map((line) => Number(line.querySelector<HTMLElement>("[data-value]")?.dataset.value ?? 0)));
-      lines.forEach((line) => {
-        const bar = line.querySelector<HTMLElement>("[data-value]");
-        if (!bar) return;
-        const width = Math.max(4, Math.round(Number(bar.dataset.value ?? 0) / max * 100));
-        bar.dataset.width = String(width);
-        bar.style.width = `${width}%`;
-      });
-    });
-  };
-
-  buttons.forEach((button) => button.addEventListener("click", () => {
-    const engine = button.dataset.engineToggle ?? "";
-    if (enabled.has(engine)) {
-      if (enabled.size === 1) return;
-      enabled.delete(engine);
-    } else {
-      enabled.add(engine);
-    }
-    apply();
-  }));
-  apply();
-}
-
 function setupTablist(list: HTMLElement): void {
   const tabs = Array.from(
     list.querySelectorAll<HTMLButtonElement>('[role="tab"]')

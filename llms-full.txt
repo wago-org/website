@@ -125,7 +125,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Group | Benchmark | Workload | railshot | dragline | wazero | wasmtime | v8 | wavm |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 |  | Compile mean | Corpus geometric mean · fresh process | 4.56ms | 8.75ms | 5.97ms | 10.9ms | 11ms | 82.4ms |
-|  | Compile heap | Go heap allocation bytes/op · full compile | 144 KB | 772 KB | 1.1 MB | n/a | n/a | n/a |
+|  | Compile process RSS | Peak resident set · fresh compile process | 74.3 MB | 78.3 MB | 77.8 MB | 78 MB | 71.4 MB | 96.4 MB |
 |  | Instantiate mean | Runnable corpus geometric mean | 2.7µs | 2.7µs | 13.1µs | 3.4µs | 11.4µs | 78.2µs |
 |  | Execution mean | Runnable corpus geometric mean | 8.7µs | 20.8µs | 13.1µs | 8.4µs | 7µs | 8µs |
 |  | Call latency | tiny.add host → Wasm | 8ns | 7.9ns | 27.7ns | 16ns | 3ns | 41.8ns |
@@ -232,7 +232,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Group | Benchmark | Workload | railshot | dragline | wazero | wasmtime | v8 | wavm |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 |  | Compile mean | Corpus geometric mean · fresh process | 8.57ms | 14.1ms | 10.4ms | 9.74ms | 13.8ms | 57.5ms |
-|  | Compile heap | Go heap allocation bytes/op · full compile | 162 KB | 425 KB | 1.1 MB | n/a | n/a | n/a |
+|  | Compile process RSS | Peak resident set · fresh compile process | 10.3 MB | 11.6 MB | 11.5 MB | 22.3 MB | 33.1 MB | 53.2 MB |
 |  | Instantiate mean | Runnable corpus geometric mean | 1.2µs | 1.5µs | 11µs | 3.1µs | 7.7µs | 49.5µs |
 |  | Execution mean | Runnable corpus geometric mean | 7.3µs | 5.8µs | 9.9µs | 7µs | 4.8µs | 6.9µs |
 |  | Call latency | tiny.add host → Wasm | 7.6ns | 6.1ns | 19.5ns | 12.4ns | 2.3ns | 32.5ns |

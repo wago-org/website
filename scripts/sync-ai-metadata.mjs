@@ -133,40 +133,45 @@ function capture(block, pattern, label) {
 
 function parseStartup(index) {
   const section = extractBetween(index, "END-TO-END LATENCY", "PERFORMANCE");
-  const workloads = [];
-  const tabs = [
-    ...section.matchAll(
-      /<button\b[^>]*id="su-tab-([^"]+)"[^>]*>([\s\S]*?)<\/button>/g,
-    ),
-  ];
-  for (const [, id, labelHtml] of tabs) {
-    const panel = extractDivById(section, `su-panel-${id}`);
-    const rows = [];
-    const rowStarts = [...panel.matchAll(/<div\b[^>]*class="[^"]*\brank__row\b[^"]*"[^>]*>/g)];
-    for (const rowStart of rowStarts) {
-      const row = extractDivAt(panel, rowStart.index);
-      const nameBlock = capture(
-        row,
-        /<span\b[^>]*class="rank__name"[^>]*>([\s\S]*?)<\/span>/,
-        `end-to-end runtime for ${id}`,
-      );
-      const tierMatch = /<span\b[^>]*class="rank__tag"[^>]*>([\s\S]*?)<\/span>/.exec(row);
-      const tier = tierMatch ? text(tierMatch[1]) : "";
-      const runtime = tier && nameBlock.endsWith(tier) ? nameBlock.slice(0, -tier.length) : nameBlock;
-      rows.push({
-        runtime: runtime.trim(),
-        ...(tier ? { executionMode: tier } : {}),
-        value: capture(
+  const architectures = {};
+  for (const arch of ["arm64", "amd64"]) {
+    const architecturePanel = extractDivById(section, `startup-arch-panel-${arch}`);
+    const workloads = [];
+    const tabs = [
+      ...architecturePanel.matchAll(
+        new RegExp(`<button\\b[^>]*id="su-${arch}-tab-([^"]+)"[^>]*>([\\s\\S]*?)<\\/button>`, "g"),
+      ),
+    ];
+    for (const [, id, labelHtml] of tabs) {
+      const panel = extractDivById(architecturePanel, `su-${arch}-panel-${id}`);
+      const rows = [];
+      const rowStarts = [...panel.matchAll(/<div\b[^>]*class="[^"]*\brank__row\b[^"]*"[^>]*>/g)];
+      for (const rowStart of rowStarts) {
+        const row = extractDivAt(panel, rowStart.index);
+        const nameBlock = capture(
           row,
-          /<span\b[^>]*class="rank__val"[^>]*>([\s\S]*?)<\/span>/,
-          `end-to-end value for ${id}`,
-        ),
-      });
+          /<span\b[^>]*class="rank__name"[^>]*>([\s\S]*?)<\/span>/,
+          `end-to-end runtime for ${arch}/${id}`,
+        );
+        const tierMatch = /<span\b[^>]*class="rank__tag"[^>]*>([\s\S]*?)<\/span>/.exec(row);
+        const tier = tierMatch ? text(tierMatch[1]) : "";
+        const runtime = tier && nameBlock.endsWith(tier) ? nameBlock.slice(0, -tier.length) : nameBlock;
+        rows.push({
+          runtime: runtime.trim(),
+          ...(tier ? { executionMode: tier } : {}),
+          value: capture(
+            row,
+            /<span\b[^>]*class="rank__val"[^>]*>([\s\S]*?)<\/span>/,
+            `end-to-end value for ${arch}/${id}`,
+          ),
+        });
+      }
+      workloads.push({ id, label: text(labelHtml), unit: "wall-clock process latency", results: rows });
     }
-    workloads.push({ id, label: text(labelHtml), unit: "wall-clock process latency", results: rows });
+    if (workloads.length === 0) throw new Error(`index.html: no ${arch} end-to-end workloads found`);
+    architectures[arch] = { architecture: arch, workloads };
   }
-  if (workloads.length === 0) throw new Error("index.html: no end-to-end workloads found");
-  return workloads;
+  return { architectures, workloadCount: architectures.arm64.workloads.length };
 }
 
 function parseComparisonRows(panel, backend = "wago") {
@@ -463,7 +468,8 @@ function makeProject(stats, canonicalFacts, startup, performance) {
       methodology: "https://github.com/wago-org/wago/tree/main/bench",
       startup: {
         definition: "Whole-process spawn-to-exit wall-clock latency.",
-        workloads: startup,
+        workloadCount: startup.workloadCount,
+        architectures: startup.architectures,
       },
       wagoVsWazero: performance,
     },
@@ -505,7 +511,7 @@ Data updated: ${project.generated}
 - Test coverage: ${stats.coveragePercent}%.
 - Native benchmark architectures published: ${architectures.join(", ")}.
 - Published multi-engine comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
-- End-to-end dataset: ${project.benchmarks.startup.workloads.length} real workloads across multiple WebAssembly runtimes.
+- End-to-end dataset: ${project.benchmarks.startup.workloadCount} real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
 
 ## Read next
 
@@ -573,8 +579,11 @@ Methodology and corpus: ${benchmarks.methodology}
 
 Definition: ${benchmarks.startup.definition}
 `];
-  for (const workload of benchmarks.startup.workloads) {
-    out.push(`#### ${workload.label}\n\n${markdownTable(workload.results)}`);
+  for (const architecture of Object.values(benchmarks.startup.architectures)) {
+    out.push(`#### ${architecture.architecture}`);
+    for (const workload of architecture.workloads) {
+      out.push(`##### ${workload.label}\n\n${markdownTable(workload.results)}`);
+    }
   }
   out.push("## Runtime and compiler comparisons");
   for (const architecture of Object.values(benchmarks.wagoVsWazero.architectures)) {
@@ -751,7 +760,7 @@ if (CHECK && stale.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `AI metadata is current: ${startup.length} startup workloads, ` +
+    `AI metadata is current: ${startup.workloadCount} startup workloads on 2 architectures, ` +
       `${Object.keys(performance.architectures).length} architectures, ` +
       `${performance.comparisonCount} performance comparisons`,
   );

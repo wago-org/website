@@ -655,7 +655,7 @@ function benchmarksMarkdown(facts) {
 ## Published data
 
 - Whole-process end-to-end latency: https://wago.sh/#latency
-- Six-engine comparisons by architecture: https://wago.sh/#performance
+- Three Go-engine comparisons by architecture: https://wago.sh/#performance
 - Structured rows: https://wago.sh/data/project.json
 - Full Markdown tables: https://wago.sh/llms-full.txt
 

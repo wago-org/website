@@ -1707,6 +1707,34 @@
 .chartcard {
     padding: 0;
 }
+.chart__architectures {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+.chart__archtab {
+    appearance: none;
+    padding: 5px 10px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+}
+.chart__archtab[aria-selected="true"] {
+    border-color: var(--lilac);
+    background: color-mix(in srgb, var(--lilac) 12%, transparent);
+    color: var(--text);
+}
+.chart__archtab:focus-visible {
+    outline: 2px solid var(--lilac);
+    outline-offset: 2px;
+}
 /* Underline tabs (editor style) with a divider, flat on the page. */
 .chart__tabs {
     display: flex;
@@ -1754,6 +1782,14 @@
 }
 .chart__panel[hidden] {
     display: none;
+}
+.chart__machine {
+    margin-top: 18px;
+    color: var(--faint);
+    font-family: var(--mono);
+    font-size: 9.5px;
+    line-height: 1.45;
+    text-align: right;
 }
 
 /* ── ranking bars ───────────────────────────────────────────────────── */

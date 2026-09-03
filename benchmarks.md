@@ -1,13 +1,13 @@
 # Wago benchmark interpretation
 
 Last synchronized: 2026-09-03
-Wago source commit: 65b1a67b5045513f108784848a26a05fcbd5bfa3
+Wago source commit: 7ba65738410560f18d7a09cdbba26b752a5e077d
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Published data
 
 - Whole-process end-to-end latency: https://wago.sh/#latency
-- Six-engine comparisons by architecture: https://wago.sh/#performance
+- Three Go-engine comparisons by architecture: https://wago.sh/#performance
 - Structured rows: https://wago.sh/data/project.json
 - Full Markdown tables: https://wago.sh/llms-full.txt
 

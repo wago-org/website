@@ -14,6 +14,75 @@ export function initTabs(): void {
     .forEach(setupTablist);
 }
 
+// The end-to-end chart has a matched ARM64/AMD64 dataset. Prefer the visitor's
+// architecture when the browser exposes it, while keeping an explicit switch
+// for browsers (notably Safari) that intentionally hide CPU architecture.
+export function initStartupArchitecture(): void {
+  const rail = document.querySelector<HTMLElement>("[data-startup-arch-toggle]");
+  if (!rail) return;
+  const tabs = Array.from(rail.querySelectorAll<HTMLButtonElement>("[data-startup-arch-target]"));
+  if (!tabs.length) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let manuallySelected = false;
+
+  const select = (arch: string, focus = false): void => {
+    tabs.forEach((tab) => {
+      const on = tab.dataset.startupArchTarget === arch;
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+      tab.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(tab.getAttribute("aria-controls") ?? "");
+      if (panel) panel.hidden = !on;
+      if (on && panel) {
+        const active = panel.querySelector<HTMLElement>('.chart__panel:not([hidden])');
+        if (active) fillBars(active, reduce);
+        if (focus) tab.focus({ preventScroll: true });
+      }
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      manuallySelected = true;
+      select(tab.dataset.startupArchTarget ?? "arm64");
+    });
+    tab.addEventListener("keydown", (event) => {
+      let next = -1;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      manuallySelected = true;
+      select(tabs[next]?.dataset.startupArchTarget ?? "arm64", true);
+    });
+  });
+
+  const detected = detectArchitecture();
+  if (detected) select(detected);
+
+  const uaData = (navigator as Navigator & {
+    userAgentData?: { getHighEntropyValues?: (hints: string[]) => Promise<{ architecture?: string; bitness?: string }> };
+  }).userAgentData;
+  void uaData?.getHighEntropyValues?.(["architecture", "bitness"]).then((values) => {
+    if (manuallySelected) return;
+    const architecture = normalizeArchitecture(`${values.architecture ?? ""}${values.bitness ?? ""}`);
+    if (architecture) select(architecture);
+  }).catch(() => {});
+}
+
+function detectArchitecture(): "arm64" | "amd64" | null {
+  const hint = `${navigator.userAgent} ${navigator.platform}`.toLowerCase();
+  return normalizeArchitecture(hint) ?? (/macintosh|macintel|iphone|ipad|android/.test(hint) ? "arm64" : null);
+}
+
+function normalizeArchitecture(value: string): "arm64" | "amd64" | null {
+  const hint = value.toLowerCase();
+  if (/arm64|aarch64|armv8|arm64-bit/.test(hint) || /^arm64?$/.test(hint)) return "arm64";
+  if (/amd64|x86_64|x86-64|win64|x64|x8664/.test(hint) || /^x86(?:64)?$/.test(hint)) return "amd64";
+  return null;
+}
+
 function setupTablist(list: HTMLElement): void {
   const tabs = Array.from(
     list.querySelectorAll<HTMLButtonElement>('[role="tab"]')

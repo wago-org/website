@@ -42,77 +42,153 @@ Methodology and corpus: https://github.com/wago-org/wago/tree/main/bench
 Definition: Whole-process spawn-to-exit wall-clock latency.
 
 
-#### json-as
+#### arm64
+
+##### json-as
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | single-pass | 5.1 ms |
-| wasmi | interpreter | 7.4 ms |
-| wasmtime | Cranelift | 8.1 ms |
-| wasmer | compiler | 8.4 ms |
-| wazero | compiler | 11.0 ms |
-| v8 | optimizing | 12.3 ms |
-| wavm | LLVM | 266 ms |
+| wazero | compiler | 9.0 ms |
+| wasmtime | Cranelift | 9.2 ms |
+| Railshot | wago | 10.3 ms |
+| wasmer | compiler | 18.1 ms |
+| v8 | optimizing | 19.3 ms |
+| Dragline | wago | 27.7 ms |
+| wavm | LLVM | 195 ms |
 
-#### nbody
+##### nbody
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 21.7 ms |
+| wasmtime | Cranelift | 22.7 ms |
+| wasmer | compiler | 23.4 ms |
+| Railshot | wago | 25.8 ms |
+| Dragline | wago | 28.1 ms |
+| wavm | LLVM | 35.0 ms |
+| v8 | optimizing | 38.6 ms |
+
+##### spectralnorm
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 5.1 ms |
+| wasmtime | Cranelift | 6.9 ms |
+| wasmer | compiler | 8.2 ms |
+| Railshot | wago | 8.5 ms |
+| Dragline | wago | 9.7 ms |
+| v8 | optimizing | 20.2 ms |
+| wavm | LLVM | 22.6 ms |
+
+##### quicksort
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 11.5 ms |
+| wasmtime | Cranelift | 12.1 ms |
+| wasmer | compiler | 13.4 ms |
+| Dragline | wago | 13.9 ms |
+| Railshot | wago | 14.1 ms |
+| v8 | optimizing | 20.6 ms |
+| wavm | LLVM | 46.3 ms |
+
+##### raytrace
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 7.6 ms |
+| Railshot | wago | 11.2 ms |
+| wasmer | compiler | 11.7 ms |
+| wasmtime | Cranelift | 14.3 ms |
+| Dragline | wago | 15.9 ms |
+| v8 | optimizing | 18.4 ms |
+| wavm | LLVM | 30.3 ms |
+
+##### sha256
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 3.2 ms |
+| wasmtime | Cranelift | 5.7 ms |
+| wasmer | compiler | 6.7 ms |
+| Railshot | wago | 7.2 ms |
+| Dragline | wago | 9.0 ms |
+| v8 | optimizing | 13.8 ms |
+| wavm | LLVM | 20.4 ms |
+
+#### amd64
+
+##### json-as
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wazero | compiler | 10.6 ms |
+| Railshot | wago | 10.8 ms |
+| Dragline | wago | 11.6 ms |
+| v8 | optimizing | 11.9 ms |
+| wasmtime | Cranelift | 18.4 ms |
+| wasmer | compiler | 22.0 ms |
+| wavm | LLVM | 267 ms |
+
+##### nbody
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
 | wasmtime | Cranelift | 30.1 ms |
-| wago | single-pass | 30.9 ms |
-| wazero | compiler | 39.2 ms |
-| v8 | optimizing | 43.8 ms |
-| wavm | LLVM | 49.9 ms |
-| wasmer | compiler | 145 ms |
-| wasmi | interpreter | 367 ms |
+| Railshot | wago | 33.8 ms |
+| wasmer | compiler | 34.5 ms |
+| wazero | compiler | 38.9 ms |
+| v8 | optimizing | 44.8 ms |
+| wavm | LLVM | 50.2 ms |
+| Dragline | wago | 56.6 ms |
 
-#### spectralnorm
+##### spectralnorm
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | single-pass | 3.7 ms |
-| wazero | compiler | 4.8 ms |
-| wasmtime | Cranelift | 6.1 ms |
-| v8 | optimizing | 15.0 ms |
-| wasmer | compiler | 18.8 ms |
-| wasmi | interpreter | 40.5 ms |
+| wazero | compiler | 4.7 ms |
+| wasmtime | Cranelift | 6.6 ms |
+| Railshot | wago | 8.4 ms |
+| wasmer | compiler | 9.9 ms |
+| Dragline | wago | 11.0 ms |
+| v8 | optimizing | 16.6 ms |
 | wavm | LLVM | 50.8 ms |
 
-#### quicksort
+##### quicksort
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | single-pass | 9.4 ms |
-| wasmtime | Cranelift | 10.8 ms |
-| wazero | compiler | 12.1 ms |
-| v8 | optimizing | 17.0 ms |
-| wasmer | compiler | 17.1 ms |
-| wasmi | interpreter | 49.4 ms |
+| wasmtime | Cranelift | 11.9 ms |
+| wazero | compiler | 12.0 ms |
+| Railshot | wago | 13.9 ms |
+| wasmer | compiler | 15.3 ms |
+| v8 | optimizing | 17.8 ms |
+| Dragline | wago | 23.1 ms |
 | wavm | LLVM | 137 ms |
 
-#### raytrace
+##### raytrace
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wazero | compiler | 8.8 ms |
-| wago | single-pass | 9.0 ms |
-| wasmtime | Cranelift | 10.6 ms |
-| v8 | optimizing | 15.8 ms |
-| wasmer | compiler | 26.6 ms |
-| wavm | LLVM | 40.4 ms |
-| wasmi | interpreter | 55.4 ms |
+| wazero | compiler | 8.6 ms |
+| wasmtime | Cranelift | 11.5 ms |
+| Railshot | wago | 13.1 ms |
+| wasmer | compiler | 15.2 ms |
+| v8 | optimizing | 17.5 ms |
+| Dragline | wago | 31.6 ms |
+| wavm | LLVM | 40.3 ms |
 
-#### sha256
+##### sha256
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago | single-pass | 2.4 ms |
-| wazero | compiler | 2.9 ms |
-| wasmtime | Cranelift | 4.9 ms |
-| wasmer | compiler | 7.1 ms |
-| wasmi | interpreter | 10.5 ms |
-| v8 | optimizing | 12.8 ms |
-| wavm | LLVM | 33.1 ms |
+| wazero | compiler | 2.7 ms |
+| wasmtime | Cranelift | 5.4 ms |
+| Railshot | wago | 7.1 ms |
+| wasmer | compiler | 8.7 ms |
+| Dragline | wago | 11.4 ms |
+| v8 | optimizing | 13.8 ms |
+| wavm | LLVM | 32.9 ms |
 
 ## Runtime and compiler comparisons
 

@@ -965,11 +965,11 @@
 .vs__dot--wago {
     background: linear-gradient(90deg, var(--violet), var(--lilac));
 }
-.vs__vfill--railshot {
-    background: linear-gradient(180deg, var(--lilac), var(--violet));
+.vs__gfill--railshot {
+    background: linear-gradient(90deg, var(--violet), var(--lilac));
 }
-.vs__vfill--dragline {
-    background: linear-gradient(180deg, #8b7cff, #6251cb);
+.vs__gfill--dragline {
+    background: linear-gradient(90deg, #6251cb, #8b7cff);
 }
 .vs__dot--wazero {
     background-color: #6c5fb0;
@@ -979,7 +979,7 @@
         transparent 4px 9px
     );
 }
-.vs__vfill--wazero {
+.vs__gfill--wazero {
     background-color: #6c5fb0;
     background-image: repeating-linear-gradient(
         45deg,
@@ -987,8 +987,8 @@
         transparent 4px 9px
     );
 }
-.vs__vfill--wasmtime {
-    background: linear-gradient(180deg, #f6ad55, #d96b28);
+.vs__gfill--wasmtime {
+    background: linear-gradient(90deg, #d96b28, #f6ad55);
 }
 /* Category tabs: General / Compile / Instantiate / Exec (driven by tabs.ts). */
 .vs__tabs {
@@ -1073,63 +1073,56 @@
     font-size: 11px;
     text-align: right;
 }
-.vs__vbars {
+.vs__gbars {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: end;
+    gap: 12px;
+    padding-top: 18px;
+}
+.vs__gitem {
+    display: grid;
+    grid-template-columns: minmax(72px, 0.8fr) minmax(100px, 2fr) auto;
+    align-items: center;
     gap: 10px;
-    min-height: 190px;
-    padding-top: 16px;
-}
-.vs__vitem {
-    display: grid;
-    grid-template-rows: 20px minmax(112px, 1fr) 36px;
-    align-items: end;
     min-width: 0;
-    text-align: center;
 }
-.vs__vitem--selected .vs__vvalue,
-.vs__vitem--selected .vs__vlabel {
+.vs__gitem--selected .vs__gvalue,
+.vs__gitem--selected .vs__glabel {
     color: var(--text);
 }
-.vs__vitem--selected .vs__vtrack {
+.vs__gitem--selected .vs__gtrack {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--lilac) 50%, transparent);
 }
-.vs__vvalue {
-    align-self: start;
+.vs__gvalue {
+    min-width: 60px;
     color: var(--text);
     font-family: var(--mono);
     font-size: 10.5px;
+    text-align: right;
     white-space: nowrap;
 }
-.vs__vtrack {
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    width: min(36px, 72%);
-    height: 100%;
-    margin-inline: auto;
-    border-radius: 5px 5px 0 0;
+.vs__gtrack {
+    display: block;
+    width: 100%;
+    height: 14px;
+    border-radius: 4px;
     background: color-mix(in srgb, var(--text-soft) 9%, transparent);
     overflow: hidden;
 }
-.vs__vfill {
+.vs__gfill {
     display: block;
-    width: 100%;
-    height: 0;
-    border-radius: 5px 5px 0 0;
-    transition: height 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    width: 0;
+    height: 100%;
+    border-radius: 4px;
+    transition: width 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.vs__vlabel {
-    align-self: start;
-    padding-top: 7px;
+.vs__glabel {
     color: var(--text-soft);
     font-family: var(--mono);
     font-size: 10px;
     line-height: 1.15;
     overflow-wrap: anywhere;
 }
-.vs__vlabel small {
+.vs__glabel small {
     display: block;
     margin-top: 2px;
     font-size: 9px;
@@ -1355,8 +1348,9 @@
     .vs__generalgrid {
         grid-template-columns: 1fr;
     }
-    .vs__vbars {
-        min-height: 160px;
+    .vs__gitem {
+        grid-template-columns: 68px minmax(76px, 1fr) auto;
+        gap: 8px;
     }
     .vs__row {
         grid-template-columns: 108px 1fr;

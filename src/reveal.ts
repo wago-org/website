@@ -43,16 +43,13 @@ function fill(node: HTMLElement): void {
   if (node.hasAttribute("data-bar")) {
     node.style.width = (node.getAttribute("data-width") ?? "0") + "%";
   }
-  if (node.hasAttribute("data-vbar")) {
-    node.style.height = (node.getAttribute("data-height") ?? "0") + "%";
-  }
   if (node.hasAttribute("data-count")) {
     countUp(node);
   }
 }
 
 export function initReveal(): void {
-  const nodes = document.querySelectorAll<HTMLElement>("[data-count],[data-bar],[data-vbar]");
+  const nodes = document.querySelectorAll<HTMLElement>("[data-count],[data-bar]");
   if (!nodes.length) return;
 
   if (!("IntersectionObserver" in window)) {

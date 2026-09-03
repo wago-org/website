@@ -182,49 +182,6 @@
     font-size: 14px;
 }
 
-/* ---- Architecture ---- */
-/* ---- Compile pipeline layout (see components.css for the piece styling) ---- */
-.pipe {
-    margin-top: 34px;
-}
-.pipe__flow {
-    display: flex;
-    align-items: stretch;
-    gap: 12px;
-    /* Wide code cells scroll inside the lane; the page body never does. */
-    overflow-x: auto;
-}
-.pipe__join {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    padding: 12px 0;
-}
-.pipe__fork {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-}
-@media (max-width: 720px) {
-    .pipe__fork {
-        grid-template-columns: 1fr;
-    }
-}
-@media (max-width: 560px) {
-    /* Stack the tape vertically and point the arrows down. */
-    .pipe__flow {
-        flex-direction: column;
-        overflow: visible;
-    }
-    .pipe__flow .pipe__arrow {
-        transform: rotate(90deg);
-    }
-    .pipe__cell {
-        min-width: 0;
-    }
-}
-
 /* ---- CTA ---- */
 .cta {
     background: var(--lilac);

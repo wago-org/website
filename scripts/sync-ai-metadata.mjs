@@ -132,7 +132,7 @@ function capture(block, pattern, label) {
 }
 
 function parseStartup(index) {
-  const section = extractBetween(index, "STARTUP LATENCY", "PERFORMANCE");
+  const section = extractBetween(index, "END-TO-END LATENCY", "PERFORMANCE");
   const workloads = [];
   const tabs = [
     ...section.matchAll(
@@ -148,7 +148,7 @@ function parseStartup(index) {
       const nameBlock = capture(
         row,
         /<span\b[^>]*class="rank__name"[^>]*>([\s\S]*?)<\/span>/,
-        `startup runtime for ${id}`,
+        `end-to-end runtime for ${id}`,
       );
       const tierMatch = /<span\b[^>]*class="rank__tag"[^>]*>([\s\S]*?)<\/span>/.exec(row);
       const tier = tierMatch ? text(tierMatch[1]) : "";
@@ -159,13 +159,13 @@ function parseStartup(index) {
         value: capture(
           row,
           /<span\b[^>]*class="rank__val"[^>]*>([\s\S]*?)<\/span>/,
-          `startup value for ${id}`,
+          `end-to-end value for ${id}`,
         ),
       });
     }
     workloads.push({ id, label: text(labelHtml), unit: "wall-clock process latency", results: rows });
   }
-  if (workloads.length === 0) throw new Error("index.html: no startup workloads found");
+  if (workloads.length === 0) throw new Error("index.html: no end-to-end workloads found");
   return workloads;
 }
 
@@ -187,6 +187,10 @@ function parseComparisonRows(panel, backend = "wago") {
     const deltaMatch =
       /<span\b[^>]*class="[^"]*\bvs__delta\b[^"]*"[^>]*>([\s\S]*?)<\/span>/.exec(row);
     const deltaClass = /\bvs__delta--(win|behind|tie)\b/.exec(row)?.[1] ?? "context";
+    const engines = Object.fromEntries(
+      [...row.matchAll(/<div\b[^>]*class="[^"]*\bvs__line\b[^"]*"[^>]*data-engine="([^"]+)"[^>]*>[\s\S]*?<span\b[^>]*class="[^"]*\bvs__val\b[^"]*"[^>]*>([\s\S]*?)<\/span>/g)]
+        .map((value) => [value[1], text(value[2])]),
+    );
     entries.push({
       ...(group ? { group } : {}),
       label: capture(
@@ -199,8 +203,9 @@ function parseComparisonRows(panel, backend = "wago") {
         /<span\b[^>]*class="vs__sub"[^>]*>([\s\S]*?)<\/span\s*>/,
         "performance workload",
       ),
-      wago: values[0],
-      ...(values[1] ? { wazero: values[1] } : {}),
+      wago: engines.railshot ?? values[0],
+      ...(engines.wazero || values[1] ? { wazero: engines.wazero ?? values[1] } : {}),
+      ...(Object.keys(engines).length ? { engines } : {}),
       comparison: deltaMatch ? text(deltaMatch[1]) : "",
       result:
         deltaClass === "win"
@@ -233,6 +238,19 @@ function parsePerformance(index) {
           .map((match) => match[1]),
       ),
     ];
+    if (backendIds.length === 0 && archPanel.includes(`id="engine-panel-${arch}"`)) {
+      const enginePanel = extractDivById(archPanel, `engine-panel-${arch}`);
+      const categoryLabels = new Map(
+        [...enginePanel.matchAll(new RegExp(`<button\\b[^>]*id="perf-${arch}-tab-([^"]+)"[^>]*>([\\s\\S]*?)<\\/button>`, "g"))]
+          .map((match) => [match[1], text(match[2])]),
+      );
+      const categories = [...categoryLabels].map(([id, label]) => ({
+        id,
+        label,
+        entries: parseComparisonRows(extractDivById(enginePanel, `perf-${arch}-panel-${id}`), "multi-engine"),
+      }));
+      backends.comparison = { backend: "comparison", categories };
+    }
     for (const backend of backendIds) {
       const backendPanel = extractDivById(archPanel, `backend-panel-${arch}-${backend}`);
       const categoryLabels = new Map(
@@ -394,6 +412,16 @@ function markdownTable(rows) {
 }
 
 function comparisonTable(entries, backend) {
+  if (entries.some((entry) => entry.engines)) {
+    const engines = ["railshot", "dragline", "wazero", "wasmtime", "v8", "wavm"];
+    return [
+      `| Group | Benchmark | Workload | ${engines.join(" | ")} |`,
+      `| --- | --- | --- | ${engines.map(() => "---:").join(" | ")} |`,
+      ...entries.map((entry) =>
+        `| ${entry.group ?? ""} | ${entry.label} | ${entry.workload} | ${engines.map((engine) => entry.engines?.[engine] ?? "n/a").join(" | ")} |`,
+      ),
+    ].join("\n");
+  }
   return [
     `| Group | Benchmark | Workload | ${backend} | wazero | Comparison | Result |`,
     "| --- | --- | --- | ---: | ---: | --- | --- |",
@@ -476,8 +504,8 @@ Data updated: ${project.generated}
 - Verification: ${stats.verification.checksPass} checks pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
 - Test coverage: ${stats.coveragePercent}%.
 - Native benchmark architectures published: ${architectures.join(", ")}.
-- Published wago-vs-wazero comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
-- Startup dataset: ${project.benchmarks.startup.workloads.length} real workloads across multiple WebAssembly runtimes.
+- Published multi-engine comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
+- End-to-end dataset: ${project.benchmarks.startup.workloads.length} real workloads across multiple WebAssembly runtimes.
 
 ## Read next
 
@@ -489,7 +517,7 @@ Data updated: ${project.generated}
 - [Canonical facts JSON Schema](https://wago.sh/data/facts.schema.json)
 - [Wago project manifest JSON Schema](https://wago.sh/v1/schema.json)
 - [Wago provider catalog JSON Schema](https://wago.sh/v1/providers.schema.json)
-- [Complete project facts, conformance, startup rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
+- [Complete project facts, conformance, end-to-end rankings, and every benchmark comparison](https://wago.sh/llms-full.txt)
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
 - [Benchmark corpus and methodology](https://github.com/wago-org/wago/tree/main/bench)
@@ -541,14 +569,14 @@ ${benchmarks.caveat}
 
 Methodology and corpus: ${benchmarks.methodology}
 
-### Whole-process startup latency
+### Whole-process end-to-end latency
 
 Definition: ${benchmarks.startup.definition}
 `];
   for (const workload of benchmarks.startup.workloads) {
     out.push(`#### ${workload.label}\n\n${markdownTable(workload.results)}`);
   }
-  out.push("## wago versus wazero");
+  out.push("## Runtime and compiler comparisons");
   for (const architecture of Object.values(benchmarks.wagoVsWazero.architectures)) {
     out.push(`### ${architecture.architecture}`);
     for (const backend of Object.values(architecture.backends)) {
@@ -623,7 +651,7 @@ function makeJsonLd(project) {
         "@id": "https://wago.sh/#verification-dataset",
         name: "wago verification, conformance, and benchmark data",
         description:
-          "Auto-generated conformance facts, verification totals, startup rankings, and architecture-specific wago-versus-wazero comparisons.",
+          "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
         url: "https://wago.sh/data/project.json",
         dateModified: project.generated,
         license: "https://www.apache.org/licenses/LICENSE-2.0",

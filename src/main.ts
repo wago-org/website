@@ -1,7 +1,7 @@
 // Entry point - wires up the interactive pieces of the landing page.
 import { initStats } from "./stats.js";
 import { initReveal } from "./reveal.js";
-import { initTabs, initArchToggle, initScrollCue } from "./tabs.js";
+import { initTabs, initArchToggle, initEngineToggles, initScrollCue } from "./tabs.js";
 import { initCopyButtons } from "./copy.js";
 import { initInstallSplit } from "./install-split.js";
 import { initSparkles } from "./sparkles.js";
@@ -18,6 +18,7 @@ async function init(): Promise<void> {
     await initStats();
     initTabs();
     initArchToggle();
+    initEngineToggles();
     initScrollCue();
     initReveal();
     initCopyButtons();

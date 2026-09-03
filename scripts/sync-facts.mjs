@@ -317,8 +317,8 @@ function benchmarksIndex(facts) {
     <section id="published">
       <h2>Published measurements</h2>
       <ul>
-        <li><a href="/#latency">Whole-process startup latency</a>: process spawn to exit, across several runtimes.</li>
-        <li><a href="/#performance">Wago versus wazero</a>: decode, validate, compile, instantiate, Go allocation, and warm execution rows split by architecture.</li>
+        <li><a href="/#latency">Whole-process end-to-end latency</a>: process spawn to exit, across several runtimes.</li>
+        <li><a href="/#performance">Engine comparisons</a>: compile, instantiate, Go allocation, call, and warm execution rows split by architecture.</li>
         <li><a href="/benchmarks/arm64/">ARM64 benchmark interpretation and many-instance plan</a>.</li>
       </ul>
       <p>All visible comparison rows are also available without JavaScript in <a href="/llms-full.txt">llms-full.txt</a> and as JSON in <a href="/data/project.json">project.json</a>.</p>
@@ -430,7 +430,7 @@ function comparePage(facts, key) {
     </section>
     <section id="benchmarks">
       <h2>Benchmark scope</h2>
-      <p>${key === "wazero" ? "Wago publishes architecture-specific direct comparisons with wazero; see the homepage and project.json." : `Wago publishes whole-process startup rows that include ${esc(other.label)}, but does not publish the same detailed stage-by-stage comparison used for wazero.`}</p>
+      <p>${key === "wazero" ? "Wago publishes architecture-specific direct comparisons with wazero; see the homepage and project.json." : `Wago publishes whole-process end-to-end rows that include ${esc(other.label)}, but does not publish the same detailed stage-by-stage comparison used for wazero.`}</p>
       <p>No result on this page should be treated as universal. Use identical versions, hardware, Wasm modules, warmup, and measurement boundaries.</p>
       <p>Raw Wago data: <a href="/data/project.json">project.json</a>. Other-runtime primary source: <a href="${esc(other.source)}">${esc(other.source)}</a>.</p>
     </section>
@@ -654,8 +654,8 @@ function benchmarksMarkdown(facts) {
   return `${markdownHeader("Wago benchmark interpretation", facts)}
 ## Published data
 
-- Whole-process startup latency: https://wago.sh/#latency
-- Wago versus wazero by architecture: https://wago.sh/#performance
+- Whole-process end-to-end latency: https://wago.sh/#latency
+- Six-engine comparisons by architecture: https://wago.sh/#performance
 - Structured rows: https://wago.sh/data/project.json
 - Full Markdown tables: https://wago.sh/llms-full.txt
 

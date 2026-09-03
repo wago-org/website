@@ -1,7 +1,7 @@
 # Wago compatibility and verification
 
 Last synchronized: 2026-09-03
-Wago source commit: d1bc9e46f27ba4dad35737dd70e2efd89b4b7f2a
+Wago source commit: 758787a0dcb9899be832532c857b20e83f6bc7a6
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Public verification

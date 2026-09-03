@@ -76,8 +76,21 @@ function setupTablist(list: HTMLElement): void {
 }
 
 function fillBars(panel: HTMLElement, reduce: boolean): void {
-  const bars = panel.querySelectorAll<HTMLElement>("[data-bar]");
+  const bars = panel.querySelectorAll<HTMLElement>("[data-bar],[data-vbar]");
   bars.forEach((bar) => {
+    if (bar.hasAttribute("data-vbar")) {
+      const height = (bar.getAttribute("data-height") ?? "0") + "%";
+      if (reduce) {
+        bar.style.height = height;
+        return;
+      }
+      bar.style.height = "0%";
+      void bar.offsetHeight;
+      requestAnimationFrame(() => {
+        bar.style.height = height;
+      });
+      return;
+    }
     const width = (bar.getAttribute("data-width") ?? "0") + "%";
     if (reduce) {
       bar.style.width = width;

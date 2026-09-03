@@ -18,7 +18,7 @@ Data updated: 2026-09-03
 - Verification: 155010 checks pass, 0 fail, 22 skip.
 - Test coverage: 86.1%.
 - Native benchmark architectures published: amd64, arm64.
-- Published wago-vs-wazero comparisons: 320.
+- Published wago-vs-wazero comparisons: 288.
 - Startup dataset: 6 real workloads across multiple WebAssembly runtimes.
 
 ## Read next

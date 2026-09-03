@@ -1819,6 +1819,13 @@
     color: var(--faint);
     text-transform: uppercase;
 }
+.rank__mode {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--faint);
+}
 .rank__row--wago .rank__name {
     color: var(--lilac);
     font-weight: 600;

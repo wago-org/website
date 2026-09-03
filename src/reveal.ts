@@ -5,6 +5,31 @@
 
 const filled = new WeakSet<Element>();
 
+// Every comparison group uses its own maximum as the full-width reference.
+// Recompute from data-value so older generated markup and rounded near-ties
+// cannot leave the true maximum short of the end of its rail.
+export function normalizeRelativeBars(): void {
+  document
+    .querySelectorAll<HTMLElement>(".vs__bars,[data-relative-bars]")
+    .forEach((group) => {
+      const bars = Array.from(
+        group.querySelectorAll<HTMLElement>("[data-bar][data-value]")
+      );
+      const values = bars.map((bar) =>
+        Number(bar.getAttribute("data-value") ?? "0")
+      );
+      const max = Math.max(0, ...values);
+      if (max <= 0) return;
+      bars.forEach((bar, index) => {
+        const value = values[index] ?? 0;
+        const width = value === max
+          ? 100
+          : Math.max(1, Math.min(99, Math.round((value / max) * 100)));
+        bar.setAttribute("data-width", String(width));
+      });
+    });
+}
+
 function countUp(node: HTMLElement): void {
   const target = parseFloat(node.getAttribute("data-target") ?? "0");
   const suffix = node.getAttribute("data-suffix") ?? "";

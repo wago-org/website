@@ -1,7 +1,7 @@
 # Wago benchmark interpretation
 
 Last synchronized: 2026-09-03
-Wago source commit: 7ba65738410560f18d7a09cdbba26b752a5e077d
+Wago source commit: 9b702bb473c11323022d10a9cb17302d68a450fd
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Published data

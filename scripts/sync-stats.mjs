@@ -387,7 +387,8 @@ async function main() {
 
   const json = JSON.stringify(data, null, 2) + "\n";
   const prev = (await exists(OUT)) ? await readFile(OUT, "utf8") : "";
-  // Compare ignoring the `generated` date so a same-day no-op isn't a "change".
+  // Ignore the clock when detecting source changes. A no-op keeps the prior
+  // generated date and avoids cascading rewrites of every derived artifact.
   const norm = (s) => s.replace(/"generated":\s*"[^"]*"/, '"generated":""');
   const changed = norm(prev) !== norm(json);
 
@@ -396,9 +397,9 @@ async function main() {
     process.exit(changed ? 1 : 0);
   }
 
-  await writeFile(OUT, json);
+  if (changed) await writeFile(OUT, json);
   console.log(
-    `wrote data/stats.json from ${srcs["SPECTEST.md"].from}\n` +
+    `${changed ? "wrote" : "kept"} data/stats.json from ${srcs["SPECTEST.md"].from}\n` +
       `  MVP ${mvp.filesPass}/${mvp.filesTotal} files (${mvp.percent}%) · ` +
       `${verification.checksPass} checks passed · coverage ${coverage ?? "n/a"}% · ` +
       `${featuresDone}/${mvpRows.length} MVP features done` +

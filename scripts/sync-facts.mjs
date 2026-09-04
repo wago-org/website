@@ -346,7 +346,7 @@ function arm64Page(facts) {
     body: `
     <section id="current">
       <h2>Current ARM64 data</h2>
-      <p>The homepage publishes ARM64 Wago-versus-wazero rows measured on one ARM64 machine. The structured copy is in <a href="/data/project.json">project.json</a>. Published instantiation values describe <strong>Go heap bytes or allocation objects created during instantiation</strong>; they are not total per-instance memory.</p>
+      <p>The homepage publishes ARM64 Wago-versus-wazero rows measured on one ARM64 machine. The structured copy is in <a href="/data/project.json">project.json</a>. Published instantiation values describe <strong>Go heap bytes allocated during instantiation</strong>; they are not total per-instance memory.</p>
       <p class="docs-warning">Instantiation allocation figures exclude guest linear memory, native code mappings, and native virtual-memory reservations.</p>
     </section>
     <section id="many-instances">

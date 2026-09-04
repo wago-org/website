@@ -60,33 +60,6 @@ function normalizeHomepageClaims(index) {
         : whole;
     },
   );
-  updated = updated
-    .replaceAll(
-      "Go heap Go heap bytes allocated per fresh instance",
-      "Go heap bytes allocated per fresh instance",
-    )
-    .replaceAll(
-      "Go Go allocation objects per fresh instance",
-      "Go allocation objects per fresh instance",
-    )
-    .replaceAll(">Memory</button>", ">Go allocs</button>")
-    .replaceAll(
-      '<div class="vs__group">Instantiation</div>',
-      '<div class="vs__group">Instantiation — Go heap</div>',
-    )
-    .replaceAll(
-      ">bytes allocated per fresh instance<",
-      ">Go heap bytes allocated per fresh instance<",
-    )
-    .replaceAll(
-      ">allocation objects per fresh instance<",
-      ">Go allocation objects per fresh instance<",
-    )
-    .replaceAll("Full compile — allocation bytes", "Full compile — Go heap bytes")
-    .replaceAll(
-      "Full compile — allocation objects",
-      "Full compile — Go allocation objects",
-    );
   return updated;
 }
 
@@ -229,7 +202,7 @@ function parseComparisonRows(panel, backend = "wago") {
 }
 
 function parsePerformance(index) {
-  const section = extractBetween(index, "PERFORMANCE", "ARCHITECTURE");
+  const section = extractBetween(index, "PERFORMANCE", "PLUGINS");
   const architectures = {};
   const archIds = [
     ...new Set([...section.matchAll(/id="arch-panel-([^"]+)"/g)].map((match) => match[1])),
@@ -418,9 +391,12 @@ function markdownTable(rows) {
 
 function comparisonTable(entries, backend) {
   if (entries.some((entry) => entry.engines)) {
-    const engines = ["railshot", "dragline", "wazero", "wasmtime", "v8", "wavm"];
+    const engines = ["railshot", "wazero", "wasmtime", "v8", "wavm"].filter((engine) =>
+      entries.some((entry) => entry.engines && engine in entry.engines),
+    );
+    const engineLabels = { railshot: "wago" };
     return [
-      `| Group | Benchmark | Workload | ${engines.join(" | ")} |`,
+      `| Group | Benchmark | Workload | ${engines.map((engine) => engineLabels[engine] ?? engine).join(" | ")} |`,
       `| --- | --- | --- | ${engines.map(() => "---:").join(" | ")} |`,
       ...entries.map((entry) =>
         `| ${entry.group ?? ""} | ${entry.label} | ${entry.workload} | ${engines.map((engine) => entry.engines?.[engine] ?? "n/a").join(" | ")} |`,

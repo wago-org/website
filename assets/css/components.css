@@ -886,7 +886,6 @@
 .vs__main > .vs__panel:not([hidden]) {
     height: 56vh;
     overflow-y: scroll;
-    overscroll-behavior-y: contain;
 }
 .vs__main > .vs__panel::-webkit-scrollbar {
     width: 14px;
@@ -965,10 +964,6 @@
 .vs__dot--railshot,
 .vs__fill--railshot {
     background: linear-gradient(90deg, var(--violet), var(--lilac));
-}
-.vs__dot--dragline,
-.vs__fill--dragline {
-    background: linear-gradient(90deg, #6251cb, #8b7cff);
 }
 .vs__dot--wazero {
     background-color: #6c5fb0;
@@ -1090,7 +1085,7 @@
     border-bottom: 1px solid var(--bg);
 }
 .vs__row[data-engine-row] {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 150px 1fr 92px;
 }
 .vs__row[data-engine-row] .vs__line {
     grid-template-columns: 70px minmax(80px, 1fr) 62px;
@@ -1278,6 +1273,9 @@
     border: 1px solid var(--line-2);
     color: var(--text-dim);
 }
+.vs__delta--tie {
+    color: var(--text-dim);
+}
 .vs__foot {
     max-width: 780px;
     margin: 18px auto 0;
@@ -1300,6 +1298,10 @@
     }
     .vs__delta {
         display: none;
+    }
+    .vs__row[data-engine-row] .vs__delta {
+        display: inline-block;
+        justify-self: start;
     }
     .vs__more-chevron {
         display: none;
@@ -1519,10 +1521,6 @@
     border-top: 3px solid var(--lilac);
     border-radius: 14px;
     background: var(--bg-deep);
-}
-.archmap__backend--dragline {
-    border-top-color: var(--pink);
-    background-image: linear-gradient(135deg, transparent 70%, color-mix(in srgb, var(--pink) 7%, transparent));
 }
 .archmap__backend header {
     display: flex;

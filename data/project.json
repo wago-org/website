@@ -1283,10 +1283,6 @@
                   "value": "19.3 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "27.7 ms"
-                },
-                {
                   "runtime": "wavm",
                   "executionMode": "LLVM",
                   "value": "195 ms"
@@ -1316,10 +1312,6 @@
                 {
                   "runtime": "wago single-pass",
                   "value": "25.8 ms"
-                },
-                {
-                  "runtime": "wago multi-pass",
-                  "value": "28.1 ms"
                 },
                 {
                   "runtime": "wavm",
@@ -1358,10 +1350,6 @@
                   "value": "8.5 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "9.7 ms"
-                },
-                {
                   "runtime": "v8",
                   "executionMode": "JIT",
                   "value": "20.2 ms"
@@ -1392,10 +1380,6 @@
                   "runtime": "wasmer",
                   "executionMode": "compiler",
                   "value": "13.4 ms"
-                },
-                {
-                  "runtime": "wago multi-pass",
-                  "value": "13.9 ms"
                 },
                 {
                   "runtime": "wago single-pass",
@@ -1438,12 +1422,8 @@
                   "value": "14.3 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "15.9 ms"
-                },
-                {
                   "runtime": "v8",
-                  "executionMode": "JIT",
+                  "executionMode": "optimizing",
                   "value": "18.4 ms"
                 },
                 {
@@ -1478,10 +1458,6 @@
                   "value": "7.2 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "9.0 ms"
-                },
-                {
                   "runtime": "v8",
                   "executionMode": "JIT",
                   "value": "13.8 ms"
@@ -1511,10 +1487,6 @@
                 {
                   "runtime": "wago single-pass",
                   "value": "10.8 ms"
-                },
-                {
-                  "runtime": "wago multi-pass",
-                  "value": "11.6 ms"
                 },
                 {
                   "runtime": "v8",
@@ -1571,10 +1543,6 @@
                   "runtime": "wavm",
                   "executionMode": "LLVM",
                   "value": "50.2 ms"
-                },
-                {
-                  "runtime": "wago multi-pass",
-                  "value": "56.6 ms"
                 }
               ]
             },
@@ -1585,7 +1553,7 @@
               "results": [
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
+                  "executionMode": "compiler",
                   "value": "4.7 ms"
                 },
                 {
@@ -1603,12 +1571,8 @@
                   "value": "9.9 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "11.0 ms"
-                },
-                {
                   "runtime": "v8",
-                  "executionMode": "JIT",
+                  "executionMode": "optimizing",
                   "value": "16.6 ms"
                 },
                 {
@@ -1648,10 +1612,6 @@
                   "value": "17.8 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "23.1 ms"
-                },
-                {
                   "runtime": "wavm",
                   "executionMode": "LLVM",
                   "value": "137 ms"
@@ -1688,10 +1648,6 @@
                   "value": "17.5 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "31.6 ms"
-                },
-                {
                   "runtime": "wavm",
                   "executionMode": "LLVM",
                   "value": "40.3 ms"
@@ -1723,12 +1679,8 @@
                   "value": "8.7 ms"
                 },
                 {
-                  "runtime": "wago multi-pass",
-                  "value": "11.4 ms"
-                },
-                {
                   "runtime": "v8",
-                  "executionMode": "JIT",
+                  "executionMode": "optimizing",
                   "value": "13.8 ms"
                 },
                 {
@@ -1755,82 +1707,100 @@
                   "label": "General",
                   "entries": [
                     {
-                      "label": "Compile mean",
-                      "workload": "Corpus geometric mean · fresh process",
+                      "label": "Compile",
+                      "workload": "fresh process",
                       "wago": "4.56ms",
                       "wazero": "5.97ms",
                       "engines": {
                         "railshot": "4.56ms",
-                        "dragline": "8.75ms",
                         "wazero": "5.97ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Compile heap",
-                      "workload": "Go heap bytes allocated per full compile · geometric mean",
+                      "workload": "per compile",
                       "wago": "144.2 KB",
                       "wazero": "1.1 MB",
                       "engines": {
                         "railshot": "144.2 KB",
-                        "dragline": "772 KB",
                         "wazero": "1.1 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "8× less",
+                      "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Instantiate mean",
-                      "workload": "Runnable corpus geometric mean",
+                      "label": "Instantiate",
+                      "workload": "runnable corpus",
                       "wago": "2.7µs",
                       "wazero": "13.1µs",
                       "engines": {
                         "railshot": "2.7µs",
-                        "dragline": "2.7µs",
                         "wazero": "13.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Execution mean",
-                      "workload": "Runnable corpus geometric mean",
+                      "label": "Execution",
+                      "workload": "runnable corpus",
                       "wago": "8.7µs",
                       "wazero": "13.1µs",
                       "engines": {
                         "railshot": "8.7µs",
-                        "dragline": "20.8µs",
                         "wazero": "13.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Call latency",
-                      "workload": "tiny.add host → Wasm",
+                      "workload": "host → Wasm",
                       "wago": "8ns",
                       "wazero": "27.7ns",
                       "engines": {
                         "railshot": "8ns",
-                        "dragline": "7.9ns",
                         "wazero": "27.7ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "End-to-end latency",
-                      "workload": "Compile + instantiate corpus means",
+                      "workload": "compile + instantiate",
                       "wago": "4.56ms",
                       "wazero": "5.98ms",
                       "engines": {
                         "railshot": "4.56ms",
-                        "dragline": "8.76ms",
                         "wazero": "5.98ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "label": "Application compile",
+                      "workload": "real-world programs",
+                      "wago": "248.6ms",
+                      "wazero": "840.4ms",
+                      "engines": {
+                        "railshot": "248.6ms",
+                        "wazero": "840.4ms"
+                      },
+                      "comparison": "3.4× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "label": "SIMD execution",
+                      "workload": "AssemblyScript SIMD",
+                      "wago": "83.5µs",
+                      "wazero": "104µs",
+                      "engines": {
+                        "railshot": "83.5µs",
+                        "wazero": "104µs"
+                      },
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -1846,11 +1816,10 @@
                       "wazero": "49.9µs",
                       "engines": {
                         "railshot": "17.6µs",
-                        "dragline": "167µs",
                         "wazero": "49.9µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -1860,11 +1829,10 @@
                       "wazero": "52.3µs",
                       "engines": {
                         "railshot": "19.4µs",
-                        "dragline": "193µs",
                         "wazero": "52.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -1874,11 +1842,10 @@
                       "wazero": "76.1µs",
                       "engines": {
                         "railshot": "28.6µs",
-                        "dragline": "214µs",
                         "wazero": "76.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -1888,11 +1855,10 @@
                       "wazero": "1.15ms",
                       "engines": {
                         "railshot": "521µs",
-                        "dragline": "2.96ms",
                         "wazero": "1.15ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -1902,11 +1868,10 @@
                       "wazero": "81.8µs",
                       "engines": {
                         "railshot": "29.9µs",
-                        "dragline": "255µs",
                         "wazero": "81.8µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -1916,11 +1881,10 @@
                       "wazero": "95µs",
                       "engines": {
                         "railshot": "39.3µs",
-                        "dragline": "194µs",
                         "wazero": "95µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -1930,11 +1894,10 @@
                       "wazero": "94.7µs",
                       "engines": {
                         "railshot": "34.2µs",
-                        "dragline": "273µs",
                         "wazero": "94.7µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -1944,11 +1907,10 @@
                       "wazero": "89.1µs",
                       "engines": {
                         "railshot": "38.7µs",
-                        "dragline": "400µs",
                         "wazero": "89.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -1958,11 +1920,10 @@
                       "wazero": "420µs",
                       "engines": {
                         "railshot": "177µs",
-                        "dragline": "3.71ms",
                         "wazero": "420µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -1972,11 +1933,10 @@
                       "wazero": "414µs",
                       "engines": {
                         "railshot": "144µs",
-                        "dragline": "2.47ms",
                         "wazero": "414µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -1986,11 +1946,10 @@
                       "wazero": "664µs",
                       "engines": {
                         "railshot": "216µs",
-                        "dragline": "418µs",
                         "wazero": "664µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2000,11 +1959,10 @@
                       "wazero": "366µs",
                       "engines": {
                         "railshot": "124µs",
-                        "dragline": "1.84ms",
                         "wazero": "366µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2014,11 +1972,10 @@
                       "wazero": "348µs",
                       "engines": {
                         "railshot": "117µs",
-                        "dragline": "1.79ms",
                         "wazero": "348µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2028,11 +1985,10 @@
                       "wazero": "228µs",
                       "engines": {
                         "railshot": "72.1µs",
-                        "dragline": "1.15ms",
                         "wazero": "228µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2042,11 +1998,10 @@
                       "wazero": "461µs",
                       "engines": {
                         "railshot": "166µs",
-                        "dragline": "4.10ms",
                         "wazero": "461µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2056,11 +2011,10 @@
                       "wazero": "1.26ms",
                       "engines": {
                         "railshot": "422µs",
-                        "dragline": "12.7ms",
                         "wazero": "1.26ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2070,11 +2024,10 @@
                       "wazero": "5.83ms",
                       "engines": {
                         "railshot": "2.15ms",
-                        "dragline": "3.10ms",
                         "wazero": "5.83ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2084,11 +2037,10 @@
                       "wazero": "891µs",
                       "engines": {
                         "railshot": "520µs",
-                        "dragline": "26.2ms",
                         "wazero": "891µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2098,11 +2050,10 @@
                       "wazero": "757µs",
                       "engines": {
                         "railshot": "372µs",
-                        "dragline": "689µs",
                         "wazero": "757µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -2112,11 +2063,10 @@
                       "wazero": "85.1ms",
                       "engines": {
                         "railshot": "30.6ms",
-                        "dragline": "155.5ms",
                         "wazero": "85.1ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -2126,11 +2076,10 @@
                       "wazero": "349.5ms",
                       "engines": {
                         "railshot": "115.2ms",
-                        "dragline": "524ms",
                         "wazero": "349.5ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -2140,11 +2089,10 @@
                       "wazero": "3090.5ms",
                       "engines": {
                         "railshot": "863.4ms",
-                        "dragline": "4091ms",
                         "wazero": "3090.5ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.6× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -2154,11 +2102,10 @@
                       "wazero": "5423.5ms",
                       "engines": {
                         "railshot": "1256.6ms",
-                        "dragline": "14659.2ms",
                         "wazero": "5423.5ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.3× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -2174,11 +2121,10 @@
                       "wazero": "8.4µs",
                       "engines": {
                         "railshot": "1.4µs",
-                        "dragline": "1.4µs",
                         "wazero": "8.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -2188,11 +2134,10 @@
                       "wazero": "8.2µs",
                       "engines": {
                         "railshot": "1.5µs",
-                        "dragline": "1.5µs",
                         "wazero": "8.2µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "5.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -2202,11 +2147,10 @@
                       "wazero": "8.4µs",
                       "engines": {
                         "railshot": "1.5µs",
-                        "dragline": "1.5µs",
                         "wazero": "8.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "5.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2216,11 +2160,10 @@
                       "wazero": "13.2µs",
                       "engines": {
                         "railshot": "2.9µs",
-                        "dragline": "2.9µs",
                         "wazero": "13.2µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2230,11 +2173,10 @@
                       "wazero": "17.3µs",
                       "engines": {
                         "railshot": "3.8µs",
-                        "dragline": "3.8µs",
                         "wazero": "17.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2244,11 +2186,10 @@
                       "wazero": "25.5µs",
                       "engines": {
                         "railshot": "3.8µs",
-                        "dragline": "4µs",
                         "wazero": "25.5µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2258,11 +2199,10 @@
                       "wazero": "25.6µs",
                       "engines": {
                         "railshot": "3.8µs",
-                        "dragline": "4µs",
                         "wazero": "25.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2272,11 +2212,10 @@
                       "wazero": "25.6µs",
                       "engines": {
                         "railshot": "4µs",
-                        "dragline": "4µs",
                         "wazero": "25.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -2286,11 +2225,10 @@
                       "wazero": "14µs",
                       "engines": {
                         "railshot": "12.5µs",
-                        "dragline": "12.5µs",
                         "wazero": "14µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -2300,11 +2238,10 @@
                       "wazero": "11.2µs",
                       "engines": {
                         "railshot": "1.9µs",
-                        "dragline": "1.9µs",
                         "wazero": "11.2µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "5.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -2314,17 +2251,16 @@
                       "wazero": "15.5µs",
                       "engines": {
                         "railshot": "4.9µs",
-                        "dragline": "4.8µs",
                         "wazero": "15.5µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.1× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
                 {
                   "id": "memory",
-                  "label": "Go allocs",
+                  "label": "Memory",
                   "entries": [
                     {
                       "group": "Instantiation — Go heap",
@@ -2334,25 +2270,10 @@
                       "wazero": "7 KB",
                       "engines": {
                         "railshot": "1.5 KB",
-                        "dragline": "1.5 KB",
                         "wazero": "7 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Instantiation — Go heap",
-                      "label": "fib_rec instance",
-                      "workload": "Go allocation objects per fresh instance",
-                      "wago": "8",
-                      "wazero": "21",
-                      "engines": {
-                        "railshot": "8",
-                        "dragline": "8",
-                        "wazero": "21"
-                      },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.6× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2362,11 +2283,10 @@
                       "wazero": "268 KB",
                       "engines": {
                         "railshot": "15 KB",
-                        "dragline": "99.3 KB",
                         "wazero": "268 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "17.8× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2376,11 +2296,10 @@
                       "wazero": "310 KB",
                       "engines": {
                         "railshot": "28.3 KB",
-                        "dragline": "112 KB",
                         "wazero": "310 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "11× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2390,11 +2309,10 @@
                       "wazero": "2.4 MB",
                       "engines": {
                         "railshot": "353 KB",
-                        "dragline": "1.2 MB",
                         "wazero": "2.4 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "7.1× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2404,11 +2322,10 @@
                       "wazero": "1.1 MB",
                       "engines": {
                         "railshot": "241 KB",
-                        "dragline": "1.2 MB",
                         "wazero": "1.1 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.7× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2418,11 +2335,10 @@
                       "wazero": "256.2 MB",
                       "engines": {
                         "railshot": "86.4 MB",
-                        "dragline": "901.3 MB",
                         "wazero": "256.2 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -2432,95 +2348,10 @@
                       "wazero": "408.2 MB",
                       "engines": {
                         "railshot": "57.2 MB",
-                        "dragline": "1100.4 MB",
                         "wazero": "408.2 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "tiny",
-                      "workload": "smallest module",
-                      "wago": "76",
-                      "wazero": "189",
-                      "engines": {
-                        "railshot": "76",
-                        "dragline": "332",
-                        "wazero": "189"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "memory tree",
-                      "workload": "calls + linear-memory access",
-                      "wago": "121",
-                      "wazero": "342",
-                      "engines": {
-                        "railshot": "121",
-                        "dragline": "326",
-                        "wazero": "342"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "json-as",
-                      "workload": "AssemblyScript JSON",
-                      "wago": "1627",
-                      "wazero": "6435",
-                      "engines": {
-                        "railshot": "1627",
-                        "dragline": "1826",
-                        "wazero": "6435"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "blake-as",
-                      "workload": "AssemblyScript BLAKE3",
-                      "wago": "265",
-                      "wazero": "1028",
-                      "engines": {
-                        "railshot": "265",
-                        "dragline": "2197",
-                        "wazero": "1028"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "esbuild",
-                      "workload": "Go bundler · 12 MB",
-                      "wago": "86876",
-                      "wazero": "481747",
-                      "engines": {
-                        "railshot": "86876",
-                        "dragline": "415134",
-                        "wazero": "481747"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "Ruby 3.3",
-                      "workload": "interpreter · 16 MB",
-                      "wago": "311941",
-                      "wazero": "462462",
-                      "engines": {
-                        "railshot": "311941",
-                        "dragline": "1067650",
-                        "wazero": "462462"
-                      },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "7.1× less",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -2536,11 +2367,10 @@
                       "wazero": "27.7ns",
                       "engines": {
                         "railshot": "8ns",
-                        "dragline": "7.9ns",
                         "wazero": "27.7ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -2550,11 +2380,10 @@
                       "wazero": "34.9ns",
                       "engines": {
                         "railshot": "20.3ns",
-                        "dragline": "42.7ns",
                         "wazero": "34.9ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -2564,11 +2393,10 @@
                       "wazero": "2.14ms",
                       "engines": {
                         "railshot": "1.28ms",
-                        "dragline": "1.62ms",
                         "wazero": "2.14ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -2578,11 +2406,10 @@
                       "wazero": "30.6ns",
                       "engines": {
                         "railshot": "29.2ns",
-                        "dragline": "29.1ns",
                         "wazero": "30.6ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2592,11 +2419,10 @@
                       "wazero": "10.9µs",
                       "engines": {
                         "railshot": "8.5µs",
-                        "dragline": "15.4µs",
                         "wazero": "10.9µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2606,11 +2432,10 @@
                       "wazero": "21.6µs",
                       "engines": {
                         "railshot": "9.4µs",
-                        "dragline": "72.2µs",
                         "wazero": "21.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2620,11 +2445,10 @@
                       "wazero": "126µs",
                       "engines": {
                         "railshot": "81.5µs",
-                        "dragline": "191µs",
                         "wazero": "126µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -2634,11 +2458,10 @@
                       "wazero": "264µs",
                       "engines": {
                         "railshot": "250µs",
-                        "dragline": "317µs",
                         "wazero": "264µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -2648,11 +2471,10 @@
                       "wazero": "355µs",
                       "engines": {
                         "railshot": "280µs",
-                        "dragline": "668µs",
                         "wazero": "355µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -2662,11 +2484,10 @@
                       "wazero": "959µs",
                       "engines": {
                         "railshot": "653µs",
-                        "dragline": "760µs",
                         "wazero": "959µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -2676,11 +2497,10 @@
                       "wazero": "1.43ms",
                       "engines": {
                         "railshot": "1.12ms",
-                        "dragline": "3.52ms",
                         "wazero": "1.43ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2690,11 +2510,10 @@
                       "wazero": "313µs",
                       "engines": {
                         "railshot": "146µs",
-                        "dragline": "371µs",
                         "wazero": "313µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2704,11 +2523,10 @@
                       "wazero": "193µs",
                       "engines": {
                         "railshot": "58.4µs",
-                        "dragline": "197µs",
                         "wazero": "193µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2718,11 +2536,10 @@
                       "wazero": "22.1µs",
                       "engines": {
                         "railshot": "17µs",
-                        "dragline": "25.5µs",
                         "wazero": "22.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2732,11 +2549,10 @@
                       "wazero": "54µs",
                       "engines": {
                         "railshot": "40.7µs",
-                        "dragline": "58.8µs",
                         "wazero": "54µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -2746,11 +2562,10 @@
                       "wazero": "363µs",
                       "engines": {
                         "railshot": "382µs",
-                        "dragline": "918µs",
                         "wazero": "363µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2760,11 +2575,10 @@
                       "wazero": "31.8µs",
                       "engines": {
                         "railshot": "23.7µs",
-                        "dragline": "94.7µs",
                         "wazero": "31.8µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2774,11 +2588,10 @@
                       "wazero": "63.4µs",
                       "engines": {
                         "railshot": "42.4µs",
-                        "dragline": "177µs",
                         "wazero": "63.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2788,11 +2601,10 @@
                       "wazero": "466µs",
                       "engines": {
                         "railshot": "690µs",
-                        "dragline": "694µs",
                         "wazero": "466µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -2802,11 +2614,10 @@
                       "wazero": "206µs",
                       "engines": {
                         "railshot": "161µs",
-                        "dragline": "1.33ms",
                         "wazero": "206µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -2816,11 +2627,10 @@
                       "wazero": "40µs",
                       "engines": {
                         "railshot": "28.8µs",
-                        "dragline": "110µs",
                         "wazero": "40µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -2830,11 +2640,10 @@
                       "wazero": "80µs",
                       "engines": {
                         "railshot": "55.6µs",
-                        "dragline": "243µs",
                         "wazero": "80µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -2844,11 +2653,10 @@
                       "wazero": "523µs",
                       "engines": {
                         "railshot": "558µs",
-                        "dragline": "3.63ms",
                         "wazero": "523µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -2858,11 +2666,10 @@
                       "wazero": "69.1µs",
                       "engines": {
                         "railshot": "54.6µs",
-                        "dragline": "783µs",
                         "wazero": "69.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 }
@@ -2881,82 +2688,100 @@
                   "label": "General",
                   "entries": [
                     {
-                      "label": "Compile mean",
-                      "workload": "Corpus geometric mean · fresh process",
+                      "label": "Compile",
+                      "workload": "fresh process",
                       "wago": "8.57ms",
                       "wazero": "10.4ms",
                       "engines": {
                         "railshot": "8.57ms",
-                        "dragline": "14.1ms",
                         "wazero": "10.4ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Compile heap",
-                      "workload": "Go heap bytes allocated per full compile · geometric mean",
+                      "workload": "per compile",
                       "wago": "162.1 KB",
                       "wazero": "1.1 MB",
                       "engines": {
                         "railshot": "162.1 KB",
-                        "dragline": "423.3 KB",
                         "wazero": "1.1 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "7× less",
+                      "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Instantiate mean",
-                      "workload": "Runnable corpus geometric mean",
+                      "label": "Instantiate",
+                      "workload": "runnable corpus",
                       "wago": "1.2µs",
                       "wazero": "11µs",
                       "engines": {
                         "railshot": "1.2µs",
-                        "dragline": "1.5µs",
                         "wazero": "11µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "9.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Execution mean",
-                      "workload": "Runnable corpus geometric mean",
+                      "label": "Execution",
+                      "workload": "runnable corpus",
                       "wago": "7.3µs",
                       "wazero": "9.9µs",
                       "engines": {
                         "railshot": "7.3µs",
-                        "dragline": "5.8µs",
                         "wazero": "9.9µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Call latency",
-                      "workload": "tiny.add host → Wasm",
+                      "workload": "host → Wasm",
                       "wago": "7.6ns",
                       "wazero": "19.5ns",
                       "engines": {
                         "railshot": "7.6ns",
-                        "dragline": "6.1ns",
                         "wazero": "19.5ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "End-to-end latency",
-                      "workload": "Compile + instantiate corpus means",
+                      "workload": "compile + instantiate",
                       "wago": "8.57ms",
                       "wazero": "10.4ms",
                       "engines": {
                         "railshot": "8.57ms",
-                        "dragline": "14.1ms",
                         "wazero": "10.4ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "label": "Application compile",
+                      "workload": "real-world programs",
+                      "wago": "185.7ms",
+                      "wazero": "643.7ms",
+                      "engines": {
+                        "railshot": "185.7ms",
+                        "wazero": "643.7ms"
+                      },
+                      "comparison": "3.5× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "label": "SIMD execution",
+                      "workload": "AssemblyScript SIMD",
+                      "wago": "73.9µs",
+                      "wazero": "90µs",
+                      "engines": {
+                        "railshot": "73.9µs",
+                        "wazero": "90µs"
+                      },
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -2972,11 +2797,10 @@
                       "wazero": "25.4µs",
                       "engines": {
                         "railshot": "10µs",
-                        "dragline": "15.6µs",
                         "wazero": "25.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -2986,11 +2810,10 @@
                       "wazero": "23.5µs",
                       "engines": {
                         "railshot": "10.7µs",
-                        "dragline": "23.8µs",
                         "wazero": "23.5µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -3000,11 +2823,10 @@
                       "wazero": "48.1µs",
                       "engines": {
                         "railshot": "19.1µs",
-                        "dragline": "39.7µs",
                         "wazero": "48.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -3014,11 +2836,10 @@
                       "wazero": "667µs",
                       "engines": {
                         "railshot": "366µs",
-                        "dragline": "1.53ms",
                         "wazero": "667µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3028,11 +2849,10 @@
                       "wazero": "41µs",
                       "engines": {
                         "railshot": "17.4µs",
-                        "dragline": "53µs",
                         "wazero": "41µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3042,11 +2862,10 @@
                       "wazero": "50.6µs",
                       "engines": {
                         "railshot": "21.3µs",
-                        "dragline": "72.3µs",
                         "wazero": "50.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3056,11 +2875,10 @@
                       "wazero": "49.3µs",
                       "engines": {
                         "railshot": "20.8µs",
-                        "dragline": "68.4µs",
                         "wazero": "49.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3070,11 +2888,10 @@
                       "wazero": "44.5µs",
                       "engines": {
                         "railshot": "22.2µs",
-                        "dragline": "89.7µs",
                         "wazero": "44.5µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3084,11 +2901,10 @@
                       "wazero": "215µs",
                       "engines": {
                         "railshot": "106µs",
-                        "dragline": "1.55ms",
                         "wazero": "215µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3098,11 +2914,10 @@
                       "wazero": "210µs",
                       "engines": {
                         "railshot": "80.5µs",
-                        "dragline": "685µs",
                         "wazero": "210µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3112,11 +2927,10 @@
                       "wazero": "398µs",
                       "engines": {
                         "railshot": "135µs",
-                        "dragline": "2.11ms",
                         "wazero": "398µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3126,11 +2940,10 @@
                       "wazero": "183µs",
                       "engines": {
                         "railshot": "64.7µs",
-                        "dragline": "654µs",
                         "wazero": "183µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3140,11 +2953,10 @@
                       "wazero": "186µs",
                       "engines": {
                         "railshot": "67.3µs",
-                        "dragline": "434µs",
                         "wazero": "186µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3154,11 +2966,10 @@
                       "wazero": "114µs",
                       "engines": {
                         "railshot": "43µs",
-                        "dragline": "232µs",
                         "wazero": "114µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3168,11 +2979,10 @@
                       "wazero": "268µs",
                       "engines": {
                         "railshot": "97.2µs",
-                        "dragline": "1.79ms",
                         "wazero": "268µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3182,11 +2992,10 @@
                       "wazero": "701µs",
                       "engines": {
                         "railshot": "270µs",
-                        "dragline": "4.52ms",
                         "wazero": "701µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3196,11 +3005,10 @@
                       "wazero": "4.12ms",
                       "engines": {
                         "railshot": "1.35ms",
-                        "dragline": "19.1ms",
                         "wazero": "4.12ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3210,11 +3018,10 @@
                       "wazero": "455µs",
                       "engines": {
                         "railshot": "356µs",
-                        "dragline": "10.7ms",
                         "wazero": "455µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3224,11 +3031,10 @@
                       "wazero": "413µs",
                       "engines": {
                         "railshot": "218µs",
-                        "dragline": "3.61ms",
                         "wazero": "413µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -3238,11 +3044,10 @@
                       "wazero": "64.1ms",
                       "engines": {
                         "railshot": "23.1ms",
-                        "dragline": "95.8ms",
                         "wazero": "64.1ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.8× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -3252,11 +3057,10 @@
                       "wazero": "264.7ms",
                       "engines": {
                         "railshot": "85.7ms",
-                        "dragline": "826.7ms",
                         "wazero": "264.7ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.1× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -3266,11 +3070,10 @@
                       "wazero": "2428.5ms",
                       "engines": {
                         "railshot": "622.5ms",
-                        "dragline": "3205.9ms",
                         "wazero": "2428.5ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.9× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world programs — full compile: decode + validate + codegen",
@@ -3280,11 +3083,10 @@
                       "wazero": "4163.5ms",
                       "engines": {
                         "railshot": "966.8ms",
-                        "dragline": "10840ms",
                         "wazero": "4163.5ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.3× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -3300,11 +3102,10 @@
                       "wazero": "7.9µs",
                       "engines": {
                         "railshot": "820.6ns",
-                        "dragline": "813.9ns",
                         "wazero": "7.9µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "9.6× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -3314,11 +3115,10 @@
                       "wazero": "8.1µs",
                       "engines": {
                         "railshot": "815.3ns",
-                        "dragline": "834.2ns",
                         "wazero": "8.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "9.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro modules",
@@ -3328,11 +3128,10 @@
                       "wazero": "7.8µs",
                       "engines": {
                         "railshot": "834.7ns",
-                        "dragline": "838.7ns",
                         "wazero": "7.8µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "9.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3342,11 +3141,10 @@
                       "wazero": "10.6µs",
                       "engines": {
                         "railshot": "1.6µs",
-                        "dragline": "1.6µs",
                         "wazero": "10.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3356,11 +3154,10 @@
                       "wazero": "12.9µs",
                       "engines": {
                         "railshot": "810.4ns",
-                        "dragline": "1.9µs",
                         "wazero": "12.9µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "16× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3370,11 +3167,10 @@
                       "wazero": "18.4µs",
                       "engines": {
                         "railshot": "995.5ns",
-                        "dragline": "2.4µs",
                         "wazero": "18.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "18.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3384,11 +3180,10 @@
                       "wazero": "18.4µs",
                       "engines": {
                         "railshot": "995.2ns",
-                        "dragline": "2.4µs",
                         "wazero": "18.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "18.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3398,11 +3193,10 @@
                       "wazero": "18.2µs",
                       "engines": {
                         "railshot": "1.2µs",
-                        "dragline": "2.3µs",
                         "wazero": "18.2µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "15.8× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -3412,11 +3206,10 @@
                       "wazero": "10.6µs",
                       "engines": {
                         "railshot": "6.3µs",
-                        "dragline": "5.8µs",
                         "wazero": "10.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.7× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -3426,11 +3219,10 @@
                       "wazero": "9.3µs",
                       "engines": {
                         "railshot": "1.2µs",
-                        "dragline": "1.2µs",
                         "wazero": "9.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "7.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript",
@@ -3440,17 +3232,16 @@
                       "wazero": "11.6µs",
                       "engines": {
                         "railshot": "3.2µs",
-                        "dragline": "3.2µs",
                         "wazero": "11.6µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.7× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
                 {
                   "id": "memory",
-                  "label": "Go allocs",
+                  "label": "Memory",
                   "entries": [
                     {
                       "group": "Instantiation — Go heap",
@@ -3460,25 +3251,10 @@
                       "wazero": "7 KB",
                       "engines": {
                         "railshot": "1.6 KB",
-                        "dragline": "1.6 KB",
                         "wazero": "7 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Instantiation — Go heap",
-                      "label": "fib_rec instance",
-                      "workload": "Go allocation objects per fresh instance",
-                      "wago": "8",
-                      "wazero": "21",
-                      "engines": {
-                        "railshot": "8",
-                        "dragline": "8",
-                        "wazero": "21"
-                      },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "4.5× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3488,11 +3264,10 @@
                       "wazero": "274 KB",
                       "engines": {
                         "railshot": "18.8 KB",
-                        "dragline": "17.6 KB",
                         "wazero": "274 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "14.6× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3502,11 +3277,10 @@
                       "wazero": "307 KB",
                       "engines": {
                         "railshot": "33.6 KB",
-                        "dragline": "63.5 KB",
                         "wazero": "307 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "9.1× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3516,11 +3290,10 @@
                       "wazero": "2.5 MB",
                       "engines": {
                         "railshot": "372 KB",
-                        "dragline": "2.2 MB",
                         "wazero": "2.5 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "6.9× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3530,11 +3303,10 @@
                       "wazero": "869 KB",
                       "engines": {
                         "railshot": "255 KB",
-                        "dragline": "1 MB",
                         "wazero": "869 KB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3.4× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3544,11 +3316,10 @@
                       "wazero": "262.7 MB",
                       "engines": {
                         "railshot": "86.2 MB",
-                        "dragline": "456.7 MB",
                         "wazero": "262.7 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "3× less",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Full compile — Go heap bytes",
@@ -3558,95 +3329,10 @@
                       "wazero": "430.3 MB",
                       "engines": {
                         "railshot": "57.8 MB",
-                        "dragline": "448.6 MB",
                         "wazero": "430.3 MB"
                       },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "tiny",
-                      "workload": "smallest module",
-                      "wago": "75",
-                      "wazero": "183",
-                      "engines": {
-                        "railshot": "75",
-                        "dragline": "288",
-                        "wazero": "183"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "memory tree",
-                      "workload": "calls + linear-memory access",
-                      "wago": "115",
-                      "wazero": "336",
-                      "engines": {
-                        "railshot": "115",
-                        "dragline": "398",
-                        "wazero": "336"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "json-as",
-                      "workload": "AssemblyScript JSON",
-                      "wago": "1260",
-                      "wazero": "6353",
-                      "engines": {
-                        "railshot": "1260",
-                        "dragline": "3084",
-                        "wazero": "6353"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "blake-as",
-                      "workload": "AssemblyScript BLAKE3",
-                      "wago": "247",
-                      "wazero": "997",
-                      "engines": {
-                        "railshot": "247",
-                        "dragline": "1499",
-                        "wazero": "997"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "esbuild",
-                      "workload": "Go bundler · 12 MB",
-                      "wago": "73352",
-                      "wazero": "468358",
-                      "engines": {
-                        "railshot": "73352",
-                        "dragline": "699358",
-                        "wazero": "468358"
-                      },
-                      "comparison": "",
-                      "result": "context"
-                    },
-                    {
-                      "group": "Full compile — Go allocation objects",
-                      "label": "Ruby 3.3",
-                      "workload": "interpreter · 16 MB",
-                      "wago": "233207",
-                      "wazero": "414251",
-                      "engines": {
-                        "railshot": "233207",
-                        "dragline": "981960",
-                        "wazero": "414251"
-                      },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "7.4× less",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -3662,11 +3348,10 @@
                       "wazero": "19.5ns",
                       "engines": {
                         "railshot": "7.6ns",
-                        "dragline": "6.1ns",
                         "wazero": "19.5ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -3676,11 +3361,10 @@
                       "wazero": "47.5ns",
                       "engines": {
                         "railshot": "16.2ns",
-                        "dragline": "15.4ns",
                         "wazero": "47.5ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -3690,11 +3374,10 @@
                       "wazero": "1.60ms",
                       "engines": {
                         "railshot": "1.10ms",
-                        "dragline": "1.11ms",
                         "wazero": "1.60ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Micro ops",
@@ -3704,11 +3387,10 @@
                       "wazero": "21.1ns",
                       "engines": {
                         "railshot": "10.5ns",
-                        "dragline": "5ns",
                         "wazero": "21.1ns"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3718,11 +3400,10 @@
                       "wazero": "7.3µs",
                       "engines": {
                         "railshot": "5.8µs",
-                        "dragline": "5µs",
                         "wazero": "7.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3732,11 +3413,10 @@
                       "wazero": "11.8µs",
                       "engines": {
                         "railshot": "8.8µs",
-                        "dragline": "5.2µs",
                         "wazero": "11.8µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3746,11 +3426,10 @@
                       "wazero": "106µs",
                       "engines": {
                         "railshot": "101µs",
-                        "dragline": "51.5µs",
                         "wazero": "106µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
@@ -3760,11 +3439,10 @@
                       "wazero": "285µs",
                       "engines": {
                         "railshot": "242µs",
-                        "dragline": "235µs",
                         "wazero": "285µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3774,11 +3452,10 @@
                       "wazero": "148µs",
                       "engines": {
                         "railshot": "149µs",
-                        "dragline": "144µs",
                         "wazero": "148µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "same",
+                      "result": "tie"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3788,11 +3465,10 @@
                       "wazero": "709µs",
                       "engines": {
                         "railshot": "382µs",
-                        "dragline": "346µs",
                         "wazero": "709µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.9× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Benchmarks Game (Rust)",
@@ -3802,11 +3478,10 @@
                       "wazero": "1.04ms",
                       "engines": {
                         "railshot": "1.27ms",
-                        "dragline": "973µs",
                         "wazero": "1.04ms"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.2× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3816,11 +3491,10 @@
                       "wazero": "228µs",
                       "engines": {
                         "railshot": "150µs",
-                        "dragline": "92.9µs",
                         "wazero": "228µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3830,11 +3504,10 @@
                       "wazero": "141µs",
                       "engines": {
                         "railshot": "71.4µs",
-                        "dragline": "62.6µs",
                         "wazero": "141µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3844,11 +3517,10 @@
                       "wazero": "25.8µs",
                       "engines": {
                         "railshot": "25.4µs",
-                        "dragline": "22.7µs",
                         "wazero": "25.8µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "same",
+                      "result": "tie"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3858,11 +3530,10 @@
                       "wazero": "45.3µs",
                       "engines": {
                         "railshot": "29.4µs",
-                        "dragline": "26.6µs",
                         "wazero": "45.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.5× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Crypto & graphics (Rust)",
@@ -3872,11 +3543,10 @@
                       "wazero": "249µs",
                       "engines": {
                         "railshot": "265µs",
-                        "dragline": "216µs",
                         "wazero": "249µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3886,11 +3556,10 @@
                       "wazero": "21.7µs",
                       "engines": {
                         "railshot": "19.2µs",
-                        "dragline": "15.2µs",
                         "wazero": "21.7µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3900,11 +3569,10 @@
                       "wazero": "42.3µs",
                       "engines": {
                         "railshot": "38.8µs",
-                        "dragline": "26.2µs",
                         "wazero": "42.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3914,11 +3582,10 @@
                       "wazero": "397µs",
                       "engines": {
                         "railshot": "405µs",
-                        "dragline": "391µs",
                         "wazero": "397µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "same",
+                      "result": "tie"
                     },
                     {
                       "group": "Real-world (AssemblyScript)",
@@ -3928,11 +3595,10 @@
                       "wazero": "104µs",
                       "engines": {
                         "railshot": "105µs",
-                        "dragline": "68.8µs",
                         "wazero": "104µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "same",
+                      "result": "tie"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -3942,11 +3608,10 @@
                       "wazero": "27.4µs",
                       "engines": {
                         "railshot": "23.6µs",
-                        "dragline": "23.4µs",
                         "wazero": "27.4µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.2× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -3956,11 +3621,10 @@
                       "wazero": "55.3µs",
                       "engines": {
                         "railshot": "49.6µs",
-                        "dragline": "47.7µs",
                         "wazero": "55.3µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.1× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -3970,11 +3634,10 @@
                       "wazero": "437µs",
                       "engines": {
                         "railshot": "441µs",
-                        "dragline": "438µs",
                         "wazero": "437µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "same",
+                      "result": "tie"
                     },
                     {
                       "group": "AssemblyScript SIMD",
@@ -3984,11 +3647,10 @@
                       "wazero": "99.1µs",
                       "engines": {
                         "railshot": "57.6µs",
-                        "dragline": "47.4µs",
                         "wazero": "99.1µs"
                       },
-                      "comparison": "",
-                      "result": "context"
+                      "comparison": "1.7× faster",
+                      "result": "multi-engine ahead"
                     }
                   ]
                 }
@@ -3997,7 +3659,7 @@
           }
         }
       },
-      "comparisonCount": 156
+      "comparisonCount": 146
     }
   },
   "machineReadable": {

@@ -1825,7 +1825,7 @@
     font-weight: 400;
     letter-spacing: 0.01em;
     color: var(--faint);
-    opacity: 0.55;
+    opacity: 0.35;
 }
 .rank__row--wago .rank__name {
     color: var(--lilac);

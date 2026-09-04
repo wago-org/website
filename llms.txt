@@ -18,7 +18,7 @@ Data updated: 2026-09-03
 - Verification: 155010 checks pass, 0 fail, 22 skip.
 - Test coverage: 86.1%.
 - Native benchmark architectures published: amd64, arm64.
-- Published multi-engine comparisons: 146.
+- Published multi-engine comparisons: 170.
 - End-to-end dataset: 6 real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
 
 ## Read next

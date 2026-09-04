@@ -131,15 +131,6 @@
           },
           "additionalProperties": { "type": "boolean" }
         },
-        "experimental": {
-          "type": "object",
-          "propertyNames": {
-            "enum": [
-              "dragline"
-            ]
-          },
-          "additionalProperties": { "type": "boolean" }
-        },
         "runtime": {
           "type": "object",
           "additionalProperties": false,

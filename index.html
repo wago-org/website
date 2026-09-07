@@ -309,8 +309,8 @@
                     <strong>a simply wonderful experience.</strong>
                 </p>
                 <div class="hero__actions">
-                    <a class="btn btn--primary" href="#beta" data-phase="pre"
-                        >Join the beta →</a
+                    <a class="btn btn--primary" href="#install" data-phase="pre"
+                        >Try now →</a
                     >
                     <div
                         class="install-split"
@@ -1149,8 +1149,10 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     </div>
                     <div class="panes">
                         <div class="pane-cta" data-phase="pre">
-                            <a class="btn btn--primary" href="#beta"
-                                >Join the waitlist →</a
+                            <a
+                                class="btn btn--primary"
+                                href="https://docs.wago.sh/"
+                                >Try now →</a
                             >
                         </div>
                         <div class="pane">
@@ -5098,55 +5100,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                 </div>
             </section>
 
-            <!-- ░░░ BETA SIGNUP ░░░ -->
-            <section id="beta" class="section" data-phase="pre">
-                <div class="beta">
-                    <div class="eyebrow eyebrow--center">Public beta waitlist</div>
-                    <h2 class="beta__title">Get notified at launch</h2>
-                    <p class="beta__body">
-                        Drop your email and we'll send one message the moment
-                        wago's public beta is live — no spam, unsubscribe
-                        anytime.
+            <!-- ░░░ COMMUNITY ░░░ -->
+            <section id="community" class="section">
+                <div class="community">
+                    <div class="eyebrow eyebrow--center">Community</div>
+                    <h2 class="community__title">Join us on Discord</h2>
+                    <p class="community__body">
+                        Ask questions, share what you're building, and follow
+                        wago's progress with the community.
                     </p>
-                    <!-- Progressive enhancement: this is a real Buttondown embed
-                         form, so it still works as a plain POST without JS.
-                         src/beta.ts intercepts it to submit inline and keep the
-                         visitor on the page.
-                         NOTE: "wago" below is the Buttondown username — create the
-                         account at buttondown.com with that handle (or swap it here
-                         AND in src/beta.ts) before this goes live. -->
-                    <form
-                        class="beta__form"
-                        data-beta-form
-                        action="https://buttondown.com/api/emails/embed-subscribe/wago"
-                        method="post"
+                    <a
+                        class="btn btn--primary"
+                        href="https://discord.gg/Qbe76HDy8K"
                         target="_blank"
+                        rel="noopener"
+                        >Join Discord ↗</a
                     >
-                        <label class="sr-only" for="beta-email"
-                            >Email address</label
-                        >
-                        <input
-                            class="beta__input"
-                            id="beta-email"
-                            type="email"
-                            name="email"
-                            required
-                            autocomplete="email"
-                            placeholder="you@example.com"
-                        />
-                        <button
-                            class="btn btn--primary beta__submit"
-                            type="submit"
-                        >
-                            Notify me
-                        </button>
-                    </form>
-                    <p
-                        class="beta__status"
-                        data-beta-status
-                        role="status"
-                        aria-live="polite"
-                    ></p>
                 </div>
             </section>
 
@@ -5208,6 +5177,12 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         target="_blank"
                         rel="noopener"
                         >GitHub</a
+                    >
+                    <a
+                        href="https://discord.gg/Qbe76HDy8K"
+                        target="_blank"
+                        rel="noopener"
+                        >Discord</a
                     >
                     <a
                         href="https://github.com/wago-org/wago/blob/main/SPECTEST.md"

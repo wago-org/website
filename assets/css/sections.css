@@ -164,7 +164,7 @@
     flex-direction: column;
     gap: 13px;
 }
-/* Pre-launch stand-in for the install box: a full-width waitlist button
+/* Pre-launch stand-in for the install box: a full-width action button
    spanning the same column width as the cli command box below it. */
 .pane-cta {
     display: flex;
@@ -259,100 +259,36 @@
     }
 }
 
-/* ---- Beta signup band ----
-   A dark panel echoing .cta's shape, with an inline email form. */
-.beta {
+/* ---- Community band ---- */
+.community {
     background: var(--panel);
     border: 1px solid var(--line-2);
     border-radius: 24px;
     padding: 56px 40px;
     text-align: center;
 }
-.beta__title {
+.community__title {
     font-weight: 900;
     font-size: clamp(28px, 3.8vw, 44px);
     letter-spacing: -1.4px;
     margin: 14px 0 12px;
 }
-.beta__body {
+.community__body {
     font-size: 18px;
     line-height: 1.55;
     color: var(--text-dim);
     margin: 0 auto 28px;
     max-width: 520px;
 }
-.beta__form {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 520px;
-    margin: 0 auto;
-}
-.beta__input {
-    flex: 1 1 260px;
-    min-width: 0;
-    font-family: var(--mono);
-    font-size: 15px;
-    color: var(--text);
-    background: var(--bg-deep);
-    border: 2px solid var(--line-2);
-    border-radius: 13px;
-    padding: 15px 18px;
-    transition: border-color 0.15s ease;
-}
-.beta__input::placeholder {
-    color: var(--muted);
-}
-.beta__input:focus {
-    outline: none;
-    border-color: var(--lilac);
-}
-.beta__submit {
-    flex: 0 0 auto;
-}
-.beta__submit:disabled {
-    opacity: 0.6;
-    cursor: default;
-}
-.beta__status {
-    min-height: 1.2em;
-    margin: 16px 0 0;
-    font-size: 15px;
-    color: var(--text-dim);
-}
-.beta__status--ok {
-    color: var(--green);
-}
-.beta__status--err {
-    color: var(--pink);
-}
-/* Once submitted, swap the form out for the confirmation message. */
-.beta--done .beta__form {
-    display: none;
-}
 
 @media (max-width: 560px) {
-    .beta {
+    .community {
         padding: 42px 24px;
-    }
-    .beta__form {
-        flex-direction: column;
-    }
-    /* In a column, flex-basis maps to height — reset so the input keeps its
-       natural height instead of stretching to 260px. */
-    .beta__input {
-        flex: 0 0 auto;
-        width: 100%;
-    }
-    .beta__submit {
-        width: 100%;
-        justify-content: center;
     }
 }
 
 /* ---- Launch-phase gate ----
-   Elements marked [data-phase="pre"] show before launch (beta signup);
+   Elements marked [data-phase="pre"] show before launch;
    [data-phase="post"] show from launch day (install). The <html> phase class
    is set by the inline script in the document head. */
 .phase-pre [data-phase="post"],

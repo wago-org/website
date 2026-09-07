@@ -335,7 +335,7 @@ async function main() {
 
   const mvp = parseSpectest(srcs["SPECTEST.md"].text);
   const features = parseFeatures(srcs["FEATURES.md"].text);
-  const simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
+  const simdAssertionsPass = parseSIMDAssertions(`${srcs["FEATURES.md"].text}\n${srcs["VERIFICATION.md"].text}`);
   const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
   const verification = parseVerification(srcs["VERIFICATION.md"].text);
   const spec3 = parseSpec3Baseline(srcs["tests/spec-v3-baseline.json"].text);

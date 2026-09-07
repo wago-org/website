@@ -142,23 +142,6 @@
     color: var(--text-soft);
     margin: 0 0 20px;
 }
-.checklist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-}
-.checklist li {
-    display: flex;
-    gap: 10px;
-    font-size: 15px;
-    color: var(--text-dim);
-}
-.checklist__mark {
-    color: var(--green);
-}
 .panes {
     display: flex;
     flex-direction: column;

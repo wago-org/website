@@ -13,6 +13,11 @@ test("parses the current official SIMD acceptance wording", () => {
   assert.equal(parseSIMDAssertions(features), 24_325);
 });
 
+test("parses the verification SIMD row when feature prose has no count", () => {
+  const text = `| SIMD | 24325 | 0 | 0 | execution assertions |`;
+  assert.equal(parseSIMDAssertions(text), 24325);
+});
+
 test("rejects unrelated SIMD assertion counts", () => {
   const features = `| SIMD (\`v128\`) | ✓ | Focused lowering tests pass 69 assertions. |`;
   assert.throws(

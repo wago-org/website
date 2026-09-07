@@ -1,4 +1,4 @@
-// Tabbed panels (the performance section's General/Compile/Instantiate/Exec
+// Tabbed panels (the performance section's General/Compile/Instantiate/Execution
 // control). Each [data-tabs] tablist owns a set of [role=tab] buttons and their
 // [role=tabpanel] panels. Switching a tab reveals its panel and re-animates the
 // panel's [data-bar] fills — hidden panels never intersect the viewport, so the

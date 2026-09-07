@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-03",
+  "generated": "2026-09-07",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -23,8 +23,8 @@
     "accountingNote": "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline."
   },
   "coverage": 86.1,
-  "featuresDone": 17,
-  "featuresTotal": 17,
+  "featuresDone": 0,
+  "featuresTotal": 0,
   "cgoLines": 0,
   "platforms": 3,
   "stats": [
@@ -56,80 +56,11 @@
       "version": "1.0",
       "label": "WebAssembly 1.0",
       "sub": "MVP core",
-      "status": "pass",
-      "done": 17,
-      "total": 17,
-      "pct": 100,
-      "features": [
-        {
-          "label": "i32 / i64 integer ops",
-          "status": "pass"
-        },
-        {
-          "label": "f32 / f64 ops",
-          "status": "pass"
-        },
-        {
-          "label": "f32 / f64 ceil / floor / trunc / nearest / copysign",
-          "status": "pass"
-        },
-        {
-          "label": "Conversions + reinterpret",
-          "status": "pass"
-        },
-        {
-          "label": "Float→int trunc NaN/overflow traps",
-          "status": "pass"
-        },
-        {
-          "label": "Control flow: block / loop / if / else / br / br_if / br_table / return",
-          "status": "pass"
-        },
-        {
-          "label": "call / call_indirect",
-          "status": "pass"
-        },
-        {
-          "label": "select, drop, nop, unreachable",
-          "status": "pass"
-        },
-        {
-          "label": "Locals",
-          "status": "pass"
-        },
-        {
-          "label": "Globals",
-          "status": "pass"
-        },
-        {
-          "label": "Linear memory load/store",
-          "status": "pass"
-        },
-        {
-          "label": "memory.size / memory.grow",
-          "status": "pass"
-        },
-        {
-          "label": "Active data segments",
-          "status": "pass"
-        },
-        {
-          "label": "Tables + active element segments",
-          "status": "pass"
-        },
-        {
-          "label": "Function imports / exports",
-          "status": "pass"
-        },
-        {
-          "label": "Memory / table / global imports & exports",
-          "status": "pass"
-        },
-        {
-          "label": "start function",
-          "status": "pass"
-        }
-      ]
+      "status": "planned",
+      "done": 0,
+      "total": 0,
+      "pct": 0,
+      "features": []
     },
     {
       "version": "2.0",

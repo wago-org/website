@@ -188,72 +188,43 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 359µs | 1.06ms |
-|  | Compile heap | per compile | 124 KB | 1.3 MB |
-|  | Instantiate | runnable corpus | 10.8µs | 14.4µs |
-|  | Execution | runnable corpus | 37.3µs | 17.7µs |
-|  | Call latency | host → Wasm | 92.8ns | 27.7ns |
-|  | End-to-end latency | compile + instantiate | 370µs | 1.07ms |
-|  | Application compile | real-world programs | 219.1ms | 830.4ms |
-|  | SIMD execution | AssemblyScript SIMD | 78.5µs | 103µs |
+|  | Compile | fresh process | 4.00ms | 12.8ms |
+|  | Compile heap | per compile | 564 KB | 5.5 MB |
+|  | Instantiate | runnable corpus | 10.3µs | 19.6µs |
+|  | Execution | runnable corpus | 89.1µs | 118µs |
+|  | End-to-end latency | compile + instantiate | 4.01ms | 12.8ms |
+|  | Application compile | real-world programs | 219.7ms | 832ms |
+|  | SIMD execution | AssemblyScript SIMD | 79.1µs | 103µs |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 24.1µs | 51.4µs |
-| Real-world programs | blake-as | real corpus | 501µs | 886µs |
-| Real-world programs | json-as | real corpus | 1.86ms | 6.08ms |
-| Real-world programs | swar-pack-parse | real corpus | 39.6µs | 90.4µs |
-| Real-world programs | utf-as | real corpus | 303µs | 742µs |
-| Real-world programs | xjb-mulhi | real corpus | 39.2µs | 86µs |
-| Real-world SIMD | blake-as-simd | real-simd corpus | 1.55ms | 2.59ms |
-| Real-world SIMD | json-as-simd | real-simd corpus | 2.07ms | 6.52ms |
-| Real-world SIMD | utf-as-simd | real-simd corpus | 877µs | 2.30ms |
-| Semantic corpus | blake3 | semantic corpus | 1.36ms | 2.72ms |
-| Semantic corpus | coremark | semantic corpus | 812µs | 2.81ms |
-| Semantic corpus | lz4 | semantic corpus | 231µs | 1.11ms |
-| Semantic corpus | qoi | semantic corpus | 273µs | 977µs |
-| Semantic corpus | zlib | semantic corpus | 1.40ms | 7.40ms |
-| Semantic corpus | zstd | semantic corpus | 5.38ms | 29.9ms |
-| Control flow | branches | control corpus | 20.2µs | 51.1µs |
-| Compute kernels | crc32 | compute corpus | 62.4µs | 231µs |
-| Compute kernels | fannkuch | compute corpus | 165µs | 650µs |
-| Compute kernels | linked_list | compute corpus | 29.1µs | 79.6µs |
-| Compute kernels | mandelbrot | compute corpus | 35.1µs | 87.9µs |
-| Compute kernels | matmul | compute corpus | 101µs | 369µs |
-| Compute kernels | nbody | compute corpus | 132µs | 412µs |
-| Compute kernels | quicksort | compute corpus | 96µs | 312µs |
-| Compute kernels | raytrace | compute corpus | 348µs | 1.24ms |
-| Compute kernels | sha256 | compute corpus | 129µs | 461µs |
-| Compute kernels | sieve | compute corpus | 32.2µs | 91.3µs |
-| Compute kernels | spectralnorm | compute corpus | 114µs | 415µs |
-| Calls | dispatch | calls corpus | 33µs | 75.7µs |
-| Calls | fib_rec | calls corpus | 22.4µs | 51.3µs |
-| Large real-world programs | esbuild | real-large corpus | 752.5ms | 3031.3ms |
-| Large real-world programs | lua | real-large corpus | 26.7ms | 85.5ms |
-| Large real-world programs | ruby | real-large corpus | 1144.1ms | 5427.9ms |
-| Large real-world programs | sqlite3 | real-large corpus | 100.4ms | 338.2ms |
-| Loops | fib_iter | loop corpus | 22.4µs | 53µs |
-| Floating point | float | fp corpus | 23.8µs | 51.8µs |
-| Globals | globals | globals corpus | 25.7µs | 63.4µs |
-| Scale | many_funcs | scale corpus | 479µs | 1.12ms |
-| Memory | memory | memory corpus | 28.6µs | 78.9µs |
-| Calls and memory | memory_tree | calls+memory corpus | 41.2µs | 94.1µs |
-| Regression corpus | regexmatch | regression-only corpus | 65.2ms | 297.3ms |
-| Regression corpus | wasm3 | regression-only corpus | 16.7ms | 45.4ms |
-| Micro modules | tiny | micro corpus | 20.6µs | 50.3µs |
+| Real-world programs | blake-as | real corpus | 497µs | 884µs |
+| Real-world programs | json-as | real corpus | 1.87ms | 6.11ms |
+| Real-world programs | utf-as | real corpus | 307µs | 739µs |
+| Real-world SIMD | blake-as-simd | real-simd corpus | 1.56ms | 2.60ms |
+| Real-world SIMD | json-as-simd | real-simd corpus | 2.09ms | 6.74ms |
+| Real-world SIMD | utf-as-simd | real-simd corpus | 887µs | 2.24ms |
+| Semantic corpus | blake3 | semantic corpus | 1.38ms | 2.65ms |
+| Semantic corpus | coremark | semantic corpus | 819µs | 2.85ms |
+| Semantic corpus | lz4 | semantic corpus | 230µs | 1.12ms |
+| Semantic corpus | qoi | semantic corpus | 274µs | 972µs |
+| Semantic corpus | zlib | semantic corpus | 1.42ms | 7.50ms |
+| Semantic corpus | zstd | semantic corpus | 5.43ms | 30.3ms |
+| Large real-world programs | esbuild | real-large corpus | 751.7ms | 3067.7ms |
+| Large real-world programs | lua | real-large corpus | 26.9ms | 85.4ms |
+| Large real-world programs | ruby | real-large corpus | 1151.2ms | 5409ms |
+| Large real-world programs | sqlite3 | real-large corpus | 100.1ms | 338ms |
+| Large real-world programs | wasm3 | real-large corpus | 16.6ms | 45.5ms |
 
 ##### Compile memory
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 31.9 KB | 291 KB |
 | Real-world programs | blake-as | real corpus | 137 KB | 1.1 MB |
 | Real-world programs | json-as | real corpus | 210 KB | 2.4 MB |
-| Real-world programs | swar-pack-parse | real corpus | 32.7 KB | 297 KB |
 | Real-world programs | utf-as | real corpus | 208 KB | 1.2 MB |
-| Real-world programs | xjb-mulhi | real corpus | 32.5 KB | 297 KB |
 | Real-world SIMD | blake-as-simd | real-simd corpus | 257 KB | 1.9 MB |
 | Real-world SIMD | json-as-simd | real-simd corpus | 223 KB | 2.2 MB |
 | Real-world SIMD | utf-as-simd | real-simd corpus | 228 KB | 1.3 MB |
@@ -263,91 +234,41 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Semantic corpus | qoi | semantic corpus | 77.8 KB | 833 KB |
 | Semantic corpus | zlib | semantic corpus | 278 KB | 7.3 MB |
 | Semantic corpus | zstd | semantic corpus | 975 KB | 23.5 MB |
-| Control flow | branches | control corpus | 18.6 KB | 272 KB |
-| Compute kernels | crc32 | compute corpus | 36.9 KB | 487 KB |
-| Compute kernels | fannkuch | compute corpus | 73.2 KB | 1018 KB |
-| Compute kernels | linked_list | compute corpus | 21.5 KB | 310 KB |
-| Compute kernels | mandelbrot | compute corpus | 34 KB | 319 KB |
-| Compute kernels | matmul | compute corpus | 69.6 KB | 620 KB |
-| Compute kernels | nbody | compute corpus | 70.7 KB | 726 KB |
-| Compute kernels | quicksort | compute corpus | 42.2 KB | 483 KB |
-| Compute kernels | raytrace | compute corpus | 134 KB | 1.5 MB |
-| Compute kernels | sha256 | compute corpus | 71.4 KB | 806 KB |
-| Compute kernels | sieve | compute corpus | 25 KB | 316 KB |
-| Compute kernels | spectralnorm | compute corpus | 68.9 KB | 688 KB |
-| Calls | dispatch | calls corpus | 34.8 KB | 274 KB |
-| Calls | fib_rec | calls corpus | 17.7 KB | 273 KB |
-| Large real-world programs | esbuild | real-large corpus | 78.7 MB | 256.3 MB |
+| Large real-world programs | esbuild | real-large corpus | 78.7 MB | 256.2 MB |
 | Large real-world programs | lua | real-large corpus | 1.1 MB | 18.7 MB |
-| Large real-world programs | ruby | real-large corpus | 39.6 MB | 408.2 MB |
+| Large real-world programs | ruby | real-large corpus | 39.6 MB | 408.3 MB |
 | Large real-world programs | sqlite3 | real-large corpus | 4.1 MB | 36.2 MB |
-| Loops | fib_iter | loop corpus | 17.8 KB | 292 KB |
-| Floating point | float | fp corpus | 31.9 KB | 291 KB |
-| Globals | globals | globals corpus | 19.8 KB | 290 KB |
-| Scale | many_funcs | scale corpus | 165 KB | 346 KB |
-| Memory | memory | memory corpus | 19.4 KB | 295 KB |
-| Calls and memory | memory_tree | calls+memory corpus | 34.5 KB | 310 KB |
-| Regression corpus | regexmatch | regression-only corpus | 2.3 MB | 46.5 MB |
-| Regression corpus | wasm3 | regression-only corpus | 896 KB | 8.6 MB |
-| Micro modules | tiny | micro corpus | 15.9 KB | 268 KB |
+| Large real-world programs | wasm3 | real-large corpus | 896 KB | 8.6 MB |
 
 ##### Instantiate latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 4.3µs | 7.7µs |
 | Real-world programs | blake-as | real corpus | 6.7µs | 10.4µs |
-| Real-world programs | json-as | real corpus | 20.7µs | 13µs |
-| Real-world programs | swar-pack-parse | real corpus | 2.3µs | 7.8µs |
-| Real-world programs | utf-as | real corpus | 17µs | 14.5µs |
-| Real-world programs | xjb-mulhi | real corpus | 2.3µs | 7.8µs |
-| Real-world SIMD | blake-as-simd | real-simd corpus | 6.7µs | 10.3µs |
-| Real-world SIMD | json-as-simd | real-simd corpus | 20.6µs | 13µs |
-| Real-world SIMD | utf-as-simd | real-simd corpus | 26.2µs | 15.6µs |
-| Semantic corpus | blake3 | semantic corpus | 7.2µs | 25.2µs |
-| Semantic corpus | coremark | semantic corpus | 6.8µs | 10.8µs |
-| Semantic corpus | lz4 | semantic corpus | 7.9µs | 38.9µs |
-| Semantic corpus | qoi | semantic corpus | 5.8µs | 38.9µs |
-| Semantic corpus | zlib | semantic corpus | 8.5µs | 40.2µs |
-| Semantic corpus | zstd | semantic corpus | 8.7µs | 42.2µs |
-| Control flow | branches | control corpus | 4.3µs | 7.7µs |
-| Compute kernels | crc32 | compute corpus | 7.4µs | 25.6µs |
-| Compute kernels | fannkuch | compute corpus | 4.5µs | 25.1µs |
-| Compute kernels | linked_list | compute corpus | 4.4µs | 13.1µs |
-| Compute kernels | mandelbrot | compute corpus | 4.3µs | 7.7µs |
-| Compute kernels | matmul | compute corpus | 4.5µs | 25.3µs |
-| Compute kernels | nbody | compute corpus | 4.5µs | 25.6µs |
-| Compute kernels | quicksort | compute corpus | 4.5µs | 24.8µs |
-| Compute kernels | raytrace | compute corpus | 5.3µs | 25.5µs |
-| Compute kernels | sha256 | compute corpus | 7.3µs | 25.7µs |
-| Compute kernels | sieve | compute corpus | 4.4µs | 16.8µs |
-| Compute kernels | spectralnorm | compute corpus | 4.5µs | 25.8µs |
-| Calls | dispatch | calls corpus | 4.9µs | 8µs |
-| Calls | fib_rec | calls corpus | 4.3µs | 7.7µs |
-| Large real-world programs | esbuild | real-large corpus | 2.80ms | n/a |
-| Large real-world programs | lua | real-large corpus | 101µs | n/a |
-| Large real-world programs | ruby | real-large corpus | 3.36ms | n/a |
-| Large real-world programs | sqlite3 | real-large corpus | 263µs | n/a |
-| Loops | fib_iter | loop corpus | 4.3µs | 7.7µs |
-| Floating point | float | fp corpus | 4.3µs | 7.7µs |
-| Globals | globals | globals corpus | 4.4µs | 7.8µs |
-| Scale | many_funcs | scale corpus | 4.3µs | 7.7µs |
-| Memory | memory | memory corpus | 4.3µs | 9.6µs |
-| Calls and memory | memory_tree | calls+memory corpus | 4.3µs | 9.5µs |
-| Regression corpus | regexmatch | regression-only corpus | 208µs | n/a |
-| Regression corpus | wasm3 | regression-only corpus | 121µs | n/a |
-| Micro modules | tiny | micro corpus | 4.3µs | 7.8µs |
+| Real-world programs | json-as | real corpus | 20.5µs | 13µs |
+| Real-world programs | utf-as | real corpus | 17µs | 14.8µs |
+| Real-world SIMD | blake-as-simd | real-simd corpus | 6.7µs | 10.4µs |
+| Real-world SIMD | json-as-simd | real-simd corpus | 20.6µs | 13.1µs |
+| Real-world SIMD | utf-as-simd | real-simd corpus | 26.3µs | 15.4µs |
+| Semantic corpus | blake3 | semantic corpus | 7.3µs | 25.2µs |
+| Semantic corpus | coremark | semantic corpus | 6.7µs | 10.6µs |
+| Semantic corpus | lz4 | semantic corpus | 7.9µs | 40.5µs |
+| Semantic corpus | qoi | semantic corpus | 5.8µs | 40.2µs |
+| Semantic corpus | zlib | semantic corpus | 8.5µs | 44.9µs |
+| Semantic corpus | zstd | semantic corpus | 8.7µs | 38.3µs |
+| Large real-world programs | esbuild | real-large corpus | 2.82ms | n/a |
+| Large real-world programs | lua | real-large corpus | 99.2µs | n/a |
+| Large real-world programs | ruby | real-large corpus | 3.33ms | n/a |
+| Large real-world programs | sqlite3 | real-large corpus | 257µs | n/a |
+| Large real-world programs | wasm3 | real-large corpus | 117µs | n/a |
 
 ##### Machine code
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 107 B | 106 B |
 | Real-world programs | blake-as | real corpus | 10.4 KB | 11.2 KB |
 | Real-world programs | json-as | real corpus | 54.5 KB | 72 KB |
-| Real-world programs | swar-pack-parse | real corpus | 430 B | 490 B |
 | Real-world programs | utf-as | real corpus | 4 KB | 7.2 KB |
-| Real-world programs | xjb-mulhi | real corpus | 355 B | 404 B |
 | Real-world SIMD | blake-as-simd | real-simd corpus | 38.2 KB | 58 KB |
 | Real-world SIMD | json-as-simd | real-simd corpus | 64.9 KB | 82.6 KB |
 | Real-world SIMD | utf-as-simd | real-simd corpus | 19.9 KB | 30.3 KB |
@@ -357,90 +278,40 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Semantic corpus | qoi | semantic corpus | 5 KB | 10.5 KB |
 | Semantic corpus | zlib | semantic corpus | 28.1 KB | 72.4 KB |
 | Semantic corpus | zstd | semantic corpus | 130 KB | 280 KB |
-| Control flow | branches | control corpus | 120 B | 144 B |
-| Compute kernels | crc32 | compute corpus | 962 B | 2.3 KB |
-| Compute kernels | fannkuch | compute corpus | 3.7 KB | 7.1 KB |
-| Compute kernels | linked_list | compute corpus | 199 B | 418 B |
-| Compute kernels | mandelbrot | compute corpus | 504 B | 369 B |
-| Compute kernels | matmul | compute corpus | 1.7 KB | 3.4 KB |
-| Compute kernels | nbody | compute corpus | 3.4 KB | 5.6 KB |
-| Compute kernels | quicksort | compute corpus | 1.7 KB | 2.8 KB |
-| Compute kernels | raytrace | compute corpus | 12.4 KB | 14.1 KB |
-| Compute kernels | sha256 | compute corpus | 2.3 KB | 5.5 KB |
-| Compute kernels | sieve | compute corpus | 260 B | 467 B |
-| Compute kernels | spectralnorm | compute corpus | 2.1 KB | 4.3 KB |
-| Calls | dispatch | calls corpus | 475 B | 503 B |
-| Calls | fib_rec | calls corpus | 163 B | 150 B |
 | Large real-world programs | esbuild | real-large corpus | 19.2 MB | 55.3 MB |
 | Large real-world programs | lua | real-large corpus | 693 KB | 1.2 MB |
 | Large real-world programs | ruby | real-large corpus | 27.1 MB | 67.1 MB |
 | Large real-world programs | sqlite3 | real-large corpus | 2.5 MB | 4.4 MB |
-| Loops | fib_iter | loop corpus | 99 B | 105 B |
-| Floating point | float | fp corpus | 150 B | 120 B |
-| Globals | globals | globals corpus | 148 B | 154 B |
-| Scale | many_funcs | scale corpus | 7.6 KB | 18.9 KB |
-| Memory | memory | memory corpus | 196 B | 317 B |
-| Calls and memory | memory_tree | calls+memory corpus | 479 B | 500 B |
-| Regression corpus | regexmatch | regression-only corpus | 1.8 MB | 3.4 MB |
-| Regression corpus | wasm3 | regression-only corpus | 718 KB | 782 KB |
-| Micro modules | tiny | micro corpus | 96 B | 123 B |
+| Large real-world programs | wasm3 | real-large corpus | 718 KB | 782 KB |
 
 ##### Execution
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | run · alu corpus | 1.5µs | 1.4µs |
-| Real-world programs | blake-as | hashN · real corpus | 683µs | 459µs |
-| Real-world programs | json-as | deserializeN · real corpus | 38.4µs | 62.2µs |
-| Real-world programs | json-as | serializeN · real corpus | 22.7µs | 30.9µs |
-| Real-world programs | swar-pack-parse | pack · real corpus | 88.9ns | 24.8ns |
-| Real-world programs | swar-pack-parse | parse4 · real corpus | 89.7ns | 25.1ns |
-| Real-world programs | swar-pack-parse | runN · real corpus | 1.9µs | 1.8µs |
-| Real-world programs | utf-as | convertN · real corpus | 159µs | 204µs |
-| Real-world programs | xjb-mulhi | mulhi · real corpus | 90.4ns | 28ns |
-| Real-world programs | xjb-mulhi | runN · real corpus | 2µs | 2.3µs |
-| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 537µs | 514µs |
-| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 48.8µs | 79.5µs |
-| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 27.2µs | 39.6µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 53.3µs | 68.4µs |
-| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 149µs | 186µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 353µs | 313µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 347µs | 299µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 346µs | 298µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 32.8ms | 53.2ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 33.8µs | 52.5µs |
+| Real-world programs | blake-as | hashN · real corpus | 687µs | 465µs |
+| Real-world programs | json-as | deserializeN · real corpus | 38.6µs | 62.6µs |
+| Real-world programs | json-as | serializeN · real corpus | 23µs | 31.2µs |
+| Real-world programs | utf-as | convertN · real corpus | 159µs | 205µs |
+| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 540µs | 519µs |
+| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 49.2µs | 79.6µs |
+| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 27.3µs | 39.8µs |
+| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 54µs | 68.7µs |
+| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 150µs | 187µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 356µs | 314µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 349µs | 300µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 348µs | 300µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 33ms | 53.5ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 33.8µs | 53µs |
 | Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.6µs | 5.5µs |
-| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 5.8µs | 13.9µs |
+| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 6µs | 11.7µs |
 | Semantic corpus | qoi | qoi_encode_run · semantic corpus | 8.4µs | 13.2µs |
-| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 9.2µs | 17.2µs |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6µs | 8.2µs |
-| Control flow | branches | classify · control corpus | 88.8ns | 25.2ns |
-| Compute kernels | crc32 | hashN · compute corpus | 16.7µs | 21.8µs |
-| Compute kernels | fannkuch | run · compute corpus | 1.04ms | 1.41ms |
-| Compute kernels | linked_list | sum · compute corpus | 8.7µs | 10.8µs |
-| Compute kernels | mandelbrot | render · compute corpus | 242µs | 258µs |
-| Compute kernels | matmul | run · compute corpus | 105µs | 309µs |
-| Compute kernels | nbody | step · compute corpus | 269µs | 350µs |
-| Compute kernels | quicksort | sortN · compute corpus | 68.4µs | 179µs |
-| Compute kernels | raytrace | render · compute corpus | 372µs | 356µs |
-| Compute kernels | sha256 | hashN · compute corpus | 36.8µs | 53.1µs |
-| Compute kernels | sieve | count · compute corpus | 67.1µs | 124µs |
-| Compute kernels | spectralnorm | run · compute corpus | 640µs | 943µs |
-| Calls | dispatch | apply · calls corpus | 94.5ns | 29.8ns |
-| Calls | fib_rec | fib · calls corpus | 1.27ms | 2.11ms |
-| Large real-world programs | esbuild | plugin-workload · real-large corpus | 27.4ms | n/a |
-| Large real-world programs | lua | plugin-workload · real-large corpus | 197µs | n/a |
-| Large real-world programs | ruby | plugin-workload · real-large corpus | 21.9ms | n/a |
-| Large real-world programs | sqlite3 | plugin-workload · real-large corpus | 1.54ms | n/a |
-| Loops | fib_iter | fib · loop corpus | 98.5ns | 33.9ns |
-| Floating point | float | run · fp corpus | 4.1µs | 3.9µs |
-| Globals | globals | accumulate · globals corpus | 959.6ns | 909.7ns |
-| Scale | many_funcs | run · scale corpus | 92.6ns | 27.7ns |
-| Memory | memory | sum · memory corpus | 240.4ns | 282.4ns |
-| Calls and memory | memory_tree | run · calls+memory corpus | 9.6µs | 21.4µs |
-| Regression corpus | regexmatch | plugin-workload · regression-only corpus | 2.22ms | n/a |
-| Regression corpus | wasm3 | plugin-workload · regression-only corpus | 22.5ms | n/a |
-| Micro modules | tiny | add · micro corpus | 92.8ns | 27.7ns |
+| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 9.3µs | 17.4µs |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.1µs | 8.3µs |
+| Large real-world programs | esbuild | plugin-workload · real-large corpus | 27.8ms | n/a |
+| Large real-world programs | lua | plugin-workload · real-large corpus | 1.59ms | n/a |
+| Large real-world programs | ruby | plugin-workload · real-large corpus | 22.3ms | n/a |
+| Large real-world programs | sqlite3 | plugin-workload · real-large corpus | 1.56ms | n/a |
+| Large real-world programs | wasm3 | plugin-workload · real-large corpus | 22.3ms | n/a |
 
 ### arm64
 
@@ -450,72 +321,43 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 259µs | 690µs |
-|  | Compile heap | per compile | 90.2 KB | 1.3 MB |
-|  | Instantiate | runnable corpus | 19.3µs | 11.5µs |
-|  | Execution | runnable corpus | 33.2µs | 13.3µs |
-|  | Call latency | host → Wasm | 86.4ns | 20.8ns |
-|  | End-to-end latency | compile + instantiate | 279µs | 701µs |
-|  | Application compile | real-world programs | 178.9ms | 649.7ms |
-|  | SIMD execution | AssemblyScript SIMD | 74.4µs | 87.8µs |
+|  | Compile | fresh process | 3.01ms | 8.85ms |
+|  | Compile heap | per compile | 327 KB | 5.3 MB |
+|  | Instantiate | runnable corpus | 16.9µs | 13.8µs |
+|  | Execution | runnable corpus | 78.7µs | 86.7µs |
+|  | End-to-end latency | compile + instantiate | 3.03ms | 8.86ms |
+|  | Application compile | real-world programs | 176.5ms | 628.5ms |
+|  | SIMD execution | AssemblyScript SIMD | 74µs | 87.5µs |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 15.3µs | 27.4µs |
-| Real-world programs | blake-as | real corpus | 361µs | 589µs |
-| Real-world programs | json-as | real corpus | 1.34ms | 4.37ms |
-| Real-world programs | swar-pack-parse | real corpus | 28µs | 52.2µs |
-| Real-world programs | utf-as | real corpus | 221µs | 555µs |
-| Real-world programs | xjb-mulhi | real corpus | 26.6µs | 47.1µs |
-| Real-world SIMD | blake-as-simd | real-simd corpus | 1.18ms | 1.59ms |
-| Real-world SIMD | json-as-simd | real-simd corpus | 1.55ms | 5.05ms |
-| Real-world SIMD | utf-as-simd | real-simd corpus | 609µs | 1.57ms |
-| Semantic corpus | blake3 | semantic corpus | 984µs | 1.85ms |
-| Semantic corpus | coremark | semantic corpus | 601µs | 2.10ms |
-| Semantic corpus | lz4 | semantic corpus | 182µs | 702µs |
-| Semantic corpus | qoi | semantic corpus | 196µs | 611µs |
-| Semantic corpus | zlib | semantic corpus | 1.08ms | 5.30ms |
-| Semantic corpus | zstd | semantic corpus | 5.02ms | 23.3ms |
-| Control flow | branches | control corpus | 12.8µs | 29.2µs |
-| Compute kernels | crc32 | compute corpus | 44.3µs | 148µs |
-| Compute kernels | fannkuch | compute corpus | 129µs | 491µs |
-| Compute kernels | linked_list | compute corpus | 18.4µs | 48.9µs |
-| Compute kernels | mandelbrot | compute corpus | 25.4µs | 52.8µs |
-| Compute kernels | matmul | compute corpus | 66.7µs | 229µs |
-| Compute kernels | nbody | compute corpus | 109µs | 260µs |
-| Compute kernels | quicksort | compute corpus | 72.5µs | 232µs |
-| Compute kernels | raytrace | compute corpus | 267µs | 856µs |
-| Compute kernels | sha256 | compute corpus | 95.6µs | 308µs |
-| Compute kernels | sieve | compute corpus | 22µs | 60.9µs |
-| Compute kernels | spectralnorm | compute corpus | 83µs | 261µs |
-| Calls | dispatch | calls corpus | 22.8µs | 46.3µs |
-| Calls | fib_rec | calls corpus | 13.7µs | 27.3µs |
-| Large real-world programs | esbuild | real-large corpus | 606.3ms | 2385.3ms |
-| Large real-world programs | lua | real-large corpus | 22ms | 66.8ms |
-| Large real-world programs | ruby | real-large corpus | 929.6ms | 4191.9ms |
-| Large real-world programs | sqlite3 | real-large corpus | 82.7ms | 266.6ms |
-| Loops | fib_iter | loop corpus | 13.9µs | 27.9µs |
-| Floating point | float | fp corpus | 14.9µs | 26.9µs |
-| Globals | globals | globals corpus | 16.3µs | 33.7µs |
-| Scale | many_funcs | scale corpus | 383µs | 745µs |
-| Memory | memory | memory corpus | 18.4µs | 46.9µs |
-| Calls and memory | memory_tree | calls+memory corpus | 24.7µs | 53.7µs |
-| Regression corpus | regexmatch | regression-only corpus | 57.6ms | 216ms |
-| Regression corpus | wasm3 | regression-only corpus | 13.8ms | 35.5ms |
-| Micro modules | tiny | micro corpus | 12.7µs | 26.1µs |
+| Real-world programs | blake-as | real corpus | 340µs | 559µs |
+| Real-world programs | json-as | real corpus | 1.31ms | 4.22ms |
+| Real-world programs | utf-as | real corpus | 212µs | 534µs |
+| Real-world SIMD | blake-as-simd | real-simd corpus | 1.18ms | 1.54ms |
+| Real-world SIMD | json-as-simd | real-simd corpus | 1.53ms | 5.01ms |
+| Real-world SIMD | utf-as-simd | real-simd corpus | 615µs | 1.55ms |
+| Semantic corpus | blake3 | semantic corpus | 980µs | 1.74ms |
+| Semantic corpus | coremark | semantic corpus | 587µs | 1.92ms |
+| Semantic corpus | lz4 | semantic corpus | 176µs | 697µs |
+| Semantic corpus | qoi | semantic corpus | 197µs | 611µs |
+| Semantic corpus | zlib | semantic corpus | 1.05ms | 5.16ms |
+| Semantic corpus | zstd | semantic corpus | 4.99ms | 22.1ms |
+| Large real-world programs | esbuild | real-large corpus | 594.7ms | 2373.3ms |
+| Large real-world programs | lua | real-large corpus | 21.7ms | 62.9ms |
+| Large real-world programs | ruby | real-large corpus | 911.1ms | 4053.5ms |
+| Large real-world programs | sqlite3 | real-large corpus | 82.6ms | 257.8ms |
+| Large real-world programs | wasm3 | real-large corpus | 13.2ms | 33.1ms |
 
 ##### Compile memory
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 27.5 KB | 297 KB |
 | Real-world programs | blake-as | real corpus | 44.6 KB | 869 KB |
 | Real-world programs | json-as | real corpus | 132 KB | 2.5 MB |
-| Real-world programs | swar-pack-parse | real corpus | 29.7 KB | 301 KB |
 | Real-world programs | utf-as | real corpus | 115 KB | 1.1 MB |
-| Real-world programs | xjb-mulhi | real corpus | 29.6 KB | 301 KB |
 | Real-world SIMD | blake-as-simd | real-simd corpus | 165 KB | 1.5 MB |
 | Real-world SIMD | json-as-simd | real-simd corpus | 145 KB | 2.2 MB |
 | Real-world SIMD | utf-as-simd | real-simd corpus | 178 KB | 1.1 MB |
@@ -525,91 +367,41 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Semantic corpus | qoi | semantic corpus | 40.8 KB | 833 KB |
 | Semantic corpus | zlib | semantic corpus | 194 KB | 7.2 MB |
 | Semantic corpus | zstd | semantic corpus | 351 KB | 23.7 MB |
-| Control flow | branches | control corpus | 21.4 KB | 278 KB |
-| Compute kernels | crc32 | compute corpus | 32.5 KB | 480 KB |
-| Compute kernels | fannkuch | compute corpus | 52.3 KB | 1015 KB |
-| Compute kernels | linked_list | compute corpus | 22.8 KB | 320 KB |
-| Compute kernels | mandelbrot | compute corpus | 29 KB | 315 KB |
-| Compute kernels | matmul | compute corpus | 33 KB | 590 KB |
-| Compute kernels | nbody | compute corpus | 49.4 KB | 701 KB |
-| Compute kernels | quicksort | compute corpus | 37.9 KB | 490 KB |
-| Compute kernels | raytrace | compute corpus | 83.5 KB | 1.4 MB |
-| Compute kernels | sha256 | compute corpus | 35.3 KB | 809 KB |
-| Compute kernels | sieve | compute corpus | 24.8 KB | 326 KB |
-| Compute kernels | spectralnorm | compute corpus | 32.1 KB | 665 KB |
-| Calls | dispatch | calls corpus | 30 KB | 281 KB |
-| Calls | fib_rec | calls corpus | 20.6 KB | 276 KB |
 | Large real-world programs | esbuild | real-large corpus | 67.9 MB | 262.7 MB |
 | Large real-world programs | lua | real-large corpus | 938 KB | 18.9 MB |
 | Large real-world programs | ruby | real-large corpus | 32.1 MB | 430.3 MB |
 | Large real-world programs | sqlite3 | real-large corpus | 3.1 MB | 36.6 MB |
-| Loops | fib_iter | loop corpus | 20.6 KB | 297 KB |
-| Floating point | float | fp corpus | 27.5 KB | 297 KB |
-| Globals | globals | globals corpus | 22.6 KB | 296 KB |
-| Scale | many_funcs | scale corpus | 146 KB | 333 KB |
-| Memory | memory | memory corpus | 22 KB | 301 KB |
-| Calls and memory | memory_tree | calls+memory corpus | 30 KB | 307 KB |
-| Regression corpus | regexmatch | regression-only corpus | 1.9 MB | 45.9 MB |
-| Regression corpus | wasm3 | regression-only corpus | 713 KB | 8.6 MB |
-| Micro modules | tiny | micro corpus | 18.5 KB | 274 KB |
+| Large real-world programs | wasm3 | real-large corpus | 713 KB | 8.6 MB |
 
 ##### Instantiate latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 4.1µs | 7.5µs |
-| Real-world programs | blake-as | real corpus | 4.6µs | 8.9µs |
-| Real-world programs | json-as | real corpus | 9.6µs | 10.7µs |
-| Real-world programs | swar-pack-parse | real corpus | 2.4µs | 7.6µs |
-| Real-world programs | utf-as | real corpus | 6.8µs | 11.8µs |
-| Real-world programs | xjb-mulhi | real corpus | 2.3µs | 7.5µs |
-| Real-world SIMD | blake-as-simd | real-simd corpus | 4.6µs | 8.8µs |
-| Real-world SIMD | json-as-simd | real-simd corpus | 9.8µs | 11.2µs |
-| Real-world SIMD | utf-as-simd | real-simd corpus | 10.7µs | 11.9µs |
-| Semantic corpus | blake3 | semantic corpus | 34µs | 16.6µs |
-| Semantic corpus | coremark | semantic corpus | 6.3µs | 9.2µs |
-| Semantic corpus | lz4 | semantic corpus | 66.6µs | 24.2µs |
-| Semantic corpus | qoi | semantic corpus | 65.4µs | 24.3µs |
-| Semantic corpus | zlib | semantic corpus | 66.4µs | 25.2µs |
-| Semantic corpus | zstd | semantic corpus | 66.6µs | 26µs |
-| Control flow | branches | control corpus | 4.2µs | 7.5µs |
-| Compute kernels | crc32 | compute corpus | 35.7µs | 18.1µs |
-| Compute kernels | fannkuch | compute corpus | 34.8µs | 16.5µs |
-| Compute kernels | linked_list | compute corpus | 10.2µs | 10.2µs |
-| Compute kernels | mandelbrot | compute corpus | 4.2µs | 7.7µs |
-| Compute kernels | matmul | compute corpus | 33.8µs | 16.8µs |
-| Compute kernels | nbody | compute corpus | 33.8µs | 16.6µs |
-| Compute kernels | quicksort | compute corpus | 33.9µs | 16.6µs |
-| Compute kernels | raytrace | compute corpus | 34.1µs | 16.5µs |
-| Compute kernels | sha256 | compute corpus | 36.2µs | 17.1µs |
-| Compute kernels | sieve | compute corpus | 17.8µs | 13µs |
-| Compute kernels | spectralnorm | compute corpus | 34.7µs | 16.6µs |
-| Calls | dispatch | calls corpus | 4.6µs | 7.7µs |
-| Calls | fib_rec | calls corpus | 4.1µs | 7.5µs |
-| Large real-world programs | esbuild | real-large corpus | 1.55ms | n/a |
-| Large real-world programs | lua | real-large corpus | 561µs | n/a |
-| Large real-world programs | ruby | real-large corpus | 1.63ms | n/a |
-| Large real-world programs | sqlite3 | real-large corpus | 640µs | n/a |
-| Loops | fib_iter | loop corpus | 4.1µs | 7.6µs |
-| Floating point | float | fp corpus | 4.2µs | 7.7µs |
-| Globals | globals | globals corpus | 4.2µs | 7.6µs |
-| Scale | many_funcs | scale corpus | 4.2µs | 7.5µs |
-| Memory | memory | memory corpus | 4.2µs | 8.4µs |
-| Calls and memory | memory_tree | calls+memory corpus | 4.2µs | 8.4µs |
-| Regression corpus | regexmatch | regression-only corpus | 95.5µs | n/a |
-| Regression corpus | wasm3 | regression-only corpus | 318µs | n/a |
-| Micro modules | tiny | micro corpus | 4.2µs | 7.7µs |
+| Real-world programs | blake-as | real corpus | 4.5µs | 8.7µs |
+| Real-world programs | json-as | real corpus | 9.3µs | 10.3µs |
+| Real-world programs | utf-as | real corpus | 6.7µs | 11.6µs |
+| Real-world SIMD | blake-as-simd | real-simd corpus | 4.4µs | 9µs |
+| Real-world SIMD | json-as-simd | real-simd corpus | 9.3µs | 10.4µs |
+| Real-world SIMD | utf-as-simd | real-simd corpus | 10.8µs | 11.4µs |
+| Semantic corpus | blake3 | semantic corpus | 36.4µs | 16.4µs |
+| Semantic corpus | coremark | semantic corpus | 6.2µs | 9.2µs |
+| Semantic corpus | lz4 | semantic corpus | 65.8µs | 22.5µs |
+| Semantic corpus | qoi | semantic corpus | 71.6µs | 22.5µs |
+| Semantic corpus | zlib | semantic corpus | 64.2µs | 23µs |
+| Semantic corpus | zstd | semantic corpus | 64.5µs | 24.1µs |
+| Large real-world programs | esbuild | real-large corpus | 1.59ms | n/a |
+| Large real-world programs | lua | real-large corpus | 584µs | n/a |
+| Large real-world programs | ruby | real-large corpus | 1.62ms | n/a |
+| Large real-world programs | sqlite3 | real-large corpus | 610µs | n/a |
+| Large real-world programs | wasm3 | real-large corpus | 326µs | n/a |
 
 ##### Machine code
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | alu corpus | 196 B | 104 B |
 | Real-world programs | blake-as | real corpus | 10.6 KB | 10.1 KB |
 | Real-world programs | json-as | real corpus | 65.3 KB | 72.5 KB |
-| Real-world programs | swar-pack-parse | real corpus | 752 B | 432 B |
 | Real-world programs | utf-as | real corpus | 3.9 KB | 6.3 KB |
-| Real-world programs | xjb-mulhi | real corpus | 588 B | 340 B |
 | Real-world SIMD | blake-as-simd | real-simd corpus | 30 KB | 41.4 KB |
 | Real-world SIMD | json-as-simd | real-simd corpus | 77.4 KB | 83.1 KB |
 | Real-world SIMD | utf-as-simd | real-simd corpus | 19.5 KB | 27.8 KB |
@@ -619,90 +411,40 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Semantic corpus | qoi | semantic corpus | 6.1 KB | 10.5 KB |
 | Semantic corpus | zlib | semantic corpus | 35.2 KB | 63.4 KB |
 | Semantic corpus | zstd | semantic corpus | 159 KB | 259 KB |
-| Control flow | branches | control corpus | 192 B | 148 B |
-| Compute kernels | crc32 | compute corpus | 1.5 KB | 2.2 KB |
-| Compute kernels | fannkuch | compute corpus | 4.2 KB | 6.9 KB |
-| Compute kernels | linked_list | compute corpus | 320 B | 468 B |
-| Compute kernels | mandelbrot | compute corpus | 440 B | 348 B |
-| Compute kernels | matmul | compute corpus | 2.3 KB | 2.6 KB |
-| Compute kernels | nbody | compute corpus | 3.6 KB | 5 KB |
-| Compute kernels | quicksort | compute corpus | 2.2 KB | 2.6 KB |
-| Compute kernels | raytrace | compute corpus | 10.2 KB | 10.8 KB |
-| Compute kernels | sha256 | compute corpus | 3.1 KB | 6 KB |
-| Compute kernels | sieve | compute corpus | 336 B | 504 B |
-| Compute kernels | spectralnorm | compute corpus | 2.4 KB | 3.4 KB |
-| Calls | dispatch | calls corpus | 1.3 KB | 556 B |
-| Calls | fib_rec | calls corpus | 280 B | 148 B |
 | Large real-world programs | esbuild | real-large corpus | 24.2 MB | 54.4 MB |
 | Large real-world programs | lua | real-large corpus | 801 KB | 1.2 MB |
 | Large real-world programs | ruby | real-large corpus | 30.6 MB | 60.8 MB |
 | Large real-world programs | sqlite3 | real-large corpus | 2.8 MB | 4.4 MB |
-| Loops | fib_iter | loop corpus | 188 B | 112 B |
-| Floating point | float | fp corpus | 212 B | 120 B |
-| Globals | globals | globals corpus | 344 B | 152 B |
-| Scale | many_funcs | scale corpus | 27.1 KB | 18.9 KB |
-| Memory | memory | memory corpus | 372 B | 348 B |
-| Calls and memory | memory_tree | calls+memory corpus | 672 B | 456 B |
-| Regression corpus | regexmatch | regression-only corpus | 2.6 MB | 3.4 MB |
-| Regression corpus | wasm3 | regression-only corpus | 836 KB | 797 KB |
-| Micro modules | tiny | micro corpus | 252 B | 120 B |
+| Large real-world programs | wasm3 | real-large corpus | 836 KB | 797 KB |
 
 ##### Execution
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Integer arithmetic | arith | run · alu corpus | 1.6µs | 1.4µs |
-| Real-world programs | blake-as | hashN · real corpus | 395µs | 393µs |
-| Real-world programs | json-as | deserializeN · real corpus | 37.6µs | 42.2µs |
-| Real-world programs | json-as | serializeN · real corpus | 18.5µs | 21µs |
-| Real-world programs | swar-pack-parse | pack · real corpus | 29.7ns | 19.1ns |
-| Real-world programs | swar-pack-parse | parse4 · real corpus | 30ns | 18.7ns |
-| Real-world programs | swar-pack-parse | runN · real corpus | 1.2µs | 1.1µs |
-| Real-world programs | utf-as | convertN · real corpus | 104µs | 103µs |
-| Real-world programs | xjb-mulhi | mulhi · real corpus | 30.2ns | 20.8ns |
-| Real-world programs | xjb-mulhi | runN · real corpus | 1.3µs | 1.1µs |
-| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 426µs | 433µs |
-| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 54.9µs | 53.5µs |
-| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 23.4µs | 26.5µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 56.1µs | 96.9µs |
-| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 142µs | 161µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 244µs | 260µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 237µs | 249µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 238µs | 249µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 38.5ms | 42.1ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 29.3µs | 39.1µs |
-| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.4µs | 5.1µs |
+| Real-world programs | blake-as | hashN · real corpus | 396µs | 387µs |
+| Real-world programs | json-as | deserializeN · real corpus | 38.5µs | 41.9µs |
+| Real-world programs | json-as | serializeN · real corpus | 18.5µs | 21.5µs |
+| Real-world programs | utf-as | convertN · real corpus | 103µs | 103µs |
+| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 421µs | 420µs |
+| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 54.1µs | 54.9µs |
+| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 23.4µs | 26.3µs |
+| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 56.2µs | 96.7µs |
+| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 145µs | 156µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 241µs | 257µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 238µs | 247µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 238µs | 247µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 38.8ms | 41.1ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 28.6µs | 37.5µs |
+| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.5µs | 4.9µs |
 | Semantic corpus | qoi | qoi_decode_run · semantic corpus | 6.6µs | 6.8µs |
-| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 9.2µs | 8.5µs |
-| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 10.6µs | 11.8µs |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.1µs | 6.3µs |
-| Control flow | branches | classify · control corpus | 88.7ns | 18.6ns |
-| Compute kernels | crc32 | hashN · compute corpus | 23.6µs | 25.1µs |
-| Compute kernels | fannkuch | run · compute corpus | 1.23ms | 999µs |
-| Compute kernels | linked_list | sum · compute corpus | 8.9µs | 7.3µs |
-| Compute kernels | mandelbrot | render · compute corpus | 229µs | 261µs |
-| Compute kernels | matmul | run · compute corpus | 96.4µs | 225µs |
-| Compute kernels | nbody | step · compute corpus | 142µs | 146µs |
-| Compute kernels | quicksort | sortN · compute corpus | 72µs | 132µs |
-| Compute kernels | raytrace | render · compute corpus | 261µs | 241µs |
-| Compute kernels | sha256 | hashN · compute corpus | 25.2µs | 44.9µs |
-| Compute kernels | sieve | count · compute corpus | 102µs | 96.9µs |
-| Compute kernels | spectralnorm | run · compute corpus | 363µs | 680µs |
-| Calls | dispatch | apply · calls corpus | 90.8ns | 21.6ns |
-| Calls | fib_rec | fib · calls corpus | 1.07ms | 1.57ms |
-| Large real-world programs | esbuild | plugin-workload · real-large corpus | 25.9ms | n/a |
-| Large real-world programs | lua | plugin-workload · real-large corpus | 294µs | n/a |
-| Large real-world programs | ruby | plugin-workload · real-large corpus | 14.4ms | n/a |
-| Large real-world programs | sqlite3 | plugin-workload · real-large corpus | 1.86ms | n/a |
-| Loops | fib_iter | fib · loop corpus | 90.8ns | 46.8ns |
-| Floating point | float | run · fp corpus | 2.6µs | 2.4µs |
-| Globals | globals | accumulate · globals corpus | 668.9ns | 583.3ns |
-| Scale | many_funcs | run · scale corpus | 89.3ns | 20.8ns |
-| Memory | memory | sum · memory corpus | 333.8ns | 285.7ns |
-| Calls and memory | memory_tree | run · calls+memory corpus | 8.7µs | 11.7µs |
-| Regression corpus | regexmatch | plugin-workload · regression-only corpus | 2.43ms | n/a |
-| Regression corpus | wasm3 | plugin-workload · regression-only corpus | 20.8ms | n/a |
-| Micro modules | tiny | add · micro corpus | 86.4ns | 20.8ns |
+| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 9.1µs | 8.6µs |
+| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 10.4µs | 11.6µs |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.1µs | 6.2µs |
+| Large real-world programs | esbuild | plugin-workload · real-large corpus | 25.8ms | n/a |
+| Large real-world programs | lua | plugin-workload · real-large corpus | 1.96ms | n/a |
+| Large real-world programs | ruby | plugin-workload · real-large corpus | 13.4ms | n/a |
+| Large real-world programs | sqlite3 | plugin-workload · real-large corpus | 1.74ms | n/a |
+| Large real-world programs | wasm3 | plugin-workload · real-large corpus | 20.6ms | n/a |
 
 ## Canonical machine-readable sources
 

@@ -147,7 +147,7 @@
                                         "MVP files passing: 57/57",
                                         "Verification checks passing: 155010",
                                         "Test coverage: 86.1%",
-                                        "Published performance comparisons: 198"
+                                        "Published performance comparisons: 200"
                               ],
                               "distribution": [
                                         {
@@ -1788,6 +1788,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win">10× less</span>
+                        </div>
+                        <div class="vs__row" data-engine-row>
+                            <div class="vs__meta"><span class="vs__label">Machine code</span><span class="vs__sub">compiled corpus</span></div>
+                            <div class="vs__bars">
+                                <div class="vs__line" data-engine="railshot">
+                                    <span class="vs__engine">wago</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="96129.22525789164" data-width="58"></span></span>
+                                    <span class="vs__val">93.9 KB</span>
+                                </div>
+                                <div class="vs__line" data-engine="wazero">
+                                    <span class="vs__engine">wazero</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="166443.69995890828" data-width="100"></span></span>
+                                    <span class="vs__val">163 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win">1.7× less</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Instantiate</span><span class="vs__sub">runnable corpus</span></div>
@@ -3450,6 +3466,22 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--win">16.7× less</span>
+                        </div>
+                        <div class="vs__row" data-engine-row>
+                            <div class="vs__meta"><span class="vs__label">Machine code</span><span class="vs__sub">compiled corpus</span></div>
+                            <div class="vs__bars">
+                                <div class="vs__line" data-engine="railshot">
+                                    <span class="vs__engine">wago</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="107069.10289360974" data-width="69"></span></span>
+                                    <span class="vs__val">105 KB</span>
+                                </div>
+                                <div class="vs__line" data-engine="wazero">
+                                    <span class="vs__engine">wazero</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="155802.487319792" data-width="100"></span></span>
+                                    <span class="vs__val">152 KB</span>
+                                </div>
+                            </div>
+                            <span class="vs__delta vs__delta--win">1.5× less</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Instantiate</span><span class="vs__sub">runnable corpus</span></div>

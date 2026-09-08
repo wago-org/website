@@ -1731,6 +1731,18 @@
                       "result": "multi-engine ahead"
                     },
                     {
+                      "label": "Machine code",
+                      "workload": "compiled corpus",
+                      "wago": "93.9 KB",
+                      "wazero": "163 KB",
+                      "engines": {
+                        "railshot": "93.9 KB",
+                        "wazero": "163 KB"
+                      },
+                      "comparison": "1.7× less",
+                      "result": "multi-engine ahead"
+                    },
+                    {
                       "label": "Instantiate",
                       "workload": "runnable corpus",
                       "wago": "10.3µs",
@@ -3037,6 +3049,18 @@
                       "result": "multi-engine ahead"
                     },
                     {
+                      "label": "Machine code",
+                      "workload": "compiled corpus",
+                      "wago": "105 KB",
+                      "wazero": "152 KB",
+                      "engines": {
+                        "railshot": "105 KB",
+                        "wazero": "152 KB"
+                      },
+                      "comparison": "1.5× less",
+                      "result": "multi-engine ahead"
+                    },
+                    {
                       "label": "Instantiate",
                       "workload": "runnable corpus",
                       "wago": "16.9µs",
@@ -4309,7 +4333,7 @@
           }
         }
       },
-      "comparisonCount": 198
+      "comparisonCount": 200
     }
   },
   "machineReadable": {

@@ -190,6 +190,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | --- | --- | --- | ---: | ---: |
 |  | Compile | fresh process | 4.00ms | 12.8ms |
 |  | Compile heap | per compile | 564 KB | 5.5 MB |
+|  | Machine code | compiled corpus | 93.9 KB | 163 KB |
 |  | Instantiate | runnable corpus | 10.3µs | 19.6µs |
 |  | Execution | runnable corpus | 89.1µs | 118µs |
 |  | End-to-end latency | compile + instantiate | 4.01ms | 12.8ms |
@@ -323,6 +324,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | --- | --- | --- | ---: | ---: |
 |  | Compile | fresh process | 3.01ms | 8.85ms |
 |  | Compile heap | per compile | 327 KB | 5.3 MB |
+|  | Machine code | compiled corpus | 105 KB | 152 KB |
 |  | Instantiate | runnable corpus | 16.9µs | 13.8µs |
 |  | Execution | runnable corpus | 78.7µs | 86.7µs |
 |  | End-to-end latency | compile + instantiate | 3.03ms | 8.86ms |

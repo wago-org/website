@@ -1,16 +1,11 @@
 type Theme = "light" | "dark";
 
 const storageKey = "wagoTheme";
-const lightQuery = "(prefers-color-scheme: light)";
-
-function systemTheme(): Theme {
-    return matchMedia(lightQuery).matches ? "light" : "dark";
-}
 
 function activeTheme(): Theme {
     const value = document.documentElement.dataset.theme;
     if (value === "light" || value === "dark") return value;
-    return systemTheme();
+    return "dark";
 }
 
 function renderTheme(theme: Theme, toggle: HTMLButtonElement): void {
@@ -35,23 +30,10 @@ export function initTheme(): void {
     toggle.addEventListener("click", () => {
         const theme: Theme = activeTheme() === "dark" ? "light" : "dark";
         try {
-            localStorage.setItem(
-                storageKey,
-                JSON.stringify({ theme, system: systemTheme() }),
-            );
+            localStorage.setItem(storageKey, theme);
         } catch {
             // The toggle still works for this page load when storage is blocked.
         }
         renderTheme(theme, toggle);
-    });
-
-    const preference = matchMedia(lightQuery);
-    preference.addEventListener("change", (event) => {
-        try {
-            localStorage.removeItem(storageKey);
-        } catch {
-            // Theme switching still works when storage is blocked.
-        }
-        renderTheme(event.matches ? "light" : "dark", toggle);
     });
 }

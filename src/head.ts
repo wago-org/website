@@ -2,31 +2,26 @@
 // module because theme and launch phase must be selected before the page paints.
 (() => {
     const key = "wagoTheme";
-    const systemTheme: "light" | "dark" = matchMedia(
-        "(prefers-color-scheme: light)",
-    ).matches
-        ? "light"
-        : "dark";
-    let theme = systemTheme;
+    let theme: "light" | "dark" = "dark";
 
     try {
         const stored = localStorage.getItem(key);
-        if (stored !== null) {
+        if (stored === "light" || stored === "dark") {
+            theme = stored;
+        } else if (stored !== null) {
+            // Migrate the previous system-bound preference format.
             const preference = JSON.parse(stored) as {
                 theme?: unknown;
-                system?: unknown;
             };
-            if (
-                (preference.theme === "light" || preference.theme === "dark") &&
-                preference.system === systemTheme
-            ) {
+            if (preference.theme === "light" || preference.theme === "dark") {
                 theme = preference.theme;
+                localStorage.setItem(key, theme);
             } else {
                 localStorage.removeItem(key);
             }
         }
     } catch {
-        // Storage may be unavailable; fall back to the operating-system theme.
+        // Storage may be unavailable; keep the dark default.
     }
 
     document.documentElement.dataset.theme = theme;

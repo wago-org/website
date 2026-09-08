@@ -40,6 +40,10 @@
     gap: 14px;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
 }
 
 /* ---- Generic section ---- */

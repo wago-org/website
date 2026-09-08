@@ -1,7 +1,7 @@
 # Wago facts
 
-Last synchronized: 2026-09-07
-Wago source commit: a07de0973191efab1d32677eff527952c7f9cdd2
+Last synchronized: 2026-09-08
+Wago source commit: 81b31de9e05cd84b19c5e1f60890489149b830a2
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Identity and release
@@ -50,6 +50,23 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 ## WebAssembly proposal tracker
 
+- i32 / i64 integer ops: pass
+- f32 / f64 ops: pass
+- f32 / f64 ceil / floor / trunc / nearest / copysign: pass
+- Conversions + reinterpret: pass
+- Float→int trunc NaN/overflow traps: pass
+- Control flow: block / loop / if / else / br / br_if / br_table / return: pass
+- call / call_indirect: pass
+- select, drop, nop, unreachable: pass
+- Locals: pass
+- Globals: pass
+- Linear memory load/store: pass
+- memory.size / memory.grow: pass
+- Active data segments: pass
+- Tables + active element segments: pass
+- Function imports / exports: pass
+- Memory / table / global imports & exports: pass
+- start function: pass
 - Sign-extension ops: pass
 - Non-trapping float→int: pass
 - Multi-value: pass

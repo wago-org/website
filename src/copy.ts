@@ -1,8 +1,9 @@
 // Copy-to-clipboard buttons. Any [data-copy] element copies its attribute
-// value and briefly flashes the result in its [data-copy-label] child.
+// value and briefly shows the result in its [data-copy-label] child.
 
 export function initCopyButtons(): void {
     const buttons = document.querySelectorAll<HTMLElement>("[data-copy]");
+    const resetTimers = new WeakMap<HTMLElement, number>();
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", async () => {
@@ -10,11 +11,30 @@ export function initCopyButtons(): void {
             const label = btn.querySelector<HTMLElement>("[data-copy-label]");
             const ok = await copyText(text);
             if (!label) return;
-            const orig = label.textContent;
-            label.textContent = ok ? "✓ copied" : "⚠ copy failed";
-            setTimeout(() => {
+            const orig = label.dataset.copyOriginal ?? label.textContent ?? "";
+            label.dataset.copyOriginal = orig;
+            const previousTimer = resetTimers.get(btn);
+            if (previousTimer !== undefined) window.clearTimeout(previousTimer);
+
+            btn.dataset.copyState = ok ? "success" : "error";
+            label.textContent = ok
+                ? (btn.dataset.copySuccess ?? "✓ copied")
+                : "⚠ copy failed";
+            const resetDelay = Number(btn.dataset.copyResetDelay) || 1400;
+            const resetTimer = window.setTimeout(() => {
                 label.textContent = orig;
-            }, 1400);
+                delete btn.dataset.copyState;
+                resetTimers.delete(btn);
+            }, resetDelay);
+            resetTimers.set(btn, resetTimer);
+            if (ok) {
+                btn.dispatchEvent(
+                    new CustomEvent("copy-success", {
+                        bubbles: true,
+                        detail: { resetDelay },
+                    }),
+                );
+            }
         });
     });
 }

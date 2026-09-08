@@ -187,11 +187,10 @@
     background: rgba(42, 32, 88, 0.2);
 }
 
-/* ---- Install split-button ----
-   One "Install wago" button that splits into a curl and a go get option.
-   Each option carries its own [data-copy], so clicking copies that command. */
+/* ---- Hero install disclosure ---- */
 .install-split {
     display: inline-flex;
+    position: static;
 }
 .install-split__chevron {
     font-size: 12px;
@@ -200,52 +199,122 @@
 .install-split.is-open .install-split__chevron {
     transform: rotate(180deg);
 }
-.install-split__options {
+.install-split__panel {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--install-trigger-height, 52px);
+    min-width: min(500px, calc(100vw - 32px));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    border: 1px solid var(--line-2);
+    box-shadow: 0 28px 70px -30px var(--editor-shadow);
+    text-align: left;
+    transform-origin: top left;
+}
+.install-split.is-open .install-split__panel {
+    animation: install-expand 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.install-split.is-open .install-split__panel > * {
+    animation: install-content-reveal 0.24s 0.1s ease both;
+}
+.install-split.is-closing .install-split__panel {
+    animation: install-expand 0.28s cubic-bezier(0.4, 0, 0.6, 0.2) reverse both;
+}
+.install-split.is-closing .install-split__panel > * {
+    animation: install-content-reveal 0.14s ease reverse both;
+}
+.install-split__panel[hidden] {
     display: none;
-    gap: 10px;
 }
-.install-split.is-open .install-split__trigger {
-    display: none;
+.install-split__panel .install-tabs {
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 12px;
+    width: auto;
+    height: 31px;
+    padding: 0 3px;
+    overflow: visible;
+    border: 1px solid var(--line-2);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    background: var(--bg-deep);
 }
-.install-split.is-open .install-split__options {
-    display: inline-flex;
+.install-split__panel .vs__tab {
+    padding: 6px 10px 5px;
+    font-size: 11px;
 }
-/* The two options fan out from where the trigger was: the left one arrives from
-   the right, the right one from the left, so they appear to split apart. */
-.install-split.is-open .install-split__opt:first-child {
-    animation: split-in-left 0.26s ease both;
-}
-.install-split.is-open .install-split__opt:last-child {
-    animation: split-in-right 0.26s ease both;
-}
-.install-split__opt {
-    font-size: 14px;
-}
-.install-split__tag {
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 7px;
-    font-size: 12px;
-    background: rgba(26, 21, 71, 0.16);
-}
-.install-split__opt.btn--ghost .install-split__tag {
+.install-split__panel .vs__tab[aria-selected="true"] {
     background: var(--panel-2);
-    color: var(--lilac);
 }
-@keyframes split-in-left {
+.install-split__panel .install-command {
+    min-width: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    cursor: copy;
+}
+.install-split__panel .install-command[hidden] {
+    display: none;
+}
+.install-split__panel .install-command .pane__body {
+    min-width: 0;
+    padding: 0 8px 0 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.install-split__panel .install-command__copy {
+    position: static;
+    align-self: center;
+    margin-right: 8px;
+}
+.install-split__close {
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    color: var(--text-dim);
+    background: transparent;
+    font: 20px/1 var(--sans);
+    cursor: pointer;
+}
+.install-split__close:hover {
+    color: var(--text);
+    background: var(--panel-2);
+}
+@keyframes install-expand {
     from {
-        opacity: 0;
-        transform: translateX(20px) scale(0.9);
+        clip-path: inset(
+            -31px
+            calc(100% - var(--install-trigger-width, 160px))
+            0
+            0
+            round 13px
+        );
+        background: var(--lilac);
+        border-color: transparent;
+        box-shadow: none;
     }
     to {
-        opacity: 1;
-        transform: none;
+        clip-path: inset(-31px 0 0 0 round 13px);
+        background: var(--bg-deep);
+        border-color: var(--line-2);
+        box-shadow: 0 28px 70px -30px var(--editor-shadow);
     }
 }
-@keyframes split-in-right {
+@keyframes install-content-reveal {
     from {
         opacity: 0;
-        transform: translateX(-20px) scale(0.9);
+        transform: translateY(-4px);
     }
     to {
         opacity: 1;
@@ -253,8 +322,34 @@
     }
 }
 @media (prefers-reduced-motion: reduce) {
-    .install-split.is-open .install-split__opt {
+    .install-split.is-open .install-split__panel,
+    .install-split.is-open .install-split__panel > *,
+    .install-split.is-closing .install-split__panel,
+    .install-split.is-closing .install-split__panel > * {
         animation: none;
+    }
+}
+@media (max-width: 560px) {
+    .install-split__panel .vs__tab {
+        padding-inline: 6px;
+        font-size: 10px;
+    }
+    .install-split__panel .install-command .pane__body {
+        padding-inline: 7px;
+        font-size: 11px;
+    }
+    .install-split__panel .install-command__copy {
+        width: 30px;
+        padding-inline: 0;
+        font-size: 0;
+    }
+    .install-split__panel .install-command__copy:not([data-copy-state])::after {
+        content: "⧉";
+        font-size: 13px;
+    }
+    .install-split__panel .install-command__copy[data-copy-state] {
+        width: auto;
+        font-size: 10px;
     }
 }
 

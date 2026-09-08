@@ -88,7 +88,7 @@
                               "name": "wago",
                               "description": "WebAssembly, made for Go.",
                               "inLanguage": "en",
-                              "dateModified": "2026-09-07",
+                              "dateModified": "2026-09-08",
                               "publisher": {
                                         "@id": "https://wago.sh/#org"
                               }
@@ -137,7 +137,7 @@
                               "name": "wago verification, conformance, and benchmark data",
                               "description": "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
                               "url": "https://wago.sh/data/project.json",
-                              "dateModified": "2026-09-07",
+                              "dateModified": "2026-09-08",
                               "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
@@ -309,19 +309,16 @@
                     <strong>a simply wonderful experience.</strong>
                 </p>
                 <div class="hero__actions">
-                    <a class="btn btn--primary" href="#install" data-phase="pre"
-                        >Try now →</a
-                    >
                     <div
                         class="install-split"
                         data-install-split
-                        data-phase="post"
                     >
                         <button
                             class="btn btn--primary install-split__trigger"
+                            id="hero-install-trigger"
                             type="button"
                             aria-expanded="false"
-                            aria-controls="install-options"
+                            aria-controls="hero-install-options"
                         >
                             <span>Install wago</span
                             ><span
@@ -331,28 +328,88 @@
                             >
                         </button>
                         <div
-                            class="install-split__options"
-                            id="install-options"
-                            role="group"
-                            aria-label="Choose an install method"
+                            class="pane install-split__panel"
+                            id="hero-install-options"
+                            role="region"
+                            aria-labelledby="hero-install-trigger"
+                            hidden
                         >
-                            <button
-                                class="btn btn--primary install-split__opt"
-                                type="button"
-                                data-copy="curl -fsSL https://install.wago.sh | sh"
+                            <div
+                                class="vs__tabs install-tabs"
+                                role="tablist"
+                                aria-label="Installation platform"
+                                data-tabs
                             >
-                                <span class="install-split__tag">curl</span
-                                ><span data-copy-label>install.wago.sh</span
-                                ><span aria-hidden="true">⧉</span>
-                            </button>
-                            <button
-                                class="btn btn--ghost install-split__opt"
-                                type="button"
-                                data-copy="go get github.com/wago-org/wago"
+                                <button
+                                    class="vs__tab"
+                                    type="button"
+                                    role="tab"
+                                    id="hero-install-tab-unix"
+                                    aria-controls="hero-install-panel-unix"
+                                    aria-selected="true"
+                                    tabindex="0"
+                                >
+                                    macOS / Linux
+                                </button>
+                                <button
+                                    class="vs__tab"
+                                    type="button"
+                                    role="tab"
+                                    id="hero-install-tab-windows"
+                                    aria-controls="hero-install-panel-windows"
+                                    aria-selected="false"
+                                    tabindex="-1"
+                                >
+                                    Windows
+                                </button>
+                            </div>
+                            <div
+                                class="install-command"
+                                role="tabpanel"
+                                id="hero-install-panel-unix"
+                                aria-labelledby="hero-install-tab-unix"
+                                title="Click anywhere to copy"
                             >
-                                <span class="install-split__tag">go</span
-                                ><span data-copy-label>go get …/wago</span
-                                ><span aria-hidden="true">⧉</span>
+                                <pre class="pane__body"><span class="pane__prompt">$</span> curl -fsSL https://install.wago.sh/unix | sh</pre>
+                                <button
+                                    class="copybtn install-command__copy"
+                                    type="button"
+                                    data-copy="curl -fsSL https://install.wago.sh/unix | sh"
+                                    data-copy-success="Thanks — copied!"
+                                    data-copy-reset-delay="3000"
+                                >
+                                    <span data-copy-label aria-live="polite"
+                                        >copy ⧉</span
+                                    >
+                                </button>
+                            </div>
+                            <div
+                                class="install-command"
+                                role="tabpanel"
+                                id="hero-install-panel-windows"
+                                aria-labelledby="hero-install-tab-windows"
+                                title="Click anywhere to copy"
+                                hidden
+                            >
+                                <pre class="pane__body"><span class="pane__prompt">PS&gt;</span> irm https://install.wago.sh/ps | iex</pre>
+                                <button
+                                    class="copybtn install-command__copy"
+                                    type="button"
+                                    data-copy="irm https://install.wago.sh/ps | iex"
+                                    data-copy-success="Thanks — copied!"
+                                    data-copy-reset-delay="3000"
+                                >
+                                    <span data-copy-label aria-live="polite"
+                                        >copy ⧉</span
+                                    >
+                                </button>
+                            </div>
+                            <button
+                                class="install-split__close"
+                                type="button"
+                                aria-label="Close installer"
+                            >
+                                ×
                             </button>
                         </div>
                     </div>
@@ -779,15 +836,82 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vgroup__chevron" aria-hidden="true"></span>
                                     <span class="vgroup__title">WebAssembly 1.0</span>
                                     <span class="vgroup__sub">MVP core</span>
-                                    <span class="vgroup__count">0/0</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="vgroup__count">17/17</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </span>
                                 <span class="vgroup__prog">
-                                    <span class="vgroup__prog-fill" data-bar data-width="0"></span>
+                                    <span class="vgroup__prog-fill" data-bar data-width="100"></span>
                                 </span>
                             </summary>
                             <div class="vgroup__body">
-
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">i32 / i64 integer ops</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">f32 / f64 ops</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">f32 / f64 ceil / floor / trunc / nearest / copysign</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Conversions + reinterpret</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Float→int trunc NaN/overflow traps</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Control flow: block / loop / if / else / br / br_if / br_table / return</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">call / call_indirect</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">select, drop, nop, unreachable</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Locals</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Globals</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Linear memory load/store</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">memory.size / memory.grow</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Active data segments</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Tables + active element segments</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Function imports / exports</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Memory / table / global imports &amp; exports</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">start function</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
                             </div>
                         </details>
                         <details class="vgroup" name="wasm-versions">
@@ -1552,14 +1676,9 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
             <section id="performance" class="section">
                 <div class="eyebrow eyebrow--center">Performance</div>
                 <h2 class="section__title">
-                    Two Go engines,
-                    <span class="section__title-accent">one corpus</span>
+                    Runtime
+                    <span class="section__title-accent">Statistics</span>
                 </h2>
-                <p class="section__lead">
-                    Compare Wago and wazero directly.
-                    Every published row uses the same workload on the shown
-                    AMD64 or ARM64 machine.
-                </p>
                 <div class="vs">
                     <div class="vs__body">
                         <div class="vs__side" role="tablist" aria-label="Benchmark platform" data-arch-toggle>

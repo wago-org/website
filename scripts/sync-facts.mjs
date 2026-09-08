@@ -965,7 +965,7 @@ const stats = JSON.parse(await readFile(STATS, "utf8"));
 const commit = localCommit() || (await remoteCommit());
 if (!/^[0-9a-f]{40}$/i.test(commit)) throw new Error(`invalid Wago commit: ${commit}`);
 
-requireText(loaded["README.md"], "A fast, compact WebAssembly runtime for Go", "README.md");
+requireText(loaded["README.md"], "Wago is a WebAssembly runtime for Go.", "README.md");
 requireText(loaded["src/wago/doc.go"], "no-cgo single-pass JIT", "src/wago/doc.go");
 requireText(loaded["src/wago/instance.go"], "reusable Invoke result buffer", "src/wago/instance.go");
 requireText(loaded["src/wago/policy.go"], "MaxMemoryBytes", "src/wago/policy.go");

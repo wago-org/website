@@ -12,7 +12,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Execution: single-pass native compiler
 - Interpreter tier: no
 - Stable version: none published
-- Release state: Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.
+- Release state: Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.
 
 ## Native runtime targets
 

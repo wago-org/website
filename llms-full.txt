@@ -11,7 +11,7 @@ WebAssembly, made for Go.
 
 The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
 
-Release state: Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.
+Release state: Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.
 
 Native runtime targets: linux/amd64, linux/arm64, darwin/arm64.
 

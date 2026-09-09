@@ -9,7 +9,7 @@ Data updated: 2026-09-08
 
 ## Current verified facts
 
-- Release state: Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.
+- Release state: Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.
 - Native runtime targets: linux/amd64, linux/arm64, darwin/arm64.
 - Execution: single-pass native compiler; pure Go; cgo=false.
 - Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.

@@ -423,7 +423,7 @@ function comparePage(facts, key) {
       <tbody>${rows([
         ["Implementation", "Go; no cgo", `<a href="${esc(other.source)}">See the project’s current implementation and bindings</a>`],
         ["Execution terminology", "Single-pass native compiler", esc(other.mode)],
-        ["Wago release maturity", "Pre-v1 development/nightly channels; no stable v1 API promise", "See the other project’s release and support policy"],
+        ["Wago release maturity", "Pre-v1 development with beta and canary channels; no stable v1 API promise", "See the other project’s release and support policy"],
         ["Known Wago gap", esc(other.gaps), "Not applicable"],
       ])}</tbody></table>
     </section>
@@ -1042,7 +1042,7 @@ const facts = {
     interpreter: false,
   },
   release: {
-    status: "Pre-v0.1 development with nightly and canary artifacts; public stable installation is not yet claimed.",
+    status: "Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.",
     stableVersion: null,
     apiStability: "pre-v1; no stable-v1 compatibility promise",
   },

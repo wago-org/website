@@ -147,7 +147,7 @@
                                         "MVP files passing: 57/57",
                                         "Verification checks passing: 155010",
                                         "Test coverage: 86.1%",
-                                        "Published performance comparisons: 636"
+                                        "Published performance comparisons: 632"
                               ],
                               "distribution": [
                                         {
@@ -1247,14 +1247,14 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div>
                         <div class="split__eyebrow">End-to-end latency</div>
                         <h2 class="split__title">
-                            Cold start in
+                            Fresh process in
                             <span class="section__title-accent">milliseconds</span>
                         </h2>
                         <p class="split__body">
                             The whole process, from spawn to exit, timed
                             end-to-end across six real workloads. Compare
-                            cold process cost and real execution together on
-                            the architecture that matches your machine.
+                            process startup and execution together on the
+                            architecture that matches your machine.
                         </p>
                     </div>
                     <div class="chartcard">
@@ -1264,409 +1264,469 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                         </div>
                             <div id="startup-arch-panel-arm64" data-startup-arch-panel="arm64">
                                 <div class="chart__tabs" role="tablist" aria-label="Workload" data-tabs>
-                                <button class="chart__tab" role="tab" id="su-arm64-tab-json-as" aria-controls="su-arm64-panel-json-as" aria-selected="true" tabindex="0">json-as</button>
-                                <button class="chart__tab" role="tab" id="su-arm64-tab-nbody" aria-controls="su-arm64-panel-nbody" aria-selected="false" tabindex="-1">nbody</button>
+                                <button class="chart__tab" role="tab" id="su-arm64-tab-nbody" aria-controls="su-arm64-panel-nbody" aria-selected="true" tabindex="0">nbody</button>
+                                <button class="chart__tab" role="tab" id="su-arm64-tab-fib" aria-controls="su-arm64-panel-fib" aria-selected="false" tabindex="-1">fib</button>
                                 <button class="chart__tab" role="tab" id="su-arm64-tab-spectralnorm" aria-controls="su-arm64-panel-spectralnorm" aria-selected="false" tabindex="-1">spectralnorm</button>
                                 <button class="chart__tab" role="tab" id="su-arm64-tab-quicksort" aria-controls="su-arm64-panel-quicksort" aria-selected="false" tabindex="-1">quicksort</button>
                                 <button class="chart__tab" role="tab" id="su-arm64-tab-raytrace" aria-controls="su-arm64-panel-raytrace" aria-selected="false" tabindex="-1">raytrace</button>
                                 <button class="chart__tab" role="tab" id="su-arm64-tab-sha256" aria-controls="su-arm64-panel-sha256" aria-selected="false" tabindex="-1">sha256</button>
                                 </div>
-                                <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-json-as" aria-labelledby="su-arm64-tab-json-as" data-relative-bars>
+                                <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-nbody" aria-labelledby="su-arm64-tab-nbody" data-relative-bars>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="4.98" data-width="3"></span></span>
-                                    <span class="rank__val">5.0 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="7.614" data-width="5"></span></span>
-                                    <span class="rank__val">7.6 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="16.102" data-width="7"></span></span>
+                                    <span class="rank__val">16.1 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.354" data-width="5"></span></span>
-                                    <span class="rank__val">8.4 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.311" data-width="8"></span></span>
+                                    <span class="rank__val">17.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="15.61" data-width="9"></span></span>
-                                    <span class="rank__val">15.6 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="18.506" data-width="8"></span></span>
+                                    <span class="rank__val">18.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="15.66" data-width="9"></span></span>
-                                    <span class="rank__val">15.7 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="30.638" data-width="14"></span></span>
+                                    <span class="rank__val">30.6 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="167.195" data-width="100"></span></span>
-                                    <span class="rank__val">167 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="35.581" data-width="16"></span></span>
+                                    <span class="rank__val">35.6 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="109.049" data-width="49"></span></span>
+                                    <span class="rank__val">109 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="222.084" data-width="100"></span></span>
+                                    <span class="rank__val">222 ms</span>
                                 </div>
                                 </div>
-                                <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-nbody" aria-labelledby="su-arm64-tab-nbody" data-relative-bars hidden>
+                                <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-fib" aria-labelledby="su-arm64-tab-fib" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="18.17" data-width="49"></span></span>
-                                    <span class="rank__val">18.2 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="6.074" data-width="11"></span></span>
+                                    <span class="rank__val">6.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="18.575" data-width="50"></span></span>
-                                    <span class="rank__val">18.6 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.085" data-width="15"></span></span>
+                                    <span class="rank__val">8.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="19.63" data-width="52"></span></span>
-                                    <span class="rank__val">19.6 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="9.014" data-width="17"></span></span>
+                                    <span class="rank__val">9.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="20.723" data-width="55"></span></span>
-                                    <span class="rank__val">20.7 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="22.993" data-width="42"></span></span>
+                                    <span class="rank__val">23.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="33.643" data-width="90"></span></span>
-                                    <span class="rank__val">33.6 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="38.228" data-width="70"></span></span>
+                                    <span class="rank__val">38.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="37.445" data-width="100"></span></span>
-                                    <span class="rank__val">37.4 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="46.58" data-width="85"></span></span>
+                                    <span class="rank__val">46.6 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="54.505" data-width="100"></span></span>
+                                    <span class="rank__val">54.5 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-spectralnorm" aria-labelledby="su-arm64-tab-spectralnorm" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="4.016" data-width="18"></span></span>
-                                    <span class="rank__val">4.0 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="3.413" data-width="18"></span></span>
+                                    <span class="rank__val">3.4 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="4.863" data-width="22"></span></span>
-                                    <span class="rank__val">4.9 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="4.263" data-width="22"></span></span>
+                                    <span class="rank__val">4.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="6.471" data-width="30"></span></span>
-                                    <span class="rank__val">6.5 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.72" data-width="29"></span></span>
+                                    <span class="rank__val">5.7 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="7.499" data-width="34"></span></span>
-                                    <span class="rank__val">7.5 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.629" data-width="60"></span></span>
+                                    <span class="rank__val">11.6 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="20.058" data-width="92"></span></span>
-                                    <span class="rank__val">20.1 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.385" data-width="89"></span></span>
+                                    <span class="rank__val">17.4 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="21.767" data-width="100"></span></span>
-                                    <span class="rank__val">21.8 ms</span>
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.619" data-width="91"></span></span>
+                                    <span class="rank__val">17.6 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="19.433" data-width="100"></span></span>
+                                    <span class="rank__val">19.4 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-quicksort" aria-labelledby="su-arm64-tab-quicksort" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="9.441" data-width="20"></span></span>
-                                    <span class="rank__val">9.4 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="8.055" data-width="19"></span></span>
+                                    <span class="rank__val">8.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.263" data-width="24"></span></span>
-                                    <span class="rank__val">11.3 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="9.938" data-width="24"></span></span>
+                                    <span class="rank__val">9.9 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.348" data-width="25"></span></span>
-                                    <span class="rank__val">11.3 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="10.289" data-width="25"></span></span>
+                                    <span class="rank__val">10.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="13.025" data-width="28"></span></span>
-                                    <span class="rank__val">13.0 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="18.16" data-width="44"></span></span>
+                                    <span class="rank__val">18.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="19.726" data-width="43"></span></span>
-                                    <span class="rank__val">19.7 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="22.496" data-width="54"></span></span>
+                                    <span class="rank__val">22.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="46.181" data-width="100"></span></span>
-                                    <span class="rank__val">46.2 ms</span>
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="25.432" data-width="61"></span></span>
+                                    <span class="rank__val">25.4 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="41.377" data-width="100"></span></span>
+                                    <span class="rank__val">41.4 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-raytrace" aria-labelledby="su-arm64-tab-raytrace" data-relative-bars hidden>
-                                <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="7.359" data-width="24"></span></span>
-                                    <span class="rank__val">7.4 ms</span>
-                                </div>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="7.407" data-width="24"></span></span>
-                                    <span class="rank__val">7.4 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="6.346" data-width="19"></span></span>
+                                    <span class="rank__val">6.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="9.506" data-width="31"></span></span>
-                                    <span class="rank__val">9.5 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="6.545" data-width="20"></span></span>
+                                    <span class="rank__val">6.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.278" data-width="36"></span></span>
-                                    <span class="rank__val">11.3 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.502" data-width="26"></span></span>
+                                    <span class="rank__val">8.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.662" data-width="57"></span></span>
-                                    <span class="rank__val">17.7 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="16.127" data-width="49"></span></span>
+                                    <span class="rank__val">16.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="31.087" data-width="100"></span></span>
-                                    <span class="rank__val">31.1 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.256" data-width="52"></span></span>
+                                    <span class="rank__val">17.3 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="27.748" data-width="84"></span></span>
+                                    <span class="rank__val">27.7 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="32.911" data-width="100"></span></span>
+                                    <span class="rank__val">32.9 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-arm64-panel-sha256" aria-labelledby="su-arm64-tab-sha256" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="3.281" data-width="16"></span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="2.741" data-width="15"></span></span>
+                                    <span class="rank__val">2.7 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="3.014" data-width="16"></span></span>
+                                    <span class="rank__val">3.0 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="3.347" data-width="18"></span></span>
                                     <span class="rank__val">3.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="3.443" data-width="16"></span></span>
-                                    <span class="rank__val">3.4 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.217" data-width="28"></span></span>
+                                    <span class="rank__val">5.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.736" data-width="27"></span></span>
-                                    <span class="rank__val">5.7 ms</span>
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.624" data-width="30"></span></span>
+                                    <span class="rank__val">5.6 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="6.826" data-width="33"></span></span>
-                                    <span class="rank__val">6.8 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="14.278" data-width="76"></span></span>
+                                    <span class="rank__val">14.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="15.239" data-width="73"></span></span>
-                                    <span class="rank__val">15.2 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="20.994" data-width="100"></span></span>
-                                    <span class="rank__val">21.0 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="18.891" data-width="100"></span></span>
+                                    <span class="rank__val">18.9 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__machine">Apple M4 Max, darwin/arm64</div>
                             </div>
                             <div id="startup-arch-panel-amd64" data-startup-arch-panel="amd64" hidden>
                                 <div class="chart__tabs" role="tablist" aria-label="Workload" data-tabs>
-                                <button class="chart__tab" role="tab" id="su-amd64-tab-json-as" aria-controls="su-amd64-panel-json-as" aria-selected="true" tabindex="0">json-as</button>
-                                <button class="chart__tab" role="tab" id="su-amd64-tab-nbody" aria-controls="su-amd64-panel-nbody" aria-selected="false" tabindex="-1">nbody</button>
+                                <button class="chart__tab" role="tab" id="su-amd64-tab-nbody" aria-controls="su-amd64-panel-nbody" aria-selected="true" tabindex="0">nbody</button>
+                                <button class="chart__tab" role="tab" id="su-amd64-tab-fib" aria-controls="su-amd64-panel-fib" aria-selected="false" tabindex="-1">fib</button>
                                 <button class="chart__tab" role="tab" id="su-amd64-tab-spectralnorm" aria-controls="su-amd64-panel-spectralnorm" aria-selected="false" tabindex="-1">spectralnorm</button>
                                 <button class="chart__tab" role="tab" id="su-amd64-tab-quicksort" aria-controls="su-amd64-panel-quicksort" aria-selected="false" tabindex="-1">quicksort</button>
                                 <button class="chart__tab" role="tab" id="su-amd64-tab-raytrace" aria-controls="su-amd64-panel-raytrace" aria-selected="false" tabindex="-1">raytrace</button>
                                 <button class="chart__tab" role="tab" id="su-amd64-tab-sha256" aria-controls="su-amd64-panel-sha256" aria-selected="false" tabindex="-1">sha256</button>
                                 </div>
-                                <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-json-as" aria-labelledby="su-amd64-tab-json-as" data-relative-bars>
+                                <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-nbody" aria-labelledby="su-amd64-tab-nbody" data-relative-bars>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="4.355" data-width="2"></span></span>
-                                    <span class="rank__val">4.4 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="27.491" data-width="8"></span></span>
+                                    <span class="rank__val">27.5 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="10.138" data-width="4"></span></span>
-                                    <span class="rank__val">10.1 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="29.495" data-width="9"></span></span>
+                                    <span class="rank__val">29.5 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="10.366" data-width="4"></span></span>
-                                    <span class="rank__val">10.4 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="39.014" data-width="12"></span></span>
+                                    <span class="rank__val">39.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="17.936" data-width="7"></span></span>
-                                    <span class="rank__val">17.9 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="43.182" data-width="13"></span></span>
+                                    <span class="rank__val">43.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="21.554" data-width="8"></span></span>
-                                    <span class="rank__val">21.6 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="50.376" data-width="16"></span></span>
+                                    <span class="rank__val">50.4 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="260.245" data-width="100"></span></span>
-                                    <span class="rank__val">260 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="290.402" data-width="90"></span></span>
+                                    <span class="rank__val">290 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="324.418" data-width="100"></span></span>
+                                    <span class="rank__val">324 ms</span>
                                 </div>
                                 </div>
-                                <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-nbody" aria-labelledby="su-amd64-tab-nbody" data-relative-bars hidden>
+                                <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-fib" aria-labelledby="su-amd64-tab-fib" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="27.93" data-width="57"></span></span>
-                                    <span class="rank__val">27.9 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="29.103" data-width="60"></span></span>
-                                    <span class="rank__val">29.1 ms</span>
-                                </div>
-                                <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="33.297" data-width="68"></span></span>
-                                    <span class="rank__val">33.3 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="4.863" data-width="4"></span></span>
+                                    <span class="rank__val">4.9 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="37.79" data-width="77"></span></span>
-                                    <span class="rank__val">37.8 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.999" data-width="5"></span></span>
+                                    <span class="rank__val">6.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="42.009" data-width="86"></span></span>
-                                    <span class="rank__val">42.0 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="7.444" data-width="6"></span></span>
+                                    <span class="rank__val">7.4 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="48.781" data-width="100"></span></span>
-                                    <span class="rank__val">48.8 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="12.148" data-width="10"></span></span>
+                                    <span class="rank__val">12.1 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="26.89" data-width="22"></span></span>
+                                    <span class="rank__val">26.9 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="80.001" data-width="64"></span></span>
+                                    <span class="rank__val">80.0 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="124.231" data-width="100"></span></span>
+                                    <span class="rank__val">124 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-spectralnorm" aria-labelledby="su-amd64-tab-spectralnorm" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="3.281" data-width="7"></span></span>
-                                    <span class="rank__val">3.3 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="3.088" data-width="5"></span></span>
+                                    <span class="rank__val">3.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="4.639" data-width="9"></span></span>
-                                    <span class="rank__val">4.6 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.007" data-width="8"></span></span>
+                                    <span class="rank__val">5.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="6.344" data-width="13"></span></span>
-                                    <span class="rank__val">6.3 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="6.161" data-width="10"></span></span>
+                                    <span class="rank__val">6.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="9.622" data-width="19"></span></span>
-                                    <span class="rank__val">9.6 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="15.022" data-width="25"></span></span>
+                                    <span class="rank__val">15.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="14.654" data-width="30"></span></span>
-                                    <span class="rank__val">14.7 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="23.977" data-width="40"></span></span>
+                                    <span class="rank__val">24.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="49.653" data-width="100"></span></span>
-                                    <span class="rank__val">49.7 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="51.585" data-width="86"></span></span>
+                                    <span class="rank__val">51.6 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="60.065" data-width="100"></span></span>
+                                    <span class="rank__val">60.1 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-quicksort" aria-labelledby="su-amd64-tab-quicksort" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="8.584" data-width="6"></span></span>
-                                    <span class="rank__val">8.6 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="8.23" data-width="6"></span></span>
+                                    <span class="rank__val">8.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.685" data-width="9"></span></span>
-                                    <span class="rank__val">11.7 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.597" data-width="8"></span></span>
+                                    <span class="rank__val">11.6 ms</span>
                                 </div>
                                 <div class="rank__row">
                                     <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.784" data-width="9"></span></span>
-                                    <span class="rank__val">11.8 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="12.391" data-width="9"></span></span>
+                                    <span class="rank__val">12.4 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="14.898" data-width="11"></span></span>
-                                    <span class="rank__val">14.9 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="16.317" data-width="12"></span></span>
+                                    <span class="rank__val">16.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="16.015" data-width="12"></span></span>
-                                    <span class="rank__val">16.0 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="37.869" data-width="27"></span></span>
+                                    <span class="rank__val">37.9 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="134.105" data-width="100"></span></span>
-                                    <span class="rank__val">134 ms</span>
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="45.128" data-width="32"></span></span>
+                                    <span class="rank__val">45.1 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="139.606" data-width="100"></span></span>
+                                    <span class="rank__val">140 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-raytrace" aria-labelledby="su-amd64-tab-raytrace" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="7.727" data-width="20"></span></span>
-                                    <span class="rank__val">7.7 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="7.248" data-width="15"></span></span>
+                                    <span class="rank__val">7.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.448" data-width="21"></span></span>
-                                    <span class="rank__val">8.4 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.965" data-width="19"></span></span>
+                                    <span class="rank__val">9.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.206" data-width="29"></span></span>
-                                    <span class="rank__val">11.2 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="11.048" data-width="23"></span></span>
+                                    <span class="rank__val">11.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="14.758" data-width="38"></span></span>
-                                    <span class="rank__val">14.8 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="16.167" data-width="34"></span></span>
+                                    <span class="rank__val">16.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="15.829" data-width="40"></span></span>
-                                    <span class="rank__val">15.8 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="35.157" data-width="73"></span></span>
+                                    <span class="rank__val">35.2 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="39.302" data-width="100"></span></span>
-                                    <span class="rank__val">39.3 ms</span>
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="40.613" data-width="84"></span></span>
+                                    <span class="rank__val">40.6 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="48.128" data-width="100"></span></span>
+                                    <span class="rank__val">48.1 ms</span>
                                 </div>
                                 </div>
                                 <div class="chart__panel rank" role="tabpanel" id="su-amd64-panel-sha256" aria-labelledby="su-amd64-tab-sha256" data-relative-bars hidden>
                                 <div class="rank__row rank__row--wago">
                                     <span class="rank__name">wago<span class="rank__mode">single-pass</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="1.984" data-width="6"></span></span>
-                                    <span class="rank__val">2.0 ms</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="1.808" data-width="5"></span></span>
+                                    <span class="rank__val">1.8 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wazero<span class="rank__tag">JIT</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="2.657" data-width="8"></span></span>
-                                    <span class="rank__val">2.7 ms</span>
+                                    <span class="rank__name">wazero<span class="rank__tag">compiler</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="2.993" data-width="9"></span></span>
+                                    <span class="rank__val">3.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmtime<span class="rank__tag">Cranelift</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.198" data-width="16"></span></span>
-                                    <span class="rank__val">5.2 ms</span>
+                                    <span class="rank__name">wasmtime<span class="rank__tag">cranelift</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="5.032" data-width="15"></span></span>
+                                    <span class="rank__val">5.0 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wasmer<span class="rank__tag">compiler</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="8.405" data-width="26"></span></span>
-                                    <span class="rank__val">8.4 ms</span>
+                                    <span class="rank__name">wasm3<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="7.114" data-width="21"></span></span>
+                                    <span class="rank__val">7.1 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">v8<span class="rank__tag">optimizing</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="12.14" data-width="38"></span></span>
-                                    <span class="rank__val">12.1 ms</span>
+                                    <span class="rank__name">wasmi<span class="rank__tag">interpreter</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="10.271" data-width="31"></span></span>
+                                    <span class="rank__val">10.3 ms</span>
                                 </div>
                                 <div class="rank__row">
-                                    <span class="rank__name">wavm<span class="rank__tag">LLVM</span></span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="31.997" data-width="100"></span></span>
-                                    <span class="rank__val">32.0 ms</span>
+                                    <span class="rank__name">v8<span class="rank__tag">turboshaft</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="12.528" data-width="38"></span></span>
+                                    <span class="rank__val">12.5 ms</span>
+                                </div>
+                                <div class="rank__row">
+                                    <span class="rank__name">wavm<span class="rank__tag">llvm</span></span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="33.166" data-width="100"></span></span>
+                                    <span class="rank__val">33.2 ms</span>
                                 </div>
                                 </div>
-                                <div class="chart__machine">AMD Ryzen 7 7800X3D 8-Core Processor, linux/x64</div>
+                                <div class="chart__machine">AMD Ryzen 7 7800X3D, linux/amd64, CPU 7 pinned</div>
                             </div>
                     </div>
                 </div>
@@ -1884,38 +1944,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--behind">1.2× slower</span>
-                        </div>
-                        <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">Application commands</span><span class="vs__sub">fresh instance + fixed workload</span></div>
-                            <div class="vs__bars">
-                                <div class="vs__line" data-engine="railshot">
-                                    <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="208063.70598296315" data-width="59"></span></span>
-                                    <span class="vs__val">208µs</span>
-                                </div>
-                                <div class="vs__line" data-engine="wazero">
-                                    <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="354488.237671031" data-width="100"></span></span>
-                                    <span class="vs__val">354µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">1.7× faster</span>
-                        </div>
-                        <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">SIMD execution</span><span class="vs__sub">AssemblyScript SIMD</span></div>
-                            <div class="vs__bars">
-                                <div class="vs__line" data-engine="railshot">
-                                    <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="79732.86840543119" data-width="77"></span></span>
-                                    <span class="vs__val">79.7µs</span>
-                                </div>
-                                <div class="vs__line" data-engine="wazero">
-                                    <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="103599.59145329671" data-width="100"></span></span>
-                                    <span class="vs__val">104µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">1.3× faster</span>
                         </div>
                     </div>
                     <div
@@ -5350,7 +5378,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">500 B</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">1× less</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__group">Linear algebra</div>
                         <div class="vs__row" data-engine-row>
@@ -5928,7 +5956,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">523µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind">1× slower</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">json-as-simd</span><span class="vs__sub">deserializeN · real-simd corpus</span></div>
@@ -6315,7 +6343,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">3.14ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">TACLeBench · bsort</span><span class="vs__sub">self-checking bubble sort</span></div>
@@ -6412,7 +6440,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">360µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--behind">1× slower</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">sha256</span><span class="vs__sub">hashN · compute corpus</span></div>
@@ -6593,7 +6621,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">1.91ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-fdtd-2d</span><span class="vs__sub">polybench_run · stencil corpus</span></div>
@@ -6673,7 +6701,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">4.02ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__group">Solvers</div>
                         <div class="vs__row" data-engine-row>
@@ -7174,38 +7202,6 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                             </div>
                             <span class="vs__delta vs__delta--behind">1.1× slower</span>
-                        </div>
-                        <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">Application commands</span><span class="vs__sub">fresh instance + fixed workload</span></div>
-                            <div class="vs__bars">
-                                <div class="vs__line" data-engine="railshot">
-                                    <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="262273.04564690206" data-width="79"></span></span>
-                                    <span class="vs__val">262µs</span>
-                                </div>
-                                <div class="vs__line" data-engine="wazero">
-                                    <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="333248.46543070936" data-width="100"></span></span>
-                                    <span class="vs__val">333µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">1.3× faster</span>
-                        </div>
-                        <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">SIMD execution</span><span class="vs__sub">AssemblyScript SIMD</span></div>
-                            <div class="vs__bars">
-                                <div class="vs__line" data-engine="railshot">
-                                    <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="70733.68568308292" data-width="79"></span></span>
-                                    <span class="vs__val">70.7µs</span>
-                                </div>
-                                <div class="vs__line" data-engine="wazero">
-                                    <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="89488.49720657291" data-width="100"></span></span>
-                                    <span class="vs__val">89.5µs</span>
-                                </div>
-                            </div>
-                            <span class="vs__delta vs__delta--win">1.3× faster</span>
                         </div>
                     </div>
                     <div
@@ -10136,7 +10132,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">10.1 KB</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">json-as</span><span class="vs__sub">AssemblyScript json-as (SWAR): serialize/deserialize a struct</span></div>
@@ -10364,7 +10360,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">892 B</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">1× less</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Embench · huffbench</span><span class="vs__sub">Huffman compression</span></div>
@@ -11153,7 +11149,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">395µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">json-as</span><span class="vs__sub">deserializeN · real corpus</span></div>
@@ -11218,7 +11214,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">434µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">json-as-simd</span><span class="vs__sub">deserializeN · real-simd corpus</span></div>
@@ -11443,7 +11439,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">6.3µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">1× faster</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__group">Calls</div>
                         <div class="vs__row" data-engine-row>
@@ -11493,7 +11489,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">512µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Embench · huffbench</span><span class="vs__sub">Huffman compression</span></div>
@@ -11818,7 +11814,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">39.2µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-bicg</span><span class="vs__sub">polybench_run · linear-algebra corpus</span></div>
@@ -11883,7 +11879,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">1.58ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-fdtd-2d</span><span class="vs__sub">polybench_run · stencil corpus</span></div>
@@ -11899,7 +11895,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">847µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-heat-3d</span><span class="vs__sub">polybench_run · stencil corpus</span></div>
@@ -11980,7 +11976,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">1.90ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-durbin</span><span class="vs__sub">polybench_run · solver corpus</span></div>
@@ -12028,7 +12024,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">2.20ms</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">1× faster</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-ludcmp</span><span class="vs__sub">polybench_run · solver corpus</span></div>
@@ -12143,7 +12139,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">56.2µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-gesummv</span><span class="vs__sub">polybench_run · blas corpus</span></div>
@@ -12159,7 +12155,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">28.4µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">polybench-symm</span><span class="vs__sub">polybench_run · blas corpus</span></div>
@@ -12223,7 +12219,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vs__val">201µs</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--tie">same</span>
+                            <span class="vs__delta vs__delta--tie">parity</span>
                         </div>
                         <div class="vs__group">Dynamic programming</div>
                         <div class="vs__row" data-engine-row>

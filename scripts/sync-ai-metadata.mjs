@@ -44,9 +44,8 @@ function normalizeHomepageClaims(index) {
   const modes = {
     wago: "single-pass",
     wazero: "compiler",
-    wasmtime: "Cranelift",
-    wasmer: "compiler",
-    v8: "optimizing",
+    wasmtime: "cranelift",
+    v8: "turboshaft",
     wamr: "compiler",
     wasmi: "interpreter",
     wasm3: "interpreter",

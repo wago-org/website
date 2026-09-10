@@ -5,7 +5,7 @@
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
-    "ref": "bd742cdad68e0bb464ae135973866c73013ffb2f",
+    "ref": "main",
     "commit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
     "commitUrl": "https://github.com/wago-org/wago/commit/bd742cdad68e0bb464ae135973866c73013ffb2f"
   },
@@ -18,7 +18,7 @@
     "interpreter": false
   },
   "release": {
-    "status": "Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.",
+    "status": "Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.",
     "stableVersion": null,
     "apiStability": "pre-v1; no stable-v1 compatibility promise"
   },

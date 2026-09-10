@@ -1,7 +1,7 @@
 # Wago facts
 
-Last synchronized: 2026-09-08
-Wago source commit: 81b31de9e05cd84b19c5e1f60890489149b830a2
+Last synchronized: 2026-09-10
+Wago source commit: 12ccfd40e1cba7b7685980cd00835bf856018b6d
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Identity and release

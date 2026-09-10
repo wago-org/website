@@ -24,7 +24,7 @@ const INPUTS = [
   "FEATURES.md",
   "VERIFICATION.md",
   "tests/README.md",
-  "tests/regressions/README.md",
+  "tests/corpus/regressions/README.md",
   ".github/workflows/ci.yml",
   "src/wago/api.go",
   "src/wago/doc.go",
@@ -965,7 +965,7 @@ const stats = JSON.parse(await readFile(STATS, "utf8"));
 const commit = localCommit() || (await remoteCommit());
 if (!/^[0-9a-f]{40}$/i.test(commit)) throw new Error(`invalid Wago commit: ${commit}`);
 
-requireText(loaded["README.md"], "Wago is a WebAssembly runtime for Go.", "README.md");
+requireText(loaded["README.md"], "Wago is a pure-Go WebAssembly engine", "README.md");
 requireText(loaded["src/wago/doc.go"], "no-cgo single-pass JIT", "src/wago/doc.go");
 requireText(loaded["src/wago/instance.go"], "reusable Invoke result buffer", "src/wago/instance.go");
 requireText(loaded["src/wago/policy.go"], "MaxMemoryBytes", "src/wago/policy.go");
@@ -990,20 +990,20 @@ const gateMatches = [
   ),
 ];
 const wazero = match(
-  loaded["tests/regressions/README.md"],
+  loaded["tests/corpus/regressions/README.md"],
   /revision: `([0-9a-f]{40})`/,
-  "tests/regressions/README.md",
+  "tests/corpus/regressions/README.md",
   "wazero revision",
 );
 const wazeroFixtures = match(
-  loaded["tests/regressions/README.md"],
+  loaded["tests/corpus/regressions/README.md"],
   /includes (\d+) fuzz binaries, (\d+) engine binaries, all (\d+) generated[\s\S]*?all (\d+) generated artifacts[\s\S]*?The (\d+) upstream artifacts[\s\S]*?SHA-256 digest\s+`([0-9a-f]{64})`/,
-  "tests/regressions/README.md",
+  "tests/corpus/regressions/README.md",
   "wazero fixture counts and digest",
 );
 const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
-  resolveGitlink("tests/spec", "WAGO_SPEC1_COMMIT"),
-  resolveGitlink("tests/spec-v2", "WAGO_SPEC2_COMMIT"),
+  resolveGitlink("tests/conformance/spec-v1", "WAGO_SPEC1_COMMIT"),
+  resolveGitlink("tests/conformance/spec-v2", "WAGO_SPEC2_COMMIT"),
 ]);
 
 const evidenceMap = {
@@ -1018,7 +1018,7 @@ const evidenceMap = {
   memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract", "#L84-L113"),
   policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement", "#L10-L67"),
   testSurface: evidence(commit, "tests/README.md", "unified repository test surface", "#L1-L44"),
-  wazeroFixtures: evidence(commit, "tests/regressions/README.md", "wazero fixture manifest", "#L1-L31"),
+  wazeroFixtures: evidence(commit, "tests/corpus/regressions/README.md", "wazero fixture manifest", "#L1-L31"),
 };
 
 const webAssemblyGroups = stats.versions.filter((group) => group.version !== "engine");

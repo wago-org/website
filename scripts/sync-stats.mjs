@@ -39,7 +39,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${REF}`;
 const API = `https://api.github.com/repos/${REPO}/contents`;
 
-const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "tests/spec-v3-baseline.json", "coverage-report.md"];
+const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "tests/conformance/baselines/spec-v3-baseline.json", "coverage-report.md"];
 
 async function exists(p) {
   try {
@@ -125,7 +125,7 @@ function parseVerification(text) {
 function parseSpec3Baseline(text) {
   const totals = JSON.parse(text).totals_excluding_parser_failures?.assertions;
   if (!totals || !Number.isInteger(totals.passed) || !Number.isInteger(totals.failed) || !Number.isInteger(totals.skipped)) {
-    throw new Error("tests/spec-v3-baseline.json: missing assertion totals");
+    throw new Error("tests/conformance/baselines/spec-v3-baseline.json: missing assertion totals");
   }
   return totals;
 }
@@ -142,7 +142,7 @@ function parseFeatures(text) {
   const rows = [];
   let inMvp = false;
   for (const line of text.split("\n")) {
-    const h = line.match(/^##\s+(.*)/);
+    const h = line.match(/^#{2,3}\s+(.*)/);
     if (h) {
       inMvp = /\bMVP\b/i.test(h[1]);
       continue;
@@ -338,7 +338,7 @@ async function main() {
   const simdAssertionsPass = parseSIMDAssertions(`${srcs["FEATURES.md"].text}\n${srcs["VERIFICATION.md"].text}`);
   const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
   const verification = parseVerification(srcs["VERIFICATION.md"].text);
-  const spec3 = parseSpec3Baseline(srcs["tests/spec-v3-baseline.json"].text);
+  const spec3 = parseSpec3Baseline(srcs["tests/conformance/baselines/spec-v3-baseline.json"].text);
   verification.checksPass += spec3.passed;
   verification.checksFail += spec3.failed;
   verification.checksSkip += spec3.skipped;

@@ -1910,15 +1910,15 @@
     font-size: 9.5px;
     letter-spacing: 0.03em;
     color: var(--faint);
-    text-transform: uppercase;
+    text-transform: none;
 }
 .rank__mode {
     font-family: var(--mono);
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    color: var(--faint);
-    opacity: 0.35;
+    color: inherit;
+    opacity: 1;
 }
 .rank__row--wago .rank__name {
     color: var(--lilac);

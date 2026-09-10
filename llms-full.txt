@@ -44,139 +44,151 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 #### arm64
 
-##### json-as
-
-| Runtime | Mode | Result |
-| --- | --- | ---: |
-| wago single-pass |  | 5.0 ms |
-| wasmtime | JIT | 7.6 ms |
-| wazero | compiler | 8.4 ms |
-| v8 | optimizing | 15.6 ms |
-| wasmer | compiler | 15.7 ms |
-| wavm | LLVM | 167 ms |
-
 ##### nbody
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 18.2 ms |
-| wazero | JIT | 18.6 ms |
-| wasmtime | Cranelift | 19.6 ms |
-| wasmer | compiler | 20.7 ms |
-| wavm | LLVM | 33.6 ms |
-| v8 | optimizing | 37.4 ms |
+| wago single-pass |  | 16.1 ms |
+| wazero | compiler | 17.3 ms |
+| wasmtime | cranelift | 18.5 ms |
+| wavm | llvm | 30.6 ms |
+| v8 | turboshaft | 35.6 ms |
+| wasm3 | interpreter | 109 ms |
+| wasmi | interpreter | 222 ms |
+
+##### fib
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wago single-pass |  | 6.1 ms |
+| wasmtime | cranelift | 8.1 ms |
+| wavm | llvm | 9.0 ms |
+| wazero | compiler | 23.0 ms |
+| v8 | turboshaft | 38.2 ms |
+| wasm3 | interpreter | 46.6 ms |
+| wasmi | interpreter | 54.5 ms |
 
 ##### spectralnorm
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 4.0 ms |
-| wazero | JIT | 4.9 ms |
-| wasmtime | Cranelift | 6.5 ms |
-| wasmer | compiler | 7.5 ms |
-| v8 | optimizing | 20.1 ms |
-| wavm | LLVM | 21.8 ms |
+| wago single-pass |  | 3.4 ms |
+| wazero | compiler | 4.3 ms |
+| wasmtime | cranelift | 5.7 ms |
+| wasm3 | interpreter | 11.6 ms |
+| v8 | turboshaft | 17.4 ms |
+| wasmi | interpreter | 17.6 ms |
+| wavm | llvm | 19.4 ms |
 
 ##### quicksort
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 9.4 ms |
-| wazero | JIT | 11.3 ms |
-| wasmtime | Cranelift | 11.3 ms |
-| wasmer | compiler | 13.0 ms |
-| v8 | optimizing | 19.7 ms |
-| wavm | LLVM | 46.2 ms |
+| wago single-pass |  | 8.1 ms |
+| wazero | compiler | 9.9 ms |
+| wasmtime | cranelift | 10.3 ms |
+| v8 | turboshaft | 18.2 ms |
+| wasm3 | interpreter | 22.5 ms |
+| wasmi | interpreter | 25.4 ms |
+| wavm | llvm | 41.4 ms |
 
 ##### raytrace
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wazero | compiler | 7.4 ms |
-| wago single-pass |  | 7.4 ms |
-| wasmtime | JIT | 9.5 ms |
-| wasmer | compiler | 11.3 ms |
-| v8 | optimizing | 17.7 ms |
-| wavm | LLVM | 31.1 ms |
+| wago single-pass |  | 6.3 ms |
+| wazero | compiler | 6.5 ms |
+| wasmtime | cranelift | 8.5 ms |
+| v8 | turboshaft | 16.1 ms |
+| wasm3 | interpreter | 17.3 ms |
+| wavm | llvm | 27.7 ms |
+| wasmi | interpreter | 32.9 ms |
 
 ##### sha256
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 3.3 ms |
-| wazero | JIT | 3.4 ms |
-| wasmtime | Cranelift | 5.7 ms |
-| wasmer | compiler | 6.8 ms |
-| v8 | optimizing | 15.2 ms |
-| wavm | LLVM | 21.0 ms |
+| wago single-pass |  | 2.7 ms |
+| wazero | compiler | 3.0 ms |
+| wasm3 | interpreter | 3.3 ms |
+| wasmtime | cranelift | 5.2 ms |
+| wasmi | interpreter | 5.6 ms |
+| v8 | turboshaft | 14.3 ms |
+| wavm | llvm | 18.9 ms |
 
 #### amd64
 
-##### json-as
-
-| Runtime | Mode | Result |
-| --- | --- | ---: |
-| wago single-pass |  | 4.4 ms |
-| v8 | JIT | 10.1 ms |
-| wazero | compiler | 10.4 ms |
-| wasmtime | Cranelift | 17.9 ms |
-| wasmer | compiler | 21.6 ms |
-| wavm | LLVM | 260 ms |
-
 ##### nbody
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 27.9 ms |
-| wasmtime | JIT | 29.1 ms |
-| wasmer | compiler | 33.3 ms |
-| wazero | compiler | 37.8 ms |
-| v8 | optimizing | 42.0 ms |
-| wavm | LLVM | 48.8 ms |
+| wago single-pass |  | 27.5 ms |
+| wasmtime | cranelift | 29.5 ms |
+| wazero | compiler | 39.0 ms |
+| v8 | turboshaft | 43.2 ms |
+| wavm | llvm | 50.4 ms |
+| wasm3 | interpreter | 290 ms |
+| wasmi | interpreter | 324 ms |
+
+##### fib
+
+| Runtime | Mode | Result |
+| --- | --- | ---: |
+| wago single-pass |  | 4.9 ms |
+| wazero | compiler | 6.0 ms |
+| wasmtime | cranelift | 7.4 ms |
+| wavm | llvm | 12.1 ms |
+| v8 | turboshaft | 26.9 ms |
+| wasm3 | interpreter | 80.0 ms |
+| wasmi | interpreter | 124 ms |
 
 ##### spectralnorm
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 3.3 ms |
-| wazero | JIT | 4.6 ms |
-| wasmtime | Cranelift | 6.3 ms |
-| wasmer | compiler | 9.6 ms |
-| v8 | optimizing | 14.7 ms |
-| wavm | LLVM | 49.7 ms |
+| wago single-pass |  | 3.1 ms |
+| wazero | compiler | 5.0 ms |
+| wasmtime | cranelift | 6.2 ms |
+| v8 | turboshaft | 15.0 ms |
+| wasm3 | interpreter | 24.0 ms |
+| wavm | llvm | 51.6 ms |
+| wasmi | interpreter | 60.1 ms |
 
 ##### quicksort
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 8.6 ms |
-| wasmtime | JIT | 11.7 ms |
-| wazero | compiler | 11.8 ms |
-| wasmer | compiler | 14.9 ms |
-| v8 | optimizing | 16.0 ms |
-| wavm | LLVM | 134 ms |
+| wago single-pass |  | 8.2 ms |
+| wasmtime | cranelift | 11.6 ms |
+| wazero | compiler | 12.4 ms |
+| v8 | turboshaft | 16.3 ms |
+| wasm3 | interpreter | 37.9 ms |
+| wasmi | interpreter | 45.1 ms |
+| wavm | llvm | 140 ms |
 
 ##### raytrace
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 7.7 ms |
-| wazero | JIT | 8.4 ms |
-| wasmtime | Cranelift | 11.2 ms |
-| wasmer | compiler | 14.8 ms |
-| v8 | optimizing | 15.8 ms |
-| wavm | LLVM | 39.3 ms |
+| wago single-pass |  | 7.2 ms |
+| wazero | compiler | 9.0 ms |
+| wasmtime | cranelift | 11.0 ms |
+| v8 | turboshaft | 16.2 ms |
+| wasm3 | interpreter | 35.2 ms |
+| wavm | llvm | 40.6 ms |
+| wasmi | interpreter | 48.1 ms |
 
 ##### sha256
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 2.0 ms |
-| wazero | JIT | 2.7 ms |
-| wasmtime | Cranelift | 5.2 ms |
-| wasmer | compiler | 8.4 ms |
-| v8 | optimizing | 12.1 ms |
-| wavm | LLVM | 32.0 ms |
+| wago single-pass |  | 1.8 ms |
+| wazero | compiler | 3.0 ms |
+| wasmtime | cranelift | 5.0 ms |
+| wasm3 | interpreter | 7.1 ms |
+| wasmi | interpreter | 10.3 ms |
+| v8 | turboshaft | 12.5 ms |
+| wavm | llvm | 33.2 ms |
 
 ## Runtime and compiler comparisons
 
@@ -196,8 +208,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | End-to-end latency | compile + instantiate | 220µs | 1.24ms |
 |  | Host → Wasm call | public entry | 28.3ns | 34.2ns |
 |  | Wasm → host → Wasm | import call and return | 571.5ns | 467.6ns |
-|  | Application commands | fresh instance + fixed workload | 208µs | 354µs |
-|  | SIMD execution | AssemblyScript SIMD | 79.7µs | 104µs |
 
 ##### Compile latency
 
@@ -548,8 +558,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | End-to-end latency | compile + instantiate | 138µs | 826µs |
 |  | Host → Wasm call | public entry | 29.7ns | 26.5ns |
 |  | Wasm → host → Wasm | import call and return | 356.3ns | 317.1ns |
-|  | Application commands | fresh instance + fixed workload | 262µs | 333µs |
-|  | SIMD execution | AssemblyScript SIMD | 70.7µs | 89.5µs |
 
 ##### Compile latency
 

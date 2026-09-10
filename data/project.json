@@ -17,9 +17,9 @@
     "canonicalUrl": "https://wago.sh/data/facts.json",
     "source": {
       "repository": "https://github.com/wago-org/wago",
-      "ref": "12ccfd40e1cba7b7685980cd00835bf856018b6d",
-      "commit": "12ccfd40e1cba7b7685980cd00835bf856018b6d",
-      "commitUrl": "https://github.com/wago-org/wago/commit/12ccfd40e1cba7b7685980cd00835bf856018b6d"
+      "ref": "bd742cdad68e0bb464ae135973866c73013ffb2f",
+      "commit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
+      "commitUrl": "https://github.com/wago-org/wago/commit/bd742cdad68e0bb464ae135973866c73013ffb2f"
     },
     "identity": {
       "name": "wago",
@@ -42,7 +42,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -53,7 +53,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -64,7 +64,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -75,7 +75,7 @@
         "evidence": [
           {
             "label": "native CI matrix",
-            "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/.github/workflows/ci.yml#L92-L214"
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
           }
         ]
       },
@@ -86,7 +86,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
           }
         ]
       }
@@ -139,7 +139,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -149,7 +149,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -159,7 +159,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -169,7 +169,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -179,7 +179,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -189,7 +189,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -199,7 +199,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -219,7 +219,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -239,7 +239,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -249,7 +249,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -259,7 +259,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -269,7 +269,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -279,7 +279,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -289,7 +289,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -299,7 +299,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -309,7 +309,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -319,7 +319,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -329,7 +329,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -339,7 +339,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -349,7 +349,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -359,7 +359,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -369,7 +369,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -379,7 +379,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -389,7 +389,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -399,7 +399,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -409,7 +409,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -419,7 +419,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -429,7 +429,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -439,7 +439,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -449,7 +449,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -459,7 +459,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -469,7 +469,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -479,7 +479,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -489,7 +489,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -499,7 +499,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -509,7 +509,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -519,7 +519,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -529,7 +529,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -539,7 +539,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -549,7 +549,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -559,7 +559,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -569,7 +569,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -579,7 +579,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -589,7 +589,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -599,7 +599,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -609,7 +609,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -619,7 +619,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -629,7 +629,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -639,7 +639,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -649,7 +649,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -659,7 +659,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -669,7 +669,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -679,7 +679,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -689,7 +689,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -699,7 +699,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -709,7 +709,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -719,7 +719,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -729,7 +729,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -739,7 +739,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -749,7 +749,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         },
@@ -759,7 +759,7 @@
           "evidence": [
             {
               "label": "feature matrix",
-              "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+              "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
             }
           ]
         }
@@ -767,7 +767,7 @@
     },
     "compatibility": {
       "verification": {
-        "wagoCommit": "12ccfd40e1cba7b7685980cd00835bf856018b6d",
+        "wagoCommit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
         "host": "darwin/arm64",
         "pass": 96972,
         "fail": 0,
@@ -867,51 +867,51 @@
     "evidence": {
       "readme": {
         "label": "README",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/README.md#L48-L97"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/README.md#L48-L97"
       },
       "engine": {
         "label": "pure-Go no-cgo JIT package contract",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/doc.go#L1-L8"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/doc.go#L1-L8"
       },
       "features": {
         "label": "feature matrix",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/FEATURES.md#L45-L63"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
       },
       "verification": {
         "label": "public verification",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/VERIFICATION.md#L1-L15"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/VERIFICATION.md#L1-L15"
       },
       "ci": {
         "label": "native CI matrix",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/.github/workflows/ci.yml#L92-L214"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
       },
       "api": {
         "label": "public API source",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/api.go#L1675-L1715"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/api.go#L1675-L1715"
       },
       "concurrency": {
         "label": "race-tested concurrent compile, instantiate, and execute coverage",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/runtime_concurrency_test.go#L13-L82"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/runtime_concurrency_test.go#L13-L82"
       },
       "nativeExecution": {
         "label": "native execution serialization",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/instance_native_context.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/instance_native_context.go#L10-L67"
       },
       "memory": {
         "label": "borrowed memory-view contract",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/memory.go#L84-L113"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/memory.go#L84-L113"
       },
       "policy": {
         "label": "resource policy enforcement",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/src/wago/policy.go#L10-L67"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/policy.go#L10-L67"
       },
       "testSurface": {
         "label": "unified repository test surface",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/tests/README.md#L1-L44"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/tests/README.md#L1-L44"
       },
       "wazeroFixtures": {
         "label": "wazero fixture manifest",
-        "url": "https://github.com/wago-org/wago/blob/12ccfd40e1cba7b7685980cd00835bf856018b6d/tests/corpus/regressions/README.md#L1-L31"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/tests/corpus/regressions/README.md#L1-L31"
       }
     }
   },
@@ -1254,74 +1254,84 @@
           "architecture": "arm64",
           "workloads": [
             {
-              "id": "json-as",
-              "label": "json-as",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "5.0 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "JIT",
-                  "value": "7.6 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "8.4 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "15.6 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "15.7 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "167 ms"
-                }
-              ]
-            },
-            {
               "id": "nbody",
               "label": "nbody",
               "unit": "wall-clock process latency",
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "18.2 ms"
+                  "value": "16.1 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "18.6 ms"
+                  "executionMode": "compiler",
+                  "value": "17.3 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "19.6 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "20.7 ms"
+                  "executionMode": "cranelift",
+                  "value": "18.5 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "33.6 ms"
+                  "executionMode": "llvm",
+                  "value": "30.6 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "37.4 ms"
+                  "executionMode": "turboshaft",
+                  "value": "35.6 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "109 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "222 ms"
+                }
+              ]
+            },
+            {
+              "id": "fib",
+              "label": "fib",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "6.1 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "8.1 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "9.0 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "23.0 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "38.2 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "46.6 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "54.5 ms"
                 }
               ]
             },
@@ -1332,32 +1342,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "4.0 ms"
+                  "value": "3.4 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "4.9 ms"
+                  "executionMode": "compiler",
+                  "value": "4.3 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "6.5 ms"
+                  "executionMode": "cranelift",
+                  "value": "5.7 ms"
                 },
                 {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "7.5 ms"
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "11.6 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "20.1 ms"
+                  "executionMode": "turboshaft",
+                  "value": "17.4 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "17.6 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "21.8 ms"
+                  "executionMode": "llvm",
+                  "value": "19.4 ms"
                 }
               ]
             },
@@ -1368,32 +1383,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "9.4 ms"
+                  "value": "8.1 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "11.3 ms"
+                  "executionMode": "compiler",
+                  "value": "9.9 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "11.3 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "13.0 ms"
+                  "executionMode": "cranelift",
+                  "value": "10.3 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "19.7 ms"
+                  "executionMode": "turboshaft",
+                  "value": "18.2 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "22.5 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "25.4 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "46.2 ms"
+                  "executionMode": "llvm",
+                  "value": "41.4 ms"
                 }
               ]
             },
@@ -1403,33 +1423,38 @@
               "unit": "wall-clock process latency",
               "results": [
                 {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "7.4 ms"
+                  "runtime": "wago single-pass",
+                  "value": "6.3 ms"
                 },
                 {
-                  "runtime": "wago single-pass",
-                  "value": "7.4 ms"
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "6.5 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "JIT",
-                  "value": "9.5 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "11.3 ms"
+                  "executionMode": "cranelift",
+                  "value": "8.5 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "17.7 ms"
+                  "executionMode": "turboshaft",
+                  "value": "16.1 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "17.3 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "31.1 ms"
+                  "executionMode": "llvm",
+                  "value": "27.7 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "32.9 ms"
                 }
               ]
             },
@@ -1440,32 +1465,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "3.3 ms"
+                  "value": "2.7 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "3.4 ms"
+                  "executionMode": "compiler",
+                  "value": "3.0 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "3.3 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "5.7 ms"
+                  "executionMode": "cranelift",
+                  "value": "5.2 ms"
                 },
                 {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "6.8 ms"
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "5.6 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "15.2 ms"
+                  "executionMode": "turboshaft",
+                  "value": "14.3 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "21.0 ms"
+                  "executionMode": "llvm",
+                  "value": "18.9 ms"
                 }
               ]
             }
@@ -1475,74 +1505,84 @@
           "architecture": "amd64",
           "workloads": [
             {
-              "id": "json-as",
-              "label": "json-as",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "4.4 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "JIT",
-                  "value": "10.1 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "10.4 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "17.9 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "21.6 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "260 ms"
-                }
-              ]
-            },
-            {
               "id": "nbody",
               "label": "nbody",
               "unit": "wall-clock process latency",
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "27.9 ms"
+                  "value": "27.5 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "JIT",
-                  "value": "29.1 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "33.3 ms"
+                  "executionMode": "cranelift",
+                  "value": "29.5 ms"
                 },
                 {
                   "runtime": "wazero",
                   "executionMode": "compiler",
-                  "value": "37.8 ms"
+                  "value": "39.0 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "42.0 ms"
+                  "executionMode": "turboshaft",
+                  "value": "43.2 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "48.8 ms"
+                  "executionMode": "llvm",
+                  "value": "50.4 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "290 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "324 ms"
+                }
+              ]
+            },
+            {
+              "id": "fib",
+              "label": "fib",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "4.9 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "6.0 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "7.4 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "12.1 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "26.9 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "80.0 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "124 ms"
                 }
               ]
             },
@@ -1553,32 +1593,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "3.3 ms"
+                  "value": "3.1 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "4.6 ms"
+                  "executionMode": "compiler",
+                  "value": "5.0 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "6.3 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "9.6 ms"
+                  "executionMode": "cranelift",
+                  "value": "6.2 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "14.7 ms"
+                  "executionMode": "turboshaft",
+                  "value": "15.0 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "24.0 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "49.7 ms"
+                  "executionMode": "llvm",
+                  "value": "51.6 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "60.1 ms"
                 }
               ]
             },
@@ -1589,32 +1634,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "8.6 ms"
+                  "value": "8.2 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "JIT",
-                  "value": "11.7 ms"
+                  "executionMode": "cranelift",
+                  "value": "11.6 ms"
                 },
                 {
                   "runtime": "wazero",
                   "executionMode": "compiler",
-                  "value": "11.8 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "14.9 ms"
+                  "value": "12.4 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "16.0 ms"
+                  "executionMode": "turboshaft",
+                  "value": "16.3 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "37.9 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "45.1 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "134 ms"
+                  "executionMode": "llvm",
+                  "value": "140 ms"
                 }
               ]
             },
@@ -1625,32 +1675,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "7.7 ms"
+                  "value": "7.2 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "8.4 ms"
+                  "executionMode": "compiler",
+                  "value": "9.0 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "11.2 ms"
-                },
-                {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "14.8 ms"
+                  "executionMode": "cranelift",
+                  "value": "11.0 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "15.8 ms"
+                  "executionMode": "turboshaft",
+                  "value": "16.2 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "35.2 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "39.3 ms"
+                  "executionMode": "llvm",
+                  "value": "40.6 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "48.1 ms"
                 }
               ]
             },
@@ -1661,32 +1716,37 @@
               "results": [
                 {
                   "runtime": "wago single-pass",
-                  "value": "2.0 ms"
+                  "value": "1.8 ms"
                 },
                 {
                   "runtime": "wazero",
-                  "executionMode": "JIT",
-                  "value": "2.7 ms"
+                  "executionMode": "compiler",
+                  "value": "3.0 ms"
                 },
                 {
                   "runtime": "wasmtime",
-                  "executionMode": "Cranelift",
-                  "value": "5.2 ms"
+                  "executionMode": "cranelift",
+                  "value": "5.0 ms"
                 },
                 {
-                  "runtime": "wasmer",
-                  "executionMode": "compiler",
-                  "value": "8.4 ms"
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "7.1 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "10.3 ms"
                 },
                 {
                   "runtime": "v8",
-                  "executionMode": "optimizing",
-                  "value": "12.1 ms"
+                  "executionMode": "turboshaft",
+                  "value": "12.5 ms"
                 },
                 {
                   "runtime": "wavm",
-                  "executionMode": "LLVM",
-                  "value": "32.0 ms"
+                  "executionMode": "llvm",
+                  "value": "33.2 ms"
                 }
               ]
             }
@@ -1801,30 +1861,6 @@
                       },
                       "comparison": "1.2× slower",
                       "result": "multi-engine behind"
-                    },
-                    {
-                      "label": "Application commands",
-                      "workload": "fresh instance + fixed workload",
-                      "wago": "208µs",
-                      "wazero": "354µs",
-                      "engines": {
-                        "railshot": "208µs",
-                        "wazero": "354µs"
-                      },
-                      "comparison": "1.7× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "label": "SIMD execution",
-                      "workload": "AssemblyScript SIMD",
-                      "wago": "79.7µs",
-                      "wazero": "104µs",
-                      "engines": {
-                        "railshot": "79.7µs",
-                        "wazero": "104µs"
-                      },
-                      "comparison": "1.3× faster",
-                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -4564,8 +4600,8 @@
                         "railshot": "479 B",
                         "wazero": "500 B"
                       },
-                      "comparison": "1× less",
-                      "result": "multi-engine ahead"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Linear algebra",
@@ -5025,8 +5061,8 @@
                         "railshot": "545µs",
                         "wazero": "523µs"
                       },
-                      "comparison": "1× slower",
-                      "result": "multi-engine behind"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Real-world SIMD",
@@ -5337,7 +5373,7 @@
                         "railshot": "3.10ms",
                         "wazero": "3.14ms"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -5415,8 +5451,8 @@
                         "railshot": "378µs",
                         "wazero": "360µs"
                       },
-                      "comparison": "1× slower",
-                      "result": "multi-engine behind"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Compute kernels",
@@ -5558,7 +5594,7 @@
                         "railshot": "1.89ms",
                         "wazero": "1.91ms"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -5623,7 +5659,7 @@
                         "railshot": "3.94ms",
                         "wazero": "4.02ms"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -5971,30 +6007,6 @@
                       },
                       "comparison": "1.1× slower",
                       "result": "multi-engine behind"
-                    },
-                    {
-                      "label": "Application commands",
-                      "workload": "fresh instance + fixed workload",
-                      "wago": "262µs",
-                      "wazero": "333µs",
-                      "engines": {
-                        "railshot": "262µs",
-                        "wazero": "333µs"
-                      },
-                      "comparison": "1.3× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "label": "SIMD execution",
-                      "workload": "AssemblyScript SIMD",
-                      "wago": "70.7µs",
-                      "wazero": "89.5µs",
-                      "engines": {
-                        "railshot": "70.7µs",
-                        "wazero": "89.5µs"
-                      },
-                      "comparison": "1.3× faster",
-                      "result": "multi-engine ahead"
                     }
                   ]
                 },
@@ -8331,7 +8343,7 @@
                         "railshot": "10.5 KB",
                         "wazero": "10.1 KB"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -8513,8 +8525,8 @@
                         "railshot": "852 B",
                         "wazero": "892 B"
                       },
-                      "comparison": "1× less",
-                      "result": "multi-engine ahead"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Application corpora",
@@ -9143,7 +9155,7 @@
                         "railshot": "399µs",
                         "wazero": "395µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9195,7 +9207,7 @@
                         "railshot": "436µs",
                         "wazero": "434µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9377,8 +9389,8 @@
                         "railshot": "6.2µs",
                         "wazero": "6.3µs"
                       },
-                      "comparison": "1× faster",
-                      "result": "multi-engine ahead"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Calls",
@@ -9416,7 +9428,7 @@
                         "railshot": "510µs",
                         "wazero": "512µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9676,7 +9688,7 @@
                         "railshot": "38.8µs",
                         "wazero": "39.2µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9728,7 +9740,7 @@
                         "railshot": "1.56ms",
                         "wazero": "1.58ms"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9741,7 +9753,7 @@
                         "railshot": "822µs",
                         "wazero": "847µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9806,7 +9818,7 @@
                         "railshot": "1.87ms",
                         "wazero": "1.90ms"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9845,8 +9857,8 @@
                         "railshot": "2.09ms",
                         "wazero": "2.20ms"
                       },
-                      "comparison": "1× faster",
-                      "result": "multi-engine ahead"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Solvers",
@@ -9936,7 +9948,7 @@
                         "railshot": "55.1µs",
                         "wazero": "56.2µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -9949,7 +9961,7 @@
                         "railshot": "28.8µs",
                         "wazero": "28.4µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -10001,7 +10013,7 @@
                         "railshot": "202µs",
                         "wazero": "201µs"
                       },
-                      "comparison": "same",
+                      "comparison": "parity",
                       "result": "tie"
                     },
                     {
@@ -10037,7 +10049,7 @@
           }
         }
       },
-      "comparisonCount": 636
+      "comparisonCount": 632
     }
   },
   "machineReadable": {

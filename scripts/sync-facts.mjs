@@ -1042,7 +1042,7 @@ const facts = {
     interpreter: false,
   },
   release: {
-    status: "Pre-v1 development with beta releases and per-commit canary artifacts; public stable installation is not yet claimed.",
+    status: "Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.",
     stableVersion: null,
     apiStability: "pre-v1; no stable-v1 compatibility promise",
   },

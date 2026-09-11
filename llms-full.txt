@@ -200,209 +200,209 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 209µs | 1.19ms |
-|  | Compile heap | per compile | 98.1 KB | 1.1 MB |
+|  | Compile | fresh process | 204µs | 1.10ms |
+|  | Compile heap | per compile | 98.8 KB | 1.1 MB |
 |  | Machine code | compiled corpus | 4.8 KB | 8.9 KB |
-|  | Instantiate | runnable corpus | 7µs | 25µs |
-|  | Execution | runnable corpus | 90.8µs | 160µs |
-|  | End-to-end latency | compile + instantiate | 216µs | 1.21ms |
-|  | Host → Wasm | public entry | 22.7ns | 37.2ns |
-|  | Wasm → host | import callback | 433.5ns | 433ns |
+|  | Instantiate | runnable corpus | 7.1µs | 30µs |
+|  | Execution | runnable corpus | 92.4µs | 159µs |
+|  | End-to-end latency | compile + instantiate | 211µs | 1.13ms |
+|  | Host → Wasm | public entry | 28.6ns | 36.7ns |
+|  | Wasm → host | typed import callback | 295.2ns | 455ns |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 431µs | 1.28ms |
-| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 1.29ms | 7.84ms |
-| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 295µs | 1.08ms |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.29ms | 3.35ms |
-| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.45ms | 7.80ms |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 694µs | 2.76ms |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 1.02ms | 3.27ms |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 695µs | 3.67ms |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 178µs | 1.42ms |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 222µs | 1.24ms |
-| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 1.14ms | 8.96ms |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 4.19ms | 34.6ms |
-| Calls | dispatch | call_indirect through a function table | 37.5µs | 113µs |
-| Calls | fib_rec | recursion; call/return heavy | 21µs | 85.8µs |
-| Application corpora | Embench · crc32 | CRC-32 | 48.4µs | 201µs |
-| Application corpora | Embench · huffbench | Huffman compression | 241µs | 1.77ms |
-| Application corpora | Embench · matmult-int | integer matrix multiplication | 147µs | 824µs |
-| Application corpora | Embench · nettle-aes | AES encryption | 227µs | 1.40ms |
-| Application corpora | Embench · nettle-sha256 | SHA-256 | 398µs | 1.47ms |
-| Application corpora | Embench · qrduino | QR encoder | 1.30ms | 8.66ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 3.44ms | 20.2ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.42ms | 16.1ms |
-| Application corpora | TACLeBench · bsort | self-checking bubble sort | 56.5µs | 310µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 139µs | 956µs |
-| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 29.1µs | 124µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 97.6µs | 515µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 116µs | 558µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 292µs | 1.68ms |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 120µs | 635µs |
-| Scale | many_funcs | 300 small functions; per-function compile cost | 486µs | 1.24ms |
-| Memory | memory | linear-memory load/store loop | 27.9µs | 120µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 37.3µs | 141µs |
-| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 170µs | 1.26ms |
-| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 230µs | 1.53ms |
-| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 144µs | 987µs |
-| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 154µs | 1.06ms |
-| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 210µs | 1.36ms |
-| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 156µs | 1.10ms |
-| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 220µs | 1.48ms |
-| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 231µs | 1.31ms |
-| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 168µs | 1.26ms |
-| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 124µs | 768µs |
-| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 133µs | 885µs |
-| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 125µs | 760µs |
-| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 174µs | 1.34ms |
-| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 150µs | 960µs |
-| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 160µs | 1.16ms |
-| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 171µs | 1.32ms |
-| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 263µs | 1.85ms |
-| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 139µs | 919µs |
-| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 167µs | 1.17ms |
-| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 145µs | 1.04ms |
-| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 176µs | 1.27ms |
-| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 124µs | 764µs |
-| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 154µs | 1.03ms |
-| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 222µs | 1.48ms |
-| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 146µs | 945µs |
-| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 163µs | 1.19ms |
-| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 151µs | 1.04ms |
-| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 158µs | 1.03ms |
-| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 153µs | 1.05ms |
-| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 157µs | 976µs |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 25.8µs | 83.8µs |
+| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 441µs | 1.17ms |
+| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 1.29ms | 7.50ms |
+| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 279µs | 976µs |
+| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.26ms | 3.22ms |
+| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.44ms | 7.80ms |
+| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 673µs | 2.53ms |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 1.04ms | 3.04ms |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 661µs | 3.49ms |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 171µs | 1.35ms |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 218µs | 1.18ms |
+| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 1.08ms | 8.66ms |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 4.10ms | 35.3ms |
+| Calls | dispatch | call_indirect through a function table | 38.6µs | 103µs |
+| Calls | fib_rec | recursion; call/return heavy | 22.9µs | 76.8µs |
+| Application corpora | Embench · crc32 | CRC-32 | 47.2µs | 187µs |
+| Application corpora | Embench · huffbench | Huffman compression | 237µs | 1.64ms |
+| Application corpora | Embench · matmult-int | integer matrix multiplication | 148µs | 755µs |
+| Application corpora | Embench · nettle-aes | AES encryption | 218µs | 1.28ms |
+| Application corpora | Embench · nettle-sha256 | SHA-256 | 385µs | 1.35ms |
+| Application corpora | Embench · qrduino | QR encoder | 1.24ms | 7.83ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 3.48ms | 20ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.36ms | 15.3ms |
+| Application corpora | TACLeBench · bsort | self-checking bubble sort | 56µs | 287µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 132µs | 898µs |
+| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 29.5µs | 114µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 87.7µs | 471µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 107µs | 517µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 274µs | 1.58ms |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 112µs | 573µs |
+| Scale | many_funcs | 300 small functions; per-function compile cost | 459µs | 1.27ms |
+| Memory | memory | linear-memory load/store loop | 28.1µs | 110µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 38.9µs | 128µs |
+| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 166µs | 1.16ms |
+| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 216µs | 1.42ms |
+| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 135µs | 926µs |
+| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 155µs | 974µs |
+| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 195µs | 1.25ms |
+| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 162µs | 1.02ms |
+| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 210µs | 1.37ms |
+| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 217µs | 1.22ms |
+| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 165µs | 1.16ms |
+| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 118µs | 708µs |
+| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 125µs | 815µs |
+| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 118µs | 701µs |
+| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 170µs | 1.24ms |
+| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 142µs | 878µs |
+| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 154µs | 1.06ms |
+| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 168µs | 1.24ms |
+| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 246µs | 1.72ms |
+| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 136µs | 853µs |
+| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 176µs | 1.08ms |
+| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 145µs | 958µs |
+| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 173µs | 1.19ms |
+| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 121µs | 703µs |
+| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 146µs | 957µs |
+| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 210µs | 1.38ms |
+| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 137µs | 870µs |
+| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 174µs | 1.09ms |
+| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 153µs | 969µs |
+| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 152µs | 962µs |
+| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 163µs | 983µs |
+| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 152µs | 904µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 23.8µs | 74.8µs |
 
 ##### Compile memory
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
 | Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 148 KB | 1.1 MB |
-| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 211 KB | 2.5 MB |
-| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 208 KB | 1.2 MB |
+| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 211 KB | 2.4 MB |
+| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 209 KB | 1.2 MB |
 | Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 291 KB | 1.9 MB |
-| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 223 KB | 2.2 MB |
+| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 224 KB | 2.2 MB |
 | Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 228 KB | 1.3 MB |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 156 KB | 1.5 MB |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 251 KB | 2.1 MB |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 72.3 KB | 951 KB |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 80.4 KB | 836 KB |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 157 KB | 1.5 MB |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 251 KB | 2 MB |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 72.7 KB | 947 KB |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 81 KB | 833 KB |
 | Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 312 KB | 7.3 MB |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 995 KB | 23.6 MB |
-| Calls | dispatch | call_indirect through a function table | 35 KB | 274 KB |
-| Calls | fib_rec | recursion; call/return heavy | 17 KB | 273 KB |
-| Application corpora | Embench · crc32 | CRC-32 | 47 KB | 372 KB |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 995 KB | 23.5 MB |
+| Calls | dispatch | call_indirect through a function table | 35.3 KB | 274 KB |
+| Calls | fib_rec | recursion; call/return heavy | 17.3 KB | 273 KB |
+| Application corpora | Embench · crc32 | CRC-32 | 47.4 KB | 371 KB |
 | Application corpora | Embench · huffbench | Huffman compression | 154 KB | 1.9 MB |
-| Application corpora | Embench · matmult-int | integer matrix multiplication | 95.7 KB | 1.1 MB |
-| Application corpora | Embench · nettle-aes | AES encryption | 163 KB | 1.7 MB |
+| Application corpora | Embench · matmult-int | integer matrix multiplication | 96.1 KB | 1.1 MB |
+| Application corpora | Embench · nettle-aes | AES encryption | 164 KB | 1.7 MB |
 | Application corpora | Embench · nettle-sha256 | SHA-256 | 265 KB | 1.5 MB |
 | Application corpora | Embench · qrduino | QR encoder | 529 KB | 7.8 MB |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 399 KB | 9.1 MB |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 548 KB | 8.5 MB |
-| Application corpora | TACLeBench · bsort | self-checking bubble sort | 36 KB | 472 KB |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 76.6 KB | 1020 KB |
-| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 19.6 KB | 311 KB |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 71.2 KB | 622 KB |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 74.8 KB | 729 KB |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 139 KB | 1.6 MB |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 74.5 KB | 807 KB |
-| Scale | many_funcs | 300 small functions; per-function compile cost | 159 KB | 346 KB |
-| Memory | memory | linear-memory load/store loop | 18.6 KB | 296 KB |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 23.3 KB | 311 KB |
-| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 76.8 KB | 1 MB |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 400 KB | 9.1 MB |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 549 KB | 8.5 MB |
+| Application corpora | TACLeBench · bsort | self-checking bubble sort | 36.4 KB | 471 KB |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 77 KB | 1018 KB |
+| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 20 KB | 310 KB |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 71.6 KB | 620 KB |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 75.2 KB | 726 KB |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 140 KB | 1.5 MB |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 74.9 KB | 806 KB |
+| Scale | many_funcs | 300 small functions; per-function compile cost | 169 KB | 346 KB |
+| Memory | memory | linear-memory load/store loop | 19 KB | 295 KB |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 23.7 KB | 310 KB |
+| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 77.1 KB | 1 MB |
 | Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 135 KB | 1.4 MB |
-| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 72.8 KB | 806 KB |
-| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 75.8 KB | 856 KB |
-| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 134 KB | 1.2 MB |
-| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 76.2 KB | 934 KB |
+| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 73.2 KB | 803 KB |
+| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 76.2 KB | 852 KB |
+| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 135 KB | 1.2 MB |
+| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 76.6 KB | 932 KB |
 | Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 135 KB | 1.3 MB |
-| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 134 KB | 1.1 MB |
-| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 78.9 KB | 1.2 MB |
-| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 72.7 KB | 665 KB |
-| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 72.9 KB | 747 KB |
-| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 75 KB | 651 KB |
-| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 76.7 KB | 1.1 MB |
-| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 75 KB | 819 KB |
-| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 76.3 KB | 956 KB |
-| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 76.7 KB | 1.1 MB |
+| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 135 KB | 1.1 MB |
+| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 79.3 KB | 1.2 MB |
+| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 73.1 KB | 663 KB |
+| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 73.3 KB | 745 KB |
+| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 75.4 KB | 649 KB |
+| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 77.1 KB | 1.1 MB |
+| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 75.4 KB | 816 KB |
+| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 76.7 KB | 952 KB |
+| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 77.1 KB | 1.1 MB |
 | Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 135 KB | 1.7 MB |
-| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 74.9 KB | 740 KB |
-| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 76.5 KB | 965 KB |
-| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 73.1 KB | 878 KB |
-| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 78.3 KB | 1.1 MB |
-| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 73.2 KB | 646 KB |
-| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 73.2 KB | 870 KB |
+| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 75.3 KB | 738 KB |
+| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 76.9 KB | 964 KB |
+| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 73.5 KB | 875 KB |
+| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 78.7 KB | 1 MB |
+| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 73.6 KB | 645 KB |
+| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 73.6 KB | 868 KB |
 | BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 135 KB | 1.3 MB |
-| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 72.8 KB | 792 KB |
-| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 76.8 KB | 968 KB |
-| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 76.1 KB | 851 KB |
-| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 76.1 KB | 847 KB |
-| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 76.3 KB | 860 KB |
-| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 75.5 KB | 818 KB |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 16 KB | 268 KB |
+| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 73.2 KB | 790 KB |
+| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 77.2 KB | 964 KB |
+| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 76.5 KB | 849 KB |
+| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 76.4 KB | 845 KB |
+| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 76.7 KB | 859 KB |
+| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 75.8 KB | 816 KB |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 16.3 KB | 268 KB |
 
 ##### Instantiate latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 7.7µs | 18.2µs |
-| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 21µs | 21.8µs |
-| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 17.1µs | 23.9µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 7.5µs | 18.1µs |
-| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 21.7µs | 21.8µs |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 26.3µs | 24.1µs |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 7.3µs | 66.1µs |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7.3µs | 21.9µs |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 7.8µs | 90.8µs |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 6.3µs | 104µs |
-| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 8.4µs | 108µs |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 8.7µs | 100µs |
-| Calls | dispatch | call_indirect through a function table | 5µs | 9µs |
-| Calls | fib_rec | recursion; call/return heavy | 4.6µs | 8.7µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 4.7µs | 42.3µs |
-| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 4.6µs | 39.8µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 4.7µs | 62.5µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 4.7µs | 41.9µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 5.6µs | 43.5µs |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 7.4µs | 50.2µs |
-| Scale | many_funcs | 300 small functions; per-function compile cost | 4.6µs | 8.7µs |
-| Memory | memory | linear-memory load/store loop | 4.6µs | 18.5µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.6µs | 18.5µs |
-| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 7.1µs | 20.4µs |
-| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 6.8µs | 22.1µs |
-| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 6.8µs | 21.4µs |
-| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 6.9µs | 21.5µs |
-| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 6.8µs | 21.6µs |
-| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 6.8µs | 22.2µs |
-| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 6.9µs | 21.4µs |
-| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 6.8µs | 21.6µs |
-| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 6.9µs | 22.1µs |
-| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 6.8µs | 22.1µs |
-| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 6.8µs | 21.9µs |
-| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 6.8µs | 21.4µs |
-| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 6.8µs | 21.5µs |
-| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 6.8µs | 21.9µs |
-| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 6.8µs | 21.1µs |
-| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 6.8µs | 21.3µs |
-| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 6.8µs | 21.7µs |
-| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 6.8µs | 21.4µs |
-| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 6.8µs | 21.9µs |
-| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 6.8µs | 21.3µs |
-| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 6.8µs | 22.6µs |
-| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 6.8µs | 21.5µs |
-| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 6.8µs | 20.6µs |
-| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 6.8µs | 22.2µs |
-| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 6.8µs | 22.2µs |
-| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 6.8µs | 21.3µs |
-| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 6.9µs | 21.5µs |
-| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 6.8µs | 22.1µs |
-| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 6.8µs | 21.7µs |
-| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 6.8µs | 22.2µs |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.8µs | 8.7µs |
+| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 7.3µs | 16.8µs |
+| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 21.3µs | 20.1µs |
+| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 16.9µs | 21.4µs |
+| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 7.2µs | 16.8µs |
+| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 21.9µs | 19.6µs |
+| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 26.8µs | 21.9µs |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 7.3µs | 84µs |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7.1µs | 23.8µs |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 7.6µs | 158µs |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 5.8µs | 151µs |
+| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 8.1µs | 157µs |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 8.4µs | 152µs |
+| Calls | dispatch | call_indirect through a function table | 5µs | 8.9µs |
+| Calls | fib_rec | recursion; call/return heavy | 4.5µs | 8.5µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 5.3µs | 67.8µs |
+| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 4.6µs | 37µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 5.3µs | 81.6µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 5.3µs | 125µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 5.4µs | 82.5µs |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 7.4µs | 94.8µs |
+| Scale | many_funcs | 300 small functions; per-function compile cost | 4.5µs | 8.5µs |
+| Memory | memory | linear-memory load/store loop | 4.5µs | 16µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.5µs | 16µs |
+| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 7µs | 21.2µs |
+| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 7µs | 26.3µs |
+| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 6.9µs | 26.9µs |
+| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 6.9µs | 26.7µs |
+| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 6.8µs | 26.6µs |
+| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 6.9µs | 26.8µs |
+| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 6.9µs | 26.3µs |
+| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 6.8µs | 26.9µs |
+| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 6.9µs | 25.7µs |
+| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 6.9µs | 26.1µs |
+| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 6.9µs | 25.5µs |
+| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 6.9µs | 25.5µs |
+| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 6.8µs | 26.2µs |
+| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 6.9µs | 26.5µs |
+| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 6.9µs | 26µs |
+| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 6.9µs | 26.2µs |
+| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 6.9µs | 26.6µs |
+| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 6.9µs | 26.7µs |
+| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 6.9µs | 26.7µs |
+| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 6.9µs | 26.3µs |
+| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 6.8µs | 26.6µs |
+| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 6.9µs | 26.2µs |
+| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 6.9µs | 26.3µs |
+| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 6.9µs | 26.3µs |
+| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 6.8µs | 25.2µs |
+| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 7µs | 26.3µs |
+| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 6.9µs | 26.1µs |
+| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 6.9µs | 25.8µs |
+| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 7µs | 27µs |
+| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 6.9µs | 26.6µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.7µs | 8.6µs |
 
 ##### Machine code
 
@@ -478,74 +478,74 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | --- | --- | --- | ---: | ---: |
 | Real-world programs | blake-as | hashN · real corpus | 613µs | 461µs |
 | Real-world programs | json-as | deserializeN · real corpus | 38.8µs | 62.8µs |
-| Real-world programs | json-as | serializeN · real corpus | 23.1µs | 30.9µs |
-| Real-world programs | utf-as | convertN · real corpus | 148µs | 205µs |
+| Real-world programs | json-as | serializeN · real corpus | 22.9µs | 32.4µs |
+| Real-world programs | utf-as | convertN · real corpus | 149µs | 205µs |
 | Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 539µs | 518µs |
-| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 49.2µs | 79.4µs |
-| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 27.3µs | 40µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 53.5µs | 68.7µs |
+| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 49.2µs | 79.5µs |
+| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 27.2µs | 39.9µs |
+| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 53.4µs | 68.7µs |
 | Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 149µs | 187µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 323µs | 314µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 317µs | 300µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 317µs | 300µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 34.6ms | 53.5ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 33.9µs | 53µs |
-| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.2µs | 5.6µs |
-| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 6.1µs | 13.8µs |
-| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 8.5µs | 13.2µs |
-| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 9.3µs | 17.4µs |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.1µs | 8.2µs |
-| Calls | dispatch | apply · calls corpus | 9.8ns | 33.7ns |
-| Calls | fib_rec | fib · calls corpus | 1.26ms | 2.12ms |
-| Application corpora | Embench · crc32 | CRC-32 | 381µs | 499µs |
-| Application corpora | Embench · huffbench | Huffman compression | 327µs | 599µs |
-| Application corpora | Embench · matmult-int | integer matrix multiplication | 165µs | 314µs |
-| Application corpora | Embench · nettle-aes | AES encryption | 240µs | 536µs |
-| Application corpora | Embench · nettle-sha256 | SHA-256 | 239µs | 377µs |
-| Application corpora | Embench · qrduino | QR encoder | 249µs | 552µs |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 77.3µs | 622µs |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 3.14ms | 3.17ms |
-| Application corpora | TACLeBench · bsort | self-checking bubble sort | 10.2µs | 35.5µs |
-| Compute kernels | fannkuch | run · compute corpus | 1.03ms | 1.43ms |
-| Compute kernels | linked_list | sum · compute corpus | 8.6µs | 10.9µs |
-| Compute kernels | matmul | run · compute corpus | 90.2µs | 311µs |
-| Compute kernels | nbody | step · compute corpus | 269µs | 351µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 325µs | 314µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 316µs | 300µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 317µs | 299µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 35.3ms | 53.4ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 33.7µs | 53µs |
+| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.3µs | 5.5µs |
+| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 6.1µs | 9.7µs |
+| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 8.6µs | 13.2µs |
+| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 9.2µs | 17.3µs |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 8.1µs | 8.2µs |
+| Calls | dispatch | apply · calls corpus | 10.2ns | 38.9ns |
+| Calls | fib_rec | fib · calls corpus | 1.28ms | 2.13ms |
+| Application corpora | Embench · crc32 | CRC-32 | 383µs | 478µs |
+| Application corpora | Embench · huffbench | Huffman compression | 330µs | 567µs |
+| Application corpora | Embench · matmult-int | integer matrix multiplication | 166µs | 291µs |
+| Application corpora | Embench · nettle-aes | AES encryption | 241µs | 514µs |
+| Application corpora | Embench · nettle-sha256 | SHA-256 | 239µs | 367µs |
+| Application corpora | Embench · qrduino | QR encoder | 250µs | 517µs |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 82.9µs | 868µs |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 3.12ms | 3.15ms |
+| Application corpora | TACLeBench · bsort | self-checking bubble sort | 10.2µs | 34.8µs |
+| Compute kernels | fannkuch | run · compute corpus | 1.04ms | 1.42ms |
+| Compute kernels | linked_list | sum · compute corpus | 8.6µs | 10.8µs |
+| Compute kernels | matmul | run · compute corpus | 91.3µs | 309µs |
+| Compute kernels | nbody | step · compute corpus | 270µs | 352µs |
 | Compute kernels | raytrace | render · compute corpus | 374µs | 358µs |
 | Compute kernels | sha256 | hashN · compute corpus | 37µs | 53.6µs |
-| Scale | many_funcs | run · scale corpus | 19.3ns | 31.5ns |
-| Memory | memory | sum · memory corpus | 202.2ns | 372.2ns |
+| Scale | many_funcs | run · scale corpus | 25.9ns | 29.9ns |
+| Memory | memory | sum · memory corpus | 217.1ns | 283.8ns |
 | Calls and memory | memory_tree | run · calls+memory corpus | 9.7µs | 21.5µs |
-| Linear algebra | polybench-2mm | polybench_run · linear-algebra corpus | 235µs | 488µs |
-| Linear algebra | polybench-3mm | polybench_run · linear-algebra corpus | 376µs | 793µs |
-| Linear algebra | polybench-atax | polybench_run · linear-algebra corpus | 36.8µs | 57.8µs |
-| Linear algebra | polybench-bicg | polybench_run · linear-algebra corpus | 61.8µs | 89.3µs |
-| Linear algebra | polybench-doitgen | polybench_run · linear-algebra corpus | 331µs | 656µs |
-| Linear algebra | polybench-mvt | polybench_run · linear-algebra corpus | 37µs | 84.1µs |
+| Linear algebra | polybench-2mm | polybench_run · linear-algebra corpus | 237µs | 485µs |
+| Linear algebra | polybench-3mm | polybench_run · linear-algebra corpus | 377µs | 794µs |
+| Linear algebra | polybench-atax | polybench_run · linear-algebra corpus | 36.7µs | 58.1µs |
+| Linear algebra | polybench-bicg | polybench_run · linear-algebra corpus | 61.5µs | 89.3µs |
+| Linear algebra | polybench-doitgen | polybench_run · linear-algebra corpus | 344µs | 659µs |
+| Linear algebra | polybench-mvt | polybench_run · linear-algebra corpus | 37.7µs | 84.3µs |
 | Stencils | polybench-adi | polybench_run · stencil corpus | 1.86ms | 1.90ms |
-| Stencils | polybench-fdtd-2d | polybench_run · stencil corpus | 655µs | 1.44ms |
-| Stencils | polybench-heat-3d | polybench_run · stencil corpus | 867µs | 2.21ms |
-| Stencils | polybench-jacobi-1d | polybench_run · stencil corpus | 8.8µs | 16.6µs |
-| Stencils | polybench-jacobi-2d | polybench_run · stencil corpus | 736µs | 2.08ms |
-| Stencils | polybench-seidel-2d | polybench_run · stencil corpus | 3.89ms | 3.99ms |
-| Solvers | polybench-cholesky | polybench_run · solver corpus | 1.41ms | 2.46ms |
-| Solvers | polybench-durbin | polybench_run · solver corpus | 11.8µs | 21.2µs |
-| Solvers | polybench-gramschmidt | polybench_run · solver corpus | 377µs | 631µs |
-| Solvers | polybench-lu | polybench_run · solver corpus | 1.45ms | 2.96ms |
+| Stencils | polybench-fdtd-2d | polybench_run · stencil corpus | 657µs | 1.45ms |
+| Stencils | polybench-heat-3d | polybench_run · stencil corpus | 868µs | 2.21ms |
+| Stencils | polybench-jacobi-1d | polybench_run · stencil corpus | 8.7µs | 16.6µs |
+| Stencils | polybench-jacobi-2d | polybench_run · stencil corpus | 738µs | 2.08ms |
+| Stencils | polybench-seidel-2d | polybench_run · stencil corpus | 3.88ms | 4.00ms |
+| Solvers | polybench-cholesky | polybench_run · solver corpus | 1.38ms | 2.47ms |
+| Solvers | polybench-durbin | polybench_run · solver corpus | 12µs | 21.2µs |
+| Solvers | polybench-gramschmidt | polybench_run · solver corpus | 365µs | 631µs |
+| Solvers | polybench-lu | polybench_run · solver corpus | 1.46ms | 2.96ms |
 | Solvers | polybench-ludcmp | polybench_run · solver corpus | 1.45ms | 2.78ms |
-| Solvers | polybench-trisolv | polybench_run · solver corpus | 14.1µs | 32µs |
-| Statistics | polybench-correlation | polybench_run · statistics corpus | 308µs | 604µs |
-| Statistics | polybench-covariance | polybench_run · statistics corpus | 301µs | 562µs |
-| Image processing | polybench-deriche | polybench_run · image-processing corpus | 453µs | 644µs |
-| Graph algorithms | polybench-floyd-warshall | polybench_run · graph corpus | 5.04ms | 9.42ms |
-| BLAS | polybench-gemm | polybench_run · blas corpus | 250µs | 639µs |
-| BLAS | polybench-gemver | polybench_run · blas corpus | 51.1µs | 113µs |
-| BLAS | polybench-gesummv | polybench_run · blas corpus | 45µs | 79.3µs |
-| BLAS | polybench-symm | polybench_run · blas corpus | 213µs | 552µs |
-| BLAS | polybench-syr2k | polybench_run · blas corpus | 309µs | 756µs |
-| BLAS | polybench-syrk | polybench_run · blas corpus | 196µs | 437µs |
-| BLAS | polybench-trmm | polybench_run · blas corpus | 163µs | 286µs |
-| Dynamic programming | polybench-nussinov | polybench_run · dynamic-programming corpus | 912µs | 1.60ms |
-| Micro modules | tiny | add · micro corpus | 7.6ns | 31.5ns |
+| Solvers | polybench-trisolv | polybench_run · solver corpus | 13.9µs | 32µs |
+| Statistics | polybench-correlation | polybench_run · statistics corpus | 308µs | 603µs |
+| Statistics | polybench-covariance | polybench_run · statistics corpus | 300µs | 562µs |
+| Image processing | polybench-deriche | polybench_run · image-processing corpus | 455µs | 645µs |
+| Graph algorithms | polybench-floyd-warshall | polybench_run · graph corpus | 5.06ms | 9.42ms |
+| BLAS | polybench-gemm | polybench_run · blas corpus | 252µs | 642µs |
+| BLAS | polybench-gemver | polybench_run · blas corpus | 50.8µs | 113µs |
+| BLAS | polybench-gesummv | polybench_run · blas corpus | 45µs | 79.5µs |
+| BLAS | polybench-symm | polybench_run · blas corpus | 217µs | 550µs |
+| BLAS | polybench-syr2k | polybench_run · blas corpus | 308µs | 757µs |
+| BLAS | polybench-syrk | polybench_run · blas corpus | 196µs | 436µs |
+| BLAS | polybench-trmm | polybench_run · blas corpus | 165µs | 286µs |
+| Dynamic programming | polybench-nussinov | polybench_run · dynamic-programming corpus | 913µs | 1.60ms |
+| Micro modules | tiny | add · micro corpus | 8.6ns | 30.1ns |
 
 ### arm64
 
@@ -555,82 +555,82 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 126µs | 823µs |
+|  | Compile | fresh process | 130µs | 814µs |
 |  | Compile heap | per compile | 57 KB | 1 MB |
 |  | Machine code | compiled corpus | 5.8 KB | 8.2 KB |
-|  | Instantiate | runnable corpus | 10.1µs | 17.1µs |
-|  | Execution | runnable corpus | 89.1µs | 107µs |
-|  | End-to-end latency | compile + instantiate | 136µs | 840µs |
-|  | Host → Wasm | public entry | 29.5ns | 25.7ns |
-|  | Wasm → host | import callback | 294.8ns | 320.9ns |
+|  | Instantiate | runnable corpus | 10.5µs | 17µs |
+|  | Execution | runnable corpus | 90.5µs | 106µs |
+|  | End-to-end latency | compile + instantiate | 140µs | 831µs |
+|  | Host → Wasm | public entry | 29.5ns | 25.5ns |
+|  | Wasm → host | typed import callback | 202.5ns | 321.5ns |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 240µs | 732µs |
-| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 865µs | 5.52ms |
-| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 169µs | 733µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 842µs | 2.09ms |
-| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 971µs | 6.14ms |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 425µs | 2.01ms |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 666µs | 2.36ms |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 292µs | 2.89ms |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 121µs | 983µs |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 139µs | 851µs |
-| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 655µs | 6.86ms |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 2.66ms | 27ms |
-| Calls | dispatch | call_indirect through a function table | 26.1µs | 85.6µs |
-| Calls | fib_rec | recursion; call/return heavy | 15.4µs | 55.3µs |
-| Application corpora | Embench · crc32 | CRC-32 | 31.5µs | 141µs |
-| Application corpora | Embench · huffbench | Huffman compression | 141µs | 1.27ms |
-| Application corpora | Embench · matmult-int | integer matrix multiplication | 96.3µs | 611µs |
-| Application corpora | Embench · nettle-aes | AES encryption | 133µs | 991µs |
-| Application corpora | Embench · nettle-sha256 | SHA-256 | 219µs | 1.07ms |
-| Application corpora | Embench · qrduino | QR encoder | 795µs | 6.00ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 2.33ms | 14.5ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 1.66ms | 12.5ms |
-| Application corpora | TACLeBench · bsort | self-checking bubble sort | 36.2µs | 221µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 87µs | 664µs |
-| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 19.3µs | 93.6µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 50.1µs | 324µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 78.5µs | 373µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 192µs | 1.09ms |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 66µs | 440µs |
-| Scale | many_funcs | 300 small functions; per-function compile cost | 362µs | 866µs |
-| Memory | memory | linear-memory load/store loop | 19µs | 83.2µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 24µs | 94.3µs |
-| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 105µs | 865µs |
-| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 126µs | 1.08ms |
-| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 81µs | 674µs |
-| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 87.2µs | 707µs |
-| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 115µs | 978µs |
-| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 93.7µs | 773µs |
+| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 242µs | 740µs |
+| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 903µs | 5.42ms |
+| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 181µs | 731µs |
+| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 841µs | 2.07ms |
+| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 977µs | 6.15ms |
+| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 462µs | 1.97ms |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 688µs | 2.34ms |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 316µs | 2.83ms |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 122µs | 971µs |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 145µs | 861µs |
+| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 671µs | 6.83ms |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 2.73ms | 27.6ms |
+| Calls | dispatch | call_indirect through a function table | 26.5µs | 79.7µs |
+| Calls | fib_rec | recursion; call/return heavy | 16µs | 54.2µs |
+| Application corpora | Embench · crc32 | CRC-32 | 32.4µs | 137µs |
+| Application corpora | Embench · huffbench | Huffman compression | 150µs | 1.22ms |
+| Application corpora | Embench · matmult-int | integer matrix multiplication | 99.7µs | 612µs |
+| Application corpora | Embench · nettle-aes | AES encryption | 141µs | 1.02ms |
+| Application corpora | Embench · nettle-sha256 | SHA-256 | 235µs | 982µs |
+| Application corpora | Embench · qrduino | QR encoder | 865µs | 5.95ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 2.37ms | 14.1ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 1.75ms | 12.4ms |
+| Application corpora | TACLeBench · bsort | self-checking bubble sort | 38.7µs | 216µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 90.1µs | 654µs |
+| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 20.2µs | 91.5µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 51.1µs | 320µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 80.9µs | 364µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 191µs | 1.07ms |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 69.5µs | 439µs |
+| Scale | many_funcs | 300 small functions; per-function compile cost | 370µs | 837µs |
+| Memory | memory | linear-memory load/store loop | 20.1µs | 80.9µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 24.7µs | 91.1µs |
+| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 110µs | 861µs |
+| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 129µs | 1.07ms |
+| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 84.1µs | 650µs |
+| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 90.7µs | 697µs |
+| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 115µs | 936µs |
+| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 101µs | 762µs |
 | Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 127µs | 1.02ms |
-| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 134µs | 914µs |
-| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 106µs | 868µs |
-| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 65.8µs | 529µs |
-| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 74.1µs | 598µs |
-| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 65.2µs | 516µs |
-| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 109µs | 907µs |
-| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 81.8µs | 645µs |
-| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 96.7µs | 787µs |
-| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 108µs | 907µs |
-| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 143µs | 1.32ms |
-| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 79.2µs | 619µs |
-| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 100µs | 800µs |
-| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 88.9µs | 707µs |
-| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 113µs | 880µs |
-| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 65.7µs | 513µs |
-| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 88.2µs | 689µs |
-| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 121µs | 1.03ms |
-| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 80.6µs | 665µs |
-| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 105µs | 803µs |
-| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 91.1µs | 701µs |
-| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 87.6µs | 696µs |
-| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 92.7µs | 709µs |
-| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 81.8µs | 653µs |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 15.9µs | 53.9µs |
+| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 135µs | 889µs |
+| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 111µs | 891µs |
+| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 67.7µs | 525µs |
+| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 76.4µs | 651µs |
+| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 67µs | 505µs |
+| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 114µs | 895µs |
+| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 81.3µs | 629µs |
+| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 101µs | 787µs |
+| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 115µs | 928µs |
+| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 149µs | 1.30ms |
+| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 82.6µs | 603µs |
+| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 104µs | 790µs |
+| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 90.8µs | 754µs |
+| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 114µs | 893µs |
+| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 65.7µs | 505µs |
+| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 90.5µs | 688µs |
+| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 123µs | 1.03ms |
+| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 80.9µs | 636µs |
+| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 106µs | 803µs |
+| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 89.2µs | 687µs |
+| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 89µs | 681µs |
+| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 97.1µs | 692µs |
+| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 82.2µs | 644µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 15.7µs | 54.3µs |
 
 ##### Compile memory
 
@@ -704,60 +704,60 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 5µs | 15.2µs |
-| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 10.7µs | 18.4µs |
-| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 7.2µs | 19.9µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 5.2µs | 15.8µs |
-| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 10.7µs | 18.7µs |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 11.9µs | 20.2µs |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 34.8µs | 23.2µs |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7.7µs | 15.9µs |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 67.1µs | 35.5µs |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 69µs | 40.4µs |
-| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 68.4µs | 30.7µs |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 67.9µs | 32µs |
-| Calls | dispatch | call_indirect through a function table | 4.9µs | 8.8µs |
-| Calls | fib_rec | recursion; call/return heavy | 4.9µs | 8.4µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 35µs | 24.1µs |
-| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 11.2µs | 16.1µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 35.1µs | 24.1µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 35µs | 25.3µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 35.1µs | 25µs |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 36.8µs | 39.9µs |
-| Scale | many_funcs | 300 small functions; per-function compile cost | 4.5µs | 8.4µs |
-| Memory | memory | linear-memory load/store loop | 4.6µs | 16.6µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.6µs | 16.7µs |
-| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 7.9µs | 15.3µs |
-| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 7.5µs | 14.7µs |
-| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 7.1µs | 16.2µs |
-| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 7.4µs | 15.7µs |
-| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 7.2µs | 15.7µs |
-| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 7.5µs | 15.7µs |
-| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 7.6µs | 15.1µs |
-| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 7.3µs | 15.4µs |
-| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 7.3µs | 16µs |
-| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 7.6µs | 16.1µs |
-| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 7.4µs | 15.4µs |
-| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 7.3µs | 15.4µs |
-| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 7.4µs | 15.8µs |
-| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 7.2µs | 15.6µs |
-| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 7.4µs | 15.6µs |
-| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 7.5µs | 15.8µs |
-| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 7.4µs | 15.5µs |
-| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 8.2µs | 15.3µs |
-| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 7.2µs | 15.7µs |
-| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 7.3µs | 15.9µs |
-| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 7.3µs | 16µs |
-| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 7.3µs | 15.7µs |
-| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 7.3µs | 15.7µs |
-| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 7.3µs | 15.3µs |
-| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 7.3µs | 15.6µs |
-| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 7.4µs | 17.1µs |
-| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 7.6µs | 15.6µs |
-| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 7.8µs | 15.5µs |
-| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 7.7µs | 15.2µs |
-| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 7.4µs | 16.2µs |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.5µs | 8.5µs |
+| Real-world programs | blake-as | AssemblyScript blake-as: BLAKE3 hash (SWAR) of a 4 KiB buffer | 5.4µs | 15.4µs |
+| Real-world programs | json-as | AssemblyScript json-as (SWAR): serialize/deserialize a struct | 11.5µs | 18.4µs |
+| Real-world programs | utf-as | AssemblyScript utf-as: UTF-8 -> UTF-16 transcode (SWAR) of a 4 KiB buffer | 7.4µs | 19.3µs |
+| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 5.4µs | 15.4µs |
+| Real-world SIMD | json-as-simd | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 11.7µs | 18.3µs |
+| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 12.7µs | 19.8µs |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 35.8µs | 23.5µs |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 8µs | 15.4µs |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 69.5µs | 33.2µs |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 69.3µs | 31.9µs |
+| Semantic corpus | zlib | zlib inflate workload with an exact output oracle | 70.3µs | 31.5µs |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 70.5µs | 32µs |
+| Calls | dispatch | call_indirect through a function table | 5.2µs | 9.2µs |
+| Calls | fib_rec | recursion; call/return heavy | 4.8µs | 8.5µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 35.6µs | 24.7µs |
+| Compute kernels | linked_list | singly-linked list build + dependent-load pointer chase | 12µs | 16.8µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 35.8µs | 23.4µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 36.2µs | 23.5µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 36.4µs | 23.3µs |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 37.6µs | 30.3µs |
+| Scale | many_funcs | 300 small functions; per-function compile cost | 4.9µs | 8.7µs |
+| Memory | memory | linear-memory load/store loop | 4.8µs | 17.7µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.9µs | 17.1µs |
+| Linear algebra | PolyBench/C · 2mm | PolyBench/C 2mm (small dataset) | 7.8µs | 15.1µs |
+| Linear algebra | PolyBench/C · 3mm | PolyBench/C 3mm (small dataset) | 7.8µs | 15µs |
+| Linear algebra | PolyBench/C · atax | PolyBench/C atax (small dataset) | 7.7µs | 15.7µs |
+| Linear algebra | PolyBench/C · bicg | PolyBench/C bicg (small dataset) | 7.8µs | 16µs |
+| Linear algebra | PolyBench/C · doitgen | PolyBench/C doitgen (small dataset) | 7.8µs | 15.6µs |
+| Linear algebra | PolyBench/C · mvt | PolyBench/C mvt (small dataset) | 7.9µs | 15.7µs |
+| Stencils | PolyBench/C · adi | PolyBench/C adi (small dataset) | 7.8µs | 15.6µs |
+| Stencils | PolyBench/C · fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 7.7µs | 16µs |
+| Stencils | PolyBench/C · heat-3d | PolyBench/C heat-3d (small dataset) | 7.6µs | 16µs |
+| Stencils | PolyBench/C · jacobi-1d | PolyBench/C jacobi-1d (small dataset) | 7.8µs | 15.6µs |
+| Stencils | PolyBench/C · jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 8µs | 16.2µs |
+| Stencils | PolyBench/C · seidel-2d | PolyBench/C seidel-2d (small dataset) | 7.8µs | 16.4µs |
+| Solvers | PolyBench/C · cholesky | PolyBench/C cholesky (small dataset) | 8µs | 17µs |
+| Solvers | PolyBench/C · durbin | PolyBench/C durbin (small dataset) | 8µs | 15.6µs |
+| Solvers | PolyBench/C · gramschmidt | PolyBench/C gramschmidt (small dataset) | 7.7µs | 16.1µs |
+| Solvers | PolyBench/C · lu | PolyBench/C lu (small dataset) | 8µs | 15.6µs |
+| Solvers | PolyBench/C · ludcmp | PolyBench/C ludcmp (small dataset) | 7.8µs | 15.6µs |
+| Solvers | PolyBench/C · trisolv | PolyBench/C trisolv (small dataset) | 8.1µs | 15.6µs |
+| Statistics | PolyBench/C · correlation | PolyBench/C correlation (small dataset) | 7.7µs | 16µs |
+| Statistics | PolyBench/C · covariance | PolyBench/C covariance (small dataset) | 7.7µs | 16µs |
+| Image processing | PolyBench/C · deriche | PolyBench/C deriche (small dataset) | 7.8µs | 15.8µs |
+| Graph algorithms | PolyBench/C · floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 7.8µs | 15.5µs |
+| BLAS | PolyBench/C · gemm | PolyBench/C gemm (small dataset) | 7.7µs | 15.2µs |
+| BLAS | PolyBench/C · gemver | PolyBench/C gemver (small dataset) | 7.7µs | 15.7µs |
+| BLAS | PolyBench/C · gesummv | PolyBench/C gesummv (small dataset) | 7.8µs | 15.5µs |
+| BLAS | PolyBench/C · symm | PolyBench/C symm (small dataset) | 7.9µs | 16µs |
+| BLAS | PolyBench/C · syr2k | PolyBench/C syr2k (small dataset) | 7.8µs | 16.1µs |
+| BLAS | PolyBench/C · syrk | PolyBench/C syrk (small dataset) | 7.9µs | 15.9µs |
+| BLAS | PolyBench/C · trmm | PolyBench/C trmm (small dataset) | 8.1µs | 15.7µs |
+| Dynamic programming | PolyBench/C · nussinov | PolyBench/C nussinov (small dataset) | 7.9µs | 16.6µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.8µs | 8.5µs |
 
 ##### Machine code
 
@@ -831,76 +831,76 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Real-world programs | blake-as | hashN · real corpus | 398µs | 396µs |
-| Real-world programs | json-as | deserializeN · real corpus | 34.5µs | 42.1µs |
-| Real-world programs | json-as | serializeN · real corpus | 17.5µs | 21.4µs |
+| Real-world programs | blake-as | hashN · real corpus | 410µs | 390µs |
+| Real-world programs | json-as | deserializeN · real corpus | 34.6µs | 42µs |
+| Real-world programs | json-as | serializeN · real corpus | 17.7µs | 21.2µs |
 | Real-world programs | utf-as | convertN · real corpus | 78.2µs | 103µs |
-| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 426µs | 437µs |
-| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 46.9µs | 54.7µs |
-| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 22.2µs | 27µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 54.8µs | 97.1µs |
-| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 142µs | 158µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 238µs | 259µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 232µs | 250µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 232µs | 251µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 36.8ms | 42.6ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 26µs | 39µs |
-| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2µs | 5.1µs |
+| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 441µs | 433µs |
+| Real-world SIMD | json-as-simd | deserializeN · real-simd corpus | 47.7µs | 54.5µs |
+| Real-world SIMD | json-as-simd | serializeN · real-simd corpus | 22.7µs | 26.4µs |
+| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 53.7µs | 97.2µs |
+| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 146µs | 166µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 239µs | 259µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 235µs | 257µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 236µs | 248µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 37.7ms | 44.1ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 26.2µs | 38.6µs |
+| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2µs | 5µs |
 | Semantic corpus | qoi | qoi_decode_run · semantic corpus | 5.7µs | 6.8µs |
-| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 7.5µs | 8.5µs |
-| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 10.3µs | 11.9µs |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.1µs | 6.3µs |
-| Calls | dispatch | apply · calls corpus | 10.9ns | 25.9ns |
-| Calls | fib_rec | fib · calls corpus | 1.12ms | 1.58ms |
-| Application corpora | Embench · crc32 | CRC-32 | 518µs | 520µs |
-| Application corpora | Embench · huffbench | Huffman compression | 383µs | 476µs |
-| Application corpora | Embench · matmult-int | integer matrix multiplication | 156µs | 280µs |
-| Application corpora | Embench · nettle-aes | AES encryption | 279µs | 404µs |
-| Application corpora | Embench · nettle-sha256 | SHA-256 | 192µs | 299µs |
-| Application corpora | Embench · qrduino | QR encoder | 287µs | 474µs |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 585µs | 642µs |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.38ms | 1.92ms |
-| Application corpora | TACLeBench · bsort | self-checking bubble sort | 9.7µs | 26.1µs |
-| Compute kernels | fannkuch | run · compute corpus | 1.05ms | 1.00ms |
-| Compute kernels | linked_list | sum · compute corpus | 6.9µs | 7.2µs |
-| Compute kernels | matmul | run · compute corpus | 79.7µs | 225µs |
-| Compute kernels | nbody | step · compute corpus | 137µs | 148µs |
-| Compute kernels | raytrace | render · compute corpus | 262µs | 237µs |
-| Compute kernels | sha256 | hashN · compute corpus | 23µs | 44.3µs |
-| Scale | many_funcs | run · scale corpus | 14.8ns | 23ns |
-| Memory | memory | sum · memory corpus | 267.9ns | 283.6ns |
-| Calls and memory | memory_tree | run · calls+memory corpus | 8.6µs | 11.7µs |
-| Linear algebra | polybench-2mm | polybench_run · linear-algebra corpus | 287µs | 337µs |
-| Linear algebra | polybench-3mm | polybench_run · linear-algebra corpus | 457µs | 545µs |
-| Linear algebra | polybench-atax | polybench_run · linear-algebra corpus | 38.9µs | 39.1µs |
-| Linear algebra | polybench-bicg | polybench_run · linear-algebra corpus | 43.2µs | 40µs |
-| Linear algebra | polybench-doitgen | polybench_run · linear-algebra corpus | 362µs | 425µs |
-| Linear algebra | polybench-mvt | polybench_run · linear-algebra corpus | 34.9µs | 37.2µs |
-| Stencils | polybench-adi | polybench_run · stencil corpus | 1.56ms | 1.57ms |
-| Stencils | polybench-fdtd-2d | polybench_run · stencil corpus | 814µs | 845µs |
+| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 7.5µs | 8.4µs |
+| Semantic corpus | zlib | zlib_inflate_run · semantic corpus | 10.8µs | 11.7µs |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6.3µs | 6.3µs |
+| Calls | dispatch | apply · calls corpus | 10.6ns | 25.7ns |
+| Calls | fib_rec | fib · calls corpus | 1.16ms | 1.56ms |
+| Application corpora | Embench · crc32 | CRC-32 | 494µs | 551µs |
+| Application corpora | Embench · huffbench | Huffman compression | 377µs | 464µs |
+| Application corpora | Embench · matmult-int | integer matrix multiplication | 155µs | 281µs |
+| Application corpora | Embench · nettle-aes | AES encryption | 280µs | 389µs |
+| Application corpora | Embench · nettle-sha256 | SHA-256 | 192µs | 298µs |
+| Application corpora | Embench · qrduino | QR encoder | 282µs | 472µs |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash test | 590µs | 619µs |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.36ms | 1.95ms |
+| Application corpora | TACLeBench · bsort | self-checking bubble sort | 10µs | 25.9µs |
+| Compute kernels | fannkuch | run · compute corpus | 1.10ms | 994µs |
+| Compute kernels | linked_list | sum · compute corpus | 7µs | 7.2µs |
+| Compute kernels | matmul | run · compute corpus | 81.3µs | 224µs |
+| Compute kernels | nbody | step · compute corpus | 138µs | 147µs |
+| Compute kernels | raytrace | render · compute corpus | 265µs | 234µs |
+| Compute kernels | sha256 | hashN · compute corpus | 23.1µs | 44µs |
+| Scale | many_funcs | run · scale corpus | 16.6ns | 22.7ns |
+| Memory | memory | sum · memory corpus | 269.9ns | 282.5ns |
+| Calls and memory | memory_tree | run · calls+memory corpus | 8.8µs | 11.6µs |
+| Linear algebra | polybench-2mm | polybench_run · linear-algebra corpus | 289µs | 336µs |
+| Linear algebra | polybench-3mm | polybench_run · linear-algebra corpus | 462µs | 545µs |
+| Linear algebra | polybench-atax | polybench_run · linear-algebra corpus | 38.9µs | 39.6µs |
+| Linear algebra | polybench-bicg | polybench_run · linear-algebra corpus | 42.9µs | 40.5µs |
+| Linear algebra | polybench-doitgen | polybench_run · linear-algebra corpus | 369µs | 424µs |
+| Linear algebra | polybench-mvt | polybench_run · linear-algebra corpus | 35.6µs | 36.9µs |
+| Stencils | polybench-adi | polybench_run · stencil corpus | 1.58ms | 1.56ms |
+| Stencils | polybench-fdtd-2d | polybench_run · stencil corpus | 816µs | 846µs |
 | Stencils | polybench-heat-3d | polybench_run · stencil corpus | 965µs | 1.45ms |
-| Stencils | polybench-jacobi-1d | polybench_run · stencil corpus | 10µs | 11.3µs |
-| Stencils | polybench-jacobi-2d | polybench_run · stencil corpus | 1.03ms | 1.44ms |
-| Stencils | polybench-seidel-2d | polybench_run · stencil corpus | 3.21ms | 3.09ms |
-| Solvers | polybench-cholesky | polybench_run · solver corpus | 1.85ms | 1.79ms |
-| Solvers | polybench-durbin | polybench_run · solver corpus | 12.9µs | 16.4µs |
-| Solvers | polybench-gramschmidt | polybench_run · solver corpus | 443µs | 467µs |
-| Solvers | polybench-lu | polybench_run · solver corpus | 2.06ms | 2.17ms |
-| Solvers | polybench-ludcmp | polybench_run · solver corpus | 1.81ms | 1.94ms |
+| Stencils | polybench-jacobi-1d | polybench_run · stencil corpus | 10.2µs | 11.3µs |
+| Stencils | polybench-jacobi-2d | polybench_run · stencil corpus | 1.04ms | 1.42ms |
+| Stencils | polybench-seidel-2d | polybench_run · stencil corpus | 3.30ms | 3.06ms |
+| Solvers | polybench-cholesky | polybench_run · solver corpus | 1.86ms | 1.78ms |
+| Solvers | polybench-durbin | polybench_run · solver corpus | 13µs | 16.4µs |
+| Solvers | polybench-gramschmidt | polybench_run · solver corpus | 440µs | 467µs |
+| Solvers | polybench-lu | polybench_run · solver corpus | 2.11ms | 2.15ms |
+| Solvers | polybench-ludcmp | polybench_run · solver corpus | 1.82ms | 1.94ms |
 | Solvers | polybench-trisolv | polybench_run · solver corpus | 11.9µs | 13.9µs |
-| Statistics | polybench-correlation | polybench_run · statistics corpus | 347µs | 392µs |
-| Statistics | polybench-covariance | polybench_run · statistics corpus | 342µs | 382µs |
-| Image processing | polybench-deriche | polybench_run · image-processing corpus | 483µs | 502µs |
-| Graph algorithms | polybench-floyd-warshall | polybench_run · graph corpus | 6.07ms | 5.50ms |
-| BLAS | polybench-gemm | polybench_run · blas corpus | 345µs | 373µs |
-| BLAS | polybench-gemver | polybench_run · blas corpus | 54.8µs | 55.8µs |
-| BLAS | polybench-gesummv | polybench_run · blas corpus | 28.5µs | 28.4µs |
-| BLAS | polybench-symm | polybench_run · blas corpus | 282µs | 331µs |
-| BLAS | polybench-syr2k | polybench_run · blas corpus | 375µs | 471µs |
-| BLAS | polybench-syrk | polybench_run · blas corpus | 243µs | 270µs |
-| BLAS | polybench-trmm | polybench_run · blas corpus | 201µs | 199µs |
-| Dynamic programming | polybench-nussinov | polybench_run · dynamic-programming corpus | 1.34ms | 1.09ms |
-| Micro modules | tiny | add · micro corpus | 6ns | 23.4ns |
+| Statistics | polybench-correlation | polybench_run · statistics corpus | 341µs | 388µs |
+| Statistics | polybench-covariance | polybench_run · statistics corpus | 352µs | 380µs |
+| Image processing | polybench-deriche | polybench_run · image-processing corpus | 483µs | 508µs |
+| Graph algorithms | polybench-floyd-warshall | polybench_run · graph corpus | 6.15ms | 5.48ms |
+| BLAS | polybench-gemm | polybench_run · blas corpus | 352µs | 374µs |
+| BLAS | polybench-gemver | polybench_run · blas corpus | 55.1µs | 55.6µs |
+| BLAS | polybench-gesummv | polybench_run · blas corpus | 28.7µs | 28.4µs |
+| BLAS | polybench-symm | polybench_run · blas corpus | 287µs | 324µs |
+| BLAS | polybench-syr2k | polybench_run · blas corpus | 379µs | 474µs |
+| BLAS | polybench-syrk | polybench_run · blas corpus | 246µs | 272µs |
+| BLAS | polybench-trmm | polybench_run · blas corpus | 202µs | 201µs |
+| Dynamic programming | polybench-nussinov | polybench_run · dynamic-programming corpus | 1.35ms | 1.08ms |
+| Micro modules | tiny | add · micro corpus | 6.6ns | 23ns |
 
 ## Canonical machine-readable sources
 

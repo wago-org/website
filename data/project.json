@@ -1839,7 +1839,7 @@
                       "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Host → Wasm call",
+                      "label": "Host → Wasm",
                       "workload": "public entry",
                       "wago": "22.7ns",
                       "wazero": "37.2ns",
@@ -1851,8 +1851,8 @@
                       "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Wasm → host → Wasm",
-                      "workload": "import call and return",
+                      "label": "Wasm → host",
+                      "workload": "import callback",
                       "wago": "433.5ns",
                       "wazero": "433ns",
                       "engines": {
@@ -6050,7 +6050,7 @@
                       "result": "multi-engine ahead"
                     },
                     {
-                      "label": "Host → Wasm call",
+                      "label": "Host → Wasm",
                       "workload": "public entry",
                       "wago": "29.5ns",
                       "wazero": "25.7ns",
@@ -6062,8 +6062,8 @@
                       "result": "multi-engine behind"
                     },
                     {
-                      "label": "Wasm → host → Wasm",
-                      "workload": "import call and return",
+                      "label": "Wasm → host",
+                      "workload": "import callback",
                       "wago": "294.8ns",
                       "wazero": "320.9ns",
                       "engines": {

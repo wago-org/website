@@ -5,7 +5,7 @@
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
-    "ref": "main",
+    "ref": "bd742cdad68e0bb464ae135973866c73013ffb2f",
     "commit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
     "commitUrl": "https://github.com/wago-org/wago/commit/bd742cdad68e0bb464ae135973866c73013ffb2f"
   },

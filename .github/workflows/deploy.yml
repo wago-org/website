@@ -41,25 +41,15 @@ jobs:
         run: npm ci
 
       - name: Pin generated Wago source
-        id: wago-source
         run: |
           wago_source_ref=$(node -p "require('./data/facts.json').source.commit")
-          echo "ref=$wago_source_ref" >> "$GITHUB_OUTPUT"
-          echo "WAGO_REF=$wago_source_ref" >> "$GITHUB_ENV"
-          echo "WAGO_FACTS_REF=$wago_source_ref" >> "$GITHUB_ENV"
-
-      - name: Checkout pinned Wago source
-        uses: actions/checkout@v4
-        with:
-          repository: wago-org/wago
-          ref: ${{ steps.wago-source.outputs.ref }}
-          token: ${{ secrets.WAGO_RO_TOKEN }}
-          path: wago-src
-          persist-credentials: false
+          {
+            echo "WAGO_REF=$wago_source_ref"
+            echo "WAGO_FACTS_REF=$wago_source_ref"
+            echo "WAGO_COMMIT=$wago_source_ref"
+          } >> "$GITHUB_ENV"
 
       - name: Build site
-        env:
-          WAGO_DIR: ${{ github.workspace }}/wago-src
         run: npm run build
 
       - name: Setup Pages

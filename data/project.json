@@ -1840,12 +1840,12 @@
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "public entry",
-                      "wago": "28.6ns",
-                      "wazero": "36.7ns",
+                      "workload": "prepared (i32) → i32",
+                      "wago": "26.6ns",
+                      "wazero": "34.6ns",
                       "engines": {
-                        "railshot": "28.6ns",
-                        "wazero": "36.7ns"
+                        "railshot": "26.6ns",
+                        "wazero": "34.6ns"
                       },
                       "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
@@ -1853,13 +1853,13 @@
                     {
                       "label": "Wasm → host",
                       "workload": "typed import callback",
-                      "wago": "295.2ns",
-                      "wazero": "455ns",
+                      "wago": "288.8ns",
+                      "wazero": "453.8ns",
                       "engines": {
-                        "railshot": "295.2ns",
-                        "wazero": "455ns"
+                        "railshot": "288.8ns",
+                        "wazero": "453.8ns"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     }
                   ]
@@ -6051,26 +6051,26 @@
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "public entry",
-                      "wago": "29.5ns",
-                      "wazero": "25.5ns",
+                      "workload": "prepared (i32) → i32",
+                      "wago": "16.5ns",
+                      "wazero": "23.3ns",
                       "engines": {
-                        "railshot": "29.5ns",
-                        "wazero": "25.5ns"
+                        "railshot": "16.5ns",
+                        "wazero": "23.3ns"
                       },
-                      "comparison": "1.2× slower",
-                      "result": "multi-engine behind"
+                      "comparison": "1.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Wasm → host",
                       "workload": "typed import callback",
-                      "wago": "202.5ns",
-                      "wazero": "321.5ns",
+                      "wago": "210.3ns",
+                      "wazero": "309.2ns",
                       "engines": {
-                        "railshot": "202.5ns",
-                        "wazero": "321.5ns"
+                        "railshot": "210.3ns",
+                        "wazero": "309.2ns"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
                     }
                   ]

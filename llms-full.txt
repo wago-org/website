@@ -206,8 +206,8 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | Instantiate | runnable corpus | 7.1µs | 30µs |
 |  | Execution | runnable corpus | 92.4µs | 159µs |
 |  | End-to-end latency | compile + instantiate | 211µs | 1.13ms |
-|  | Host → Wasm | public entry | 28.6ns | 36.7ns |
-|  | Wasm → host | typed import callback | 295.2ns | 455ns |
+|  | Host → Wasm | prepared (i32) → i32 | 26.6ns | 34.6ns |
+|  | Wasm → host | typed import callback | 288.8ns | 453.8ns |
 
 ##### Compile latency
 
@@ -561,8 +561,8 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | Instantiate | runnable corpus | 10.5µs | 17µs |
 |  | Execution | runnable corpus | 90.5µs | 106µs |
 |  | End-to-end latency | compile + instantiate | 140µs | 831µs |
-|  | Host → Wasm | public entry | 29.5ns | 25.5ns |
-|  | Wasm → host | typed import callback | 202.5ns | 321.5ns |
+|  | Host → Wasm | prepared (i32) → i32 | 16.5ns | 23.3ns |
+|  | Wasm → host | typed import callback | 210.3ns | 309.2ns |
 
 ##### Compile latency
 

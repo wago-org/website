@@ -5,9 +5,9 @@
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
-    "ref": "81b31de9e05cd84b19c5e1f60890489149b830a2",
-    "commit": "81b31de9e05cd84b19c5e1f60890489149b830a2",
-    "commitUrl": "https://github.com/wago-org/wago/commit/81b31de9e05cd84b19c5e1f60890489149b830a2"
+    "ref": "9181f039060be02b7d9d58032be16f39e14deee6",
+    "commit": "9181f039060be02b7d9d58032be16f39e14deee6",
+    "commitUrl": "https://github.com/wago-org/wago/commit/9181f039060be02b7d9d58032be16f39e14deee6"
   },
   "identity": {
     "name": "wago",
@@ -867,7 +867,7 @@
     },
     "verification": {
       "label": "public verification",
-      "url": "https://github.com/wago-org/wago/blob/81b31de9e05cd84b19c5e1f60890489149b830a2/VERIFICATION.md#L1-L15"
+      "url": "https://github.com/wago-org/wago/blob/9181f039060be02b7d9d58032be16f39e14deee6/SPECTEST.md#L1-L20"
     },
     "ci": {
       "label": "native CI matrix",

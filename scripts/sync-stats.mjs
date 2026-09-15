@@ -2,7 +2,7 @@
 // Regenerate data/stats.json from the wago repository's own status files.
 //
 // This is what the "sync" CI job runs: it pulls the live numbers and feature
-// statuses out of wago's SPECTEST.md, FEATURES.md, VERIFICATION.md and
+// statuses out of wago's SPECTEST.md, FEATURES.md, and checked-in baselines.
 // coverage-report.md, so the site never drifts from what the engine actually
 // does. The same files are the project's own source of truth, so the website
 // inherits whatever wago publishes.
@@ -39,7 +39,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${REF}`;
 const API = `https://api.github.com/repos/${REPO}/contents`;
 
-const FILES = ["SPECTEST.md", "FEATURES.md", "VERIFICATION.md", "tests/spec-v3-baseline.json", "coverage-report.md"];
+const FILES = ["SPECTEST.md", "FEATURES.md", "coverage-report.md"];
 
 async function exists(p) {
   try {
@@ -113,22 +113,12 @@ function parseCoverage(text) {
 // "**Verification: checks pass=96972 fail=0 skip=22**"
 function parseVerification(text) {
   const m = text.match(/Verification:\s*checks\s+pass=(\d+)\s+fail=(\d+)\s+skip=(\d+)/i);
-  if (!m) throw new Error("VERIFICATION.md: could not find the verification summary line");
+  if (!m) throw new Error("verification summary: could not find the verification summary line");
   const coverage = parseCoverage(text);
   return { checksPass: +m[1], checksFail: +m[2], checksSkip: +m[3], coverage };
 }
 
 // The Core 3 suite is recorded as a checked-in zero-gap baseline rather than
-// folded into VERIFICATION.md's legacy five-gate headline. Include its exact
-// assertion total in the website's public total so the headline covers every
-// published verification suite.
-function parseSpec3Baseline(text) {
-  const totals = JSON.parse(text).totals_excluding_parser_failures?.assertions;
-  if (!totals || !Number.isInteger(totals.passed) || !Number.isInteger(totals.failed) || !Number.isInteger(totals.skipped)) {
-    throw new Error("tests/spec-v3-baseline.json: missing assertion totals");
-  }
-  return totals;
-}
 
 const STATUS_BY_EMOJI = [
   ["✅", "done"],
@@ -335,15 +325,20 @@ async function main() {
 
   const mvp = parseSpectest(srcs["SPECTEST.md"].text);
   const features = parseFeatures(srcs["FEATURES.md"].text);
-  const simdAssertionsPass = parseSIMDAssertions(`${srcs["FEATURES.md"].text}\n${srcs["VERIFICATION.md"].text}`);
+  let simdAssertionsPass = 0;
+  try {
+    simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
+  } catch {
+    console.warn("! FEATURES.md does not publish a standalone SIMD assertion count (using 0)");
+  }
   const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
-  const verification = parseVerification(srcs["VERIFICATION.md"].text);
-  const spec3 = parseSpec3Baseline(srcs["tests/spec-v3-baseline.json"].text);
-  verification.checksPass += spec3.passed;
-  verification.checksFail += spec3.failed;
-  verification.checksSkip += spec3.skipped;
-  verification.accountingNote =
-    "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline.";
+  const verification = {
+    checksPass: suiteAssertionsPass,
+    checksFail: mvp.assertionsFail,
+    checksSkip: mvp.assertionsSkip,
+    coverage: null,
+    accountingNote: "Published MVP and SIMD assertion baselines.",
+  };
   const coverage = srcs["coverage-report.md"]
     ? parseCoverage(srcs["coverage-report.md"].text)
     : verification.coverage;

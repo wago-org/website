@@ -5,7 +5,7 @@
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-09-08
+Data updated: 2026-09-15
 
 ## Current verified facts
 
@@ -15,10 +15,10 @@ Data updated: 2026-09-08
 - Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
 - Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
 - Legacy SPECTEST.md MVP report: 57/57 applicable files pass (100%); see /compatibility.md for the current public-verification boundary.
-- Verification: 155010 checks pass, 0 fail, 22 skip.
-- Test coverage: 86.1%.
+- Verification: 16592 checks pass, 0 fail, 1591 skip.
+- Test coverage: null%.
 - Native benchmark architectures published: amd64, arm64.
-- Published multi-engine comparisons: 200.
+- Published multi-engine comparisons: 642.
 - End-to-end dataset: 6 real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
 
 ## Read next

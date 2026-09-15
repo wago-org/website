@@ -8,6 +8,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to deploy
+        required: false
+        default: main
   # Reusable: the "Sync stats" workflow calls this after committing fresh stats.
   workflow_call:
 
@@ -29,7 +34,7 @@ jobs:
         with:
           # Reusable sync callers push during their run. Resolve main again so
           # this build includes that commit rather than the caller's old SHA.
-          ref: main
+          ref: ${{ inputs.ref || 'main' }}
 
       - name: Setup Node
         uses: actions/setup-node@v4

@@ -435,7 +435,7 @@ function makeProject(stats, canonicalFacts, startup, performance) {
       coveragePercent: stats.coverage,
       featureGroups: stats.versions,
       accountingNote:
-        "SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries; do not combine or substitute their counts.",
+        "SPECTEST.md, SIMD, and Core 3 use different corpus and accounting boundaries; do not combine or substitute their counts.",
     },
     benchmarks: {
       caveat:
@@ -542,7 +542,7 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 - Test coverage: ${facts.coveragePercent}%
 - cgo lines: ${facts.cgoLines}
 
-SPECTEST.md and VERIFICATION.md use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
+SPECTEST.md, SIMD, and Core 3 use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
 
 ## Benchmark interpretation
 

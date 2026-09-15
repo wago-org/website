@@ -1,8 +1,8 @@
 name: Sync stats from wago
 
 # Keeps the site's numbers honest. Pulls the live conformance/coverage/feature
-# data out of wago's own status files (SPECTEST.md, FEATURES.md,
-# VERIFICATION.md, and coverage-report.md) via scripts/sync-stats.mjs, and if
+# data out of Wago's published SPECTEST.md, FEATURES.md, and checked-in
+# baselines via scripts/sync-stats.mjs, and if
 # data/stats.json changed, commits it and redeploys the site.
 #
 # wago-org/wago is a PRIVATE repo, so this needs read access to it. Provide a

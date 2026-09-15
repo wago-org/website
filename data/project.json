@@ -879,7 +879,7 @@
       },
       "verification": {
         "label": "public verification",
-        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/VERIFICATION.md#L1-L15"
+        "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/SPECTEST.md#L1-L20"
       },
       "ci": {
         "label": "native CI matrix",

@@ -1,7 +1,7 @@
 # Wago benchmark interpretation
 
 Runtime tables measured: 2026-09-23
-Runtime-table Wago source commit: f83fb19eca300e65db1fa299f448bfe49f5b7d03
+Runtime-table Wago source commit: ac5085baa6306fd85896994b458ae27832b7e6d4
 End-to-end startup sweep measured: 2026-09-10
 Startup-sweep Wago source commit: 5158df0b6eb24a210460df5ad1c72832f98af3e5
 Canonical JSON: https://wago.sh/data/facts.json

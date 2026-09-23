@@ -1,7 +1,9 @@
 # Wago benchmark interpretation
 
-Last synchronized: 2026-09-10
-Wago source commit: bd742cdad68e0bb464ae135973866c73013ffb2f
+Runtime tables measured: 2026-09-23
+Runtime-table Wago source commit: f83fb19eca300e65db1fa299f448bfe49f5b7d03
+End-to-end startup sweep measured: 2026-09-10
+Startup-sweep Wago source commit: 5158df0b6eb24a210460df5ad1c72832f98af3e5
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Published data
@@ -15,6 +17,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 - Compare runtimes only within the same architecture and workload.
 - Do not compare absolute values across machines.
+- Runtime tables use 36 matched corpus workloads, three samples per measurement, and medians.
 - Allocation rows measure Go heap allocation traffic measured during the named operation.
 - Allocation rows exclude guest linear memory, native code mappings, native virtual-memory reservations, process RSS/PSS.
 

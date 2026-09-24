@@ -1700,13 +1700,13 @@
                     {
                       "label": "Compile",
                       "workload": "fresh process",
-                      "wago": "5.30ms",
-                      "wazero": "21.9ms",
+                      "wago": "4.84ms",
+                      "wazero": "20.5ms",
                       "engines": {
-                        "railshot": "5.30ms",
-                        "wazero": "21.9ms"
+                        "railshot": "4.84ms",
+                        "wazero": "20.5ms"
                       },
-                      "comparison": "4.1× faster",
+                      "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -1736,11 +1736,11 @@
                     {
                       "label": "Instantiate",
                       "workload": "runnable corpus",
-                      "wago": "11.9µs",
-                      "wazero": "24.8µs",
+                      "wago": "11.4µs",
+                      "wazero": "23.9µs",
                       "engines": {
-                        "railshot": "11.9µs",
-                        "wazero": "24.8µs"
+                        "railshot": "11.4µs",
+                        "wazero": "23.9µs"
                       },
                       "comparison": "2.1× faster",
                       "result": "multi-engine ahead"
@@ -1748,11 +1748,11 @@
                     {
                       "label": "Execution",
                       "workload": "runnable corpus",
-                      "wago": "32.8µs",
-                      "wazero": "52.4µs",
+                      "wago": "31.7µs",
+                      "wazero": "49.7µs",
                       "engines": {
-                        "railshot": "32.8µs",
-                        "wazero": "52.4µs"
+                        "railshot": "31.7µs",
+                        "wazero": "49.7µs"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -1760,37 +1760,37 @@
                     {
                       "label": "End-to-end latency",
                       "workload": "compile + instantiate",
-                      "wago": "5.31ms",
-                      "wazero": "21.9ms",
+                      "wago": "4.85ms",
+                      "wazero": "20.6ms",
                       "engines": {
-                        "railshot": "5.31ms",
-                        "wazero": "21.9ms"
+                        "railshot": "4.85ms",
+                        "wazero": "20.6ms"
                       },
-                      "comparison": "4.1× faster",
+                      "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "prepared (i32) → i32",
-                      "wago": "20.8ns",
-                      "wazero": "32.7ns",
+                      "workload": "reserved session (i32) → i32",
+                      "wago": "8.4ns",
+                      "wazero": "33.3ns",
                       "engines": {
-                        "railshot": "20.8ns",
-                        "wazero": "32.7ns"
+                        "railshot": "8.4ns",
+                        "wazero": "33.3ns"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "label": "Wasm → host",
-                      "workload": "typed import callback",
-                      "wago": "301.7ns",
-                      "wazero": "455.2ns",
+                      "workload": "reserved typed import callback",
+                      "wago": "205.6ns",
+                      "wazero": "458.9ns",
                       "engines": {
-                        "railshot": "301.7ns",
-                        "wazero": "455.2ns"
+                        "railshot": "205.6ns",
+                        "wazero": "458.9ns"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "2.2× faster",
                       "result": "multi-engine ahead"
                     }
                   ]
@@ -1803,102 +1803,102 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "minimal module; fixed pipeline overhead",
-                      "wago": "21.1µs",
-                      "wazero": "51.3µs",
+                      "wago": "15µs",
+                      "wazero": "51.4µs",
                       "engines": {
-                        "railshot": "21.1µs",
-                        "wazero": "51.3µs"
+                        "railshot": "15µs",
+                        "wazero": "51.4µs"
                       },
-                      "comparison": "2.4× faster",
+                      "comparison": "3.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "call_indirect through a function table",
-                      "wago": "37.7µs",
-                      "wazero": "73.7µs",
+                      "wago": "28µs",
+                      "wazero": "71µs",
                       "engines": {
-                        "railshot": "37.7µs",
-                        "wazero": "73.7µs"
+                        "railshot": "28µs",
+                        "wazero": "71µs"
                       },
-                      "comparison": "2× faster",
+                      "comparison": "2.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "fib_rec",
                       "workload": "recursion; call/return heavy",
-                      "wago": "22µs",
-                      "wazero": "56.6µs",
+                      "wago": "17.5µs",
+                      "wazero": "53.3µs",
                       "engines": {
-                        "railshot": "22µs",
-                        "wazero": "56.6µs"
+                        "railshot": "17.5µs",
+                        "wazero": "53.3µs"
                       },
-                      "comparison": "2.6× faster",
+                      "comparison": "3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "recursive call tree with load/store churn at every node",
-                      "wago": "42.5µs",
-                      "wazero": "96.8µs",
+                      "wago": "32.5µs",
+                      "wazero": "86.7µs",
                       "engines": {
-                        "railshot": "42.5µs",
-                        "wazero": "96.8µs"
+                        "railshot": "32.5µs",
+                        "wazero": "86.7µs"
                       },
-                      "comparison": "2.3× faster",
+                      "comparison": "2.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64)",
-                      "wago": "145µs",
-                      "wazero": "735µs",
+                      "wago": "129µs",
+                      "wazero": "650µs",
                       "engines": {
-                        "railshot": "145µs",
-                        "wazero": "735µs"
+                        "railshot": "129µs",
+                        "wazero": "650µs"
                       },
-                      "comparison": "5.1× faster",
+                      "comparison": "5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "dense n x n f64 matrix multiply (fp multiply-add + strided memory)",
-                      "wago": "86.5µs",
-                      "wazero": "399µs",
+                      "wago": "72.1µs",
+                      "wazero": "357µs",
                       "engines": {
-                        "railshot": "86.5µs",
-                        "wazero": "399µs"
+                        "railshot": "72.1µs",
+                        "wazero": "357µs"
                       },
-                      "comparison": "4.6× faster",
+                      "comparison": "4.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt)",
-                      "wago": "117µs",
-                      "wazero": "427µs",
+                      "wago": "100µs",
+                      "wazero": "381µs",
                       "engines": {
-                        "railshot": "117µs",
-                        "wazero": "427µs"
+                        "railshot": "100µs",
+                        "wazero": "381µs"
                       },
-                      "comparison": "3.6× faster",
+                      "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math)",
-                      "wago": "336µs",
-                      "wazero": "1.40ms",
+                      "wago": "286µs",
+                      "wazero": "1.20ms",
                       "engines": {
-                        "railshot": "336µs",
-                        "wazero": "1.40ms"
+                        "railshot": "286µs",
+                        "wazero": "1.20ms"
                       },
                       "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
@@ -1907,24 +1907,24 @@
                       "group": "Compute kernels",
                       "label": "sha256",
                       "workload": "standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round)",
-                      "wago": "116µs",
-                      "wazero": "459µs",
+                      "wago": "102µs",
+                      "wazero": "435µs",
                       "engines": {
-                        "railshot": "116µs",
-                        "wazero": "459µs"
+                        "railshot": "102µs",
+                        "wazero": "435µs"
                       },
-                      "comparison": "4× faster",
+                      "comparison": "4.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
-                      "wago": "1.45ms",
-                      "wazero": "2.81ms",
+                      "wago": "1.29ms",
+                      "wazero": "2.52ms",
                       "engines": {
-                        "railshot": "1.45ms",
-                        "wazero": "2.81ms"
+                        "railshot": "1.29ms",
+                        "wazero": "2.52ms"
                       },
                       "comparison": "1.9× faster",
                       "result": "multi-engine ahead"
@@ -1933,37 +1933,37 @@
                       "group": "Real-world SIMD",
                       "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
-                      "wago": "1.85ms",
-                      "wazero": "6.79ms",
+                      "wago": "1.73ms",
+                      "wazero": "6.06ms",
                       "engines": {
-                        "railshot": "1.85ms",
-                        "wazero": "6.79ms"
+                        "railshot": "1.73ms",
+                        "wazero": "6.06ms"
                       },
-                      "comparison": "3.7× faster",
+                      "comparison": "3.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
-                      "wago": "805µs",
-                      "wazero": "2.35ms",
+                      "wago": "775µs",
+                      "wazero": "2.01ms",
                       "engines": {
-                        "railshot": "805µs",
-                        "wazero": "2.35ms"
+                        "railshot": "775µs",
+                        "wazero": "2.01ms"
                       },
-                      "comparison": "2.9× faster",
+                      "comparison": "2.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors",
-                      "wago": "1.26ms",
-                      "wazero": "2.78ms",
+                      "wago": "1.15ms",
+                      "wazero": "2.54ms",
                       "engines": {
-                        "railshot": "1.26ms",
-                        "wazero": "2.78ms"
+                        "railshot": "1.15ms",
+                        "wazero": "2.54ms"
                       },
                       "comparison": "2.2× faster",
                       "result": "multi-engine ahead"
@@ -1972,89 +1972,89 @@
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "CoreMark 1.0 integer, list, matrix, and state-machine workload",
-                      "wago": "764µs",
-                      "wazero": "3.22ms",
+                      "wago": "709µs",
+                      "wazero": "2.79ms",
                       "engines": {
-                        "railshot": "764µs",
-                        "wazero": "3.22ms"
-                      },
-                      "comparison": "4.2× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Semantic corpus",
-                      "label": "lz4",
-                      "workload": "LZ4 compression/decompression with exact size and byte oracles",
-                      "wago": "223µs",
-                      "wazero": "1.13ms",
-                      "engines": {
-                        "railshot": "223µs",
-                        "wazero": "1.13ms"
-                      },
-                      "comparison": "5.1× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Semantic corpus",
-                      "label": "pcre2",
-                      "workload": "PCRE2 Unicode pattern compilation, matching, and capture extraction",
-                      "wago": "14.9ms",
-                      "wazero": "154.2ms",
-                      "engines": {
-                        "railshot": "14.9ms",
-                        "wazero": "154.2ms"
-                      },
-                      "comparison": "10.4× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Semantic corpus",
-                      "label": "qoi",
-                      "workload": "QOI image encode/decode with exact byte and pixel oracles",
-                      "wago": "262µs",
-                      "wazero": "1.01ms",
-                      "engines": {
-                        "railshot": "262µs",
-                        "wazero": "1.01ms"
+                        "railshot": "709µs",
+                        "wazero": "2.79ms"
                       },
                       "comparison": "3.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
+                      "label": "lz4",
+                      "workload": "LZ4 compression/decompression with exact size and byte oracles",
+                      "wago": "194µs",
+                      "wazero": "1.01ms",
+                      "engines": {
+                        "railshot": "194µs",
+                        "wazero": "1.01ms"
+                      },
+                      "comparison": "5.2× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Semantic corpus",
+                      "label": "pcre2",
+                      "workload": "PCRE2 Unicode pattern compilation, matching, and capture extraction",
+                      "wago": "13.7ms",
+                      "wazero": "155ms",
+                      "engines": {
+                        "railshot": "13.7ms",
+                        "wazero": "155ms"
+                      },
+                      "comparison": "11.3× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Semantic corpus",
+                      "label": "qoi",
+                      "workload": "QOI image encode/decode with exact byte and pixel oracles",
+                      "wago": "224µs",
+                      "wazero": "905µs",
+                      "engines": {
+                        "railshot": "224µs",
+                        "wazero": "905µs"
+                      },
+                      "comparison": "4× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson parse, DOM edit, and serialization workload",
-                      "wago": "9.66ms",
-                      "wazero": "60.4ms",
+                      "wago": "8.91ms",
+                      "wazero": "48.3ms",
                       "engines": {
-                        "railshot": "9.66ms",
-                        "wazero": "60.4ms"
+                        "railshot": "8.91ms",
+                        "wazero": "48.3ms"
                       },
-                      "comparison": "6.3× faster",
+                      "comparison": "5.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "zstd",
                       "workload": "Zstandard decompression workload with an exact output oracle",
-                      "wago": "4.81ms",
-                      "wazero": "26ms",
+                      "wago": "4.33ms",
+                      "wazero": "26.7ms",
                       "engines": {
-                        "railshot": "4.81ms",
-                        "wazero": "26ms"
+                        "railshot": "4.33ms",
+                        "wazero": "26.7ms"
                       },
-                      "comparison": "5.4× faster",
+                      "comparison": "6.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "age · decrypt",
                       "workload": "age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle",
-                      "wago": "368.1ms",
-                      "wazero": "1602.7ms",
+                      "wago": "353ms",
+                      "wazero": "1543.6ms",
                       "engines": {
-                        "railshot": "368.1ms",
-                        "wazero": "1602.7ms"
+                        "railshot": "353ms",
+                        "wazero": "1543.6ms"
                       },
                       "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
@@ -2063,50 +2063,50 @@
                       "group": "Application corpora",
                       "label": "brotli · compress",
                       "workload": "Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle",
-                      "wago": "33.1ms",
-                      "wazero": "257.2ms",
+                      "wago": "33.9ms",
+                      "wazero": "298.7ms",
                       "engines": {
-                        "railshot": "33.1ms",
-                        "wazero": "257.2ms"
+                        "railshot": "33.9ms",
+                        "wazero": "298.7ms"
                       },
-                      "comparison": "7.8× faster",
+                      "comparison": "8.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "cJSON · cjson",
                       "workload": "cJSON parse, DOM mutation, and compact serialization workload",
-                      "wago": "3.96ms",
-                      "wazero": "20.2ms",
+                      "wago": "3.75ms",
+                      "wazero": "18.3ms",
                       "engines": {
-                        "railshot": "3.96ms",
-                        "wazero": "20.2ms"
+                        "railshot": "3.75ms",
+                        "wazero": "18.3ms"
                       },
-                      "comparison": "5.1× faster",
+                      "comparison": "4.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "esbuild · minify",
                       "workload": "esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript",
-                      "wago": "1010.4ms",
-                      "wazero": "4828.5ms",
+                      "wago": "976.3ms",
+                      "wazero": "4569ms",
                       "engines": {
-                        "railshot": "1010.4ms",
-                        "wazero": "4828.5ms"
+                        "railshot": "976.3ms",
+                        "wazero": "4569ms"
                       },
-                      "comparison": "4.8× faster",
+                      "comparison": "4.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "icestorm · generate",
                       "workload": "icebram generates seeded 8-bit BRAM initialization words",
-                      "wago": "33.9ms",
-                      "wazero": "80.7ms",
+                      "wago": "32.6ms",
+                      "wazero": "77.1ms",
                       "engines": {
-                        "railshot": "33.9ms",
-                        "wazero": "80.7ms"
+                        "railshot": "32.6ms",
+                        "wazero": "77.1ms"
                       },
                       "comparison": "2.4× faster",
                       "result": "multi-engine ahead"
@@ -2115,11 +2115,11 @@
                       "group": "Application corpora",
                       "label": "jq · json-transform",
                       "workload": "jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle",
-                      "wago": "45.4ms",
-                      "wazero": "167.7ms",
+                      "wago": "43.2ms",
+                      "wazero": "158.7ms",
                       "engines": {
-                        "railshot": "45.4ms",
-                        "wazero": "167.7ms"
+                        "railshot": "43.2ms",
+                        "wazero": "158.7ms"
                       },
                       "comparison": "3.7× faster",
                       "result": "multi-engine ahead"
@@ -2128,50 +2128,50 @@
                       "group": "Application corpora",
                       "label": "json2csv · people",
                       "workload": "json2csv CLI extracts nested fields from newline-delimited JSON into CSV",
-                      "wago": "20.9ms",
-                      "wazero": "175.9ms",
+                      "wago": "20.1ms",
+                      "wazero": "166.6ms",
                       "engines": {
-                        "railshot": "20.9ms",
-                        "wazero": "175.9ms"
+                        "railshot": "20.1ms",
+                        "wazero": "166.6ms"
                       },
-                      "comparison": "8.4× faster",
+                      "comparison": "8.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "LodePNG · lodepng",
                       "workload": "LodePNG RGBA encoding, decoding, and exact pixel round trip",
-                      "wago": "7.37ms",
-                      "wazero": "34ms",
+                      "wago": "7.22ms",
+                      "wazero": "35.5ms",
                       "engines": {
-                        "railshot": "7.37ms",
-                        "wazero": "34ms"
+                        "railshot": "7.22ms",
+                        "wazero": "35.5ms"
                       },
-                      "comparison": "4.6× faster",
+                      "comparison": "4.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Lua · lua",
                       "workload": "Lua 5.4 interpreter running tables, closures, patterns, and GC",
-                      "wago": "15.9ms",
-                      "wazero": "65ms",
+                      "wago": "15.4ms",
+                      "wazero": "62.2ms",
                       "engines": {
-                        "railshot": "15.9ms",
-                        "wazero": "65ms"
+                        "railshot": "15.4ms",
+                        "wazero": "62.2ms"
                       },
-                      "comparison": "4.1× faster",
+                      "comparison": "4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "php · buckets",
                       "workload": "PHP 8.2.6 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "781.5ms",
-                      "wazero": "3400.3ms",
+                      "wago": "755.5ms",
+                      "wazero": "3345.5ms",
                       "engines": {
-                        "railshot": "781.5ms",
-                        "wazero": "3400.3ms"
+                        "railshot": "755.5ms",
+                        "wazero": "3345.5ms"
                       },
                       "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
@@ -2180,24 +2180,24 @@
                       "group": "Application corpora",
                       "label": "quickjs · script",
                       "workload": "QuickJS WASI CLI parses and aggregates 50,000 generated service events",
-                      "wago": "50.3ms",
-                      "wazero": "214.7ms",
+                      "wago": "48.3ms",
+                      "wazero": "203.7ms",
                       "engines": {
-                        "railshot": "50.3ms",
-                        "wazero": "214.7ms"
+                        "railshot": "48.3ms",
+                        "wazero": "203.7ms"
                       },
-                      "comparison": "4.3× faster",
+                      "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "ripgrep · source",
                       "workload": "ripgrep searches a JavaScript program and returns exact matching source lines",
-                      "wago": "209.9ms",
-                      "wazero": "794.1ms",
+                      "wago": "200.9ms",
+                      "wazero": "762.2ms",
                       "engines": {
-                        "railshot": "209.9ms",
-                        "wazero": "794.1ms"
+                        "railshot": "200.9ms",
+                        "wazero": "762.2ms"
                       },
                       "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
@@ -2206,102 +2206,102 @@
                       "group": "Application corpora",
                       "label": "ruby · buckets",
                       "workload": "Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "370.7ms",
-                      "wazero": "2991.5ms",
+                      "wago": "355.2ms",
+                      "wazero": "2795.4ms",
                       "engines": {
-                        "railshot": "370.7ms",
-                        "wazero": "2991.5ms"
+                        "railshot": "355.2ms",
+                        "wazero": "2795.4ms"
                       },
-                      "comparison": "8.1× faster",
+                      "comparison": "7.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · libsodium-hash",
                       "workload": "libsodium hash self-test, 1,061 iterations",
-                      "wago": "4.16ms",
-                      "wazero": "16.1ms",
+                      "wago": "4.00ms",
+                      "wazero": "15.4ms",
                       "engines": {
-                        "railshot": "4.16ms",
-                        "wazero": "16.1ms"
+                        "railshot": "4.00ms",
+                        "wazero": "15.4ms"
                       },
-                      "comparison": "3.9× faster",
+                      "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · shootout-base64",
                       "workload": "base64 shootout kernel",
-                      "wago": "2.93ms",
-                      "wazero": "13.6ms",
+                      "wago": "2.81ms",
+                      "wazero": "12.5ms",
                       "engines": {
-                        "railshot": "2.93ms",
-                        "wazero": "13.6ms"
-                      },
-                      "comparison": "4.7× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "sqlite3 · query",
-                      "workload": "SQLite WASI shell recursively generates one million rows and computes four exact aggregates",
-                      "wago": "104.7ms",
-                      "wazero": "519.4ms",
-                      "engines": {
-                        "railshot": "104.7ms",
-                        "wazero": "519.4ms"
-                      },
-                      "comparison": "5× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "swift-format · format-source",
-                      "workload": "Swift formatter CLI reformats source from stdin with an exact output oracle",
-                      "wago": "1424.7ms",
-                      "wazero": "6138.5ms",
-                      "engines": {
-                        "railshot": "1424.7ms",
-                        "wazero": "6138.5ms"
-                      },
-                      "comparison": "4.3× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "TinyXML-2 · tinyxml2",
-                      "workload": "TinyXML-2 parse, query, and DOM mutation workload",
-                      "wago": "4.09ms",
-                      "wazero": "19.5ms",
-                      "engines": {
-                        "railshot": "4.09ms",
-                        "wazero": "19.5ms"
-                      },
-                      "comparison": "4.8× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "uutils/coreutils · sort",
-                      "workload": "Rust coreutils sorts a pinned twenty-four-record text file",
-                      "wago": "430.4ms",
-                      "wazero": "1896.1ms",
-                      "engines": {
-                        "railshot": "430.4ms",
-                        "wazero": "1896.1ms"
+                        "railshot": "2.81ms",
+                        "wazero": "12.5ms"
                       },
                       "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
+                      "label": "sqlite3 · query",
+                      "workload": "SQLite WASI shell recursively generates one million rows and computes four exact aggregates",
+                      "wago": "101.1ms",
+                      "wazero": "469.6ms",
+                      "engines": {
+                        "railshot": "101.1ms",
+                        "wazero": "469.6ms"
+                      },
+                      "comparison": "4.6× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
+                      "label": "swift-format · format-source",
+                      "workload": "Swift formatter CLI reformats source from stdin with an exact output oracle",
+                      "wago": "1404.6ms",
+                      "wazero": "5892.3ms",
+                      "engines": {
+                        "railshot": "1404.6ms",
+                        "wazero": "5892.3ms"
+                      },
+                      "comparison": "4.2× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
+                      "label": "TinyXML-2 · tinyxml2",
+                      "workload": "TinyXML-2 parse, query, and DOM mutation workload",
+                      "wago": "3.84ms",
+                      "wazero": "19.1ms",
+                      "engines": {
+                        "railshot": "3.84ms",
+                        "wazero": "19.1ms"
+                      },
+                      "comparison": "5× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
+                      "label": "uutils/coreutils · sort",
+                      "workload": "Rust coreutils sorts a pinned twenty-four-record text file",
+                      "wago": "413.7ms",
+                      "wazero": "1766.1ms",
+                      "engines": {
+                        "railshot": "413.7ms",
+                        "wazero": "1766.1ms"
+                      },
+                      "comparison": "4.3× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
                       "label": "Wren · wren",
                       "workload": "Wren VM executing classes, closures, collections, and allocation-heavy loops",
-                      "wago": "10.8ms",
-                      "wazero": "41.4ms",
+                      "wago": "10.5ms",
+                      "wazero": "39.8ms",
                       "engines": {
-                        "railshot": "10.8ms",
-                        "wazero": "41.4ms"
+                        "railshot": "10.5ms",
+                        "wazero": "39.8ms"
                       },
                       "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
@@ -2310,11 +2310,11 @@
                       "group": "Application corpora",
                       "label": "yosys · counter",
                       "workload": "Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics",
-                      "wago": "1308.6ms",
-                      "wazero": "5888.3ms",
+                      "wago": "1250ms",
+                      "wazero": "5595ms",
                       "engines": {
-                        "railshot": "1308.6ms",
-                        "wazero": "5888.3ms"
+                        "railshot": "1250ms",
+                        "wazero": "5595ms"
                       },
                       "comparison": "4.5× faster",
                       "result": "multi-engine ahead"
@@ -2577,10 +2577,10 @@
                       "label": "age · decrypt",
                       "workload": "age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle",
                       "wago": "71.9 MB",
-                      "wazero": "88.4 MB",
+                      "wazero": "88.5 MB",
                       "engines": {
                         "railshot": "71.9 MB",
-                        "wazero": "88.4 MB"
+                        "wazero": "88.5 MB"
                       },
                       "comparison": "1.2× less",
                       "result": "multi-engine ahead"
@@ -2855,11 +2855,11 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "minimal module; fixed pipeline overhead",
-                      "wago": "8.2µs",
-                      "wazero": "8.7µs",
+                      "wago": "7.9µs",
+                      "wazero": "8.4µs",
                       "engines": {
-                        "railshot": "8.2µs",
-                        "wazero": "8.7µs"
+                        "railshot": "7.9µs",
+                        "wazero": "8.4µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -2868,11 +2868,11 @@
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "call_indirect through a function table",
-                      "wago": "8.6µs",
-                      "wazero": "8.9µs",
+                      "wago": "8.3µs",
+                      "wazero": "8.2µs",
                       "engines": {
-                        "railshot": "8.6µs",
-                        "wazero": "8.9µs"
+                        "railshot": "8.3µs",
+                        "wazero": "8.2µs"
                       },
                       "comparison": "parity",
                       "result": "tie"
@@ -2881,11 +2881,11 @@
                       "group": "Calls",
                       "label": "fib_rec",
                       "workload": "recursion; call/return heavy",
-                      "wago": "8.2µs",
-                      "wazero": "8.7µs",
+                      "wago": "7.9µs",
+                      "wazero": "8.3µs",
                       "engines": {
-                        "railshot": "8.2µs",
-                        "wazero": "8.7µs"
+                        "railshot": "7.9µs",
+                        "wazero": "8.3µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -2894,102 +2894,102 @@
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "recursive call tree with load/store churn at every node",
-                      "wago": "8.2µs",
-                      "wazero": "12.4µs",
+                      "wago": "7.9µs",
+                      "wazero": "10.7µs",
                       "engines": {
-                        "railshot": "8.2µs",
-                        "wazero": "12.4µs"
+                        "railshot": "7.9µs",
+                        "wazero": "10.7µs"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64)",
-                      "wago": "8.5µs",
-                      "wazero": "40.2µs",
+                      "wago": "8.2µs",
+                      "wazero": "41.3µs",
                       "engines": {
-                        "railshot": "8.5µs",
-                        "wazero": "40.2µs"
+                        "railshot": "8.2µs",
+                        "wazero": "41.3µs"
                       },
-                      "comparison": "4.7× faster",
+                      "comparison": "5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "dense n x n f64 matrix multiply (fp multiply-add + strided memory)",
-                      "wago": "8.5µs",
-                      "wazero": "41.1µs",
+                      "wago": "8.1µs",
+                      "wazero": "40.4µs",
                       "engines": {
-                        "railshot": "8.5µs",
-                        "wazero": "41.1µs"
+                        "railshot": "8.1µs",
+                        "wazero": "40.4µs"
                       },
-                      "comparison": "4.8× faster",
+                      "comparison": "5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt)",
-                      "wago": "8.5µs",
-                      "wazero": "40.8µs",
+                      "wago": "8.2µs",
+                      "wazero": "40.3µs",
                       "engines": {
-                        "railshot": "8.5µs",
-                        "wazero": "40.8µs"
+                        "railshot": "8.2µs",
+                        "wazero": "40.3µs"
                       },
-                      "comparison": "4.8× faster",
+                      "comparison": "4.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math)",
-                      "wago": "9.2µs",
-                      "wazero": "42.4µs",
+                      "wago": "8.8µs",
+                      "wazero": "41.2µs",
                       "engines": {
-                        "railshot": "9.2µs",
-                        "wazero": "42.4µs"
+                        "railshot": "8.8µs",
+                        "wazero": "41.2µs"
                       },
-                      "comparison": "4.6× faster",
+                      "comparison": "4.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "sha256",
                       "workload": "standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round)",
-                      "wago": "11.4µs",
-                      "wazero": "44.5µs",
+                      "wago": "10.9µs",
+                      "wazero": "43.5µs",
                       "engines": {
-                        "railshot": "11.4µs",
-                        "wazero": "44.5µs"
+                        "railshot": "10.9µs",
+                        "wazero": "43.5µs"
                       },
-                      "comparison": "3.9× faster",
+                      "comparison": "4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
-                      "wago": "10.9µs",
+                      "wago": "10.5µs",
                       "wazero": "12.4µs",
                       "engines": {
-                        "railshot": "10.9µs",
+                        "railshot": "10.5µs",
                         "wazero": "12.4µs"
                       },
-                      "comparison": "1.1× faster",
+                      "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
-                      "wago": "17.1µs",
-                      "wazero": "15µs",
+                      "wago": "16.1µs",
+                      "wazero": "14.4µs",
                       "engines": {
-                        "railshot": "17.1µs",
-                        "wazero": "15µs"
+                        "railshot": "16.1µs",
+                        "wazero": "14.4µs"
                       },
                       "comparison": "1.1× slower",
                       "result": "multi-engine behind"
@@ -2998,11 +2998,11 @@
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
-                      "wago": "22.7µs",
-                      "wazero": "17.7µs",
+                      "wago": "21.7µs",
+                      "wazero": "16.2µs",
                       "engines": {
-                        "railshot": "22.7µs",
-                        "wazero": "17.7µs"
+                        "railshot": "21.7µs",
+                        "wazero": "16.2µs"
                       },
                       "comparison": "1.3× slower",
                       "result": "multi-engine behind"
@@ -3011,91 +3011,91 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors",
-                      "wago": "11.2µs",
-                      "wazero": "40.9µs",
+                      "wago": "10.9µs",
+                      "wazero": "42.8µs",
                       "engines": {
-                        "railshot": "11.2µs",
-                        "wazero": "40.9µs"
+                        "railshot": "10.9µs",
+                        "wazero": "42.8µs"
                       },
-                      "comparison": "3.7× faster",
+                      "comparison": "3.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "CoreMark 1.0 integer, list, matrix, and state-machine workload",
-                      "wago": "10.6µs",
-                      "wazero": "14.7µs",
+                      "wago": "10.3µs",
+                      "wazero": "12.9µs",
                       "engines": {
-                        "railshot": "10.6µs",
-                        "wazero": "14.7µs"
+                        "railshot": "10.3µs",
+                        "wazero": "12.9µs"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "LZ4 compression/decompression with exact size and byte oracles",
-                      "wago": "11.8µs",
-                      "wazero": "64.5µs",
+                      "wago": "11.3µs",
+                      "wazero": "65.4µs",
                       "engines": {
-                        "railshot": "11.8µs",
-                        "wazero": "64.5µs"
+                        "railshot": "11.3µs",
+                        "wazero": "65.4µs"
                       },
-                      "comparison": "5.5× faster",
+                      "comparison": "5.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "pcre2",
                       "workload": "PCRE2 Unicode pattern compilation, matching, and capture extraction",
-                      "wago": "66.5µs",
-                      "wazero": "23.9µs",
+                      "wago": "60.8µs",
+                      "wazero": "28.9µs",
                       "engines": {
-                        "railshot": "66.5µs",
-                        "wazero": "23.9µs"
+                        "railshot": "60.8µs",
+                        "wazero": "28.9µs"
                       },
-                      "comparison": "2.8× slower",
+                      "comparison": "2.1× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "QOI image encode/decode with exact byte and pixel oracles",
-                      "wago": "9.6µs",
-                      "wazero": "75.4µs",
+                      "wago": "9.3µs",
+                      "wazero": "67.2µs",
                       "engines": {
-                        "railshot": "9.6µs",
-                        "wazero": "75.4µs"
+                        "railshot": "9.3µs",
+                        "wazero": "67.2µs"
                       },
-                      "comparison": "7.8× faster",
+                      "comparison": "7.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson parse, DOM edit, and serialization workload",
-                      "wago": "18.8µs",
-                      "wazero": "16.4µs",
+                      "wago": "17.6µs",
+                      "wazero": "15.1µs",
                       "engines": {
-                        "railshot": "18.8µs",
-                        "wazero": "16.4µs"
+                        "railshot": "17.6µs",
+                        "wazero": "15.1µs"
                       },
-                      "comparison": "1.1× slower",
+                      "comparison": "1.2× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "zstd",
                       "workload": "Zstandard decompression workload with an exact output oracle",
-                      "wago": "12.6µs",
-                      "wazero": "79.6µs",
+                      "wago": "12.2µs",
+                      "wazero": "71.6µs",
                       "engines": {
-                        "railshot": "12.6µs",
-                        "wazero": "79.6µs"
+                        "railshot": "12.2µs",
+                        "wazero": "71.6µs"
                       },
-                      "comparison": "6.3× faster",
+                      "comparison": "5.9× faster",
                       "result": "multi-engine ahead"
                     }
                   ]
@@ -3634,37 +3634,37 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "add · micro corpus",
-                      "wago": "22.5ns",
-                      "wazero": "31.8ns",
+                      "wago": "21.3ns",
+                      "wazero": "27.1ns",
                       "engines": {
-                        "railshot": "22.5ns",
-                        "wazero": "31.8ns"
+                        "railshot": "21.3ns",
+                        "wazero": "27.1ns"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "apply · calls corpus",
-                      "wago": "23.7ns",
-                      "wazero": "34.7ns",
+                      "wago": "22.7ns",
+                      "wazero": "32.3ns",
                       "engines": {
-                        "railshot": "23.7ns",
-                        "wazero": "34.7ns"
+                        "railshot": "22.7ns",
+                        "wazero": "32.3ns"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "fib_rec",
                       "workload": "fib · calls corpus",
-                      "wago": "907µs",
-                      "wazero": "2.16ms",
+                      "wago": "867µs",
+                      "wazero": "2.08ms",
                       "engines": {
-                        "railshot": "907µs",
-                        "wazero": "2.16ms"
+                        "railshot": "867µs",
+                        "wazero": "2.08ms"
                       },
                       "comparison": "2.4× faster",
                       "result": "multi-engine ahead"
@@ -3673,11 +3673,11 @@
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "run · calls+memory corpus",
-                      "wago": "9.3µs",
-                      "wazero": "21.9µs",
+                      "wago": "9.1µs",
+                      "wazero": "20.9µs",
                       "engines": {
-                        "railshot": "9.3µs",
-                        "wazero": "21.9µs"
+                        "railshot": "9.1µs",
+                        "wazero": "20.9µs"
                       },
                       "comparison": "2.3× faster",
                       "result": "multi-engine ahead"
@@ -3686,11 +3686,11 @@
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "run · compute corpus",
-                      "wago": "1.09ms",
-                      "wazero": "1.45ms",
+                      "wago": "1.03ms",
+                      "wazero": "1.38ms",
                       "engines": {
-                        "railshot": "1.09ms",
-                        "wazero": "1.45ms"
+                        "railshot": "1.03ms",
+                        "wazero": "1.38ms"
                       },
                       "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
@@ -3699,37 +3699,37 @@
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "run · compute corpus",
-                      "wago": "84.3µs",
-                      "wazero": "313µs",
+                      "wago": "84.5µs",
+                      "wazero": "299µs",
                       "engines": {
-                        "railshot": "84.3µs",
-                        "wazero": "313µs"
+                        "railshot": "84.5µs",
+                        "wazero": "299µs"
                       },
-                      "comparison": "3.7× faster",
+                      "comparison": "3.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "step · compute corpus",
-                      "wago": "289µs",
-                      "wazero": "360µs",
+                      "wago": "267µs",
+                      "wazero": "345µs",
                       "engines": {
-                        "railshot": "289µs",
-                        "wazero": "360µs"
+                        "railshot": "267µs",
+                        "wazero": "345µs"
                       },
-                      "comparison": "1.2× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "render · compute corpus",
-                      "wago": "380µs",
-                      "wazero": "369µs",
+                      "wago": "357µs",
+                      "wazero": "348µs",
                       "engines": {
-                        "railshot": "380µs",
-                        "wazero": "369µs"
+                        "railshot": "357µs",
+                        "wazero": "348µs"
                       },
                       "comparison": "parity",
                       "result": "tie"
@@ -3738,11 +3738,11 @@
                       "group": "Compute kernels",
                       "label": "sha256",
                       "workload": "hashN · compute corpus",
-                      "wago": "34.5µs",
-                      "wazero": "54.1µs",
+                      "wago": "33.3µs",
+                      "wazero": "52µs",
                       "engines": {
-                        "railshot": "34.5µs",
-                        "wazero": "54.1µs"
+                        "railshot": "33.3µs",
+                        "wazero": "52µs"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -3751,11 +3751,11 @@
                       "group": "Real-world SIMD",
                       "label": "blake-as (simd)",
                       "workload": "hashN · real-simd corpus",
-                      "wago": "435µs",
-                      "wazero": "527µs",
+                      "wago": "418µs",
+                      "wazero": "502µs",
                       "engines": {
-                        "railshot": "435µs",
-                        "wazero": "527µs"
+                        "railshot": "418µs",
+                        "wazero": "502µs"
                       },
                       "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
@@ -3764,11 +3764,11 @@
                       "group": "Real-world SIMD",
                       "label": "json-as (simd)",
                       "workload": "serialize + deserialize · geometric mean",
-                      "wago": "34.9µs",
-                      "wazero": "56.9µs",
+                      "wago": "34µs",
+                      "wazero": "54.5µs",
                       "engines": {
-                        "railshot": "34.9µs",
-                        "wazero": "56.9µs"
+                        "railshot": "34µs",
+                        "wazero": "54.5µs"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -3777,37 +3777,37 @@
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "convertN · real-simd corpus",
-                      "wago": "51.4µs",
-                      "wazero": "69.5µs",
+                      "wago": "50.1µs",
+                      "wazero": "66.5µs",
                       "engines": {
-                        "railshot": "51.4µs",
-                        "wazero": "69.5µs"
+                        "railshot": "50.1µs",
+                        "wazero": "66.5µs"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "validateN · real-simd corpus",
-                      "wago": "152µs",
-                      "wazero": "190µs",
+                      "wago": "146µs",
+                      "wazero": "182µs",
                       "engines": {
-                        "railshot": "152µs",
-                        "wazero": "190µs"
+                        "railshot": "146µs",
+                        "wazero": "182µs"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_derive_key · semantic corpus",
-                      "wago": "285µs",
-                      "wazero": "316µs",
+                      "wago": "279µs",
+                      "wazero": "304µs",
                       "engines": {
-                        "railshot": "285µs",
-                        "wazero": "316µs"
+                        "railshot": "279µs",
+                        "wazero": "304µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -3816,11 +3816,11 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_hash · semantic corpus",
-                      "wago": "278µs",
-                      "wazero": "303µs",
+                      "wago": "271µs",
+                      "wazero": "291µs",
                       "engines": {
-                        "railshot": "278µs",
-                        "wazero": "303µs"
+                        "railshot": "271µs",
+                        "wazero": "291µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -3829,11 +3829,11 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_keyed_hash · semantic corpus",
-                      "wago": "278µs",
-                      "wazero": "303µs",
+                      "wago": "271µs",
+                      "wazero": "290µs",
                       "engines": {
-                        "railshot": "278µs",
-                        "wazero": "303µs"
+                        "railshot": "271µs",
+                        "wazero": "290µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -3842,11 +3842,11 @@
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "coremark_run · semantic corpus",
-                      "wago": "35.7ms",
-                      "wazero": "54ms",
+                      "wago": "34.3ms",
+                      "wazero": "51.9ms",
                       "engines": {
-                        "railshot": "35.7ms",
-                        "wazero": "54ms"
+                        "railshot": "34.3ms",
+                        "wazero": "51.9ms"
                       },
                       "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
@@ -3855,37 +3855,37 @@
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "lz4_compress_run · semantic corpus",
-                      "wago": "32.2µs",
-                      "wazero": "53.8µs",
+                      "wago": "32.7µs",
+                      "wazero": "51.4µs",
                       "engines": {
-                        "railshot": "32.2µs",
-                        "wazero": "53.8µs"
+                        "railshot": "32.7µs",
+                        "wazero": "51.4µs"
                       },
-                      "comparison": "1.7× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "lz4_decompress_run · semantic corpus",
-                      "wago": "2.2µs",
-                      "wazero": "5.6µs",
+                      "wago": "2.1µs",
+                      "wazero": "5.3µs",
                       "engines": {
-                        "railshot": "2.2µs",
-                        "wazero": "5.6µs"
+                        "railshot": "2.1µs",
+                        "wazero": "5.3µs"
                       },
-                      "comparison": "2.6× faster",
+                      "comparison": "2.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "pcre2",
                       "workload": "pcre2_run · semantic corpus",
-                      "wago": "10µs",
-                      "wazero": "18.3µs",
+                      "wago": "9.6µs",
+                      "wazero": "17.5µs",
                       "engines": {
-                        "railshot": "10µs",
-                        "wazero": "18.3µs"
+                        "railshot": "9.6µs",
+                        "wazero": "17.5µs"
                       },
                       "comparison": "1.8× faster",
                       "result": "multi-engine ahead"
@@ -3894,24 +3894,24 @@
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "qoi_decode_run · semantic corpus",
-                      "wago": "6µs",
-                      "wazero": "14µs",
+                      "wago": "5.8µs",
+                      "wazero": "13.5µs",
                       "engines": {
-                        "railshot": "6µs",
-                        "wazero": "14µs"
+                        "railshot": "5.8µs",
+                        "wazero": "13.5µs"
                       },
-                      "comparison": "2.4× faster",
+                      "comparison": "2.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "qoi_encode_run · semantic corpus",
-                      "wago": "8.3µs",
-                      "wazero": "13.3µs",
+                      "wago": "8µs",
+                      "wazero": "12.7µs",
                       "engines": {
-                        "railshot": "8.3µs",
-                        "wazero": "13.3µs"
+                        "railshot": "8µs",
+                        "wazero": "12.7µs"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -3920,10 +3920,10 @@
                       "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson_run · semantic corpus",
-                      "wago": "849.4ns",
+                      "wago": "829.6ns",
                       "wazero": "1.3µs",
                       "engines": {
-                        "railshot": "849.4ns",
+                        "railshot": "829.6ns",
                         "wazero": "1.3µs"
                       },
                       "comparison": "1.5× faster",
@@ -3933,11 +3933,11 @@
                       "group": "Semantic corpus",
                       "label": "zstd",
                       "workload": "zstd_decompress_run · semantic corpus",
-                      "wago": "6µs",
-                      "wazero": "8.4µs",
+                      "wago": "5.9µs",
+                      "wazero": "8µs",
                       "engines": {
-                        "railshot": "6µs",
-                        "wazero": "8.4µs"
+                        "railshot": "5.9µs",
+                        "wazero": "8µs"
                       },
                       "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
@@ -3946,37 +3946,37 @@
                       "group": "Application corpora",
                       "label": "age · decrypt",
                       "workload": "age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle",
-                      "wago": "5.13ms",
-                      "wazero": "6.53ms",
+                      "wago": "5.03ms",
+                      "wazero": "6.83ms",
                       "engines": {
-                        "railshot": "5.13ms",
-                        "wazero": "6.53ms"
+                        "railshot": "5.03ms",
+                        "wazero": "6.83ms"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "brotli · compress",
                       "workload": "Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle",
-                      "wago": "793.8ms",
-                      "wazero": "1266ms",
+                      "wago": "758.8ms",
+                      "wazero": "1109.9ms",
                       "engines": {
-                        "railshot": "793.8ms",
-                        "wazero": "1266ms"
+                        "railshot": "758.8ms",
+                        "wazero": "1109.9ms"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "cJSON · cjson",
                       "workload": "cJSON parse, DOM mutation, and compact serialization workload",
-                      "wago": "56.1µs",
-                      "wazero": "20.7µs",
+                      "wago": "50.9µs",
+                      "wazero": "19µs",
                       "engines": {
-                        "railshot": "56.1µs",
-                        "wazero": "20.7µs"
+                        "railshot": "50.9µs",
+                        "wazero": "19µs"
                       },
                       "comparison": "2.7× slower",
                       "result": "multi-engine behind"
@@ -3985,37 +3985,37 @@
                       "group": "Application corpora",
                       "label": "esbuild · minify",
                       "workload": "esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript",
-                      "wago": "563.6ms",
-                      "wazero": "1237.5ms",
+                      "wago": "538.2ms",
+                      "wazero": "1137.9ms",
                       "engines": {
-                        "railshot": "563.6ms",
-                        "wazero": "1237.5ms"
+                        "railshot": "538.2ms",
+                        "wazero": "1137.9ms"
                       },
-                      "comparison": "2.2× faster",
+                      "comparison": "2.1× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "icestorm · generate",
                       "workload": "icebram generates seeded 8-bit BRAM initialization words",
-                      "wago": "481µs",
-                      "wazero": "281µs",
+                      "wago": "461µs",
+                      "wazero": "200µs",
                       "engines": {
-                        "railshot": "481µs",
-                        "wazero": "281µs"
+                        "railshot": "461µs",
+                        "wazero": "200µs"
                       },
-                      "comparison": "1.7× slower",
+                      "comparison": "2.3× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "jq · json-transform",
                       "workload": "jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle",
-                      "wago": "487.5ms",
-                      "wazero": "794.4ms",
+                      "wago": "472.8ms",
+                      "wazero": "754.8ms",
                       "engines": {
-                        "railshot": "487.5ms",
-                        "wazero": "794.4ms"
+                        "railshot": "472.8ms",
+                        "wazero": "754.8ms"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -4024,63 +4024,63 @@
                       "group": "Application corpora",
                       "label": "json2csv · people",
                       "workload": "json2csv CLI extracts nested fields from newline-delimited JSON into CSV",
-                      "wago": "136µs",
-                      "wazero": "83.6µs",
+                      "wago": "129µs",
+                      "wazero": "68.3µs",
                       "engines": {
-                        "railshot": "136µs",
-                        "wazero": "83.6µs"
+                        "railshot": "129µs",
+                        "wazero": "68.3µs"
                       },
-                      "comparison": "1.6× slower",
+                      "comparison": "1.9× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "LodePNG · lodepng",
                       "workload": "LodePNG RGBA encoding, decoding, and exact pixel round trip",
-                      "wago": "2.56ms",
-                      "wazero": "4.56ms",
+                      "wago": "2.54ms",
+                      "wazero": "4.16ms",
                       "engines": {
-                        "railshot": "2.56ms",
-                        "wazero": "4.56ms"
+                        "railshot": "2.54ms",
+                        "wazero": "4.16ms"
                       },
-                      "comparison": "1.8× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Lua · lua",
                       "workload": "Lua 5.4 interpreter running tables, closures, patterns, and GC",
-                      "wago": "161µs",
-                      "wazero": "171µs",
+                      "wago": "157µs",
+                      "wazero": "139µs",
                       "engines": {
-                        "railshot": "161µs",
-                        "wazero": "171µs"
+                        "railshot": "157µs",
+                        "wazero": "139µs"
                       },
-                      "comparison": "1.1× faster",
-                      "result": "multi-engine ahead"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "php · buckets",
                       "workload": "PHP 8.2.6 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "9.89ms",
-                      "wazero": "7.96ms",
+                      "wago": "9.45ms",
+                      "wazero": "8.52ms",
                       "engines": {
-                        "railshot": "9.89ms",
-                        "wazero": "7.96ms"
+                        "railshot": "9.45ms",
+                        "wazero": "8.52ms"
                       },
-                      "comparison": "1.2× slower",
+                      "comparison": "1.1× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "quickjs · script",
                       "workload": "QuickJS WASI CLI parses and aggregates 50,000 generated service events",
-                      "wago": "166.7ms",
-                      "wazero": "272ms",
+                      "wago": "163.8ms",
+                      "wazero": "263.3ms",
                       "engines": {
-                        "railshot": "166.7ms",
-                        "wazero": "272ms"
+                        "railshot": "163.8ms",
+                        "wazero": "263.3ms"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -4089,11 +4089,11 @@
                       "group": "Application corpora",
                       "label": "ripgrep · source",
                       "workload": "ripgrep searches a JavaScript program and returns exact matching source lines",
-                      "wago": "1.51ms",
-                      "wazero": "1.20ms",
+                      "wago": "1.46ms",
+                      "wazero": "1.11ms",
                       "engines": {
-                        "railshot": "1.51ms",
-                        "wazero": "1.20ms"
+                        "railshot": "1.46ms",
+                        "wazero": "1.11ms"
                       },
                       "comparison": "1.3× slower",
                       "result": "multi-engine behind"
@@ -4102,50 +4102,50 @@
                       "group": "Application corpora",
                       "label": "ruby · buckets",
                       "workload": "Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "25.1ms",
-                      "wazero": "53.2ms",
+                      "wago": "23.6ms",
+                      "wazero": "44.6ms",
                       "engines": {
-                        "railshot": "25.1ms",
-                        "wazero": "53.2ms"
+                        "railshot": "23.6ms",
+                        "wazero": "44.6ms"
                       },
-                      "comparison": "2.1× faster",
+                      "comparison": "1.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · libsodium-hash",
                       "workload": "libsodium hash self-test, 1,061 iterations",
-                      "wago": "4.13ms",
-                      "wazero": "7.61ms",
+                      "wago": "3.49ms",
+                      "wazero": "6.08ms",
                       "engines": {
-                        "railshot": "4.13ms",
-                        "wazero": "7.61ms"
+                        "railshot": "3.49ms",
+                        "wazero": "6.08ms"
                       },
-                      "comparison": "1.8× faster",
+                      "comparison": "1.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · shootout-base64",
                       "workload": "base64 shootout kernel",
-                      "wago": "3.21ms",
-                      "wazero": "3.16ms",
+                      "wago": "3.20ms",
+                      "wazero": "3.04ms",
                       "engines": {
-                        "railshot": "3.21ms",
-                        "wazero": "3.16ms"
+                        "railshot": "3.20ms",
+                        "wazero": "3.04ms"
                       },
-                      "comparison": "parity",
-                      "result": "tie"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "sqlite3 · query",
                       "workload": "SQLite WASI shell recursively generates one million rows and computes four exact aggregates",
-                      "wago": "289.2ms",
-                      "wazero": "761.3ms",
+                      "wago": "282ms",
+                      "wazero": "741.2ms",
                       "engines": {
-                        "railshot": "289.2ms",
-                        "wazero": "761.3ms"
+                        "railshot": "282ms",
+                        "wazero": "741.2ms"
                       },
                       "comparison": "2.6× faster",
                       "result": "multi-engine ahead"
@@ -4154,63 +4154,63 @@
                       "group": "Application corpora",
                       "label": "swift-format · format-source",
                       "workload": "Swift formatter CLI reformats source from stdin with an exact output oracle",
-                      "wago": "35.4ms",
-                      "wazero": "36.1ms",
+                      "wago": "33.9ms",
+                      "wazero": "42.9ms",
                       "engines": {
-                        "railshot": "35.4ms",
-                        "wazero": "36.1ms"
+                        "railshot": "33.9ms",
+                        "wazero": "42.9ms"
                       },
-                      "comparison": "parity",
-                      "result": "tie"
+                      "comparison": "1.3× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "TinyXML-2 · tinyxml2",
                       "workload": "TinyXML-2 parse, query, and DOM mutation workload",
-                      "wago": "70.8µs",
-                      "wazero": "29.2µs",
+                      "wago": "63.2µs",
+                      "wazero": "25.8µs",
                       "engines": {
-                        "railshot": "70.8µs",
-                        "wazero": "29.2µs"
+                        "railshot": "63.2µs",
+                        "wazero": "25.8µs"
                       },
-                      "comparison": "2.4× slower",
+                      "comparison": "2.5× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "uutils/coreutils · sort",
                       "workload": "Rust coreutils sorts a pinned twenty-four-record text file",
-                      "wago": "2.33ms",
-                      "wazero": "1.52ms",
+                      "wago": "2.30ms",
+                      "wazero": "1.02ms",
                       "engines": {
-                        "railshot": "2.33ms",
-                        "wazero": "1.52ms"
+                        "railshot": "2.30ms",
+                        "wazero": "1.02ms"
                       },
-                      "comparison": "1.5× slower",
+                      "comparison": "2.2× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Wren · wren",
                       "workload": "Wren VM executing classes, closures, collections, and allocation-heavy loops",
-                      "wago": "629µs",
-                      "wazero": "1.13ms",
+                      "wago": "645µs",
+                      "wazero": "882µs",
                       "engines": {
-                        "railshot": "629µs",
-                        "wazero": "1.13ms"
+                        "railshot": "645µs",
+                        "wazero": "882µs"
                       },
-                      "comparison": "1.8× faster",
+                      "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "yosys · counter",
                       "workload": "Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics",
-                      "wago": "6.00ms",
-                      "wazero": "8.54ms",
+                      "wago": "5.60ms",
+                      "wazero": "7.79ms",
                       "engines": {
-                        "railshot": "6.00ms",
-                        "wazero": "8.54ms"
+                        "railshot": "5.60ms",
+                        "wazero": "7.79ms"
                       },
                       "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
@@ -4234,13 +4234,13 @@
                     {
                       "label": "Compile",
                       "workload": "fresh process",
-                      "wago": "3.94ms",
-                      "wazero": "13.9ms",
+                      "wago": "3.84ms",
+                      "wazero": "14.6ms",
                       "engines": {
-                        "railshot": "3.94ms",
-                        "wazero": "13.9ms"
+                        "railshot": "3.84ms",
+                        "wazero": "14.6ms"
                       },
-                      "comparison": "3.5× faster",
+                      "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -4270,23 +4270,23 @@
                     {
                       "label": "Instantiate",
                       "workload": "runnable corpus",
-                      "wago": "15.8µs",
-                      "wazero": "12µs",
+                      "wago": "15.7µs",
+                      "wazero": "12.9µs",
                       "engines": {
-                        "railshot": "15.8µs",
-                        "wazero": "12µs"
+                        "railshot": "15.7µs",
+                        "wazero": "12.9µs"
                       },
-                      "comparison": "1.3× slower",
+                      "comparison": "1.2× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "label": "Execution",
                       "workload": "runnable corpus",
                       "wago": "26.3µs",
-                      "wazero": "36.8µs",
+                      "wazero": "36.6µs",
                       "engines": {
                         "railshot": "26.3µs",
-                        "wazero": "36.8µs"
+                        "wazero": "36.6µs"
                       },
                       "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
@@ -4294,37 +4294,37 @@
                     {
                       "label": "End-to-end latency",
                       "workload": "compile + instantiate",
-                      "wago": "3.95ms",
-                      "wazero": "13.9ms",
+                      "wago": "3.85ms",
+                      "wazero": "14.7ms",
                       "engines": {
-                        "railshot": "3.95ms",
-                        "wazero": "13.9ms"
+                        "railshot": "3.85ms",
+                        "wazero": "14.7ms"
                       },
-                      "comparison": "3.5× faster",
+                      "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "prepared (i32) → i32",
-                      "wago": "24.6ns",
-                      "wazero": "21.6ns",
+                      "workload": "reserved session (i32) → i32",
+                      "wago": "5.4ns",
+                      "wazero": "23.9ns",
                       "engines": {
-                        "railshot": "24.6ns",
-                        "wazero": "21.6ns"
+                        "railshot": "5.4ns",
+                        "wazero": "23.9ns"
                       },
-                      "comparison": "1.1× slower",
-                      "result": "multi-engine behind"
+                      "comparison": "4.4× faster",
+                      "result": "multi-engine ahead"
                     },
                     {
                       "label": "Wasm → host",
-                      "workload": "typed import callback",
-                      "wago": "229.5ns",
-                      "wazero": "289.9ns",
+                      "workload": "reserved typed import callback",
+                      "wago": "156.1ns",
+                      "wazero": "322.9ns",
                       "engines": {
-                        "railshot": "229.5ns",
-                        "wazero": "289.9ns"
+                        "railshot": "156.1ns",
+                        "wazero": "322.9ns"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "2.1× faster",
                       "result": "multi-engine ahead"
                     }
                   ]
@@ -4337,130 +4337,130 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "minimal module; fixed pipeline overhead",
-                      "wago": "15.2µs",
-                      "wazero": "25.1µs",
+                      "wago": "11.1µs",
+                      "wazero": "29.1µs",
                       "engines": {
-                        "railshot": "15.2µs",
-                        "wazero": "25.1µs"
+                        "railshot": "11.1µs",
+                        "wazero": "29.1µs"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "2.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "call_indirect through a function table",
-                      "wago": "27.2µs",
-                      "wazero": "37.5µs",
+                      "wago": "21.7µs",
+                      "wazero": "43.9µs",
                       "engines": {
-                        "railshot": "27.2µs",
-                        "wazero": "37.5µs"
+                        "railshot": "21.7µs",
+                        "wazero": "43.9µs"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls",
                       "label": "fib_rec",
                       "workload": "recursion; call/return heavy",
-                      "wago": "12.3µs",
-                      "wazero": "23.9µs",
+                      "wago": "12.6µs",
+                      "wazero": "28.9µs",
                       "engines": {
-                        "railshot": "12.3µs",
-                        "wazero": "23.9µs"
+                        "railshot": "12.6µs",
+                        "wazero": "28.9µs"
                       },
-                      "comparison": "1.9× faster",
+                      "comparison": "2.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "recursive call tree with load/store churn at every node",
-                      "wago": "27.7µs",
-                      "wazero": "46µs",
+                      "wago": "22.4µs",
+                      "wazero": "48.5µs",
                       "engines": {
-                        "railshot": "27.7µs",
-                        "wazero": "46µs"
+                        "railshot": "22.4µs",
+                        "wazero": "48.5µs"
                       },
-                      "comparison": "1.7× faster",
+                      "comparison": "2.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64)",
-                      "wago": "98.7µs",
-                      "wazero": "374µs",
+                      "wago": "97.9µs",
+                      "wazero": "426µs",
                       "engines": {
-                        "railshot": "98.7µs",
-                        "wazero": "374µs"
+                        "railshot": "97.9µs",
+                        "wazero": "426µs"
                       },
-                      "comparison": "3.8× faster",
+                      "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "dense n x n f64 matrix multiply (fp multiply-add + strided memory)",
-                      "wago": "52.6µs",
-                      "wazero": "183µs",
+                      "wago": "51.9µs",
+                      "wazero": "198µs",
                       "engines": {
-                        "railshot": "52.6µs",
-                        "wazero": "183µs"
+                        "railshot": "51.9µs",
+                        "wazero": "198µs"
                       },
-                      "comparison": "3.5× faster",
+                      "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt)",
-                      "wago": "81.8µs",
-                      "wazero": "209µs",
+                      "wago": "82.1µs",
+                      "wazero": "225µs",
                       "engines": {
-                        "railshot": "81.8µs",
-                        "wazero": "209µs"
+                        "railshot": "82.1µs",
+                        "wazero": "225µs"
                       },
-                      "comparison": "2.6× faster",
+                      "comparison": "2.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math)",
-                      "wago": "220µs",
-                      "wazero": "621µs",
+                      "wago": "213µs",
+                      "wazero": "732µs",
                       "engines": {
-                        "railshot": "220µs",
-                        "wazero": "621µs"
+                        "railshot": "213µs",
+                        "wazero": "732µs"
                       },
-                      "comparison": "2.8× faster",
+                      "comparison": "3.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "sha256",
                       "workload": "standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round)",
-                      "wago": "74.3µs",
-                      "wazero": "245µs",
+                      "wago": "75.6µs",
+                      "wazero": "295µs",
                       "engines": {
-                        "railshot": "74.3µs",
-                        "wazero": "245µs"
+                        "railshot": "75.6µs",
+                        "wazero": "295µs"
                       },
-                      "comparison": "3.3× faster",
+                      "comparison": "3.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
-                      "wago": "881µs",
-                      "wazero": "1.40ms",
+                      "wago": "865µs",
+                      "wazero": "1.47ms",
                       "engines": {
-                        "railshot": "881µs",
-                        "wazero": "1.40ms"
+                        "railshot": "865µs",
+                        "wazero": "1.47ms"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "1.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -4468,10 +4468,10 @@
                       "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "1.23ms",
-                      "wazero": "4.72ms",
+                      "wazero": "4.71ms",
                       "engines": {
                         "railshot": "1.23ms",
-                        "wazero": "4.72ms"
+                        "wazero": "4.71ms"
                       },
                       "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
@@ -4480,117 +4480,117 @@
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
-                      "wago": "532µs",
-                      "wazero": "1.31ms",
+                      "wago": "510µs",
+                      "wazero": "1.33ms",
                       "engines": {
-                        "railshot": "532µs",
-                        "wazero": "1.31ms"
+                        "railshot": "510µs",
+                        "wazero": "1.33ms"
                       },
-                      "comparison": "2.5× faster",
+                      "comparison": "2.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors",
-                      "wago": "821µs",
-                      "wazero": "1.61ms",
+                      "wago": "748µs",
+                      "wazero": "1.57ms",
                       "engines": {
-                        "railshot": "821µs",
-                        "wazero": "1.61ms"
+                        "railshot": "748µs",
+                        "wazero": "1.57ms"
                       },
-                      "comparison": "2× faster",
+                      "comparison": "2.1× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "CoreMark 1.0 integer, list, matrix, and state-machine workload",
-                      "wago": "418µs",
-                      "wazero": "1.82ms",
+                      "wago": "404µs",
+                      "wazero": "1.90ms",
                       "engines": {
-                        "railshot": "418µs",
-                        "wazero": "1.82ms"
+                        "railshot": "404µs",
+                        "wazero": "1.90ms"
                       },
-                      "comparison": "4.4× faster",
+                      "comparison": "4.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "LZ4 compression/decompression with exact size and byte oracles",
-                      "wago": "154µs",
-                      "wazero": "619µs",
+                      "wago": "142µs",
+                      "wazero": "602µs",
                       "engines": {
-                        "railshot": "154µs",
-                        "wazero": "619µs"
+                        "railshot": "142µs",
+                        "wazero": "602µs"
                       },
-                      "comparison": "4× faster",
+                      "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "pcre2",
                       "workload": "PCRE2 Unicode pattern compilation, matching, and capture extraction",
-                      "wago": "10.7ms",
-                      "wazero": "101.1ms",
+                      "wago": "10.8ms",
+                      "wazero": "118.3ms",
                       "engines": {
-                        "railshot": "10.7ms",
-                        "wazero": "101.1ms"
+                        "railshot": "10.8ms",
+                        "wazero": "118.3ms"
                       },
-                      "comparison": "9.5× faster",
+                      "comparison": "11× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "QOI image encode/decode with exact byte and pixel oracles",
-                      "wago": "166µs",
-                      "wazero": "512µs",
+                      "wago": "153µs",
+                      "wazero": "529µs",
                       "engines": {
-                        "railshot": "166µs",
-                        "wazero": "512µs"
+                        "railshot": "153µs",
+                        "wazero": "529µs"
                       },
-                      "comparison": "3.1× faster",
+                      "comparison": "3.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson parse, DOM edit, and serialization workload",
-                      "wago": "7.41ms",
-                      "wazero": "35.5ms",
+                      "wago": "7.76ms",
+                      "wazero": "38.4ms",
                       "engines": {
-                        "railshot": "7.41ms",
-                        "wazero": "35.5ms"
+                        "railshot": "7.76ms",
+                        "wazero": "38.4ms"
                       },
-                      "comparison": "4.8× faster",
+                      "comparison": "5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "zstd",
                       "workload": "Zstandard decompression workload with an exact output oracle",
-                      "wago": "3.58ms",
-                      "wazero": "19.1ms",
+                      "wago": "3.66ms",
+                      "wazero": "20.6ms",
                       "engines": {
-                        "railshot": "3.58ms",
-                        "wazero": "19.1ms"
+                        "railshot": "3.66ms",
+                        "wazero": "20.6ms"
                       },
-                      "comparison": "5.3× faster",
+                      "comparison": "5.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "age · decrypt",
                       "workload": "age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle",
-                      "wago": "301.9ms",
-                      "wazero": "1242.8ms",
+                      "wago": "297.5ms",
+                      "wazero": "1253.3ms",
                       "engines": {
-                        "railshot": "301.9ms",
-                        "wazero": "1242.8ms"
+                        "railshot": "297.5ms",
+                        "wazero": "1253.3ms"
                       },
-                      "comparison": "4.1× faster",
+                      "comparison": "4.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -4598,101 +4598,101 @@
                       "label": "brotli · compress",
                       "workload": "Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle",
                       "wago": "25.1ms",
-                      "wazero": "174.6ms",
+                      "wazero": "224.4ms",
                       "engines": {
                         "railshot": "25.1ms",
-                        "wazero": "174.6ms"
+                        "wazero": "224.4ms"
                       },
-                      "comparison": "7× faster",
+                      "comparison": "8.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "cJSON · cjson",
                       "workload": "cJSON parse, DOM mutation, and compact serialization workload",
-                      "wago": "3.06ms",
-                      "wazero": "14.8ms",
+                      "wago": "3.16ms",
+                      "wazero": "14.4ms",
                       "engines": {
-                        "railshot": "3.06ms",
-                        "wazero": "14.8ms"
-                      },
-                      "comparison": "4.8× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "esbuild · minify",
-                      "workload": "esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript",
-                      "wago": "817.3ms",
-                      "wazero": "3758.4ms",
-                      "engines": {
-                        "railshot": "817.3ms",
-                        "wazero": "3758.4ms"
+                        "railshot": "3.16ms",
+                        "wazero": "14.4ms"
                       },
                       "comparison": "4.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
+                      "label": "esbuild · minify",
+                      "workload": "esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript",
+                      "wago": "823.7ms",
+                      "wazero": "3683.6ms",
+                      "engines": {
+                        "railshot": "823.7ms",
+                        "wazero": "3683.6ms"
+                      },
+                      "comparison": "4.5× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
                       "label": "icestorm · generate",
                       "workload": "icebram generates seeded 8-bit BRAM initialization words",
-                      "wago": "27.3ms",
-                      "wazero": "59.9ms",
+                      "wago": "27.4ms",
+                      "wazero": "58.8ms",
                       "engines": {
-                        "railshot": "27.3ms",
-                        "wazero": "59.9ms"
+                        "railshot": "27.4ms",
+                        "wazero": "58.8ms"
                       },
-                      "comparison": "2.2× faster",
+                      "comparison": "2.1× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "jq · json-transform",
                       "workload": "jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle",
-                      "wago": "38.2ms",
-                      "wazero": "129.3ms",
+                      "wago": "38.1ms",
+                      "wazero": "125.7ms",
                       "engines": {
-                        "railshot": "38.2ms",
-                        "wazero": "129.3ms"
+                        "railshot": "38.1ms",
+                        "wazero": "125.7ms"
                       },
-                      "comparison": "3.4× faster",
+                      "comparison": "3.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "json2csv · people",
                       "workload": "json2csv CLI extracts nested fields from newline-delimited JSON into CSV",
-                      "wago": "18ms",
-                      "wazero": "127.1ms",
+                      "wago": "17.8ms",
+                      "wazero": "127.9ms",
                       "engines": {
-                        "railshot": "18ms",
-                        "wazero": "127.1ms"
+                        "railshot": "17.8ms",
+                        "wazero": "127.9ms"
                       },
-                      "comparison": "7× faster",
+                      "comparison": "7.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "LodePNG · lodepng",
                       "workload": "LodePNG RGBA encoding, decoding, and exact pixel round trip",
-                      "wago": "6.21ms",
-                      "wazero": "25.3ms",
+                      "wago": "6.15ms",
+                      "wazero": "27ms",
                       "engines": {
-                        "railshot": "6.21ms",
-                        "wazero": "25.3ms"
+                        "railshot": "6.15ms",
+                        "wazero": "27ms"
                       },
-                      "comparison": "4.1× faster",
+                      "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Lua · lua",
                       "workload": "Lua 5.4 interpreter running tables, closures, patterns, and GC",
-                      "wago": "13.6ms",
-                      "wazero": "50.7ms",
+                      "wago": "13.7ms",
+                      "wazero": "50ms",
                       "engines": {
-                        "railshot": "13.6ms",
-                        "wazero": "50.7ms"
+                        "railshot": "13.7ms",
+                        "wazero": "50ms"
                       },
                       "comparison": "3.7× faster",
                       "result": "multi-engine ahead"
@@ -4701,24 +4701,24 @@
                       "group": "Application corpora",
                       "label": "php · buckets",
                       "workload": "PHP 8.2.6 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "634.7ms",
-                      "wazero": "2765.2ms",
+                      "wago": "617.5ms",
+                      "wazero": "2866.6ms",
                       "engines": {
-                        "railshot": "634.7ms",
-                        "wazero": "2765.2ms"
+                        "railshot": "617.5ms",
+                        "wazero": "2866.6ms"
                       },
-                      "comparison": "4.4× faster",
+                      "comparison": "4.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "quickjs · script",
                       "workload": "QuickJS WASI CLI parses and aggregates 50,000 generated service events",
-                      "wago": "43.8ms",
-                      "wazero": "164.7ms",
+                      "wago": "43.4ms",
+                      "wazero": "165.6ms",
                       "engines": {
-                        "railshot": "43.8ms",
-                        "wazero": "164.7ms"
+                        "railshot": "43.4ms",
+                        "wazero": "165.6ms"
                       },
                       "comparison": "3.8× faster",
                       "result": "multi-engine ahead"
@@ -4727,50 +4727,50 @@
                       "group": "Application corpora",
                       "label": "ripgrep · source",
                       "workload": "ripgrep searches a JavaScript program and returns exact matching source lines",
-                      "wago": "176.1ms",
-                      "wazero": "584.4ms",
+                      "wago": "174.8ms",
+                      "wazero": "592.4ms",
                       "engines": {
-                        "railshot": "176.1ms",
-                        "wazero": "584.4ms"
-                      },
-                      "comparison": "3.3× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "ruby · buckets",
-                      "workload": "Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "323.4ms",
-                      "wazero": "2180.1ms",
-                      "engines": {
-                        "railshot": "323.4ms",
-                        "wazero": "2180.1ms"
-                      },
-                      "comparison": "6.7× faster",
-                      "result": "multi-engine ahead"
-                    },
-                    {
-                      "group": "Application corpora",
-                      "label": "Sightglass · libsodium-hash",
-                      "workload": "libsodium hash self-test, 1,061 iterations",
-                      "wago": "3.22ms",
-                      "wazero": "11ms",
-                      "engines": {
-                        "railshot": "3.22ms",
-                        "wazero": "11ms"
+                        "railshot": "174.8ms",
+                        "wazero": "592.4ms"
                       },
                       "comparison": "3.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
+                      "label": "ruby · buckets",
+                      "workload": "Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets",
+                      "wago": "330.3ms",
+                      "wazero": "2259.4ms",
+                      "engines": {
+                        "railshot": "330.3ms",
+                        "wazero": "2259.4ms"
+                      },
+                      "comparison": "6.8× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
+                      "label": "Sightglass · libsodium-hash",
+                      "workload": "libsodium hash self-test, 1,061 iterations",
+                      "wago": "3.28ms",
+                      "wazero": "10.9ms",
+                      "engines": {
+                        "railshot": "3.28ms",
+                        "wazero": "10.9ms"
+                      },
+                      "comparison": "3.3× faster",
+                      "result": "multi-engine ahead"
+                    },
+                    {
+                      "group": "Application corpora",
                       "label": "Sightglass · shootout-base64",
                       "workload": "base64 shootout kernel",
-                      "wago": "2.11ms",
-                      "wazero": "8.97ms",
+                      "wago": "2.18ms",
+                      "wazero": "9.45ms",
                       "engines": {
-                        "railshot": "2.11ms",
-                        "wazero": "8.97ms"
+                        "railshot": "2.18ms",
+                        "wazero": "9.45ms"
                       },
                       "comparison": "4.3× faster",
                       "result": "multi-engine ahead"
@@ -4779,50 +4779,50 @@
                       "group": "Application corpora",
                       "label": "sqlite3 · query",
                       "workload": "SQLite WASI shell recursively generates one million rows and computes four exact aggregates",
-                      "wago": "95.3ms",
-                      "wazero": "385.8ms",
+                      "wago": "93ms",
+                      "wazero": "401.4ms",
                       "engines": {
-                        "railshot": "95.3ms",
-                        "wazero": "385.8ms"
+                        "railshot": "93ms",
+                        "wazero": "401.4ms"
                       },
-                      "comparison": "4× faster",
+                      "comparison": "4.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "swift-format · format-source",
                       "workload": "Swift formatter CLI reformats source from stdin with an exact output oracle",
-                      "wago": "1139.5ms",
-                      "wazero": "4980.7ms",
+                      "wago": "1146.3ms",
+                      "wazero": "4936.7ms",
                       "engines": {
-                        "railshot": "1139.5ms",
-                        "wazero": "4980.7ms"
+                        "railshot": "1146.3ms",
+                        "wazero": "4936.7ms"
                       },
-                      "comparison": "4.4× faster",
+                      "comparison": "4.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "TinyXML-2 · tinyxml2",
                       "workload": "TinyXML-2 parse, query, and DOM mutation workload",
-                      "wago": "3.30ms",
-                      "wazero": "13.9ms",
+                      "wago": "3.31ms",
+                      "wazero": "14.7ms",
                       "engines": {
-                        "railshot": "3.30ms",
-                        "wazero": "13.9ms"
+                        "railshot": "3.31ms",
+                        "wazero": "14.7ms"
                       },
-                      "comparison": "4.2× faster",
+                      "comparison": "4.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "uutils/coreutils · sort",
                       "workload": "Rust coreutils sorts a pinned twenty-four-record text file",
-                      "wago": "376.6ms",
-                      "wazero": "1375.4ms",
+                      "wago": "373.1ms",
+                      "wazero": "1388ms",
                       "engines": {
-                        "railshot": "376.6ms",
-                        "wazero": "1375.4ms"
+                        "railshot": "373.1ms",
+                        "wazero": "1388ms"
                       },
                       "comparison": "3.7× faster",
                       "result": "multi-engine ahead"
@@ -4831,24 +4831,24 @@
                       "group": "Application corpora",
                       "label": "Wren · wren",
                       "workload": "Wren VM executing classes, closures, collections, and allocation-heavy loops",
-                      "wago": "9.41ms",
-                      "wazero": "31.7ms",
+                      "wago": "9.20ms",
+                      "wazero": "31.8ms",
                       "engines": {
-                        "railshot": "9.41ms",
-                        "wazero": "31.7ms"
+                        "railshot": "9.20ms",
+                        "wazero": "31.8ms"
                       },
-                      "comparison": "3.4× faster",
+                      "comparison": "3.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "yosys · counter",
                       "workload": "Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics",
-                      "wago": "1106.3ms",
-                      "wazero": "4452.6ms",
+                      "wago": "1110.8ms",
+                      "wazero": "4399.8ms",
                       "engines": {
-                        "railshot": "1106.3ms",
-                        "wazero": "4452.6ms"
+                        "railshot": "1110.8ms",
+                        "wazero": "4399.8ms"
                       },
                       "comparison": "4× faster",
                       "result": "multi-engine ahead"
@@ -5194,7 +5194,7 @@
                         "railshot": "1.6 MB",
                         "wazero": "38.3 MB"
                       },
-                      "comparison": "23.3× less",
+                      "comparison": "23.2× less",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -5337,7 +5337,7 @@
                         "railshot": "457 KB",
                         "wazero": "9.3 MB"
                       },
-                      "comparison": "20.8× less",
+                      "comparison": "20.9× less",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -5390,10 +5390,10 @@
                       "label": "tiny",
                       "workload": "minimal module; fixed pipeline overhead",
                       "wago": "4.1µs",
-                      "wazero": "8µs",
+                      "wazero": "7.8µs",
                       "engines": {
                         "railshot": "4.1µs",
-                        "wazero": "8µs"
+                        "wazero": "7.8µs"
                       },
                       "comparison": "1.9× faster",
                       "result": "multi-engine ahead"
@@ -5402,11 +5402,11 @@
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "call_indirect through a function table",
-                      "wago": "4.5µs",
-                      "wazero": "8.1µs",
+                      "wago": "4.4µs",
+                      "wazero": "7.8µs",
                       "engines": {
-                        "railshot": "4.5µs",
-                        "wazero": "8.1µs"
+                        "railshot": "4.4µs",
+                        "wazero": "7.8µs"
                       },
                       "comparison": "1.8× faster",
                       "result": "multi-engine ahead"
@@ -5428,78 +5428,78 @@
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "recursive call tree with load/store churn at every node",
-                      "wago": "4.3µs",
-                      "wazero": "8.6µs",
+                      "wago": "4.1µs",
+                      "wazero": "9.1µs",
                       "engines": {
-                        "railshot": "4.3µs",
-                        "wazero": "8.6µs"
+                        "railshot": "4.1µs",
+                        "wazero": "9.1µs"
                       },
-                      "comparison": "2× faster",
+                      "comparison": "2.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64)",
-                      "wago": "34.9µs",
-                      "wazero": "13.6µs",
+                      "wago": "35.4µs",
+                      "wazero": "15µs",
                       "engines": {
-                        "railshot": "34.9µs",
-                        "wazero": "13.6µs"
+                        "railshot": "35.4µs",
+                        "wazero": "15µs"
                       },
-                      "comparison": "2.6× slower",
+                      "comparison": "2.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "dense n x n f64 matrix multiply (fp multiply-add + strided memory)",
-                      "wago": "35.4µs",
-                      "wazero": "13.8µs",
+                      "wago": "35.3µs",
+                      "wazero": "15µs",
                       "engines": {
-                        "railshot": "35.4µs",
-                        "wazero": "13.8µs"
+                        "railshot": "35.3µs",
+                        "wazero": "15µs"
                       },
-                      "comparison": "2.6× slower",
+                      "comparison": "2.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt)",
-                      "wago": "35.2µs",
-                      "wazero": "13.8µs",
+                      "wago": "35.9µs",
+                      "wazero": "15.1µs",
                       "engines": {
-                        "railshot": "35.2µs",
-                        "wazero": "13.8µs"
+                        "railshot": "35.9µs",
+                        "wazero": "15.1µs"
                       },
-                      "comparison": "2.5× slower",
+                      "comparison": "2.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math)",
-                      "wago": "35.3µs",
-                      "wazero": "14.3µs",
+                      "wago": "36µs",
+                      "wazero": "15.8µs",
                       "engines": {
-                        "railshot": "35.3µs",
-                        "wazero": "14.3µs"
+                        "railshot": "36µs",
+                        "wazero": "15.8µs"
                       },
-                      "comparison": "2.5× slower",
+                      "comparison": "2.3× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "sha256",
                       "workload": "standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round)",
-                      "wago": "38.2µs",
-                      "wazero": "14.3µs",
+                      "wago": "37.2µs",
+                      "wazero": "15.6µs",
                       "engines": {
-                        "railshot": "38.2µs",
-                        "wazero": "14.3µs"
+                        "railshot": "37.2µs",
+                        "wazero": "15.6µs"
                       },
-                      "comparison": "2.7× slower",
+                      "comparison": "2.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
@@ -5507,129 +5507,129 @@
                       "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "4.6µs",
-                      "wazero": "8.7µs",
+                      "wazero": "9.1µs",
                       "engines": {
                         "railshot": "4.6µs",
-                        "wazero": "8.7µs"
+                        "wazero": "9.1µs"
                       },
-                      "comparison": "1.9× faster",
+                      "comparison": "2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
-                      "wago": "7µs",
-                      "wazero": "10.6µs",
+                      "wago": "6.9µs",
+                      "wazero": "11.2µs",
                       "engines": {
-                        "railshot": "7µs",
-                        "wazero": "10.6µs"
+                        "railshot": "6.9µs",
+                        "wazero": "11.2µs"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
-                      "wago": "7.9µs",
-                      "wazero": "11.7µs",
+                      "wago": "7.6µs",
+                      "wazero": "12.4µs",
                       "engines": {
-                        "railshot": "7.9µs",
-                        "wazero": "11.7µs"
+                        "railshot": "7.6µs",
+                        "wazero": "12.4µs"
                       },
-                      "comparison": "1.5× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors",
-                      "wago": "35.8µs",
-                      "wazero": "14µs",
+                      "wago": "34.6µs",
+                      "wazero": "15.4µs",
                       "engines": {
-                        "railshot": "35.8µs",
-                        "wazero": "14µs"
+                        "railshot": "34.6µs",
+                        "wazero": "15.4µs"
                       },
-                      "comparison": "2.6× slower",
+                      "comparison": "2.2× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "CoreMark 1.0 integer, list, matrix, and state-machine workload",
-                      "wago": "7.2µs",
-                      "wazero": "9.1µs",
+                      "wago": "7µs",
+                      "wazero": "9.4µs",
                       "engines": {
-                        "railshot": "7.2µs",
-                        "wazero": "9.1µs"
+                        "railshot": "7µs",
+                        "wazero": "9.4µs"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "LZ4 compression/decompression with exact size and byte oracles",
-                      "wago": "69.2µs",
-                      "wazero": "18.8µs",
+                      "wago": "66.5µs",
+                      "wazero": "22.9µs",
                       "engines": {
-                        "railshot": "69.2µs",
-                        "wazero": "18.8µs"
+                        "railshot": "66.5µs",
+                        "wazero": "22.9µs"
                       },
-                      "comparison": "3.7× slower",
+                      "comparison": "2.9× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "pcre2",
                       "workload": "PCRE2 Unicode pattern compilation, matching, and capture extraction",
-                      "wago": "16.5µs",
-                      "wazero": "14.3µs",
+                      "wago": "16.7µs",
+                      "wazero": "15.7µs",
                       "engines": {
-                        "railshot": "16.5µs",
-                        "wazero": "14.3µs"
+                        "railshot": "16.7µs",
+                        "wazero": "15.7µs"
                       },
-                      "comparison": "1.2× slower",
+                      "comparison": "1.1× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "QOI image encode/decode with exact byte and pixel oracles",
-                      "wago": "68.8µs",
-                      "wazero": "18.8µs",
+                      "wago": "66.4µs",
+                      "wazero": "21.4µs",
                       "engines": {
-                        "railshot": "68.8µs",
-                        "wazero": "18.8µs"
+                        "railshot": "66.4µs",
+                        "wazero": "21.4µs"
                       },
-                      "comparison": "3.7× slower",
+                      "comparison": "3.1× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson parse, DOM edit, and serialization workload",
-                      "wago": "8.4µs",
-                      "wazero": "10.7µs",
+                      "wago": "9.1µs",
+                      "wazero": "11.2µs",
                       "engines": {
-                        "railshot": "8.4µs",
-                        "wazero": "10.7µs"
+                        "railshot": "9.1µs",
+                        "wazero": "11.2µs"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "zstd",
                       "workload": "Zstandard decompression workload with an exact output oracle",
-                      "wago": "69.6µs",
-                      "wazero": "20.1µs",
+                      "wago": "70.3µs",
+                      "wazero": "21.4µs",
                       "engines": {
-                        "railshot": "69.6µs",
-                        "wazero": "20.1µs"
+                        "railshot": "70.3µs",
+                        "wazero": "21.4µs"
                       },
-                      "comparison": "3.5× slower",
+                      "comparison": "3.3× slower",
                       "result": "multi-engine behind"
                     }
                   ]
@@ -6168,11 +6168,11 @@
                       "group": "Micro modules",
                       "label": "tiny",
                       "workload": "add · micro corpus",
-                      "wago": "27.7ns",
-                      "wazero": "20.9ns",
+                      "wago": "27.2ns",
+                      "wazero": "21.1ns",
                       "engines": {
-                        "railshot": "27.7ns",
-                        "wazero": "20.9ns"
+                        "railshot": "27.2ns",
+                        "wazero": "21.1ns"
                       },
                       "comparison": "1.3× slower",
                       "result": "multi-engine behind"
@@ -6181,37 +6181,37 @@
                       "group": "Calls",
                       "label": "dispatch",
                       "workload": "apply · calls corpus",
-                      "wago": "29.5ns",
-                      "wazero": "22.2ns",
+                      "wago": "30.1ns",
+                      "wazero": "22ns",
                       "engines": {
-                        "railshot": "29.5ns",
-                        "wazero": "22.2ns"
+                        "railshot": "30.1ns",
+                        "wazero": "22ns"
                       },
-                      "comparison": "1.3× slower",
+                      "comparison": "1.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Calls",
                       "label": "fib_rec",
                       "workload": "fib · calls corpus",
-                      "wago": "565µs",
-                      "wazero": "1.60ms",
+                      "wago": "596µs",
+                      "wazero": "1.59ms",
                       "engines": {
-                        "railshot": "565µs",
-                        "wazero": "1.60ms"
+                        "railshot": "596µs",
+                        "wazero": "1.59ms"
                       },
-                      "comparison": "2.8× faster",
+                      "comparison": "2.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Calls and memory",
                       "label": "memory_tree",
                       "workload": "run · calls+memory corpus",
-                      "wago": "4.9µs",
-                      "wazero": "12µs",
+                      "wago": "4.8µs",
+                      "wazero": "11.7µs",
                       "engines": {
-                        "railshot": "4.9µs",
-                        "wazero": "12µs"
+                        "railshot": "4.8µs",
+                        "wazero": "11.7µs"
                       },
                       "comparison": "2.4× faster",
                       "result": "multi-engine ahead"
@@ -6220,11 +6220,11 @@
                       "group": "Compute kernels",
                       "label": "fannkuch",
                       "workload": "run · compute corpus",
-                      "wago": "921µs",
-                      "wazero": "1.04ms",
+                      "wago": "914µs",
+                      "wazero": "1.03ms",
                       "engines": {
-                        "railshot": "921µs",
-                        "wazero": "1.04ms"
+                        "railshot": "914µs",
+                        "wazero": "1.03ms"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6233,24 +6233,24 @@
                       "group": "Compute kernels",
                       "label": "matmul",
                       "workload": "run · compute corpus",
-                      "wago": "80µs",
+                      "wago": "79.4µs",
                       "wazero": "227µs",
                       "engines": {
-                        "railshot": "80µs",
+                        "railshot": "79.4µs",
                         "wazero": "227µs"
                       },
-                      "comparison": "2.8× faster",
+                      "comparison": "2.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Compute kernels",
                       "label": "nbody",
                       "workload": "step · compute corpus",
-                      "wago": "138µs",
-                      "wazero": "149µs",
+                      "wago": "136µs",
+                      "wazero": "147µs",
                       "engines": {
-                        "railshot": "138µs",
-                        "wazero": "149µs"
+                        "railshot": "136µs",
+                        "wazero": "147µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6259,11 +6259,11 @@
                       "group": "Compute kernels",
                       "label": "raytrace",
                       "workload": "render · compute corpus",
-                      "wago": "248µs",
-                      "wazero": "248µs",
+                      "wago": "247µs",
+                      "wazero": "249µs",
                       "engines": {
-                        "railshot": "248µs",
-                        "wazero": "248µs"
+                        "railshot": "247µs",
+                        "wazero": "249µs"
                       },
                       "comparison": "parity",
                       "result": "tie"
@@ -6273,10 +6273,10 @@
                       "label": "sha256",
                       "workload": "hashN · compute corpus",
                       "wago": "24.4µs",
-                      "wazero": "45µs",
+                      "wazero": "44.9µs",
                       "engines": {
                         "railshot": "24.4µs",
-                        "wazero": "45µs"
+                        "wazero": "44.9µs"
                       },
                       "comparison": "1.8× faster",
                       "result": "multi-engine ahead"
@@ -6285,11 +6285,11 @@
                       "group": "Real-world SIMD",
                       "label": "blake-as (simd)",
                       "workload": "hashN · real-simd corpus",
-                      "wago": "419µs",
-                      "wazero": "443µs",
+                      "wago": "415µs",
+                      "wazero": "445µs",
                       "engines": {
-                        "railshot": "419µs",
-                        "wazero": "443µs"
+                        "railshot": "415µs",
+                        "wazero": "445µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6298,26 +6298,26 @@
                       "group": "Real-world SIMD",
                       "label": "json-as (simd)",
                       "workload": "serialize + deserialize · geometric mean",
-                      "wago": "28.1µs",
-                      "wazero": "39.1µs",
+                      "wago": "29.3µs",
+                      "wazero": "39.2µs",
                       "engines": {
-                        "railshot": "28.1µs",
-                        "wazero": "39.1µs"
+                        "railshot": "29.3µs",
+                        "wazero": "39.2µs"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Real-world SIMD",
                       "label": "utf-as (simd)",
                       "workload": "convertN · real-simd corpus",
-                      "wago": "38.1µs",
-                      "wazero": "98.6µs",
+                      "wago": "36.7µs",
+                      "wazero": "97.8µs",
                       "engines": {
-                        "railshot": "38.1µs",
-                        "wazero": "98.6µs"
+                        "railshot": "36.7µs",
+                        "wazero": "97.8µs"
                       },
-                      "comparison": "2.6× faster",
+                      "comparison": "2.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -6325,10 +6325,10 @@
                       "label": "utf-as (simd)",
                       "workload": "validateN · real-simd corpus",
                       "wago": "131µs",
-                      "wazero": "162µs",
+                      "wazero": "160µs",
                       "engines": {
                         "railshot": "131µs",
-                        "wazero": "162µs"
+                        "wazero": "160µs"
                       },
                       "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
@@ -6337,11 +6337,11 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_derive_key · semantic corpus",
-                      "wago": "232µs",
-                      "wazero": "261µs",
+                      "wago": "240µs",
+                      "wazero": "259µs",
                       "engines": {
-                        "railshot": "232µs",
-                        "wazero": "261µs"
+                        "railshot": "240µs",
+                        "wazero": "259µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6350,11 +6350,11 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_hash · semantic corpus",
-                      "wago": "226µs",
-                      "wazero": "252µs",
+                      "wago": "234µs",
+                      "wazero": "251µs",
                       "engines": {
-                        "railshot": "226µs",
-                        "wazero": "252µs"
+                        "railshot": "234µs",
+                        "wazero": "251µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6363,11 +6363,11 @@
                       "group": "Semantic corpus",
                       "label": "blake3",
                       "workload": "blake3_keyed_hash · semantic corpus",
-                      "wago": "229µs",
-                      "wazero": "251µs",
+                      "wago": "235µs",
+                      "wazero": "252µs",
                       "engines": {
-                        "railshot": "229µs",
-                        "wazero": "251µs"
+                        "railshot": "235µs",
+                        "wazero": "252µs"
                       },
                       "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
@@ -6376,24 +6376,24 @@
                       "group": "Semantic corpus",
                       "label": "coremark",
                       "workload": "coremark_run · semantic corpus",
-                      "wago": "29.8ms",
-                      "wazero": "42.7ms",
+                      "wago": "29.2ms",
+                      "wazero": "42.8ms",
                       "engines": {
-                        "railshot": "29.8ms",
-                        "wazero": "42.7ms"
+                        "railshot": "29.2ms",
+                        "wazero": "42.8ms"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "lz4_compress_run · semantic corpus",
-                      "wago": "25µs",
-                      "wazero": "40µs",
+                      "wago": "25.2µs",
+                      "wazero": "39.8µs",
                       "engines": {
-                        "railshot": "25µs",
-                        "wazero": "40µs"
+                        "railshot": "25.2µs",
+                        "wazero": "39.8µs"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -6402,13 +6402,13 @@
                       "group": "Semantic corpus",
                       "label": "lz4",
                       "workload": "lz4_decompress_run · semantic corpus",
-                      "wago": "1.9µs",
-                      "wazero": "5.1µs",
+                      "wago": "2µs",
+                      "wazero": "5.3µs",
                       "engines": {
-                        "railshot": "1.9µs",
-                        "wazero": "5.1µs"
+                        "railshot": "2µs",
+                        "wazero": "5.3µs"
                       },
-                      "comparison": "2.6× faster",
+                      "comparison": "2.7× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -6416,23 +6416,23 @@
                       "label": "pcre2",
                       "workload": "pcre2_run · semantic corpus",
                       "wago": "7.9µs",
-                      "wazero": "12.3µs",
+                      "wazero": "11.8µs",
                       "engines": {
                         "railshot": "7.9µs",
-                        "wazero": "12.3µs"
+                        "wazero": "11.8µs"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Semantic corpus",
                       "label": "qoi",
                       "workload": "qoi_decode_run · semantic corpus",
-                      "wago": "5.2µs",
-                      "wazero": "7µs",
+                      "wago": "5µs",
+                      "wazero": "6.9µs",
                       "engines": {
-                        "railshot": "5.2µs",
-                        "wazero": "7µs"
+                        "railshot": "5µs",
+                        "wazero": "6.9µs"
                       },
                       "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
@@ -6454,11 +6454,11 @@
                       "group": "Semantic corpus",
                       "label": "yyjson",
                       "workload": "yyjson_run · semantic corpus",
-                      "wago": "822.5ns",
-                      "wazero": "772.2ns",
+                      "wago": "839.8ns",
+                      "wazero": "779.3ns",
                       "engines": {
-                        "railshot": "822.5ns",
-                        "wazero": "772.2ns"
+                        "railshot": "839.8ns",
+                        "wazero": "779.3ns"
                       },
                       "comparison": "1.1× slower",
                       "result": "multi-engine behind"
@@ -6468,36 +6468,36 @@
                       "label": "zstd",
                       "workload": "zstd_decompress_run · semantic corpus",
                       "wago": "5.6µs",
-                      "wazero": "6.5µs",
+                      "wazero": "6.4µs",
                       "engines": {
                         "railshot": "5.6µs",
-                        "wazero": "6.5µs"
+                        "wazero": "6.4µs"
                       },
-                      "comparison": "1.2× faster",
+                      "comparison": "1.1× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "age · decrypt",
                       "workload": "age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle",
-                      "wago": "2.43ms",
-                      "wazero": "3.17ms",
+                      "wago": "2.51ms",
+                      "wazero": "3.49ms",
                       "engines": {
-                        "railshot": "2.43ms",
-                        "wazero": "3.17ms"
+                        "railshot": "2.51ms",
+                        "wazero": "3.49ms"
                       },
-                      "comparison": "1.3× faster",
+                      "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "brotli · compress",
                       "workload": "Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle",
-                      "wago": "673.5ms",
-                      "wazero": "834.7ms",
+                      "wago": "704.1ms",
+                      "wazero": "824.5ms",
                       "engines": {
-                        "railshot": "673.5ms",
-                        "wazero": "834.7ms"
+                        "railshot": "704.1ms",
+                        "wazero": "824.5ms"
                       },
                       "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
@@ -6506,24 +6506,24 @@
                       "group": "Application corpora",
                       "label": "cJSON · cjson",
                       "workload": "cJSON parse, DOM mutation, and compact serialization workload",
-                      "wago": "30.4µs",
-                      "wazero": "13µs",
+                      "wago": "31.6µs",
+                      "wazero": "14.5µs",
                       "engines": {
-                        "railshot": "30.4µs",
-                        "wazero": "13µs"
+                        "railshot": "31.6µs",
+                        "wazero": "14.5µs"
                       },
-                      "comparison": "2.3× slower",
+                      "comparison": "2.2× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "esbuild · minify",
                       "workload": "esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript",
-                      "wago": "302ms",
-                      "wazero": "793.9ms",
+                      "wago": "303.1ms",
+                      "wazero": "785.2ms",
                       "engines": {
-                        "railshot": "302ms",
-                        "wazero": "793.9ms"
+                        "railshot": "303.1ms",
+                        "wazero": "785.2ms"
                       },
                       "comparison": "2.6× faster",
                       "result": "multi-engine ahead"
@@ -6532,10 +6532,10 @@
                       "group": "Application corpora",
                       "label": "icestorm · generate",
                       "workload": "icebram generates seeded 8-bit BRAM initialization words",
-                      "wago": "292µs",
+                      "wago": "297µs",
                       "wazero": "140µs",
                       "engines": {
-                        "railshot": "292µs",
+                        "railshot": "297µs",
                         "wazero": "140µs"
                       },
                       "comparison": "2.1× slower",
@@ -6545,11 +6545,11 @@
                       "group": "Application corpora",
                       "label": "jq · json-transform",
                       "workload": "jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle",
-                      "wago": "382.3ms",
-                      "wazero": "619.4ms",
+                      "wago": "380.9ms",
+                      "wazero": "597ms",
                       "engines": {
-                        "railshot": "382.3ms",
-                        "wazero": "619.4ms"
+                        "railshot": "380.9ms",
+                        "wazero": "597ms"
                       },
                       "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
@@ -6558,37 +6558,37 @@
                       "group": "Application corpora",
                       "label": "json2csv · people",
                       "workload": "json2csv CLI extracts nested fields from newline-delimited JSON into CSV",
-                      "wago": "74.3µs",
-                      "wazero": "49.8µs",
+                      "wago": "79.6µs",
+                      "wazero": "51.2µs",
                       "engines": {
-                        "railshot": "74.3µs",
-                        "wazero": "49.8µs"
+                        "railshot": "79.6µs",
+                        "wazero": "51.2µs"
                       },
-                      "comparison": "1.5× slower",
+                      "comparison": "1.6× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "LodePNG · lodepng",
                       "workload": "LodePNG RGBA encoding, decoding, and exact pixel round trip",
-                      "wago": "1.69ms",
-                      "wazero": "3.31ms",
+                      "wago": "1.72ms",
+                      "wazero": "3.23ms",
                       "engines": {
-                        "railshot": "1.69ms",
-                        "wazero": "3.31ms"
+                        "railshot": "1.72ms",
+                        "wazero": "3.23ms"
                       },
-                      "comparison": "2× faster",
+                      "comparison": "1.9× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Lua · lua",
                       "workload": "Lua 5.4 interpreter running tables, closures, patterns, and GC",
-                      "wago": "97.4µs",
-                      "wazero": "101µs",
+                      "wago": "104µs",
+                      "wazero": "103µs",
                       "engines": {
-                        "railshot": "97.4µs",
-                        "wazero": "101µs"
+                        "railshot": "104µs",
+                        "wazero": "103µs"
                       },
                       "comparison": "parity",
                       "result": "tie"
@@ -6597,24 +6597,24 @@
                       "group": "Application corpora",
                       "label": "php · buckets",
                       "workload": "PHP 8.2.6 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "3.97ms",
-                      "wazero": "4.91ms",
+                      "wago": "3.86ms",
+                      "wazero": "5.10ms",
                       "engines": {
-                        "railshot": "3.97ms",
-                        "wazero": "4.91ms"
+                        "railshot": "3.86ms",
+                        "wazero": "5.10ms"
                       },
-                      "comparison": "1.2× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "quickjs · script",
                       "workload": "QuickJS WASI CLI parses and aggregates 50,000 generated service events",
-                      "wago": "145.9ms",
-                      "wazero": "175.1ms",
+                      "wago": "148.5ms",
+                      "wazero": "176.5ms",
                       "engines": {
-                        "railshot": "145.9ms",
-                        "wazero": "175.1ms"
+                        "railshot": "148.5ms",
+                        "wazero": "176.5ms"
                       },
                       "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
@@ -6623,50 +6623,50 @@
                       "group": "Application corpora",
                       "label": "ripgrep · source",
                       "workload": "ripgrep searches a JavaScript program and returns exact matching source lines",
-                      "wago": "574µs",
-                      "wazero": "481µs",
+                      "wago": "678µs",
+                      "wazero": "527µs",
                       "engines": {
-                        "railshot": "574µs",
-                        "wazero": "481µs"
+                        "railshot": "678µs",
+                        "wazero": "527µs"
                       },
-                      "comparison": "1.2× slower",
+                      "comparison": "1.3× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "ruby · buckets",
                       "workload": "Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets",
-                      "wago": "10.6ms",
-                      "wazero": "12.1ms",
+                      "wago": "11.3ms",
+                      "wazero": "13.3ms",
                       "engines": {
-                        "railshot": "10.6ms",
-                        "wazero": "12.1ms"
+                        "railshot": "11.3ms",
+                        "wazero": "13.3ms"
                       },
-                      "comparison": "1.1× faster",
+                      "comparison": "1.2× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · libsodium-hash",
                       "workload": "libsodium hash self-test, 1,061 iterations",
-                      "wago": "2.49ms",
-                      "wazero": "4.07ms",
+                      "wago": "2.59ms",
+                      "wazero": "3.86ms",
                       "engines": {
-                        "railshot": "2.49ms",
-                        "wazero": "4.07ms"
+                        "railshot": "2.59ms",
+                        "wazero": "3.86ms"
                       },
-                      "comparison": "1.6× faster",
+                      "comparison": "1.5× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Sightglass · shootout-base64",
                       "workload": "base64 shootout kernel",
-                      "wago": "1.88ms",
-                      "wazero": "1.91ms",
+                      "wago": "1.93ms",
+                      "wazero": "1.93ms",
                       "engines": {
-                        "railshot": "1.88ms",
-                        "wazero": "1.91ms"
+                        "railshot": "1.93ms",
+                        "wazero": "1.93ms"
                       },
                       "comparison": "parity",
                       "result": "tie"
@@ -6675,11 +6675,11 @@
                       "group": "Application corpora",
                       "label": "sqlite3 · query",
                       "workload": "SQLite WASI shell recursively generates one million rows and computes four exact aggregates",
-                      "wago": "262ms",
-                      "wazero": "366.1ms",
+                      "wago": "262.1ms",
+                      "wazero": "365.5ms",
                       "engines": {
-                        "railshot": "262ms",
-                        "wazero": "366.1ms"
+                        "railshot": "262.1ms",
+                        "wazero": "365.5ms"
                       },
                       "comparison": "1.4× faster",
                       "result": "multi-engine ahead"
@@ -6688,24 +6688,24 @@
                       "group": "Application corpora",
                       "label": "swift-format · format-source",
                       "workload": "Swift formatter CLI reformats source from stdin with an exact output oracle",
-                      "wago": "14.6ms",
-                      "wazero": "17.1ms",
+                      "wago": "17.2ms",
+                      "wazero": "17.7ms",
                       "engines": {
-                        "railshot": "14.6ms",
-                        "wazero": "17.1ms"
+                        "railshot": "17.2ms",
+                        "wazero": "17.7ms"
                       },
-                      "comparison": "1.2× faster",
-                      "result": "multi-engine ahead"
+                      "comparison": "parity",
+                      "result": "tie"
                     },
                     {
                       "group": "Application corpora",
                       "label": "TinyXML-2 · tinyxml2",
                       "workload": "TinyXML-2 parse, query, and DOM mutation workload",
-                      "wago": "35.1µs",
-                      "wazero": "15.8µs",
+                      "wago": "37.4µs",
+                      "wazero": "17.4µs",
                       "engines": {
-                        "railshot": "35.1µs",
-                        "wazero": "15.8µs"
+                        "railshot": "37.4µs",
+                        "wazero": "17.4µs"
                       },
                       "comparison": "2.2× slower",
                       "result": "multi-engine behind"
@@ -6714,40 +6714,40 @@
                       "group": "Application corpora",
                       "label": "uutils/coreutils · sort",
                       "workload": "Rust coreutils sorts a pinned twenty-four-record text file",
-                      "wago": "470µs",
-                      "wazero": "362µs",
+                      "wago": "557µs",
+                      "wazero": "389µs",
                       "engines": {
-                        "railshot": "470µs",
-                        "wazero": "362µs"
+                        "railshot": "557µs",
+                        "wazero": "389µs"
                       },
-                      "comparison": "1.3× slower",
+                      "comparison": "1.4× slower",
                       "result": "multi-engine behind"
                     },
                     {
                       "group": "Application corpora",
                       "label": "Wren · wren",
                       "workload": "Wren VM executing classes, closures, collections, and allocation-heavy loops",
-                      "wago": "444µs",
-                      "wazero": "610µs",
+                      "wago": "468µs",
+                      "wazero": "631µs",
                       "engines": {
-                        "railshot": "444µs",
-                        "wazero": "610µs"
+                        "railshot": "468µs",
+                        "wazero": "631µs"
                       },
-                      "comparison": "1.4× faster",
+                      "comparison": "1.3× faster",
                       "result": "multi-engine ahead"
                     },
                     {
                       "group": "Application corpora",
                       "label": "yosys · counter",
                       "workload": "Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics",
-                      "wago": "3.02ms",
-                      "wazero": "3.28ms",
+                      "wago": "3.35ms",
+                      "wazero": "3.02ms",
                       "engines": {
-                        "railshot": "3.02ms",
-                        "wazero": "3.28ms"
+                        "railshot": "3.35ms",
+                        "wazero": "3.02ms"
                       },
-                      "comparison": "1.1× faster",
-                      "result": "multi-engine ahead"
+                      "comparison": "1.1× slower",
+                      "result": "multi-engine behind"
                     }
                   ]
                 }

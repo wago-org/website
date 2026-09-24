@@ -200,59 +200,59 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 5.30ms | 21.9ms |
+|  | Compile | fresh process | 4.84ms | 20.5ms |
 |  | Compile heap | per compile | 1.3 MB | 9.7 MB |
 |  | Machine code | compiled corpus | 134 KB | 240 KB |
-|  | Instantiate | runnable corpus | 11.9µs | 24.8µs |
-|  | Execution | runnable corpus | 32.8µs | 52.4µs |
-|  | End-to-end latency | compile + instantiate | 5.31ms | 21.9ms |
-|  | Host → Wasm | prepared (i32) → i32 | 20.8ns | 32.7ns |
-|  | Wasm → host | typed import callback | 301.7ns | 455.2ns |
+|  | Instantiate | runnable corpus | 11.4µs | 23.9µs |
+|  | Execution | runnable corpus | 31.7µs | 49.7µs |
+|  | End-to-end latency | compile + instantiate | 4.85ms | 20.6ms |
+|  | Host → Wasm | reserved session (i32) → i32 | 8.4ns | 33.3ns |
+|  | Wasm → host | reserved typed import callback | 205.6ns | 458.9ns |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 21.1µs | 51.3µs |
-| Calls | dispatch | call_indirect through a function table | 37.7µs | 73.7µs |
-| Calls | fib_rec | recursion; call/return heavy | 22µs | 56.6µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 42.5µs | 96.8µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 145µs | 735µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 86.5µs | 399µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 117µs | 427µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 336µs | 1.40ms |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 116µs | 459µs |
-| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.45ms | 2.81ms |
-| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.85ms | 6.79ms |
-| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 805µs | 2.35ms |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 1.26ms | 2.78ms |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 764µs | 3.22ms |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 223µs | 1.13ms |
-| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 14.9ms | 154.2ms |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 262µs | 1.01ms |
-| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 9.66ms | 60.4ms |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 4.81ms | 26ms |
-| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 368.1ms | 1602.7ms |
-| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 33.1ms | 257.2ms |
-| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 3.96ms | 20.2ms |
-| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 1010.4ms | 4828.5ms |
-| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 33.9ms | 80.7ms |
-| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 45.4ms | 167.7ms |
-| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 20.9ms | 175.9ms |
-| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 7.37ms | 34ms |
-| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 15.9ms | 65ms |
-| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 781.5ms | 3400.3ms |
-| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 50.3ms | 214.7ms |
-| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 209.9ms | 794.1ms |
-| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 370.7ms | 2991.5ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 4.16ms | 16.1ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.93ms | 13.6ms |
-| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 104.7ms | 519.4ms |
-| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 1424.7ms | 6138.5ms |
-| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 4.09ms | 19.5ms |
-| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 430.4ms | 1896.1ms |
-| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 10.8ms | 41.4ms |
-| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 1308.6ms | 5888.3ms |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 15µs | 51.4µs |
+| Calls | dispatch | call_indirect through a function table | 28µs | 71µs |
+| Calls | fib_rec | recursion; call/return heavy | 17.5µs | 53.3µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 32.5µs | 86.7µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 129µs | 650µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 72.1µs | 357µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 100µs | 381µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 286µs | 1.20ms |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 102µs | 435µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.29ms | 2.52ms |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.73ms | 6.06ms |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 775µs | 2.01ms |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 1.15ms | 2.54ms |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 709µs | 2.79ms |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 194µs | 1.01ms |
+| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 13.7ms | 155ms |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 224µs | 905µs |
+| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 8.91ms | 48.3ms |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 4.33ms | 26.7ms |
+| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 353ms | 1543.6ms |
+| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 33.9ms | 298.7ms |
+| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 3.75ms | 18.3ms |
+| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 976.3ms | 4569ms |
+| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 32.6ms | 77.1ms |
+| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 43.2ms | 158.7ms |
+| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 20.1ms | 166.6ms |
+| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 7.22ms | 35.5ms |
+| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 15.4ms | 62.2ms |
+| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 755.5ms | 3345.5ms |
+| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 48.3ms | 203.7ms |
+| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 200.9ms | 762.2ms |
+| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 355.2ms | 2795.4ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 4.00ms | 15.4ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.81ms | 12.5ms |
+| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 101.1ms | 469.6ms |
+| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 1404.6ms | 5892.3ms |
+| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 3.84ms | 19.1ms |
+| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 413.7ms | 1766.1ms |
+| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 10.5ms | 39.8ms |
+| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 1250ms | 5595ms |
 
 ##### Compile memory
 
@@ -277,7 +277,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 112 KB | 833 KB |
 | Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 3.8 MB | 50.6 MB |
 | Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 1.6 MB | 23.5 MB |
-| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 71.9 MB | 88.4 MB |
+| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 71.9 MB | 88.5 MB |
 | Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 12.4 MB | 193.7 MB |
 | Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 562 KB | 8.6 MB |
 | Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 153.4 MB | 296.2 MB |
@@ -303,25 +303,25 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 8.2µs | 8.7µs |
-| Calls | dispatch | call_indirect through a function table | 8.6µs | 8.9µs |
-| Calls | fib_rec | recursion; call/return heavy | 8.2µs | 8.7µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 8.2µs | 12.4µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 8.5µs | 40.2µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 8.5µs | 41.1µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 8.5µs | 40.8µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 9.2µs | 42.4µs |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 11.4µs | 44.5µs |
-| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 10.9µs | 12.4µs |
-| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 17.1µs | 15µs |
-| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 22.7µs | 17.7µs |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 11.2µs | 40.9µs |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 10.6µs | 14.7µs |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 11.8µs | 64.5µs |
-| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 66.5µs | 23.9µs |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 9.6µs | 75.4µs |
-| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 18.8µs | 16.4µs |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 12.6µs | 79.6µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 7.9µs | 8.4µs |
+| Calls | dispatch | call_indirect through a function table | 8.3µs | 8.2µs |
+| Calls | fib_rec | recursion; call/return heavy | 7.9µs | 8.3µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 7.9µs | 10.7µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 8.2µs | 41.3µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 8.1µs | 40.4µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 8.2µs | 40.3µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 8.8µs | 41.2µs |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 10.9µs | 43.5µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 10.5µs | 12.4µs |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 16.1µs | 14.4µs |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 21.7µs | 16.2µs |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 10.9µs | 42.8µs |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 10.3µs | 12.9µs |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 11.3µs | 65.4µs |
+| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 60.8µs | 28.9µs |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 9.3µs | 67.2µs |
+| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 17.6µs | 15.1µs |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 12.2µs | 71.6µs |
 
 ##### Machine code
 
@@ -372,51 +372,51 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | add · micro corpus | 22.5ns | 31.8ns |
-| Calls | dispatch | apply · calls corpus | 23.7ns | 34.7ns |
-| Calls | fib_rec | fib · calls corpus | 907µs | 2.16ms |
-| Calls and memory | memory_tree | run · calls+memory corpus | 9.3µs | 21.9µs |
-| Compute kernels | fannkuch | run · compute corpus | 1.09ms | 1.45ms |
-| Compute kernels | matmul | run · compute corpus | 84.3µs | 313µs |
-| Compute kernels | nbody | step · compute corpus | 289µs | 360µs |
-| Compute kernels | raytrace | render · compute corpus | 380µs | 369µs |
-| Compute kernels | sha256 | hashN · compute corpus | 34.5µs | 54.1µs |
-| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 435µs | 527µs |
-| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 34.9µs | 56.9µs |
-| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 51.4µs | 69.5µs |
-| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 152µs | 190µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 285µs | 316µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 278µs | 303µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 278µs | 303µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 35.7ms | 54ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 32.2µs | 53.8µs |
-| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.2µs | 5.6µs |
-| Semantic corpus | pcre2 | pcre2_run · semantic corpus | 10µs | 18.3µs |
-| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 6µs | 14µs |
-| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 8.3µs | 13.3µs |
-| Semantic corpus | yyjson | yyjson_run · semantic corpus | 849.4ns | 1.3µs |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 6µs | 8.4µs |
-| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 5.13ms | 6.53ms |
-| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 793.8ms | 1266ms |
-| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 56.1µs | 20.7µs |
-| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 563.6ms | 1237.5ms |
-| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 481µs | 281µs |
-| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 487.5ms | 794.4ms |
-| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 136µs | 83.6µs |
-| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 2.56ms | 4.56ms |
-| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 161µs | 171µs |
-| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 9.89ms | 7.96ms |
-| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 166.7ms | 272ms |
-| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 1.51ms | 1.20ms |
-| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 25.1ms | 53.2ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 4.13ms | 7.61ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 3.21ms | 3.16ms |
-| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 289.2ms | 761.3ms |
-| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 35.4ms | 36.1ms |
-| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 70.8µs | 29.2µs |
-| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 2.33ms | 1.52ms |
-| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 629µs | 1.13ms |
-| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 6.00ms | 8.54ms |
+| Micro modules | tiny | add · micro corpus | 21.3ns | 27.1ns |
+| Calls | dispatch | apply · calls corpus | 22.7ns | 32.3ns |
+| Calls | fib_rec | fib · calls corpus | 867µs | 2.08ms |
+| Calls and memory | memory_tree | run · calls+memory corpus | 9.1µs | 20.9µs |
+| Compute kernels | fannkuch | run · compute corpus | 1.03ms | 1.38ms |
+| Compute kernels | matmul | run · compute corpus | 84.5µs | 299µs |
+| Compute kernels | nbody | step · compute corpus | 267µs | 345µs |
+| Compute kernels | raytrace | render · compute corpus | 357µs | 348µs |
+| Compute kernels | sha256 | hashN · compute corpus | 33.3µs | 52µs |
+| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 418µs | 502µs |
+| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 34µs | 54.5µs |
+| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 50.1µs | 66.5µs |
+| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 146µs | 182µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 279µs | 304µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 271µs | 291µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 271µs | 290µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 34.3ms | 51.9ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 32.7µs | 51.4µs |
+| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2.1µs | 5.3µs |
+| Semantic corpus | pcre2 | pcre2_run · semantic corpus | 9.6µs | 17.5µs |
+| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 5.8µs | 13.5µs |
+| Semantic corpus | qoi | qoi_encode_run · semantic corpus | 8µs | 12.7µs |
+| Semantic corpus | yyjson | yyjson_run · semantic corpus | 829.6ns | 1.3µs |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 5.9µs | 8µs |
+| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 5.03ms | 6.83ms |
+| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 758.8ms | 1109.9ms |
+| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 50.9µs | 19µs |
+| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 538.2ms | 1137.9ms |
+| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 461µs | 200µs |
+| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 472.8ms | 754.8ms |
+| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 129µs | 68.3µs |
+| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 2.54ms | 4.16ms |
+| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 157µs | 139µs |
+| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 9.45ms | 8.52ms |
+| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 163.8ms | 263.3ms |
+| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 1.46ms | 1.11ms |
+| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 23.6ms | 44.6ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 3.49ms | 6.08ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 3.20ms | 3.04ms |
+| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 282ms | 741.2ms |
+| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 33.9ms | 42.9ms |
+| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 63.2µs | 25.8µs |
+| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 2.30ms | 1.02ms |
+| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 645µs | 882µs |
+| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 5.60ms | 7.79ms |
 
 ### arm64
 
@@ -426,59 +426,59 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | fresh process | 3.94ms | 13.9ms |
+|  | Compile | fresh process | 3.84ms | 14.6ms |
 |  | Compile heap | per compile | 1 MB | 9.6 MB |
 |  | Machine code | compiled corpus | 148 KB | 229 KB |
-|  | Instantiate | runnable corpus | 15.8µs | 12µs |
-|  | Execution | runnable corpus | 26.3µs | 36.8µs |
-|  | End-to-end latency | compile + instantiate | 3.95ms | 13.9ms |
-|  | Host → Wasm | prepared (i32) → i32 | 24.6ns | 21.6ns |
-|  | Wasm → host | typed import callback | 229.5ns | 289.9ns |
+|  | Instantiate | runnable corpus | 15.7µs | 12.9µs |
+|  | Execution | runnable corpus | 26.3µs | 36.6µs |
+|  | End-to-end latency | compile + instantiate | 3.85ms | 14.7ms |
+|  | Host → Wasm | reserved session (i32) → i32 | 5.4ns | 23.9ns |
+|  | Wasm → host | reserved typed import callback | 156.1ns | 322.9ns |
 
 ##### Compile latency
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 15.2µs | 25.1µs |
-| Calls | dispatch | call_indirect through a function table | 27.2µs | 37.5µs |
-| Calls | fib_rec | recursion; call/return heavy | 12.3µs | 23.9µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 27.7µs | 46µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 98.7µs | 374µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 52.6µs | 183µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 81.8µs | 209µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 220µs | 621µs |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 74.3µs | 245µs |
-| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 881µs | 1.40ms |
-| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.23ms | 4.72ms |
-| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 532µs | 1.31ms |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 821µs | 1.61ms |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 418µs | 1.82ms |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 154µs | 619µs |
-| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 10.7ms | 101.1ms |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 166µs | 512µs |
-| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 7.41ms | 35.5ms |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 3.58ms | 19.1ms |
-| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 301.9ms | 1242.8ms |
-| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 25.1ms | 174.6ms |
-| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 3.06ms | 14.8ms |
-| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 817.3ms | 3758.4ms |
-| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 27.3ms | 59.9ms |
-| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 38.2ms | 129.3ms |
-| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 18ms | 127.1ms |
-| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 6.21ms | 25.3ms |
-| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 13.6ms | 50.7ms |
-| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 634.7ms | 2765.2ms |
-| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 43.8ms | 164.7ms |
-| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 176.1ms | 584.4ms |
-| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 323.4ms | 2180.1ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 3.22ms | 11ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.11ms | 8.97ms |
-| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 95.3ms | 385.8ms |
-| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 1139.5ms | 4980.7ms |
-| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 3.30ms | 13.9ms |
-| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 376.6ms | 1375.4ms |
-| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 9.41ms | 31.7ms |
-| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 1106.3ms | 4452.6ms |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 11.1µs | 29.1µs |
+| Calls | dispatch | call_indirect through a function table | 21.7µs | 43.9µs |
+| Calls | fib_rec | recursion; call/return heavy | 12.6µs | 28.9µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 22.4µs | 48.5µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 97.9µs | 426µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 51.9µs | 198µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 82.1µs | 225µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 213µs | 732µs |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 75.6µs | 295µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 865µs | 1.47ms |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.23ms | 4.71ms |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 510µs | 1.33ms |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 748µs | 1.57ms |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 404µs | 1.90ms |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 142µs | 602µs |
+| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 10.8ms | 118.3ms |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 153µs | 529µs |
+| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 7.76ms | 38.4ms |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 3.66ms | 20.6ms |
+| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 297.5ms | 1253.3ms |
+| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 25.1ms | 224.4ms |
+| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 3.16ms | 14.4ms |
+| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 823.7ms | 3683.6ms |
+| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 27.4ms | 58.8ms |
+| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 38.1ms | 125.7ms |
+| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 17.8ms | 127.9ms |
+| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 6.15ms | 27ms |
+| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 13.7ms | 50ms |
+| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 617.5ms | 2866.6ms |
+| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 43.4ms | 165.6ms |
+| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 174.8ms | 592.4ms |
+| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 330.3ms | 2259.4ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 3.28ms | 10.9ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 2.18ms | 9.45ms |
+| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 93ms | 401.4ms |
+| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 1146.3ms | 4936.7ms |
+| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 3.31ms | 14.7ms |
+| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 373.1ms | 1388ms |
+| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 9.20ms | 31.8ms |
+| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 1110.8ms | 4399.8ms |
 
 ##### Compile memory
 
@@ -529,25 +529,25 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.1µs | 8µs |
-| Calls | dispatch | call_indirect through a function table | 4.5µs | 8.1µs |
+| Micro modules | tiny | minimal module; fixed pipeline overhead | 4.1µs | 7.8µs |
+| Calls | dispatch | call_indirect through a function table | 4.4µs | 7.8µs |
 | Calls | fib_rec | recursion; call/return heavy | 4.1µs | 7.9µs |
-| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.3µs | 8.6µs |
-| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 34.9µs | 13.6µs |
-| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 35.4µs | 13.8µs |
-| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 35.2µs | 13.8µs |
-| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 35.3µs | 14.3µs |
-| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 38.2µs | 14.3µs |
-| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 4.6µs | 8.7µs |
-| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 7µs | 10.6µs |
-| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 7.9µs | 11.7µs |
-| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 35.8µs | 14µs |
-| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7.2µs | 9.1µs |
-| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 69.2µs | 18.8µs |
-| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 16.5µs | 14.3µs |
-| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 68.8µs | 18.8µs |
-| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 8.4µs | 10.7µs |
-| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 69.6µs | 20.1µs |
+| Calls and memory | memory_tree | recursive call tree with load/store churn at every node | 4.1µs | 9.1µs |
+| Compute kernels | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 35.4µs | 15µs |
+| Compute kernels | matmul | dense n x n f64 matrix multiply (fp multiply-add + strided memory) | 35.3µs | 15µs |
+| Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 35.9µs | 15.1µs |
+| Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 36µs | 15.8µs |
+| Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 37.2µs | 15.6µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 4.6µs | 9.1µs |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 6.9µs | 11.2µs |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 7.6µs | 12.4µs |
+| Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 34.6µs | 15.4µs |
+| Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7µs | 9.4µs |
+| Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 66.5µs | 22.9µs |
+| Semantic corpus | pcre2 | PCRE2 Unicode pattern compilation, matching, and capture extraction | 16.7µs | 15.7µs |
+| Semantic corpus | qoi | QOI image encode/decode with exact byte and pixel oracles | 66.4µs | 21.4µs |
+| Semantic corpus | yyjson | yyjson parse, DOM edit, and serialization workload | 9.1µs | 11.2µs |
+| Semantic corpus | zstd | Zstandard decompression workload with an exact output oracle | 70.3µs | 21.4µs |
 
 ##### Machine code
 
@@ -598,51 +598,51 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-| Micro modules | tiny | add · micro corpus | 27.7ns | 20.9ns |
-| Calls | dispatch | apply · calls corpus | 29.5ns | 22.2ns |
-| Calls | fib_rec | fib · calls corpus | 565µs | 1.60ms |
-| Calls and memory | memory_tree | run · calls+memory corpus | 4.9µs | 12µs |
-| Compute kernels | fannkuch | run · compute corpus | 921µs | 1.04ms |
-| Compute kernels | matmul | run · compute corpus | 80µs | 227µs |
-| Compute kernels | nbody | step · compute corpus | 138µs | 149µs |
-| Compute kernels | raytrace | render · compute corpus | 248µs | 248µs |
-| Compute kernels | sha256 | hashN · compute corpus | 24.4µs | 45µs |
-| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 419µs | 443µs |
-| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 28.1µs | 39.1µs |
-| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 38.1µs | 98.6µs |
-| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 131µs | 162µs |
-| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 232µs | 261µs |
-| Semantic corpus | blake3 | blake3_hash · semantic corpus | 226µs | 252µs |
-| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 229µs | 251µs |
-| Semantic corpus | coremark | coremark_run · semantic corpus | 29.8ms | 42.7ms |
-| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 25µs | 40µs |
-| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 1.9µs | 5.1µs |
-| Semantic corpus | pcre2 | pcre2_run · semantic corpus | 7.9µs | 12.3µs |
-| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 5.2µs | 7µs |
+| Micro modules | tiny | add · micro corpus | 27.2ns | 21.1ns |
+| Calls | dispatch | apply · calls corpus | 30.1ns | 22ns |
+| Calls | fib_rec | fib · calls corpus | 596µs | 1.59ms |
+| Calls and memory | memory_tree | run · calls+memory corpus | 4.8µs | 11.7µs |
+| Compute kernels | fannkuch | run · compute corpus | 914µs | 1.03ms |
+| Compute kernels | matmul | run · compute corpus | 79.4µs | 227µs |
+| Compute kernels | nbody | step · compute corpus | 136µs | 147µs |
+| Compute kernels | raytrace | render · compute corpus | 247µs | 249µs |
+| Compute kernels | sha256 | hashN · compute corpus | 24.4µs | 44.9µs |
+| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 415µs | 445µs |
+| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 29.3µs | 39.2µs |
+| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 36.7µs | 97.8µs |
+| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 131µs | 160µs |
+| Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 240µs | 259µs |
+| Semantic corpus | blake3 | blake3_hash · semantic corpus | 234µs | 251µs |
+| Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 235µs | 252µs |
+| Semantic corpus | coremark | coremark_run · semantic corpus | 29.2ms | 42.8ms |
+| Semantic corpus | lz4 | lz4_compress_run · semantic corpus | 25.2µs | 39.8µs |
+| Semantic corpus | lz4 | lz4_decompress_run · semantic corpus | 2µs | 5.3µs |
+| Semantic corpus | pcre2 | pcre2_run · semantic corpus | 7.9µs | 11.8µs |
+| Semantic corpus | qoi | qoi_decode_run · semantic corpus | 5µs | 6.9µs |
 | Semantic corpus | qoi | qoi_encode_run · semantic corpus | 4.2µs | 8.6µs |
-| Semantic corpus | yyjson | yyjson_run · semantic corpus | 822.5ns | 772.2ns |
-| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 5.6µs | 6.5µs |
-| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 2.43ms | 3.17ms |
-| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 673.5ms | 834.7ms |
-| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 30.4µs | 13µs |
-| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 302ms | 793.9ms |
-| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 292µs | 140µs |
-| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 382.3ms | 619.4ms |
-| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 74.3µs | 49.8µs |
-| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 1.69ms | 3.31ms |
-| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 97.4µs | 101µs |
-| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 3.97ms | 4.91ms |
-| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 145.9ms | 175.1ms |
-| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 574µs | 481µs |
-| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 10.6ms | 12.1ms |
-| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 2.49ms | 4.07ms |
-| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 1.88ms | 1.91ms |
-| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 262ms | 366.1ms |
-| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 14.6ms | 17.1ms |
-| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 35.1µs | 15.8µs |
-| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 470µs | 362µs |
-| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 444µs | 610µs |
-| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 3.02ms | 3.28ms |
+| Semantic corpus | yyjson | yyjson_run · semantic corpus | 839.8ns | 779.3ns |
+| Semantic corpus | zstd | zstd_decompress_run · semantic corpus | 5.6µs | 6.4µs |
+| Application corpora | age · decrypt | age WASI CLI decrypts a pinned test ciphertext with an exact plaintext oracle | 2.51ms | 3.49ms |
+| Application corpora | brotli · compress | Brotli WASI CLI compresses 2.16 MB of generated JavaScript at quality 10 with an exact output oracle | 704.1ms | 824.5ms |
+| Application corpora | cJSON · cjson | cJSON parse, DOM mutation, and compact serialization workload | 31.6µs | 14.5µs |
+| Application corpora | esbuild · minify | esbuild WASI CLI minifies 2.16 MB of generated production-shaped JavaScript | 303.1ms | 785.2ms |
+| Application corpora | icestorm · generate | icebram generates seeded 8-bit BRAM initialization words | 297µs | 140µs |
+| Application corpora | jq · json-transform | jq WASI CLI sorts, groups, and aggregates 50,000 generated JSON objects with an exact output oracle | 380.9ms | 597ms |
+| Application corpora | json2csv · people | json2csv CLI extracts nested fields from newline-delimited JSON into CSV | 79.6µs | 51.2µs |
+| Application corpora | LodePNG · lodepng | LodePNG RGBA encoding, decoding, and exact pixel round trip | 1.72ms | 3.23ms |
+| Application corpora | Lua · lua | Lua 5.4 interpreter running tables, closures, patterns, and GC | 104µs | 103µs |
+| Application corpora | php · buckets | PHP 8.2.6 groups five thousand integers into seventeen weighted buckets | 3.86ms | 5.10ms |
+| Application corpora | quickjs · script | QuickJS WASI CLI parses and aggregates 50,000 generated service events | 148.5ms | 176.5ms |
+| Application corpora | ripgrep · source | ripgrep searches a JavaScript program and returns exact matching source lines | 678µs | 527µs |
+| Application corpora | ruby · buckets | Ruby 3.2.2 groups five thousand integers into seventeen weighted buckets | 11.3ms | 13.3ms |
+| Application corpora | Sightglass · libsodium-hash | libsodium hash self-test, 1,061 iterations | 2.59ms | 3.86ms |
+| Application corpora | Sightglass · shootout-base64 | base64 shootout kernel | 1.93ms | 1.93ms |
+| Application corpora | sqlite3 · query | SQLite WASI shell recursively generates one million rows and computes four exact aggregates | 262.1ms | 365.5ms |
+| Application corpora | swift-format · format-source | Swift formatter CLI reformats source from stdin with an exact output oracle | 17.2ms | 17.7ms |
+| Application corpora | TinyXML-2 · tinyxml2 | TinyXML-2 parse, query, and DOM mutation workload | 37.4µs | 17.4µs |
+| Application corpora | uutils/coreutils · sort | Rust coreutils sorts a pinned twenty-four-record text file | 557µs | 389µs |
+| Application corpora | Wren · wren | Wren VM executing classes, closures, collections, and allocation-heavy loops | 468µs | 631µs |
+| Application corpora | yosys · counter | Yosys parses a synchronous Verilog counter, converts processes, and reports exact cell statistics | 3.35ms | 3.02ms |
 
 ## Canonical machine-readable sources
 

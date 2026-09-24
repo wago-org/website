@@ -1847,20 +1847,20 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <span class="vs__delta vs__delta--win">4.2× faster</span>
                         </div>
                         <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">Host → Wasm</span><span class="vs__sub">reserved session (i32) → i32</span></div>
+                            <div class="vs__meta"><span class="vs__label">Host → Wasm</span><span class="vs__sub">raw Instance.Invoke (i32) → i32</span></div>
                             <div class="vs__bars">
                                 <div class="vs__line" data-engine="railshot">
                                     <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="8.427" data-width="25"></span></span>
-                                    <span class="vs__val">8.4ns</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="21.255" data-width="62"></span></span>
+                                    <span class="vs__val">21.3ns</span>
                                 </div>
                                 <div class="vs__line" data-engine="wazero">
                                     <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="33.3" data-width="100"></span></span>
-                                    <span class="vs__val">33.3ns</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="34.245" data-width="100"></span></span>
+                                    <span class="vs__val">34.2ns</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">4× faster</span>
+                            <span class="vs__delta vs__delta--win">1.6× faster</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Wasm → host</span><span class="vs__sub">reserved typed import callback</span></div>
@@ -5071,20 +5071,20 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             <span class="vs__delta vs__delta--win">3.8× faster</span>
                         </div>
                         <div class="vs__row" data-engine-row>
-                            <div class="vs__meta"><span class="vs__label">Host → Wasm</span><span class="vs__sub">reserved session (i32) → i32</span></div>
+                            <div class="vs__meta"><span class="vs__label">Host → Wasm</span><span class="vs__sub">raw Instance.Invoke (i32) → i32</span></div>
                             <div class="vs__bars">
                                 <div class="vs__line" data-engine="railshot">
                                     <span class="vs__engine">wago</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="5.398" data-width="23"></span></span>
-                                    <span class="vs__val">5.4ns</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--railshot" data-bar data-value="15.65" data-width="64"></span></span>
+                                    <span class="vs__val">15.7ns</span>
                                 </div>
                                 <div class="vs__line" data-engine="wazero">
                                     <span class="vs__engine">wazero</span>
-                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="23.92" data-width="100"></span></span>
-                                    <span class="vs__val">23.9ns</span>
+                                    <span class="vs__track"><span class="vs__fill vs__fill--wazero" data-bar data-value="24.285" data-width="100"></span></span>
+                                    <span class="vs__val">24.3ns</span>
                                 </div>
                             </div>
-                            <span class="vs__delta vs__delta--win">4.4× faster</span>
+                            <span class="vs__delta vs__delta--win">1.6× faster</span>
                         </div>
                         <div class="vs__row" data-engine-row>
                             <div class="vs__meta"><span class="vs__label">Wasm → host</span><span class="vs__sub">reserved typed import callback</span></div>

@@ -1771,14 +1771,14 @@
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "reserved session (i32) → i32",
-                      "wago": "8.4ns",
-                      "wazero": "33.3ns",
+                      "workload": "raw Instance.Invoke (i32) → i32",
+                      "wago": "21.3ns",
+                      "wazero": "34.2ns",
                       "engines": {
-                        "railshot": "8.4ns",
-                        "wazero": "33.3ns"
+                        "railshot": "21.3ns",
+                        "wazero": "34.2ns"
                       },
-                      "comparison": "4× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {
@@ -4305,14 +4305,14 @@
                     },
                     {
                       "label": "Host → Wasm",
-                      "workload": "reserved session (i32) → i32",
-                      "wago": "5.4ns",
-                      "wazero": "23.9ns",
+                      "workload": "raw Instance.Invoke (i32) → i32",
+                      "wago": "15.7ns",
+                      "wazero": "24.3ns",
                       "engines": {
-                        "railshot": "5.4ns",
-                        "wazero": "23.9ns"
+                        "railshot": "15.7ns",
+                        "wazero": "24.3ns"
                       },
-                      "comparison": "4.4× faster",
+                      "comparison": "1.6× faster",
                       "result": "multi-engine ahead"
                     },
                     {

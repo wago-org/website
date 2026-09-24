@@ -1918,7 +1918,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "1.45ms",
                       "wazero": "2.81ms",
@@ -1931,7 +1931,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "1.85ms",
                       "wazero": "6.79ms",
@@ -1944,7 +1944,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "805µs",
                       "wazero": "2.35ms",
@@ -2444,7 +2444,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "526 KB",
                       "wazero": "1.9 MB",
@@ -2457,7 +2457,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "320 KB",
                       "wazero": "2.2 MB",
@@ -2470,7 +2470,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "342 KB",
                       "wazero": "1.3 MB",
@@ -2970,7 +2970,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "10.9µs",
                       "wazero": "12.4µs",
@@ -2983,7 +2983,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "17.1µs",
                       "wazero": "15µs",
@@ -2996,7 +2996,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "22.7µs",
                       "wazero": "17.7µs",
@@ -3223,7 +3223,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "37.7 KB",
                       "wazero": "58 KB",
@@ -3236,7 +3236,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "66.6 KB",
                       "wazero": "82.6 KB",
@@ -3249,7 +3249,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "19.9 KB",
                       "wazero": "30.3 KB",
@@ -3749,7 +3749,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "hashN · real-simd corpus",
                       "wago": "435µs",
                       "wazero": "527µs",
@@ -3762,7 +3762,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "serialize + deserialize · geometric mean",
                       "wago": "34.9µs",
                       "wazero": "56.9µs",
@@ -3775,7 +3775,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "convertN · real-simd corpus",
                       "wago": "51.4µs",
                       "wazero": "69.5µs",
@@ -3788,7 +3788,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "validateN · real-simd corpus",
                       "wago": "152µs",
                       "wazero": "190µs",
@@ -4452,7 +4452,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "881µs",
                       "wazero": "1.40ms",
@@ -4465,7 +4465,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "1.23ms",
                       "wazero": "4.72ms",
@@ -4478,7 +4478,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "532µs",
                       "wazero": "1.31ms",
@@ -4978,7 +4978,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "376 KB",
                       "wazero": "1.5 MB",
@@ -4991,7 +4991,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "225 KB",
                       "wazero": "2.2 MB",
@@ -5004,7 +5004,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "281 KB",
                       "wazero": "1.1 MB",
@@ -5504,7 +5504,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "4.6µs",
                       "wazero": "8.7µs",
@@ -5517,7 +5517,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "7µs",
                       "wazero": "10.6µs",
@@ -5530,7 +5530,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "7.9µs",
                       "wazero": "11.7µs",
@@ -5757,7 +5757,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer",
                       "wago": "23.9 KB",
                       "wazero": "41.4 KB",
@@ -5770,7 +5770,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "AssemblyScript json-as SIMD: serialize/deserialize canonical payload",
                       "wago": "69.4 KB",
                       "wazero": "83.1 KB",
@@ -5783,7 +5783,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text",
                       "wago": "18.4 KB",
                       "wazero": "27.8 KB",
@@ -6283,7 +6283,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "blake-as-simd",
+                      "label": "blake-as (simd)",
                       "workload": "hashN · real-simd corpus",
                       "wago": "419µs",
                       "wazero": "443µs",
@@ -6296,7 +6296,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "json-as",
+                      "label": "json-as (simd)",
                       "workload": "serialize + deserialize · geometric mean",
                       "wago": "28.1µs",
                       "wazero": "39.1µs",
@@ -6309,7 +6309,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "convertN · real-simd corpus",
                       "wago": "38.1µs",
                       "wazero": "98.6µs",
@@ -6322,7 +6322,7 @@
                     },
                     {
                       "group": "Real-world SIMD",
-                      "label": "utf-as-simd",
+                      "label": "utf-as (simd)",
                       "workload": "validateN · real-simd corpus",
                       "wago": "131µs",
                       "wazero": "162µs",

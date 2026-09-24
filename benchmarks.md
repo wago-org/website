@@ -19,7 +19,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Do not compare absolute values across machines.
 - Runtime tables use 40 curated corpus workloads, including 21 command programs, with three samples per measurement and medians.
 - Every displayed workload has measurements from both Wago and Wazero on arm64 and amd64; the full correctness corpus remains separate.
-- The json-as execution row uses the SIMD workload and is the geometric mean of its serialize and deserialize operations.
+- The json-as (simd) execution row is the geometric mean of its serialize and deserialize operations.
 - Allocation rows measure Go heap allocation traffic measured during the named operation.
 - Allocation rows exclude guest linear memory, native code mappings, native virtual-memory reservations, process RSS/PSS.
 

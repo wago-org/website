@@ -222,9 +222,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 117µs | 427µs |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 336µs | 1.40ms |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 116µs | 459µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.45ms | 2.81ms |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.85ms | 6.79ms |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 805µs | 2.35ms |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 1.45ms | 2.81ms |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.85ms | 6.79ms |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 805µs | 2.35ms |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 1.26ms | 2.78ms |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 764µs | 3.22ms |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 223µs | 1.13ms |
@@ -267,9 +267,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 85.8 KB | 726 KB |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 203 KB | 1.5 MB |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 83.5 KB | 806 KB |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 526 KB | 1.9 MB |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 320 KB | 2.2 MB |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 342 KB | 1.3 MB |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 526 KB | 1.9 MB |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 320 KB | 2.2 MB |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 342 KB | 1.3 MB |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 320 KB | 1.5 MB |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 331 KB | 2 MB |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 103 KB | 947 KB |
@@ -312,9 +312,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 8.5µs | 40.8µs |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 9.2µs | 42.4µs |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 11.4µs | 44.5µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 10.9µs | 12.4µs |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 17.1µs | 15µs |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 22.7µs | 17.7µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 10.9µs | 12.4µs |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 17.1µs | 15µs |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 22.7µs | 17.7µs |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 11.2µs | 40.9µs |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 10.6µs | 14.7µs |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 11.8µs | 64.5µs |
@@ -336,9 +336,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 3.2 KB | 5.6 KB |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 12.3 KB | 14.1 KB |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 2.4 KB | 5.5 KB |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 37.7 KB | 58 KB |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 66.6 KB | 82.6 KB |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 19.9 KB | 30.3 KB |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 37.7 KB | 58 KB |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 66.6 KB | 82.6 KB |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 19.9 KB | 30.3 KB |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 26.4 KB | 38.1 KB |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 19.2 KB | 31.5 KB |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 4.8 KB | 10.8 KB |
@@ -381,10 +381,10 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | step · compute corpus | 289µs | 360µs |
 | Compute kernels | raytrace | render · compute corpus | 380µs | 369µs |
 | Compute kernels | sha256 | hashN · compute corpus | 34.5µs | 54.1µs |
-| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 435µs | 527µs |
-| Real-world SIMD | json-as | serialize + deserialize · geometric mean | 34.9µs | 56.9µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 51.4µs | 69.5µs |
-| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 152µs | 190µs |
+| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 435µs | 527µs |
+| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 34.9µs | 56.9µs |
+| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 51.4µs | 69.5µs |
+| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 152µs | 190µs |
 | Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 285µs | 316µs |
 | Semantic corpus | blake3 | blake3_hash · semantic corpus | 278µs | 303µs |
 | Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 278µs | 303µs |
@@ -448,9 +448,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 81.8µs | 209µs |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 220µs | 621µs |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 74.3µs | 245µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 881µs | 1.40ms |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.23ms | 4.72ms |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 532µs | 1.31ms |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 881µs | 1.40ms |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 1.23ms | 4.72ms |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 532µs | 1.31ms |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 821µs | 1.61ms |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 418µs | 1.82ms |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 154µs | 619µs |
@@ -493,9 +493,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 61 KB | 701 KB |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 145 KB | 1.4 MB |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 41.9 KB | 809 KB |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 376 KB | 1.5 MB |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 225 KB | 2.2 MB |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 281 KB | 1.1 MB |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 376 KB | 1.5 MB |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 225 KB | 2.2 MB |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 281 KB | 1.1 MB |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 226 KB | 1.4 MB |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 121 KB | 2 MB |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 64.2 KB | 946 KB |
@@ -538,9 +538,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 35.2µs | 13.8µs |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 35.3µs | 14.3µs |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 38.2µs | 14.3µs |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 4.6µs | 8.7µs |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 7µs | 10.6µs |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 7.9µs | 11.7µs |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 4.6µs | 8.7µs |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 7µs | 10.6µs |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 7.9µs | 11.7µs |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 35.8µs | 14µs |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 7.2µs | 9.1µs |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 69.2µs | 18.8µs |
@@ -562,9 +562,9 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | Benchmarks-Game N-body: leapfrog solar-system integration (f64 mul/add/div/sqrt) | 3.3 KB | 5 KB |
 | Compute kernels | raytrace | recursive Whitted ray tracer: n x n frame, 4 spheres + checker plane, depth-4 mirrors (heavy f64 vector math) | 8.8 KB | 10.8 KB |
 | Compute kernels | sha256 | standards-correct SHA-256 of an n-KiB buffer (i32 rotate/shift/xor/add, 64-round) | 2.9 KB | 6 KB |
-| Real-world SIMD | blake-as-simd | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 23.9 KB | 41.4 KB |
-| Real-world SIMD | json-as | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 69.4 KB | 83.1 KB |
-| Real-world SIMD | utf-as-simd | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 18.4 KB | 27.8 KB |
+| Real-world SIMD | blake-as (simd) | AssemblyScript blake-as SIMD: BLAKE3 hash of a 4 KiB buffer | 23.9 KB | 41.4 KB |
+| Real-world SIMD | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 69.4 KB | 83.1 KB |
+| Real-world SIMD | utf-as (simd) | AssemblyScript utf-as SIMD: UTF-8 length and validation of mixed text | 18.4 KB | 27.8 KB |
 | Semantic corpus | blake3 | BLAKE3 reference implementation with published hash, keyed-hash, and key-derivation vectors | 25.7 KB | 36.6 KB |
 | Semantic corpus | coremark | CoreMark 1.0 integer, list, matrix, and state-machine workload | 15 KB | 28.3 KB |
 | Semantic corpus | lz4 | LZ4 compression/decompression with exact size and byte oracles | 5.4 KB | 10.3 KB |
@@ -607,10 +607,10 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compute kernels | nbody | step · compute corpus | 138µs | 149µs |
 | Compute kernels | raytrace | render · compute corpus | 248µs | 248µs |
 | Compute kernels | sha256 | hashN · compute corpus | 24.4µs | 45µs |
-| Real-world SIMD | blake-as-simd | hashN · real-simd corpus | 419µs | 443µs |
-| Real-world SIMD | json-as | serialize + deserialize · geometric mean | 28.1µs | 39.1µs |
-| Real-world SIMD | utf-as-simd | convertN · real-simd corpus | 38.1µs | 98.6µs |
-| Real-world SIMD | utf-as-simd | validateN · real-simd corpus | 131µs | 162µs |
+| Real-world SIMD | blake-as (simd) | hashN · real-simd corpus | 419µs | 443µs |
+| Real-world SIMD | json-as (simd) | serialize + deserialize · geometric mean | 28.1µs | 39.1µs |
+| Real-world SIMD | utf-as (simd) | convertN · real-simd corpus | 38.1µs | 98.6µs |
+| Real-world SIMD | utf-as (simd) | validateN · real-simd corpus | 131µs | 162µs |
 | Semantic corpus | blake3 | blake3_derive_key · semantic corpus | 232µs | 261µs |
 | Semantic corpus | blake3 | blake3_hash · semantic corpus | 226µs | 252µs |
 | Semantic corpus | blake3 | blake3_keyed_hash · semantic corpus | 229µs | 251µs |

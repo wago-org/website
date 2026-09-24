@@ -206,7 +206,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | Instantiate | runnable corpus | 11.4µs | 23.9µs |
 |  | Execution | runnable corpus | 31.7µs | 49.7µs |
 |  | End-to-end latency | compile + instantiate | 4.85ms | 20.6ms |
-|  | Host → Wasm | raw Instance.Invoke (i32) → i32 | 21.3ns | 34.2ns |
+|  | Host → Wasm | raw Instance.Invoke (i32) → i32 | 18.4ns | 33.9ns |
 |  | Wasm → host | reserved typed import callback | 205.6ns | 458.9ns |
 
 ##### Compile latency
@@ -432,7 +432,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 |  | Instantiate | runnable corpus | 15.7µs | 12.9µs |
 |  | Execution | runnable corpus | 26.3µs | 36.6µs |
 |  | End-to-end latency | compile + instantiate | 3.85ms | 14.7ms |
-|  | Host → Wasm | raw Instance.Invoke (i32) → i32 | 15.7ns | 24.3ns |
+|  | Host → Wasm | raw Instance.Invoke (i32) → i32 | 13.7ns | 23.9ns |
 |  | Wasm → host | reserved typed import callback | 156.1ns | 322.9ns |
 
 ##### Compile latency

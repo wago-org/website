@@ -25,7 +25,7 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Allocation rows measure Go heap allocation traffic measured during the named operation.
 - Allocation rows exclude guest linear memory, native code mappings, native virtual-memory reservations, process RSS/PSS.
 
-The runtime tables were measured on arm64 and amd64 with `GOMAXPROCS=1`, `WAGO_BOUNDS=signals`, `-tags wago_guardpage`, three samples, and `-benchtime=200ms`. Each benchmark checks its workload oracle before timing.
+The runtime tables were measured on arm64 with Go 1.26.5 and amd64 with Go 1.22.2, using `GOMAXPROCS=1`, `WAGO_BOUNDS=signals`, `-tags wago_guardpage`, three samples, and `-benchtime=200ms`. Each benchmark checks its workload oracle before timing.
 
 To reproduce the core call overhead measurement in `bench/`:
 

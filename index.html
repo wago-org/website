@@ -88,7 +88,7 @@
                               "name": "wago",
                               "description": "WebAssembly, made for Go.",
                               "inLanguage": "en",
-                              "dateModified": "2026-09-15",
+                              "dateModified": "2026-09-29",
                               "publisher": {
                                         "@id": "https://wago.sh/#org"
                               }
@@ -137,7 +137,7 @@
                               "name": "wago verification, conformance, and benchmark data",
                               "description": "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
                               "url": "https://wago.sh/data/project.json",
-                              "dateModified": "2026-09-15",
+                              "dateModified": "2026-09-29",
                               "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
@@ -836,15 +836,82 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vgroup__chevron" aria-hidden="true"></span>
                                     <span class="vgroup__title">WebAssembly 1.0</span>
                                     <span class="vgroup__sub">MVP core</span>
-                                    <span class="vgroup__count">0/0</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="vgroup__count">17/17</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </span>
                                 <span class="vgroup__prog">
-                                    <span class="vgroup__prog-fill" data-bar data-width="0"></span>
+                                    <span class="vgroup__prog-fill" data-bar data-width="100"></span>
                                 </span>
                             </summary>
                             <div class="vgroup__body">
-
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">i32 / i64 integer ops</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">f32 / f64 ops</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">f32 / f64 ceil / floor / trunc / nearest / copysign</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Conversions + reinterpret</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Float→int trunc NaN/overflow traps</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Control flow: block / loop / if / else / br / br_if / br_table / return</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">call / call_indirect</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">select, drop, nop, unreachable</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Locals</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Globals</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Linear memory load/store</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">memory.size / memory.grow</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Active data segments</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Tables + active element segments</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Function imports / exports</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">Memory / table / global imports &amp; exports</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
+                                <div class="vgroup__row">
+                                    <span class="vgroup__feat">start function</span>
+                                    <span class="tag tag--pass">pass</span>
+                                </div>
                             </div>
                         </details>
                         <details class="vgroup" name="wasm-versions">

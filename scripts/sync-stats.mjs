@@ -132,9 +132,11 @@ function parseFeatures(text) {
   const rows = [];
   let inMvp = false;
   for (const line of text.split("\n")) {
-    const h = line.match(/^##\s+(.*)/);
+    const h = line.match(/^(#{2,6})\s+(.*)/);
     if (h) {
-      inMvp = /\bMVP\b/i.test(h[1]);
+      inMvp =
+        h[1].length >= 3 &&
+        /^WebAssembly\s+1\.0\s*\(MVP\)$/i.test(h[2].trim());
       continue;
     }
     if (!line.trim().startsWith("|")) continue;
@@ -149,6 +151,9 @@ function parseFeatures(text) {
   }
   if (rows.length < 10) {
     throw new Error(`FEATURES.md: only parsed ${rows.length} feature rows - format changed?`);
+  }
+  if (!rows.some((row) => row.mvp)) {
+    throw new Error("FEATURES.md: no WebAssembly 1.0 (MVP) feature rows parsed - check the section heading and table");
   }
   return rows;
 }

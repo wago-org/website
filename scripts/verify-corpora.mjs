@@ -25,6 +25,19 @@ for (const module of manifest.modules) {
     throw new Error(`${module.file} is not a WebAssembly 1 binary`)
   }
   if (!source.startsWith('(module')) throw new Error(`${module.source} is not a WAT module`)
+
+  if (module.file === 'fib.wasm') {
+    const { instance } = await WebAssembly.instantiate(wasm)
+    let current = 0n
+    let next = 1n
+    for (let n = 0; n <= 93; n++) {
+      const actual = instance.exports.fib(n)
+      if (typeof actual !== 'bigint' || BigInt.asUintN(64, actual) !== current) {
+        throw new Error(`fib(${n}) must return the exact 64-bit value ${current}, got ${actual}`)
+      }
+      ;[current, next] = [next, current + next]
+    }
+  }
 }
 
 console.log(`Verified ${manifest.modules.length} WebAssembly corpus modules`)

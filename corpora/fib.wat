@@ -1,11 +1,11 @@
 (module
-  (func (export "fib") (param $n i32) (result i32)
-    (local $a i32)
-    (local $b i32)
-    (local $next i32)
+  (func (export "fib") (param $n i32) (result i64)
+    (local $a i64)
+    (local $b i64)
+    (local $next i64)
     (local $i i32)
 
-    i32.const 1
+    i64.const 1
     local.set $a
 
     loop $again
@@ -15,7 +15,7 @@
       if
         local.get $a
         local.get $b
-        i32.add
+        i64.add
         local.set $next
 
         local.get $a

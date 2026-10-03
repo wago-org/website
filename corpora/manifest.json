@@ -4,7 +4,7 @@
     {
       "file": "fib.wasm",
       "source": "fib.wat",
-      "description": "A self-contained iterative Fibonacci function.",
+      "description": "A self-contained iterative Fibonacci function with a 64-bit result.",
       "exports": ["fib", "memory"],
       "imports": []
     },

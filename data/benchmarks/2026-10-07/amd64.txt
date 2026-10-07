@@ -2,7 +2,7 @@
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkExecCallOverhead_wago                       	 9914644	        23.87 ns/op	       0 B/op	       0 allocs/op
 BenchmarkExecCallOverhead_wago                       	10071741	        23.77 ns/op	       0 B/op	       0 allocs/op
 BenchmarkExecCallOverhead_wago                       	10082785	        23.78 ns/op	       0 B/op	       0 allocs/op
@@ -1038,7 +1038,7 @@ ok  	github.com/wago-org/wago/bench/suite	854.074s
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkExecCallOverhead_wago                       	10005291	        23.50 ns/op	       0 B/op	       0 allocs/op
 BenchmarkExecCallOverhead_wago                       	10222068	        23.42 ns/op	       0 B/op	       0 allocs/op
 BenchmarkExecCallOverhead_wago                       	10318946	        23.43 ns/op	       0 B/op	       0 allocs/op
@@ -2899,7 +2899,7 @@ ok  	github.com/wago-org/wago/bench/suite	793.128s
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkWazeroCommandExec/yosys-counter         	      72	   4710640 ns/op	14571706 B/op	    7959 allocs/op
 BenchmarkWazeroCommandExec/yosys-counter         	      73	   4787101 ns/op	14571704 B/op	    7959 allocs/op
 BenchmarkWazeroCommandExec/yosys-counter         	      73	   4680088 ns/op	14571704 B/op	    7959 allocs/op
@@ -2910,7 +2910,7 @@ ok  	github.com/wago-org/wago/bench/suite	87.609s
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkDecode/php-buckets         	       7	  46726166 ns/op	41850336 B/op	   12868 allocs/op
 BenchmarkDecode/php-buckets         	       7	  49621326 ns/op	41850336 B/op	   12868 allocs/op
 BenchmarkDecode/php-buckets         	       7	  46580236 ns/op	41850336 B/op	   12868 allocs/op
@@ -2921,7 +2921,7 @@ ok  	github.com/wago-org/wago/bench/suite	2.842s
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkDecode/brotli-compress         	     177	   2006678 ns/op	 1884511 B/op	     243 allocs/op
 BenchmarkDecode/brotli-compress         	     177	   2013423 ns/op	 1884511 B/op	     243 allocs/op
 BenchmarkDecode/brotli-compress         	     176	   2038045 ns/op	 1884511 B/op	     243 allocs/op
@@ -2933,7 +2933,7 @@ ok  	github.com/wago-org/wago/bench/suite	2.815s
 goos: linux
 goarch: amd64
 pkg: github.com/wago-org/wago/bench/suite
-cpu: AMD Ryzen 7 7800X3D 8-Core Processor           
+cpu: AMD Ryzen 7 7800X3D 8-Core Processor
 BenchmarkCommandExec/yosys-counter         	      68	   5502165 ns/op	   94802 B/op	     963 allocs/op
 BenchmarkCommandExec/yosys-counter         	      66	   5407184 ns/op	   94720 B/op	     963 allocs/op
 BenchmarkCommandExec/yosys-counter         	      66	   5421297 ns/op	   94720 B/op	     963 allocs/op

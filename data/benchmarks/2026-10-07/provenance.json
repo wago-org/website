@@ -173,5 +173,6 @@
     "rawArm64": "arm64.txt",
     "rawAmd64": "amd64.txt",
     "sampleSpread": "sample-spread.json"
-  }
+  },
+  "rawCaptureNormalization": "Trailing whitespace removed from AMD CPU-description headers. Numeric samples are preserved."
 }

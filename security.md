@@ -1,7 +1,7 @@
 # Wago security and isolation status
 
 Last synchronized: 2026-11-12
-Wago source commit: f9642420f3bc1507f2aeaa2a35c56f8b465b7c54
+Wago source commit: 227dfd64ddb3760ae8547eb69a27da38c6cd8676
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Published controls

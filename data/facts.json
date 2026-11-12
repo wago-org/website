@@ -6,8 +6,8 @@
   "source": {
     "repository": "https://github.com/wago-org/wago",
     "ref": "main",
-    "commit": "f9642420f3bc1507f2aeaa2a35c56f8b465b7c54",
-    "commitUrl": "https://github.com/wago-org/wago/commit/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54"
+    "commit": "227dfd64ddb3760ae8547eb69a27da38c6cd8676",
+    "commitUrl": "https://github.com/wago-org/wago/commit/227dfd64ddb3760ae8547eb69a27da38c6cd8676"
   },
   "identity": {
     "name": "wago",
@@ -30,7 +30,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -63,7 +63,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -74,7 +74,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     },
@@ -96,7 +96,7 @@
       "evidence": [
         {
           "label": "README",
-          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+          "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
         }
       ]
     }
@@ -319,7 +319,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -329,7 +329,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -339,7 +339,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -349,7 +349,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -359,7 +359,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -369,7 +369,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -379,7 +379,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -389,7 +389,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -399,7 +399,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -409,7 +409,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -419,7 +419,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -429,7 +429,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -439,7 +439,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -449,7 +449,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -459,7 +459,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -469,7 +469,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -479,7 +479,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -489,7 +489,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -499,7 +499,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -509,7 +509,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -519,7 +519,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -529,7 +529,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -539,7 +539,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -549,7 +549,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -559,7 +559,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -569,7 +569,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -579,7 +579,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -589,7 +589,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -599,7 +599,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -609,7 +609,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -619,7 +619,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -629,7 +629,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -639,7 +639,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -649,7 +649,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -659,7 +659,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -669,7 +669,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -679,7 +679,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -689,7 +689,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -699,7 +699,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -709,7 +709,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -719,7 +719,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -729,7 +729,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -739,7 +739,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -749,7 +749,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -759,7 +759,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -769,7 +769,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
           }
         ]
       }
@@ -777,7 +777,7 @@
   },
   "compatibility": {
     "verification": {
-      "wagoCommit": "f9642420f3bc1507f2aeaa2a35c56f8b465b7c54",
+      "wagoCommit": "227dfd64ddb3760ae8547eb69a27da38c6cd8676",
       "host": "published repository baselines",
       "pass": 16592,
       "fail": 0,
@@ -854,51 +854,51 @@
   "evidence": {
     "readme": {
       "label": "README",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md"
     },
     "engine": {
       "label": "pure-Go no-cgo JIT package contract",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/doc.go#L1-L8"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/doc.go#L1-L8"
     },
     "features": {
       "label": "feature matrix",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/FEATURES.md#L45-L63"
     },
     "verification": {
       "label": "published conformance baselines",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/SPECTEST.md#L1-L20"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/SPECTEST.md#L1-L20"
     },
     "ci": {
       "label": "native CI matrix",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/.github/workflows/ci.yml#L92-L214"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/.github/workflows/ci.yml#L92-L214"
     },
     "api": {
       "label": "public API source",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/api.go#L1675-L1715"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/api.go#L1675-L1715"
     },
     "concurrency": {
       "label": "race-tested concurrent compile, instantiate, and execute coverage",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/runtime_concurrency_test.go#L13-L82"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/runtime_concurrency_test.go#L13-L82"
     },
     "nativeExecution": {
       "label": "native execution serialization",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/instance_native_context.go#L10-L67"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/instance_native_context.go#L10-L67"
     },
     "memory": {
       "label": "borrowed memory-view contract",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/memory.go#L84-L113"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/memory.go#L84-L113"
     },
     "policy": {
       "label": "resource policy enforcement",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/policy.go#L10-L67"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/policy.go#L10-L67"
     },
     "testSurface": {
       "label": "unified repository test surface",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/tests/README.md#L1-L44"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/tests/README.md#L1-L44"
     },
     "wazeroFixtures": {
       "label": "wazero fixture manifest",
-      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/tests/corpus/regressions/README.md#L1-L31"
+      "url": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/tests/corpus/regressions/README.md#L1-L31"
     }
   }
 }

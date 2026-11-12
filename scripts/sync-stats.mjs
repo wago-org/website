@@ -1,22 +1,10 @@
 #!/usr/bin/env node
 // Regenerate data/stats.json from the wago repository's own status files.
 //
-// This is what the "sync" CI job runs: it pulls the live numbers and feature
-// statuses out of wago's SPECTEST.md, FEATURES.md, and checked-in baselines.
-// coverage-report.md, so the site never drifts from what the engine actually
-// does. The same files are the project's own source of truth, so the website
-// inherits whatever wago publishes.
-//
-// Sources, in order of preference:
-//   1. $WAGO_DIR/<file>            (explicit local checkout - the CI default,
-//                                   which checks wago out into a sibling dir)
-//   2. ../wago/<file>             (sibling checkout, the dev default)
-//   3. GitHub contents API         (when $WAGO_TOKEN / $GITHUB_TOKEN is set;
-//                                   required because wago-org/wago is private)
-//   4. raw.githubusercontent.com  (only works if the repo is public)
-//
-// Env knobs: WAGO_DIR, WAGO_REPO (default wago-org/wago), WAGO_REF (default
-// main), WAGO_TOKEN / GITHUB_TOKEN (read access for the private repo).
+// Sources: an explicit WAGO_DIR is authoritative; otherwise a pinned WAGO_REF
+// is fetched remotely, or an unpinned run can use the sibling wago checkout.
+// Remote reads use the GitHub contents API with a token or public raw URLs.
+// coverage-report.md is optional; the other inputs must exist.
 //
 // Usage:
 //   node scripts/sync-stats.mjs            # auto-detect source, write stats.json
@@ -52,9 +40,12 @@ async function exists(p) {
 
 // Resolve each status file from a local checkout if present, else fetch it.
 async function load(name) {
-  const candidates = [];
-  if (process.env.WAGO_DIR) candidates.push(join(process.env.WAGO_DIR, name));
-  candidates.push(resolve(ROOT, "..", "wago", name));
+  if (process.env.WAGO_DIR) {
+    const path = join(process.env.WAGO_DIR, name);
+    if (!(await exists(path))) throw new Error(`explicit WAGO_DIR is missing ${name}`);
+    return { text: await readFile(path, "utf8"), from: path };
+  }
+  const candidates = process.env.WAGO_REF ? [] : [resolve(ROOT, "..", "wago", name)];
   for (const c of candidates) {
     if (await exists(c)) {
       return { text: await readFile(c, "utf8"), from: c };

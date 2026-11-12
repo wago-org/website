@@ -15,7 +15,7 @@ const REPO = process.env.WAGO_REPO || "wago-org/wago";
 const REF = process.env.WAGO_REF || "main";
 const FACTS_REF = process.env.WAGO_FACTS_REF || REF;
 const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
-const LOCAL = process.env.WAGO_DIR || resolve(ROOT, "..", "wago");
+const LOCAL = process.env.WAGO_DIR || (process.env.WAGO_FACTS_REF || process.env.WAGO_REF ? "" : resolve(ROOT, "..", "wago"));
 const STATS = join(ROOT, "data", "stats.json");
 const OUT = join(ROOT, "data", "facts.json");
 const OUT_SCHEMA = join(ROOT, "data", "facts.schema.json");
@@ -47,8 +47,9 @@ async function exists(path) {
 }
 
 async function load(name) {
-  const local = join(LOCAL, name);
-  if (await exists(local)) return readFile(local, "utf8");
+  const local = LOCAL && join(LOCAL, name);
+  if (local && await exists(local)) return readFile(local, "utf8");
+  if (process.env.WAGO_DIR) throw new Error(`explicit WAGO_DIR is missing ${name}`);
 
   const path = encodeURIComponent(name).replaceAll("%2F", "/");
   if (TOKEN) {
@@ -76,6 +77,7 @@ async function load(name) {
 
 function localCommit() {
   if (process.env.WAGO_COMMIT) return process.env.WAGO_COMMIT;
+  if (!LOCAL) return "";
   try {
     return execFileSync("git", ["-C", LOCAL, "rev-parse", "HEAD"], {
       encoding: "utf8",
@@ -107,6 +109,7 @@ async function resolveGitlink(path, envName) {
     return configured;
   }
   try {
+    if (!LOCAL) throw new Error("no local checkout");
     const line = execFileSync("git", ["-C", LOCAL, "ls-tree", "HEAD", "--", path], {
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],

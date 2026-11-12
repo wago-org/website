@@ -87,7 +87,9 @@ Every number and feature status on the page comes from
 
 - `SPECTEST.md` → MVP files passing, assertion counts, conformance %
 - `FEATURES.md` → per-area `pass / partial / planned` statuses
-- `coverage-report.md` → test-coverage %
+- `tests/conformance/baselines/spec-v3-baseline.json` → Core 3 baseline
+- `README.md` → supported native targets
+- `coverage-report.md` → test-coverage %, when published
 
 The Wago Go module's `schema.json` and `providers.schema.json` are canonical.
 The sync process mirrors them byte-identically to
@@ -105,11 +107,11 @@ WAGO_DIR=/path/to/wago npm run sync # read from a specific local checkout
 npm run sync:check                  # exit 1 if any generated artifact is stale
 ```
 
-The script reads from a local wago checkout when one is present (`$WAGO_DIR`,
-then a sibling `../wago`). With no checkout it falls back to GitHub: the
-authenticated contents API when `WAGO_TOKEN`/`GITHUB_TOKEN` is set, else the
-public raw URLs. `wago-org/wago` is **private**, so the remote path needs a
-token (`WAGO_REPO` / `WAGO_REF` override the target).
+An explicit `WAGO_DIR` reads only that checkout; missing required files fail the sync.
+Otherwise a sibling `../wago` is used unless `WAGO_REF` specifies a remote ref.
+Without a local source, the scripts use GitHub’s contents API when
+`WAGO_TOKEN`/`GITHUB_TOKEN` is set, or public raw URLs otherwise.
+`WAGO_REPO` and `WAGO_REF` override the remote target.
 
 At runtime `src/stats.ts` fetches `data/stats.json` and refreshes the numbers
 and the conformance table before `reveal.ts` animates them. The HTML ships with

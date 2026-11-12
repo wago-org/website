@@ -25,9 +25,12 @@ async function exists(path) {
 }
 
 async function loadSchema(name) {
-  const candidates = [];
-  if (process.env.WAGO_DIR) candidates.push(join(process.env.WAGO_DIR, name));
-  candidates.push(resolve(ROOT, "..", "wago", name));
+  if (process.env.WAGO_DIR) {
+    const path = join(process.env.WAGO_DIR, name);
+    if (!(await exists(path))) throw new Error(`explicit WAGO_DIR is missing ${name}`);
+    return { text: await readFile(path, "utf8"), from: path };
+  }
+  const candidates = process.env.WAGO_REF ? [] : [resolve(ROOT, "..", "wago", name)];
   for (const path of candidates) {
     if (await exists(path)) return { text: await readFile(path, "utf8"), from: path };
   }

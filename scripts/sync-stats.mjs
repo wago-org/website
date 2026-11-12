@@ -28,7 +28,7 @@ import { constants } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 
-import { parseSIMDAssertions } from "./stats-parsers.mjs";
+import { parseFeatureRows, parsePlatformTargets, parseSIMDAssertions } from "./stats-parsers.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
@@ -39,7 +39,7 @@ const TOKEN = process.env.WAGO_TOKEN || process.env.GITHUB_TOKEN || "";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${REF}`;
 const API = `https://api.github.com/repos/${REPO}/contents`;
 
-const FILES = ["SPECTEST.md", "FEATURES.md", "coverage-report.md"];
+const FILES = ["SPECTEST.md", "FEATURES.md", "coverage-report.md", "README.md", "tests/conformance/baselines/spec-v3-baseline.json"];
 
 async function exists(p) {
   try {
@@ -120,49 +120,8 @@ function parseVerification(text) {
 
 // The Core 3 suite is recorded as a checked-in zero-gap baseline rather than
 
-const STATUS_BY_EMOJI = [
-  ["✅", "done"],
-  ["🚧", "partial"],
-  ["⬜", "planned"],
-  ["❌", "none"],
-];
-
-// Pull `{ feature, status, mvp }` from every table row in FEATURES.md.
-function parseFeatures(text) {
-  const rows = [];
-  let inMvp = false;
-  for (const line of text.split("\n")) {
-    const h = line.match(/^(#{2,6})\s+(.*)/);
-    if (h) {
-      inMvp =
-        h[1].length >= 3 &&
-        /^WebAssembly\s+1\.0\s*\(MVP\)$/i.test(h[2].trim());
-      continue;
-    }
-    if (!line.trim().startsWith("|")) continue;
-    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
-    if (cells.length < 3) continue;
-    const feature = cells[0];
-    if (!feature || /^-+$/.test(feature) || /^feature$/i.test(feature)) continue;
-    const statusCell = cells[cells.length - 1];
-    const hit = STATUS_BY_EMOJI.find(([e]) => statusCell.includes(e));
-    if (!hit) continue;
-    rows.push({ feature, status: hit[1], mvp: inMvp });
-  }
-  if (rows.length < 10) {
-    throw new Error(`FEATURES.md: only parsed ${rows.length} feature rows - format changed?`);
-  }
-  if (!rows.some((row) => row.mvp)) {
-    throw new Error("FEATURES.md: no WebAssembly 1.0 (MVP) feature rows parsed - check the section heading and table");
-  }
-  return rows;
-}
-
-// FEATURES.md emoji status -> the site's status-pill vocabulary. Note ❌ ("not
-// planned") maps to `planned`, not `none`: every item the tracker lists is a real
-// WebAssembly proposal (phase 1+), and we only ever mark a proposal `none` (n/a)
-// if it hasn't reached phase 1 yet — not because wago hasn't committed to it.
-const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", none: "planned" };
+// Preserve the distinctions in Wago's feature legend in the site pills.
+const STATUS_TAG = { done: "pass", partial: "partial", planned: "planned", unsupported: "unsupported", none: "none", flag: "flag", plugin: "plugin", unknown: "unknown" };
 
 // Trim a verbose FEATURES cell to a compact tracker label: drop bold/backticks
 // and the trailing parenthetical / em-dash gloss ("SIMD (`v128`)" -> "SIMD").
@@ -199,7 +158,7 @@ const CATALOG = {
     { label: "Multi-value", match: ["multi-value"] },
     { label: "Reference types", match: ["reference types"] },
     { label: "Bulk memory", match: ["bulk memory"] },
-    { label: "Fixed-width SIMD", match: ["simd"] },
+    { label: "Fixed-width SIMD", match: ["fixed-width simd", "simd (`v128`)"] },
   ],
   // WebAssembly 3.0 proposals applicable to Wago's native binary-Wasm runtime.
   // JS String Builtins and WAT-only custom annotations are omitted (see above).
@@ -209,10 +168,10 @@ const CATALOG = {
     { label: "Extended const expressions", match: ["extended constant"], status: "planned" },
     { label: "Typed function references", match: ["typed function references"], status: "planned" },
     { label: "Memory64", match: ["memory64"], status: "planned" },
-    { label: "Multiple memories", match: ["multi-memory"], status: "planned" },
+    { label: "Multiple memories", match: ["multiple memories", "multi-memory"], status: "planned" },
     { label: "Garbage collection", match: ["garbage collection", "wasm gc"], status: "planned" },
     { label: "Exception handling", match: ["exception handling"], status: "planned" },
-    { label: "Relaxed SIMD", match: ["simd"], status: "planned" },
+    { label: "Relaxed SIMD", match: ["relaxed simd"], status: "planned" },
     { label: "Branch hinting", match: ["branch hint"], status: "planned" },
   ],
   // Active proposals not yet merged into a released specification.
@@ -228,9 +187,9 @@ const CATALOG = {
     { label: "ESM integration", status: "planned" },
     { label: "Stack switching", status: "planned" },
     { label: "Custom page sizes", status: "planned" },
-    { label: "Custom descriptors & JS interop", status: "planned" },
+    { label: "Custom descriptors & JS interop", match: ["custom descriptors and js interop"], status: "planned" },
     // --- Phase 2 ---
-    { label: "Relaxed dead-code validation", status: "planned" },
+    { label: "Relaxed dead-code validation", match: ["relaxed dead code validation"], status: "planned" },
     { label: "Numeric values in WAT data", status: "planned" },
     { label: "Extended name section", status: "planned" },
     { label: "Rounding variants", status: "planned" },
@@ -238,11 +197,11 @@ const CATALOG = {
     { label: "JS primitive builtins", status: "planned" },
     { label: "Acquire-Release Atomics", status: "planned" },
     { label: "Multibyte array access", status: "planned" },
-    { label: "Half precision (FP16)", status: "planned" },
+    { label: "Half precision (FP16)", match: ["half precision"], status: "planned" },
     // --- Phase 1 ---
     { label: "Type imports", status: "planned" },
     { label: "Component model", status: "planned" },
-    { label: "C / C++ embedding API", status: "planned" },
+    { label: "C / C++ embedding API", match: ["webassembly c and c++ api"], status: "planned" },
     { label: "Flexible vectors", status: "planned" },
     { label: "Memory control", status: "planned" },
     { label: "Reference-typed strings", status: "planned" },
@@ -251,7 +210,7 @@ const CATALOG = {
     { label: "Frozen values", status: "planned" },
     { label: "More array constructors", status: "planned" },
     { label: "JIT interface", status: "planned" },
-    { label: "Type reflection (JS API)", status: "planned" },
+    { label: "Type reflection (JS API)", match: ["type reflection for js api"], status: "planned" },
     { label: "JS text-encoding builtins", status: "planned" },
   ],
 };
@@ -261,26 +220,26 @@ const CATALOG = {
 function aggregate(statuses) {
   if (statuses.length === 0) return "planned";
   if (statuses.every((s) => s === "pass")) return "pass";
-  if (statuses.some((s) => s === "pass" || s === "partial")) return "partial";
+  if (statuses.some((s) => ["pass", "partial", "flag", "plugin"].includes(s))) return "partial";
   return "planned";
 }
 
 // Resolve a catalog entry's status: prefer a matching FEATURES.md row (so wago's
 // real support wins), else the entry's declared fallback.
 function resolveStatus(entry, featIndex) {
-  if (entry.match) {
-    for (const m of entry.match) {
+  {
+    for (const m of entry.match ?? [entry.label.toLowerCase()]) {
       const row = featIndex.find((r) => r.lc.includes(m));
-      if (row) return STATUS_TAG[row.status] || "planned";
+      if (row) return STATUS_TAG[row.status] || "unknown";
     }
   }
-  return entry.status || "planned";
+  return "unknown";
 }
 
 function makeGroup(key, features) {
   const active = features.filter((f) => f.status !== "none");
   const pass = features.filter((f) => f.status === "pass").length;
-  const partial = features.filter((f) => f.status === "partial").length;
+  const partial = features.filter((f) => ["partial", "flag", "plugin"].includes(f.status)).length;
   // Completion bar: a partial feature counts as half. "none" (n/a) features are
   // excluded from the denominator so they don't dilute the score.
   const pct = active.length ? Math.round(((pass + 0.5 * partial) / active.length) * 100) : 0;
@@ -296,14 +255,19 @@ function makeGroup(key, features) {
   };
 }
 
-function buildVersions(rows) {
+function buildVersions(rows, legacyMVP) {
   const featIndex = rows.map((r) => ({ status: r.status, lc: r.feature.toLowerCase() }));
   const out = [];
   // 1.0 straight from FEATURES.md's MVP section.
   const mvp = rows
     .filter((r) => r.mvp)
     .map((r) => ({ label: shortLabel(r.feature), status: STATUS_TAG[r.status] || "planned" }));
-  out.push(makeGroup("1.0", mvp));
+  const group = makeGroup("1.0", mvp.length ? mvp : legacyMVP.features);
+  if (!mvp.length) {
+    group.sub = `MVP feature details · historical (${legacyMVP.sourceCommit.slice(0, 7)})`;
+    group.historicalSourceCommit = legacyMVP.sourceCommit;
+  }
+  out.push(group);
   // 2.0 / 3.0 / future proposals from the full proposal catalog.
   for (const key of CATALOG_ORDER) {
     const features = CATALOG[key].map((e) => ({ label: e.label, status: resolveStatus(e, featIndex) }));
@@ -329,38 +293,33 @@ async function main() {
   }
 
   const mvp = parseSpectest(srcs["SPECTEST.md"].text);
-  const features = parseFeatures(srcs["FEATURES.md"].text);
-  let simdAssertionsPass = 0;
-  try {
-    simdAssertionsPass = parseSIMDAssertions(srcs["FEATURES.md"].text);
-  } catch {
-    console.warn("! FEATURES.md does not publish a standalone SIMD assertion count (using 0)");
-  }
-  const suiteAssertionsPass = mvp.assertionsPass + simdAssertionsPass;
+  const features = parseFeatureRows(srcs["FEATURES.md"].text);
+  const legacyMVP = JSON.parse(await readFile(join(ROOT, "data", "legacy-mvp.json"), "utf8"));
+  if (!/^[0-9a-f]{40}$/.test(legacyMVP.sourceCommit) || !legacyMVP.features?.length) throw new Error("invalid historical MVP matrix");
+  const core3 = JSON.parse(srcs["tests/conformance/baselines/spec-v3-baseline.json"].text);
+  const core3Assertions = core3.totals_excluding_parser_failures?.assertions;
+  if (core3.result !== "pass" || !Number.isInteger(core3Assertions?.passed) || !Number.isInteger(core3Assertions.failed) || !Number.isInteger(core3Assertions.skipped)) throw new Error("invalid Core 3 baseline");
   const verification = {
-    checksPass: suiteAssertionsPass,
-    checksFail: mvp.assertionsFail,
-    checksSkip: mvp.assertionsSkip,
-    coverage: null,
-    accountingNote: "Published MVP and SIMD assertion baselines.",
+    checksPass: mvp.assertionsPass, checksFail: mvp.assertionsFail, checksSkip: mvp.assertionsSkip,
+    coverage: null, accountingNote: "Historical MVP execution assertions; Core 3 is reported separately.",
   };
   const coverage = srcs["coverage-report.md"]
     ? parseCoverage(srcs["coverage-report.md"].text)
     : verification.coverage;
 
   const mvpRows = features.filter((r) => r.mvp);
-  const featuresDone = mvpRows.filter((r) => r.status === "done").length;
-  const versions = buildVersions(features);
+  const versions = buildVersions(features, legacyMVP);
+  const featuresDone = versions[0].done;
 
   const stats = [
     { key: "files", value: mvp.filesPass, total: mvp.filesTotal, label: "MVP files pass" },
-    { key: "assertions", value: verification.checksPass, label: "checks passed" },
+    { key: "assertions", value: verification.checksPass, label: "MVP assertions passed" },
     { key: "cgo", value: 0, label: "lines of cgo" },
   ];
   if (coverage != null) {
     stats.push({ key: "coverage", value: coverage, suffix: "%", label: "test coverage" });
   } else {
-    stats.push({ key: "platforms", value: 3, label: "native runtime targets" });
+    stats.push({ key: "platforms", value: parsePlatformTargets(srcs["README.md"].text).length, label: "native runtime targets" });
   }
 
   const data = {
@@ -368,19 +327,16 @@ async function main() {
     source: "wago-org/wago @ main",
     mvp,
     suiteAssertions: {
-      mvp: mvp.assertionsPass,
-      simd: simdAssertionsPass,
-      total: suiteAssertionsPass,
-      accountingNote:
-        "Legacy SPECTEST.md MVP passes plus SIMD passes; do not substitute this sum for the mixed-unit public verification total.",
+      mvp: mvp.assertionsPass, simd: null, total: mvp.assertionsPass,
+      accountingNote: "Historical MVP execution assertions; no independent SIMD total is published here.",
     },
+    core3: { assertions: core3Assertions, files: core3.suite.wast_files, commit: core3.suite.commit },
     verification,
     coverage,
     featuresDone,
-    featuresTotal: mvpRows.length,
+    featuresTotal: versions[0].total,
     cgoLines: 0,
-    // Native execution is covered on Linux/amd64, Linux/arm64, and Darwin/arm64.
-    platforms: 3,
+    platforms: parsePlatformTargets(srcs["README.md"].text).length,
     stats,
     versions,
   };
@@ -402,7 +358,7 @@ async function main() {
     `${changed ? "wrote" : "kept"} data/stats.json from ${srcs["SPECTEST.md"].from}\n` +
       `  MVP ${mvp.filesPass}/${mvp.filesTotal} files (${mvp.percent}%) · ` +
       `${verification.checksPass} checks passed · coverage ${coverage ?? "n/a"}% · ` +
-      `${featuresDone}/${mvpRows.length} MVP features done` +
+      `${featuresDone}/${versions[0].total} MVP features documented${mvpRows.length ? "" : " (historical matrix)"}` +
       (changed ? "" : " (no change)"),
   );
 }

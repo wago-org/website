@@ -267,13 +267,21 @@ const STATUS_CLASS = {
   partial: "tag--partial",
   planned: "tag--planned",
   none: "tag--none",
+  unsupported: "tag--none",
+  flag: "tag--partial",
+  plugin: "tag--partial",
+  unknown: "tag--none",
 };
 
 const STATUS_TEXT = {
   pass: "pass",
   partial: "partial",
   planned: "planned",
-  none: "n/a",
+  none: "not planned",
+  unsupported: "unsupported",
+  flag: "flag",
+  plugin: "plugin",
+  unknown: "unknown",
 };
 
 function renderVersions(versions) {
@@ -345,9 +353,7 @@ function syncStaticStats(index, stats) {
     formattedChecks,
   );
   updated = replaceDataStat(updated, "conf", stats.mvp.percent, String(stats.mvp.percent));
-  if (typeof stats.coverage === "number") {
-    updated = replaceDataStat(updated, "coverage", stats.coverage, `${stats.coverage}%`);
-  }
+  updated = replaceDataStat(updated, "platforms", stats.platforms, String(stats.platforms));
 
   if (!/\bdata-stat-total\b/.test(updated)) {
     throw new Error("index.html: missing data-stat-total");
@@ -482,8 +488,8 @@ Data updated: ${project.generated}
 - Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
 - Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
 - Legacy SPECTEST.md MVP report: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%); see /compatibility.md for the current public-verification boundary.
-- Verification: ${stats.verification.checksPass} checks pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
-- Test coverage: ${stats.coveragePercent}%.
+- Historical MVP execution: ${stats.verification.checksPass} assertions pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
+- Test coverage: ${stats.coveragePercent == null ? "not published in the current source" : `${stats.coveragePercent}%`}.
 - Native benchmark architectures published: ${architectures.join(", ")}.
 - Published multi-engine comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
 - End-to-end dataset: ${project.benchmarks.startup.workloadCount} real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
@@ -535,14 +541,12 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 ## Verification and conformance
 
 - Applicable MVP files passing: ${facts.conformance.filesPass}/${facts.conformance.filesTotal} (${facts.conformance.percent}%)
-- Public verification (mixed units): ${facts.verification.checksPass} pass; ${facts.verification.checksFail} fail; ${facts.verification.checksSkip} Go-test/subtest skips
-- Current public-verification Spec 1.0 gate: ${canonicalFacts.compatibility.verification.gates.find((gate) => gate.name === "Spec 1.0").pass} execution assertions pass
+- Historical MVP execution assertions: ${facts.verification.checksPass} pass; ${facts.verification.checksFail} fail; ${facts.verification.checksSkip} skip
 - Legacy SPECTEST.md MVP page: ${facts.conformance.filesPass}/${facts.conformance.filesTotal} applicable files; ${facts.conformance.assertionsPass} passing, ${facts.conformance.assertionsFail} failing, ${facts.conformance.assertionsSkip} skipped assertions
-- SIMD gate: ${facts.suiteAssertions.simd} execution assertions pass
-- Test coverage: ${facts.coveragePercent}%
+- Test coverage: ${facts.coveragePercent == null ? "not published in the current source" : `${facts.coveragePercent}%`}
 - cgo lines: ${facts.cgoLines}
 
-SPECTEST.md, SIMD, and Core 3 use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
+The historical MVP and Core 3 baselines use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
 
 ## Benchmark interpretation
 
@@ -623,7 +627,7 @@ function makeJsonLd(project) {
         isAccessibleForFree: true,
         featureList: [
           "Pure Go with no cgo",
-          "Single-pass native amd64 and arm64 backends",
+          "Single-pass native compiler backends",
           "WebAssembly validation and tracked conformance",
           "Capability-based plugin support",
         ],
@@ -644,7 +648,7 @@ function makeJsonLd(project) {
         variableMeasured: [
           `MVP files passing: ${facts.conformance.filesPass}/${facts.conformance.filesTotal}`,
           `Verification checks passing: ${facts.verification.checksPass}`,
-          `Test coverage: ${facts.coveragePercent}%`,
+          ...(facts.coveragePercent == null ? [] : [`Test coverage: ${facts.coveragePercent}%`]),
           `Published performance comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}`,
         ],
         distribution: [

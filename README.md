@@ -153,9 +153,7 @@ on demand). It checks wago out read-only, commits changed artifacts, and calls
 the deploy workflow. Wago's CI can also trigger it immediately by sending a
 `repository_dispatch` event of type `wago-updated`.
 
-**Required secret:** because wago is private, add a repository secret
-`WAGO_RO_TOKEN` - a fine-grained PAT with read-only **Contents** access to
-`wago-org/wago`; the workflow uses it to check wago out.
+Wago is public, so the workflow uses the default GitHub token for its read-only checkout.
 
 ## Editing content
 

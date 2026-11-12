@@ -5,12 +5,6 @@ name: Sync stats from wago
 # baselines via scripts/sync-stats.mjs, and if
 # data/stats.json changed, commits it and redeploys the site.
 #
-# wago-org/wago is a PRIVATE repo, so this needs read access to it. Provide a
-# secret named WAGO_RO_TOKEN - a fine-grained PAT (or classic PAT) with
-# read-only "Contents" access to wago-org/wago. We check wago out with it and
-# read the files locally; the script also accepts the token directly via
-# WAGO_TOKEN if you'd rather not check the repo out.
-#
 # Triggers:
 #   - schedule:            a daily heartbeat
 #   - workflow_dispatch:   run it by hand
@@ -43,12 +37,11 @@ jobs:
       - name: Checkout site
         uses: actions/checkout@v4
 
-      - name: Checkout wago (private, read-only)
+      - name: Checkout wago (public, read-only)
         uses: actions/checkout@v4
         with:
           repository: wago-org/wago
           ref: main
-          token: ${{ secrets.WAGO_RO_TOKEN }}
           path: wago-src
           persist-credentials: false
 
@@ -60,7 +53,10 @@ jobs:
       - name: Regenerate site data from wago
         env:
           WAGO_DIR: ${{ github.workspace }}/wago-src
-        run: npm run sync
+        run: |
+          npm run sync
+          npm run sync:facts
+          npm run sync:ai
 
       - name: Commit if changed
         id: commit

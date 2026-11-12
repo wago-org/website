@@ -4,7 +4,7 @@
 // and as a fallback if the fetch fails); when the JSON loads we refresh the
 // numbers and rebuild the conformance table before reveal.ts animates them.
 
-type Status = "pass" | "partial" | "planned" | "none";
+type Status = "pass" | "partial" | "planned" | "none" | "unsupported" | "flag" | "plugin" | "unknown";
 
 interface Version {
   version: string;
@@ -27,6 +27,7 @@ interface Stats {
     coverage?: number | null;
   };
   coverage: number | null;
+  platforms: number;
   versions: Version[];
 }
 
@@ -43,6 +44,10 @@ const TAG_CLASS: Record<Status, string> = {
   partial: "tag--partial",
   planned: "tag--planned",
   none: "tag--none",
+  unsupported: "tag--none",
+  flag: "tag--partial",
+  plugin: "tag--partial",
+  unknown: "tag--none",
 };
 
 // Pill text: "none" (not-planned) reads better as "n/a" on the page.
@@ -50,7 +55,11 @@ const TAG_TEXT: Record<Status, string> = {
   pass: "pass",
   partial: "partial",
   planned: "planned",
-  none: "n/a",
+  none: "not planned",
+  unsupported: "unsupported",
+  flag: "flag",
+  plugin: "plugin",
+  unknown: "unknown",
 };
 
 function escapeHtml(s: string): string {
@@ -109,7 +118,7 @@ export async function initStats(): Promise<void> {
     data.verification?.checksPass ?? data.suiteAssertions?.total ?? data.mvp.assertionsPass,
   );
   setTargets("conf", data.mvp.percent);
-  if (typeof data.coverage === "number") setTargets("coverage", data.coverage);
+  setTargets("platforms", data.platforms);
 
   document.querySelectorAll<HTMLElement>("[data-stat-total]").forEach((n) => {
     n.textContent = "/" + data.mvp.filesTotal;

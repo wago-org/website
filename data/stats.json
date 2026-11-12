@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-11-12",
   "source": "wago-org/wago @ main",
   "mvp": {
     "filesPass": 57,
@@ -11,22 +11,31 @@
   },
   "suiteAssertions": {
     "mvp": 16592,
-    "simd": 0,
+    "simd": null,
     "total": 16592,
-    "accountingNote": "Legacy SPECTEST.md MVP passes plus SIMD passes; do not substitute this sum for the mixed-unit public verification total."
+    "accountingNote": "Historical MVP execution assertions; no independent SIMD total is published here."
+  },
+  "core3": {
+    "assertions": {
+      "failed": 0,
+      "passed": 58038,
+      "skipped": 0
+    },
+    "files": 258,
+    "commit": "9d36019973201a19f9c9ebb0f10828b2fe2374aa"
   },
   "verification": {
     "checksPass": 16592,
     "checksFail": 0,
     "checksSkip": 1591,
     "coverage": null,
-    "accountingNote": "Published MVP and SIMD assertion baselines."
+    "accountingNote": "Historical MVP execution assertions; Core 3 is reported separately."
   },
   "coverage": null,
   "featuresDone": 17,
   "featuresTotal": 17,
   "cgoLines": 0,
-  "platforms": 3,
+  "platforms": 7,
   "stats": [
     {
       "key": "files",
@@ -37,7 +46,7 @@
     {
       "key": "assertions",
       "value": 16592,
-      "label": "checks passed"
+      "label": "MVP assertions passed"
     },
     {
       "key": "cgo",
@@ -46,7 +55,7 @@
     },
     {
       "key": "platforms",
-      "value": 3,
+      "value": 7,
       "label": "native runtime targets"
     }
   ],
@@ -54,7 +63,7 @@
     {
       "version": "1.0",
       "label": "WebAssembly 1.0",
-      "sub": "MVP core",
+      "sub": "MVP feature details · historical (bd742cd)",
       "status": "pass",
       "done": 17,
       "total": 17,
@@ -128,7 +137,8 @@
           "label": "start function",
           "status": "pass"
         }
-      ]
+      ],
+      "historicalSourceCommit": "bd742cdad68e0bb464ae135973866c73013ffb2f"
     },
     {
       "version": "2.0",
@@ -217,9 +227,9 @@
       "label": "Future features",
       "sub": "active proposals",
       "status": "partial",
-      "done": 1,
+      "done": 2,
       "total": 31,
-      "pct": 3,
+      "pct": 11,
       "features": [
         {
           "label": "JS Promise integration",
@@ -227,23 +237,23 @@
         },
         {
           "label": "Web Content Security Policy",
-          "status": "planned"
+          "status": "none"
         },
         {
           "label": "Threads & atomics",
-          "status": "pass"
+          "status": "flag"
         },
         {
           "label": "Compact import section",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "Wide arithmetic",
-          "status": "planned"
+          "status": "pass"
         },
         {
           "label": "ESM integration",
-          "status": "planned"
+          "status": "none"
         },
         {
           "label": "Stack switching",
@@ -255,23 +265,23 @@
         },
         {
           "label": "Custom descriptors & JS interop",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Relaxed dead-code validation",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Numeric values in WAT data",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Extended name section",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Rounding variants",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Compilation hints",
@@ -279,7 +289,7 @@
         },
         {
           "label": "JS primitive builtins",
-          "status": "planned"
+          "status": "none"
         },
         {
           "label": "Acquire-Release Atomics",
@@ -287,63 +297,63 @@
         },
         {
           "label": "Multibyte array access",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Half precision (FP16)",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Type imports",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Component model",
-          "status": "planned"
+          "status": "partial"
         },
         {
           "label": "C / C++ embedding API",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Flexible vectors",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Memory control",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Reference-typed strings",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Profiles",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Shared-everything threads",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "Frozen values",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "More array constructors",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "JIT interface",
-          "status": "planned"
+          "status": "unknown"
         },
         {
           "label": "Type reflection (JS API)",
-          "status": "planned"
+          "status": "unsupported"
         },
         {
           "label": "JS text-encoding builtins",
-          "status": "planned"
+          "status": "unknown"
         }
       ]
     }

@@ -88,7 +88,7 @@
                               "name": "wago",
                               "description": "WebAssembly, made for Go.",
                               "inLanguage": "en",
-                              "dateModified": "2026-09-29",
+                              "dateModified": "2026-11-12",
                               "publisher": {
                                         "@id": "https://wago.sh/#org"
                               }
@@ -118,7 +118,7 @@
                               "isAccessibleForFree": true,
                               "featureList": [
                                         "Pure Go with no cgo",
-                                        "Single-pass native amd64 and arm64 backends",
+                                        "Single-pass native compiler backends",
                                         "WebAssembly validation and tracked conformance",
                                         "Capability-based plugin support"
                               ],
@@ -137,7 +137,7 @@
                               "name": "wago verification, conformance, and benchmark data",
                               "description": "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
                               "url": "https://wago.sh/data/project.json",
-                              "dateModified": "2026-09-29",
+                              "dateModified": "2026-11-12",
                               "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
@@ -146,7 +146,6 @@
                               "variableMeasured": [
                                         "MVP files passing: 57/57",
                                         "Verification checks passing: 16592",
-                                        "Test coverage: null%",
                                         "Published performance comparisons: 384"
                               ],
                               "distribution": [
@@ -672,7 +671,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                             >16,592</span
                         >
                     </div>
-                    <div class="stat__label">checks passed</div>
+                    <div class="stat__label">MVP assertions passed</div>
                 </div>
                 <div class="stat">
                     <div class="stat__num stat__num--pink">0</div>
@@ -682,13 +681,12 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div class="stat__num stat__num--lilac">
                         <span
                             data-count
-                            data-target="86.1"
-                            data-suffix="%"
-                            data-stat="coverage"
-                            >86.1%</span
+                            data-target="7"
+                            data-stat="platforms"
+                            >7</span
                         >
                     </div>
-                    <div class="stat__label">test coverage</div>
+                    <div class="stat__label">native runtime targets</div>
                 </div>
             </section>
 
@@ -835,7 +833,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 <span class="vgroup__headrow">
                                     <span class="vgroup__chevron" aria-hidden="true"></span>
                                     <span class="vgroup__title">WebAssembly 1.0</span>
-                                    <span class="vgroup__sub">MVP core</span>
+                                    <span class="vgroup__sub">MVP feature details · historical (bd742cd)</span>
                                     <span class="vgroup__count">17/17</span>
                                     <span class="tag tag--pass">pass</span>
                                 </span>
@@ -1012,11 +1010,11 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                     <span class="vgroup__chevron" aria-hidden="true"></span>
                                     <span class="vgroup__title">Future features</span>
                                     <span class="vgroup__sub">active proposals</span>
-                                    <span class="vgroup__count">1/31</span>
+                                    <span class="vgroup__count">2/31</span>
                                     <span class="tag tag--partial">partial</span>
                                 </span>
                                 <span class="vgroup__prog">
-                                    <span class="vgroup__prog-fill" data-bar data-width="3"></span>
+                                    <span class="vgroup__prog-fill" data-bar data-width="11"></span>
                                 </span>
                             </summary>
                             <div class="vgroup__body">
@@ -1026,23 +1024,23 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Web Content Security Policy</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">not planned</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Threads &amp; atomics</span>
-                                    <span class="tag tag--pass">pass</span>
+                                    <span class="tag tag--partial">flag</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Compact import section</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Wide arithmetic</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--pass">pass</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">ESM integration</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">not planned</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Stack switching</span>
@@ -1054,23 +1052,23 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Custom descriptors &amp; JS interop</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Relaxed dead-code validation</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Numeric values in WAT data</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Extended name section</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Rounding variants</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Compilation hints</span>
@@ -1078,7 +1076,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">JS primitive builtins</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">not planned</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Acquire-Release Atomics</span>
@@ -1086,63 +1084,63 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Multibyte array access</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Half precision (FP16)</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Type imports</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Component model</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--partial">partial</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">C / C++ embedding API</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Flexible vectors</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Memory control</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Reference-typed strings</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Profiles</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Shared-everything threads</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Frozen values</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">More array constructors</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">JIT interface</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unknown</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">Type reflection (JS API)</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unsupported</span>
                                 </div>
                                 <div class="vgroup__row">
                                     <span class="vgroup__feat">JS text-encoding builtins</span>
-                                    <span class="tag tag--planned">planned</span>
+                                    <span class="tag tag--none">unknown</span>
                                 </div>
                             </div>
                         </details>

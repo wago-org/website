@@ -3,7 +3,7 @@
 Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
 License: Apache-2.0
-Data updated: 2026-09-29
+Data updated: 2026-11-12
 
 ## What wago is
 
@@ -13,7 +13,7 @@ The engine uses a shared decoder and validator, then emits native code with sing
 
 Release state: Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.
 
-Native runtime targets: linux/amd64, linux/arm64, darwin/arm64.
+Native runtime targets: linux/amd64, linux/arm64, darwin/amd64, darwin/arm64, windows/amd64, windows/arm64, linux/riscv64.
 
 Concurrency: public calls on one Instance must be serialized. Separate instances isolate state, but Wago currently permits one process-wide native activation at a time. Context deadlines and cancellation interrupt amd64/arm64 guest code at cooperative safepoints; deterministic fuel accounting is not implemented.
 
@@ -22,14 +22,12 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 ## Verification and conformance
 
 - Applicable MVP files passing: 57/57 (100%)
-- Public verification (mixed units): 16592 pass; 0 fail; 1591 Go-test/subtest skips
-- Current public-verification Spec 1.0 gate: 16026 execution assertions pass
+- Historical MVP execution assertions: 16592 pass; 0 fail; 1591 skip
 - Legacy SPECTEST.md MVP page: 57/57 applicable files; 16592 passing, 0 failing, 1591 skipped assertions
-- SIMD gate: 0 execution assertions pass
-- Test coverage: null%
+- Test coverage: not published in the current source
 - cgo lines: 0
 
-SPECTEST.md, SIMD, and Core 3 use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
+The historical MVP and Core 3 baselines use different corpus and accounting boundaries. Their values must not be added together or substituted for one another. Detailed status is available at https://wago.sh/data/stats.json and exact gate scope at https://wago.sh/compatibility.md.
 
 ## Benchmark interpretation
 

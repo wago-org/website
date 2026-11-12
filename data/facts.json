@@ -1,13 +1,13 @@
 {
   "$schema": "https://wago.sh/data/facts.schema.json",
   "schemaVersion": 1,
-  "generated": "2026-09-10",
+  "generated": "2026-11-12",
   "canonicalUrl": "https://wago.sh/data/facts.json",
   "source": {
     "repository": "https://github.com/wago-org/wago",
-    "ref": "bd742cdad68e0bb464ae135973866c73013ffb2f",
-    "commit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
-    "commitUrl": "https://github.com/wago-org/wago/commit/bd742cdad68e0bb464ae135973866c73013ffb2f"
+    "ref": "main",
+    "commit": "f9642420f3bc1507f2aeaa2a35c56f8b465b7c54",
+    "commitUrl": "https://github.com/wago-org/wago/commit/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54"
   },
   "identity": {
     "name": "wago",
@@ -26,55 +26,77 @@
     {
       "target": "linux/amd64",
       "status": "supported",
-      "detail": "native runtime CI",
+      "detail": "documented native runtime target",
       "evidence": [
         {
-          "label": "native CI matrix",
-          "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
         }
       ]
     },
     {
       "target": "linux/arm64",
       "status": "supported",
-      "detail": "native runtime CI",
+      "detail": "documented native runtime target",
       "evidence": [
         {
-          "label": "native CI matrix",
-          "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+        }
+      ]
+    },
+    {
+      "target": "darwin/amd64",
+      "status": "supported",
+      "detail": "documented native runtime target",
+      "evidence": [
+        {
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
         }
       ]
     },
     {
       "target": "darwin/arm64",
       "status": "supported",
-      "detail": "native runtime CI",
+      "detail": "documented native runtime target",
       "evidence": [
         {
-          "label": "native CI matrix",
-          "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
         }
       ]
     },
     {
-      "target": "darwin/amd64",
-      "status": "compiler-only",
-      "detail": "portable compiler/encoder checks; native JIT ABI is not claimed",
+      "target": "windows/amd64",
+      "status": "supported",
+      "detail": "documented native runtime target",
       "evidence": [
         {
-          "label": "native CI matrix",
-          "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
         }
       ]
     },
     {
-      "target": "windows/*",
-      "status": "planned",
-      "detail": "no native runtime target claimed",
+      "target": "windows/arm64",
+      "status": "supported",
+      "detail": "documented native runtime target",
       "evidence": [
         {
-          "label": "feature matrix",
-          "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
+        }
+      ]
+    },
+    {
+      "target": "linux/riscv64",
+      "status": "supported",
+      "detail": "documented native runtime target",
+      "evidence": [
+        {
+          "label": "README",
+          "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
         }
       ]
     }
@@ -114,180 +136,180 @@
       "assertionsSkip": 1591
     },
     "verification": {
-      "checksPass": 155010,
+      "checksPass": 16592,
       "checksFail": 0,
-      "checksSkip": 22,
-      "coverage": 86.1,
-      "accountingNote": "Normal, guard-page, WebAssembly 1.0, 2.0, SIMD, and pinned Core 3 assertion gates; the Core 3 total comes from the zero-gap checked-in baseline."
+      "checksSkip": 1591,
+      "coverage": null,
+      "accountingNote": "Historical MVP execution assertions; Core 3 is reported separately."
     },
     "proposals": [
       {
-        "name": "i32 / i64 integer ops",
+        "name": "i32 / i64 integer ops (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "f32 / f64 ops",
+        "name": "f32 / f64 ops (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "f32 / f64 ceil / floor / trunc / nearest / copysign",
+        "name": "f32 / f64 ceil / floor / trunc / nearest / copysign (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Conversions + reinterpret",
+        "name": "Conversions + reinterpret (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Float→int trunc NaN/overflow traps",
+        "name": "Float→int trunc NaN/overflow traps (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Control flow: block / loop / if / else / br / br_if / br_table / return",
+        "name": "Control flow: block / loop / if / else / br / br_if / br_table / return (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "call / call_indirect",
+        "name": "call / call_indirect (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "select, drop, nop, unreachable",
+        "name": "select, drop, nop, unreachable (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Locals",
+        "name": "Locals (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Globals",
+        "name": "Globals (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Linear memory load/store",
+        "name": "Linear memory load/store (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "memory.size / memory.grow",
+        "name": "memory.size / memory.grow (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Active data segments",
+        "name": "Active data segments (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Tables + active element segments",
+        "name": "Tables + active element segments (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Function imports / exports",
+        "name": "Function imports / exports (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "Memory / table / global imports & exports",
+        "name": "Memory / table / global imports & exports (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
       {
-        "name": "start function",
+        "name": "start function (historical)",
         "status": "pass",
         "evidence": [
           {
-            "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "label": "historical MVP feature matrix",
+            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L117-L141"
           }
         ]
       },
@@ -297,7 +319,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -307,7 +329,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -317,7 +339,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -327,7 +349,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -337,7 +359,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -347,7 +369,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -357,7 +379,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -367,7 +389,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -377,7 +399,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -387,7 +409,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -397,7 +419,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -407,7 +429,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -417,7 +439,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -427,7 +449,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -437,7 +459,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -447,57 +469,57 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Web Content Security Policy",
-        "status": "planned",
+        "status": "none",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Threads & atomics",
-        "status": "pass",
+        "status": "flag",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Compact import section",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Wide arithmetic",
-        "status": "planned",
+        "status": "pass",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "ESM integration",
-        "status": "planned",
+        "status": "none",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -507,7 +529,7 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -517,57 +539,57 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Custom descriptors & JS interop",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Relaxed dead-code validation",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Numeric values in WAT data",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Extended name section",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Rounding variants",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -577,17 +599,17 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "JS primitive builtins",
-        "status": "planned",
+        "status": "none",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
@@ -597,157 +619,157 @@
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Multibyte array access",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Half precision (FP16)",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Type imports",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Component model",
-        "status": "planned",
+        "status": "partial",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "C / C++ embedding API",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Flexible vectors",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Memory control",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Reference-typed strings",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Profiles",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Shared-everything threads",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Frozen values",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "More array constructors",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "JIT interface",
-        "status": "planned",
+        "status": "unknown",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "Type reflection (JS API)",
-        "status": "planned",
+        "status": "unsupported",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       },
       {
         "name": "JS text-encoding builtins",
-        "status": "planned",
+        "status": "unknown",
         "evidence": [
           {
             "label": "feature matrix",
-            "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+            "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
           }
         ]
       }
@@ -755,46 +777,18 @@
   },
   "compatibility": {
     "verification": {
-      "wagoCommit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
-      "host": "darwin/arm64",
-      "pass": 96972,
+      "wagoCommit": "f9642420f3bc1507f2aeaa2a35c56f8b465b7c54",
+      "host": "published repository baselines",
+      "pass": 16592,
       "fail": 0,
-      "skip": 22,
+      "skip": 1591,
       "gates": [
         {
-          "name": "Normal",
-          "pass": 4333,
+          "name": "MVP legacy",
+          "pass": 16592,
           "fail": 0,
-          "skip": 17,
-          "unit": "Go tests and subtests"
-        },
-        {
-          "name": "Guard pages",
-          "pass": 1077,
-          "fail": 0,
-          "skip": 5,
-          "unit": "Go tests and subtests"
-        },
-        {
-          "name": "Spec 1.0",
-          "pass": 16026,
-          "fail": 0,
-          "skip": 0,
-          "unit": "execution assertions"
-        },
-        {
-          "name": "Spec 2.0",
-          "pass": 51211,
-          "fail": 0,
-          "skip": 0,
-          "unit": "2880 validation + 48331 execution assertions"
-        },
-        {
-          "name": "SIMD",
-          "pass": 24325,
-          "fail": 0,
-          "skip": 0,
-          "unit": "execution assertions"
+          "skip": 1591,
+          "unit": "assertions"
         }
       ],
       "corpora": [
@@ -807,6 +801,11 @@
           "name": "WebAssembly Core 2.0 specification tests",
           "repository": "https://github.com/WebAssembly/spec",
           "commit": "05ca4182176763112561ae20153975c12bd689e4"
+        },
+        {
+          "name": "WebAssembly Core 3.0 specification tests",
+          "repository": "https://github.com/WebAssembly/spec",
+          "commit": "9d36019973201a19f9c9ebb0f10828b2fe2374aa"
         }
       ]
     },
@@ -855,51 +854,51 @@
   "evidence": {
     "readme": {
       "label": "README",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/README.md#L48-L97"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/README.md"
     },
     "engine": {
       "label": "pure-Go no-cgo JIT package contract",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/doc.go#L1-L8"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/doc.go#L1-L8"
     },
     "features": {
       "label": "feature matrix",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/FEATURES.md#L45-L63"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/FEATURES.md#L45-L63"
     },
     "verification": {
-      "label": "public verification",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/SPECTEST.md#L1-L20"
+      "label": "published conformance baselines",
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/SPECTEST.md#L1-L20"
     },
     "ci": {
       "label": "native CI matrix",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/.github/workflows/ci.yml#L92-L214"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/.github/workflows/ci.yml#L92-L214"
     },
     "api": {
       "label": "public API source",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/api.go#L1675-L1715"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/api.go#L1675-L1715"
     },
     "concurrency": {
       "label": "race-tested concurrent compile, instantiate, and execute coverage",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/runtime_concurrency_test.go#L13-L82"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/runtime_concurrency_test.go#L13-L82"
     },
     "nativeExecution": {
       "label": "native execution serialization",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/instance_native_context.go#L10-L67"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/instance_native_context.go#L10-L67"
     },
     "memory": {
       "label": "borrowed memory-view contract",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/memory.go#L84-L113"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/memory.go#L84-L113"
     },
     "policy": {
       "label": "resource policy enforcement",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/src/wago/policy.go#L10-L67"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/src/wago/policy.go#L10-L67"
     },
     "testSurface": {
       "label": "unified repository test surface",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/tests/README.md#L1-L44"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/tests/README.md#L1-L44"
     },
     "wazeroFixtures": {
       "label": "wazero fixture manifest",
-      "url": "https://github.com/wago-org/wago/blob/bd742cdad68e0bb464ae135973866c73013ffb2f/tests/corpus/regressions/README.md#L1-L31"
+      "url": "https://github.com/wago-org/wago/blob/f9642420f3bc1507f2aeaa2a35c56f8b465b7c54/tests/corpus/regressions/README.md#L1-L31"
     }
   }
 }

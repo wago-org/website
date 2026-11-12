@@ -1,0 +1,74 @@
+{
+  "sourceCommit": "bd742cdad68e0bb464ae135973866c73013ffb2f",
+  "description": "MVP feature statuses from the last detailed Wago feature matrix; retained as historical context.",
+  "features": [
+    {
+      "label": "i32 / i64 integer ops",
+      "status": "pass"
+    },
+    {
+      "label": "f32 / f64 ops",
+      "status": "pass"
+    },
+    {
+      "label": "f32 / f64 ceil / floor / trunc / nearest / copysign",
+      "status": "pass"
+    },
+    {
+      "label": "Conversions + reinterpret",
+      "status": "pass"
+    },
+    {
+      "label": "Float→int trunc NaN/overflow traps",
+      "status": "pass"
+    },
+    {
+      "label": "Control flow: block / loop / if / else / br / br_if / br_table / return",
+      "status": "pass"
+    },
+    {
+      "label": "call / call_indirect",
+      "status": "pass"
+    },
+    {
+      "label": "select, drop, nop, unreachable",
+      "status": "pass"
+    },
+    {
+      "label": "Locals",
+      "status": "pass"
+    },
+    {
+      "label": "Globals",
+      "status": "pass"
+    },
+    {
+      "label": "Linear memory load/store",
+      "status": "pass"
+    },
+    {
+      "label": "memory.size / memory.grow",
+      "status": "pass"
+    },
+    {
+      "label": "Active data segments",
+      "status": "pass"
+    },
+    {
+      "label": "Tables + active element segments",
+      "status": "pass"
+    },
+    {
+      "label": "Function imports / exports",
+      "status": "pass"
+    },
+    {
+      "label": "Memory / table / global imports & exports",
+      "status": "pass"
+    },
+    {
+      "label": "start function",
+      "status": "pass"
+    }
+  ]
+}

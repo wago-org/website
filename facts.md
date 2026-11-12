@@ -1,7 +1,7 @@
 # Wago facts
 
-Last synchronized: 2026-09-10
-Wago source commit: bd742cdad68e0bb464ae135973866c73013ffb2f
+Last synchronized: 2026-11-12
+Wago source commit: f9642420f3bc1507f2aeaa2a35c56f8b465b7c54
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Identity and release
@@ -18,11 +18,13 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 | Target | Status | Scope |
 | --- | --- | --- |
-| `linux/amd64` | supported | native runtime CI |
-| `linux/arm64` | supported | native runtime CI |
-| `darwin/arm64` | supported | native runtime CI |
-| `darwin/amd64` | compiler-only | portable compiler/encoder checks; native JIT ABI is not claimed |
-| `windows/*` | planned | no native runtime target claimed |
+| `linux/amd64` | supported | documented native runtime target |
+| `linux/arm64` | supported | documented native runtime target |
+| `darwin/amd64` | supported | documented native runtime target |
+| `darwin/arm64` | supported | documented native runtime target |
+| `windows/amd64` | supported | documented native runtime target |
+| `windows/arm64` | supported | documented native runtime target |
+| `linux/riscv64` | supported | documented native runtime target |
 
 ## Concurrency
 
@@ -50,23 +52,23 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 ## WebAssembly proposal tracker
 
-- i32 / i64 integer ops: pass
-- f32 / f64 ops: pass
-- f32 / f64 ceil / floor / trunc / nearest / copysign: pass
-- Conversions + reinterpret: pass
-- Float→int trunc NaN/overflow traps: pass
-- Control flow: block / loop / if / else / br / br_if / br_table / return: pass
-- call / call_indirect: pass
-- select, drop, nop, unreachable: pass
-- Locals: pass
-- Globals: pass
-- Linear memory load/store: pass
-- memory.size / memory.grow: pass
-- Active data segments: pass
-- Tables + active element segments: pass
-- Function imports / exports: pass
-- Memory / table / global imports & exports: pass
-- start function: pass
+- i32 / i64 integer ops (historical): pass
+- f32 / f64 ops (historical): pass
+- f32 / f64 ceil / floor / trunc / nearest / copysign (historical): pass
+- Conversions + reinterpret (historical): pass
+- Float→int trunc NaN/overflow traps (historical): pass
+- Control flow: block / loop / if / else / br / br_if / br_table / return (historical): pass
+- call / call_indirect (historical): pass
+- select, drop, nop, unreachable (historical): pass
+- Locals (historical): pass
+- Globals (historical): pass
+- Linear memory load/store (historical): pass
+- memory.size / memory.grow (historical): pass
+- Active data segments (historical): pass
+- Tables + active element segments (historical): pass
+- Function imports / exports (historical): pass
+- Memory / table / global imports & exports (historical): pass
+- start function (historical): pass
 - Sign-extension ops: pass
 - Non-trapping float→int: pass
 - Multi-value: pass
@@ -83,36 +85,36 @@ Canonical JSON: https://wago.sh/data/facts.json
 - Relaxed SIMD: pass
 - Branch hinting: pass
 - JS Promise integration: planned
-- Web Content Security Policy: planned
-- Threads & atomics: pass
-- Compact import section: planned
-- Wide arithmetic: planned
-- ESM integration: planned
+- Web Content Security Policy: none
+- Threads & atomics: flag
+- Compact import section: pass
+- Wide arithmetic: pass
+- ESM integration: none
 - Stack switching: planned
 - Custom page sizes: planned
-- Custom descriptors & JS interop: planned
-- Relaxed dead-code validation: planned
-- Numeric values in WAT data: planned
-- Extended name section: planned
-- Rounding variants: planned
+- Custom descriptors & JS interop: unsupported
+- Relaxed dead-code validation: unsupported
+- Numeric values in WAT data: unsupported
+- Extended name section: unsupported
+- Rounding variants: unsupported
 - Compilation hints: planned
-- JS primitive builtins: planned
+- JS primitive builtins: none
 - Acquire-Release Atomics: planned
-- Multibyte array access: planned
-- Half precision (FP16): planned
-- Type imports: planned
-- Component model: planned
-- C / C++ embedding API: planned
-- Flexible vectors: planned
-- Memory control: planned
-- Reference-typed strings: planned
-- Profiles: planned
-- Shared-everything threads: planned
-- Frozen values: planned
-- More array constructors: planned
-- JIT interface: planned
-- Type reflection (JS API): planned
-- JS text-encoding builtins: planned
+- Multibyte array access: unsupported
+- Half precision (FP16): unsupported
+- Type imports: unsupported
+- Component model: partial
+- C / C++ embedding API: unsupported
+- Flexible vectors: unsupported
+- Memory control: unsupported
+- Reference-typed strings: unsupported
+- Profiles: unsupported
+- Shared-everything threads: unsupported
+- Frozen values: unsupported
+- More array constructors: unsupported
+- JIT interface: unknown
+- Type reflection (JS API): unsupported
+- JS text-encoding builtins: unknown
 
 ## Read next
 

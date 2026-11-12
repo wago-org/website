@@ -7,6 +7,7 @@ import { constants } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parsePlatformTargets } from "./stats-parsers.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CHECK = process.argv.includes("--check");
@@ -235,17 +236,17 @@ function compatibilityPage(facts) {
     body: `
     <section id="result">
       <h2>Verified result</h2>
-      <p class="docs-callout">At Wago commit <code>${esc(facts.source.commit.slice(0, 12))}</code>, the public verification report records <strong>${c.verification.pass.toLocaleString("en-US")} passed</strong>, <strong>${c.verification.fail} failed</strong>, and <strong>${c.verification.skip} skipped</strong> checks on <code>${esc(c.verification.host)}</code>.</p>
+      <p class="docs-callout">At Wago commit <code>${esc(facts.source.commit.slice(0, 12))}</code>, the historical MVP report records <strong>${c.verification.pass.toLocaleString("en-US")} passed</strong>, <strong>${c.verification.fail} failed</strong>, and <strong>${c.verification.skip} skipped</strong> assertions; its skipped assertions are also shown.</p>
       <table><thead><tr><th>Gate</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Accounting unit</th></tr></thead>
       <tbody>${c.verification.gates.map((gate) => `<tr><th scope="row">${esc(gate.name)}</th><td>${gate.pass.toLocaleString("en-US")}</td><td>${gate.fail}</td><td>${gate.skip}</td><td>${esc(gate.unit)}</td></tr>`).join("\n")}</tbody></table>
       <p class="evidence">Primary result: ${evidenceLinks([e.verification])}</p>
     </section>
     <section id="official-suites">
       <h2>Official WebAssembly suites</h2>
-      <p>Wago pins the WebAssembly MVP and Core 2.0 repositories as git submodules. The public gate reports 16,026 Release 1 execution assertions, 2,880 Release 2 validation assertions, 48,331 Release 2 execution assertions, and 24,325 SIMD execution assertions.</p>
+      <p>Wago pins official WebAssembly corpora. Its Core 3 baseline records ${stats.core3.assertions.passed.toLocaleString("en-US")} passing assertions across ${stats.core3.files} files, with ${stats.core3.assertions.failed} failures and ${stats.core3.assertions.skipped} skips.</p>
       <table><thead><tr><th>Corpus</th><th>Pinned commit</th><th>Repository</th></tr></thead>
       <tbody>${c.verification.corpora.map((corpus) => `<tr><th scope="row">${esc(corpus.name)}</th><td><code>${esc(corpus.commit)}</code></td><td><a href="${esc(corpus.repository)}">${esc(corpus.repository)}</a></td></tr>`).join("\n")}</tbody></table>
-      <p>These are assertion counts, not interchangeable “test case” counts. The separate legacy MVP page reports 57/57 applicable files and 16,592 passing assertions under its own older corpus/accounting boundary.</p>
+      <p>The MVP and Core 3 results use different corpora and accounting boundaries; do not add them together.</p>
       <p class="evidence">Evidence: ${evidenceLinks([e.verification, e.features])}</p>
     </section>
     <section id="wazero">
@@ -261,7 +262,7 @@ function compatibilityPage(facts) {
     </section>
     <section id="platform-scope">
       <h2>Architecture scope</h2>
-      <p>Linux/amd64, Linux/arm64, and Darwin/arm64 run the native runtime/API, guard-page, and corpus matrix. Core v2 runs on Linux/amd64 and Linux/arm64. The checked-in aggregate verification report itself was generated on Darwin/arm64.</p>
+      <p>The repository documents supported targets and platform-specific test coverage. Consult the pinned sources for the scope of each test run.</p>
       <p class="evidence">Evidence: ${evidenceLinks([e.ci, e.verification])}</p>
     </section>`,
   });
@@ -468,7 +469,7 @@ function guidePage(facts, key) {
     </section>
     <section id="limits"><h2>What it does not mean</h2>
       <ul>
-        <li>It does not mean architecture-independent execution: native runtime targets are currently Linux/amd64, Linux/arm64, and Darwin/arm64.</li>
+        <li>It does not mean architecture-independent execution; consult the documented native runtime targets.</li>
         <li>It does not remove executable-memory policy, code-signing, or operating-system constraints.</li>
         <li>It does not imply every plugin is dependency-free; evaluate plugin manifests separately.</li>
       </ul>
@@ -592,13 +593,13 @@ function compatibilityMarkdown(facts) {
 ## Public verification
 
 Host: \`${c.verification.host}\`
-Result: ${c.verification.pass} passed, ${c.verification.fail} failed, ${c.verification.skip} skipped checks.
+Historical MVP result: ${c.verification.pass} passed, ${c.verification.fail} failed, ${c.verification.skip} skipped assertions.
 
 | Gate | Passed | Failed | Skipped | Accounting unit |
 | --- | ---: | ---: | ---: | --- |
 ${gates}
 
-The headline mixes Go tests/subtests and conformance assertions. Preserve the per-row accounting unit.
+Core 3 is a separate baseline: ${stats.core3.assertions.passed} passing assertions across ${stats.core3.files} files, with ${stats.core3.assertions.failed} failed and ${stats.core3.assertions.skipped} skipped. Do not add counts across suites.
 
 ## Pinned official corpora
 
@@ -840,7 +841,7 @@ function factsSchema() {
               additionalProperties: false,
               properties: {
                 name: { type: "string" },
-                status: { enum: ["pass", "partial", "planned", "none"] },
+                status: { enum: ["pass", "partial", "planned", "none", "unsupported", "flag", "plugin", "unknown"] },
                 evidence: { type: "array", items: { $ref: "#/$defs/evidence" } },
               },
             },
@@ -970,7 +971,7 @@ requireText(loaded["src/wago/doc.go"], "no-cgo single-pass JIT", "src/wago/doc.g
 requireText(loaded["src/wago/instance.go"], "reusable Invoke result buffer", "src/wago/instance.go");
 requireText(loaded["src/wago/policy.go"], "MaxMemoryBytes", "src/wago/policy.go");
 requireText(loaded["src/wago/policy.go"], "MaxTableEntries", "src/wago/policy.go");
-requireText(loaded["FEATURES.md"], "Invocation cancellation", "FEATURES.md");
+requireText(loaded["src/wago/api.go"], "InvokeContext is like Invoke but honors context cancellation", "src/wago/api.go");
 requireText(loaded[".github/workflows/ci.yml"], "Linux / arm64", ".github/workflows/ci.yml");
 requireText(loaded[".github/workflows/ci.yml"], "Darwin / arm64", ".github/workflows/ci.yml");
 requireText(loaded["src/wago/api.go"], "Native cancellation is available on amd64/arm64", "src/wago/api.go");
@@ -980,7 +981,6 @@ requireText(loaded["src/wago/policy.go"], "maximum invoke duration policy is uns
 
 const gateMatches = [
   ["MVP legacy", stats.mvp.assertionsPass, stats.mvp.assertionsFail, stats.mvp.assertionsSkip, "assertions"],
-  ["SIMD", stats.suiteAssertions.simd, 0, 0, "assertions"],
 ];
 const wazero = match(
   loaded["tests/corpus/regressions/README.md"],
@@ -1000,7 +1000,7 @@ const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
 ]);
 
 const evidenceMap = {
-  readme: evidence(commit, "README.md", "README", "#L48-L97"),
+  readme: evidence(commit, "README.md", "README"),
   engine: evidence(commit, "src/wago/doc.go", "pure-Go no-cgo JIT package contract", "#L1-L8"),
   features: evidence(commit, "FEATURES.md", "feature matrix", "#L45-L63"),
   verification: evidence(commit, "SPECTEST.md", "published conformance baselines", "#L1-L20"),
@@ -1039,13 +1039,9 @@ const facts = {
     stableVersion: null,
     apiStability: "pre-v1; no stable-v1 compatibility promise",
   },
-  platforms: [
-    { target: "linux/amd64", status: "supported", detail: "native runtime CI", evidence: [evidenceMap.ci] },
-    { target: "linux/arm64", status: "supported", detail: "native runtime CI", evidence: [evidenceMap.ci] },
-    { target: "darwin/arm64", status: "supported", detail: "native runtime CI", evidence: [evidenceMap.ci] },
-    { target: "darwin/amd64", status: "compiler-only", detail: "portable compiler/encoder checks; native JIT ABI is not claimed", evidence: [evidenceMap.ci] },
-    { target: "windows/*", status: "planned", detail: "no native runtime target claimed", evidence: [evidenceMap.features] },
-  ],
+  platforms: parsePlatformTargets(loaded["README.md"]).map((target) => ({
+    target, status: "supported", detail: "documented native runtime target", evidence: [evidenceMap.readme],
+  })),
   concurrency: {
     runtime: "concurrent compile/instantiate/execute on distinct objects is race-tested",
     compiledModule: "compile once and instantiate many; blanket method-level goroutine-safety is not yet documented",
@@ -1072,9 +1068,9 @@ const facts = {
     verification: stats.verification,
     proposals: webAssemblyGroups.flatMap((group) =>
       group.features.map((feature) => ({
-        name: feature.label,
+        name: group.historicalSourceCommit ? `${feature.label} (historical)` : feature.label,
         status: feature.status,
-        evidence: [evidenceMap.features],
+        evidence: [group.historicalSourceCommit ? evidence(group.historicalSourceCommit, "FEATURES.md", "historical MVP feature matrix", "#L117-L141") : evidenceMap.features],
       })),
     ),
   },
@@ -1102,6 +1098,11 @@ const facts = {
           name: "WebAssembly Core 2.0 specification tests",
           repository: "https://github.com/WebAssembly/spec",
           commit: coreV2CorpusCommit,
+        },
+        {
+          name: "WebAssembly Core 3.0 specification tests",
+          repository: "https://github.com/WebAssembly/spec",
+          commit: stats.core3.commit,
         },
       ],
     },

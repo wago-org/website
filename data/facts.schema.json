@@ -291,7 +291,11 @@
                   "pass",
                   "partial",
                   "planned",
-                  "none"
+                  "none",
+                  "unsupported",
+                  "flag",
+                  "plugin",
+                  "unknown"
                 ]
               },
               "evidence": {

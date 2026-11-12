@@ -1,23 +1,19 @@
 # Wago compatibility and verification
 
-Last synchronized: 2026-09-10
-Wago source commit: bd742cdad68e0bb464ae135973866c73013ffb2f
+Last synchronized: 2026-11-12
+Wago source commit: f9642420f3bc1507f2aeaa2a35c56f8b465b7c54
 Canonical JSON: https://wago.sh/data/facts.json
 
 ## Public verification
 
-Host: `darwin/arm64`
-Result: 96972 passed, 0 failed, 22 skipped checks.
+Host: `published repository baselines`
+Historical MVP result: 16592 passed, 0 failed, 1591 skipped assertions.
 
 | Gate | Passed | Failed | Skipped | Accounting unit |
 | --- | ---: | ---: | ---: | --- |
-| Normal | 4333 | 0 | 17 | Go tests and subtests |
-| Guard pages | 1077 | 0 | 5 | Go tests and subtests |
-| Spec 1.0 | 16026 | 0 | 0 | execution assertions |
-| Spec 2.0 | 51211 | 0 | 0 | 2880 validation + 48331 execution assertions |
-| SIMD | 24325 | 0 | 0 | execution assertions |
+| MVP legacy | 16592 | 0 | 1591 | assertions |
 
-The headline mixes Go tests/subtests and conformance assertions. Preserve the per-row accounting unit.
+Core 3 is a separate baseline: 58038 passing assertions across 258 files, with 0 failed and 0 skipped. Do not add counts across suites.
 
 ## Pinned official corpora
 
@@ -25,6 +21,7 @@ The headline mixes Go tests/subtests and conformance assertions. Preserve the pe
 | --- | --- | --- |
 | WebAssembly MVP testsuite | `a8bcbafe6d2fb191ce0188de0e18fdc107fa2598` | https://github.com/WebAssembly/testsuite |
 | WebAssembly Core 2.0 specification tests | `05ca4182176763112561ae20153975c12bd689e4` | https://github.com/WebAssembly/spec |
+| WebAssembly Core 3.0 specification tests | `9d36019973201a19f9c9ebb0f10828b2fe2374aa` | https://github.com/WebAssembly/spec |
 
 ## Wazero scope
 

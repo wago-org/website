@@ -6,13 +6,14 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 ## Identity and release
 
+- License: MPL-2.0
 - Implementation: Go
 - Pure Go: yes
 - cgo: no
-- Execution: single-pass native compiler
+- Execution: Railshot single-pass native compiler
 - Interpreter tier: no
 - Stable version: none published
-- Release state: Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.
+- Release state: Beta / pre-v1. Public installers are documented; no stable-v1 API compatibility promise. Canary tags are discontinued: use commit hashes for development builds.
 
 ## Native runtime targets
 
@@ -30,16 +31,18 @@ Canonical JSON: https://wago.sh/data/facts.json
 
 - Runtime: concurrent compile/instantiate/execute on distinct objects is race-tested
 - Compiled module: compile once and instantiate many; blanket method-level goroutine-safety is not yet documented
-- Instance: one active caller at a time; serialize calls
-- Separate instances: concurrent callers are accepted, but native Wasm activations are serialized process-wide
-- Native execution parallelism: one process-wide native activation at a time
+- Instance: serialize public calls on each instance
+- Separate instances: eligible independent instances may execute native code concurrently by default; cross-instance dependencies or shared execution state can require the process-wide lease
+- Native execution parallelism: instance-local leases for eligible independent instances; process-wide fallback for dependent execution
 - Result lifetime: instance-owned result buffer remains valid only until the next call
+
+Independent execution is enabled by default through `RuntimeConfig.WithIndependentInstanceExecution`. Imported memories, tables, globals, cross-instance Wasm function bindings, and shared Runtime GC domains can disqualify an instance. Publishing native resources can revoke independence. These are eligibility rules, not a claim that every separate instance runs in parallel or every shared-memory configuration is globally serialized. Serialize public calls per instance regardless of its native lease.
 
 ## Limits and interruption
 
 - Declared memory limit: supported
-- Table limit: partial: initial/minimum size checked; growth maximum is not enforced by Policy.MaxTableEntries
-- Context cancellation/deadline: supported on amd64 and arm64 at cooperative native safepoints
+- Table limit: Policy.MaxTableEntries checks per-table runtime capacity, including resolved imported capacity at instantiation; not an aggregate table-memory budget
+- Context cancellation/deadline: asynchronous native interruption on standard-Go Linux amd64/arm64 and macOS arm64; cooperative safepoints on other supported amd64/arm64 configurations; TinyGo requires scheduler=threads for cancelable entry
 - Policy.MaxInvokeDuration: deprecated-unsupported-use-context-deadline
 - Deterministic fuel: not implemented
 - Aggregate memory accounting: not published

@@ -7,9 +7,9 @@ Canonical JSON: https://wago.sh/data/facts.json
 ## Published controls
 
 - Declared linear-memory maxima can be limited at instantiation.
-- Table policy checks initial/minimum entries; it is not a complete growth ceiling.
-- Context cancellation and deadlines interrupt amd64/arm64 guest code at native safepoints.
-- Explicit bounds checks are the default; signal-backed guard pages are opt-in and CI-tested.
+- Policy.MaxTableEntries checks per-table runtime capacity, including resolved imported capacity at instantiation; not an aggregate table-memory budget.
+- Context cancellation/deadlines: asynchronous native interruption on standard-Go Linux amd64/arm64 and macOS arm64; cooperative safepoints on other supported amd64/arm64 configurations; TinyGo requires scheduler=threads for cancelable entry.
+- Without the wago_guardpage build tag, explicit bounds checks are the default. The tag changes the default to guard pages; WAGO_BOUNDS can override selection on supported configurations.
 - Capability policy can allow or deny plugin-provided host access.
 - The repository contains Go fuzz targets and pinned fuzz-regression fixtures.
 

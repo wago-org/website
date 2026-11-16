@@ -73,7 +73,8 @@
         "pureGo",
         "cgo",
         "execution",
-        "interpreter"
+        "interpreter",
+        "license"
       ],
       "additionalProperties": false,
       "properties": {
@@ -90,6 +91,9 @@
           "const": false
         },
         "execution": {
+          "type": "string"
+        },
+        "license": {
           "type": "string"
         },
         "interpreter": {

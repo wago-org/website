@@ -2,22 +2,33 @@
 
 Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
-License: Apache-2.0
-Data updated: 2026-11-12
+License: MPL-2.0
+Statistics snapshot date: 2026-11-12
+Product source revision: https://github.com/wago-org/wago/commit/227dfd64ddb3760ae8547eb69a27da38c6cd8676
 
 ## What wago is
 
 WebAssembly, made for Go.
 
-The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
+The engine uses a shared decoder and validator, then emits native code with the Railshot single-pass native compiler. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
 
-Release state: Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.
+Release state: Beta / pre-v1. Public installers are documented; no stable-v1 API compatibility promise. Canary tags are discontinued: use commit hashes for development builds.
 
 Native runtime targets: linux/amd64, linux/arm64, darwin/amd64, darwin/arm64, windows/amd64, windows/arm64, linux/riscv64.
 
-Concurrency: public calls on one Instance must be serialized. Separate instances isolate state, but Wago currently permits one process-wide native activation at a time. Context deadlines and cancellation interrupt amd64/arm64 guest code at cooperative safepoints; deterministic fuel accounting is not implemented.
+Concurrency: serialize public calls on each instance. eligible independent instances may execute native code concurrently by default; cross-instance dependencies or shared execution state can require the process-wide lease. Context deadlines and cancellation: asynchronous native interruption on standard-Go Linux amd64/arm64 and macOS arm64; cooperative safepoints on other supported amd64/arm64 configurations; TinyGo requires scheduler=threads for cancelable entry. Deterministic fuel accounting is not implemented.
 
 WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a complete Preview 1, Preview 2, or function-by-function WASI surface.
+
+## API and integration guidance
+
+Use https://docs.wago.sh/guides/embed-wago and the source-pinned public API example at https://github.com/wago-org/wago/tree/227dfd64ddb3760ae8547eb69a27da38c6cd8676/examples/23-public-api. Compile once and instantiate as needed. Resolve repeated exports with `Instance.WasmFunc`; invocation result slices are borrowed until the next call on the same instance. Copy retained results and serialize calls per instance.
+
+Host imports use `NewImports().HostFunc` with supported ordinary Go signatures or `func(wago.HostCall)`. The latter is a borrowed logical view for arbitrary arity, mixed scalars, and references under Go and TinyGo. Raw `ParamSlots`/`ResultSlots` are ABI views, not owned buffers. V128 host callback boundaries remain unsupported. `I32HostEvent` is explicitly deferred until the native invocation returns, so use synchronous callbacks when guest code needs immediate effects.
+
+Independent execution defaults on; admission excludes imported memories/tables/globals and cross-instance Wasm function bindings, and shared Runtime GC domains can require the process-wide fallback. Native-resource publication can revoke eligibility. Private threaded execution has its own local-lease path: neither “every instance runs in parallel” nor “all shared memory serializes globally” is a valid blanket claim. See https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/instantiate.go and https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/instance_native_context.go.
+
+Public installers and `go get github.com/wago-org/wago` are documented in the source README. This remains beta; use commit hashes, not discontinued canary tags, for development builds. Consult plugin documentation for capabilities and authority grants rather than automatically granting all requested permissions.
 
 ## Verification and conformance
 
@@ -32,6 +43,7 @@ The historical MVP and Core 3 baselines use different corpus and accounting boun
 ## Benchmark interpretation
 
 Compare wago with other runtimes only within the same workload and architecture. Architectures are measured on different machines.
+Published benchmark snapshots are not measurements of every newer commit. Preserve measurement kind (compilation, execution, whole-process startup), units, and source revision.
 
 Methodology and corpus: https://github.com/wago-org/wago/tree/main/bench
 

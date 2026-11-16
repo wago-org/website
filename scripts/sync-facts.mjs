@@ -22,6 +22,13 @@ const OUT_SCHEMA = join(ROOT, "data", "facts.schema.json");
 
 const INPUTS = [
   "README.md",
+  "LICENSE",
+  "go.mod",
+  "src/wago/config.go",
+  "src/core/runtime/interrupt_linux.go",
+  "src/core/runtime/interrupt_darwin_arm64.go",
+  "src/wago/instantiate.go",
+  "src/wago/hostcall_test.go",
   "FEATURES.md",
   "SPECTEST.md",
   "tests/README.md",
@@ -285,9 +292,9 @@ function securityPage(facts) {
     <section id="controls">
       <h2>Published controls</h2>
       <ul>
-        <li>Declared linear-memory maxima can be limited at instantiation; the table policy currently checks initial/minimum entries only.</li>
-        <li>Explicit bounds checks are the default; signal-backed guard pages are an opt-in build/runtime path with native CI coverage.</li>
-        <li>Context cancellation and deadlines interrupt amd64/arm64 native guest code at function-entry and loop-header safepoints.</li>
+        <li>Declared linear-memory maxima can be limited at instantiation. ${esc(facts.limits.declaredTables)}.</li>
+        <li>Without the wago_guardpage build tag, explicit bounds checks are the default. The tag changes the default to guard pages; WAGO_BOUNDS can override selection on supported configurations.</li>
+        <li>Context cancellation/deadlines: ${esc(facts.limits.deadlineInterruption.mechanism)}.</li>
         <li>Capability policy can allow or deny plugin-provided host access.</li>
         <li>The repository contains Go fuzz targets and 71 pinned wazero fuzz-regression fixtures with ordinary test oracles.</li>
       </ul>
@@ -299,7 +306,7 @@ function securityPage(facts) {
         <li>No dedicated <code>SECURITY.md</code> or public vulnerability-reporting address was found at this source commit.</li>
         <li>No third-party security audit is claimed.</li>
         <li>No runtime-wide aggregate memory budget across all live instances is documented.</li>
-        <li>No deterministic instruction-fuel accounting is documented; deadlines use cooperative safepoint interruption, and <code>Policy.MaxInvokeDuration</code> is deprecated and rejected in favor of a context deadline.</li>
+        <li>No deterministic instruction-fuel accounting is documented; deadline interruption depends on the host configuration, and <code>Policy.MaxInvokeDuration</code> is deprecated and rejected in favor of a context deadline.</li>
         <li>No stable compiled-artifact compatibility guarantee across releases is documented.</li>
       </ul>
       <p>For hostile multi-tenant workloads, these gaps should be part of the deployment threat model. Process or container isolation remains an additional defense boundary, not something the engine can make unnecessary.</p>
@@ -401,7 +408,7 @@ const competitorFacts = {
     mode: "C runtime with interpreter, AOT, Fast JIT, and LLVM JIT modes",
     chooseWago: "the host is Go and avoiding cgo/native-library integration is a hard deployment requirement",
     chooseOther: "you need a small embedded C runtime, microcontroller/RTOS targets, AOT deployment, or WAMR’s wider architecture and execution-mode matrix",
-    gaps: "Wago targets three native OS/architecture pairs; WAMR documents a substantially broader embedded and architecture matrix.",
+    gaps: "Compare the current Wago native target list with WAMR’s embedded and architecture matrix.",
     source: "https://github.com/bytecodealliance/wasm-micro-runtime",
   },
 };
@@ -427,7 +434,7 @@ function comparePage(facts, key) {
       <tbody>${rows([
         ["Implementation", "Go; no cgo", `<a href="${esc(other.source)}">See the project’s current implementation and bindings</a>`],
         ["Execution terminology", "Single-pass native compiler", esc(other.mode)],
-        ["Wago release maturity", "Pre-v1 development with beta and canary channels; no stable v1 API promise", "See the other project’s release and support policy"],
+        ["Wago release maturity", esc(facts.release.status), "See the other project’s release and support policy"],
         ["Known Wago gap", esc(other.gaps), "Not applicable"],
       ])}</tbody></table>
     </section>
@@ -453,7 +460,7 @@ function guidePage(facts, key) {
     <section id="contract"><h2>Current contract</h2>
       <ul>
         <li>Compile a module once and instantiate it repeatedly.</li>
-        <li>Serialize calls on any one instance. Separate instances isolate mutable state, but native Wasm activations are currently serialized process-wide.</li>
+        <li>${esc(facts.concurrency.instance)}. ${esc(facts.concurrency.separateInstances)}.</li>
         <li>Treat published instantiation allocation bytes as Go allocation traffic, not total instance memory.</li>
         <li>Set declared memory/table policy limits and pass contexts with deadlines to untrusted calls.</li>
       </ul>
@@ -488,9 +495,9 @@ function guidePage(facts, key) {
     </section>
     <section id="checklist"><h2>Production checklist</h2>
       <ul>
-        <li>Choose one of the three native CI targets.</li>
+        <li>Choose a documented native runtime target; check feature-level coverage.</li>
         <li>Set memory/table policies and invocation deadlines.</li>
-        <li>Use separate instances for state isolation; current native guest execution is serialized process-wide.</li>
+        <li>${esc(facts.concurrency.separateInstances)}.</li>
         <li>Grant plugin capabilities explicitly; audit each plugin separately.</li>
         <li>Measure RSS/PSS under the intended instance count and guest memory shape.</li>
         <li>Add process/container isolation when the threat model requires a second boundary.</li>
@@ -531,6 +538,7 @@ function factsMarkdown(facts) {
   return `${markdownHeader("Wago facts", facts)}
 ## Identity and release
 
+- License: ${facts.identity.license}
 - Implementation: Go
 - Pure Go: yes
 - cgo: no
@@ -554,11 +562,13 @@ ${platformRows}
 - Native execution parallelism: ${facts.concurrency.nativeExecutionParallelism}
 - Result lifetime: ${facts.concurrency.resultLifetime}
 
+Independent execution is enabled by default through \`RuntimeConfig.WithIndependentInstanceExecution\`. Imported memories, tables, globals, cross-instance Wasm function bindings, and shared Runtime GC domains can disqualify an instance. Publishing native resources can revoke independence. These are eligibility rules, not a claim that every separate instance runs in parallel or every shared-memory configuration is globally serialized. Serialize public calls per instance regardless of its native lease.
+
 ## Limits and interruption
 
 - Declared memory limit: supported
 - Table limit: ${facts.limits.declaredTables}
-- Context cancellation/deadline: supported on amd64 and arm64 at cooperative native safepoints
+- Context cancellation/deadline: ${facts.limits.deadlineInterruption.mechanism}
 - Policy.MaxInvokeDuration: ${facts.limits.policyMaxInvokeDuration}
 - Deterministic fuel: not implemented
 - Aggregate memory accounting: not published
@@ -634,9 +644,9 @@ function securityMarkdown(facts) {
 ## Published controls
 
 - Declared linear-memory maxima can be limited at instantiation.
-- Table policy checks initial/minimum entries; it is not a complete growth ceiling.
-- Context cancellation and deadlines interrupt amd64/arm64 guest code at native safepoints.
-- Explicit bounds checks are the default; signal-backed guard pages are opt-in and CI-tested.
+- ${facts.limits.declaredTables}.
+- Context cancellation/deadlines: ${facts.limits.deadlineInterruption.mechanism}.
+- Without the wago_guardpage build tag, explicit bounds checks are the default. The tag changes the default to guard pages; WAGO_BOUNDS can override selection on supported configurations.
 - Capability policy can allow or deny plugin-provided host access.
 - The repository contains Go fuzz targets and pinned fuzz-regression fixtures.
 
@@ -732,7 +742,7 @@ function factsSchema() {
       },
       identity: {
         type: "object",
-        required: ["name", "implementation", "pureGo", "cgo", "execution", "interpreter"],
+        required: ["name", "implementation", "pureGo", "cgo", "execution", "interpreter", "license"],
         additionalProperties: false,
         properties: {
           name: { const: "wago" },
@@ -740,6 +750,7 @@ function factsSchema() {
           pureGo: { const: true },
           cgo: { const: false },
           execution: { type: "string" },
+          license: { type: "string" },
           interpreter: { const: false },
         },
       },
@@ -970,6 +981,11 @@ const commit = localCommit() || (await remoteCommit());
 if (!/^[0-9a-f]{40}$/i.test(commit)) throw new Error(`invalid Wago commit: ${commit}`);
 
 requireText(loaded["README.md"], "Wago is a pure-Go WebAssembly engine", "README.md");
+requireText(loaded["LICENSE"], "Mozilla Public License Version 2.0", "LICENSE");
+requireText(loaded["go.mod"], "Canary tags are discontinued", "go.mod");
+requireText(loaded["src/wago/config.go"], "It is enabled by default", "src/wago/config.go");
+requireText(loaded["src/wago/instantiate.go"], "allowsIndependentInstanceExecution", "src/wago/instantiate.go");
+requireText(loaded["src/wago/hostcall_test.go"], "TestIndependentInstanceExecutionBypassesProcessLease", "src/wago/hostcall_test.go");
 requireText(loaded["src/wago/doc.go"], "no-cgo single-pass JIT", "src/wago/doc.go");
 requireText(loaded["src/wago/instance.go"], "reusable Invoke result buffer", "src/wago/instance.go");
 requireText(loaded["src/wago/policy.go"], "MaxMemoryBytes", "src/wago/policy.go");
@@ -1004,17 +1020,24 @@ const [mvpCorpusCommit, coreV2CorpusCommit] = await Promise.all([
 
 const evidenceMap = {
   readme: evidence(commit, "README.md", "README"),
-  engine: evidence(commit, "src/wago/doc.go", "pure-Go no-cgo JIT package contract", "#L1-L8"),
-  features: evidence(commit, "FEATURES.md", "feature matrix", "#L45-L63"),
-  verification: evidence(commit, "SPECTEST.md", "published conformance baselines", "#L1-L20"),
-  ci: evidence(commit, ".github/workflows/ci.yml", "native CI matrix", "#L92-L214"),
-  api: evidence(commit, "src/wago/api.go", "public API source", "#L1675-L1715"),
-  concurrency: evidence(commit, "src/wago/runtime_concurrency_test.go", "race-tested concurrent compile, instantiate, and execute coverage", "#L13-L82"),
-  nativeExecution: evidence(commit, "src/wago/instance_native_context.go", "native execution serialization", "#L10-L67"),
-  memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract", "#L84-L113"),
-  policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement", "#L10-L67"),
-  testSurface: evidence(commit, "tests/README.md", "unified repository test surface", "#L1-L44"),
-  wazeroFixtures: evidence(commit, "tests/corpus/regressions/README.md", "wazero fixture manifest", "#L1-L31"),
+  engine: evidence(commit, "src/wago/doc.go", "pure-Go no-cgo JIT package contract"),
+  features: evidence(commit, "FEATURES.md", "feature matrix"),
+  verification: evidence(commit, "SPECTEST.md", "published conformance baselines"),
+  ci: evidence(commit, ".github/workflows/ci.yml", "native CI matrix"),
+  api: evidence(commit, "src/wago/api.go", "public API source"),
+  concurrency: evidence(commit, "src/wago/runtime_concurrency_test.go", "race-tested concurrent compile, instantiate, and execute coverage"),
+  nativeExecution: evidence(commit, "src/wago/instance_native_context.go", "instance-local execution lease selection and process-wide fallback"),
+  independentExecution: evidence(commit, "src/wago/config.go", "independent execution enabled by default and opt-out"),
+  executionEligibility: evidence(commit, "src/wago/instantiate.go", "independent execution admission and shared GC domain fallback"),
+  executionRegression: evidence(commit, "src/wago/hostcall_test.go", "default independent instance bypasses process lease"),
+  interruptionLinux: evidence(commit, "src/core/runtime/interrupt_linux.go", "standard-Go Linux asynchronous native interruption"),
+  interruptionDarwin: evidence(commit, "src/core/runtime/interrupt_darwin_arm64.go", "standard-Go macOS arm64 asynchronous native interruption"),
+  license: evidence(commit, "LICENSE", "Mozilla Public License 2.0"),
+  developmentVersions: evidence(commit, "go.mod", "discontinued canary tags and commit-hash development builds"),
+  memory: evidence(commit, "src/wago/memory.go", "borrowed memory-view contract"),
+  policy: evidence(commit, "src/wago/policy.go", "resource policy enforcement"),
+  testSurface: evidence(commit, "tests/README.md", "unified repository test surface"),
+  wazeroFixtures: evidence(commit, "tests/corpus/regressions/README.md", "wazero fixture manifest"),
 };
 
 const webAssemblyGroups = stats.versions.filter((group) => group.version !== "engine");
@@ -1034,11 +1057,12 @@ const facts = {
     implementation: "Go",
     pureGo: true,
     cgo: false,
-    execution: "single-pass native compiler",
+    execution: "Railshot single-pass native compiler",
+    license: "MPL-2.0",
     interpreter: false,
   },
   release: {
-    status: "Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.",
+    status: "Beta / pre-v1. Public installers are documented; no stable-v1 API compatibility promise. Canary tags are discontinued: use commit hashes for development builds.",
     stableVersion: null,
     apiStability: "pre-v1; no stable-v1 compatibility promise",
   },
@@ -1048,15 +1072,15 @@ const facts = {
   concurrency: {
     runtime: "concurrent compile/instantiate/execute on distinct objects is race-tested",
     compiledModule: "compile once and instantiate many; blanket method-level goroutine-safety is not yet documented",
-    instance: "one active caller at a time; serialize calls",
-    separateInstances: "concurrent callers are accepted, but native Wasm activations are serialized process-wide",
-    nativeExecutionParallelism: "one process-wide native activation at a time",
+    instance: "serialize public calls on each instance",
+    separateInstances: "eligible independent instances may execute native code concurrently by default; cross-instance dependencies or shared execution state can require the process-wide lease",
+    nativeExecutionParallelism: "instance-local leases for eligible independent instances; process-wide fallback for dependent execution",
     resultLifetime: "instance-owned result buffer remains valid only until the next call",
   },
   limits: {
     declaredMemory: true,
-    declaredTables: "partial: initial/minimum size checked; growth maximum is not enforced by Policy.MaxTableEntries",
-    deadlineInterruption: { amd64: true, arm64: true, mechanism: "cooperative native safepoints" },
+    declaredTables: "Policy.MaxTableEntries checks per-table runtime capacity, including resolved imported capacity at instantiation; not an aggregate table-memory budget",
+    deadlineInterruption: { amd64: true, arm64: true, mechanism: "asynchronous native interruption on standard-Go Linux amd64/arm64 and macOS arm64; cooperative safepoints on other supported amd64/arm64 configurations; TinyGo requires scheduler=threads for cancelable entry" },
     policyMaxInvokeDuration: "deprecated-unsupported-use-context-deadline",
     deterministicFuel: false,
     aggregateMemoryAccounting: false,
@@ -1073,7 +1097,7 @@ const facts = {
       group.features.map((feature) => ({
         name: group.historicalSourceCommit ? `${feature.label} (historical)` : feature.label,
         status: feature.status,
-        evidence: [group.historicalSourceCommit ? evidence(group.historicalSourceCommit, "FEATURES.md", "historical MVP feature matrix", "#L117-L141") : evidenceMap.features],
+        evidence: [group.historicalSourceCommit ? evidence(group.historicalSourceCommit, "FEATURES.md", "historical MVP feature matrix") : evidenceMap.features],
       })),
     ),
   },

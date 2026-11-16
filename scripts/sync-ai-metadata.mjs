@@ -426,14 +426,14 @@ function makeProject(stats, canonicalFacts, startup, performance) {
     name: "wago",
     summary: "WebAssembly, made for Go.",
     repository: "https://github.com/wago-org/wago",
-    documentation: "https://github.com/wago-org/wago#readme",
+    documentation: "https://docs.wago.sh",
     roadmap: "https://github.com/wago-org/wago/blob/main/ROADMAP.md",
-    license: "Apache-2.0",
+    license: canonicalFacts.identity.license,
     programmingLanguage: "Go",
     sourceData: stats.source,
     canonicalFacts,
     facts: {
-      nativeArchitectures: ["amd64", "arm64"],
+      nativeArchitectures: [...new Set(canonicalFacts.platforms.filter((p) => p.status === "supported").map((p) => p.target.split("/")[1]))],
       cgoLines: stats.cgoLines,
       conformance: stats.mvp,
       suiteAssertions: stats.suiteAssertions,
@@ -477,22 +477,29 @@ function makeLlms(project) {
 
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
-License: Apache-2.0
-Data updated: ${project.generated}
+License: ${project.license}
+Statistics snapshot date: ${project.generated}
+Product source revision: ${project.canonicalFacts.source.commitUrl}
 
 ## Current verified facts
 
 - Release state: ${canonical.release.status}
 - Native runtime targets: ${canonical.platforms.filter((platform) => platform.status === "supported").map((platform) => platform.target).join(", ")}.
 - Execution: ${canonical.identity.execution}; pure Go; cgo=${canonical.identity.cgo}.
-- Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
-- Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
+- Invocation deadlines: ${canonical.limits.deadlineInterruption.mechanism}. Deterministic fuel is not implemented.
+- Concurrency: ${canonical.concurrency.instance}; ${canonical.concurrency.separateInstances}.
 - Legacy SPECTEST.md MVP report: ${stats.conformance.filesPass}/${stats.conformance.filesTotal} applicable files pass (${stats.conformance.percent}%); see /compatibility.md for the current public-verification boundary.
 - Historical MVP execution: ${stats.verification.checksPass} assertions pass, ${stats.verification.checksFail} fail, ${stats.verification.checksSkip} skip.
 - Test coverage: ${stats.coveragePercent == null ? "not published in the current source" : `${stats.coveragePercent}%`}.
 - Native benchmark architectures published: ${architectures.join(", ")}.
 - Published multi-engine comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
 - End-to-end dataset: ${project.benchmarks.startup.workloadCount} real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
+
+## Embedding and API guidance
+
+Use the [current embedding guide](https://docs.wago.sh/guides/embed-wago) and [public API example](https://github.com/wago-org/wago/tree/${canonical.source.commit}/examples/23-public-api), not invented APIs. Compile once, instantiate as needed, and resolve repeated exports with \`Instance.WasmFunc\`. Use \`InvokeContext\` for raw-slot calls with cancellation/deadlines. Returned invocation slots are borrowed until the next invocation on that instance; copy them if retained.
+
+Register imports with \`NewImports().HostFunc\` and supported ordinary Go signatures, or \`func(wago.HostCall)\` for arbitrary arity/mixed types/references. \`HostCall\` is borrowed and supports Go and TinyGo; V128 host callback boundaries are not supported. Deferred \`I32HostEvent\` callbacks are not interchangeable with synchronous host calls.
 
 ## Read next
 
@@ -508,10 +515,11 @@ Data updated: ${project.generated}
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
 - [Benchmark corpus and methodology](https://github.com/wago-org/wago/tree/main/bench)
-- [Project documentation](https://github.com/wago-org/wago#readme)
+- [Documentation and installation](https://docs.wago.sh)
+- [Source README at the audited revision](https://github.com/wago-org/wago/blob/${canonical.source.commit}/README.md)
 - [Roadmap](https://github.com/wago-org/wago/blob/main/ROADMAP.md)
 
-When describing performance, name the architecture and workload, preserve the published units, and do not compare values across architectures.
+When describing performance, name the architecture, workload, measurement kind (compilation, execution, or whole-process startup), and source revision. Preserve units and do not compare values across architectures. Published benchmark snapshots are not measurements of every newer commit. Historical conformance counts do not establish current whole-suite success. Do not infer core WASI/Component Model support from external plugins.
 `;
 }
 
@@ -522,21 +530,32 @@ function makeLlmsFull(project) {
 Source: ${project.canonicalUrl}
 Repository: ${project.repository}
 License: ${project.license}
-Data updated: ${project.generated}
+Statistics snapshot date: ${project.generated}
+Product source revision: ${project.canonicalFacts.source.commitUrl}
 
 ## What wago is
 
 ${project.summary}
 
-The engine uses a shared decoder and validator, then emits native code with single-pass backends. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
+The engine uses a shared decoder and validator, then emits native code with the ${canonicalFacts.identity.execution}. It is an engine rather than a wrapper around a C/C++ runtime. Linear memory is exposed to Go as a byte slice, and the project includes typed host bindings and a plugin API.
 
 Release state: ${canonicalFacts.release.status}
 
 Native runtime targets: ${canonicalFacts.platforms.filter((platform) => platform.status === "supported").map((platform) => platform.target).join(", ")}.
 
-Concurrency: public calls on one Instance must be serialized. Separate instances isolate state, but Wago currently permits one process-wide native activation at a time. Context deadlines and cancellation interrupt amd64/arm64 guest code at cooperative safepoints; deterministic fuel accounting is not implemented.
+Concurrency: ${canonicalFacts.concurrency.instance}. ${canonicalFacts.concurrency.separateInstances}. Context deadlines and cancellation: ${canonicalFacts.limits.deadlineInterruption.mechanism}. Deterministic fuel accounting is not implemented.
 
 WASI is outside Wago core. External plugin integration exists, but this source audit did not establish a complete Preview 1, Preview 2, or function-by-function WASI surface.
+
+## API and integration guidance
+
+Use https://docs.wago.sh/guides/embed-wago and the source-pinned public API example at ${project.repository}/tree/${canonicalFacts.source.commit}/examples/23-public-api. Compile once and instantiate as needed. Resolve repeated exports with \`Instance.WasmFunc\`; invocation result slices are borrowed until the next call on the same instance. Copy retained results and serialize calls per instance.
+
+Host imports use \`NewImports().HostFunc\` with supported ordinary Go signatures or \`func(wago.HostCall)\`. The latter is a borrowed logical view for arbitrary arity, mixed scalars, and references under Go and TinyGo. Raw \`ParamSlots\`/\`ResultSlots\` are ABI views, not owned buffers. V128 host callback boundaries remain unsupported. \`I32HostEvent\` is explicitly deferred until the native invocation returns, so use synchronous callbacks when guest code needs immediate effects.
+
+Independent execution defaults on; admission excludes imported memories/tables/globals and cross-instance Wasm function bindings, and shared Runtime GC domains can require the process-wide fallback. Native-resource publication can revoke eligibility. Private threaded execution has its own local-lease path: neither “every instance runs in parallel” nor “all shared memory serializes globally” is a valid blanket claim. See ${project.repository}/blob/${canonicalFacts.source.commit}/src/wago/instantiate.go and ${project.repository}/blob/${canonicalFacts.source.commit}/src/wago/instance_native_context.go.
+
+Public installers and \`go get github.com/wago-org/wago\` are documented in the source README. This remains beta; use commit hashes, not discontinued canary tags, for development builds. Consult plugin documentation for capabilities and authority grants rather than automatically granting all requested permissions.
 
 ## Verification and conformance
 
@@ -551,6 +570,7 @@ The historical MVP and Core 3 baselines use different corpus and accounting boun
 ## Benchmark interpretation
 
 ${benchmarks.caveat}
+Published benchmark snapshots are not measurements of every newer commit. Preserve measurement kind (compilation, execution, whole-process startup), units, and source revision.
 
 Methodology and corpus: ${benchmarks.methodology}
 
@@ -617,13 +637,13 @@ function makeJsonLd(project) {
         "@id": "https://wago.sh/#app",
         name: "wago",
         applicationCategory: "DeveloperApplication",
-        operatingSystem: "Linux amd64, Linux arm64, macOS arm64",
+        operatingSystem: project.canonicalFacts.platforms.filter((p) => p.status === "supported").map((p) => p.target),
         description: project.summary,
         url: "https://wago.sh/",
         downloadUrl: project.repository,
         codeRepository: project.repository,
         programmingLanguage: "Go",
-        license: "https://www.apache.org/licenses/LICENSE-2.0",
+        license: `${project.repository}/blob/${project.canonicalFacts.source.commit}/LICENSE`,
         isAccessibleForFree: true,
         featureList: [
           "Pure Go with no cgo",
@@ -642,7 +662,6 @@ function makeJsonLd(project) {
           "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
         url: "https://wago.sh/data/project.json",
         dateModified: project.generated,
-        license: "https://www.apache.org/licenses/LICENSE-2.0",
         creator: { "@id": "https://wago.sh/#org" },
         measurementTechnique: "https://github.com/wago-org/wago/tree/main/bench",
         variableMeasured: [

@@ -108,13 +108,21 @@
                               "@id": "https://wago.sh/#app",
                               "name": "wago",
                               "applicationCategory": "DeveloperApplication",
-                              "operatingSystem": "Linux amd64, Linux arm64, macOS arm64",
+                              "operatingSystem": [
+                                        "linux/amd64",
+                                        "linux/arm64",
+                                        "darwin/amd64",
+                                        "darwin/arm64",
+                                        "windows/amd64",
+                                        "windows/arm64",
+                                        "linux/riscv64"
+                              ],
                               "description": "WebAssembly, made for Go.",
                               "url": "https://wago.sh/",
                               "downloadUrl": "https://github.com/wago-org/wago",
                               "codeRepository": "https://github.com/wago-org/wago",
                               "programmingLanguage": "Go",
-                              "license": "https://www.apache.org/licenses/LICENSE-2.0",
+                              "license": "https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/LICENSE",
                               "isAccessibleForFree": true,
                               "featureList": [
                                         "Pure Go with no cgo",
@@ -138,7 +146,6 @@
                               "description": "Auto-generated conformance facts, verification totals, end-to-end rankings, and architecture-specific multi-engine comparisons.",
                               "url": "https://wago.sh/data/project.json",
                               "dateModified": "2026-11-12",
-                              "license": "https://www.apache.org/licenses/LICENSE-2.0",
                               "creator": {
                                         "@id": "https://wago.sh/#org"
                               },
@@ -8419,7 +8426,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                 <div class="cta">
                     <h2 class="cta__title">Embed wasm in your Go app</h2>
                     <p class="cta__body">
-                        Apache-licensed and built in the open. Add it to your
+                        MPL-2.0-licensed and built in the open. Add it to your
                         module in one command and call straight into native
                         wasm, no cgo.
                     </p>
@@ -8455,7 +8462,7 @@ fmt.<span class="tok-f">Println</span>(wago.<span class="tok-f">AsI64</span>(out
                     <div>
                         <div class="footer__name">wago</div>
                         <div class="footer__tag">
-                            WebAssembly, made for Go. · Apache 2.0
+                            WebAssembly, made for Go. · MPL 2.0
                         </div>
                     </div>
                 </div>

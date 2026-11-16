@@ -4,22 +4,29 @@
 
 Canonical site: https://wago.sh/
 Source repository: https://github.com/wago-org/wago
-License: Apache-2.0
-Data updated: 2026-11-12
+License: MPL-2.0
+Statistics snapshot date: 2026-11-12
+Product source revision: https://github.com/wago-org/wago/commit/227dfd64ddb3760ae8547eb69a27da38c6cd8676
 
 ## Current verified facts
 
-- Release state: Pre-v1 development with beta releases and per-commit canary tags plus workflow artifacts; public stable installation is not yet claimed.
+- Release state: Beta / pre-v1. Public installers are documented; no stable-v1 API compatibility promise. Canary tags are discontinued: use commit hashes for development builds.
 - Native runtime targets: linux/amd64, linux/arm64, darwin/amd64, darwin/arm64, windows/amd64, windows/arm64, linux/riscv64.
-- Execution: single-pass native compiler; pure Go; cgo=false.
-- Invocation deadlines: cooperative native safepoints on amd64 and arm64. Deterministic fuel is not implemented.
-- Concurrency: calls on one instance must be serialized; native guest activations are currently serialized process-wide.
+- Execution: Railshot single-pass native compiler; pure Go; cgo=false.
+- Invocation deadlines: asynchronous native interruption on standard-Go Linux amd64/arm64 and macOS arm64; cooperative safepoints on other supported amd64/arm64 configurations; TinyGo requires scheduler=threads for cancelable entry. Deterministic fuel is not implemented.
+- Concurrency: serialize public calls on each instance; eligible independent instances may execute native code concurrently by default; cross-instance dependencies or shared execution state can require the process-wide lease.
 - Legacy SPECTEST.md MVP report: 57/57 applicable files pass (100%); see /compatibility.md for the current public-verification boundary.
 - Historical MVP execution: 16592 assertions pass, 0 fail, 1591 skip.
 - Test coverage: not published in the current source.
 - Native benchmark architectures published: amd64, arm64.
 - Published multi-engine comparisons: 384.
 - End-to-end dataset: 6 real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
+
+## Embedding and API guidance
+
+Use the [current embedding guide](https://docs.wago.sh/guides/embed-wago) and [public API example](https://github.com/wago-org/wago/tree/227dfd64ddb3760ae8547eb69a27da38c6cd8676/examples/23-public-api), not invented APIs. Compile once, instantiate as needed, and resolve repeated exports with `Instance.WasmFunc`. Use `InvokeContext` for raw-slot calls with cancellation/deadlines. Returned invocation slots are borrowed until the next invocation on that instance; copy them if retained.
+
+Register imports with `NewImports().HostFunc` and supported ordinary Go signatures, or `func(wago.HostCall)` for arbitrary arity/mixed types/references. `HostCall` is borrowed and supports Go and TinyGo; V128 host callback boundaries are not supported. Deferred `I32HostEvent` callbacks are not interchangeable with synchronous host calls.
 
 ## Read next
 
@@ -35,7 +42,8 @@ Data updated: 2026-11-12
 - [Structured project and benchmark data (JSON)](https://wago.sh/data/project.json)
 - [Conformance and verification data (JSON)](https://wago.sh/data/stats.json)
 - [Benchmark corpus and methodology](https://github.com/wago-org/wago/tree/main/bench)
-- [Project documentation](https://github.com/wago-org/wago#readme)
+- [Documentation and installation](https://docs.wago.sh)
+- [Source README at the audited revision](https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/README.md)
 - [Roadmap](https://github.com/wago-org/wago/blob/main/ROADMAP.md)
 
-When describing performance, name the architecture and workload, preserve the published units, and do not compare values across architectures.
+When describing performance, name the architecture, workload, measurement kind (compilation, execution, or whole-process startup), and source revision. Preserve units and do not compare values across architectures. Published benchmark snapshots are not measurements of every newer commit. Historical conformance counts do not establish current whole-suite success. Do not infer core WASI/Component Model support from external plugins.

@@ -222,12 +222,12 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | per compile | 137µs | 572µs |
-|  | Compile peak RSS | per compile | 10.4 MB | 12.2 MB |
-|  | Machine code | compiled corpus | 2.1 KB | 2.9 KB |
-|  | Instantiate | runnable corpus | 3.7µs | 27.8µs |
-|  | Execution | runnable corpus | 46.5µs | 69.4µs |
-|  | Compile + instantiate | sum of geometric means | 141µs | 600µs |
+|  | Compile | per compile | 389µs | 3.16ms |
+|  | Compile peak RSS | per compile | 10.4 MB | 13.7 MB |
+|  | Machine code | compiled corpus | 13.3 KB | 23.1 KB |
+|  | Instantiate | runnable corpus | 4.7µs | 34.2µs |
+|  | Execution | runnable corpus | 369µs | 677µs |
+|  | Compile + instantiate | sum of means | 394µs | 3.20ms |
 |  | Host → Wasm | per call · host-to-wasm-call | 21.2ns | 26.8ns |
 |  | Wasm → host | per call · wasm-to-host-call | 21.7ns | 205.1ns |
 
@@ -503,7 +503,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Stencils | stencil-wave-equation | Second-order two-dimensional wave-equation time stepping on a periodic grid | 10.1 MB | 12.2 MB |
 | Linear algebra | polybench-cholesky | PolyBench/C cholesky (small dataset) | 10.5 MB | 12.7 MB |
 | Linear algebra | polybench-durbin | PolyBench/C durbin (small dataset) | 10.2 MB | 13.2 MB |
-| Linear algebra | polybench-gemm | PolyBench/C gemm (small dataset) | 10.2 MB | 12.4 MB |
+| Linear algebra | polybench-gemm | PolyBench/C gemm (small dataset) | 10.3 MB | 12.4 MB |
 | Linear algebra | polybench-gramschmidt | PolyBench/C gramschmidt (small dataset) | 10.3 MB | 12.7 MB |
 | Linear algebra | polybench-lu | PolyBench/C lu (small dataset) | 10.6 MB | 12.9 MB |
 | Linear algebra | polybench-trisolv | PolyBench/C trisolv (small dataset) | 10.2 MB | 12.3 MB |
@@ -539,7 +539,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Audio | audio-autocorrelation | Pitch-analysis autocorrelation over 32 positive sample lags | 4µs | 16.4µs |
 | Audio | audio-biquad | Q8 second-order low-pass IIR biquad with reset filter history | 2.6µs | 16.8µs |
 | Audio | audio-fir | 32-tap fixed-point FIR audio filtering | 4.4µs | 51.3µs |
-| Audio | drwav | Audio corpus | 5.9µs | 15.6µs |
+| Audio | drwav | Audio corpus | 5.9µs | 15.7µs |
 | Audio | kissfft | Audio corpus | 3µs | 13.4µs |
 | 3D & rendering | bezier-tessellation | Cubic 3D Bezier tessellation using Bernstein evaluation at 17 samples | 2.9µs | 32.4µs |
 | 3D & rendering | frustum-culling | Orthographic sphere/frustum culling against six clipping planes | 2.6µs | 18.9µs |
@@ -579,7 +579,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Integer & graph algorithms | polybench-floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 3µs | 13.5µs |
 | Calls & memory | dispatch | call_indirect through a function table | 2.9µs | 11.3µs |
 | Calls & memory | fib_rec | recursion; call/return heavy | 3.1µs | 11.6µs |
-| Calls & memory | linked_list | singly-linked list build + dependent-load pointer chase | 2.8µs | 32µs |
+| Calls & memory | linked_list | singly-linked list build + dependent-load pointer chase | 2.8µs | 31.9µs |
 | Calls & memory | many_funcs | 300 small functions; per-function compile cost | 3.2µs | 12.4µs |
 | Calls & memory | memory | linear-memory load/store loop | 2.3µs | 12.7µs |
 | Calls & memory | memory_tree | recursive call tree with load/store churn at every node | 2.5µs | 32.6µs |
@@ -649,7 +649,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Stencils | polybench-fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 3.3µs | 14.7µs |
 | Stencils | polybench-jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 2.9µs | 14.1µs |
 | Stencils | polybench-seidel-2d | PolyBench/C seidel-2d (small dataset) | 3µs | 13.1µs |
-| Stencils | stencil-lattice-boltzmann | D2Q9 lattice-Boltzmann fluid collision/streaming with BGK relaxation | 2.8µs | 18.5µs |
+| Stencils | stencil-lattice-boltzmann | D2Q9 lattice-Boltzmann fluid collision/streaming with BGK relaxation | 2.8µs | 18.6µs |
 | Stencils | stencil-wave-equation | Second-order two-dimensional wave-equation time stepping on a periodic grid | 4.2µs | 125µs |
 | Linear algebra | polybench-cholesky | PolyBench/C cholesky (small dataset) | 3.1µs | 16.5µs |
 | Linear algebra | polybench-durbin | PolyBench/C durbin (small dataset) | 2.8µs | 12.4µs |
@@ -988,12 +988,12 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Group | Benchmark | Workload | wago | wazero |
 | --- | --- | --- | ---: | ---: |
-|  | Compile | per compile | 73.7µs | 282µs |
-|  | Compile peak RSS | per compile | 9.7 MB | 8.8 MB |
-|  | Machine code | compiled corpus | 1.7 KB | 2.8 KB |
-|  | Instantiate | runnable corpus | 1.6µs | 19.4µs |
-|  | Execution | runnable corpus | 30.5µs | 50.8µs |
-|  | Compile + instantiate | sum of geometric means | 75.3µs | 302µs |
+|  | Compile | per compile | 309µs | 2.36ms |
+|  | Compile peak RSS | per compile | 9.7 MB | 9.8 MB |
+|  | Machine code | compiled corpus | 11.3 KB | 21.6 KB |
+|  | Instantiate | runnable corpus | 1.9µs | 22.8µs |
+|  | Execution | runnable corpus | 249µs | 492µs |
+|  | Compile + instantiate | sum of means | 311µs | 2.38ms |
 |  | Host → Wasm | per call · host-to-wasm-call | 14.3ns | 20.7ns |
 |  | Wasm → host | per call · wasm-to-host-call | 17.6ns | 166.8ns |
 
@@ -1007,7 +1007,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Audio | audio-fir | 32-tap fixed-point FIR audio filtering | 70.3µs | 337µs |
 | Audio | drwav | Audio corpus | 1.85ms | 12.9ms |
 | Audio | kissfft | Audio corpus | 898µs | 6.05ms |
-| 3D & rendering | bezier-tessellation | Cubic 3D Bezier tessellation using Bernstein evaluation at 17 samples | 32.8µs | 76.2µs |
+| 3D & rendering | bezier-tessellation | Cubic 3D Bezier tessellation using Bernstein evaluation at 17 samples | 32.8µs | 76.3µs |
 | 3D & rendering | frustum-culling | Orthographic sphere/frustum culling against six clipping planes | 26.3µs | 55µs |
 | 3D & rendering | mesh-skinning | Fixed-point skeletal skinning with four bone influences and 3×4 matrices | 28µs | 63.2µs |
 | 3D & rendering | ray-box | Fixed-point slab ray/AABB intersection with positive ray directions | 37.4µs | 74.9µs |
@@ -1033,12 +1033,12 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Compilers & development tools | compiler-constant-fold | Constant propagation and folding over a mixed literal/variable expression DAG | 45µs | 180µs |
 | Compilers & development tools | compiler-dead-code | Backward reachability elimination of dead nodes in an acyclic IR dependency graph | 43.5µs | 219µs |
 | Compilers & development tools | compiler-register-allocation | Linear-scan register allocation with eight registers and furthest-end spilling | 78.2µs | 373µs |
-| Compression | compression-lzw | Lempel–Ziv–Welch dictionary compression with 12-bit code-space limit | 32.7µs | 116µs |
+| Compression | compression-lzw | Lempel–Ziv–Welch dictionary compression with 12-bit code-space limit | 32.8µs | 116µs |
 | Compression | compression-rle | Byte run-length encoding of mixed repeated and noisy input spans | 24.9µs | 66.3µs |
 | Compression | lz4 | Compression corpus | 188µs | 599µs |
 | Compression | zlib | Compression corpus | 817µs | 8.06ms |
 | Compression | zstd | Compression corpus | 3.22ms | 27.9ms |
-| Integer & graph algorithms | coremark | Integer & graph algorithms corpus | 536µs | 2.37ms |
+| Integer & graph algorithms | coremark | Integer & graph algorithms corpus | 537µs | 2.37ms |
 | Integer & graph algorithms | fannkuch | Benchmarks-Game fannkuch-redux: permute + pancake-flip (branch/array churn, no f64) | 111µs | 919µs |
 | Integer & graph algorithms | graph-dijkstra | Dense-graph Dijkstra single-source shortest paths | 52.4µs | 239µs |
 | Integer & graph algorithms | graph-kruskal | Kruskal minimum-spanning-tree weight using sorted edges and disjoint sets | 48.6µs | 238µs |
@@ -1049,7 +1049,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Calls & memory | many_funcs | 300 small functions; per-function compile cost | 343µs | 603µs |
 | Calls & memory | memory | linear-memory load/store loop | 23.3µs | 41.8µs |
 | Calls & memory | memory_tree | recursive call tree with load/store churn at every node | 26µs | 50.5µs |
-| Calls & memory | tiny | minimal module; fixed pipeline overhead | 11.5µs | 62.7µs |
+| Calls & memory | tiny | minimal module; fixed pipeline overhead | 11.5µs | 62.8µs |
 | Documents & layout | document-bidi-reorder | Bidirectional run reordering from supplied embedding levels (L2 stage only) | 63.5µs | 387µs |
 | Documents & layout | document-edit-distance | Two-row Levenshtein document-token edit distance | 50.9µs | 238µs |
 | Documents & layout | document-kerning | Glyph positioning with pair-kerning adjustments and proportional advances | 24.1µs | 56.1µs |
@@ -1177,7 +1177,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Hashing & cryptography | xxhash | Hashing & cryptography corpus | 9.8 MB | 8.6 MB |
 | Databases & analytics | columnar-query | Columnar range filter with grouped SUM and COUNT over 256 keys | 9.6 MB | 7.7 MB |
 | Databases & analytics | db-bitmap-index | Bitmap filter intersection and set-bit counting | 9.8 MB | 7.9 MB |
-| Databases & analytics | db-btree | Bulk-built eight-way B-tree index and point lookups | 9.9 MB | 8.2 MB |
+| Databases & analytics | db-btree | Bulk-built eight-way B-tree index and point lookups | 9.9 MB | 8.3 MB |
 | Databases & analytics | db-hash-join | Chained hash equijoin emitting matching left/right row pairs | 9.8 MB | 7.7 MB |
 | Databases & analytics | db-sort-merge-join | Sort-merge equijoin with grouped result multiplicities | 9.9 MB | 8.1 MB |
 | Compilers & development tools | compiler-constant-fold | Constant propagation and folding over a mixed literal/variable expression DAG | 9.8 MB | 8 MB |
@@ -1236,7 +1236,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Graphics & images | qoi | Graphics & images corpus | 11.5 MB | 9.3 MB |
 | Hardware design | hardware-boolean-anf | Boolean Möbius transform into algebraic normal form for eight-input logic functions | 9.6 MB | 8.4 MB |
 | Hardware design | hardware-prime-implicants | Four-variable Boolean truth-table prime implicant enumeration | 9.3 MB | 8 MB |
-| Image editing | image-blur | 3×3 Gaussian blur with clamped image borders | 9.7 MB | 8.3 MB |
+| Image editing | image-blur | 3×3 Gaussian blur with clamped image borders | 9.8 MB | 8.3 MB |
 | Image editing | image-composite | Alpha compositing and clamped color adjustment | 9.5 MB | 7.9 MB |
 | Image editing | image-error-diffusion | Floyd–Steinberg monochrome error-diffusion dithering | 9.6 MB | 8.1 MB |
 | Image editing | image-median | 3×3 median filtering of interior grayscale pixels | 9.6 MB | 8.5 MB |
@@ -1289,7 +1289,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Video processing | video-motion | 8×8 block motion estimation over a 5×5 displacement search | 9.9 MB | 8.3 MB |
 | Video processing | video-optical-flow | Q6 Lucas–Kanade optical flow from 3×3 patch normal equations | 9.8 MB | 8.2 MB |
 | Video processing | video-temporal-denoise | Ten-frame exponential temporal denoising with integer 3:1 history weighting | 9.6 MB | 8.8 MB |
-| Video processing | video-yuv420 | Integer BT.601 RGB-to-YUV420 conversion with 2×2 chroma averaging | 9.7 MB | 8 MB |
+| Video processing | video-yuv420 | Integer BT.601 RGB-to-YUV420 conversion with 2×2 chroma averaging | 9.8 MB | 8 MB |
 | Computer vision | vision-components | Four-connected binary component labeling by union-find with canonical minimum labels | 9.8 MB | 8.4 MB |
 | Computer vision | vision-dilation | Binary 3×3 morphological dilation with cropped image borders | 9.5 MB | 8.1 MB |
 | Computer vision | vision-distance-transform | Two-pass city-block distance transform of a binary image | 9.6 MB | 8.4 MB |
@@ -1317,7 +1317,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Bioinformatics | bio-kmer-count | Complete histogram of overlapping DNA 5-mers | 1.3µs | 20.1µs |
 | Bioinformatics | bio-lcs | Longest common subsequence length of two deterministic DNA strings | 1.2µs | 22.8µs |
 | Bioinformatics | bio-local-alignment | Smith-Waterman best local DNA alignment score with linear gap penalty | 1.1µs | 11.4µs |
-| Bioinformatics | bio-reverse-complement | Reverse complement of a deterministic DNA sequence | 1000ns | 10.4µs |
+| Bioinformatics | bio-reverse-complement | Reverse complement of a deterministic DNA sequence | 1µs | 10.4µs |
 | Bioinformatics | polybench-nussinov | PolyBench/C nussinov (small dataset) | 2.1µs | 19.8µs |
 | Hashing & cryptography | blake3 | Hashing & cryptography corpus | 2.4µs | 51µs |
 | Hashing & cryptography | checksum-crc32 | IEEE CRC-32 byte-stream checksum using reflected bitwise polynomial reduction | 1.3µs | 11.3µs |
@@ -1328,7 +1328,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Databases & analytics | columnar-query | Columnar range filter with grouped SUM and COUNT over 256 keys | 1.6µs | 16.3µs |
 | Databases & analytics | db-bitmap-index | Bitmap filter intersection and set-bit counting | 1.2µs | 31.9µs |
 | Databases & analytics | db-btree | Bulk-built eight-way B-tree index and point lookups | 1.1µs | 28.7µs |
-| Databases & analytics | db-hash-join | Chained hash equijoin emitting matching left/right row pairs | 1.2µs | 38.7µs |
+| Databases & analytics | db-hash-join | Chained hash equijoin emitting matching left/right row pairs | 1.3µs | 38.7µs |
 | Databases & analytics | db-sort-merge-join | Sort-merge equijoin with grouped result multiplicities | 1.5µs | 28.9µs |
 | Compilers & development tools | compiler-constant-fold | Constant propagation and folding over a mixed literal/variable expression DAG | 1.2µs | 42.1µs |
 | Compilers & development tools | compiler-dead-code | Backward reachability elimination of dead nodes in an acyclic IR dependency graph | 1.3µs | 24.2µs |
@@ -1343,7 +1343,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Integer & graph algorithms | graph-dijkstra | Dense-graph Dijkstra single-source shortest paths | 1.2µs | 25µs |
 | Integer & graph algorithms | graph-kruskal | Kruskal minimum-spanning-tree weight using sorted edges and disjoint sets | 1.5µs | 32.5µs |
 | Integer & graph algorithms | polybench-floyd-warshall | PolyBench/C floyd-warshall (small dataset) | 2.4µs | 17.4µs |
-| Calls & memory | dispatch | call_indirect through a function table | 1.2µs | 9.6µs |
+| Calls & memory | dispatch | call_indirect through a function table | 1.3µs | 9.6µs |
 | Calls & memory | fib_rec | recursion; call/return heavy | 1.9µs | 9.4µs |
 | Calls & memory | linked_list | singly-linked list build + dependent-load pointer chase | 1.2µs | 12.2µs |
 | Calls & memory | many_funcs | 300 small functions; per-function compile cost | 896ns | 9.7µs |
@@ -1354,7 +1354,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Documents & layout | document-edit-distance | Two-row Levenshtein document-token edit distance | 1.2µs | 42.7µs |
 | Documents & layout | document-kerning | Glyph positioning with pair-kerning adjustments and proportional advances | 1.1µs | 10µs |
 | Documents & layout | document-layout | Proportional glyph advances and greedy word line breaking into 640-unit lines | 1.1µs | 10.9µs |
-| Documents & layout | document-optimal-wrap | Dynamic-programming minimum-raggedness line breaking with quadratic slack cost | 1.2µs | 32.8µs |
+| Documents & layout | document-optimal-wrap | Dynamic-programming minimum-raggedness line breaking with quadratic slack cost | 1.3µs | 32.8µs |
 | Documents & layout | document-page-packing | First-fit decreasing page packing of document block heights | 1.5µs | 26.8µs |
 | Text & parsing | fastfloat | Text & parsing corpus | 2.1µs | 16.2µs |
 | Text & parsing | pcre2 | Text & parsing corpus | 10.3µs | 24.8µs |
@@ -1391,7 +1391,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Image editing | image-error-diffusion | Floyd–Steinberg monochrome error-diffusion dithering | 1.2µs | 32.2µs |
 | Image editing | image-median | 3×3 median filtering of interior grayscale pixels | 1.5µs | 15.5µs |
 | Image editing | image-resize | Bilinear image downsampling at pixel centers | 1.3µs | 27.5µs |
-| Image editing | image-ycocg | Reversible integer RGB-to-YCoCg lifting color transform | 1000ns | 11.7µs |
+| Image editing | image-ycocg | Reversible integer RGB-to-YCoCg lifting color transform | 1µs | 11.7µs |
 | JSON & serialization | json-as (simd) | AssemblyScript json-as SIMD: serialize/deserialize canonical payload | 13.5µs | 16.1µs |
 | JSON & serialization | serialization-msgpack | MessagePack shortest-form unsigned integer encoding | 1.4µs | 10.8µs |
 | JSON & serialization | serialization-protobuf | Packed Protobuf unsigned-varint stream decoding, with fixture encoding included | 1.4µs | 27.7µs |
@@ -1404,13 +1404,13 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Numerical arithmetic | numeric-cordic | Q16 CORDIC sine/cosine rotation over angles in the convergence interval | 2.3µs | 11.2µs |
 | Numerical arithmetic | numeric-euclidean-gcd | Euclidean greatest-common-divisor reduction of integer pairs | 2µs | 10.4µs |
 | Numerical arithmetic | numeric-integer-sqrt | Integer Newton square-root iteration with floor-result correction | 1µs | 12.7µs |
-| Numerical arithmetic | numeric-simpson | Composite Simpson quadrature of a quadratic polynomial over integer sample points | 1000ns | 11.5µs |
+| Numerical arithmetic | numeric-simpson | Composite Simpson quadrature of a quadratic polynomial over integer sample points | 1µs | 11.5µs |
 | Machine learning | ml-convolution | Valid 3×3 int8 convolution followed by ReLU activation | 1.1µs | 15µs |
 | Machine learning | ml-decision-tree | Depth-eight decision-tree classifier over eight input features | 1.5µs | 11.4µs |
 | Machine learning | ml-inference | Int8 dense inference: 64 input channels, 32 outputs, ReLU activation | 1.3µs | 28µs |
 | Machine learning | ml-kmeans | Five Lloyd iterations of eight-cluster two-dimensional k-means | 1.2µs | 32.9µs |
 | Machine learning | ml-knn | Five-nearest-neighbor classification against 32 eight-dimensional training vectors | 1.2µs | 10.4µs |
-| Machine learning | ml-max-pooling | 2×2 maximum-pooling reduction of activation planes | 1.2µs | 19µs |
+| Machine learning | ml-max-pooling | 2×2 maximum-pooling reduction of activation planes | 1.3µs | 19µs |
 | Stencils | polybench-adi | PolyBench/C adi (small dataset) | 2.5µs | 12.9µs |
 | Stencils | polybench-fdtd-2d | PolyBench/C fdtd-2d (small dataset) | 1.9µs | 15.9µs |
 | Stencils | polybench-jacobi-2d | PolyBench/C jacobi-2d (small dataset) | 2µs | 14.2µs |
@@ -1609,7 +1609,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Audio | kissfft | complex-roundtrip · Audio corpus | 122µs | 237µs |
 | 3D & rendering | bezier-tessellation | run · 3D & rendering corpus | 13.4µs | 13.3µs |
 | 3D & rendering | frustum-culling | run · 3D & rendering corpus | 7.2µs | 9.2µs |
-| 3D & rendering | mesh-skinning | run · 3D & rendering corpus | 18.2µs | 25.1µs |
+| 3D & rendering | mesh-skinning | run · 3D & rendering corpus | 18.3µs | 25.1µs |
 | 3D & rendering | ray-box | run · 3D & rendering corpus | 16.1µs | 18µs |
 | 3D & rendering | raytrace | render · 3D & rendering corpus | 213µs | 225µs |
 | 3D & rendering | triangle-raster | run · 3D & rendering corpus | 134µs | 201µs |
@@ -1651,7 +1651,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Calls & memory | memory_tree | run · Calls & memory corpus | 5.4µs | 12.2µs |
 | Calls & memory | tiny | add · Calls & memory corpus | 42ns | 83ns |
 | Documents & layout | document-bidi-reorder | run · Documents & layout corpus | 17.9µs | 30.8µs |
-| Documents & layout | document-edit-distance | run · Documents & layout corpus | 69.7µs | 177µs |
+| Documents & layout | document-edit-distance | run · Documents & layout corpus | 69.8µs | 177µs |
 | Documents & layout | document-kerning | run · Documents & layout corpus | 22.2µs | 40µs |
 | Documents & layout | document-layout | run · Documents & layout corpus | 86.7µs | 173µs |
 | Documents & layout | document-optimal-wrap | run · Documents & layout corpus | 2.3µs | 5.4µs |
@@ -1694,7 +1694,7 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | Image editing | image-ycocg | run · Image editing corpus | 50.3µs | 49.9µs |
 | JSON & serialization | serialization-msgpack | run · JSON & serialization corpus | 12.5µs | 12.5µs |
 | JSON & serialization | serialization-protobuf | run · JSON & serialization corpus | 16.8µs | 36.5µs |
-| JSON & serialization | yyjson | parse-edit-write · JSON & serialization corpus | 1.6µs | 1000ns |
+| JSON & serialization | yyjson | parse-edit-write · JSON & serialization corpus | 1.6µs | 1µs |
 | Language runtimes | language-brainfuck | run · Language runtimes corpus | 30.1µs | 48.8µs |
 | Language runtimes | language-forth | run · Language runtimes corpus | 14.3µs | 22.8µs |
 | Language runtimes | language-register-vm | run · Language runtimes corpus | 10.2µs | 20.4µs |

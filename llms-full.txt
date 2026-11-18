@@ -4,7 +4,7 @@ Source: https://wago.sh/
 Repository: https://github.com/wago-org/wago
 License: MPL-2.0
 Statistics snapshot date: 2026-11-12
-Product source revision: https://github.com/wago-org/wago/commit/227dfd64ddb3760ae8547eb69a27da38c6cd8676
+Product source revision: https://github.com/wago-org/wago/commit/093ebca96c413bc796ccaa656cb547232def4185
 
 ## What wago is
 
@@ -22,11 +22,11 @@ WASI is outside Wago core. External plugin integration exists, but this source a
 
 ## API and integration guidance
 
-Use https://docs.wago.sh/guides/embed-wago and the source-pinned public API example at https://github.com/wago-org/wago/tree/227dfd64ddb3760ae8547eb69a27da38c6cd8676/examples/23-public-api. Compile once and instantiate as needed. Resolve repeated exports with `Instance.WasmFunc`; invocation result slices are borrowed until the next call on the same instance. Copy retained results and serialize calls per instance.
+Use https://docs.wago.sh/guides/embed-wago and the source-pinned public API example at https://github.com/wago-org/wago/tree/093ebca96c413bc796ccaa656cb547232def4185/examples/23-public-api. Compile once and instantiate as needed. Resolve repeated exports with `Instance.WasmFunc`; invocation result slices are borrowed until the next call on the same instance. Copy retained results and serialize calls per instance.
 
 Host imports use `NewImports().HostFunc` with supported ordinary Go signatures or `func(wago.HostCall)`. The latter is a borrowed logical view for arbitrary arity, mixed scalars, and references under Go and TinyGo. Raw `ParamSlots`/`ResultSlots` are ABI views, not owned buffers. V128 host callback boundaries remain unsupported. `I32HostEvent` is explicitly deferred until the native invocation returns, so use synchronous callbacks when guest code needs immediate effects.
 
-Independent execution defaults on; admission excludes imported memories/tables/globals and cross-instance Wasm function bindings, and shared Runtime GC domains can require the process-wide fallback. Native-resource publication can revoke eligibility. Private threaded execution has its own local-lease path: neither “every instance runs in parallel” nor “all shared memory serializes globally” is a valid blanket claim. See https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/instantiate.go and https://github.com/wago-org/wago/blob/227dfd64ddb3760ae8547eb69a27da38c6cd8676/src/wago/instance_native_context.go.
+Independent execution defaults on; admission excludes imported memories/tables/globals and cross-instance Wasm function bindings, and shared Runtime GC domains can require the process-wide fallback. Native-resource publication can revoke eligibility. Private threaded execution has its own local-lease path: neither “every instance runs in parallel” nor “all shared memory serializes globally” is a valid blanket claim. See https://github.com/wago-org/wago/blob/093ebca96c413bc796ccaa656cb547232def4185/src/wago/instantiate.go and https://github.com/wago-org/wago/blob/093ebca96c413bc796ccaa656cb547232def4185/src/wago/instance_native_context.go.
 
 Public installers and `go get github.com/wago-org/wago` are documented in the source README. This remains beta; use commit hashes, not discontinued canary tags, for development builds. Consult plugin documentation for capabilities and authority grants rather than automatically granting all requested permissions.
 

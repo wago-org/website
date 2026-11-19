@@ -1280,523 +1280,12 @@
       "definition": "Whole-process spawn-to-exit wall-clock latency.",
       "workloadCount": 6,
       "architectures": {
-        "arm64": {
-          "architecture": "arm64",
-          "workloads": [
-            {
-              "id": "nbody",
-              "label": "nbody",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "16.6 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "18.6 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "19.7 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "21.1 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "33.3 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "38.3 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "114 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "228 ms"
-                }
-              ]
-            },
-            {
-              "id": "fib",
-              "label": "fib",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "9.1 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "10.3 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "10.8 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "11.2 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "25.4 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "41.6 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "48.4 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "57.5 ms"
-                }
-              ]
-            },
-            {
-              "id": "spectralnorm",
-              "label": "spectralnorm",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "4.5 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "4.8 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "6.6 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "9.6 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "13.4 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "18.8 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "19.9 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "21.7 ms"
-                }
-              ]
-            },
-            {
-              "id": "quicksort",
-              "label": "quicksort",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "11.0 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "11.2 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "12.0 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "13.2 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "21.1 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "24.9 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "27.5 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "46.3 ms"
-                }
-              ]
-            },
-            {
-              "id": "raytrace",
-              "label": "raytrace",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "7.5 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "7.6 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "10.0 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "11.4 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "19.1 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "19.6 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "31.2 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "35.2 ms"
-                }
-              ]
-            },
-            {
-              "id": "sha256",
-              "label": "sha256",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "3.5 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "3.7 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "4.7 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "6.2 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "6.5 ms"
-                },
-                {
-                  "runtime": "wago single-pass",
-                  "value": "7.7 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "16.4 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "22.1 ms"
-                }
-              ]
-            }
-          ]
-        },
         "amd64": {
           "architecture": "amd64",
           "workloads": [
             {
               "id": "nbody",
               "label": "nbody",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "25.2 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "28.6 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "32.6 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "35.6 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "41.8 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "46.4 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "292 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "337 ms"
-                }
-              ]
-            },
-            {
-              "id": "fib",
-              "label": "fib",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "5.2 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "5.7 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "5.7 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "7.3 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "10.8 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "25.6 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "58.6 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "132 ms"
-                }
-              ]
-            },
-            {
-              "id": "spectralnorm",
-              "label": "spectralnorm",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "3.4 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "4.2 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "4.6 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "6.1 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "15.2 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "19.6 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "37.6 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "46.9 ms"
-                }
-              ]
-            },
-            {
-              "id": "quicksort",
-              "label": "quicksort",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "8.4 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "10.7 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "11.0 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "11.3 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "16.5 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "35.9 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "45.4 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "128 ms"
-                }
-              ]
-            },
-            {
-              "id": "raytrace",
-              "label": "raytrace",
-              "unit": "wall-clock process latency",
-              "results": [
-                {
-                  "runtime": "wago single-pass",
-                  "value": "7.1 ms"
-                },
-                {
-                  "runtime": "wazy",
-                  "executionMode": "compiler",
-                  "value": "7.8 ms"
-                },
-                {
-                  "runtime": "wazero",
-                  "executionMode": "compiler",
-                  "value": "8.2 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "10.7 ms"
-                },
-                {
-                  "runtime": "v8",
-                  "executionMode": "turboshaft",
-                  "value": "16.6 ms"
-                },
-                {
-                  "runtime": "wasm3",
-                  "executionMode": "interpreter",
-                  "value": "35.5 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "37.1 ms"
-                },
-                {
-                  "runtime": "wasmi",
-                  "executionMode": "interpreter",
-                  "value": "50.8 ms"
-                }
-              ]
-            },
-            {
-              "id": "sha256",
-              "label": "sha256",
               "unit": "wall-clock process latency",
               "results": [
                 {
@@ -1811,32 +1300,262 @@
                 {
                   "runtime": "wazero",
                   "executionMode": "compiler",
-                  "value": "2.8 ms"
-                },
-                {
-                  "runtime": "wasmtime",
-                  "executionMode": "cranelift",
-                  "value": "5.0 ms"
+                  "value": "2.7 ms"
                 },
                 {
                   "runtime": "wasm3",
                   "executionMode": "interpreter",
-                  "value": "6.9 ms"
+                  "value": "4.2 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "4.9 ms"
                 },
                 {
                   "runtime": "wasmi",
                   "executionMode": "interpreter",
-                  "value": "9.6 ms"
+                  "value": "5.1 ms"
                 },
                 {
                   "runtime": "v8",
                   "executionMode": "turboshaft",
-                  "value": "12.9 ms"
+                  "value": "10.8 ms"
                 },
                 {
                   "runtime": "wavm",
                   "executionMode": "llvm",
-                  "value": "30.5 ms"
+                  "value": "24.6 ms"
+                }
+              ]
+            },
+            {
+              "id": "fib",
+              "label": "fib",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "3.3 ms"
+                },
+                {
+                  "runtime": "wazy",
+                  "executionMode": "compiler",
+                  "value": "4.0 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "4.0 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "5.7 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "11.0 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "11.3 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "12.8 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "18.9 ms"
+                }
+              ]
+            },
+            {
+              "id": "sha256",
+              "label": "sha256",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "2.0 ms"
+                },
+                {
+                  "runtime": "wago single-pass",
+                  "value": "2.2 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "2.4 ms"
+                },
+                {
+                  "runtime": "wazy",
+                  "executionMode": "compiler",
+                  "value": "2.5 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "2.6 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "4.8 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "9.8 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "34.2 ms"
+                }
+              ]
+            },
+            {
+              "id": "raytrace",
+              "label": "raytrace",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "2.7 ms"
+                },
+                {
+                  "runtime": "wazy",
+                  "executionMode": "compiler",
+                  "value": "3.5 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "3.9 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "3.9 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "5.7 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "6.4 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "11.3 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "36.8 ms"
+                }
+              ]
+            },
+            {
+              "id": "coremark",
+              "label": "coremark",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "31.5 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "32.7 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "35.2 ms"
+                },
+                {
+                  "runtime": "wazy",
+                  "executionMode": "compiler",
+                  "value": "42.3 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "55.1 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "219 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "459 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "572 ms"
+                }
+              ]
+            },
+            {
+              "id": "fannkuch",
+              "label": "fannkuch",
+              "unit": "wall-clock process latency",
+              "results": [
+                {
+                  "runtime": "wago single-pass",
+                  "value": "3.4 ms"
+                },
+                {
+                  "runtime": "wazy",
+                  "executionMode": "compiler",
+                  "value": "4.1 ms"
+                },
+                {
+                  "runtime": "wazero",
+                  "executionMode": "compiler",
+                  "value": "4.4 ms"
+                },
+                {
+                  "runtime": "wasmtime",
+                  "executionMode": "cranelift",
+                  "value": "6.6 ms"
+                },
+                {
+                  "runtime": "wasm3",
+                  "executionMode": "interpreter",
+                  "value": "9.4 ms"
+                },
+                {
+                  "runtime": "v8",
+                  "executionMode": "turboshaft",
+                  "value": "11.6 ms"
+                },
+                {
+                  "runtime": "wasmi",
+                  "executionMode": "interpreter",
+                  "value": "13.1 ms"
+                },
+                {
+                  "runtime": "wavm",
+                  "executionMode": "llvm",
+                  "value": "36.8 ms"
                 }
               ]
             }

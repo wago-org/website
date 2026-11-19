@@ -20,7 +20,7 @@ Product source revision: https://github.com/wago-org/wago/commit/093ebca96c413bc
 - Test coverage: not published in the current source.
 - Native benchmark architectures published: amd64, arm64.
 - Published multi-engine comparisons: 1464.
-- End-to-end dataset: 6 real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
+- End-to-end dataset: 6 real workloads on AMD64 across multiple WebAssembly runtimes.
 
 ## Embedding and API guidance
 

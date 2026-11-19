@@ -107,6 +107,7 @@ function parseStartup(index) {
   const section = extractBetween(index, "END-TO-END LATENCY", "PERFORMANCE");
   const architectures = {};
   for (const arch of ["arm64", "amd64"]) {
+    if (!section.includes(`id="startup-arch-panel-${arch}"`)) continue;
     const architecturePanel = extractDivById(section, `startup-arch-panel-${arch}`);
     const workloads = [];
     const tabs = [
@@ -143,7 +144,9 @@ function parseStartup(index) {
     if (workloads.length === 0) throw new Error(`index.html: no ${arch} end-to-end workloads found`);
     architectures[arch] = { architecture: arch, workloads };
   }
-  return { architectures, workloadCount: architectures.arm64.workloads.length };
+  const published = Object.values(architectures);
+  if (published.length === 0) throw new Error("index.html: no end-to-end architecture panels");
+  return { architectures, workloadCount: published[0].workloads.length };
 }
 
 function parseComparisonRows(panel, backend = "wago") {
@@ -493,7 +496,7 @@ Product source revision: ${project.canonicalFacts.source.commitUrl}
 - Test coverage: ${stats.coveragePercent == null ? "not published in the current source" : `${stats.coveragePercent}%`}.
 - Native benchmark architectures published: ${architectures.join(", ")}.
 - Published multi-engine comparisons: ${project.benchmarks.wagoVsWazero.comparisonCount}.
-- End-to-end dataset: ${project.benchmarks.startup.workloadCount} real workloads on ARM64 and AMD64 across multiple WebAssembly runtimes.
+- End-to-end dataset: ${project.benchmarks.startup.workloadCount} real workloads on ${Object.keys(project.benchmarks.startup.architectures).map((a) => a.toUpperCase()).join(" and ")} across multiple WebAssembly runtimes.
 
 ## Embedding and API guidance
 
@@ -758,7 +761,7 @@ if (CHECK && stale.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `AI metadata is current: ${startup.workloadCount} startup workloads on 2 architectures, ` +
+    `AI metadata is current: ${startup.workloadCount} startup workloads on ${Object.keys(startup.architectures).length} architecture(s), ` +
       `${Object.keys(performance.architectures).length} architectures, ` +
       `${performance.comparisonCount} performance comparisons`,
   );

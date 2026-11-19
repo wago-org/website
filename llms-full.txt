@@ -58,79 +58,79 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 2.3 ms |
+| wago single-pass |  | 1.9 ms |
 | wazy | compiler | 2.6 ms |
-| wazero | compiler | 2.7 ms |
-| wasm3 | interpreter | 4.2 ms |
-| wasmtime | cranelift | 4.9 ms |
-| wasmi | interpreter | 5.1 ms |
-| v8 | turboshaft | 10.8 ms |
-| wavm | llvm | 24.6 ms |
+| wazero | compiler | 3.0 ms |
+| wasm3 | interpreter | 4.3 ms |
+| wasmi | interpreter | 5.2 ms |
+| wasmtime | cranelift | 6.7 ms |
+| v8 | turboshaft | 12.1 ms |
+| wavm | llvm | 26.3 ms |
 
 ##### fib
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 3.3 ms |
-| wazy | compiler | 4.0 ms |
-| wazero | compiler | 4.0 ms |
-| wasmtime | cranelift | 5.7 ms |
-| v8 | turboshaft | 11.0 ms |
-| wavm | llvm | 11.3 ms |
-| wasm3 | interpreter | 12.8 ms |
-| wasmi | interpreter | 18.9 ms |
+| wago single-pass |  | 3.1 ms |
+| wazy | compiler | 4.2 ms |
+| wazero | compiler | 4.3 ms |
+| wasmtime | cranelift | 6.2 ms |
+| v8 | turboshaft | 11.6 ms |
+| wavm | llvm | 11.6 ms |
+| wasm3 | interpreter | 13.2 ms |
+| wasmi | interpreter | 19.3 ms |
 
 ##### sha256
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
+| wago single-pass |  | 1.9 ms |
 | wasm3 | interpreter | 2.0 ms |
-| wago single-pass |  | 2.2 ms |
 | wasmi | interpreter | 2.4 ms |
-| wazy | compiler | 2.5 ms |
-| wazero | compiler | 2.6 ms |
-| wasmtime | cranelift | 4.8 ms |
-| v8 | turboshaft | 9.8 ms |
-| wavm | llvm | 34.2 ms |
+| wazy | compiler | 2.6 ms |
+| wazero | compiler | 2.8 ms |
+| wasmtime | cranelift | 5.3 ms |
+| v8 | turboshaft | 10.4 ms |
+| wavm | llvm | 35.0 ms |
 
 ##### raytrace
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 2.7 ms |
-| wazy | compiler | 3.5 ms |
-| wasm3 | interpreter | 3.9 ms |
-| wazero | compiler | 3.9 ms |
-| wasmi | interpreter | 5.7 ms |
-| wasmtime | cranelift | 6.4 ms |
-| v8 | turboshaft | 11.3 ms |
-| wavm | llvm | 36.8 ms |
+| wago single-pass |  | 2.4 ms |
+| wazy | compiler | 3.9 ms |
+| wasm3 | interpreter | 4.0 ms |
+| wazero | compiler | 4.2 ms |
+| wasmi | interpreter | 5.8 ms |
+| wasmtime | cranelift | 7.0 ms |
+| v8 | turboshaft | 11.8 ms |
+| wavm | llvm | 36.5 ms |
 
 ##### coremark
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 31.5 ms |
-| wasmtime | cranelift | 32.7 ms |
-| v8 | turboshaft | 35.2 ms |
-| wazy | compiler | 42.3 ms |
-| wazero | compiler | 55.1 ms |
-| wavm | llvm | 219 ms |
-| wasm3 | interpreter | 459 ms |
-| wasmi | interpreter | 572 ms |
+| wago single-pass |  | 31.8 ms |
+| wasmtime | cranelift | 33.3 ms |
+| v8 | turboshaft | 35.5 ms |
+| wazy | compiler | 42.9 ms |
+| wazero | compiler | 56.1 ms |
+| wavm | llvm | 218 ms |
+| wasm3 | interpreter | 468 ms |
+| wasmi | interpreter | 584 ms |
 
 ##### fannkuch
 
 | Runtime | Mode | Result |
 | --- | --- | ---: |
-| wago single-pass |  | 3.4 ms |
-| wazy | compiler | 4.1 ms |
-| wazero | compiler | 4.4 ms |
-| wasmtime | cranelift | 6.6 ms |
-| wasm3 | interpreter | 9.4 ms |
-| v8 | turboshaft | 11.6 ms |
-| wasmi | interpreter | 13.1 ms |
-| wavm | llvm | 36.8 ms |
+| wago single-pass |  | 3.0 ms |
+| wazy | compiler | 4.2 ms |
+| wazero | compiler | 4.6 ms |
+| wasmtime | cranelift | 6.9 ms |
+| wasm3 | interpreter | 9.5 ms |
+| v8 | turboshaft | 11.9 ms |
+| wasmi | interpreter | 13.3 ms |
+| wavm | llvm | 37.1 ms |
 
 ## Runtime and compiler comparisons
 

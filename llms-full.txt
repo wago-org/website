@@ -65,7 +65,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wasmtime | cranelift | 192 ms |
 | wasmer | cranelift | 194 ms |
 | wazero | compiler | 198 ms |
-| wavm | llvm | 4791 ms |
 
 ##### yyjson
 
@@ -78,7 +77,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wazero | compiler | 73.6 ms |
 | wasmtime | cranelift | 89.8 ms |
 | wasmer | cranelift | 99.5 ms |
-| wavm | llvm | 1970 ms |
 
 ##### utf8proc
 
@@ -91,7 +89,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wazero | compiler | 9.7 ms |
 | v8 | turboshaft | 11.5 ms |
 | wasmer | cranelift | 20.8 ms |
-| wavm | llvm | 167 ms |
 
 ##### nanosvg
 
@@ -104,7 +101,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wazy | compiler | 18.4 ms |
 | wazero | compiler | 23.6 ms |
 | wasmer | cranelift | 36.3 ms |
-| wavm | llvm | 816 ms |
 
 ##### libtommath
 
@@ -117,7 +113,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wazy | compiler | 13.2 ms |
 | wazero | compiler | 17.2 ms |
 | wasmer | cranelift | 38.4 ms |
-| wavm | llvm | 818 ms |
 
 ##### coremark
 
@@ -130,7 +125,6 @@ Definition: Whole-process spawn-to-exit wall-clock latency.
 | wazy | compiler | 44.6 ms |
 | wazero | compiler | 57.9 ms |
 | wasmer | singlepass | 62.0 ms |
-| wavm | llvm | 231 ms |
 
 ## Runtime and compiler comparisons
 

@@ -1321,11 +1321,6 @@
                   "runtime": "wazero",
                   "executionMode": "compiler",
                   "value": "198 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "4791 ms"
                 }
               ]
             },
@@ -1367,11 +1362,6 @@
                   "runtime": "wasmer",
                   "executionMode": "cranelift",
                   "value": "99.5 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "1970 ms"
                 }
               ]
             },
@@ -1413,11 +1403,6 @@
                   "runtime": "wasmer",
                   "executionMode": "cranelift",
                   "value": "20.8 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "167 ms"
                 }
               ]
             },
@@ -1459,11 +1444,6 @@
                   "runtime": "wasmer",
                   "executionMode": "cranelift",
                   "value": "36.3 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "816 ms"
                 }
               ]
             },
@@ -1505,11 +1485,6 @@
                   "runtime": "wasmer",
                   "executionMode": "cranelift",
                   "value": "38.4 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "818 ms"
                 }
               ]
             },
@@ -1551,11 +1526,6 @@
                   "runtime": "wasmer",
                   "executionMode": "singlepass",
                   "value": "62.0 ms"
-                },
-                {
-                  "runtime": "wavm",
-                  "executionMode": "llvm",
-                  "value": "231 ms"
                 }
               ]
             }
